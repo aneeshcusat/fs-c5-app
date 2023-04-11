@@ -17,7 +17,7 @@ ADD COLUMN `tag_employees` LONGTEXT NULL;
 
 ALTER TABLE `fdata`.`fs_purchase_order_model`
 ADD COLUMN `tag_employees` LONGTEXT NULL;
-ALTER TABLE `fdata`.`fs_project_model`
+ALTER TABLE `fdata`.`fs_purchase_order_model`
 ADD COLUMN `service_line_estimate` LONGTEXT NULL;
 
 ALTER TABLE `fdata`.`fs_task_model`
