@@ -1332,8 +1332,8 @@ p.vprogresslabel {
 
 .blink_text {
     animation: 1s blinker linear infinite;
-    -webkit-animation: 1s blinker linear infinite;
-    -moz-animation: 1s blinker linear infinite;
+    -webkit-animation: 2s blinker linear infinite;
+    -moz-animation: 2s blinker linear infinite;
     font-weight: bold;
     color: red;
 }
@@ -1493,6 +1493,10 @@ p.vprogresslabel {
 
 .custom-select__placeholder {
     color: #ccc !important;
+}
+
+.custom-select__menu {
+    z-index: 1020 !important;
 }
 
 .custom-select__indicator {
