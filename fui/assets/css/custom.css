@@ -33,6 +33,9 @@ body.font-roboto {
 .w-75p {
     width: 75%;
 }
+.w-100p {
+    width: 100%;
+}
 .w-40 {
     width: 40px !important;
 }
@@ -695,7 +698,6 @@ fieldset.disabled .input-group-append button {
     top: 10px;
     left: -30px;
     width: 150px;
-    z-index: 2;
     border: 1px solid rgba(0, 0, 0, 0.04);
     box-shadow: 0 16px 24px 2px rgb(0 0 0 / 14%);
     background-color: #fff;
@@ -712,6 +714,18 @@ fieldset.disabled .input-group-append button {
     background-color: #fff;
     padding-top: 7px;
     top: 9px;
+}
+
+.dropdownmenu-timesheet {
+    position: absolute;
+    right: -3px;
+    bottom: 15px;
+    width: 250px;
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    box-shadow: 0 16px 24px 2px rgb(0 0 0 / 14%);
+    background-color: #fff;
+    padding-top: 7px;
+    z-index: 1020;
 }
 
 .sharelink {

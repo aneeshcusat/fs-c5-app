@@ -105,14 +105,14 @@ $(document).ready(function() {
         var others = $("[name='" + this.name + "']").map(function () {
             return this.value
         }).get().join(" ")
-        console.log(others)
+        
         $('.metismenu .has-arrow').removeClass(others).addClass(this.value)
     });
     $('.list_option input:radio').click(function () {
         var others = $("[name='" + this.name + "']").map(function () {
             return this.value
         }).get().join(" ")
-        console.log(others)
+        
         $('.metismenu li .collapse a').removeClass(others).addClass(this.value)
     });
     // Font Setting 
@@ -120,7 +120,7 @@ $(document).ready(function() {
         var others = $("[name='" + this.name + "']").map(function () {
             return this.value
         }).get().join(" ")
-        console.log(others)
+        
         $('body').removeClass(others).addClass(this.value)
     });  
 });
@@ -232,7 +232,7 @@ function setStyleSheet(url){
 
 // H menu
 $(window).bind("resize", function () {
-    console.log($(this).width())
+    //console.log($(this).width())
     if ($(this).width() < 1201) {
         $('.horizontal').removeClass('h_menu')
     } else {
