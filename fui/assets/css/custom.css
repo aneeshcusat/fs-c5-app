@@ -29,16 +29,30 @@ body.font-roboto {
 .height25 {
     height: 25px;
 }
+.h-20px {
+    height: 20px;
+}
+
+.height-100-sidebar {
+    height: calc(100vh - 41px);
+}
 
 .w-75p {
     width: 75%;
 }
+
 .w-100p {
     width: 100%;
 }
+
+.w-8 {
+    width: 8px !important;
+}
+
 .w-40 {
     width: 40px !important;
 }
+
 .w-50 {
     width: 50px !important;
 }
@@ -66,19 +80,27 @@ body.font-roboto {
 .w-145 {
     width: 145px !important;
 }
+
 .mx-w-100 {
     max-width: 100px !important;
 }
+
 .mx-w-150 {
     max-width: 150px !important;
+}
+
+.mx-w-450 {
+    max-width: 450px !important;
 }
 
 .w-200 {
     width: 200px !important;
 }
+
 .w-220 {
     width: 220px !important;
 }
+
 .w-250 {
     width: 250px !important;
 }
@@ -156,6 +178,10 @@ body.font-roboto {
 body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown) {
     overflow: scroll !important;
 }
+
+.overflow-y {
+    overflow-y: scroll;
+  }
 
 .DateRangePicker {
     background-color: white !important;
@@ -488,7 +514,8 @@ body::-webkit-scrollbar-thumb {
     /* z-index         : 1020;*/
 }
 
-.page .section-body.listgridheader.sticky, .sticky-top-25 {
+.page .section-body.listgridheader.sticky,
+.sticky-top-25 {
     position: sticky;
     top: 35px;
     z-index: 1018;
@@ -783,8 +810,9 @@ fieldset.disabled .input-group-append button {
 
 .create_project_right_sidebar,
 .create_purchaseOrder_right_sidebar,
-.view_project_right_sidebar ,
-.create_reportconfig-right_sidebar {
+.view_project_right_sidebar,
+.create_reportconfig-right_sidebar,
+.config_checklist_right_sidebar {
     width: 75%;
     right: -75%;
 }
@@ -800,7 +828,7 @@ fieldset.disabled .input-group-append button {
     right: -55%;
 }
 
-.view_task_right_sidebar{
+.view_task_right_sidebar {
     width: 65%;
     right: -65%;
 }
@@ -975,11 +1003,11 @@ td.deleted {
     background-color: #fff;
 }
 
-.bgcolorlightblue{
+.bgcolorlightblue {
     background-color: #8dd2e9;
 }
 
-.bgcolorlightblue_1{
+.bgcolorlightblue_1 {
     background-color: #d8e4e7;
 }
 
@@ -1124,9 +1152,11 @@ p.overflow {
 .colororange {
     color: #f59505 !important;
 }
-.colorlightblue{
+
+.colorlightblue {
     color: #8dd2e9;
 }
+
 .colorlightgray {
     color: lightgray !important;
 }
@@ -1782,6 +1812,10 @@ i.text-muted {
 
 .addEstimateForm {
     background-color: #e8e8e8;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+}
+
+.changeChecklistForm {
     box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
 }
 
