@@ -92,6 +92,9 @@ body.font-roboto {
 .mx-w-450 {
     max-width: 450px !important;
 }
+.mx-w-500 {
+    max-width: 500px !important;
+}
 
 .w-200 {
     width: 200px !important;
