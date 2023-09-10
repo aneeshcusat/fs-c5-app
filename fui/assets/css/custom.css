@@ -1436,6 +1436,13 @@ p.vprogresslabel {
     background-position: center;
 }
 
+button.microsoftlogin {
+    border: none;
+    background: none;
+    margin: 0;
+    padding: 0;
+}
+
 .passwordinputcontainer {
     position: relative;
 }
@@ -1558,6 +1565,20 @@ p.vprogresslabel {
 
 .timesheetpage.table-responsive {
     overflow-x: visible;
+}
+
+.select_sm .custom-select__value-container {
+    font-size: 8px !important;
+    padding: 0px 0px !important;
+}
+
+.select_sm .custom-select__control {
+    min-height: 28px !important;
+    width: 255px;
+}
+
+.select_sm .custom-select__multi-value__label{
+    padding:0;
 }
 
 .timesheetpage.table-responsive tbody tr.tasks:nth-child(odd) {
