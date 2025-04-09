@@ -1040,6 +1040,9 @@ p.overflow {
     text-overflow: clip;
 }
 
+.text-strike {
+    text-decoration: line-through !important;
+}
 .table-calendar-link::before {
     background: #3322ec;
 }
