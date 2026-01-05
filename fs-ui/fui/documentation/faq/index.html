@@ -1,0 +1,1518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frequently Asked Questions (FAQ) - Famstack Users Guide</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        .faq-category {
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.05), rgba(6, 182, 212, 0.05));
+            border-left: 4px solid var(--primary-color);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 6px;
+        }
+        .faq-item {
+            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            transition: all 0.2s;
+        }
+        .faq-item:hover {
+            box-shadow: var(--shadow);
+            border-color: var(--primary-color);
+        }
+        .faq-question {
+            font-weight: 600;
+            color: var(--primary-color);
+            font-size: 1.1rem;
+            margin-bottom: 0.75rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .faq-question::before {
+            content: "❓";
+            font-size: 1.2rem;
+        }
+        .faq-answer {
+            color: var(--text-dark);
+            line-height: 1.8;
+            margin-top: 0.75rem;
+        }
+        .faq-answer ol, .faq-answer ul {
+            margin-left: 1.5rem;
+            margin-top: 0.5rem;
+        }
+        .faq-answer li {
+            margin-bottom: 0.5rem;
+        }
+        .search-box {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid var(--border-color);
+            border-radius: 6px;
+            font-size: 1rem;
+            margin-bottom: 2rem;
+        }
+        .search-box:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+        .faq-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        .faq-tag {
+            background: var(--bg-light);
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.875rem;
+            color: var(--text-light);
+        }
+        .no-results {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-light);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <img src="/favicon.ico" alt="Famstack Logo" class="header-logo" onerror="this.style.display='none'">
+                <div class="header-text">
+                    <h1>Famstack Users Guide</h1>
+                    <p class="subtitle">Frequently Asked Questions (FAQ)</p>
+                    <p class="version">Version 1.0</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../getting-started.html">Getting Started</a></li>
+                <li><a href="../projects.html">Projects</a></li>
+                <li><a href="../tasks.html">Tasks</a></li>
+                <li><a href="../hrms.html">HRMS</a></li>
+                <li><a href="../sales.html">Sales</a></li>
+                <li><a href="../reports.html">Reports</a></li>
+                <li><a href="../advanced.html">Advanced</a></li>
+                <li><a href="../access-controls.html">Access Controls</a></li>
+                <li><a href="../application-configuration.html">Application Configuration</a></li>
+                <li><a href="index.html" class="active">FAQ</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <aside class="sidebar">
+        <ul>
+            <li class="section-title">FAQ Categories</li>
+            <li><a href="#general">General & Login</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#tasks">Tasks</a></li>
+            <li><a href="#timesheet">Timesheet</a></li>
+            <li><a href="#hrms">HRMS</a></li>
+            <li><a href="#sales">Sales</a></li>
+            <li><a href="#reports">Reports</a></li>
+            <li><a href="#access">Access & Permissions</a></li>
+            <li><a href="#configuration">Application Configuration</a></li>
+            <li><a href="#technical">Technical Issues</a></li>
+            <li><a href="#data">Data & Performance</a></li>
+        </ul>
+    </aside>
+
+    <main>
+        <div class="breadcrumb">
+            <a href="../index.html">Home</a> <span>→</span> FAQ
+        </div>
+
+        <section class="section">
+            <h2>🔍 Frequently Asked Questions</h2>
+            <p>Find answers to common questions and solutions to frequently encountered issues. Use the search box below to quickly find specific topics.</p>
+            
+            <input type="text" class="search-box" id="faqSearch" placeholder="Search FAQ... (e.g., 'login', 'timesheet', 'project')" onkeyup="filterFAQ()">
+        </section>
+
+        <section id="general" class="section faq-category">
+            <h2>🔐 General & Login Issues</h2>
+
+            <div class="faq-item" data-tags="login password forgot reset authentication">
+                <div class="faq-question">I forgot my password. How do I reset it?</div>
+                <div class="faq-answer">
+                    <p><strong>Solution:</strong></p>
+                    <ol>
+                        <li>Go to the login page</li>
+                        <li>Click the <strong>"Forgot Password"</strong> link</li>
+                        <li>Enter your username or email address</li>
+                        <li>Click <strong>"Submit"</strong></li>
+                        <li>Check your email for password reset instructions</li>
+                        <li>Click the reset link in the email (note: links expire after a certain time)</li>
+                        <li>Enter your new password (must meet security requirements)</li>
+                        <li>Confirm your new password</li>
+                        <li>Click <strong>"Reset Password"</strong></li>
+                    </ol>
+                    <p><strong>If the link expired:</strong> Request a new password reset from the login page.</p>
+                    <p><strong>If you don't receive the email:</strong> Check your spam folder, verify your email address is correct, or contact your system administrator.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-tags="login cannot access wrong credentials">
+                <div class="faq-question">I cannot log in. What should I do?</div>
+                <div class="faq-answer">
+                    <p><strong>Checklist:</strong></p>
+                    <ol>
+                        <li><strong>Verify credentials:</strong> Ensure username and password are correct (check for caps lock)</li>
+                        <li><strong>Clear browser cache:</strong> Clear cookies and cache, then try again</li>
+                        <li><strong>Try different browser:</strong> Some browsers may have compatibility issues</li>
+                        <li><strong>Check internet connection:</strong> Ensure you have a stable connection</li>
+                        <li><strong>Check account status:</strong> Your account may be inactive or locked - contact administrator</li>
+                        <li><strong>Try incognito/private mode:</strong> Rules out browser extension issues</li>
+                        <li><strong>Check system status:</strong> The system may be under maintenance</li>
+                    </ol>
+                    <p><strong>If issues persist:</strong> Contact your system administrator with your username and a description of the error message (if any).</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-tags="login session expired timeout">
+                <div class="faq-question">I'm getting a "Session Expired" message. What does this mean?</div>
+                <div class="faq-answer">
+                    <p><strong>Explanation:</strong> Your session has expired due to inactivity. For security, sessions automatically expire after a period of no activity.</p>
+                    <p><strong>Solution:</strong></p>
+                    <ol>
+                        <li>Simply log in again</li>
+                        <li>Your work is typically saved automatically (check if your changes were saved)</li>
+                        <li>If you were filling a form, you may need to re-enter data</li>
+                    </ol>
+                    <p><strong>Prevention:</strong> Save your work frequently, especially when filling long forms. The system may auto-save, but it's best to manually save important changes.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-tags="login microsoft sso single sign-on">
+                <div class="faq-question">How do I use Microsoft Single Sign-On (SSO)?</div>
+                <div class="faq-answer">
+                    <p><strong>If SSO is enabled for your organization:</strong></p>
+                    <ol>
+                        <li>Go to the login page</li>
+                        <li>Click the <strong>"Sign in with Microsoft"</strong> button</li>
+                        <li>You'll be redirected to Microsoft's login page</li>
+                        <li>Enter your Microsoft account credentials</li>
+                        <li>Grant permissions if prompted</li>
+                        <li>You'll be automatically logged into the system</li>
+                    </ol>
+                    <p><strong>If you don't see the Microsoft login option:</strong> SSO may not be enabled for your organization. Use standard login instead.</p>
+                    <p><strong>If SSO fails:</strong> Try standard login, or contact your administrator if SSO is required.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-tags="navigation menu sidebar not showing">
+                <div class="faq-question">The left sidebar menu is not showing. How do I access it?</div>
+                <div class="faq-answer">
+                    <p><strong>Solution:</strong></p>
+                    <ol>
+                        <li>Look for the hamburger menu icon (☰) in the top left corner</li>
+                        <li>Click it to show/hide the sidebar</li>
+                        <li>On mobile devices, the sidebar may be hidden by default - tap the menu icon</li>
+                    </ol>
+                    <p><strong>If the menu icon is not visible:</strong></p>
+                    <ul>
+                        <li>Refresh the page (F5 or Ctrl+R / Cmd+R)</li>
+                        <li>Check if JavaScript is enabled in your browser</li>
+                        <li>Try a different browser</li>
+                        <li>Clear browser cache</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="faq-item" data-tags="page not loading blank screen">
+                <div class="faq-question">A page is not loading or showing a blank screen. What should I do?</div>
+                <div class="faq-answer">
+                    <p><strong>Solution:</strong></p>
+                    <ol>
+                        <li><strong>Refresh the page:</strong> Press F5 or Ctrl+R (Cmd+R on Mac)</li>
+                        <li><strong>Hard refresh:</strong> Press Ctrl+Shift+R (Cmd+Shift+R on Mac) to clear cache and reload</li>
+                        <li><strong>Check browser console:</strong> Press F12, check for error messages in Console tab</li>
+                        <li><strong>Clear browser cache:</strong> Clear cookies and cached files</li>
+                        <li><strong>Try different browser:</strong> Test in Chrome, Firefox, or Edge</li>
+                        <li><strong>Check internet connection:</strong> Ensure stable connection</li>
+                        <li><strong>Disable browser extensions:</strong> Some extensions may interfere</li>
+                        <li><strong>Check JavaScript:</strong> Ensure JavaScript is enabled</li>
+                    </ol>
+                    <p><strong>If issue persists:</strong> Contact your system administrator with:
+                    <ul>
+                        <li>Browser name and version</li>
+                        <li>Error messages from console (F12)</li>
+                        <li>Screenshot of the issue</li>
+                        <li>Steps to reproduce</li>
+                    </ul>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="section faq-category">
+            <h2>📁 Project Management Issues</h2>
+
+            <div class="faq-item" data-tags="project create button missing cannot create">
+                <div class="faq-question">I cannot see the "Create Project" button. Why?</div>
+                <div class="faq-answer">
+                    <p><strong>Possible reasons:</strong></p>
+                    <ol>
+                        <li><strong>No create permission:</strong> Your role doesn't have permission to create projects. Contact your administrator.</li>
+                        <li><strong>Module disabled:</strong> Project module may be disabled for your account.</li>
+                        <li><strong>Page not loaded:</strong> Refresh the page or navigate to Project List again.</li>
+                        <li><strong>Team assignment:</strong> You may need to be assigned to a team first.</li>
+                    </ol>
+                    <p><strong>Solution:</strong> Contact your system administrator or team lead to request create permission for projects.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-tags="project edit cannot modify locked fields">
+                <div class="faq-question">I cannot edit certain fields in a project. Why are they locked?</div>
+                <div class="faq-answer">
+                    <p><strong>Common reasons:</strong></p>
+                    <ol>
+                        <li><strong>No edit permission:</strong> You may only have view permission</li>
+                        <li><strong>Project status:</strong> Some fields are locked when project is completed or archived</li>
+                        <li><strong>Purchase Order restriction:</strong> If project is linked to a PO, some fields may be locked</li>
+                        <li><strong>Date restrictions:</strong> Dates may be restricted by purchase order dates</li>
+                        <li><strong>System fields:</strong> Some fields (like Created Date, Created By) cannot be changed</li>
+                        <li><strong>Access control:</strong> Field-level permissions may restrict editing</li>
+                    </ol>
+                    <p><strong>Solution:</strong> Check with your administrator about field-level permissions. If the project is completed, you may need to change its status first.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-tags="project duplicate copy">
+                <div class="faq-question">How do I duplicate a project? What gets copied?</div>
+                <div class="faq-answer">
+                    <p><strong>How to duplicate:</strong></p>
+                    <ol>
+                        <li>Go to Project List</li>
+                        <li>Find the project you want to duplicate</li>
+                        <li>Click the dropdown menu (three dots)</li>
+                        <li>Select <strong>"Duplicate"</strong></li>
+                        <li>Modify the project name (required - must be unique)</li>
+                        <li>Update any other fields as needed</li>
+                        <li>Click <strong>"Duplicate"</strong></li>
+                    </ol>
+                    <p><strong>What gets copied:</strong></p>
+                    <ul>
+                        <li>✅ All project fields and information</li>
+                        <li>✅ Team assignments</li>
+                        <li>✅ Estimates</li>
+                        <li>✅ Project configuration</li>
+                    </ul>
+                    <p><strong>What doesn't get copied:</strong></p>
+                    <ul>
+                        <li>❌ Tasks/Deliverables (you'll need to create new ones)</li>
+                        <li>❌ Work items and time entries</li>
+                        <li>❌ Project history and activities</li>
+                        <li>❌ Files and documents</li>
+                        <li>❌ Feedback</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="faq-item" data-tags="project filter search not finding">
+                <div class="faq-question">I cannot find a project using search or filters. What should I do?</div>
+                <div class="faq-answer">
+                    <p><strong>Troubleshooting steps:</strong></p>
+                    <ol>
+                        <li><strong>Clear all filters:</strong> Reset status filter to "ALL"</li>
+                        <li><strong>Check team filter:</strong> Ensure correct team is selected (or select "All Teams")</li>
+                        <li><strong>Clear date range:</strong> Remove date restrictions</li>
+                        <li><strong>Check search spelling:</strong> Verify spelling of project name</li>
+                        <li><strong>Try partial search:</strong> Search for part of the project name</li>
+                        <li><strong>Check archived:</strong> Project may be archived - filter by "ARCHIVED"</li>
+                        <li><strong>Check team access:</strong> You may not have access to the project's team</li>
+                        <li><strong>Refresh page:</strong> Refresh to reload project list</li>
+                    </ol>
+                    <p><strong>If still not found:</strong> The project may have been deleted, or you may not have access to it. Contact your administrator.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-tags="project delete remove cannot">
+                <div class="faq-question">I cannot delete a project. Why?</div>
+                <div class="faq-answer">
+                    <p><strong>Possible reasons:</strong></p>
+                    <ol>
+                        <li><strong>No delete permission:</strong> Your role doesn't have delete permission</li>
+                        <li><strong>Project has dependencies:</strong> Project may have active tasks or work items</li>
+                        <li><strong>Project is locked:</strong> Project may be in a status that prevents deletion</li>
+                        <li><strong>Access restriction:</strong> You may not have access to delete projects from other teams</li>
+                    </ol>
+                    <p><strong>Solution:</strong></p>
+                    <ul>
+                        <li>Check if you have delete permission (contact administrator)</li>
+                        <li>Try archiving instead of deleting (preserves data)</li>
+                        <li>Complete or close all tasks first</li>
+                        <li>Change project status if needed</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="faq-item" data-tags="project dates purchase order restriction">
+                <div class="faq-question">Why can't I change project dates? It says they're restricted by purchase order.</div>
+                <div class="faq-answer">
+                    <p><strong>Explanation:</strong> When a project is linked to a purchase order, the project dates must fall within the purchase order's date range. This ensures billing accuracy.</p>
+                    <p><strong>Solution:</strong></p>
+                    <ol>
+                        <li>Check the purchase order dates</li>
+                        <li>Ensure project dates are within PO date range</li>
+                        <li>If PO dates need to change, update the purchase order first</li>
+                        <li>If project should not be restricted, unlink it from the PO (if you have permission)</li>
+                    </ol>
+                    <p><strong>Note:</strong> This restriction is controlled by the <strong>projectDatesRestrictedByPurchaseOrderDates</strong> access control setting.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-tags="project estimate service line cannot edit">
+                <div class="faq-question">I cannot edit service line estimates. Why?</div>
+                <div class="faq-answer">
+                    <p><strong>Possible reasons:</strong></p>
+                    <ol>
+                        <li><strong>No edit permission:</strong> <strong>enableServiceLineEstimateHourEditable</strong> or <strong>enableServiceLineEstimateCostEditable</strong> may be disabled</li>
+                        <li><strong>Project status:</strong> Estimates may be locked for completed projects</li>
+                        <li><strong>Purchase order restriction:</strong> If linked to PO, estimates may be locked</li>
+                        <li><strong>Field visibility:</strong> Estimates may not be visible if <strong>enableServiceLineEstimateHourVisible</strong> is disabled</li>
+                    </ol>
+                    <p><strong>Solution:</strong> Contact your administrator to check estimate editing permissions. You may need to change project status or unlink from PO first.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="tasks" class="section faq-category">
+            <h2>✅ Task Management Issues</h2>
+
+            <div class="faq-item" data-tags="task create cannot assign">
+                <div class="faq-question">I cannot create a task or assign it to someone. Why?</div>
+                <div class="faq-answer">
+                    <p><strong>Possible reasons:</strong></p>
+                    <ol>
+                        <li><strong>No create permission:</strong> Your role doesn't have task create permission</li>
+                        <li><strong>Project access:</strong> You may not have access to create tasks in this project</li>
+                        <li><strong>Project restriction:</strong> Project may have task access restrictions enabled</li>
+                        <li><strong>Team assignment:</strong> Assignee must be from the project's team</li>
+                        <li><strong>Date restrictions:</strong> Task dates may be outside allowed range</li>
+                    </ol>
+                    <p><strong>Solution:</strong></p>
+                    <ul>
+                        <li>Verify you have create permission (contact administrator)</li>
+                        <li>Check project's task access restrictions</li>
+                        <li>Ensure assignee is from the correct team</li>
+                        <li>Verify task dates are within project date range</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="faq-item" data-tags="task status cannot change move">
+                <div class="faq-question">I cannot change a task's status. Why?</div>
+                <div class="faq-answer">
+                    <p><strong>Possible reasons:</strong></p>
+                    <ol>
+                        <li><strong>No status change permission:</strong> <strong>allowStatusChange</strong> may be disabled</li>
+                        <li><strong>Status not allowed:</strong> The target status may not be in <strong>changeableStatus</strong> list</li>
+                        <li><strong>Cannot go backwards:</strong> <strong>allowStatusLevelDown</strong> may be disabled, preventing backward status changes</li>
+                        <li><strong>Task locked:</strong> Task may be in a locked state</li>
+                        <li><strong>Not assigned:</strong> You may not be assigned to the task</li>
+                    </ol>
+                    <p><strong>Solution:</strong></p>
+                    <ul>
+                        <li>Check with administrator about status change permissions</li>
+                        <li>Verify the status you're trying to change to is allowed</li>
+                        <li>If moving backwards, ensure <strong>allowStatusLevelDown</strong> is enabled</li>
+                        <li>Try from Task Board (drag and drop may work even if dropdown doesn't)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="faq-item" data-tags="task board drag drop not working">
+                <div class="faq-question">I cannot drag and drop tasks on the Task Board. What's wrong?</div>
+                <div class="faq-answer">
+                    <p><strong>Troubleshooting:</strong></p>
+                    <ol>
+                        <li><strong>Check browser:</strong> Ensure you're using a modern browser (Chrome, Firefox, Edge)</li>
+                        <li><strong>JavaScript enabled:</strong> Ensure JavaScript is enabled</li>
+                        <li><strong>Click and hold:</strong> Click on task card and hold mouse button before dragging</li>
+                        <li><strong>Touch devices:</strong> On tablets/phones, tap and hold, then drag</li>
+                        <li><strong>Permissions:</strong> Verify you have edit permission for tasks</li>
+                        <li><strong>Status change:</strong> Ensure status change is allowed (see previous FAQ)</li>
+                        <li><strong>Refresh page:</strong> Refresh to reload the board</li>
+                    </ol>
+                    <p><strong>Alternative:</strong> If drag and drop doesn't work, open the task and change status from the task details page.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-tags="task assignee cannot assign multiple">
+                <div class="faq-question">How do I assign a task to multiple people?</div>
+                <div class="faq-answer">
+                    <p><strong>Solution:</strong></p>
+                    <ol>
+                        <li>Open task for editing</li>
+                        <li>Find the "Assignee" or "Assigned To" field</li>
+                        <li>Click the dropdown</li>
+                        <li>Select first team member</li>
+                        <li>Click dropdown again and select additional team members</li>
+                        <li>All selected members will be assigned</li>
+                        <li>Save the task</li>
+                    </ol>
+                    <p><strong>Note:</strong> All assignees will receive notifications and can update the task status. Any assignee can log work items for the task.</p>
+                    <p><strong>If you can't select multiple:</strong> The system may be configured to allow only single assignment. Contact your administrator.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-tags="task duplicate copy">
+                <div class="faq-question">Can I duplicate a task? What gets copied?</div>
+                <div class="faq-answer">
+                    <p><strong>How to duplicate:</strong></p>
+                    <ol>
+                        <li>Open task details</li>
+                        <li>Click dropdown menu</li>
+                        <li>Select <strong>"Duplicate"</strong></li>
+                        <li>Modify task name (must be unique)</li>
+                        <li>Adjust dates and other fields</li>
+                        <li>Click <strong>"Duplicate"</strong></li>
+                    </ol>
+                    <p><strong>What gets copied:</strong></p>
+                    <ul>
+                        <li>✅ Task name and description</li>
+                        <li>✅ Dates</li>
+                        <li>✅ Estimated hours</li>
+                        <li>✅ Priority</li>
+                        <li>✅ Task type</li>
+                    </ul>
+                    <p><strong>What doesn't get copied:</strong></p>
+                    <ul>
+                        <li>❌ Assignees (you'll need to reassign)</li>
+                        <li>❌ Work items</li>
+                        <li>❌ Checklist items</li>
+                        <li>❌ Comments</li>
+                        <li>❌ Attachments</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="faq-item" data-tags="task dependencies cannot create">
+                <div class="faq-question">How do I set task dependencies?</div>
+                <div class="faq-answer">
+                    <p><strong>Solution:</strong></p>
+                    <ol>
+                        <li>Open the task you want to set dependencies for</li>
+                        <li>Edit the task</li>
+                        <li>Find the "Dependencies" section</li>
+                        <li>Click <strong>"Add Dependency"</strong> or similar</li>
+                        <li>Select the task that must be completed first</li>
+                        <li>Add multiple dependencies if needed</li>
+                        <li>Save the task</li>
+                    </ol>
+                    <p><strong>Note:</strong> Dependencies help ensure tasks are completed in the right order. The system may prevent starting a task until its dependencies are complete.</p>
+                    <p><strong>If dependencies section is not visible:</strong> This feature may not be enabled for your organization or your role.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="timesheet" class="section faq-category">
+            <h2>⏰ Timesheet Issues</h2>
+
+            <div class="faq-item" data-tags="timesheet cannot enter time hours">
+                <div class="faq-question">I cannot enter time in my timesheet. Why?</div>
+                <div class="faq-answer">
+                    <p><strong>Possible reasons:</strong></p>
+                    <ol>
+                        <li><strong>No entry permission:</strong> <strong>enableTimeSheetEntry</strong> may be disabled</li>
+                        <li><strong>Timesheet submitted:</strong> Submitted timesheets are locked and cannot be edited</li>
+                        <li><strong>Date restrictions:</strong> You may not be able to enter time for past/future dates</li>
+                        <li><strong>Hours limit exceeded:</strong> You may have reached the maximum hours allowed per day</li>
+                        <li><strong>Project not available:</strong> Project may not be in the dropdown due to team restrictions</li>
+                    </ol>
+                    <p><strong>Solution:</strong></p>
+                    <ul>
+                        <li>Check with administrator about timesheet entry permissions</li>
+                        <li>If timesheet is submitted, request unlock from manager</li>
+                        <li>Verify date restrictions (check <strong>allowLeaveAndHolidayForPast</strong> and <strong>allowLeaveAndHolidayForFuture</strong>)</li>
+                        <li>Check if you've exceeded <strong>maxHoursAllowedToEnter</strong></li>
+                        <li>Verify project is from your team (if <strong>listOnlyCurrentTeamProject</strong> is enabled)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="faq-item" data-tags="timesheet edit submitted locked">
+                <div class="faq-question">I submitted my timesheet by mistake. Can I edit it?</div>
+                <div class="faq-answer">
+                    <p><strong>Solution:</strong></p>
+                    <ol>
+                        <li>Contact your manager or timesheet approver</li>
+                        <li>Request them to unlock your timesheet</li>
+                        <li>Once unlocked, you can make corrections</li>
+                        <li>Re-submit after corrections</li>
+                    </ol>
+                    <p><strong>Note:</strong> Once submitted, timesheets are typically locked to prevent changes. Only approvers or administrators can unlock them.</p>
+                    <p><strong>Prevention:</strong> Review your timesheet carefully before submitting. Use the "Review" option if available before final submission.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-tags="timesheet past date cannot enter last month">
+                <div class="faq-question">I cannot enter time for last month or past dates. Why?</div>
+                <div class="faq-answer">
+                    <p><strong>Explanation:</strong> There are restrictions on entering time for past dates to ensure data accuracy and prevent backdating.</p>
+                    <p><strong>Common restrictions:</strong></p>
+                    <ul>
+                        <li><strong>disableLastMonthAfterXDays:</strong> Cannot edit last month after X days into current month</li>
+                        <li><strong>allowLeaveAndHolidayForPast:</strong> May be disabled, preventing past date entries</li>
+                        <li><strong>disableProjectWorkItemCreateAfterXWorkingDays:</strong> Cannot create work items after X working days</li>
+                    </ul>
+                    <p><strong>Solution:</strong></p>
+                    <ul>
+                        <li>Enter time before the restriction period expires</li>
+                        <li>Contact your manager if you need to enter past time</li>
+                        <li>Administrator may need to adjust date restrictions</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="faq-item" data-tags="timesheet project not showing dropdown">
+                <div class="faq-question">A project is not showing in my timesheet dropdown. Why?</div>
+                <div class="faq-answer">
+                    <p><strong>Possible reasons:</strong></p>
+                    <ol>
+                        <li><strong>Team restriction:</strong> Project is from a different team (if <strong>listOnlyCurrentTeamProject</strong> is enabled)</li>
+                        <li><strong>Project archived:</strong> Archived projects may not appear</li>
+                        <li><strong>Project status:</strong> Completed or closed projects may be filtered out</li>
+                        <li><strong>Skills restriction:</strong> If <strong>restrictedBySkillsEnabled</strong> is on, project may require specific skills</li>
+                        <li><strong>Date restriction:</strong> Project dates may be outside allowed range</li>
+                    </ol>
+                    <p><strong>Solution:</strong></p>
+                    <ul>
+                        <li>Check if project is from your team</li>
+                        <li>Verify project is active (not archived)</li>
+                        <li>Check if you have required skills (if skills restriction is enabled)</li>
+                        <li>Contact administrator if project should be available</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="faq-item" data-tags="timesheet copy previous week">
+                <div class="faq-question">How do I copy time entries from the previous week?</div>
+                <div class="faq-answer">
+                    <p><strong>Solution:</strong></p>
+                    <ol>
+                        <li>Go to your Timesheet page</li>
+                        <li>Navigate to the current week</li>
+                        <li>Look for <strong>"Copy from Previous Week"</strong> button (usually near the top)</li>
+                        <li>Click the button</li>
+                        <li>Previous week's entries will be copied</li>
+                        <li>Review and adjust the copied entries as needed</li>
+                        <li>Save your timesheet</li>
+                    </ol>
+                    <p><strong>Note:</strong> This feature saves time when your weekly schedule is similar. Always review and adjust copied entries to match actual work.</p>
+                    <p><strong>If button is not visible:</strong> This feature may not be enabled for your organization.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-tags="timesheet sync leaves external">
+                <div class="faq-question">How do I sync leaves from an external leave management system?</div>
+                <div class="faq-answer">
+                    <p><strong>If your organization uses external leave management:</strong></p>
+                    <ol>
+                        <li>Go to Timesheet page</li>
+                        <li>Select the week you want to sync</li>
+                        <li>Look for <strong>"Sync Leaves"</strong> button (usually near date selector)</li>
+                        <li>Click the button</li>
+                        <li>System fetches leave data from external system</li>
+                        <li>Leave days are automatically marked in your timesheet</li>
+                    </ol>
+                    <p><strong>Requirements:</strong></p>
+                    <ul>
+                        <li>Your employee profile must have <strong>extLeaveSyncEnabled</strong> enabled</li>
+                        <li>Your employee code must be configured</li>
+                        <li>External system integration must be set up</li>
+                    </ul>
+                    <p><strong>If sync fails:</strong> Contact your administrator to verify integration configuration and your employee settings.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-tags="timesheet maximum hours exceeded">
+                <div class="faq-question">I'm getting an error about maximum hours exceeded. What does this mean?</div>
+                <div class="faq-answer">
+                    <p><strong>Explanation:</strong> There's a limit on how many hours you can enter per day (controlled by <strong>maxHoursAllowedToEnter</strong>).</p>
+                    <p><strong>Common limits:</strong></p>
+                    <ul>
+                        <li>24 hours per day (standard limit)</li>
+                        <li>May be lower based on organization policy</li>
+                    </ul>
+                    <p><strong>Solution:</strong></p>
+                    <ul>
+                        <li>Verify the hours you're entering are correct</li>
+                        <li>If you worked more than the limit, contact your manager</li>
+                        <li>Administrator may need to adjust the limit for special cases</li>
+                    </ul>
+                    <p><strong>Note:</strong> This limit prevents data entry errors and ensures timesheet accuracy.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="hrms" class="section faq-category">
+            <h2>👥 HRMS Issues</h2>
+
+            <div class="faq-item" data-tags="employee create cannot add">
+                <div class="faq-question">I cannot create a new employee. Why?</div>
+                <div class="faq-answer">
+                    <p><strong>Possible reasons:</strong></p>
+                    <ol>
+                        <li><strong>No create permission:</strong> Your role doesn't have employee create permission</li>
+                        <li><strong>HRMS module disabled:</strong> HRMS module may not be enabled</li>
+                        <li><strong>Team assignment:</strong> You may need to be assigned to a team with HRMS access</li>
+                    </ol>
+                    <p><strong>Solution:</strong> Contact your system administrator to request employee creation permission. This is typically restricted to HR administrators.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-tags="employee activate deactivate">
+                <div class="faq-question">How do I activate or deactivate an employee?</div>
+                <div class="faq-answer">
+                    <p><strong>To deactivate:</strong></p>
+                    <ol>
+                        <li>Go to Employees page</li>
+                        <li>Find the employee</li>
+                        <li>Click dropdown menu</li>
+                        <li>Select <strong>"Deactivate"</strong></li>
+                        <li>Confirm the action</li>
+                    </ol>
+                    <p><strong>To activate:</strong></p>
+                    <ol>
+                        <li>Filter employees by "Inactive" status</li>
+                        <li>Find the employee</li>
+                        <li>Click dropdown menu</li>
+                        <li>Select <strong>"Activate"</strong></li>
+                    </ol>
+                    <p><strong>Note:</strong> Deactivated employees cannot log in but their data is preserved. Use this instead of deleting when an employee leaves temporarily.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-tags="attendance mark cannot">
+                <div class="faq-question">I cannot mark attendance. Why?</div>
+                <div class="faq-answer">
+                    <p><strong>Possible reasons:</strong></p>
+                    <ol>
+                        <li><strong>No create permission:</strong> <strong>createEnabled</strong> may be disabled for attendance</li>
+                        <li><strong>Date restrictions:</strong> You may not be able to mark attendance for past/future dates</li>
+                        <li><strong>Team access:</strong> You may not have access to mark attendance for other employees</li>
+                    </ol>
+                    <p><strong>Solution:</strong> Contact your administrator about attendance marking permissions. Typically, employees can mark their own attendance, while managers can mark for their team.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-tags="invoice create generate">
+                <div class="faq-question">How do I create an invoice from a project?</div>
+                <div class="faq-answer">
+                    <p><strong>Solution:</strong></p>
+                    <ol>
+                        <li>Go to HRMS → Invoices or Project → Invoices</li>
+                        <li>Click <strong>"CREATE INVOICE"</strong></li>
+                        <li>Select the project</li>
+                        <li>Select billing period (date range)</li>
+                        <li>Review time entries and billable hours</li>
+                        <li>Adjust rates if needed</li>
+                        <li>Add any additional line items</li>
+                        <li>Review total amount</li>
+                        <li>Click <strong>"Create Invoice"</strong></li>
+                    </ol>
+                    <p><strong>Note:</strong> Invoice creation requires appropriate permissions. Typically, only finance or project managers can create invoices.</p>
+                    <p><strong>If invoice button is not visible:</strong> You may not have invoice creation permission. Contact your administrator.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="sales" class="section faq-category">
+            <h2>💰 Sales Module Issues</h2>
+
+            <div class="faq-item" data-tags="bid request convert project">
+                <div class="faq-question">How do I convert a won bid request to a project?</div>
+                <div class="faq-answer">
+                    <p><strong>Solution:</strong></p>
+                    <ol>
+                        <li>Open the bid request details</li>
+                        <li>Change bid status to <strong>"Won"</strong></li>
+                        <li>Click <strong>"Create Project"</strong> or <strong>"Convert to Project"</strong> button</li>
+                        <li>Project creation form opens with bid information pre-filled</li>
+                        <li>Review and adjust project details as needed</li>
+                        <li>Complete any required fields</li>
+                        <li>Click <strong>"Create"</strong> to create the project</li>
+                    </ol>
+                    <p><strong>Note:</strong> Converting a bid to a project ensures all bid information is transferred correctly, including client details, dates, and estimates.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-tags="purchase order create project">
+                <div class="faq-question">How do I create a project from a purchase order?</div>
+                <div class="faq-answer">
+                    <p><strong>Solution:</strong></p>
+                    <ol>
+                        <li>Open Purchase Order details</li>
+                        <li>Click <strong>"Create Project"</strong> button</li>
+                        <li>Project creation form opens with PO information pre-filled:
+                            <ul>
+                                <li>Account</li>
+                                <li>Dates</li>
+                                <li>Service line estimates</li>
+                                <li>Team assignments</li>
+                            </ul>
+                        </li>
+                        <li>Complete remaining project fields</li>
+                        <li>Click <strong>"Create"</strong></li>
+                    </ol>
+                    <p><strong>Benefits:</strong> Creating projects from POs ensures billing and estimate information is correctly transferred, maintaining data integrity.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-tags="purchase order edit locked">
+                <div class="faq-question">I cannot edit a purchase order. Why is it locked?</div>
+                <div class="faq-answer">
+                    <p><strong>Possible reasons:</strong></p>
+                    <ol>
+                        <li><strong>Project created:</strong> Once a project is created from the PO, some fields may be locked</li>
+                        <li><strong>No edit permission:</strong> You may not have edit permission for purchase orders</li>
+                        <li><strong>PO status:</strong> Completed or closed POs may be locked</li>
+                        <li><strong>Access control:</strong> <strong>enableProjectPurchaseOrderEditable</strong> may be disabled</li>
+                    </ol>
+                    <p><strong>Solution:</strong></p>
+                    <ul>
+                        <li>If project is created, edit the project instead (if you have permission)</li>
+                        <li>Check with administrator about PO edit permissions</li>
+                        <li>Change PO status if needed</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="reports" class="section faq-category">
+            <h2>📊 Report Issues</h2>
+
+            <div class="faq-item" data-tags="report not showing generate">
+                <div class="faq-question">A report is not showing in my reports dropdown. Why?</div>
+                <div class="faq-answer">
+                    <p><strong>Possible reasons:</strong></p>
+                    <ol>
+                        <li><strong>Report disabled:</strong> The report may be disabled for your role</li>
+                        <li><strong>No access permission:</strong> You may not have permission to view that report type</li>
+                        <li><strong>Module access:</strong> Report may require access to specific modules</li>
+                    </ol>
+                    <p><strong>Solution:</strong> Contact your administrator to request access to the report. Each report type has its own access control (e.g., <strong>employeeUtilizationReportEnabled</strong>).</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-tags="report empty no data">
+                <div class="faq-question">My report shows no data. Why?</div>
+                <div class="faq-answer">
+                    <p><strong>Troubleshooting:</strong></p>
+                    <ol>
+                        <li><strong>Check date range:</strong> Ensure date range includes the period you're looking for</li>
+                        <li><strong>Check filters:</strong> Clear or adjust filters (team, status, etc.)</li>
+                        <li><strong>Check team access:</strong> You may only see data from your team</li>
+                        <li><strong>Verify data exists:</strong> Ensure there's actually data for the selected criteria</li>
+                        <li><strong>Check permissions:</strong> You may not have access to view certain data</li>
+                    </ol>
+                    <p><strong>Solution:</strong> Adjust filters and date ranges. If data should be there, contact your administrator to verify access permissions.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-tags="report export download">
+                <div class="faq-question">How do I export a report to Excel or PDF?</div>
+                <div class="faq-answer">
+                    <p><strong>Solution:</strong></p>
+                    <ol>
+                        <li>Generate the report (view it first)</li>
+                        <li>Click the <strong>"Export"</strong> button (usually near the top of the report)</li>
+                        <li>Select export format:
+                            <ul>
+                                <li><strong>Excel (.xlsx):</strong> For data analysis</li>
+                                <li><strong>PDF:</strong> For sharing and printing</li>
+                                <li><strong>CSV:</strong> For importing into other systems</li>
+                            </ul>
+                        </li>
+                        <li>File downloads automatically</li>
+                    </ol>
+                    <p><strong>Note:</strong> Some reports may have additional export options like including/excluding specific columns or formatting options.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-tags="report schedule email">
+                <div class="faq-question">Can I schedule reports to be emailed automatically?</div>
+                <div class="faq-answer">
+                    <p><strong>If scheduled reports are enabled:</strong></p>
+                    <ol>
+                        <li>Create a report configuration with your desired filters</li>
+                        <li>Click <strong>"Schedule"</strong> option (if available)</li>
+                        <li>Set schedule frequency (Daily, Weekly, Monthly)</li>
+                        <li>Set recipients (email addresses)</li>
+                        <li>Select report format (Excel, PDF)</li>
+                        <li>Save the schedule</li>
+                    </ol>
+                    <p><strong>Note:</strong> Scheduled reports feature depends on your organization's configuration. Contact your administrator to enable this feature if it's not available.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-tags="report configuration save">
+                <div class="faq-question">How do I save a report configuration for reuse?</div>
+                <div class="faq-answer">
+                    <p><strong>Solution:</strong></p>
+                    <ol>
+                        <li>Generate a report with your desired filters and settings</li>
+                        <li>Click <strong>"Save Configuration"</strong> or <strong>"Create Report Config"</strong></li>
+                        <li>Enter a name for the configuration</li>
+                        <li>Save the configuration</li>
+                    </ol>
+                    <p><strong>To use saved configuration:</strong></p>
+                    <ol>
+                        <li>Go to Reports page</li>
+                        <li>Select report type</li>
+                        <li>Select saved configuration from dropdown</li>
+                        <li>Filters are automatically applied</li>
+                        <li>Generate report</li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+
+        <section id="access" class="section faq-category">
+            <h2>🔐 Access & Permission Issues</h2>
+
+            <div class="faq-item" data-tags="permission access denied cannot see feature">
+                <div class="faq-question">I cannot see a feature or button. Is this a permission issue?</div>
+                <div class="faq-answer">
+                    <p><strong>Yes, likely a permission issue. Common scenarios:</strong></p>
+                    <ul>
+                        <li><strong>Module not enabled:</strong> Entire module (HRMS, Sales, Project) may be disabled</li>
+                        <li><strong>Feature not enabled:</strong> Specific feature within module may be disabled</li>
+                        <li><strong>Action not permitted:</strong> You may have view permission but not create/edit/delete</li>
+                        <li><strong>Team restriction:</strong> Feature may only be available for certain teams</li>
+                    </ul>
+                    <p><strong>Solution:</strong></p>
+                    <ol>
+                        <li>Check the Access Controls documentation for details about permissions</li>
+                        <li>Contact your system administrator or team lead</li>
+                        <li>Provide specific details:
+                            <ul>
+                                <li>What feature you're trying to access</li>
+                                <li>What action you're trying to perform</li>
+                                <li>Your role and team assignment</li>
+                            </ul>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="faq-item" data-tags="permission other teams cannot see">
+                <div class="faq-question">I cannot see projects or data from other teams. Why?</div>
+                <div class="faq-answer">
+                    <p><strong>Explanation:</strong> This is controlled by team-based access restrictions.</p>
+                    <p><strong>Possible restrictions:</strong></p>
+                    <ul>
+                        <li><strong>listOnlyCurrentTeamProject:</strong> Only shows your team's projects</li>
+                        <li><strong>allowAccessToOtherUserTeamProjects:</strong> May be disabled</li>
+                        <li><strong>switchUserTeamsEnabled:</strong> May be disabled, preventing team switching</li>
+                    </ul>
+                    <p><strong>Solution:</strong></p>
+                    <ul>
+                        <li>If <strong>switchUserTeamsEnabled</strong> is enabled, use the team filter dropdown to switch teams</li>
+                        <li>If you need cross-team access, contact your administrator to update <strong>allowAccessToOtherUserTeamProjects</strong></li>
+                        <li>Some roles are intentionally restricted to their own team for data security</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="faq-item" data-tags="permission edit view only">
+                <div class="faq-question">I can view items but cannot edit them. Why?</div>
+                <div class="faq-answer">
+                    <p><strong>Explanation:</strong> You have view permission but not edit permission. This is common for certain roles.</p>
+                    <p><strong>Solution:</strong></p>
+                    <ul>
+                        <li>Contact your administrator to request edit permission</li>
+                        <li>Provide justification for why you need edit access</li>
+                        <li>Your role may be intentionally read-only for data protection</li>
+                    </ul>
+                    <p><strong>Note:</strong> View-only access is often granted to prevent accidental changes and maintain data integrity.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-tags="permission status change cannot change status">
+                <div class="faq-question">I cannot change the status of a project or task. Why?</div>
+                <div class="faq-answer">
+                    <p><strong>Possible reasons:</strong></p>
+                    <ul>
+                        <li><strong>Status change permission disabled:</strong> The <strong>allowStatusChange</strong> setting may be disabled for your role</li>
+                        <li><strong>Status restrictions:</strong> The <strong>changeableStatus</strong> setting may restrict which statuses you can change to</li>
+                        <li><strong>Backward movement disabled:</strong> If trying to move backwards, <strong>allowStatusLevelDown</strong> may be disabled</li>
+                        <li><strong>Workflow restrictions:</strong> Some statuses require approval or specific conditions</li>
+                    </ul>
+                    <p><strong>Solution:</strong></p>
+                    <ol>
+                        <li>Check if you're trying to move to a restricted status</li>
+                        <li>Verify if backward movement is allowed (if moving to previous status)</li>
+                        <li>Contact your administrator if you need status change permissions</li>
+                        <li>Some status changes may require approval from a manager</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="faq-item" data-tags="permission timesheet cannot enter edit approve">
+                <div class="faq-question">I cannot enter, edit, or approve timesheets. What permissions do I need?</div>
+                <div class="faq-answer">
+                    <p><strong>Timesheet permissions explained:</strong></p>
+                    <ul>
+                        <li><strong>Enable Timesheet Entry:</strong> Required to log time entries</li>
+                        <li><strong>Enable Timesheet Editing:</strong> Required to modify existing entries</li>
+                        <li><strong>Enable Timesheet Approval:</strong> Required to approve team members' timesheets (typically for managers)</li>
+                    </ul>
+                    <p><strong>Common issues:</strong></p>
+                    <ul>
+                        <li>If you can't enter time: <strong>enableTimeSheetEntry</strong> may be disabled</li>
+                        <li>If you can't edit entries: <strong>enableTimeSheetEdit</strong> may be disabled, or entries may be approved/locked</li>
+                        <li>If you can't approve: <strong>enableTimeSheetApproval</strong> may be disabled (this is typically for managers only)</li>
+                    </ul>
+                    <p><strong>Solution:</strong> Contact your administrator to verify and enable the required timesheet permissions for your role.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-tags="permission work item cannot create delete date restriction">
+                <div class="faq-question">I cannot create or delete work items for certain dates. Why?</div>
+                <div class="faq-answer">
+                    <p><strong>Date restrictions explained:</strong></p>
+                    <ul>
+                        <li><strong>Past date restrictions:</strong> You may not be able to create work items for dates more than X working days in the past</li>
+                        <li><strong>Future date restrictions:</strong> You may not be able to create work items for dates more than X working days in the future</li>
+                        <li><strong>Delete time limits:</strong> Work items can only be deleted until a certain time (e.g., 10 AM next day)</li>
+                        <li><strong>Hours restrictions:</strong> If you've already logged X hours for a date, you may not be able to add more work items</li>
+                    </ul>
+                    <p><strong>Solution:</strong></p>
+                    <ol>
+                        <li>Check the date restrictions configured for your role</li>
+                        <li>For past dates: Contact your administrator if you need to log time for older dates</li>
+                        <li>For future dates: Plan time entries closer to the actual work date</li>
+                        <li>For deletions: Delete work items promptly if corrections are needed</li>
+                    </ol>
+                    <p><strong>Note:</strong> These restrictions are in place to maintain data accuracy and prevent errors.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-tags="permission report cannot generate access">
+                <div class="faq-question">I cannot generate certain reports. How are report permissions configured?</div>
+                <div class="faq-answer">
+                    <p><strong>Report access controls:</strong></p>
+                    <ul>
+                        <li>Each report type has its own access control setting (e.g., <strong>employeeUtilizationReportEnabled</strong>)</li>
+                        <li>If a report is disabled, it won't appear in your reports dropdown</li>
+                        <li>Some reports require specific module access (e.g., HRMS reports require HRMS module access)</li>
+                        <li>Team switching may be required to see cross-team reports</li>
+                    </ul>
+                    <p><strong>Common report permissions:</strong></p>
+                    <ul>
+                        <li><strong>Personal reports:</strong> Usually available to all users (e.g., My Utilization, My Timesheet Data)</li>
+                        <li><strong>Team reports:</strong> Available to team members and managers</li>
+                        <li><strong>Organization reports:</strong> Typically restricted to managers and administrators</li>
+                    </ul>
+                    <p><strong>Solution:</strong> Contact your administrator to request access to specific reports. Provide justification for why you need the report.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-tags="permission employee cannot create edit delete">
+                <div class="faq-question">I cannot create, edit, or delete employees. What permissions are needed?</div>
+                <div class="faq-answer">
+                    <p><strong>Employee management permissions:</strong></p>
+                    <ul>
+                        <li><strong>Create Employees:</strong> Required to add new employees (typically HR administrators)</li>
+                        <li><strong>Edit Employee Information:</strong> Required to modify employee details</li>
+                        <li><strong>Delete Employees:</strong> Required to mark employees as deleted</li>
+                        <li><strong>Permanently Remove Employees:</strong> Required to permanently delete (typically administrators only)</li>
+                        <li><strong>Archive/Unarchive Employees:</strong> Required to archive inactive employees</li>
+                    </ul>
+                    <p><strong>Solution:</strong> Employee management permissions are typically restricted to HR administrators and managers. Contact your HR team or administrator if you need these permissions.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-tags="permission skill restricted cannot assign project">
+                <div class="faq-question">I cannot assign myself to a project. It says I don't have the required skills. What does this mean?</div>
+                <div class="faq-answer">
+                    <p><strong>Skill-based restrictions:</strong></p>
+                    <ul>
+                        <li>The <strong>restrictedBySkillsEnabled</strong> setting restricts project/work item assignment based on employee skills</li>
+                        <li>Projects require specific skills, and you can only be assigned if you have matching skills</li>
+                        <li>This ensures proper skill matching and prevents assignment of unqualified resources</li>
+                    </ul>
+                    <p><strong>Solution:</strong></p>
+                    <ol>
+                        <li>Check your employee profile to see which skills are assigned to you</li>
+                        <li>Contact your administrator or HR to add the required skills to your profile</li>
+                        <li>If skill restrictions should not apply, contact your administrator to adjust the configuration</li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+
+        <section id="configuration" class="section faq-category">
+            <h2>⚙️ Application Configuration Questions</h2>
+
+            <div class="faq-item" data-tags="configuration dropdown values missing options">
+                <div class="faq-question">I don't see certain options in dropdown lists (e.g., employee bands, project categories). Why?</div>
+                <div class="faq-answer">
+                    <p><strong>Explanation:</strong> Dropdown values are configured at the organization level by administrators.</p>
+                    <p><strong>Possible reasons:</strong></p>
+                    <ul>
+                        <li><strong>Value not configured:</strong> The option may not be added to the organization's configuration</li>
+                        <li><strong>Hidden configuration:</strong> The configuration may be hidden for your role or team</li>
+                        <li><strong>Locked configuration:</strong> The value may be locked at a parent level</li>
+                        <li><strong>Team-specific values:</strong> Some values may only be available for specific teams</li>
+                    </ul>
+                    <p><strong>Solution:</strong></p>
+                    <ol>
+                        <li>Contact your system administrator to add the missing option</li>
+                        <li>Provide the specific dropdown field and the value you need</li>
+                        <li>Administrators can add values to configuration settings like Employee Bands, Project Categories, Skills, etc.</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="faq-item" data-tags="configuration service line multiple single selection">
+                <div class="faq-question">Why can I only select one service line for projects, but others can select multiple?</div>
+                <div class="faq-answer">
+                    <p><strong>Explanation:</strong> This is controlled by the <strong>Enable Single Service Line Selection</strong> configuration.</p>
+                    <p><strong>Configuration options:</strong></p>
+                    <ul>
+                        <li><strong>Single Service Line:</strong> Projects can have only one service line selected</li>
+                        <li><strong>Multiple Service Lines:</strong> Projects can have multiple service lines with individual estimates</li>
+                    </ul>
+                    <p><strong>Why the difference:</strong></p>
+                    <ul>
+                        <li>Different teams or roles may have different configurations</li>
+                        <li>Your organization may use different settings for different project types</li>
+                        <li>Configuration can be set at organization, team, or role level</li>
+                    </ul>
+                    <p><strong>Solution:</strong> This is an organization-level setting. If you need multiple service lines, discuss with your administrator whether this configuration should be enabled for your role or team.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-tags="configuration purchase order mandatory required">
+                <div class="faq-question">Why do I need to link a purchase order to create a project?</div>
+                <div class="faq-answer">
+                    <p><strong>Explanation:</strong> The <strong>Purchase Order Mandatory for Project</strong> configuration requires all projects to have an associated purchase order.</p>
+                    <p><strong>Purpose:</strong></p>
+                    <ul>
+                        <li>Ensures all projects have proper authorization and billing setup</li>
+                        <li>Maintains financial compliance and contract tracking</li>
+                        <li>Prevents creation of unauthorized projects</li>
+                    </ul>
+                    <p><strong>What to do:</strong></p>
+                    <ol>
+                        <li>Create or select a purchase order before creating the project</li>
+                        <li>If you don't have a purchase order, contact your sales or finance team</li>
+                        <li>For internal projects, discuss with your administrator if PO requirement should be waived</li>
+                    </ol>
+                    <p><strong>Note:</strong> If this setting is disabled for your organization, projects can be created without purchase orders.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-tags="configuration notification emails default recipients">
+                <div class="faq-question">Who receives notifications when I create a project or purchase order?</div>
+                <div class="faq-answer">
+                    <p><strong>Default notification emails:</strong></p>
+                    <ul>
+                        <li><strong>Project notifications:</strong> Sent to addresses configured in <strong>Default Project Notification Emails</strong></li>
+                        <li><strong>Purchase Order notifications:</strong> Sent to addresses in <strong>Default Purchase Order Notification Emails</strong></li>
+                        <li><strong>Finance team notifications:</strong> Separate emails sent to finance team addresses</li>
+                        <li><strong>PII notifications:</strong> Sent to data compliance team for projects involving personally identifiable information</li>
+                    </ul>
+                    <p><strong>Additional recipients:</strong></p>
+                    <ul>
+                        <li>You can add specific recipients when creating projects or purchase orders</li>
+                        <li>Team members assigned to the project may also receive notifications</li>
+                        <li>Project managers and stakeholders are typically included</li>
+                    </ul>
+                    <p><strong>Note:</strong> Default notification emails are configured by administrators. Contact your administrator if notifications are not being received or if you need to add recipients.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-tags="configuration employee bands grades skills missing">
+                <div class="faq-question">I cannot find my employee band, grade, or skill in the dropdown. How do I get it added?</div>
+                <div class="faq-answer">
+                    <p><strong>Configuration values:</strong></p>
+                    <ul>
+                        <li><strong>Employee Bands:</strong> Configured in HRMS module configuration (e.g., Band A, Band B, Band C)</li>
+                        <li><strong>Employee Grades:</strong> Configured within bands (e.g., A 1, A 2, B 1, B 2)</li>
+                        <li><strong>Skills:</strong> Configured in HRMS module (e.g., Java developer, Data Analyst, Business analyst)</li>
+                    </ul>
+                    <p><strong>Solution:</strong></p>
+                    <ol>
+                        <li>Contact your HR administrator or system administrator</li>
+                        <li>Provide the specific value you need (e.g., "Band E" or "Python Developer")</li>
+                        <li>Administrators can add values to the organization's configuration</li>
+                        <li>Once added, the value will appear in dropdown lists for all users</li>
+                    </ol>
+                    <p><strong>Note:</strong> Configuration changes affect the entire organization, so administrators may need to verify the value is appropriate before adding it.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-tags="configuration service line hierarchy category task category">
+                <div class="faq-question">What is the Service Line → Delivery Category → Task Category hierarchy? How do I use it?</div>
+                <div class="faq-answer">
+                    <p><strong>Three-level hierarchy explained:</strong></p>
+                    <ol>
+                        <li><strong>Level 3 - Service Line:</strong> Top-level service categories (e.g., Coding, Analysis, Data Processing, Project Management)</li>
+                        <li><strong>Level 2 - Delivery Category:</strong> Sub-categories within service lines (e.g., QC, General, Programming, Adverse Event)</li>
+                        <li><strong>Level 1 - Task Category:</strong> Specific task types (e.g., Coding - OE, Review - OE, Overview - OE)</li>
+                    </ol>
+                    <p><strong>How to use:</strong></p>
+                    <ul>
+                        <li>When creating tasks or work items, select from this hierarchy</li>
+                        <li>Start by selecting the Service Line</li>
+                        <li>Then select the Delivery Category</li>
+                        <li>Finally, select the Task Category</li>
+                    </ul>
+                    <p><strong>Purpose:</strong> This hierarchy enables detailed categorization of work for accurate tracking, billing, and reporting by service area and task type.</p>
+                    <p><strong>Note:</strong> The hierarchy is configured by administrators. If you need additional categories, contact your administrator.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-tags="configuration non-billable categories missing exclude fields">
+                <div class="faq-question">Why don't I see additional fields when logging certain non-billable categories?</div>
+                <div class="faq-answer">
+                    <p><strong>Explanation:</strong> Some non-billable categories are configured to exclude additional detail fields to simplify time entry.</p>
+                    <p><strong>Categories that exclude additional fields:</strong></p>
+                    <ul>
+                        <li>Leave</li>
+                        <li>Holiday</li>
+                        <li>Internal Team Meeting and Admin Work</li>
+                        <li>Snacks / Lunch / Dinner</li>
+                        <li>Knowledge Development and Training</li>
+                        <li>Imparting Trainings</li>
+                        <li>Technical Downtime / IT issues</li>
+                    </ul>
+                    <p><strong>Purpose:</strong> These categories don't require detailed project or task information, so additional fields are hidden to streamline time entry.</p>
+                    <p><strong>Solution:</strong> This is intentional configuration. For these categories, you only need to select the category and enter hours. For other non-billable categories, you'll see additional fields for projects, descriptions, etc.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-tags="configuration practice primary secondary mapping">
+                <div class="faq-question">What is Practice Configuration? How do Primary and Secondary Practices work?</div>
+                <div class="faq-answer">
+                    <p><strong>Practice Configuration explained:</strong></p>
+                    <ul>
+                        <li><strong>Primary Practice:</strong> Top-level practice area (e.g., Primary Practice, Primary Practice 1)</li>
+                        <li><strong>Secondary Practice:</strong> Sub-practice within a primary practice (e.g., Secondary Practice, Secondary Practice 1, Secondary Practice 2)</li>
+                    </ul>
+                    <p><strong>How it works:</strong></p>
+                    <ul>
+                        <li>Employees and projects can be assigned to both a primary practice and one or more secondary practices</li>
+                        <li>This allows for flexible categorization and cross-practice collaboration</li>
+                        <li>Practices are organized in a hierarchical structure</li>
+                    </ul>
+                    <p><strong>Usage:</strong></p>
+                    <ul>
+                        <li>Assigned to employees to indicate their practice areas</li>
+                        <li>Assigned to projects to categorize by practice</li>
+                        <li>Used for practice-based reporting and resource allocation</li>
+                    </ul>
+                    <p><strong>Note:</strong> Practice configuration is managed by administrators. Contact your administrator if you need to be assigned to a practice or if practices need to be updated.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-tags="configuration survey type timezone currency sample">
+                <div class="faq-question">What are Survey Types, Timezone, Currency, and Sample configurations used for?</div>
+                <div class="faq-answer">
+                    <p><strong>Project configuration options:</strong></p>
+                    <ul>
+                        <li><strong>Survey Types:</strong> Defines survey methodologies (Online, CATI, CAPI, Mobile, IDI, FGD, etc.) - used for survey-based projects</li>
+                        <li><strong>Timezone Configuration:</strong> Defines project timezone (AU, SG, IST, GMT, EST, PST, CST) - ensures proper scheduling and deadlines</li>
+                        <li><strong>Currency Configuration:</strong> Defines billing currency (USD, EUR, GBP, SGD, AUD, INR) - affects cost estimates and invoicing</li>
+                        <li><strong>Sample Configuration:</strong> Defines sample source (Client, Internal) - tracks whether samples are provided by clients or generated internally</li>
+                    </ul>
+                    <p><strong>When to use:</strong></p>
+                    <ul>
+                        <li>These are assigned to projects during creation or editing</li>
+                        <li>Help categorize and configure projects appropriately</li>
+                        <li>Used for reporting, planning, and financial tracking</li>
+                    </ul>
+                    <p><strong>Note:</strong> These configurations are set by administrators. If you need additional options, contact your administrator.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-tags="configuration locked hidden overridden cannot change">
+                <div class="faq-question">I see a configuration is "locked" or "hidden". What does this mean?</div>
+                <div class="faq-answer">
+                    <p><strong>Configuration states explained:</strong></p>
+                    <ul>
+                        <li><strong>Locked:</strong> The configuration cannot be modified at the current level. It inherits its value from a parent level (organization, team, etc.). You must modify it at the parent level if changes are needed.</li>
+                        <li><strong>Hidden:</strong> The configuration is not visible in the user interface, even though it may have a value. Users cannot see or interact with it.</li>
+                        <li><strong>Overridden:</strong> The configuration has been customized at the current level, overriding the parent value. This allows for level-specific customization.</li>
+                    </ul>
+                    <p><strong>Configuration hierarchy:</strong></p>
+                    <ol>
+                        <li><strong>Organization Level:</strong> Default values that apply to the entire organization</li>
+                        <li><strong>Team Level:</strong> Values that can override organization defaults for specific teams</li>
+                        <li><strong>User Level:</strong> Personal preferences that can override team or organization defaults</li>
+                    </ol>
+                    <p><strong>Solution:</strong> If you need to change a locked configuration, contact your administrator. They can unlock it or modify it at the appropriate level.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="technical" class="section faq-category">
+            <h2>💻 Technical Issues</h2>
+
+            <div class="faq-item" data-tags="technical slow loading performance">
+                <div class="faq-question">The system is running slowly. What can I do?</div>
+                <div class="faq-answer">
+                    <p><strong>Quick fixes:</strong></p>
+                    <ol>
+                        <li><strong>Reduce date range:</strong> Narrow the date range in filters</li>
+                        <li><strong>Limit items:</strong> Reduce number of items displayed</li>
+                        <li><strong>Clear filters:</strong> Remove unnecessary filters</li>
+                        <li><strong>Close other tabs:</strong> Close other browser tabs/applications</li>
+                        <li><strong>Clear browser cache:</strong> Clear cached files</li>
+                        <li><strong>Check internet:</strong> Verify internet connection speed</li>
+                        <li><strong>Refresh page:</strong> Refresh to reload fresh data</li>
+                    </ol>
+                    <p><strong>If consistently slow:</strong></p>
+                    <ul>
+                        <li>Contact your IT department - there may be server issues</li>
+                        <li>Check if others are experiencing the same issue</li>
+                        <li>Try during off-peak hours</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="faq-item" data-tags="technical browser compatibility">
+                <div class="faq-question">Which browsers are supported?</div>
+                <div class="faq-answer">
+                    <p><strong>Recommended browsers:</strong></p>
+                    <ul>
+                        <li><strong>Google Chrome:</strong> Latest version (recommended)</li>
+                        <li><strong>Mozilla Firefox:</strong> Latest version</li>
+                        <li><strong>Microsoft Edge:</strong> Latest version</li>
+                        <li><strong>Safari:</strong> Latest version (Mac)</li>
+                    </ul>
+                    <p><strong>Requirements:</strong></p>
+                    <ul>
+                        <li>JavaScript must be enabled</li>
+                        <li>Cookies must be enabled</li>
+                        <li>Modern browser (not Internet Explorer)</li>
+                    </ul>
+                    <p><strong>If experiencing issues:</strong> Try a different browser or update your current browser to the latest version.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-tags="technical error message console">
+                <div class="faq-question">I'm seeing an error message. How do I report it?</div>
+                <div class="faq-answer">
+                    <p><strong>When reporting errors, include:</strong></p>
+                    <ol>
+                        <li><strong>Error message:</strong> Exact text of the error</li>
+                        <li><strong>Steps to reproduce:</strong> What you were doing when error occurred</li>
+                        <li><strong>Browser information:</strong> Browser name and version</li>
+                        <li><strong>Screenshot:</strong> Screenshot of the error</li>
+                        <li><strong>Console errors:</strong> Press F12, go to Console tab, copy any red error messages</li>
+                        <li><strong>Date and time:</strong> When the error occurred</li>
+                    </ol>
+                    <p><strong>How to access console:</strong></p>
+                    <ul>
+                        <li>Press F12 (or right-click → Inspect)</li>
+                        <li>Go to "Console" tab</li>
+                        <li>Look for red error messages</li>
+                        <li>Right-click error → Copy</li>
+                    </ul>
+                    <p><strong>Report to:</strong> Your system administrator or IT support team with all the above information.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-tags="technical mobile tablet responsive">
+                <div class="faq-question">Can I use the system on mobile or tablet?</div>
+                <div class="faq-answer">
+                    <p><strong>Yes, the system is responsive and works on mobile devices:</strong></p>
+                    <ul>
+                        <li><strong>Tablets:</strong> Full functionality, optimized layout</li>
+                        <li><strong>Smartphones:</strong> Core functionality available, some features may be simplified</li>
+                    </ul>
+                    <p><strong>Mobile tips:</strong></p>
+                    <ul>
+                        <li>Use landscape orientation for better viewing</li>
+                        <li>Tap menu icon (☰) to access sidebar</li>
+                        <li>Some features work better on desktop (reports, complex forms)</li>
+                        <li>Ensure stable internet connection</li>
+                    </ul>
+                    <p><strong>Best for mobile:</strong> Viewing tasks, entering timesheet, checking notifications</p>
+                    <p><strong>Better on desktop:</strong> Creating projects, generating reports, complex data entry</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="data" class="section faq-category">
+            <h2>📊 Data & Performance Issues</h2>
+
+            <div class="faq-item" data-tags="data missing not appearing list empty">
+                <div class="faq-question">Data is missing or not appearing in lists. Why?</div>
+                <div class="faq-answer">
+                    <p><strong>Troubleshooting:</strong></p>
+                    <ol>
+                        <li><strong>Check filters:</strong> Clear all filters - you may have filtered out the data</li>
+                        <li><strong>Check date range:</strong> Ensure date range includes the period you're looking for</li>
+                        <li><strong>Check status:</strong> Item may be archived - filter by "Archived"</li>
+                        <li><strong>Check team:</strong> Verify correct team is selected</li>
+                        <li><strong>Check access:</strong> You may not have access to view that data</li>
+                        <li><strong>Refresh page:</strong> Refresh to reload data</li>
+                        <li><strong>Check search:</strong> Clear search box if you used search</li>
+                    </ol>
+                    <p><strong>If data should be there:</strong></p>
+                    <ul>
+                        <li>Contact your administrator</li>
+                        <li>Verify you have access to the team/project</li>
+                        <li>Check if data was deleted or archived</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="faq-item" data-tags="data duplicate entries">
+                <div class="faq-question">I see duplicate entries. How do I remove them?</div>
+                <div class="faq-answer">
+                    <p><strong>If you see duplicates:</strong></p>
+                    <ol>
+                        <li><strong>Verify they're actually duplicates:</strong> Check details to ensure they're not similar but different items</li>
+                        <li><strong>Check if you can delete:</strong> If you have delete permission, delete the duplicate</li>
+                        <li><strong>Contact administrator:</strong> If you cannot delete, report duplicates to administrator</li>
+                    </ol>
+                    <p><strong>Prevention:</strong></p>
+                    <ul>
+                        <li>Wait for "Create" button to complete before clicking again</li>
+                        <li>Don't refresh page while creating items</li>
+                        <li>Check if item was already created before creating again</li>
+                    </ul>
+                    <p><strong>Note:</strong> Duplicates can occur if you click "Create" multiple times or if there's a network issue during creation.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-tags="data export import">
+                <div class="faq-question">Can I import data into the system?</div>
+                <div class="faq-answer">
+                    <p><strong>Import capabilities depend on your organization's configuration:</strong></p>
+                    <ul>
+                        <li><strong>Bulk import:</strong> May be available for employees, projects, or other data</li>
+                        <li><strong>Timesheet import:</strong> Some organizations allow importing timesheet data</li>
+                        <li><strong>API access:</strong> Technical users may use API for bulk imports</li>
+                    </ul>
+                    <p><strong>To import data:</strong></p>
+                    <ol>
+                        <li>Contact your system administrator</li>
+                        <li>Request import template (usually Excel format)</li>
+                        <li>Fill template with data following format requirements</li>
+                        <li>Submit to administrator for import</li>
+                    </ol>
+                    <p><strong>Note:</strong> Bulk imports are typically handled by administrators to ensure data integrity and validation.</p>
+                </div>
+            </div>
+
+            <div class="faq-item" data-tags="data backup restore">
+                <div class="faq-question">How do I backup or restore my data?</div>
+                <div class="faq-answer">
+                    <p><strong>Data backup:</strong></p>
+                    <ul>
+                        <li>System backups are handled automatically by administrators</li>
+                        <li>You can export reports to keep local copies</li>
+                        <li>Download important documents/files</li>
+                    </ul>
+                    <p><strong>Data restore:</strong></p>
+                    <ul>
+                        <li>Contact your system administrator</li>
+                        <li>Provide details about what needs to be restored</li>
+                        <li>Specify date/time when data was correct</li>
+                    </ul>
+                    <p><strong>Note:</strong> Individual users typically cannot restore data. This is an administrative function to prevent data loss and maintain integrity.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>📞 Still Need Help?</h2>
+            <p>If you couldn't find an answer to your question in this FAQ:</p>
+            <ol style="margin-left: 1.5rem;">
+                <li><strong>Check the detailed documentation:</strong> Each module has comprehensive guides with step-by-step instructions</li>
+                <li><strong>Contact your system administrator:</strong> For permission issues or system configuration questions</li>
+                <li><strong>Contact your team lead:</strong> For process-related questions or team-specific issues</li>
+                <li><strong>Use the Help button:</strong> Click the question mark (?) icon in the application for quick access to documentation</li>
+            </ol>
+            <div class="tip">
+                <strong>💡 Tip:</strong> When reporting issues, provide as much detail as possible: what you were trying to do, what happened, error messages, browser information, and screenshots if possible.
+            </div>
+        </section>
+    </main>
+
+    <footer style="background: var(--text-dark); color: white; padding: 2rem 0; margin-top: 3rem; text-align: center;">
+        <div class="container">
+            <p>&copy; 2024 Famstack. All rights reserved.</p>
+            <p style="margin-top: 1rem;">
+                <a href="../index.html" style="color: white; text-decoration: underline; margin: 0 1rem;">Documentation</a>
+                <a href="index.html" style="color: white; text-decoration: underline; margin: 0 1rem;">FAQ</a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        function filterFAQ() {
+            const searchTerm = document.getElementById('faqSearch').value.toLowerCase();
+            const faqItems = document.querySelectorAll('.faq-item');
+            let visibleCount = 0;
+
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question').textContent.toLowerCase();
+                const answer = item.querySelector('.faq-answer').textContent.toLowerCase();
+                const tags = item.getAttribute('data-tags').toLowerCase();
+                
+                if (question.includes(searchTerm) || answer.includes(searchTerm) || tags.includes(searchTerm)) {
+                    item.style.display = 'block';
+                    visibleCount++;
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+
+            // Show/hide category headers based on visible items
+            const categories = document.querySelectorAll('.faq-category');
+            categories.forEach(category => {
+                const visibleItems = category.querySelectorAll('.faq-item[style="display: block;"]');
+                if (visibleItems.length === 0 && searchTerm !== '') {
+                    category.style.display = 'none';
+                } else {
+                    category.style.display = 'block';
+                }
+            });
+
+            // Show no results message
+            const noResults = document.getElementById('noResults');
+            if (visibleCount === 0 && searchTerm !== '') {
+                if (!noResults) {
+                    const noResultsDiv = document.createElement('div');
+                    noResultsDiv.id = 'noResults';
+                    noResultsDiv.className = 'no-results';
+                    noResultsDiv.innerHTML = '<h3>No results found</h3><p>Try different search terms or browse categories</p>';
+                    document.querySelector('main').appendChild(noResultsDiv);
+                }
+            } else {
+                if (noResults) {
+                    noResults.remove();
+                }
+            }
+        }
+    </script>
+    <script src="../js/navigation.js"></script>
+    <script src="../js/search.js"></script>
+</body>
+</html>
+

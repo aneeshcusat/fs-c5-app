@@ -1,0 +1,153 @@
+/* Loading Button Styles */
+.btn-loading {
+    position: relative;
+    pointer-events: none;
+    opacity: 0.7;
+}
+
+.btn-loading .spinner-border-sm {
+    width: 1rem;
+    height: 1rem;
+    border-width: 0.15em;
+}
+
+/* Progress Indicator Styles */
+.progress-indicator {
+    margin: 1rem 0;
+}
+
+.progress-indicator-linear {
+    width: 100%;
+}
+
+.progress-indicator-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    font-size: 0.875rem;
+}
+
+.progress-indicator-message {
+    color: #4d5052;
+    font-weight: 500;
+}
+
+.progress-indicator-percentage {
+    color: #2563eb;
+    font-weight: 600;
+}
+
+.progress.progress-sm {
+    height: 6px;
+    border-radius: 3px;
+    background-color: #e8e9e9;
+    overflow: hidden;
+}
+
+.progress-bar-indeterminate {
+    animation: progress-indeterminate 1.5s ease-in-out infinite;
+    background: linear-gradient(90deg, #2563eb 0%, #06b6d4 50%, #2563eb 100%);
+    background-size: 200% 100%;
+}
+
+@keyframes progress-indeterminate {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+.progress-indicator-circular {
+    padding: 1.5rem;
+}
+
+.progress-indicator-indeterminate {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 0;
+    font-size: 0.875rem;
+    color: #4d5052;
+}
+
+/* Skeleton Loader Improvements */
+.skeleton-container {
+    padding: 1rem;
+}
+
+.skeleton-card {
+    background: #fff;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+}
+
+/* Optimistic Update Styles */
+.optimistic-update {
+    opacity: 0.7;
+    position: relative;
+}
+
+.optimistic-update::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(37, 99, 235, 0.05);
+    pointer-events: none;
+}
+
+.optimistic-update-pending {
+    border-left: 3px solid #f59e0b;
+}
+
+.optimistic-update-success {
+    border-left: 3px solid #10b981;
+}
+
+.optimistic-update-error {
+    border-left: 3px solid #ef4444;
+}
+
+/* Loading overlay for long operations */
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    backdrop-filter: blur(2px);
+}
+
+.loading-overlay-content {
+    text-align: center;
+    padding: 2rem;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Button pulse animation for important actions */
+@keyframes pulse-button {
+    0%, 100% {
+        box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.7);
+    }
+    50% {
+        box-shadow: 0 0 0 8px rgba(37, 99, 235, 0);
+    }
+}
+
+.btn-pulse {
+    animation: pulse-button 2s infinite;
+}
+

@@ -1,0 +1,1315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Management - Famstack Users Guide</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <img src="/favicon.ico" alt="Famstack Logo" class="header-logo" onerror="this.style.display='none'">
+                <div class="header-text">
+                    <h1>Famstack Users Guide</h1>
+                    <p class="subtitle">Complete Documentation & User Manual</p>
+                    <p class="version">Version 1.0</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="getting-started.html">Getting Started</a></li>
+                <li><a href="projects.html" class="active">Projects</a></li>
+                <li><a href="tasks.html">Tasks</a></li>
+                <li><a href="hrms.html">HRMS</a></li>
+                <li><a href="sales.html">Sales</a></li>
+                <li><a href="reports.html">Reports</a></li>
+                <li><a href="advanced.html">Advanced</a></li>
+                <li><a href="access-controls.html">Access Controls</a></li>
+                <li><a href="application-configuration.html">Application Configuration</a></li>
+                <li><a href="faq/index.html">FAQ</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <aside class="sidebar">
+        <ul>
+            <li class="section-title">Project Management</li>
+            <li><a href="projects.html" class="active">Projects Overview</a></li>
+            <li><a href="#dashboard">Dashboard</a></li>
+            <li><a href="#project-list">Project List</a></li>
+            <li><a href="#creating">Creating Projects</a></li>
+            <li><a href="#project-fields">Project Fields Explained</a></li>
+            <li><a href="#editing">Editing Projects</a></li>
+            <li><a href="#viewing">Viewing Project Details</a></li>
+            <li><a href="#filtering">Filtering & Search</a></li>
+            <li><a href="#grid-list">Grid vs List View</a></li>
+            <li><a href="#archiving">Archiving Projects</a></li>
+            <li><a href="#deleting">Deleting Projects</a></li>
+            <li><a href="#favorites">Favorites</a></li>
+            <li><a href="#duplicating">Duplicating Projects</a></li>
+        </ul>
+    </aside>
+
+    <main>
+        <div class="breadcrumb">
+            <a href="index.html">Home</a> <span>→</span> Projects
+        </div>
+
+        <section id="dashboard" class="section">
+            <h2>📊 Project Dashboard</h2>
+            
+            <h3>Overview</h3>
+            <p>The Project Dashboard provides a comprehensive overview of all your projects, key metrics, and quick access to important information.</p>
+
+            <h4>Dashboard Components</h4>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h4>Summary Statistics</h4>
+                    <p>Key metrics displayed as cards:
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                            <li>Total Projects</li>
+                            <li>Active Projects</li>
+                            <li>Completed Projects</li>
+                            <li>Overdue Projects</li>
+                        </ul>
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <h4>Charts & Visualizations</h4>
+                    <p>Visual representations of:
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                            <li>Project status distribution</li>
+                            <li>Timeline views</li>
+                            <li>Resource allocation</li>
+                        </ul>
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <h4>Recent Activities</h4>
+                    <p>List of recent project activities and updates</p>
+                </div>
+                <div class="feature-card">
+                    <h4>Quick Actions</h4>
+                    <p>Shortcuts to common tasks like creating new projects</p>
+                </div>
+            </div>
+
+            <h4>Accessing the Dashboard</h4>
+            <div class="steps">
+                <div class="step">
+                    Navigate to <strong>Project → Dashboard</strong> from the left sidebar menu
+                </div>
+                <div class="step">
+                    The dashboard loads automatically showing your project overview
+                </div>
+                <div class="step">
+                    Use the date range selector to filter dashboard data by time period
+                </div>
+            </div>
+
+            <div class="screenshot">
+                Project Dashboard - Overview with statistics and charts
+            </div>
+        </section>
+
+        <section id="project-list" class="section">
+            <h2>📋 Project List</h2>
+            
+            <h3>Understanding the Project List Page</h3>
+            <p>The Project List page is your main interface for viewing and managing all projects. You can access it via <strong>Project → Project List</strong>.</p>
+
+            <h4>Page Header Features</h4>
+            <p>The top of the Project List page contains several important controls:</p>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Element</th>
+                        <th>Location</th>
+                        <th>Function</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Team Filter</strong></td>
+                        <td>Left side</td>
+                        <td>Dropdown to select which team's projects to view. You can select multiple teams.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Status Filter</strong></td>
+                        <td>Left side</td>
+                        <td>Filter by: All, Active, Archived, My Projects, Favorite</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Sort Options</strong></td>
+                        <td>Left side</td>
+                        <td>Sort by: Due Date, Est Start Date, Created Date, A-Z (with up/down arrow)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Date Range</strong></td>
+                        <td>Right side</td>
+                        <td>Calendar picker to filter projects by date range</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Search Box</strong></td>
+                        <td>Right side</td>
+                        <td>Text input to search projects by name or other criteria</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Grid/List Toggle</strong></td>
+                        <td>Right side</td>
+                        <td>Switch between grid card view and list table view</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Create Project Button</strong></td>
+                        <td>Right side</td>
+                        <td>Opens the project creation sidebar</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h4>Understanding Project Cards (Grid View)</h4>
+            <p>In grid view, each project is displayed as a card showing:</p>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h4>Card Header</h4>
+                    <ul style="margin-left: 1.5rem;">
+                        <li>Project initial badge (colored circle)</li>
+                        <li>Project name (clickable link)</li>
+                        <li>Archive toggle switch</li>
+                        <li>Options menu (three dots)</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <h4>Card Body</h4>
+                    <ul style="margin-left: 1.5rem;">
+                        <li>Account name (tag)</li>
+                        <li>Due date indicator</li>
+                        <li>Project summary/description</li>
+                        <li>Key project details</li>
+                        <li>Task and hour statistics</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <h4>Card Footer</h4>
+                    <ul style="margin-left: 1.5rem;">
+                        <li>Progress indicator</li>
+                        <li>Completion percentage</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h4>Understanding Project Table (List View)</h4>
+            <p>In list view, projects are displayed in a table format with columns:</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Column</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Name</strong></td>
+                        <td>Project name (clickable to view details)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Account</strong></td>
+                        <td>Associated account/client name</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Status</strong></td>
+                        <td>Current project status</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Start Date</strong></td>
+                        <td>Project start date</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Due Date</strong></td>
+                        <td>Project completion due date</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Progress</strong></td>
+                        <td>Visual progress bar</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Actions</strong></td>
+                        <td>Dropdown menu with edit, delete, archive options</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="creating" class="section">
+            <h2>➕ Creating a New Project</h2>
+            
+            <h3>Step-by-Step Creation Process</h3>
+            
+            <h4>Step 1: Open the Create Project Sidebar</h4>
+            <div class="steps">
+                <div class="step">
+                    Navigate to <strong>Project → Project List</strong>
+                </div>
+                <div class="step">
+                    Click the <strong>"CREATE PROJECT"</strong> button in the top right of the page header
+                </div>
+                <div class="step">
+                    A sidebar panel will slide in from the right side of the screen
+                </div>
+            </div>
+
+            <div class="screenshot">
+                Create Project Sidebar - Right side panel with form fields
+            </div>
+
+            <h4>Step 2: Fill Required Fields</h4>
+            <p>These fields are mandatory and must be filled before you can create the project:</p>
+            
+            <div class="field-description">
+                <strong>Project Name</strong>
+                <p>Enter a descriptive name for your project. This should clearly identify the project.</p>
+                <p><strong>Best Practice:</strong> Use a format like "Client Name - Project Type" (e.g., "ABC Corp - Website Redesign")</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Team/Department (User Team)</strong>
+                <p>Select the team that will be responsible for this project. This determines which employees can be assigned.</p>
+                <p><strong>How to Select:</strong> Click the dropdown and choose from available teams. Only teams you have access to will be shown.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Estimated Start Date</strong>
+                <p>Select when the project is expected to begin.</p>
+                <p><strong>How to Select:</strong> Click the date field to open a calendar picker. Navigate to the desired month/year and click the date.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Estimated Completion Date</strong>
+                <p>Select when the project is expected to be completed.</p>
+                <p><strong>Important:</strong> This date should be after the start date. The system will warn you if dates are invalid.</p>
+            </div>
+
+            <h4>Step 3: Fill Optional Fields</h4>
+            <p>These fields provide additional project information but are not required:</p>
+
+            <div class="field-description">
+                <strong>Purchase Order</strong>
+                <p>If this project is linked to a purchase order, select it from the dropdown. This will auto-populate some fields.</p>
+                <p><strong>When to Use:</strong> If your organization uses purchase orders for project authorization.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Proposal Number</strong>
+                <p>Enter the proposal number if this project originated from a proposal.</p>
+                <p><strong>Format:</strong> Alphanumeric (e.g., "PROP-2024-001")</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Order Book Reference Number</strong>
+                <p>Enter the order book reference if applicable.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Account</strong>
+                <p>Select or create the client account this project belongs to.</p>
+                <p><strong>How to Select:</strong> Use the dropdown to search and select an existing account, or create a new one if you have permissions.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Category</strong>
+                <p>Select a project category (e.g., "Web Development", "Consulting", "Support").</p>
+                <p><strong>Note:</strong> Available categories depend on your organization's configuration.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Project Type</strong>
+                <p>Select the type of project (e.g., "Fixed Price", "Time & Materials").</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Type</strong>
+                <p>Additional type classification (varies by organization).</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Location</strong>
+                <p>Enter the project location (e.g., "Remote", "Onsite - New York", "Hybrid").</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Client Partner</strong>
+                <p>Select the client partner or account manager responsible for this client.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Summary/Description</strong>
+                <p>Enter a detailed description of the project, its objectives, and scope.</p>
+                <p><strong>Best Practice:</strong> Include key deliverables, timeline highlights, and important notes.</p>
+            </div>
+
+            <h4>Step 4: Configure Project Estimates</h4>
+            <p>If your organization uses project estimates, you can configure them here:</p>
+
+            <div class="field-description">
+                <strong>Service Line Estimates</strong>
+                <p>Add estimates by service line (e.g., "Development", "Design", "Testing").</p>
+                <p><strong>How to Add:</strong>
+                    <ol style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                        <li>Click "Add Estimate" or similar button</li>
+                        <li>Select service line from dropdown</li>
+                        <li>Enter estimated hours</li>
+                        <li>Add team member estimates if needed</li>
+                        <li>Click "Add" to save the estimate</li>
+                    </ol>
+                </p>
+            </div>
+
+            <div class="field-description">
+                <strong>Team Member Estimates</strong>
+                <p>Within each service line estimate, you can assign hours to specific team members.</p>
+                <p><strong>How to Add:</strong>
+                    <ol style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                        <li>Expand the service line estimate</li>
+                        <li>Click "Add Team Estimate"</li>
+                        <li>Select team member</li>
+                        <li>Enter their estimated hours</li>
+                        <li>Save</li>
+                    </ol>
+                </p>
+            </div>
+
+            <h4>Step 5: Configure Access Restrictions (If Available)</h4>
+            <p>Some organizations allow you to restrict who can view/edit the project:</p>
+
+            <div class="field-description">
+                <strong>Task Access Restrictions</strong>
+                <p>Control who can create and view tasks within this project.</p>
+                <p><strong>Options:</strong>
+                    <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                        <li><strong>Open:</strong> All team members can create/view tasks</li>
+                        <li><strong>Restricted:</strong> Only assigned members can create/view tasks</li>
+                    </ul>
+                </p>
+            </div>
+
+            <h4>Step 6: Review and Submit</h4>
+            <div class="steps">
+                <div class="step">
+                    <strong>Review All Fields</strong>
+                    <div class="step-detail">
+                        Scroll through the form to ensure all required fields are filled and information is correct.
+                    </div>
+                </div>
+                <div class="step">
+                    <strong>Check for Errors</strong>
+                    <div class="step-detail">
+                        The system will highlight any required fields that are missing. Look for red borders or error messages.
+                    </div>
+                </div>
+                <div class="step">
+                    <strong>Configure Footer Options</strong>
+                    <div class="step-detail">
+                        At the bottom of the sidebar:
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                            <li><strong>Keep me open:</strong> Check this if you want to create multiple projects</li>
+                            <li><strong>Keep Data:</strong> (If "Keep me open" is checked) Keep form data for next project</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="step">
+                    <strong>Click Create Button</strong>
+                    <div class="step-detail">
+                        Click the <strong>"Create"</strong> button at the bottom of the sidebar. The button will show a loading spinner while the project is being created.
+                    </div>
+                </div>
+                <div class="step">
+                    <strong>Success Confirmation</strong>
+                    <div class="step-detail">
+                        After successful creation:
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                            <li>You'll see a success notification</li>
+                            <li>The sidebar will close (unless "Keep me open" was checked)</li>
+                            <li>The new project will appear in your project list</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tip">
+                <strong>💡 Tip:</strong> Use "Keep me open" when creating multiple similar projects. You can change just the project name and key details, then create the next one quickly.
+            </div>
+
+            <div class="warning">
+                <strong>⚠️ Important:</strong> Once created, some project fields cannot be changed. Review all information carefully before submitting.
+            </div>
+
+            <h3>Creating from Purchase Order</h3>
+            <p>If your project is linked to a purchase order:</p>
+            <div class="steps">
+                <div class="step">
+                    Select the purchase order from the dropdown
+                </div>
+                <div class="step">
+                    Many fields will auto-populate from the purchase order
+                </div>
+                <div class="step">
+                    Review and modify as needed
+                </div>
+                <div class="step">
+                    Complete remaining required fields
+                </div>
+                <div class="step">
+                    Create the project
+                </div>
+            </div>
+        </section>
+
+        <section id="project-fields" class="section">
+            <h2>📝 Project Fields - Complete Reference</h2>
+            
+            <h3>Field Descriptions and Usage</h3>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Field Name</th>
+                        <th>Required</th>
+                        <th>Type</th>
+                        <th>Description & Usage</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Project Name</strong></td>
+                        <td>✅ Yes</td>
+                        <td>Text</td>
+                        <td>Unique identifier for the project. Should be descriptive and follow your organization's naming convention.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>User Team</strong></td>
+                        <td>✅ Yes</td>
+                        <td>Dropdown</td>
+                        <td>The team/department responsible for the project. Determines available employees and access.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Est. Start Date</strong></td>
+                        <td>✅ Yes</td>
+                        <td>Date</td>
+                        <td>When work on the project is expected to begin. Used for planning and reporting.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Est. Completion Date</strong></td>
+                        <td>✅ Yes</td>
+                        <td>Date</td>
+                        <td>When the project is expected to be completed. Must be after start date.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Purchase Order</strong></td>
+                        <td>❌ No</td>
+                        <td>Dropdown</td>
+                        <td>Link to a purchase order if project is PO-based. Auto-fills related fields.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Proposal Number</strong></td>
+                        <td>❌ No</td>
+                        <td>Text</td>
+                        <td>Reference to the proposal that led to this project.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Order Book Ref No</strong></td>
+                        <td>❌ No</td>
+                        <td>Text</td>
+                        <td>Reference number from your order book system.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Account</strong></td>
+                        <td>❌ No</td>
+                        <td>Dropdown</td>
+                        <td>Client account this project belongs to. Can create new account if needed.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Category</strong></td>
+                        <td>❌ No</td>
+                        <td>Dropdown</td>
+                        <td>Project category for classification and reporting.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Project Type</strong></td>
+                        <td>❌ No</td>
+                        <td>Dropdown</td>
+                        <td>Type classification (e.g., Fixed Price, T&M).</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Type</strong></td>
+                        <td>❌ No</td>
+                        <td>Dropdown</td>
+                        <td>Additional type classification.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Location</strong></td>
+                        <td>❌ No</td>
+                        <td>Text</td>
+                        <td>Physical or virtual location of project work.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Client Partner</strong></td>
+                        <td>❌ No</td>
+                        <td>Dropdown</td>
+                        <td>Account manager or partner responsible for client relationship.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Summary</strong></td>
+                        <td>❌ No</td>
+                        <td>Text Area</td>
+                        <td>Detailed project description, objectives, and scope.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Code</strong></td>
+                        <td>❌ No</td>
+                        <td>Text</td>
+                        <td>Auto-generated project code (usually PRJ + timestamp). Can be customized.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Field Validation Rules</h3>
+            <div class="warning">
+                <strong>Validation Rules:</strong>
+                <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                    <li>Project Name must be unique within your organization</li>
+                    <li>Completion Date must be after Start Date</li>
+                    <li>Some fields may have character limits</li>
+                    <li>Date fields must be valid dates</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="editing" class="section">
+            <h2>✏️ Editing Projects</h2>
+            
+            <h3>How to Edit an Existing Project</h3>
+            
+            <h4>Method 1: From Project List</h4>
+            <div class="steps">
+                <div class="step">
+                    Go to <strong>Project → Project List</strong>
+                </div>
+                <div class="step">
+                    Find the project you want to edit (use filters/search if needed)
+                </div>
+                <div class="step">
+                    <strong>In Grid View:</strong> Click the three dots menu (⋮) on the project card → Select "Edit"
+                </div>
+                <div class="step">
+                    <strong>In List View:</strong> Click the dropdown menu in the Actions column → Select "Edit"
+                </div>
+                <div class="step">
+                    The edit sidebar will open from the right with all project fields pre-filled
+                </div>
+                <div class="step">
+                    Make your changes to any editable fields
+                </div>
+                <div class="step">
+                    Click <strong>"Update"</strong> button to save changes
+                </div>
+            </div>
+
+            <h4>Method 2: From Project Details</h4>
+            <div class="steps">
+                <div class="step">
+                    Open the project details page (click project name)
+                </div>
+                <div class="step">
+                    Click the <strong>"Edit"</strong> button (usually in the header or actions area)
+                </div>
+                <div class="step">
+                    The edit sidebar will open
+                </div>
+                <div class="step">
+                    Make changes and click <strong>"Update"</strong>
+                </div>
+            </div>
+
+            <h3>What Can Be Edited</h3>
+            <p>Most project fields can be edited, including:</p>
+            <ul style="margin-left: 1.5rem;">
+                <li>Project name</li>
+                <li>Dates (start and completion)</li>
+                <li>Account</li>
+                <li>Category, Type, Location</li>
+                <li>Summary/Description</li>
+                <li>Team assignments</li>
+                <li>Estimates</li>
+            </ul>
+
+            <h3>What Cannot Be Edited</h3>
+            <p>Some fields may be locked after creation:</p>
+            <ul style="margin-left: 1.5rem;">
+                <li>Project Code (if auto-generated)</li>
+                <li>Created Date</li>
+                <li>Created By</li>
+                <li>Some system fields</li>
+            </ul>
+
+            <div class="note">
+                <strong>📌 Note:</strong> Editing restrictions depend on your permissions and the project's status. Some fields may be locked for completed or archived projects.
+            </div>
+
+            <h3>Effective Date for Updates</h3>
+            <p>When editing a project, you may see an "Effective Date" option:</p>
+            <div class="field-description">
+                <strong>Effective Date</strong>
+                <p>This allows you to specify when the changes should take effect. Useful for planning future changes.</p>
+                <p><strong>How to Use:</strong> Check "Effective Date" checkbox and select a future date. Changes will be applied on that date.</p>
+            </div>
+        </section>
+
+        <section id="viewing" class="section">
+            <h2>👁️ Viewing Project Details</h2>
+            
+            <h3>Opening Project Details</h3>
+            <div class="steps">
+                <div class="step">
+                    Navigate to <strong>Project → Project List</strong>
+                </div>
+                <div class="step">
+                    Click on the project name (in either grid or list view)
+                </div>
+                <div class="step">
+                    The project details page will open
+                </div>
+            </div>
+
+            <h3>Project Details Page Structure</h3>
+            <p>The project details page is organized into several tabs/sections:</p>
+
+            <h4>1. General Tab</h4>
+            <p>Shows all basic project information:</p>
+            <ul style="margin-left: 1.5rem;">
+                <li>Project name and code</li>
+                <li>Status and dates</li>
+                <li>Account information</li>
+                <li>Team assignments</li>
+                <li>Project summary</li>
+                <li>Key project details (category, type, location, etc.)</li>
+                <li>Progress indicators</li>
+                <li>Task and hour statistics</li>
+            </ul>
+
+            <h4>2. Deliverables Tab</h4>
+            <p>Shows all tasks/deliverables for this project:</p>
+            <ul style="margin-left: 1.5rem;">
+                <li>List of all tasks</li>
+                <li>Task status</li>
+                <li>Assigned team members</li>
+                <li>Due dates</li>
+                <li>Progress on each task</li>
+                <li>Options to create, edit, or delete tasks</li>
+            </ul>
+
+            <h4>3. Team Tab</h4>
+            <p>Shows team members assigned to the project:</p>
+            <ul style="margin-left: 1.5rem;">
+                <li>List of team members</li>
+                <li>Their roles</li>
+                <li>Time allocations</li>
+                <li>Options to add/remove team members</li>
+            </ul>
+
+            <h4>4. Estimates Tab</h4>
+            <p>Displays project estimates:</p>
+            <ul style="margin-left: 1.5rem;">
+                <li>Service line estimates</li>
+                <li>Team member estimates</li>
+                <li>Estimated vs actual hours</li>
+                <li>Options to add or modify estimates</li>
+            </ul>
+
+            <h4>5. Activity Tab</h4>
+            <p>Shows project activity timeline:</p>
+            <ul style="margin-left: 1.5rem;">
+                <li>Recent activities</li>
+                <li>Changes and updates</li>
+                <li>Comments and notes</li>
+                <li>Chronological activity log</li>
+            </ul>
+
+            <h4>6. Calendar Tab</h4>
+            <p>Calendar view of project timeline:</p>
+            <ul style="margin-left: 1.5rem;">
+                <li>Project start and end dates</li>
+                <li>Task due dates</li>
+                <li>Milestones</li>
+                <li>Team member availability</li>
+            </ul>
+
+            <h4>7. Files Tab</h4>
+            <p>Project-related files and documents:</p>
+            <ul style="margin-left: 1.5rem;">
+                <li>Uploaded documents</li>
+                <li>File organization</li>
+                <li>Download options</li>
+            </ul>
+
+            <h4>8. Feedback Tab</h4>
+            <p>Project feedback and reviews:</p>
+            <ul style="margin-left: 1.5rem;">
+                <li>Feedback requests</li>
+                <li>Submitted feedback</li>
+                <li>Feedback templates</li>
+            </ul>
+
+            <h3>Project Details Header Actions</h3>
+            <p>At the top of the project details page, you'll find action buttons:</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Button</th>
+                        <th>Function</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Edit</strong></td>
+                        <td>Opens edit sidebar to modify project</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Archive</strong></td>
+                        <td>Toggles archive status</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Delete</strong></td>
+                        <td>Marks project for deletion</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Favorite</strong></td>
+                        <td>Adds/removes from favorites</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Share</strong></td>
+                        <td>Generates shareable link (if enabled)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="filtering" class="section">
+            <h2>🔍 Filtering & Searching Projects</h2>
+            
+            <h3>Using Filters</h3>
+            
+            <h4>Status Filter</h4>
+            <div class="steps">
+                <div class="step">
+                    Locate the <strong>"SHOW"</strong> dropdown in the page header
+                </div>
+                <div class="step">
+                    Click to see available options:
+                    <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                        <li><strong>ALL:</strong> Shows all projects regardless of status</li>
+                        <li><strong>ACTIVE:</strong> Shows only active (in-progress) projects</li>
+                        <li><strong>ARCHIVED:</strong> Shows only archived projects</li>
+                        <li><strong>MYPROJECTS:</strong> Shows only projects you're assigned to</li>
+                        <li><strong>FAVORITE:</strong> Shows only your favorited projects</li>
+                    </ul>
+                </div>
+                <div class="step">
+                    Select the desired filter option
+                </div>
+                <div class="step">
+                    The project list will update automatically
+                </div>
+            </div>
+
+            <h4>Sort Options</h4>
+            <div class="steps">
+                <div class="step">
+                    Locate the <strong>"SORT"</strong> dropdown in the page header
+                </div>
+                <div class="step">
+                    Select sort criteria:
+                    <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                        <li><strong>Due Date:</strong> Sort by completion due date</li>
+                        <li><strong>Est Start Date:</strong> Sort by estimated start date</li>
+                        <li><strong>Created Date:</strong> Sort by when project was created</li>
+                        <li><strong>A-Z:</strong> Sort alphabetically by project name</li>
+                    </ul>
+                </div>
+                <div class="step">
+                    Click the up/down arrow to toggle ascending/descending order
+                </div>
+            </div>
+
+            <h4>Team Filter</h4>
+            <div class="steps">
+                <div class="step">
+                    Click the team dropdown (shows selected teams or "All Teams")
+                </div>
+                <div class="step">
+                    Select one or more teams from the list
+                </div>
+                <div class="step">
+                    Projects will filter to show only those belonging to selected teams
+                </div>
+                <div class="step">
+                    Click outside the dropdown or press Escape to close
+                </div>
+            </div>
+
+            <h4>Date Range Filter</h4>
+            <div class="steps">
+                <div class="step">
+                    Click the date range selector (calendar icon) in the header
+                </div>
+                <div class="step">
+                    A calendar popup will appear
+                </div>
+                <div class="step">
+                    Select start date by clicking on a date
+                </div>
+                <div class="step">
+                    Select end date by clicking on another date
+                </div>
+                <div class="step">
+                    The range will be highlighted
+                </div>
+                <div class="step">
+                    Click <strong>"Apply"</strong> or click outside to apply the filter
+                </div>
+                <div class="step">
+                    Projects will filter to show only those within the date range
+                </div>
+            </div>
+
+            <div class="tip">
+                <strong>💡 Tip:</strong> Use preset ranges like "This Month", "Last Month", "This Quarter" for quick filtering.
+            </div>
+
+            <h4>Text Search/Filter</h4>
+            <div class="steps">
+                <div class="step">
+                    Locate the search/filter input box (has a filter icon)
+                </div>
+                <div class="step">
+                    Type your search term (project name, code, account name, etc.)
+                </div>
+                <div class="step">
+                    Results filter as you type (real-time filtering)
+                </div>
+                <div class="step">
+                    Clear the box to remove the filter
+                </div>
+            </div>
+
+            <h4>Advanced Search</h4>
+            <p>Some pages offer advanced search with multiple criteria:</p>
+            <div class="steps">
+                <div class="step">
+                    Click the search icon or "Advanced Search" option
+                </div>
+                <div class="step">
+                    Select search field from dropdown (e.g., "Proposal Number", "Project Code")
+                </div>
+                <div class="step">
+                    Enter search term
+                </div>
+                <div class="step">
+                    Press Enter or click Search
+                </div>
+                <div class="step">
+                    Results will show matching projects
+                </div>
+            </div>
+
+            <h3>Combining Filters</h3>
+            <p>You can combine multiple filters for precise results:</p>
+            <div class="example">
+                <strong>Example:</strong> Show "Active" projects from "Development Team" created in "Last 30 Days" containing "Website" in the name.
+            </div>
+            <div class="steps">
+                <div class="step">
+                    Set Status filter to "ACTIVE"
+                </div>
+                <div class="step">
+                    Select "Development Team" from team filter
+                </div>
+                <div class="step">
+                    Set date range to "Last 30 Days"
+                </div>
+                <div class="step">
+                    Type "Website" in search box
+                </div>
+                <div class="step">
+                    Results will match all criteria
+                </div>
+            </div>
+
+            <h3>Clearing Filters</h3>
+            <p>To clear all filters and see all projects:</p>
+            <ul style="margin-left: 1.5rem;">
+                <li>Reset each filter dropdown to default values</li>
+                <li>Clear the search box</li>
+                <li>Set date range to "All Time" or clear it</li>
+                <li>Refresh the page (F5) to reset everything</li>
+            </ul>
+        </section>
+
+        <section id="grid-list" class="section">
+            <h2>📊 Grid vs List View</h2>
+            
+            <h3>Switching Between Views</h3>
+            <div class="steps">
+                <div class="step">
+                    Locate the <strong>"Grid"</strong> and <strong>"List"</strong> toggle buttons in the page header
+                </div>
+                <div class="step">
+                    Click <strong>"Grid"</strong> to see projects as cards
+                </div>
+                <div class="step">
+                    Click <strong>"List"</strong> to see projects in table format
+                </div>
+            </div>
+
+            <h3>Grid View Advantages</h3>
+            <ul style="margin-left: 1.5rem;">
+                <li>Visual overview of multiple projects</li>
+                <li>See key information at a glance</li>
+                <li>Better for browsing and discovery</li>
+                <li>Color-coded status indicators</li>
+                <li>Progress bars and visual elements</li>
+            </ul>
+
+            <h3>List View Advantages</h3>
+            <ul style="margin-left: 1.5rem;">
+                <li>More detailed information visible</li>
+                <li>Better for sorting and comparing</li>
+                <li>Easier to scan specific columns</li>
+                <li>More projects visible without scrolling</li>
+                <li>Better for bulk operations</li>
+            </ul>
+
+            <div class="tip">
+                <strong>💡 Tip:</strong> Use Grid view for visual browsing, List view for detailed analysis and data entry.
+            </div>
+        </section>
+
+        <section id="archiving" class="section">
+            <h2>📦 Archiving Projects</h2>
+            
+            <h3>What is Archiving?</h3>
+            <p>Archiving moves a project out of the active view while preserving all data. Archived projects can be unarchived later if needed.</p>
+
+            <h3>How to Archive a Project</h3>
+            
+            <h4>Method 1: From Grid View</h4>
+            <div class="steps">
+                <div class="step">
+                    Go to Project List in Grid view
+                </div>
+                <div class="step">
+                    Find the project card you want to archive
+                </div>
+                <div class="step">
+                    Toggle the switch in the top right of the card (it will turn off/gray)
+                </div>
+                <div class="step">
+                    The project is now archived
+                </div>
+            </div>
+
+            <h4>Method 2: From List View</h4>
+            <div class="steps">
+                <div class="step">
+                    Go to Project List in List view
+                </div>
+                <div class="step">
+                    Click the dropdown menu in the Actions column
+                </div>
+                <div class="step">
+                    Select <strong>"Archive"</strong>
+                </div>
+                <div class="step">
+                    Confirm if prompted
+                </div>
+            </div>
+
+            <h4>Method 3: From Project Details</h4>
+            <div class="steps">
+                <div class="step">
+                    Open the project details page
+                </div>
+                <div class="step">
+                    Click the <strong>"Archive"</strong> button in the header
+                </div>
+                <div class="step">
+                    Confirm the action
+                </div>
+            </div>
+
+            <h3>Viewing Archived Projects</h3>
+            <div class="steps">
+                <div class="step">
+                    Go to Project List
+                </div>
+                <div class="step">
+                    Set the Status filter to <strong>"ARCHIVED"</strong>
+                </div>
+                <div class="step">
+                    All archived projects will be displayed
+                </div>
+            </div>
+
+            <h3>Unarchiving a Project</h3>
+            <div class="steps">
+                <div class="step">
+                    Filter to show archived projects
+                </div>
+                <div class="step">
+                    Find the project you want to unarchive
+                </div>
+                <div class="step">
+                    Toggle the archive switch back on (or use "Unarchive" from menu)
+                </div>
+                <div class="step">
+                    The project will return to active status
+                </div>
+            </div>
+
+            <div class="note">
+                <strong>📌 Note:</strong> Archiving doesn't delete data. All project information, tasks, and history are preserved.
+            </div>
+        </section>
+
+        <section id="deleting" class="section">
+            <h2>🗑️ Deleting Projects</h2>
+            
+            <h3>Understanding Delete vs Remove</h3>
+            <p>The system has two deletion-related actions:</p>
+
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h4>Delete</h4>
+                    <p>Marks the project as deleted but keeps it in the system. Can be undone.</p>
+                    <p><strong>Use When:</strong> You want to hide a project but may need to restore it later.</p>
+                </div>
+                <div class="feature-card">
+                    <h4>Remove</h4>
+                    <p>Permanently removes the project from the system. Cannot be undone.</p>
+                    <p><strong>Use When:</strong> You're certain the project should be completely removed.</p>
+                </div>
+            </div>
+
+            <h3>How to Delete a Project</h3>
+            <div class="steps">
+                <div class="step">
+                    Go to Project List or Project Details
+                </div>
+                <div class="step">
+                    Click the dropdown menu (three dots or Actions)
+                </div>
+                <div class="step">
+                    Select <strong>"Delete"</strong>
+                </div>
+                <div class="step">
+                    Confirm the deletion in the popup dialog
+                </div>
+                <div class="step">
+                    The project will be marked as deleted
+                </div>
+            </div>
+
+            <h3>Viewing Deleted Projects</h3>
+            <p>Deleted projects may still be visible with a visual indicator (red border, strikethrough, etc.).</p>
+
+            <h3>Undoing a Delete</h3>
+            <div class="steps">
+                <div class="step">
+                    Find the deleted project (it may show a "Deleted" indicator)
+                </div>
+                <div class="step">
+                    Click the dropdown menu
+                </div>
+                <div class="step">
+                    Select <strong>"Undo Delete"</strong> (may show as a rotate/undo icon)
+                </div>
+                <div class="step">
+                    The project will be restored
+                </div>
+            </div>
+
+            <h3>Permanently Removing a Project</h3>
+            <div class="warning">
+                <strong>⚠️ Warning:</strong> This action cannot be undone! All project data will be permanently deleted.
+            </div>
+            <div class="steps">
+                <div class="step">
+                    First delete the project (mark as deleted)
+                </div>
+                <div class="step">
+                    Click the dropdown menu on the deleted project
+                </div>
+                <div class="step">
+                    Select <strong>"Remove"</strong>
+                </div>
+                <div class="step">
+                    Read the warning message carefully
+                </div>
+                <div class="step">
+                    Type "DELETE" or confirm as required
+                </div>
+                <div class="step">
+                    Click <strong>"Confirm"</strong>
+                </div>
+                <div class="step">
+                    The project is permanently removed
+                </div>
+            </div>
+
+            <div class="note">
+                <strong>📌 Note:</strong> Remove typically requires administrator permissions or special confirmation.
+            </div>
+        </section>
+
+        <section id="favorites" class="section">
+            <h2>⭐ Favorites</h2>
+            
+            <h3>What are Favorites?</h3>
+            <p>Favorites allow you to mark important projects for quick access. Favorited projects appear when you filter by "FAVORITE".</p>
+
+            <h3>Adding a Project to Favorites</h3>
+            <div class="steps">
+                <div class="step">
+                    Go to Project List
+                </div>
+                <div class="step">
+                    Find the project you want to favorite
+                </div>
+                <div class="step">
+                    <strong>In Grid View:</strong> Click the star icon (⭐) on the project card
+                </div>
+                <div class="step">
+                    <strong>In List View:</strong> Click the star icon in the project row
+                </div>
+                <div class="step">
+                    <strong>From Details:</strong> Click the star/favorite button in the header
+                </div>
+                <div class="step">
+                    The star will turn yellow/gold indicating it's favorited
+                </div>
+            </div>
+
+            <h3>Viewing Favorite Projects</h3>
+            <div class="steps">
+                <div class="step">
+                    Go to Project List
+                </div>
+                <div class="step">
+                    Set the Status filter to <strong>"FAVORITE"</strong>
+                </div>
+                <div class="step">
+                    Only your favorited projects will be displayed
+                </div>
+            </div>
+
+            <h3>Removing from Favorites</h3>
+            <div class="steps">
+                <div class="step">
+                    Click the star icon again (it will turn gray/unfilled)
+                </div>
+                <div class="step">
+                    The project is removed from favorites
+                </div>
+            </div>
+
+            <div class="tip">
+                <strong>💡 Tip:</strong> Use favorites for projects you're actively working on or need frequent access to.
+            </div>
+        </section>
+
+        <section id="duplicating" class="section">
+            <h2>📋 Duplicating Projects</h2>
+            
+            <h3>When to Duplicate</h3>
+            <p>Duplicating is useful when:</p>
+            <ul style="margin-left: 1.5rem;">
+                <li>Creating similar projects with minor variations</li>
+                <li>Starting a new phase of an existing project</li>
+                <li>Creating a template from an existing project</li>
+            </ul>
+
+            <h3>How to Duplicate a Project</h3>
+            <div class="steps">
+                <div class="step">
+                    Go to Project List
+                </div>
+                <div class="step">
+                    Find the project you want to duplicate
+                </div>
+                <div class="step">
+                    Click the dropdown menu (three dots)
+                </div>
+                <div class="step">
+                    Select <strong>"Duplicate"</strong>
+                </div>
+                <div class="step">
+                    The create project sidebar will open with all fields pre-filled from the original project
+                </div>
+                <div class="step">
+                    Modify the project name (required - must be unique)
+                </div>
+                <div class="step">
+                    Update any other fields as needed
+                </div>
+                <div class="step">
+                    Click <strong>"Duplicate"</strong> button to create the copy
+                </div>
+            </div>
+
+            <h3>What Gets Duplicated</h3>
+            <p>When duplicating, the following are copied:</p>
+            <ul style="margin-left: 1.5rem;">
+                <li>All project fields and information</li>
+                <li>Team assignments</li>
+                <li>Estimates</li>
+                <li>Project configuration</li>
+            </ul>
+
+            <h3>What Doesn't Get Duplicated</h3>
+            <p>The following are NOT copied:</p>
+            <ul style="margin-left: 1.5rem;">
+                <li>Tasks/Deliverables (you'll need to create new ones)</li>
+                <li>Work items and time entries</li>
+                <li>Project history and activities</li>
+                <li>Files and documents</li>
+                <li>Feedback</li>
+            </ul>
+
+            <div class="note">
+                <strong>📌 Note:</strong> The duplicated project will have a new unique ID and code. Dates may need to be adjusted.
+            </div>
+        </section>
+    </main>
+
+    <footer style="background: var(--text-dark); color: white; padding: 2rem 0; margin-top: 3rem; text-align: center;">
+        <div class="container">
+            <p>&copy; 2024 Famstack. All rights reserved.</p>
+            <p style="margin-top: 1rem;">
+                <a href="index.html" style="color: white; text-decoration: underline; margin: 0 1rem;">Documentation</a>
+                <a href="faq/index.html" style="color: white; text-decoration: underline; margin: 0 1rem;">FAQ</a>
+            </p>
+        </div>
+    </footer>
+
+    <script src="js/navigation.js"></script>
+    <script src="js/search.js"></script>
+</body>
+</html>
+

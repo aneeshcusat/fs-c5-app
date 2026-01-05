@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Getting Started - Famstack Users Guide</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <img src="/favicon.ico" alt="Famstack Logo" class="header-logo" onerror="this.style.display='none'">
+                <div class="header-text">
+                    <h1>Famstack Users Guide</h1>
+                    <p class="subtitle">Complete Documentation & User Manual</p>
+                    <p class="version">Version 1.0</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="getting-started.html" class="active">Getting Started</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="tasks.html">Tasks</a></li>
+                <li><a href="hrms.html">HRMS</a></li>
+                <li><a href="sales.html">Sales</a></li>
+                <li><a href="reports.html">Reports</a></li>
+                <li><a href="advanced.html">Advanced</a></li>
+                <li><a href="access-controls.html">Access Controls</a></li>
+                <li><a href="application-configuration.html">Application Configuration</a></li>
+                <li><a href="faq/index.html">FAQ</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <aside class="sidebar">
+        <ul>
+            <li class="section-title">Quick Start</li>
+            <li><a href="getting-started.html" class="active">Getting Started</a></li>
+            <li><a href="#login">Login & Authentication</a></li>
+            <li><a href="#navigation">Navigation</a></li>
+            <li><a href="#basics">Basic Concepts</a></li>
+            <li><a href="#first-steps">First Steps</a></li>
+            <li><a href="#user-profile">User Profile</a></li>
+            <li><a href="#troubleshooting">Troubleshooting</a></li>
+        </ul>
+    </aside>
+
+    <main>
+        <div class="breadcrumb">
+            <a href="index.html">Home</a> <span>→</span> Getting Started
+        </div>
+
+        <section id="login" class="section">
+            <h2>🔐 Login & Authentication</h2>
+            
+            <h3>Accessing the System</h3>
+            <p>The Project Management System can be accessed through your web browser. You'll need your username and password, or you may use Microsoft Single Sign-On (SSO) if enabled for your organization.</p>
+
+            <h4>Standard Login Process</h4>
+            <div class="steps">
+                <div class="step">
+                    <strong>Step 1: Open the Application</strong>
+                    <div class="step-detail">
+                        Navigate to the application URL provided by your administrator. The login page will be displayed automatically.
+                    </div>
+                </div>
+                <div class="step">
+                    <strong>Step 2: Enter Credentials</strong>
+                    <div class="step-detail">
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                            <li>Enter your <strong>username</strong> in the username field</li>
+                            <li>Enter your <strong>password</strong> in the password field</li>
+                            <li>Click the eye icon to show/hide your password if needed</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="step">
+                    <strong>Step 3: Sign In</strong>
+                    <div class="step-detail">
+                        Click the <strong>"Sign In"</strong> button to authenticate. The system will validate your credentials and redirect you to your default dashboard.
+                    </div>
+                </div>
+                <div class="step">
+                    <strong>Step 4: Dashboard Access</strong>
+                    <div class="step-detail">
+                        After successful login, you'll be redirected to your default dashboard based on your access permissions:
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                            <li><strong>Project Dashboard:</strong> If you have project management access</li>
+                            <li><strong>HRMS Dashboard:</strong> If you have HRMS access</li>
+                            <li><strong>Sales Dashboard:</strong> If you have sales module access</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="screenshot">
+                Login Page - Enter your username and password
+            </div>
+
+            <h4>Microsoft Single Sign-On (SSO)</h4>
+            <p>If your organization has enabled Microsoft SSO:</p>
+            <div class="steps">
+                <div class="step">
+                    Click the <strong>"Sign in with Microsoft"</strong> button on the login page
+                </div>
+                <div class="step">
+                    You'll be redirected to Microsoft's login page
+                </div>
+                <div class="step">
+                    Enter your Microsoft account credentials
+                </div>
+                <div class="step">
+                    Grant permissions if prompted
+                </div>
+                <div class="step">
+                    You'll be automatically logged into the system
+                </div>
+            </div>
+
+            <div class="note">
+                <strong>📌 Note:</strong> SSO availability depends on your organization's configuration. If you don't see the Microsoft login option, use standard login.
+            </div>
+
+            <h4>Forgot Password</h4>
+            <p>If you've forgotten your password:</p>
+            <div class="steps">
+                <div class="step">
+                    Click the <strong>"Forgot Password"</strong> link on the login page
+                </div>
+                <div class="step">
+                    Enter your username or email address
+                </div>
+                <div class="step">
+                    Click <strong>"Submit"</strong> to receive password reset instructions
+                </div>
+                <div class="step">
+                    Check your email for reset instructions
+                </div>
+                <div class="step">
+                    Follow the link in the email to reset your password
+                </div>
+            </div>
+
+            <div class="warning">
+                <strong>⚠️ Warning:</strong> Password reset links expire after a certain time. If the link has expired, request a new one.
+            </div>
+
+            <h4>Account Activation</h4>
+            <p>New users may need to activate their account:</p>
+            <div class="steps">
+                <div class="step">
+                    You'll receive an activation email with a unique activation link
+                </div>
+                <div class="step">
+                    Click the activation link in the email
+                </div>
+                <div class="step">
+                    You'll be redirected to the account activation page
+                </div>
+                <div class="step">
+                    Set your new password (if required)
+                </div>
+                <div class="step">
+                    Complete any required profile information
+                </div>
+                <div class="step">
+                    Click <strong>"Activate Account"</strong> to complete the process
+                </div>
+            </div>
+
+            <h4>Session Management</h4>
+            <div class="field-description">
+                <strong>Session Timeout:</strong> For security, your session will automatically expire after a period of inactivity. You'll need to log in again if your session expires.
+            </div>
+            <div class="field-description">
+                <strong>Multiple Sessions:</strong> You can be logged in from multiple devices simultaneously, but be aware of potential conflicts when editing the same data.
+            </div>
+            <div class="field-description">
+                <strong>Logout:</strong> Always click the "Sign Out" button (top right → user icon → Sign out) when finished, especially on shared computers.
+            </div>
+        </section>
+
+        <section id="navigation" class="section">
+            <h2>🧭 Navigation & Interface Overview</h2>
+            
+            <h3>Main Layout Structure</h3>
+            <p>The application interface consists of several key areas:</p>
+
+            <h4>1. Top Header</h4>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h4>Menu Toggle</h4>
+                    <p>Hamburger icon (☰) to show/hide the left sidebar menu</p>
+                </div>
+                <div class="feature-card">
+                    <h4>Page Title</h4>
+                    <p>Displays the current page name</p>
+                </div>
+                <div class="feature-card">
+                    <h4>Search Bar</h4>
+                    <p>Global search to find projects, tasks, and other items</p>
+                </div>
+                <div class="feature-card">
+                    <h4>Notifications</h4>
+                    <p>Bell icon showing task notifications, messages, and alerts</p>
+                </div>
+                <div class="feature-card">
+                    <h4>User Menu</h4>
+                    <p>Your profile icon with dropdown menu (Profile, Settings, Sign Out)</p>
+                </div>
+            </div>
+
+            <h4>2. Left Sidebar Menu</h4>
+            <p>The left sidebar contains navigation to all major modules:</p>
+            <div class="steps">
+                <div class="step">
+                    <strong>Directories Section</strong>
+                    <div class="step-detail">
+                        Contains three main module directories:
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                            <li><strong>HRMS:</strong> Human Resource Management System features</li>
+                            <li><strong>Sales:</strong> Sales-related features (Bid Requests, Purchase Orders)</li>
+                            <li><strong>Project:</strong> Project management features</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="step">
+                    <strong>Module Expansion</strong>
+                    <div class="step-detail">
+                        Click on a module name to expand and see all available pages within that module
+                    </div>
+                </div>
+                <div class="step">
+                    <strong>Active Page Indicator</strong>
+                    <div class="step-detail">
+                        The current page is highlighted in blue to show where you are
+                    </div>
+                </div>
+            </div>
+
+            <div class="screenshot">
+                Left Sidebar Navigation - Showing module structure
+            </div>
+
+            <h4>3. Main Content Area</h4>
+            <p>This is where the main content of each page is displayed. It includes:</p>
+            <ul style="margin-left: 1.5rem;">
+                <li>Page-specific headers with filters and actions</li>
+                <li>Data tables, grids, or forms</li>
+                <li>Charts and visualizations (on dashboard pages)</li>
+                <li>Detail views and sidebars</li>
+            </ul>
+
+            <h4>4. Page Inner Header</h4>
+            <p>Most list pages have a header bar with:</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Element</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Team/Employee Filter</strong></td>
+                        <td>Dropdown to filter by team or employee</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Status Filter</strong></td>
+                        <td>Filter by status (All, Active, Archived, etc.)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Sort Options</strong></td>
+                        <td>Sort by date, name, or other criteria</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Date Range Selector</strong></td>
+                        <td>Filter items by date range</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Search/Filter Box</strong></td>
+                        <td>Text input to search or filter items</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Grid/List Toggle</strong></td>
+                        <td>Switch between grid and list view</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Create Button</strong></td>
+                        <td>Button to create new items (varies by page)</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h4>5. Right Sidebar (Contextual)</h4>
+            <p>Some pages show sidebars on the right for:</p>
+            <ul style="margin-left: 1.5rem;">
+                <li>Creating/editing items (slides in from right)</li>
+                <li>Viewing item details</li>
+                <li>Settings and configuration</li>
+                <li>Today's activities</li>
+            </ul>
+
+            <h4>6. Footer</h4>
+            <p>The footer typically displays system information and version details.</p>
+
+            <h4>7. Help Button</h4>
+            <p>A question mark icon (?) in the bottom right corner opens this documentation.</p>
+
+            <h3>View Modes</h3>
+            <h4>Grid View</h4>
+            <p>Displays items as cards in a grid layout. Best for:</p>
+            <ul style="margin-left: 1.5rem;">
+                <li>Visual browsing</li>
+                <li>Quick overview of multiple items</li>
+                <li>Seeing key information at a glance</li>
+            </ul>
+
+            <h4>List View</h4>
+            <p>Displays items in a table format. Best for:</p>
+            <ul style="margin-left: 1.5rem;">
+                <li>Detailed information</li>
+                <li>Sorting and filtering</li>
+                <li>Bulk operations</li>
+            </ul>
+
+            <div class="tip">
+                <strong>💡 Tip:</strong> Use the Grid/List toggle buttons in the page header to switch between views. Your preference may be remembered for future visits.
+            </div>
+        </section>
+
+        <section id="basics" class="section">
+            <h2>📚 Basic Concepts</h2>
+            
+            <h3>Understanding the System Structure</h3>
+            
+            <h4>Projects</h4>
+            <div class="field-description">
+                <strong>Definition:</strong> A project is a container for all work related to a specific client engagement, internal initiative, or business objective.
+            </div>
+            <div class="field-description">
+                <strong>Key Attributes:</strong>
+                <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                    <li>Project Name</li>
+                    <li>Team/Department</li>
+                    <li>Start and End Dates</li>
+                    <li>Status (Active, Completed, Archived)</li>
+                    <li>Account/Client Information</li>
+                </ul>
+            </div>
+
+            <h4>Tasks (Deliverables)</h4>
+            <div class="field-description">
+                <strong>Definition:</strong> Tasks are specific work items within a project. They can be deliverables, milestones, or activities.
+            </div>
+            <div class="field-description">
+                <strong>Key Attributes:</strong>
+                <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                    <li>Task Name</li>
+                    <li>Assigned Team Members</li>
+                    <li>Due Dates</li>
+                    <li>Status (Planned, In Progress, Completed, Closed)</li>
+                    <li>Estimated vs Actual Hours</li>
+                </ul>
+            </div>
+
+            <h4>Work Items</h4>
+            <div class="field-description">
+                <strong>Definition:</strong> Work items are the smallest unit of work, typically representing daily activities or time entries within a task.
+            </div>
+            <div class="field-description">
+                <strong>Key Attributes:</strong>
+                <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                    <li>Description of work</li>
+                    <li>Time spent</li>
+                    <li>Date</li>
+                    <li>Related task</li>
+                </ul>
+            </div>
+
+            <h4>Teams</h4>
+            <div class="field-description">
+                <strong>Definition:</strong> Teams are organizational units that group employees together. Projects are typically assigned to teams.
+            </div>
+
+            <h4>Accounts</h4>
+            <div class="field-description">
+                <strong>Definition:</strong> Accounts represent clients or business entities. Projects are associated with accounts.
+            </div>
+
+            <h3>Status Types</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Status</th>
+                        <th>Meaning</th>
+                        <th>When Used</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="badge badge-success">Active</span></td>
+                        <td>Project/Task is currently in progress</td>
+                        <td>Default status for new items</td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge badge-primary">Archived</span></td>
+                        <td>Project/Task is completed or inactive</td>
+                        <td>When work is finished but you want to keep records</td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge badge-danger">Deleted</span></td>
+                        <td>Item is marked for deletion</td>
+                        <td>Can be undone if marked by mistake</td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge badge-warning">Overdue</span></td>
+                        <td>Past due date</td>
+                        <td>Automatically applied when dates pass</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Permission Levels</h3>
+            <p>Your access to features depends on your role and permissions:</p>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h4>View</h4>
+                    <p>Can see and read information but cannot modify</p>
+                </div>
+                <div class="feature-card">
+                    <h4>Create</h4>
+                    <p>Can create new items</p>
+                </div>
+                <div class="feature-card">
+                    <h4>Edit</h4>
+                    <p>Can modify existing items</p>
+                </div>
+                <div class="feature-card">
+                    <h4>Delete</h4>
+                    <p>Can delete items (may require additional confirmation)</p>
+                </div>
+                <div class="feature-card">
+                    <h4>Archive</h4>
+                    <p>Can archive/unarchive items</p>
+                </div>
+                <div class="feature-card">
+                    <h4>Admin</h4>
+                    <p>Full access including configuration</p>
+                </div>
+            </div>
+
+            <div class="note">
+                <strong>📌 Note:</strong> If you don't see certain buttons or options, it's likely due to permission restrictions. Contact your administrator if you need additional access.
+            </div>
+        </section>
+
+        <section id="first-steps" class="section">
+            <h2>🎯 Your First Steps</h2>
+            
+            <h3>After Logging In</h3>
+            <div class="steps">
+                <div class="step">
+                    <strong>Step 1: Explore Your Dashboard</strong>
+                    <div class="step-detail">
+                        Take a moment to familiarize yourself with your dashboard. You'll see:
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                            <li>Summary statistics</li>
+                            <li>Recent activities</li>
+                            <li>Quick access to common tasks</li>
+                            <li>Charts and visualizations</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="step">
+                    <strong>Step 2: Check Your Profile</strong>
+                    <div class="step-detail">
+                        Click your profile icon (top right) → Profile to:
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                            <li>Verify your information is correct</li>
+                            <li>Update your profile picture</li>
+                            <li>Review your team assignments</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="step">
+                    <strong>Step 3: Explore the Menu</strong>
+                    <div class="step-detail">
+                        Click through the left sidebar menu to see what modules and features are available to you.
+                    </div>
+                </div>
+                <div class="step">
+                    <strong>Step 4: Try a Simple Task</strong>
+                    <div class="step-detail">
+                        Start with something simple like:
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                            <li>Viewing the project list</li>
+                            <li>Checking your timesheet</li>
+                            <li>Browsing your assigned tasks</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Common First Tasks</h3>
+            <h4>For Project Managers</h4>
+            <ol style="margin-left: 1.5rem;">
+                <li>Review existing projects</li>
+                <li>Create a test project to learn the process</li>
+                <li>Explore the task board</li>
+                <li>Check resource planner</li>
+            </ol>
+
+            <h4>For Team Members</h4>
+            <ol style="margin-left: 1.5rem;">
+                <li>Check your assigned tasks (To Do List)</li>
+                <li>Review timesheet submission process</li>
+                <li>Explore project details you're assigned to</li>
+                <li>Update your profile information</li>
+            </ol>
+
+            <h4>For Administrators</h4>
+            <ol style="margin-left: 1.5rem;">
+                <li>Review employee list</li>
+                <li>Check application configuration</li>
+                <li>Review access controls</li>
+                <li>Generate test reports</li>
+            </ol>
+        </section>
+
+        <section id="user-profile" class="section">
+            <h2>👤 User Profile & Settings</h2>
+            
+            <h3>Accessing Your Profile</h3>
+            <div class="steps">
+                <div class="step">
+                    Click your profile icon in the top right corner of the header
+                </div>
+                <div class="step">
+                    Select <strong>"Profile"</strong> from the dropdown menu
+                </div>
+                <div class="step">
+                    You'll be taken to your profile page
+                </div>
+            </div>
+
+            <h3>Profile Information</h3>
+            <p>Your profile page displays:</p>
+            <ul style="margin-left: 1.5rem;">
+                <li><strong>Personal Information:</strong> Name, email, phone</li>
+                <li><strong>Profile Picture:</strong> Click to upload or change</li>
+                <li><strong>Team Memberships:</strong> Teams you belong to</li>
+                <li><strong>Role Information:</strong> Your roles and permissions</li>
+                <li><strong>Project Assignments:</strong> Projects you're involved in</li>
+            </ul>
+
+            <h3>Changing Your Password</h3>
+            <div class="steps">
+                <div class="step">
+                    Go to Profile → Settings (or use the direct link from profile dropdown)
+                </div>
+                <div class="step">
+                    Find the "Change Password" section
+                </div>
+                <div class="step">
+                    Enter your current password
+                </div>
+                <div class="step">
+                    Enter your new password (must meet security requirements)
+                </div>
+                <div class="step">
+                    Confirm your new password
+                </div>
+                <div class="step">
+                    Click <strong>"Update Password"</strong>
+                </div>
+            </div>
+
+            <div class="warning">
+                <strong>⚠️ Password Requirements:</strong> Your password must meet your organization's security requirements (typically minimum length, complexity, etc.)
+            </div>
+
+            <h3>Updating Profile Picture</h3>
+            <div class="steps">
+                <div class="step">
+                    Go to your Profile page
+                </div>
+                <div class="step">
+                    Click on your current profile picture (or placeholder)
+                </div>
+                <div class="step">
+                    Select an image file from your computer
+                </div>
+                <div class="step">
+                    Crop/resize if needed using the image editor
+                </div>
+                <div class="step">
+                    Click <strong>"Save"</strong> to update
+                </div>
+            </div>
+
+            <div class="note">
+                <strong>📌 Note:</strong> Profile pictures should be square images. The system will help you crop them to the correct size.
+            </div>
+        </section>
+
+        <section id="troubleshooting" class="section">
+            <h2>🔧 Troubleshooting Common Issues</h2>
+            
+            <h3>Login Issues</h3>
+            <h4>Cannot Log In</h4>
+            <div class="steps">
+                <div class="step">
+                    <strong>Check Credentials:</strong> Ensure username and password are correct (check caps lock)
+                </div>
+                <div class="step">
+                    <strong>Clear Browser Cache:</strong> Clear cookies and cache, then try again
+                </div>
+                <div class="step">
+                    <strong>Try Different Browser:</strong> Some browsers may have compatibility issues
+                </div>
+                <div class="step">
+                    <strong>Check Internet Connection:</strong> Ensure you have a stable connection
+                </div>
+                <div class="step">
+                    <strong>Contact Administrator:</strong> If issues persist, your account may need to be reset
+                </div>
+            </div>
+
+            <h4>Session Expired</h4>
+            <p>If you see a "Session Expired" message:</p>
+            <ul style="margin-left: 1.5rem;">
+                <li>Simply log in again</li>
+                <li>Your work is typically saved automatically</li>
+                <li>Consider saving work more frequently if sessions expire often</li>
+            </ul>
+
+            <h3>Display Issues</h3>
+            <h4>Page Not Loading Properly</h4>
+            <div class="steps">
+                <div class="step">
+                    Refresh the page (F5 or Ctrl+R / Cmd+R)
+                </div>
+                <div class="step">
+                    Clear browser cache and cookies
+                </div>
+                <div class="step">
+                    Try a different browser
+                </div>
+                <div class="step">
+                    Check if JavaScript is enabled
+                </div>
+            </div>
+
+            <h4>Sidebar Not Showing</h4>
+            <p>If the left sidebar is hidden:</p>
+            <ul style="margin-left: 1.5rem;">
+                <li>Click the hamburger menu icon (☰) in the top left</li>
+                <li>On mobile devices, the sidebar may be hidden by default - tap the menu icon</li>
+            </ul>
+
+            <h3>Feature Not Available</h3>
+            <p>If you can't see a feature or button:</p>
+            <ul style="margin-left: 1.5rem;">
+                <li>Check if you have the required permissions (contact administrator)</li>
+                <li>Verify the feature is enabled for your organization</li>
+                <li>Ensure you're on the correct page</li>
+                <li>Some features may be module-specific</li>
+            </ul>
+
+            <h3>Data Not Appearing</h3>
+            <h4>Empty Lists</h4>
+            <div class="steps">
+                <div class="step">
+                    Check your filters - you may have filtered out all items
+                </div>
+                <div class="step">
+                    Clear all filters and try again
+                </div>
+                <div class="step">
+                    Check date range filters
+                </div>
+                <div class="step">
+                    Verify you're looking at the correct team/project
+                </div>
+            </div>
+
+            <h3>Performance Issues</h3>
+            <h4>Slow Loading</h4>
+            <ul style="margin-left: 1.5rem;">
+                <li>Check your internet connection speed</li>
+                <li>Reduce the date range in filters</li>
+                <li>Limit the number of items displayed</li>
+                <li>Close other browser tabs/applications</li>
+                <li>Clear browser cache</li>
+            </ul>
+
+            <h3>Getting Help</h3>
+            <p>If you continue to experience issues:</p>
+            <ol style="margin-left: 1.5rem;">
+                <li>Check this documentation for specific feature help</li>
+                <li>Contact your system administrator</li>
+                <li>Reach out to your team lead</li>
+                <li>Use the Help button (?) in the application</li>
+            </ol>
+        </section>
+    </main>
+
+    <footer style="background: var(--text-dark); color: white; padding: 2rem 0; margin-top: 3rem; text-align: center;">
+        <div class="container">
+            <p>&copy; 2024 Famstack. All rights reserved.</p>
+            <p style="margin-top: 1rem;">
+                <a href="index.html" style="color: white; text-decoration: underline; margin: 0 1rem;">Documentation</a>
+                <a href="faq/index.html" style="color: white; text-decoration: underline; margin: 0 1rem;">FAQ</a>
+            </p>
+        </div>
+    </footer>
+
+    <script src="js/navigation.js"></script>
+    <script src="js/search.js"></script>
+</body>
+</html>
+

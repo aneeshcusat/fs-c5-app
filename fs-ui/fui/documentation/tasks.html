@@ -1,0 +1,1224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tasks & Deliverables - Famstack Users Guide</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <img src="/favicon.ico" alt="Famstack Logo" class="header-logo" onerror="this.style.display='none'">
+                <div class="header-text">
+                    <h1>Famstack Users Guide</h1>
+                    <p class="subtitle">Complete Documentation & User Manual</p>
+                    <p class="version">Version 1.0</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="getting-started.html">Getting Started</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="tasks.html" class="active">Tasks</a></li>
+                <li><a href="hrms.html">HRMS</a></li>
+                <li><a href="sales.html">Sales</a></li>
+                <li><a href="reports.html">Reports</a></li>
+                <li><a href="advanced.html">Advanced</a></li>
+                <li><a href="access-controls.html">Access Controls</a></li>
+                <li><a href="application-configuration.html">Application Configuration</a></li>
+                <li><a href="faq/index.html">FAQ</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <aside class="sidebar">
+        <ul>
+            <li class="section-title">Tasks & Deliverables</li>
+            <li><a href="tasks.html" class="active">Tasks Overview</a></li>
+            <li><a href="#creating-tasks">Creating Tasks</a></li>
+            <li><a href="#task-fields">Task Fields Explained</a></li>
+            <li><a href="#editing-tasks">Editing Tasks</a></li>
+            <li><a href="#taskboard">Task Board (Kanban)</a></li>
+            <li><a href="#task-planner">Task Planner</a></li>
+            <li><a href="#work-items">Work Items</a></li>
+            <li><a href="#task-status">Task Status Management</a></li>
+            <li><a href="#assigning">Assigning Tasks</a></li>
+            <li><a href="#todo-list">To Do List</a></li>
+            <li><a href="#task-activity">Task Activity Calendar</a></li>
+        </ul>
+    </aside>
+
+    <main>
+        <div class="breadcrumb">
+            <a href="index.html">Home</a> <span>→</span> Tasks & Deliverables
+        </div>
+
+        <section id="creating-tasks" class="section">
+            <h2>➕ Creating Tasks (Deliverables)</h2>
+            
+            <h3>Understanding Tasks</h3>
+            <p>Tasks (also called Deliverables) are specific work items within a project. They represent milestones, deliverables, or activities that need to be completed.</p>
+
+            <h4>Where Tasks Live</h4>
+            <p>Tasks are created and managed within projects. You can access them through:</p>
+            <ul style="margin-left: 1.5rem;">
+                <li>Project Details → Deliverables tab</li>
+                <li>Task Board (Kanban view)</li>
+                <li>Task Planner (timeline view)</li>
+                <li>To Do List (your assigned tasks)</li>
+            </ul>
+
+            <h3>Creating a Task from Project Details</h3>
+            <div class="steps">
+                <div class="step">
+                    <strong>Step 1: Open Project</strong>
+                    <div class="step-detail">
+                        Navigate to Project List and click on a project name to open Project Details
+                    </div>
+                </div>
+                <div class="step">
+                    <strong>Step 2: Go to Deliverables Tab</strong>
+                    <div class="step-detail">
+                        Click on the "Deliverables" tab in the project details page. This shows all tasks for this project.
+                    </div>
+                </div>
+                <div class="step">
+                    <strong>Step 3: Click Create Task</strong>
+                    <div class="step-detail">
+                        Click the <strong>"CREATE TASK"</strong> button (usually at the top right of the deliverables section)
+                    </div>
+                </div>
+                <div class="step">
+                    <strong>Step 4: Fill Task Form</strong>
+                    <div class="step-detail">
+                        A sidebar will slide in from the right. Fill in the task details (see "Task Fields Explained" section below)
+                    </div>
+                </div>
+                <div class="step">
+                    <strong>Step 5: Submit</strong>
+                    <div class="step-detail">
+                        Click <strong>"Create"</strong> button. The task will be added to the project.
+                    </div>
+                </div>
+            </div>
+
+            <div class="screenshot">
+                Create Task Sidebar - Form with all task fields
+            </div>
+
+            <h3>Creating a Task from Task Board</h3>
+            <div class="steps">
+                <div class="step">
+                    Go to <strong>Project → Taskboard</strong>
+                </div>
+                <div class="step">
+                    Select the project from the project filter dropdown
+                </div>
+                <div class="step">
+                    Click <strong>"CREATE TASK"</strong> button
+                </div>
+                <div class="step">
+                    Fill the task form
+                </div>
+                <div class="step">
+                    The task will appear in the appropriate column based on its status
+                </div>
+            </div>
+
+            <h3>Creating a Task from Task Planner</h3>
+            <div class="steps">
+                <div class="step">
+                    Go to <strong>Project → Task Planner</strong>
+                </div>
+                <div class="step">
+                    Select project and date range
+                </div>
+                <div class="step">
+                    Click <strong>"CREATE TASK"</strong> or right-click on the timeline
+                </div>
+                <div class="step">
+                    Fill task details including dates
+                </div>
+                <div class="step">
+                    Task will appear on the timeline
+                </div>
+            </div>
+        </section>
+
+        <section id="task-fields" class="section">
+            <h2>📝 Task Fields - Complete Reference</h2>
+            
+            <h3>Required Fields</h3>
+            
+            <div class="field-description">
+                <strong>Task Name</strong>
+                <p>Enter a clear, descriptive name for the task. This should indicate what work needs to be done.</p>
+                <p><strong>Best Practice:</strong> Use action verbs (e.g., "Design Homepage", "Implement Login Feature", "Write Test Cases")</p>
+                <p><strong>Character Limit:</strong> Typically 255 characters</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Project</strong>
+                <p>The project this task belongs to. Usually auto-filled based on where you're creating the task.</p>
+                <p><strong>Note:</strong> You can change the project if needed, but typically tasks stay within their project.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Estimated Start Date</strong>
+                <p>When work on this task should begin.</p>
+                <p><strong>How to Select:</strong> Click the date field to open calendar picker. Select the start date.</p>
+                <p><strong>Validation:</strong> Must be within the project's date range.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Estimated Completion Date</strong>
+                <p>When this task should be completed.</p>
+                <p><strong>Important:</strong> Must be after start date and within project dates.</p>
+            </div>
+
+            <h3>Optional but Important Fields</h3>
+
+            <div class="field-description">
+                <strong>Description</strong>
+                <p>Detailed description of the task, including:</p>
+                <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                    <li>What needs to be done</li>
+                    <li>Acceptance criteria</li>
+                    <li>Dependencies</li>
+                    <li>Special instructions</li>
+                </ul>
+                <p><strong>Best Practice:</strong> Be as detailed as possible to avoid confusion.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Assignee(s)</strong>
+                <p>Team members responsible for completing this task.</p>
+                <p><strong>How to Assign:</strong>
+                    <ol style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                        <li>Click the assignee dropdown (may show "Select Assignee" or similar)</li>
+                        <li>Start typing a team member's name to search</li>
+                        <li>Select from the filtered list</li>
+                        <li>You can assign multiple people to one task</li>
+                    </ol>
+                </p>
+                <p><strong>Note:</strong> Only team members from the project's team will be available.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Estimated Hours</strong>
+                <p>How many hours this task is expected to take.</p>
+                <p><strong>Format:</strong> Enter as a number (e.g., "40" for 40 hours)</p>
+                <p><strong>Use:</strong> Used for planning, resource allocation, and reporting.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Priority</strong>
+                <p>Task priority level (if enabled).</p>
+                <p><strong>Options:</strong> Usually High, Medium, Low, or Critical</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Status</strong>
+                <p>Initial status of the task.</p>
+                <p><strong>Default:</strong> Usually "Planned" or "To Do"</p>
+                <p><strong>Options:</strong>
+                    <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                        <li><strong>Planned:</strong> Task is planned but not started</li>
+                        <li><strong>In Progress:</strong> Work has begun</li>
+                        <li><strong>Completed:</strong> Task is finished</li>
+                        <li><strong>Closed:</strong> Task is closed (final state)</li>
+                    </ul>
+                </p>
+            </div>
+
+            <div class="field-description">
+                <strong>Task Type</strong>
+                <p>Classification of the task (if enabled).</p>
+                <p><strong>Examples:</strong> Development, Design, Testing, Documentation, Review</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Dependencies</strong>
+                <p>Other tasks that must be completed before this one can start.</p>
+                <p><strong>How to Add:</strong>
+                    <ol style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                        <li>Click "Add Dependency" or similar</li>
+                        <li>Select the task that must be completed first</li>
+                        <li>Add multiple dependencies if needed</li>
+                    </ol>
+                </p>
+            </div>
+
+            <div class="field-description">
+                <strong>Tags/Labels</strong>
+                <p>Optional tags for categorization (if enabled).</p>
+                <p><strong>Use Cases:</strong> "Urgent", "Client Review", "Blocked", etc.</p>
+            </div>
+
+            <h3>Advanced Task Fields</h3>
+
+            <div class="field-description">
+                <strong>Recurring Task</strong>
+                <p>If this task repeats on a schedule.</p>
+                <p><strong>Configuration:</strong>
+                    <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                        <li>Select recurrence pattern (Daily, Weekly, Monthly, etc.)</li>
+                        <li>Set frequency (every X days/weeks/months)</li>
+                        <li>Set end date or number of occurrences</li>
+                    </ul>
+                </p>
+            </div>
+
+            <div class="field-description">
+                <strong>Checklist</strong>
+                <p>Add a checklist of sub-items within the task.</p>
+                <p><strong>How to Add:</strong>
+                    <ol style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                        <li>Click "Add Checklist Item" or "+"</li>
+                        <li>Enter item description</li>
+                        <li>Add more items as needed</li>
+                        <li>Check off items as they're completed</li>
+                    </ol>
+                </p>
+            </div>
+
+            <div class="field-description">
+                <strong>Attachments</strong>
+                <p>Upload files related to the task.</p>
+                <p><strong>Supported:</strong> Documents, images, spreadsheets, etc.</p>
+                <p><strong>How to Upload:</strong> Click "Attach File" or drag and drop files into the attachment area.</p>
+            </div>
+
+            <h3>Field Validation</h3>
+            <div class="warning">
+                <strong>Validation Rules:</strong>
+                <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                    <li>Task name is required and must be unique within the project</li>
+                    <li>Completion date must be after start date</li>
+                    <li>Task dates must be within project date range</li>
+                    <li>Estimated hours should be a positive number</li>
+                    <li>At least one assignee may be required (depends on configuration)</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="editing-tasks" class="section">
+            <h2>✏️ Editing Tasks</h2>
+            
+            <h3>How to Edit a Task</h3>
+            
+            <h4>Method 1: From Project Details</h4>
+            <div class="steps">
+                <div class="step">
+                    Open Project Details → Deliverables tab
+                </div>
+                <div class="step">
+                    Find the task in the list
+                </div>
+                <div class="step">
+                    Click the <strong>"Edit"</strong> button/icon for that task
+                </div>
+                <div class="step">
+                    Edit sidebar opens with all fields pre-filled
+                </div>
+                <div class="step">
+                    Make your changes
+                </div>
+                <div class="step">
+                    Click <strong>"Update"</strong> to save
+                </div>
+            </div>
+
+            <h4>Method 2: From Task Board</h4>
+            <div class="steps">
+                <div class="step">
+                    Go to Task Board
+                </div>
+                <div class="step">
+                    Click on a task card
+                </div>
+                <div class="step">
+                    Click <strong>"Edit"</strong> in the task details popup
+                </div>
+                <div class="step">
+                    Make changes and save
+                </div>
+            </div>
+
+            <h4>Method 3: From Task Details Page</h4>
+            <div class="steps">
+                <div class="step">
+                    Click on a task name to open Task Details
+                </div>
+                <div class="step">
+                    Click <strong>"Edit"</strong> button in the header
+                </div>
+                <div class="step">
+                    Edit and save
+                </div>
+            </div>
+
+            <h3>What Can Be Edited</h3>
+            <p>Most task fields can be edited, including:</p>
+            <ul style="margin-left: 1.5rem;">
+                <li>Task name and description</li>
+                <li>Dates (start and completion)</li>
+                <li>Assignee(s)</li>
+                <li>Estimated hours</li>
+                <li>Status</li>
+                <li>Priority</li>
+                <li>Dependencies</li>
+                <li>Checklist items</li>
+            </ul>
+
+            <h3>Bulk Editing Tasks</h3>
+            <p>Some views allow bulk operations:</p>
+            <div class="steps">
+                <div class="step">
+                    Select multiple tasks (checkboxes in list view)
+                </div>
+                <div class="step">
+                    Use bulk action menu
+                </div>
+                <div class="step">
+                    Choose action (Change Status, Reassign, etc.)
+                </div>
+                <div class="step">
+                    Apply changes to all selected tasks
+                </div>
+            </div>
+        </section>
+
+        <section id="taskboard" class="section">
+            <h2>📋 Task Board (Kanban View)</h2>
+            
+            <h3>Understanding the Task Board</h3>
+            <p>The Task Board provides a visual Kanban-style interface for managing tasks by their status. It's ideal for tracking work flow and seeing what's in progress.</p>
+
+            <h4>Accessing the Task Board</h4>
+            <div class="steps">
+                <div class="step">
+                    Navigate to <strong>Project → Taskboard</strong> from the left sidebar
+                </div>
+                <div class="step">
+                    Select a project from the project filter dropdown (top of page)
+                </div>
+                <div class="step">
+                    The task board will load showing all tasks for that project
+                </div>
+            </div>
+
+            <div class="screenshot">
+                Task Board - Kanban view with columns for each status
+            </div>
+
+            <h3>Task Board Structure</h3>
+            <p>The board is organized into columns, each representing a task status:</p>
+
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h4>Planned / To Do</h4>
+                    <p>Tasks that are planned but not yet started. This is typically the starting column.</p>
+                </div>
+                <div class="feature-card">
+                    <h4>In Progress</h4>
+                    <p>Tasks that are currently being worked on. Team members move tasks here when they start work.</p>
+                </div>
+                <div class="feature-card">
+                    <h4>Completed</h4>
+                    <p>Tasks that are finished but may need review or final approval.</p>
+                </div>
+                <div class="feature-card">
+                    <h4>Closed</h4>
+                    <p>Tasks that are fully complete and closed. This is the final state.</p>
+                </div>
+            </div>
+
+            <h3>Using Drag and Drop</h3>
+            <p>The primary way to update task status on the Task Board is through drag and drop:</p>
+            <div class="steps">
+                <div class="step">
+                    <strong>Find the Task</strong>
+                    <div class="step-detail">
+                        Locate the task card in its current column
+                    </div>
+                </div>
+                <div class="step">
+                    <strong>Click and Hold</strong>
+                    <div class="step-detail">
+                        Click on the task card and hold the mouse button down
+                    </div>
+                </div>
+                <div class="step">
+                    <strong>Drag to New Column</strong>
+                    <div class="step-detail">
+                        While holding, drag the card to the target status column
+                    </div>
+                </div>
+                <div class="step">
+                    <strong>Drop the Card</strong>
+                    <div class="step-detail">
+                        Release the mouse button when over the target column. The task status will update automatically.
+                    </div>
+                </div>
+            </div>
+
+            <div class="tip">
+                <strong>💡 Tip:</strong> On touch devices, tap and hold the task card, then drag it to the new column.
+            </div>
+
+            <h3>Task Cards on Board</h3>
+            <p>Each task is displayed as a card showing:</p>
+            <ul style="margin-left: 1.5rem;">
+                <li><strong>Task Name:</strong> Click to view/edit details</li>
+                <li><strong>Assignee Avatars:</strong> Small profile pictures of assigned team members</li>
+                <li><strong>Due Date:</strong> When the task is due</li>
+                <li><strong>Priority Indicator:</strong> Color coding or icon for priority</li>
+                <li><strong>Progress:</strong> Visual indicator if task has sub-items</li>
+                <li><strong>Time Estimate:</strong> Estimated hours (if shown)</li>
+            </ul>
+
+            <h3>Filtering on Task Board</h3>
+            <p>You can filter tasks on the board:</p>
+            <div class="steps">
+                <div class="step">
+                    Use the project dropdown to switch between projects
+                </div>
+                <div class="step">
+                    Use assignee filter to see only tasks assigned to specific people
+                </div>
+                <div class="step">
+                    Use date range to show only tasks within a timeframe
+                </div>
+                <div class="step">
+                    Use search to find specific tasks by name
+                </div>
+            </div>
+
+            <h3>Creating Tasks from Board</h3>
+            <div class="steps">
+                <div class="step">
+                    Click <strong>"CREATE TASK"</strong> button (usually top right)
+                </div>
+                <div class="step">
+                    Fill in task details
+                </div>
+                <div class="step">
+                    Select initial status (which column it should appear in)
+                </div>
+                <div class="step">
+                    Click <strong>"Create"</strong>
+                </div>
+                <div class="step">
+                    Task appears in the selected column
+                </div>
+            </div>
+
+            <h3>Viewing Task Details</h3>
+            <div class="steps">
+                <div class="step">
+                    Click on any task card
+                </div>
+                <div class="step">
+                    A popup or sidebar will show full task details
+                </div>
+                <div class="step">
+                    You can edit, add comments, update checklist, etc.
+                </div>
+                <div class="step">
+                    Close the popup to return to board view
+                </div>
+            </div>
+
+            <h3>Collapsing Columns</h3>
+            <p>To focus on specific columns:</p>
+            <ul style="margin-left: 1.5rem;">
+                <li>Click the collapse/expand icon on column headers</li>
+                <li>Collapsed columns show task count but hide cards</li>
+                <li>Useful for focusing on active work</li>
+            </ul>
+        </section>
+
+        <section id="task-planner" class="section">
+            <h2>📅 Task Planner</h2>
+            
+            <h3>Understanding Task Planner</h3>
+            <p>The Task Planner provides a timeline/Gantt-style view of tasks, showing when work is scheduled and helping with resource planning.</p>
+
+            <h4>Accessing Task Planner</h4>
+            <div class="steps">
+                <div class="step">
+                    Navigate to <strong>Project → Task Planner</strong>
+                </div>
+                <div class="step">
+                    Select project(s) from the filter
+                </div>
+                <div class="step">
+                    Select date range to view
+                </div>
+                <div class="step">
+                    Tasks will be displayed on the timeline
+                </div>
+            </div>
+
+            <div class="screenshot">
+                Task Planner - Timeline view showing tasks across dates
+            </div>
+
+            <h3>Task Planner Views</h3>
+            
+            <h4>Timeline View</h4>
+            <p>Shows tasks as horizontal bars on a calendar timeline:</p>
+            <ul style="margin-left: 1.5rem;">
+                <li>X-axis represents dates</li>
+                <li>Y-axis represents projects or team members</li>
+                <li>Task bars show start and end dates</li>
+                <li>Color coding indicates status or priority</li>
+            </ul>
+
+            <h4>Resource View</h4>
+            <p>Shows tasks grouped by assignee:</p>
+            <ul style="margin-left: 1.5rem;">
+                <li>See workload per team member</li>
+                <li>Identify over-allocated resources</li>
+                <li>Balance work distribution</li>
+            </ul>
+
+            <h3>Creating Tasks in Planner</h3>
+            <div class="steps">
+                <div class="step">
+                    Click <strong>"CREATE TASK"</strong> or right-click on timeline
+                </div>
+                <div class="step">
+                    Fill task details
+                </div>
+                <div class="step">
+                    Set start and end dates (these will position the task on timeline)
+                </div>
+                <div class="step">
+                    Assign team members
+                </div>
+                <div class="step">
+                    Task appears as a bar on the timeline
+                </div>
+            </div>
+
+            <h3>Modifying Tasks on Timeline</h3>
+            <div class="steps">
+                <div class="step">
+                    <strong>Resize Task:</strong> Drag the edges of a task bar to change its duration
+                </div>
+                <div class="step">
+                    <strong>Move Task:</strong> Drag the entire bar left/right to change dates
+                </div>
+                <div class="step">
+                    <strong>Edit Details:</strong> Click on task bar to open edit dialog
+                </div>
+            </div>
+
+            <h3>Viewing Dependencies</h3>
+            <p>If tasks have dependencies, they may be shown with connecting lines on the timeline.</p>
+
+            <h3>Zoom and Navigation</h3>
+            <ul style="margin-left: 1.5rem;">
+                <li><strong>Zoom In/Out:</strong> Use zoom controls to see more/less detail</li>
+                <li><strong>Scroll:</strong> Drag timeline or use scroll bars to navigate dates</li>
+                <li><strong>Today Indicator:</strong> A line or highlight shows today's date</li>
+                <li><strong>Date Range:</strong> Use date picker to jump to specific time periods</li>
+            </ul>
+        </section>
+
+        <section id="work-items" class="section">
+            <h2>⏱️ Work Items</h2>
+            
+            <h3>Understanding Work Items</h3>
+            <p>Work Items are the smallest unit of work tracking. They represent actual time spent on tasks, typically logged daily or per activity.</p>
+
+            <h4>Relationship: Project → Task → Work Item</h4>
+            <div class="module-section">
+                <p><strong>Project:</strong> High-level container (e.g., "Website Redesign")</p>
+                <p><strong>Task:</strong> Specific deliverable within project (e.g., "Design Homepage")</p>
+                <p><strong>Work Item:</strong> Actual work entry (e.g., "Worked on homepage layout - 4 hours")</p>
+            </div>
+
+            <h3>Viewing Work Items</h3>
+            <h4>From Task Details</h4>
+            <div class="steps">
+                <div class="step">
+                    Open a task (click task name)
+                </div>
+                <div class="step">
+                    Navigate to "Work Items" tab or section
+                </div>
+                <div class="step">
+                    See all work items logged for this task
+                </div>
+            </div>
+
+            <h4>From Project Details</h4>
+            <div class="steps">
+                <div class="step">
+                    Open project details
+                </div>
+                <div class="step">
+                    Go to Activity or Work Items section
+                </div>
+                <div class="step">
+                    View all work items across all tasks in the project
+                </div>
+            </div>
+
+            <h3>Work Item Information</h3>
+            <p>Each work item typically shows:</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Field</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Date</strong></td>
+                        <td>When the work was performed</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Task</strong></td>
+                        <td>Which task the work relates to</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Employee</strong></td>
+                        <td>Who did the work</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Hours</strong></td>
+                        <td>Time spent (e.g., 4.5 hours)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Description</strong></td>
+                        <td>What work was done</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Status</strong></td>
+                        <td>Work item status (if applicable)</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Creating Work Items</h3>
+            <p>Work items are typically created through:</p>
+            <ul style="margin-left: 1.5rem;">
+                <li><strong>Timesheet Entry:</strong> When logging time in your timesheet (see HRMS section)</li>
+                <li><strong>Task Details:</strong> Adding work items directly to a task</li>
+                <li><strong>Work Item Timer:</strong> Using a timer to track work in real-time</li>
+            </ul>
+
+            <h4>Adding Work Item from Task</h4>
+            <div class="steps">
+                <div class="step">
+                    Open task details
+                </div>
+                <div class="step">
+                    Go to Work Items section
+                </div>
+                <div class="step">
+                    Click <strong>"Add Work Item"</strong> or similar
+                </div>
+                <div class="step">
+                    Enter:
+                    <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                        <li>Date</li>
+                        <li>Hours worked</li>
+                        <li>Description of work</li>
+                    </ul>
+                </div>
+                <div class="step">
+                    Click <strong>"Save"</strong>
+                </div>
+            </div>
+
+            <h3>Work Item Timer</h3>
+            <p>Some tasks may have a timer feature for real-time tracking:</p>
+            <div class="steps">
+                <div class="step">
+                    Open task details
+                </div>
+                <div class="step">
+                    Click <strong>"Start Timer"</strong> button
+                </div>
+                <div class="step">
+                    Timer starts counting
+                </div>
+                <div class="step">
+                    Work on the task
+                </div>
+                <div class="step">
+                    Click <strong>"Stop Timer"</strong> when done
+                </div>
+                <div class="step">
+                    Add description and save as work item
+                </div>
+            </div>
+
+            <h3>Editing Work Items</h3>
+            <div class="steps">
+                <div class="step">
+                    Find the work item in the list
+                </div>
+                <div class="step">
+                    Click <strong>"Edit"</strong> (pencil icon or edit button)
+                </div>
+                <div class="step">
+                    Modify date, hours, or description
+                </div>
+                <div class="step">
+                    Save changes
+                </div>
+            </div>
+
+            <div class="warning">
+                <strong>⚠️ Note:</strong> Work items may be locked after timesheet submission. Check with your administrator about editing policies.
+            </div>
+
+            <h3>Deleting Work Items</h3>
+            <div class="steps">
+                <div class="step">
+                    Find the work item
+                </div>
+                <div class="step">
+                    Click <strong>"Delete"</strong> (trash icon)
+                </div>
+                <div class="step">
+                    Confirm deletion
+                </div>
+            </div>
+
+            <div class="warning">
+                <strong>⚠️ Warning:</strong> Deleting work items affects time tracking and reporting. Only delete if absolutely necessary.
+            </div>
+        </section>
+
+        <section id="task-status" class="section">
+            <h2>🔄 Task Status Management</h2>
+            
+            <h3>Understanding Task Statuses</h3>
+            <p>Tasks move through different statuses as work progresses. Understanding each status helps track project progress.</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Status</th>
+                        <th>Meaning</th>
+                        <th>When to Use</th>
+                        <th>Can Move To</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="badge badge-primary">Planned</span></td>
+                        <td>Task is planned but work hasn't started</td>
+                        <td>When creating new tasks</td>
+                        <td>In Progress</td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge badge-warning">In Progress</span></td>
+                        <td>Work has begun on this task</td>
+                        <td>When starting work</td>
+                        <td>Completed, Closed</td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge badge-success">Completed</span></td>
+                        <td>Work is finished, may need review</td>
+                        <td>When task work is done</td>
+                        <td>Closed</td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge">Closed</span></td>
+                        <td>Task is fully complete and closed</td>
+                        <td>Final state after review/approval</td>
+                        <td>None (final state)</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Changing Task Status</h3>
+            
+            <h4>Method 1: Drag and Drop (Task Board)</h4>
+            <div class="steps">
+                <div class="step">
+                    Go to Task Board
+                </div>
+                <div class="step">
+                    Drag task card to new status column
+                </div>
+                <div class="step">
+                    Status updates automatically
+                </div>
+            </div>
+
+            <h4>Method 2: Status Dropdown</h4>
+            <div class="steps">
+                <div class="step">
+                    Open task details
+                </div>
+                <div class="step">
+                    Find Status field
+                </div>
+                <div class="step">
+                    Select new status from dropdown
+                </div>
+                <div class="step">
+                    Save changes
+                </div>
+            </div>
+
+            <h4>Method 3: Quick Actions</h4>
+            <div class="steps">
+                <div class="step">
+                    In task list or board, use action buttons
+                </div>
+                <div class="step">
+                    Click status change buttons (e.g., "Move to In Progress", "Mark Complete")
+                </div>
+                <div class="step">
+                    Status updates immediately
+                </div>
+            </div>
+
+            <h3>Status Change Notifications</h3>
+            <p>When you change a task status:</p>
+            <ul style="margin-left: 1.5rem;">
+                <li>Assigned team members may receive notifications</li>
+                <li>Project managers are notified of status changes</li>
+                <li>Activity log records the change</li>
+                <li>Reports reflect the new status</li>
+            </ul>
+
+            <h3>Bulk Status Changes</h3>
+            <p>To change status of multiple tasks:</p>
+            <div class="steps">
+                <div class="step">
+                    Select multiple tasks (checkboxes)
+                </div>
+                <div class="step">
+                    Use bulk action menu
+                </div>
+                <div class="step">
+                    Select "Change Status"
+                </div>
+                <div class="step">
+                    Choose new status
+                </div>
+                <div class="step">
+                    Confirm - all selected tasks update
+                </div>
+            </div>
+        </section>
+
+        <section id="assigning" class="section">
+            <h2>👥 Assigning Tasks</h2>
+            
+            <h3>Assigning During Creation</h3>
+            <p>When creating a task, you can assign team members:</p>
+            <div class="steps">
+                <div class="step">
+                    In the Create Task form, find the "Assignee" or "Assigned To" field
+                </div>
+                <div class="step">
+                    Click the dropdown (may show "Select Assignee")
+                </div>
+                <div class="step">
+                    Start typing a team member's name
+                </div>
+                <div class="step">
+                    Select from the filtered list
+                </div>
+                <div class="step">
+                    To assign multiple people, select additional assignees
+                </div>
+            </div>
+
+            <h3>Assigning to Existing Tasks</h3>
+            <h4>Method 1: Edit Task</h4>
+            <div class="steps">
+                <div class="step">
+                    Open task for editing
+                </div>
+                <div class="step">
+                    Find Assignee field
+                </div>
+                <div class="step">
+                    Add or remove assignees
+                </div>
+                <div class="step">
+                    Save changes
+                </div>
+            </div>
+
+            <h4>Method 2: Quick Assign</h4>
+            <div class="steps">
+                <div class="step">
+                    In task list or board, find the task
+                </div>
+                <div class="step">
+                    Click assignee area (may show avatars or "Unassigned")
+                </div>
+                <div class="step">
+                    Select team member(s) from popup
+                </div>
+                <div class="step">
+                    Assignment updates immediately
+                </div>
+            </div>
+
+            <h3>Reassigning Tasks</h3>
+            <p>To change who's assigned to a task:</p>
+            <div class="steps">
+                <div class="step">
+                    Edit the task
+                </div>
+                <div class="step">
+                    Remove current assignee(s) if needed
+                </div>
+                <div class="step">
+                    Add new assignee(s)
+                </div>
+                <div class="step">
+                    Save - previous assignees are notified of removal, new ones are notified of assignment
+                </div>
+            </div>
+
+            <h3>Multiple Assignees</h3>
+            <p>Tasks can have multiple assignees:</p>
+            <ul style="margin-left: 1.5rem;">
+                <li>Useful for collaborative tasks</li>
+                <li>All assignees receive notifications</li>
+                <li>Any assignee can update task status</li>
+                <li>Work items can be logged by any assignee</li>
+            </ul>
+
+            <h3>Unassigning Tasks</h3>
+            <div class="steps">
+                <div class="step">
+                    Edit task
+                </div>
+                <div class="step">
+                    Remove all assignees (clear the assignee field)
+                </div>
+                <div class="step">
+                    Task becomes unassigned
+                </div>
+                <div class="step">
+                    Can be assigned later when ready
+                </div>
+            </div>
+
+            <div class="note">
+                <strong>📌 Note:</strong> Some organizations require tasks to have at least one assignee. Check with your administrator.
+            </div>
+        </section>
+
+        <section id="todo-list" class="section">
+            <h2>✅ To Do List</h2>
+            
+            <h3>Understanding Your To Do List</h3>
+            <p>The To Do List shows all tasks assigned to you across all projects. It's your personal task management view.</p>
+
+            <h4>Accessing Your To Do List</h4>
+            <div class="steps">
+                <div class="step">
+                    Navigate to <strong>Project → To Do List</strong>
+                </div>
+                <div class="step">
+                    Your assigned tasks are displayed automatically
+                </div>
+            </div>
+
+            <h3>To Do List Features</h3>
+            
+            <h4>Task Display</h4>
+            <p>Tasks are shown with:</p>
+            <ul style="margin-left: 1.5rem;">
+                <li>Task name and project</li>
+                <li>Due date</li>
+                <li>Status</li>
+                <li>Priority</li>
+                <li>Estimated hours</li>
+                <li>Progress indicator</li>
+            </ul>
+
+            <h4>Filtering Options</h4>
+            <p>Filter your tasks by:</p>
+            <ul style="margin-left: 1.5rem;">
+                <li><strong>Status:</strong> Show only tasks in specific status</li>
+                <li><strong>Project:</strong> Filter by project</li>
+                <li><strong>Due Date:</strong> Show overdue, due soon, or all</li>
+                <li><strong>Priority:</strong> Filter by priority level</li>
+            </ul>
+
+            <h4>Sorting</h4>
+            <p>Sort tasks by:</p>
+            <ul style="margin-left: 1.5rem;">
+                <li>Due date (earliest first)</li>
+                <li>Priority</li>
+                <li>Project</li>
+                <li>Status</li>
+            </ul>
+
+            <h3>Quick Actions from To Do List</h3>
+            <p>From your To Do List, you can:</p>
+            <ul style="margin-left: 1.5rem;">
+                <li>Click task name to open details</li>
+                <li>Change status quickly</li>
+                <li>Log time/work items</li>
+                <li>Add comments</li>
+                <li>Update checklist</li>
+            </ul>
+
+            <h3>Marking Tasks Complete</h3>
+            <div class="steps">
+                <div class="step">
+                    Find the task in your To Do List
+                </div>
+                <div class="step">
+                    Use quick action button to mark as "Completed"
+                </div>
+                <div class="step">
+                    Or open task and change status to "Completed"
+                </div>
+                <div class="step">
+                    Task moves out of active To Do List
+                </div>
+            </div>
+        </section>
+
+        <section id="task-activity" class="section">
+            <h2>📅 Task Activity Calendar</h2>
+            
+            <h3>Understanding Task Activity View</h3>
+            <p>The Task Activity Calendar provides a calendar view of all tasks and work items, showing when work is scheduled and performed.</p>
+
+            <h4>Accessing Task Activity</h4>
+            <div class="steps">
+                <div class="step">
+                    Navigate to <strong>Project → Task Activity</strong>
+                </div>
+                <div class="step">
+                    Select date range and filters
+                </div>
+                <div class="step">
+                    Calendar displays tasks and activities
+                </div>
+            </div>
+
+            <h3>Calendar Views</h3>
+            
+            <h4>Month View</h4>
+            <p>Shows a monthly calendar grid:</p>
+            <ul style="margin-left: 1.5rem;">
+                <li>Tasks appear on their due dates</li>
+                <li>Work items appear on dates they were performed</li>
+                <li>Color coding indicates status or type</li>
+                <li>Click on a date to see details</li>
+            </ul>
+
+            <h4>Week View</h4>
+            <p>Shows a weekly timeline:</p>
+            <ul style="margin-left: 1.5rem;">
+                <li>More detailed view of the week</li>
+                <li>See task durations</li>
+                <li>Better for planning</li>
+            </ul>
+
+            <h4>Day View</h4>
+            <p>Shows a single day in detail:</p>
+            <ul style="margin-left: 1.5rem;">
+                <li>All tasks and work items for that day</li>
+                <li>Time breakdown</li>
+                <li>Detailed activity log</li>
+            </ul>
+
+            <h3>Navigating the Calendar</h3>
+            <div class="steps">
+                <div class="step">
+                    Use arrow buttons to move between months/weeks/days
+                </div>
+                <div class="step">
+                    Click "Today" button to jump to current date
+                </div>
+                <div class="step">
+                    Use date picker to jump to specific date
+                </div>
+            </div>
+
+            <h3>Interpreting Calendar Colors</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Color/Indicator</th>
+                        <th>Meaning</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span style="color: #2563eb;">Blue</span></td>
+                        <td>Active/In Progress tasks</td>
+                    </tr>
+                    <tr>
+                        <td><span style="color: #10b981;">Green</span></td>
+                        <td>Completed tasks</td>
+                    </tr>
+                    <tr>
+                        <td><span style="color: #ef4444;">Red</span></td>
+                        <td>Overdue tasks</td>
+                    </tr>
+                    <tr>
+                        <td><span style="color: #f59e0b;">Orange/Yellow</span></td>
+                        <td>Due soon or high priority</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Creating Tasks from Calendar</h3>
+            <div class="steps">
+                <div class="step">
+                    Click on a date in the calendar
+                </div>
+                <div class="step">
+                    Select "Create Task" from popup
+                </div>
+                <div class="step">
+                    Start date will be pre-filled with selected date
+                </div>
+                <div class="step">
+                    Complete task creation form
+                </div>
+                <div class="step">
+                    Task appears on calendar
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer style="background: var(--text-dark); color: white; padding: 2rem 0; margin-top: 3rem; text-align: center;">
+        <div class="container">
+            <p>&copy; 2024 Famstack. All rights reserved.</p>
+            <p style="margin-top: 1rem;">
+                <a href="index.html" style="color: white; text-decoration: underline; margin: 0 1rem;">Documentation</a>
+                <a href="faq/index.html" style="color: white; text-decoration: underline; margin: 0 1rem;">FAQ</a>
+            </p>
+        </div>
+    </footer>
+
+    <script src="js/navigation.js"></script>
+    <script src="js/search.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,1753 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Access Controls & Permissions - Famstack Users Guide</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <img src="/favicon.ico" alt="Famstack Logo" class="header-logo" onerror="this.style.display='none'">
+                <div class="header-text">
+                    <h1>Famstack Users Guide</h1>
+                    <p class="subtitle">Complete Documentation & User Manual</p>
+                    <p class="version">Version 1.0</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="getting-started.html">Getting Started</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="tasks.html">Tasks</a></li>
+                <li><a href="hrms.html">HRMS</a></li>
+                <li><a href="sales.html">Sales</a></li>
+                <li><a href="reports.html">Reports</a></li>
+                <li><a href="advanced.html">Advanced</a></li>
+                <li><a href="access-controls.html" class="active">Access Controls</a></li>
+                <li><a href="application-configuration.html">Application Configuration</a></li>
+                <li><a href="faq/index.html">FAQ</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <aside class="sidebar">
+        <ul>
+            <li class="section-title">Access Controls</li>
+            <li><a href="access-controls.html" class="active">Overview</a></li>
+            <li><a href="#understanding">Understanding Access Controls</a></li>
+            <li><a href="#module-level">Module-Level Controls</a></li>
+            <li><a href="#project-access">Project Access Controls</a></li>
+            <li><a href="#task-access">Task Access Controls</a></li>
+            <li><a href="#workitem-access">Work Item Access Controls</a></li>
+            <li><a href="#timesheet-access">Timesheet Access Controls</a></li>
+            <li><a href="#employee-access">Employee Access Controls</a></li>
+            <li><a href="#report-access">Report Access Controls</a></li>
+            <li><a href="#other-access">Other Access Controls</a></li>
+            <li><a href="#troubleshooting">Troubleshooting</a></li>
+        </ul>
+    </aside>
+
+    <main>
+        <div class="breadcrumb">
+            <a href="index.html">Home</a> <span>→</span> Access Controls & Permissions
+        </div>
+
+        <section id="understanding" class="section">
+            <h2>🔐 Understanding Access Controls</h2>
+            
+            <h3>What are Access Controls?</h3>
+            <p>Access controls determine what features and functions you can use in the system. They are configured by your system administrator based on your role and responsibilities.</p>
+
+            <h3>How Access Controls Work</h3>
+            <p>The system uses a multi-level access control system:</p>
+            
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h4>Module-Level</h4>
+                    <p>Controls access to entire modules (HRMS, Sales, Project)</p>
+                </div>
+                <div class="feature-card">
+                    <h4>Feature-Level</h4>
+                    <p>Controls access to specific features within modules</p>
+                </div>
+                <div class="feature-card">
+                    <h4>Action-Level</h4>
+                    <p>Controls what actions you can perform (Create, Edit, Delete, View)</p>
+                </div>
+                <div class="feature-card">
+                    <h4>Data-Level</h4>
+                    <p>Controls which data you can see (your team only, all teams, etc.)</p>
+                </div>
+            </div>
+
+            <h3>Why You Might Not See Features</h3>
+            <p>If you don't see a button, menu item, or feature, it's likely because:</p>
+            <ul style="margin-left: 1.5rem;">
+                <li>Your role doesn't have permission for that feature</li>
+                <li>The feature is disabled for your organization</li>
+                <li>You need to be assigned to a specific team</li>
+                <li>The feature requires additional configuration</li>
+            </ul>
+
+            <div class="note">
+                <strong>📌 Note:</strong> Access controls are set by your system administrator. If you need access to a feature, contact your administrator or team lead.
+            </div>
+
+            <h3>Common Permission Types</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Permission</th>
+                        <th>What It Allows</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>View</strong></td>
+                        <td>See information but cannot modify</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Create</strong></td>
+                        <td>Create new items</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Edit</strong></td>
+                        <td>Modify existing items</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Delete</strong></td>
+                        <td>Delete items (may require confirmation)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Archive</strong></td>
+                        <td>Archive/unarchive items</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Remove</strong></td>
+                        <td>Permanently remove items</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Approve</strong></td>
+                        <td>Approve items (timesheets, requests, etc.)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="module-level" class="section">
+            <h2>📦 Module-Level Access Controls</h2>
+            
+            <h3>Module Access</h3>
+            <p>At the highest level, access controls determine which major modules you can access:</p>
+
+            <h4>HRMS Module</h4>
+            <p>Controls access to Human Resource Management features:</p>
+            <ul style="margin-left: 1.5rem;">
+                <li><strong>Dashboard:</strong> HRMS dashboard view</li>
+                <li><strong>Employees:</strong> Employee management</li>
+                <li><strong>Attendance:</strong> Attendance tracking</li>
+                <li><strong>Holidays:</strong> Holiday management</li>
+                <li><strong>Timesheet:</strong> Time entry</li>
+                <li><strong>Settings:</strong> HRMS settings</li>
+                <li><strong>Application Config:</strong> Application configuration</li>
+                <li><strong>Profile:</strong> User profile</li>
+                <li><strong>Invoices:</strong> Invoice management</li>
+            </ul>
+
+            <h4>Project Module</h4>
+            <p>Controls access to Project Management features:</p>
+            <ul style="margin-left: 1.5rem;">
+                <li><strong>Dashboard:</strong> Project dashboard</li>
+                <li><strong>Project List:</strong> View and manage projects</li>
+                <li><strong>Task Planner:</strong> Timeline planning</li>
+                <li><strong>To Do List:</strong> Your assigned tasks</li>
+                <li><strong>Accounts:</strong> Client account management</li>
+                <li><strong>Task Board:</strong> Kanban board</li>
+                <li><strong>Activities:</strong> Task activity calendar</li>
+                <li><strong>Reports:</strong> Project reports</li>
+                <li><strong>Feedback:</strong> Feedback system</li>
+                <li><strong>Calendar:</strong> Calendar view</li>
+                <li><strong>Search:</strong> Advanced search</li>
+                <li><strong>Resource Planner:</strong> Resource allocation</li>
+                <li><strong>Project Details:</strong> Detailed project view</li>
+            </ul>
+
+            <h4>Sales Module</h4>
+            <p>Controls access to Sales features:</p>
+            <ul style="margin-left: 1.5rem;">
+                <li><strong>Bid Requests:</strong> Manage bid opportunities</li>
+                <li><strong>Purchase Orders:</strong> Manage purchase orders</li>
+            </ul>
+
+            <h3>What Happens When a Module is Disabled?</h3>
+            <p>If you don't have access to a module:</p>
+            <ul style="margin-left: 1.5rem;">
+                <li>The module won't appear in the left sidebar menu</li>
+                <li>You cannot access any features within that module</li>
+                <li>Direct URLs to module pages will redirect or show access denied</li>
+            </ul>
+
+            <div class="tip">
+                <strong>💡 Tip:</strong> Your default landing page after login depends on which modules you have access to. The system redirects you to your default module dashboard.
+            </div>
+        </section>
+
+        <section id="project-access" class="section">
+            <h2>📁 Project Access Controls</h2>
+            
+            <h3>Basic Project Permissions</h3>
+            <p>These control what you can do with projects:</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Permission</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Create Projects</strong></td>
+                        <td>Allows you to create new projects. When enabled, you'll see the "Create Project" button and can access the project creation form. This permission is essential for project managers and team leads who need to initiate new work.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Edit Projects</strong></td>
+                        <td>Allows you to modify existing project information including dates, team assignments, descriptions, and other project fields. When enabled, you'll see edit buttons and can update project details. Some fields may still be restricted based on project status or other settings.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Duplicate Projects</strong></td>
+                        <td>Allows you to create copies of existing projects with all their settings and configurations. This is useful when starting similar projects or creating project templates. The duplicated project will have a new name and ID but retain original settings.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Delete Projects</strong></td>
+                        <td>Allows you to mark projects as deleted. Deleted projects are typically hidden from normal views but can be restored if needed. This is different from permanent removal - deleted projects retain their data for recovery purposes.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Permanently Remove Projects</strong></td>
+                        <td>Allows you to permanently delete projects from the system. This action cannot be undone and removes all project data including tasks, work items, and history. This permission is typically restricted to administrators only.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Archive Projects</strong></td>
+                        <td>Allows you to archive completed or inactive projects. Archived projects are moved out of active views but remain accessible for historical reference. You can also unarchive projects if needed. Archiving helps keep active project lists clean while preserving data.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>View Projects</strong></td>
+                        <td>Allows you to see project details and information. This is the most basic permission - without it, you cannot access any project information. Even with view permission, you may only see projects from teams you have access to.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Team-Based Access Controls</h3>
+            
+            <div class="field-description">
+                <strong>Switch Between Teams</strong>
+                <p>Controls whether you can change which team's projects you're viewing using the team filter dropdown.</p>
+                <p><strong>When Enabled:</strong> You can use the team dropdown filter to switch between different teams and view their projects. This is useful for managers who oversee multiple teams or need cross-team visibility.</p>
+                <p><strong>When Disabled:</strong> You can only see projects from teams you're directly assigned to. The team filter may be hidden or disabled, restricting you to your own team's projects only.</p>
+                <p><strong>Use Case:</strong> Typically enabled for managers, administrators, and cross-functional roles. Disabled for individual contributors who should focus on their own team's work.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Show Only Current Team Projects</strong>
+                <p>Restricts the project list to display only projects belonging to your currently selected team, even if you have access to multiple teams.</p>
+                <p><strong>When Enabled:</strong> The project list automatically filters to show only projects from your current team. You won't see projects from other teams you have access to unless you explicitly switch teams (if team switching is enabled).</p>
+                <p><strong>When Disabled:</strong> You can see projects from all teams you have access to in a single unified list, making it easier to view cross-team projects.</p>
+                <p><strong>Use Case:</strong> Useful for organizations that want to maintain team boundaries and reduce information overload. Disabled when cross-team collaboration is encouraged.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Access Other Teams' Projects</strong>
+                <p>Controls whether you can view and interact with projects that belong to teams other than your own.</p>
+                <p><strong>When Enabled:</strong> You can open, view details, and potentially edit projects from other teams (depending on your other permissions). This enables cross-team collaboration and visibility.</p>
+                <p><strong>When Disabled:</strong> You can only access projects from your own team. Attempting to access other teams' projects will result in an access denied message or the project won't appear in your views.</p>
+                <p><strong>Use Case:</strong> Enabled for collaborative environments where teams need to see each other's work. Disabled for strict team isolation or when data confidentiality requires team boundaries.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Show Only Active Teams When Creating Projects</strong>
+                <p>Controls which teams appear in the team selection dropdown when creating a new project.</p>
+                <p><strong>When Enabled:</strong> Only teams that are currently active appear in the dropdown. Inactive or archived teams are hidden, preventing assignment of projects to inactive teams.</p>
+                <p><strong>When Disabled:</strong> All teams (both active and inactive) may appear in the dropdown, allowing assignment to any team.</p>
+                <p><strong>Use Case:</strong> Typically enabled to prevent accidental assignment to inactive teams and maintain data integrity. Ensures projects are only created for active, functioning teams.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Show All Teams in Project Creation</strong>
+                <p>Controls whether you can select teams you're not assigned to when creating projects.</p>
+                <p><strong>When Enabled:</strong> When creating a project, you can select any team from the dropdown, even if you're not a member of that team. This allows project managers to create projects for any team.</p>
+                <p><strong>When Disabled:</strong> You can only select teams you're assigned to when creating projects, ensuring projects are created within your own team structure.</p>
+                <p><strong>Use Case:</strong> Enabled for project managers and administrators who need to create projects across the organization. Disabled to maintain team boundaries and prevent cross-team project creation.</p>
+            </div>
+
+            <h3>Status Management Controls</h3>
+            
+            <div class="field-description">
+                <strong>Change Project Status</strong>
+                <p>Controls whether you can modify a project's status (e.g., from Active to Completed, or from In Progress to On Hold).</p>
+                <p><strong>When Enabled:</strong> You can change project status using status dropdowns or status change buttons. This allows you to track project progress and update project state as work progresses.</p>
+                <p><strong>When Disabled:</strong> Project status is locked and cannot be changed. Only users with status change permission can update it. This prevents unauthorized status changes and maintains workflow integrity.</p>
+                <p><strong>Use Case:</strong> Typically enabled for project managers and team leads who need to track project progress. May be disabled for team members to prevent accidental status changes.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Move Status Backwards</strong>
+                <p>Controls whether you can change a project's status to a previous state (e.g., moving from "Completed" back to "In Progress" or from "In Progress" back to "Planned").</p>
+                <p><strong>When Enabled:</strong> You can move project status backwards in the workflow. This is useful when a project needs to be reopened, work needs to be redone, or status was changed incorrectly.</p>
+                <p><strong>When Disabled:</strong> You can only move status forward (e.g., Planned → In Progress → Completed). Once a status is reached, you cannot go back, maintaining a forward-only workflow.</p>
+                <p><strong>Use Case:</strong> Disabled for strict workflows where status progression should be one-way. Enabled when flexibility is needed to correct mistakes or handle project changes.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Allowed Status Changes</strong>
+                <p>Defines which specific statuses you can change a project to, even if status changes are generally allowed.</p>
+                <p><strong>How It Works:</strong> This creates a whitelist of statuses you can select. For example, you might be able to change status to "In Progress" or "On Hold" but not to "Completed" (which might require approval).</p>
+                <p><strong>Example:</strong> A team member might be able to change status to "In Progress" or "Blocked" but cannot mark a project as "Completed" - only project managers can do that.</p>
+                <p><strong>Use Case:</strong> Used to implement role-based status workflows where different roles can only move projects to certain statuses, ensuring proper approval processes and workflow control.</p>
+            </div>
+
+            <h3>Deliverable (Task) Access Controls</h3>
+            
+            <div class="field-description">
+                <strong>View Tasks in Other Teams' Projects</strong>
+                <p>Controls whether you can see and view tasks (deliverables) that belong to projects from teams other than your own.</p>
+                <p><strong>When Enabled:</strong> You can open projects from other teams and see all their tasks, task details, assignments, and progress. This enables cross-team visibility and collaboration.</p>
+                <p><strong>When Disabled:</strong> Even if you can view a project from another team, you cannot see its tasks. Tasks are hidden to maintain team boundaries and task-level privacy.</p>
+                <p><strong>Use Case:</strong> Enabled for collaborative environments or when teams need visibility into each other's work. Disabled when task-level information should remain team-private.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Create Tasks in Other Teams' Projects</strong>
+                <p>Controls whether you can add new tasks (deliverables) to projects that belong to other teams.</p>
+                <p><strong>When Enabled:</strong> You can create tasks in projects from any team you have access to. This allows cross-team collaboration where team members can contribute tasks to other teams' projects.</p>
+                <p><strong>When Disabled:</strong> You can only create tasks in projects from your own team. This maintains team boundaries and ensures tasks are created by the appropriate team members.</p>
+                <p><strong>Use Case:</strong> Enabled for collaborative projects where multiple teams contribute. Disabled to maintain clear ownership and prevent unauthorized task creation in other teams' projects.</p>
+            </div>
+
+            <h3>Estimate Controls</h3>
+            
+            <div class="field-description">
+                <strong>View Service Line Estimates</strong>
+                <p>Controls whether you can see service line estimates (breakdown of estimated work by service type, such as Development, Design, Testing, etc.).</p>
+                <p><strong>When Enabled:</strong> You can view detailed service line estimates showing how project work is broken down by service type, including estimated hours and costs per service line.</p>
+                <p><strong>When Disabled:</strong> Service line estimates are hidden from view. You may still see overall project estimates but not the detailed breakdown by service type.</p>
+                <p><strong>Use Case:</strong> Typically enabled for project managers and finance teams who need detailed cost breakdowns. May be disabled for team members who only need high-level project information.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Edit Purchase Order Information on Projects</strong>
+                <p>Controls whether you can modify purchase order details that are linked to a project.</p>
+                <p><strong>When Enabled:</strong> You can edit purchase order information directly from the project page, including PO number, dates, and related details. This allows project managers to update PO information as needed.</p>
+                <p><strong>When Disabled:</strong> Purchase order information is read-only on projects. Changes must be made in the Purchase Order module itself, maintaining data integrity and preventing conflicts.</p>
+                <p><strong>Use Case:</strong> Enabled when project managers need flexibility to update PO details. Disabled to maintain single source of truth and prevent data inconsistencies between projects and purchase orders.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Project Dates Restricted by Purchase Order Dates</strong>
+                <p>Controls whether project start and end dates must fall within the date range specified in the linked purchase order.</p>
+                <p><strong>When Enabled:</strong> When a project is linked to a purchase order, the project's start and end dates cannot extend beyond the PO's date range. This ensures billing accuracy and contract compliance. You'll see validation errors if you try to set dates outside the PO range.</p>
+                <p><strong>When Disabled:</strong> Project dates can be set independently of purchase order dates, allowing flexibility in project planning even when linked to a PO.</p>
+                <p><strong>Use Case:</strong> Enabled to ensure projects align with contract terms and billing periods. Prevents projects from being scheduled outside authorized work periods, maintaining financial accuracy and compliance.</p>
+            </div>
+
+            <h4>Service Line Estimate - Hours</h4>
+            <div class="field-description">
+                <strong>View Estimated Hours</strong>
+                <p>Controls whether you can see the estimated hours for each service line in project estimates.</p>
+                <p><strong>When Enabled:</strong> Estimated hours are displayed for each service line, showing how many hours are allocated to Development, Design, Testing, etc.</p>
+                <p><strong>When Disabled:</strong> Estimated hours are hidden, even if service line estimates are visible. This may be used to hide detailed hour breakdowns while showing other estimate information.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Edit Estimated Hours</strong>
+                <p>Controls whether you can modify the estimated hours for service lines in project estimates.</p>
+                <p><strong>When Enabled:</strong> You can adjust estimated hours for each service line, allowing you to refine estimates as project details become clearer.</p>
+                <p><strong>When Disabled:</strong> Estimated hours are read-only. Changes must be made by users with edit permission, maintaining estimate integrity and preventing unauthorized modifications.</p>
+            </div>
+
+            <h4>Service Line Estimate - Costs</h4>
+            <div class="field-description">
+                <strong>View Estimated Costs</strong>
+                <p>Controls whether you can see the estimated costs (monetary values) for each service line in project estimates.</p>
+                <p><strong>When Enabled:</strong> Estimated costs are displayed showing the financial value allocated to each service line. This is important for budgeting and financial planning.</p>
+                <p><strong>When Disabled:</strong> Cost information is hidden, even if other estimate details are visible. This may be used to restrict financial information to authorized personnel only.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Edit Estimated Costs</strong>
+                <p>Controls whether you can modify the estimated costs for service lines in project estimates.</p>
+                <p><strong>When Enabled:</strong> You can adjust estimated costs, allowing you to update budget allocations and financial estimates as project scope changes.</p>
+                <p><strong>When Disabled:</strong> Estimated costs are read-only. Only authorized users (typically finance or senior management) can modify cost estimates, maintaining financial control and budget integrity.</p>
+            </div>
+
+            <h3>Checklist Controls</h3>
+            <p>These controls manage access to project checklists - lists of items that need to be completed for a project:</p>
+            
+            <div class="field-description">
+                <strong>Use Checklists</strong>
+                <p>Controls whether checklists are available and can be used in projects.</p>
+                <p><strong>When Enabled:</strong> Checklists feature is available. You can create, view, and manage checklists within projects to track completion of multiple items.</p>
+                <p><strong>When Disabled:</strong> Checklists are not available. The checklist feature is hidden from project views, and you cannot create or use checklists.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Save Checklist Items</strong>
+                <p>Controls whether you can save new checklist items or changes to existing checklist items.</p>
+                <p><strong>When Enabled:</strong> You can add new items to checklists and save changes. This allows you to build and maintain project checklists.</p>
+                <p><strong>When Disabled:</strong> You cannot save checklist changes. You may be able to view checklists but cannot modify them, maintaining checklist integrity.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Mark Checklist Items as Complete</strong>
+                <p>Controls whether you can check off individual checklist items as completed.</p>
+                <p><strong>When Enabled:</strong> You can mark individual checklist items as done by checking them off. This allows you to track progress on checklist items.</p>
+                <p><strong>When Disabled:</strong> You cannot mark items as complete. Checklist items remain unchecked, preventing progress tracking on individual items.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Complete Entire Checklist</strong>
+                <p>Controls whether you can mark an entire checklist as complete (all items done).</p>
+                <p><strong>When Enabled:</strong> You can mark the entire checklist as complete, indicating all items are finished. This is useful for project milestones or phase completion.</p>
+                <p><strong>When Disabled:</strong> You cannot mark checklists as complete. Checklists must be completed item-by-item, or completion must be done by authorized users.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Modify Checklist Items</strong>
+                <p>Controls whether you can edit, delete, or reorder checklist items.</p>
+                <p><strong>When Enabled:</strong> You can edit item descriptions, delete items, reorder items, and make other modifications to checklist structure.</p>
+                <p><strong>When Disabled:</strong> Checklist items are read-only. You can view and check items but cannot modify their content or structure, maintaining checklist consistency.</p>
+            </div>
+
+            <h3>Resource Allocation Controls</h3>
+            
+            <div class="field-description">
+                <strong>Resource-Level Hour Allocation</strong>
+                <p>Controls whether you can allocate hours at the individual resource (team member) level within projects, rather than just at the project or task level.</p>
+                <p><strong>When Enabled:</strong> You can assign specific hour allocations to individual team members within a project. This allows detailed resource planning showing exactly how many hours each person is allocated to the project.</p>
+                <p><strong>When Disabled:</strong> Hour allocation is done at higher levels (project or task level) only. You cannot specify individual team member hour allocations, simplifying resource planning.</p>
+                <p><strong>Use Case:</strong> Enabled for detailed resource planning and capacity management. Allows project managers to see and plan individual team member workloads. Disabled when simpler, project-level allocation is sufficient.</p>
+            </div>
+        </section>
+
+        <section id="task-access" class="section">
+            <h2>✅ Task (Deliverable) Access Controls</h2>
+            
+            <h3>Basic Task Permissions</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Permission</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Create Tasks</strong></td>
+                        <td>Allows you to create new tasks (deliverables) within projects. When enabled, you'll see the "Create Task" button and can add new work items to projects. Essential for team members and project managers who need to break down work into manageable tasks.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Edit Tasks</strong></td>
+                        <td>Allows you to modify existing task information including names, descriptions, dates, assignments, and other task fields. When enabled, you can update task details as work progresses or requirements change.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Duplicate Tasks</strong></td>
+                        <td>Allows you to create copies of existing tasks with all their settings. Useful when creating similar tasks or when tasks need to be repeated. The duplicated task will have a new name but retain original settings like estimates and assignments.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Delete Tasks</strong></td>
+                        <td>Allows you to mark tasks as deleted. Deleted tasks are typically hidden from normal views but can be restored if needed. This is different from permanent removal - deleted tasks retain their data for recovery purposes.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Permanently Remove Tasks</strong></td>
+                        <td>Allows you to permanently delete tasks from the system. This action cannot be undone and removes all task data including work items and history. This permission is typically restricted to administrators only.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Archive Tasks</strong></td>
+                        <td>Allows you to archive completed or inactive tasks. Archived tasks are moved out of active views but remain accessible for historical reference. You can also unarchive tasks if needed.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>View Tasks</strong></td>
+                        <td>Allows you to see task details and information. This is the most basic permission - without it, you cannot access any task information. Even with view permission, you may only see tasks from projects you have access to.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Task Estimate Controls</h3>
+            
+            <div class="field-description">
+                <strong>Edit Task Estimated Hours</strong>
+                <p>Controls whether you can modify the estimated hours for tasks (deliverables).</p>
+                <p><strong>When Enabled:</strong> You can update the estimated hours for tasks, allowing you to refine estimates as you learn more about the work required. This helps maintain accurate project planning.</p>
+                <p><strong>When Disabled:</strong> Estimated hours are read-only. Only users with edit permission can modify task estimates, maintaining estimate integrity and preventing unauthorized changes.</p>
+                <p><strong>Use Case:</strong> Typically enabled for project managers and team leads who need to adjust estimates. May be disabled for team members to prevent estimate inflation or unauthorized modifications.</p>
+            </div>
+
+            <h3>Team-Based Task Controls</h3>
+            
+            <div class="field-description">
+                <strong>Switch Between Teams When Viewing Tasks</strong>
+                <p>Controls whether you can change which team's tasks you're viewing using the team filter dropdown.</p>
+                <p><strong>When Enabled:</strong> You can use the team dropdown filter to switch between different teams and view their tasks. This is useful for managers who oversee multiple teams.</p>
+                <p><strong>When Disabled:</strong> You can only see tasks from teams you're directly assigned to. The team filter may be hidden or disabled.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Show Only Active Teams When Creating Tasks</strong>
+                <p>Controls which teams appear in the team selection dropdown when creating a new task.</p>
+                <p><strong>When Enabled:</strong> Only teams that are currently active appear in the dropdown. Inactive or archived teams are hidden, preventing assignment of tasks to inactive teams.</p>
+                <p><strong>When Disabled:</strong> All teams (both active and inactive) may appear in the dropdown.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Access Tasks from Other Teams</strong>
+                <p>Controls whether you can view and interact with tasks that belong to projects from teams other than your own.</p>
+                <p><strong>When Enabled:</strong> You can access tasks in projects from other teams, enabling cross-team collaboration and visibility.</p>
+                <p><strong>When Disabled:</strong> You can only access tasks from your own team's projects, maintaining team boundaries.</p>
+            </div>
+
+            <h3>Task Status Controls</h3>
+            <p>These controls manage how you can change task status (e.g., Planned, In Progress, Completed):</p>
+            
+            <div class="field-description">
+                <strong>Change Task Status</strong>
+                <p>Controls whether you can modify a task's status (e.g., from Planned to In Progress, or from In Progress to Completed).</p>
+                <p><strong>When Enabled:</strong> You can change task status using status dropdowns or drag-and-drop on the Task Board. This allows you to track task progress as work advances.</p>
+                <p><strong>When Disabled:</strong> Task status is locked and cannot be changed. Only users with status change permission can update it.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Move Task Status Backwards</strong>
+                <p>Controls whether you can change a task's status to a previous state (e.g., moving from "Completed" back to "In Progress").</p>
+                <p><strong>When Enabled:</strong> You can move task status backwards, useful when a task needs to be reopened or work needs to be redone.</p>
+                <p><strong>When Disabled:</strong> You can only move status forward, maintaining a forward-only workflow.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Allowed Task Status Changes</strong>
+                <p>Defines which specific statuses you can change a task to, even if status changes are generally allowed.</p>
+                <p><strong>How It Works:</strong> Creates a whitelist of statuses you can select. For example, you might be able to change status to "In Progress" but not to "Completed" (which might require approval).</p>
+            </div>
+
+            <h3>Task Checklist Controls</h3>
+            <p>Same checklist controls as projects (see Project Access Controls section).</p>
+        </section>
+
+        <section id="workitem-access" class="section">
+            <h2>⏱️ Work Item Access Controls</h2>
+            
+            <h3>Basic Work Item Permissions</h3>
+            <p>Work items are individual time entries representing actual work performed. These permissions control what you can do with work items:</p>
+            <ul style="margin-left: 1.5rem;">
+                <li><strong>Create:</strong> Add new work item entries to log time worked</li>
+                <li><strong>Edit:</strong> Modify existing work item details (subject to restrictions below)</li>
+                <li><strong>Delete:</strong> Remove work items (subject to time restrictions)</li>
+                <li><strong>View:</strong> See work item information</li>
+                <li><strong>Archive:</strong> Archive completed work items</li>
+                <li><strong>Remove:</strong> Permanently delete work items</li>
+                <li><strong>Duplicate:</strong> Copy work items for similar entries</li>
+            </ul>
+
+            <h3>Editing Completed Work Items</h3>
+            
+            <div class="field-description">
+                <strong>Edit Completed Work Item Information</strong>
+                <p>Controls whether you can modify the description, date, or other information on work items that have already been completed or submitted.</p>
+                <p><strong>When Enabled:</strong> You can edit completed work items to correct mistakes, update descriptions, or change dates. This allows you to fix errors even after work items are marked as complete.</p>
+                <p><strong>When Disabled:</strong> Completed work items are locked and cannot be edited. This prevents changes to historical time entries and maintains data integrity. Corrections may require administrator approval.</p>
+                <p><strong>Use Case:</strong> Enabled when flexibility is needed to correct errors. Disabled to maintain audit trails and prevent tampering with historical time data.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Edit Hours on Completed Work Items</strong>
+                <p>Controls whether you can modify the number of hours logged on work items that have been completed.</p>
+                <p><strong>When Enabled:</strong> You can adjust hours on completed work items, allowing you to correct time entry mistakes or update hours after completion.</p>
+                <p><strong>When Disabled:</strong> Hours on completed work items are locked. This prevents changes to historical time data and maintains billing accuracy. Hour corrections may require manager approval.</p>
+                <p><strong>Use Case:</strong> Typically disabled to prevent retroactive hour changes that could affect billing or reporting. Enabled only when necessary for error correction with proper oversight.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Edit Estimated Hours on Completed Work Items</strong>
+                <p>Controls whether you can modify estimated hours on work items that have been completed.</p>
+                <p><strong>When Enabled:</strong> You can update estimated hours even after work is complete, allowing you to refine estimates based on actual work performed.</p>
+                <p><strong>When Disabled:</strong> Estimated hours are locked once work items are completed, maintaining the original estimate for comparison purposes.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>View Estimated Hours on Work Items</strong>
+                <p>Controls whether you can see the estimated hours alongside actual hours logged in work items.</p>
+                <p><strong>When Enabled:</strong> Estimated hours are displayed, allowing you to compare estimated vs actual time spent. This helps with planning and identifying estimation accuracy.</p>
+                <p><strong>When Disabled:</strong> Estimated hours are hidden. You only see actual hours logged, not the original estimates.</p>
+                <p><strong>Use Case:</strong> Enabled for project managers and team leads who need to track estimation accuracy. May be disabled for team members to reduce information overload.</p>
+            </div>
+
+            <h3>Time-Based Restrictions</h3>
+            
+            <div class="field-description">
+                <strong>Delete Work Items Until Next Day (Time Limit)</strong>
+                <p>Controls how long after creating a work item you can delete it. This creates a time window (e.g., until 10 AM the next day) during which work items can be deleted.</p>
+                <p><strong>How It Works:</strong> After the specified time limit passes, work items become permanent and cannot be deleted. This prevents accidental deletion of important time entries while still allowing corrections shortly after entry.</p>
+                <p><strong>Example:</strong> If set to "10 AM next day", you can delete a work item entered on Monday until 10 AM on Tuesday. After that, it's locked.</p>
+                <p><strong>Use Case:</strong> Prevents deletion of historical time entries while allowing quick corrections for recent mistakes. Helps maintain accurate time records and billing data.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Edit Hours on Completed Work Items (Time Limit)</strong>
+                <p>Controls how long after completing a work item you can still edit its hours. This creates a time window (e.g., until 10 AM the next day) during which hours can be modified.</p>
+                <p><strong>How It Works:</strong> After the specified time limit passes, hours on completed work items become locked and cannot be changed. This prevents retroactive hour modifications while allowing corrections shortly after completion.</p>
+                <p><strong>Example:</strong> If set to "10 AM next day", you can edit hours on a work item completed on Monday until 10 AM on Tuesday.</p>
+                <p><strong>Use Case:</strong> Balances the need for error correction with the need to maintain historical data integrity. Prevents changes to old time entries that could affect billing or reporting.</p>
+            </div>
+
+            <h3>Date Restrictions</h3>
+            
+            <div class="field-description">
+                <strong>Log Leave/Holiday for Future Dates</strong>
+                <p>Controls whether you can enter leave or holiday time entries for dates that haven't occurred yet.</p>
+                <p><strong>When Enabled:</strong> You can log planned leave or holidays in advance. This allows you to pre-enter time off, helping with planning and ensuring your timesheet is complete.</p>
+                <p><strong>When Disabled:</strong> You can only log leave/holiday for past or current dates. Future dates are not available for time entry, preventing premature leave logging.</p>
+                <p><strong>Use Case:</strong> Enabled to allow advance planning of time off. Disabled to prevent logging leave before it's actually taken, maintaining accuracy of actual time off records.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Log Leave/Holiday for Past Dates</strong>
+                <p>Controls whether you can enter leave or holiday time entries for dates that have already passed.</p>
+                <p><strong>When Enabled:</strong> You can log leave or holidays retroactively for past dates. This allows you to catch up on missed time entries or correct omissions.</p>
+                <p><strong>When Disabled:</strong> You can only log leave/holiday for current or future dates. Past dates are locked, preventing retroactive leave entries.</p>
+                <p><strong>Use Case:</strong> Enabled to allow correction of missed entries. Disabled to prevent backdating of leave, which could affect attendance records and payroll accuracy.</p>
+            </div>
+
+            <h3>Project Work Item Date Restrictions</h3>
+            
+            <div class="field-description">
+                <strong>Prevent Creating Project Work Items Before X Working Days</strong>
+                <p>Controls whether you can create project work items for dates that are more than X working days in the past.</p>
+                <p><strong>When Enabled:</strong> You cannot create project work items for dates that are more than X working days ago. This prevents logging time for dates that are too far in the past, helping maintain accurate and timely time tracking.</p>
+                <p><strong>When Disabled:</strong> You can create project work items for any past date, allowing retroactive time entry without date restrictions.</p>
+                <p><strong>Use Case:</strong> Enabled to encourage timely time entry and prevent backdating of work items. Helps maintain accurate project tracking and billing records. Typically set to 5-10 working days to allow for reasonable catch-up periods.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Prevent Creating Project Work Items After X Working Days</strong>
+                <p>Controls whether you can create project work items for dates that are more than X working days in the future.</p>
+                <p><strong>When Enabled:</strong> You cannot create project work items for dates that are more than X working days ahead. This prevents logging time too far in advance, ensuring time entries reflect actual work performed.</p>
+                <p><strong>When Disabled:</strong> You can create project work items for any future date, allowing advance planning of time entries.</p>
+                <p><strong>Use Case:</strong> Enabled to prevent premature time logging and ensure time entries reflect actual work. Typically set to 1-2 working days to allow for same-day or next-day planning while preventing excessive advance entries.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Prevent Assigning Project Work Items Before X Working Days</strong>
+                <p>Controls whether you can assign project work items to dates that are more than X working days in the past.</p>
+                <p><strong>When Enabled:</strong> You cannot assign work items to dates that are more than X working days ago. This prevents retroactive assignment of work items, maintaining assignment accuracy.</p>
+                <p><strong>When Disabled:</strong> You can assign work items to any past date, allowing retroactive assignment.</p>
+                <p><strong>Use Case:</strong> Similar to creation restrictions, this ensures work item assignments reflect actual work periods and prevents backdating of assignments.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Prevent Assigning Project Work Items After X Working Days</strong>
+                <p>Controls whether you can assign project work items to dates that are more than X working days in the future.</p>
+                <p><strong>When Enabled:</strong> You cannot assign work items to dates that are more than X working days ahead. This prevents advance assignment of work items too far in the future.</p>
+                <p><strong>When Disabled:</strong> You can assign work items to any future date, allowing long-term planning of assignments.</p>
+                <p><strong>Use Case:</strong> Helps maintain realistic assignment planning and prevents assignments too far in advance that may not reflect actual work schedules.</p>
+            </div>
+
+            <h3>Non-Project Work Item Date Restrictions</h3>
+            <p>Similar date restrictions apply to non-project work items (such as administrative time, training, or leave):</p>
+            
+            <div class="field-description">
+                <strong>Prevent Creating Non-Project Work Items Before X Working Days</strong>
+                <p>Controls whether you can create non-project work items (administrative time, training, etc.) for dates that are more than X working days in the past.</p>
+                <p><strong>When Enabled:</strong> You cannot create non-project work items for dates that are too far in the past, encouraging timely entry of administrative and other non-project time.</p>
+                <p><strong>When Disabled:</strong> You can create non-project work items for any past date without restrictions.</p>
+                <p><strong>Use Case:</strong> Similar to project work item restrictions, this ensures timely entry of all time types and maintains accurate records.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Prevent Creating Non-Project Work Items After X Working Days</strong>
+                <p>Controls whether you can create non-project work items for dates that are more than X working days in the future.</p>
+                <p><strong>When Enabled:</strong> You cannot create non-project work items too far in advance, ensuring entries reflect actual time spent.</p>
+                <p><strong>When Disabled:</strong> You can create non-project work items for any future date.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Prevent Assigning Non-Project Work Items Before X Working Days</strong>
+                <p>Controls whether you can assign non-project work items to dates that are more than X working days in the past.</p>
+                <p><strong>When Enabled:</strong> Prevents retroactive assignment of non-project work items beyond the allowed time window.</p>
+                <p><strong>When Disabled:</strong> Allows assignment to any past date.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Prevent Assigning Non-Project Work Items After X Working Days</strong>
+                <p>Controls whether you can assign non-project work items to dates that are more than X working days in the future.</p>
+                <p><strong>When Enabled:</strong> Prevents advance assignment of non-project work items too far in the future.</p>
+                <p><strong>When Disabled:</strong> Allows assignment to any future date.</p>
+            </div>
+
+            <h3>Other Work Item Controls</h3>
+            
+            <div class="field-description">
+                <strong>Prevent Creating Work Items Before Y Working Days If X Hours Already Logged</strong>
+                <p>Controls whether you can create work items for dates that are Y working days in the past if you've already logged X hours for that date.</p>
+                <p><strong>How It Works:</strong> This creates a combined restriction that considers both the date and hours already logged. For example, if set to "5 working days" and "8 hours", you cannot create additional work items for dates more than 5 days ago if you've already logged 8 hours for that date.</p>
+                <p><strong>When Enabled:</strong> Prevents adding more work items to old dates that already have significant hours logged, reducing the likelihood of errors or duplicate entries.</p>
+                <p><strong>When Disabled:</strong> You can create work items for any date regardless of hours already logged.</p>
+                <p><strong>Use Case:</strong> Enabled to prevent retroactive changes to dates that already have substantial time logged, maintaining data integrity and preventing accidental over-logging.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Allow Creating Work Items with Completed Status</strong>
+                <p>Controls whether you can create work items that are immediately marked as completed, rather than starting in an "In Progress" or "Pending" status.</p>
+                <p><strong>When Enabled:</strong> You can create work items and mark them as completed in one step. This is useful for quick entries of work that has already been finished.</p>
+                <p><strong>When Disabled:</strong> New work items must be created in a non-completed status and then moved to completed separately. This enforces a workflow where work items progress through statuses.</p>
+                <p><strong>Use Case:</strong> Enabled for quick time entry of completed work. Disabled to enforce status workflows and ensure proper tracking of work item progression.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Maximum Hours Allowed Per Work Item</strong>
+                <p>Controls the maximum number of hours you can enter in a single work item entry.</p>
+                <p><strong>How It Works:</strong> When creating or editing a work item, you cannot enter more than the specified maximum hours (e.g., 24 hours). This prevents unrealistic hour entries and helps catch data entry errors.</p>
+                <p><strong>Example:</strong> If set to 24 hours, you cannot log more than 24 hours in a single work item, even if you worked longer. You would need to create multiple work items or split the time across multiple entries.</p>
+                <p><strong>Use Case:</strong> Prevents data entry errors and unrealistic hour entries. Typically set to 24 hours to allow full-day entries while preventing mistakes like entering 240 hours instead of 24.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Restrict Work Item Creation Based on Employee Skills</strong>
+                <p>Controls whether you can only create work items for projects or tasks that match your assigned skills.</p>
+                <p><strong>When Enabled:</strong> When creating work items, you can only select projects or tasks that require skills you have been assigned. Projects/tasks that don't match your skills are hidden from selection. This ensures work items are only created for work you're qualified to perform.</p>
+                <p><strong>When Disabled:</strong> You can create work items for any project or task regardless of your skills. All available projects and tasks appear in selection dropdowns.</p>
+                <p><strong>Use Case:</strong> Enabled to ensure proper skill matching and prevent assignment of work to unqualified team members. Helps maintain quality and ensures work is logged against appropriate projects. Disabled when skill matching is not required or when flexibility is needed.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Switch Between Teams When Viewing Work Items</strong>
+                <p>Controls whether you can change which team's work items you're viewing using the team filter dropdown.</p>
+                <p><strong>When Enabled:</strong> You can use the team dropdown filter to switch between different teams and view their work items. This is useful for managers who oversee multiple teams or need cross-team visibility.</p>
+                <p><strong>When Disabled:</strong> You can only see work items from teams you're directly assigned to. The team filter may be hidden or disabled, restricting you to your own team's work items only.</p>
+                <p><strong>Use Case:</strong> Typically enabled for managers, administrators, and cross-functional roles. Disabled for individual contributors who should focus on their own team's work.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Switch Between Employees When Viewing Work Items</strong>
+                <p>Controls whether managers can view work items for employees other than themselves.</p>
+                <p><strong>When Enabled:</strong> Managers can use an employee filter dropdown to view work items for any employee they manage or have access to. This enables managers to review and approve time entries for their team members.</p>
+                <p><strong>When Disabled:</strong> You can only view your own work items, even if you're a manager. Employee filtering is not available.</p>
+                <p><strong>Use Case:</strong> Enabled for managers and team leads who need to review and approve team members' time entries. Disabled for individual contributors who should only see their own work items.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Create Work Items for Other Employees</strong>
+                <p>Controls whether you can create work item entries on behalf of other employees.</p>
+                <p><strong>When Enabled:</strong> You can create work items and assign them to other employees. This allows managers or administrators to log time for team members, which is useful when employees forget to log time or when bulk time entry is needed.</p>
+                <p><strong>When Disabled:</strong> You can only create work items for yourself. All new work items are automatically assigned to you and cannot be reassigned to others.</p>
+                <p><strong>Use Case:</strong> Enabled for managers and administrators who need to log time on behalf of team members. Disabled for individual contributors to ensure they log their own time and maintain accountability.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Show Only Current Team Projects When Creating Work Items</strong>
+                <p>Controls which projects appear in the project selection dropdown when creating work items.</p>
+                <p><strong>When Enabled:</strong> Only projects from your currently selected team appear in the project dropdown. Projects from other teams are hidden, even if you have access to them. This simplifies project selection and maintains team boundaries.</p>
+                <p><strong>When Disabled:</strong> All projects you have access to appear in the dropdown, regardless of team. This allows you to log time against projects from multiple teams.</p>
+                <p><strong>Use Case:</strong> Enabled to maintain team boundaries and simplify project selection. Disabled when cross-team project work is common and team members need to log time against projects from multiple teams.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Show Estimated Hours in Work Item Views</strong>
+                <p>Controls whether estimated hours are displayed alongside actual hours logged in work item views and lists.</p>
+                <p><strong>When Enabled:</strong> Estimated hours are displayed next to actual hours, allowing you to compare estimated vs actual time spent. This helps track estimation accuracy and identify tasks that took longer or shorter than expected.</p>
+                <p><strong>When Disabled:</strong> Only actual hours are displayed. Estimated hours are hidden, reducing information overload and focusing on actual time logged.</p>
+                <p><strong>Use Case:</strong> Enabled for project managers and team leads who need to track estimation accuracy and project performance. Disabled for team members who only need to see actual hours logged without comparison data.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Show All Accounts When Logging Non-Billable Time</strong>
+                <p>Controls which accounts appear in the account selection dropdown when logging non-billable work items.</p>
+                <p><strong>When Enabled:</strong> All accounts in the system appear in the dropdown when logging non-billable time, not just accounts associated with your projects. This allows you to log administrative time, training, or other non-billable activities against any account.</p>
+                <p><strong>When Disabled:</strong> Only accounts from your assigned projects appear in the dropdown. This restricts non-billable time logging to accounts you're already associated with.</p>
+                <p><strong>Use Case:</strong> Enabled when non-billable time needs to be tracked against various accounts (e.g., internal projects, training accounts, administrative accounts). Disabled to maintain account boundaries and ensure non-billable time is only logged against relevant accounts.</p>
+            </div>
+        </section>
+
+        <section id="timesheet-access" class="section">
+            <h2>📅 Timesheet Access Controls</h2>
+            
+            <h3>Basic Timesheet Permissions</h3>
+            
+            <div class="field-description">
+                <strong>Enable Timesheet Entry</strong>
+                <p>Controls whether you can enter time in your timesheet.</p>
+                <p><strong>When Enabled:</strong> You can access the timesheet interface and create new time entries. This is the fundamental permission required for logging work hours, leave, holidays, and other time-related activities.</p>
+                <p><strong>When Disabled:</strong> You cannot access the timesheet entry interface. Time entry features are hidden or disabled, preventing you from logging any time. This may be used for employees who don't need to track time or during specific periods.</p>
+                <p><strong>Use Case:</strong> Enabled for all employees who need to track their time. Disabled for employees who don't bill time or for specific roles that don't require time tracking.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Enable Timesheet Editing</strong>
+                <p>Controls whether you can modify existing timesheet entries after they've been created.</p>
+                <p><strong>When Enabled:</strong> You can edit timesheet entries to correct mistakes, update descriptions, change hours, or modify dates (subject to other date restrictions). This allows you to maintain accurate time records.</p>
+                <p><strong>When Disabled:</strong> Timesheet entries are read-only once created. You cannot modify existing entries, requiring you to delete and recreate entries if corrections are needed (if deletion is allowed).</p>
+                <p><strong>Use Case:</strong> Typically enabled to allow error correction. May be disabled for approved timesheets to maintain data integrity and prevent changes to submitted/approved time entries.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Enable Timesheet Approval</strong>
+                <p>Controls whether you can approve timesheets submitted by other employees (typically managers and team leads).</p>
+                <p><strong>When Enabled:</strong> You can view submitted timesheets from your team members and approve or reject them. Approved timesheets are typically locked from further editing and may be used for payroll or billing purposes.</p>
+                <p><strong>When Disabled:</strong> You cannot approve timesheets, even if you're a manager. Timesheet approval features are hidden or disabled.</p>
+                <p><strong>Use Case:</strong> Enabled for managers, team leads, and administrators who need to review and approve team members' time entries. Disabled for individual contributors who should only manage their own timesheets.</p>
+            </div>
+
+            <h3>Date Restrictions</h3>
+            
+            <div class="field-description">
+                <strong>Allow Logging Leave and Holiday for Future Dates</strong>
+                <p>Controls whether you can enter leave or holiday time entries for dates that haven't occurred yet.</p>
+                <p><strong>When Enabled:</strong> You can log planned leave or holidays in advance. This allows you to pre-enter time off, helping with planning and ensuring your timesheet is complete. Future dates are available for leave/holiday entry.</p>
+                <p><strong>When Disabled:</strong> You can only log leave/holiday for past or current dates. Future dates are not available for time entry, preventing premature leave logging.</p>
+                <p><strong>Use Case:</strong> Enabled to allow advance planning of time off and help employees prepare their timesheets. Disabled to prevent logging leave before it's actually taken, maintaining accuracy of actual time off records.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Allow Logging Leave and Holiday for Past Dates</strong>
+                <p>Controls whether you can enter leave or holiday time entries for dates that have already passed.</p>
+                <p><strong>When Enabled:</strong> You can log leave or holidays retroactively for past dates. This allows you to catch up on missed time entries or correct omissions. Past dates are available for leave/holiday entry.</p>
+                <p><strong>When Disabled:</strong> You can only log leave/holiday for current or future dates. Past dates are locked, preventing retroactive leave entries.</p>
+                <p><strong>Use Case:</strong> Enabled to allow correction of missed entries and help employees catch up on timesheet entry. Disabled to prevent backdating of leave, which could affect attendance records and payroll accuracy.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Enable Viewing Future Timesheets</strong>
+                <p>Controls whether you can view and access timesheet pages for future dates that haven't occurred yet.</p>
+                <p><strong>When Enabled:</strong> You can navigate to and view timesheet pages for future weeks or months. This allows you to see upcoming timesheet periods and plan ahead, even if you can't enter time for those dates yet.</p>
+                <p><strong>When Disabled:</strong> Future timesheet pages are not accessible. You can only view current and past timesheets, preventing access to future periods.</p>
+                <p><strong>Use Case:</strong> Enabled to allow planning and familiarization with upcoming timesheet periods. Disabled to restrict access to only relevant (current and past) timesheet periods.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Enable Viewing Past Timesheets</strong>
+                <p>Controls whether you can view and access timesheet pages for past dates.</p>
+                <p><strong>When Enabled:</strong> You can navigate to and view timesheet pages for previous weeks or months. This allows you to review historical time entries and access past timesheet data.</p>
+                <p><strong>When Disabled:</strong> Past timesheet pages are not accessible. You can only view current timesheets, preventing access to historical data.</p>
+                <p><strong>Use Case:</strong> Typically enabled to allow review of historical time entries and access to past timesheet data. Disabled in rare cases where historical data access should be restricted.</p>
+            </div>
+
+            <h3>Time Entry Restrictions</h3>
+            
+            <div class="field-description">
+                <strong>Maximum Hours Allowed Per Day</strong>
+                <p>Controls the maximum number of hours you can enter per day in your timesheet.</p>
+                <p><strong>How It Works:</strong> When entering time for a specific date, you cannot log more than the specified maximum hours (e.g., 24 hours). This prevents unrealistic daily hour entries and helps catch data entry errors.</p>
+                <p><strong>Example:</strong> If set to 24 hours, you cannot log more than 24 hours total for a single day across all work items, even if you worked longer. You would need to split the time across multiple days or contact an administrator.</p>
+                <p><strong>Use Case:</strong> Prevents data entry errors and unrealistic daily hour entries. Typically set to 24 hours to allow full-day entries while preventing mistakes. May be set lower (e.g., 12 hours) for organizations with strict work-hour policies.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Disable Editing Last Month's Timesheet After X Days</strong>
+                <p>Controls how long into the current month you can still edit timesheet entries from the previous month.</p>
+                <p><strong>How It Works:</strong> After X days into the current month, timesheet entries from the previous month become locked and cannot be edited. This creates a deadline for timesheet corrections and ensures timely closure of monthly timesheets.</p>
+                <p><strong>Example:</strong> If set to 5 days, you can edit last month's timesheet entries until the 5th day of the current month. After that, last month's entries are locked and require administrator approval to modify.</p>
+                <p><strong>Use Case:</strong> Ensures timesheets are finalized in a timely manner and prevents ongoing changes to historical data. Helps maintain accurate monthly records for payroll and billing. Typically set to 3-7 days to allow reasonable correction periods while ensuring timely closure.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Prevent Creating Work Items Before Y Working Days If X Hours Already Logged</strong>
+                <p>Controls whether you can create work items for dates that are Y working days in the past if you've already logged X hours for that date.</p>
+                <p><strong>How It Works:</strong> This creates a combined restriction that considers both the date and hours already logged. For example, if set to "5 working days" and "8 hours", you cannot create additional work items for dates more than 5 days ago if you've already logged 8 hours for that date.</p>
+                <p><strong>When Enabled:</strong> Prevents adding more work items to old dates that already have significant hours logged, reducing the likelihood of errors or duplicate entries.</p>
+                <p><strong>When Disabled:</strong> You can create work items for any date regardless of hours already logged.</p>
+                <p><strong>Use Case:</strong> Enabled to prevent retroactive changes to dates that already have substantial time logged, maintaining data integrity and preventing accidental over-logging.</p>
+            </div>
+
+            <h3>Project Restrictions</h3>
+            <p>Timesheet entries follow the same project and non-project work item date restrictions as described in the Work Item Access Controls section. These restrictions control when you can create work items for projects vs. non-project activities.</p>
+
+            <h3>Team and Employee Controls</h3>
+            
+            <div class="field-description">
+                <strong>Switch Between Teams When Viewing Timesheets</strong>
+                <p>Controls whether you can change which team's timesheets you're viewing using the team filter dropdown.</p>
+                <p><strong>When Enabled:</strong> You can use the team dropdown filter to switch between different teams and view their timesheets. This is useful for managers who oversee multiple teams or need cross-team visibility.</p>
+                <p><strong>When Disabled:</strong> You can only see timesheets from teams you're directly assigned to. The team filter may be hidden or disabled, restricting you to your own team's timesheets only.</p>
+                <p><strong>Use Case:</strong> Typically enabled for managers, administrators, and cross-functional roles. Disabled for individual contributors who should focus on their own team's timesheets.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Switch Between Employees When Viewing Timesheets</strong>
+                <p>Controls whether managers can view timesheets for employees other than themselves.</p>
+                <p><strong>When Enabled:</strong> Managers can use an employee filter dropdown to view timesheets for any employee they manage or have access to. This enables managers to review and approve time entries for their team members.</p>
+                <p><strong>When Disabled:</strong> You can only view your own timesheet, even if you're a manager. Employee filtering is not available.</p>
+                <p><strong>Use Case:</strong> Enabled for managers and team leads who need to review and approve team members' timesheets. Disabled for individual contributors who should only see their own timesheet.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Restrict Project Selection Based on Employee Skills</strong>
+                <p>Controls whether you can only select projects that match your assigned skills when creating timesheet entries.</p>
+                <p><strong>When Enabled:</strong> When creating timesheet entries, you can only select projects that require skills you have been assigned. Projects that don't match your skills are hidden from selection. This ensures timesheet entries are only created for work you're qualified to perform.</p>
+                <p><strong>When Disabled:</strong> You can create timesheet entries for any project regardless of your skills. All available projects appear in selection dropdowns.</p>
+                <p><strong>Use Case:</strong> Enabled to ensure proper skill matching and prevent assignment of work to unqualified team members. Helps maintain quality and ensures work is logged against appropriate projects. Disabled when skill matching is not required or when flexibility is needed.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Show Only Current Team Projects in Timesheet</strong>
+                <p>Controls which projects appear in the project selection dropdown when creating timesheet entries.</p>
+                <p><strong>When Enabled:</strong> Only projects from your currently selected team appear in the project dropdown. Projects from other teams are hidden, even if you have access to them. This simplifies project selection and maintains team boundaries.</p>
+                <p><strong>When Disabled:</strong> All projects you have access to appear in the dropdown, regardless of team. This allows you to log time against projects from multiple teams.</p>
+                <p><strong>Use Case:</strong> Enabled to maintain team boundaries and simplify project selection. Disabled when cross-team project work is common and team members need to log time against projects from multiple teams.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Show All Accounts for Non-Billable Time Entry</strong>
+                <p>Controls which accounts appear in the account selection dropdown when logging non-billable timesheet entries.</p>
+                <p><strong>When Enabled:</strong> All accounts in the system appear in the dropdown when logging non-billable time, not just accounts associated with your projects. This allows you to log administrative time, training, or other non-billable activities against any account.</p>
+                <p><strong>When Disabled:</strong> Only accounts from your assigned projects appear in the dropdown. This restricts non-billable time logging to accounts you're already associated with.</p>
+                <p><strong>Use Case:</strong> Enabled when non-billable time needs to be tracked against various accounts (e.g., internal projects, training accounts, administrative accounts). Disabled to maintain account boundaries and ensure non-billable time is only logged against relevant accounts.</p>
+            </div>
+        </section>
+
+        <section id="employee-access" class="section">
+            <h2>👥 Employee Access Controls</h2>
+            
+            <h3>Basic Employee Permissions</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Permission</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Create Employees</strong></td>
+                        <td>Allows you to add new employees to the system. When enabled, you'll see the "Create Employee" button and can access the employee creation form. This permission is essential for HR administrators and managers who need to onboard new team members. You can set up employee profiles, assign teams, configure skills, and set up initial account information.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Edit Employee Information</strong></td>
+                        <td>Allows you to modify existing employee information including personal details, contact information, team assignments, skills, roles, and other employee fields. When enabled, you can update employee details as information changes or needs correction. Some sensitive fields may still be restricted based on your role or other settings.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Delete Employees</strong></td>
+                        <td>Allows you to mark employees as deleted. Deleted employees are typically hidden from normal views but can be restored if needed. This is different from permanent removal - deleted employees retain their data for recovery purposes. Use this when an employee record needs to be removed but may need to be restored later.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Archive/Unarchive Employees</strong></td>
+                        <td>Allows you to archive inactive or former employees. Archived employees are moved out of active views but remain accessible for historical reference. You can also unarchive employees if needed. Archiving helps keep active employee lists clean while preserving data. This is useful for employees on extended leave or who have left the organization but whose data needs to be retained.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Permanently Remove Employees</strong></td>
+                        <td>Allows you to permanently delete employees from the system. This action cannot be undone and removes all employee data including timesheets, project assignments, and history. This permission is typically restricted to administrators only and should be used with extreme caution, usually only for test accounts or duplicate entries.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>View Employee Details</strong></td>
+                        <td>Allows you to see employee information and details. This is the most basic permission - without it, you cannot access any employee information. Even with view permission, you may only see employees from teams you have access to, and some sensitive information may be hidden based on privacy settings.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Additional Employee Controls</h3>
+            
+            <div class="field-description">
+                <strong>Switch Between Teams When Viewing Employees</strong>
+                <p>Controls whether you can change which team's employees you're viewing using the team filter dropdown.</p>
+                <p><strong>When Enabled:</strong> You can use the team dropdown filter to switch between different teams and view their employees. This is useful for managers who oversee multiple teams or HR administrators who need cross-team visibility.</p>
+                <p><strong>When Disabled:</strong> You can only see employees from teams you're directly assigned to. The team filter may be hidden or disabled, restricting you to your own team's employees only.</p>
+                <p><strong>Use Case:</strong> Typically enabled for managers, HR administrators, and cross-functional roles. Disabled for individual contributors who should only see their own team's employees.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Update Employee Exit/Termination Dates</strong>
+                <p>Controls whether you can modify an employee's exit date or termination date in their profile.</p>
+                <p><strong>When Enabled:</strong> You can set or update the exit/termination date for employees, marking when they left the organization. This is important for tracking employee lifecycle, maintaining accurate records, and ensuring proper access control (employees with exit dates may have restricted system access).</p>
+                <p><strong>When Disabled:</strong> Exit/termination dates are read-only. Only users with this permission can update exit dates, maintaining data integrity and preventing unauthorized changes to employee status.</p>
+                <p><strong>Use Case:</strong> Enabled for HR administrators and managers who need to track employee departures and update employee status. Disabled for regular users to prevent unauthorized changes to employee termination information.</p>
+            </div>
+        </section>
+
+        <section id="report-access" class="section">
+            <h2>📊 Report Access Controls</h2>
+            
+            <h3>Report Availability</h3>
+            <p>Each report type has its own access control. If a report is disabled, it won't appear in the reports dropdown.</p>
+
+            <h3>Available Report Controls</h3>
+            <p>Each report type has its own access control setting. When enabled, the report appears in your reports dropdown menu and can be generated. When disabled, the report is hidden and unavailable.</p>
+            
+            <div class="field-description">
+                <strong>Default Report Format</strong>
+                <p>Controls access to the standard/default report format, which provides a comprehensive overview of project and resource data.</p>
+                <p><strong>When Enabled:</strong> You can generate and view the default report format, which typically includes key metrics, summaries, and standard data views.</p>
+                <p><strong>When Disabled:</strong> The default report format is not available in your reports menu.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Format 3 Report</strong>
+                <p>Controls access to a specific report format (Format 3) that may have a different layout or data presentation than the default format.</p>
+                <p><strong>When Enabled:</strong> You can generate and view reports in Format 3, which may be customized for specific organizational needs or presentation requirements.</p>
+                <p><strong>When Disabled:</strong> Format 3 reports are not available in your reports menu.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Employee Utilization Report</strong>
+                <p>Controls access to reports showing how employees are being utilized across projects and activities.</p>
+                <p><strong>When Enabled:</strong> You can generate reports showing employee utilization rates, helping identify overallocation, underutilization, and resource capacity. This is essential for resource planning and workload management.</p>
+                <p><strong>When Disabled:</strong> Employee utilization reports are not available, restricting visibility into resource allocation and capacity.</p>
+                <p><strong>Use Case:</strong> Enabled for managers, resource planners, and administrators who need to track and optimize resource utilization. Disabled for individual contributors who don't need utilization insights.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>My Personal Utilization Report</strong>
+                <p>Controls access to reports showing your own personal utilization rate and how your time is allocated.</p>
+                <p><strong>When Enabled:</strong> You can generate reports showing your personal utilization, helping you understand how your time is distributed across projects, tasks, and activities. This is useful for self-assessment and workload planning.</p>
+                <p><strong>When Disabled:</strong> Personal utilization reports are not available, preventing you from viewing your own utilization metrics.</p>
+                <p><strong>Use Case:</strong> Typically enabled for all employees to allow self-monitoring of workload and time allocation. Disabled when personal utilization tracking is not needed or should be restricted.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>My Timesheet Data Report</strong>
+                <p>Controls access to reports showing your own timesheet entries and time tracking data.</p>
+                <p><strong>When Enabled:</strong> You can generate reports showing your timesheet entries, hours logged, project assignments, and time tracking history. This helps you review your time entries and track your work history.</p>
+                <p><strong>When Disabled:</strong> Personal timesheet data reports are not available, preventing you from generating reports of your own time entries.</p>
+                <p><strong>Use Case:</strong> Typically enabled for all employees to allow review of their own time tracking data. Useful for verifying timesheet accuracy and tracking work history.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>My Timesheet Data Dump Report</strong>
+                <p>Controls access to detailed, raw data exports of your timesheet information.</p>
+                <p><strong>When Enabled:</strong> You can generate comprehensive data dump reports of your timesheet entries, typically in formats suitable for analysis or import into other systems. These reports contain detailed, unformatted data.</p>
+                <p><strong>When Disabled:</strong> Data dump reports of your timesheet data are not available.</p>
+                <p><strong>Use Case:</strong> Enabled when employees need detailed data exports for personal records, analysis, or integration with other tools. Disabled when detailed data exports are not needed or should be restricted.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Site Activity Report</strong>
+                <p>Controls access to reports showing activity and usage across the system or site.</p>
+                <p><strong>When Enabled:</strong> You can generate reports showing system-wide activity, user actions, feature usage, and other site-level metrics. This provides insights into system usage and engagement.</p>
+                <p><strong>When Disabled:</strong> Site activity reports are not available, restricting visibility into system-wide activity.</p>
+                <p><strong>Use Case:</strong> Enabled for administrators and system managers who need to monitor system usage and activity. Disabled for regular users who don't need system-level insights.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Project Details by Skills Report</strong>
+                <p>Controls access to reports showing project information organized by required skills or skill categories.</p>
+                <p><strong>When Enabled:</strong> You can generate reports that break down projects by the skills they require, helping identify skill gaps, resource needs, and project-skill matching. This is useful for resource planning and skill-based project assignment.</p>
+                <p><strong>When Disabled:</strong> Skill-based project reports are not available.</p>
+                <p><strong>Use Case:</strong> Enabled for resource managers and project planners who need to match projects with skilled resources. Disabled when skill-based reporting is not needed.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>15% Report</strong>
+                <p>Controls access to a specific report format (commonly referred to as the "15% report") that may track a particular metric or compliance requirement.</p>
+                <p><strong>When Enabled:</strong> You can generate the 15% report, which may track specific project metrics, compliance measures, or organizational KPIs.</p>
+                <p><strong>When Disabled:</strong> The 15% report is not available in your reports menu.</p>
+                <p><strong>Use Case:</strong> Enabled for users who need access to this specific report format, typically for compliance or specific organizational reporting requirements.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Estimate vs Actual by Deliverables (Task Date) Report</strong>
+                <p>Controls access to reports comparing estimated vs actual work, organized by deliverables/tasks and sorted by task date.</p>
+                <p><strong>When Enabled:</strong> You can generate reports showing how actual work compared to estimates, broken down by deliverables and organized by task dates. This helps identify estimation accuracy and track project performance over time.</p>
+                <p><strong>When Disabled:</strong> Estimate vs actual reports organized by task date are not available.</p>
+                <p><strong>Use Case:</strong> Enabled for project managers and analysts who need to track estimation accuracy and project performance. Essential for improving future estimates and identifying trends.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Estimate vs Actual by Deliverables (Activity Date) Report</strong>
+                <p>Controls access to reports comparing estimated vs actual work, organized by deliverables/tasks and sorted by activity date (when work was performed).</p>
+                <p><strong>When Enabled:</strong> You can generate reports showing how actual work compared to estimates, broken down by deliverables and organized by when activities occurred. This provides a different view than task date reports, focusing on when work was actually performed.</p>
+                <p><strong>When Disabled:</strong> Estimate vs actual reports organized by activity date are not available.</p>
+                <p><strong>Use Case:</strong> Enabled for project managers who need to analyze work patterns and compare estimates to actuals based on when work was performed, rather than when tasks were scheduled.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Week-Wise Employee Utilization Monthly Report</strong>
+                <p>Controls access to reports showing employee utilization broken down by week within a monthly period.</p>
+                <p><strong>When Enabled:</strong> You can generate reports showing how employee utilization varies week by week within a month, helping identify weekly patterns, workload fluctuations, and capacity trends.</p>
+                <p><strong>When Disabled:</strong> Week-wise monthly utilization reports are not available.</p>
+                <p><strong>Use Case:</strong> Enabled for resource managers and planners who need detailed weekly utilization insights to manage capacity and identify workload patterns.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Week-Wise Employee Utilization Monthly End-to-End Report</strong>
+                <p>Controls access to comprehensive end-to-end reports showing employee utilization by week across monthly periods.</p>
+                <p><strong>When Enabled:</strong> You can generate detailed end-to-end reports showing complete weekly utilization data across monthly periods, providing comprehensive visibility into resource utilization patterns.</p>
+                <p><strong>When Disabled:</strong> End-to-end week-wise monthly utilization reports are not available.</p>
+                <p><strong>Use Case:</strong> Enabled for advanced resource planning and analysis, providing comprehensive utilization insights across time periods.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Weekly Purchase Order Estimation Report</strong>
+                <p>Controls access to reports showing purchase order estimates broken down by week.</p>
+                <p><strong>When Enabled:</strong> You can generate reports showing purchase order estimates organized by week, helping track PO-related work and costs over time.</p>
+                <p><strong>When Disabled:</strong> Weekly PO estimation reports are not available.</p>
+                <p><strong>Use Case:</strong> Enabled for project managers and finance teams who need to track purchase order estimates and related work on a weekly basis.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Weekly Project Hours Report</strong>
+                <p>Controls access to reports showing project hours logged, organized by week.</p>
+                <p><strong>When Enabled:</strong> You can generate reports showing how many hours were logged on projects each week, helping track project progress, resource allocation, and workload distribution over time.</p>
+                <p><strong>When Disabled:</strong> Weekly project hours reports are not available.</p>
+                <p><strong>Use Case:</strong> Enabled for project managers and team leads who need to track weekly project progress and hours logged. Useful for monitoring project velocity and resource allocation.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Utilization by Employee by Skills Report</strong>
+                <p>Controls access to reports showing employee utilization broken down by the skills they're using.</p>
+                <p><strong>When Enabled:</strong> You can generate reports showing how employees are utilized across different skill categories, helping identify skill usage patterns, skill-based capacity, and resource allocation by expertise area.</p>
+                <p><strong>When Disabled:</strong> Skill-based utilization reports are not available.</p>
+                <p><strong>Use Case:</strong> Enabled for resource managers and planners who need to understand how skills are being utilized and ensure proper skill-based resource allocation.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Utilization by Employee by Project Category Report</strong>
+                <p>Controls access to reports showing employee utilization broken down by project categories.</p>
+                <p><strong>When Enabled:</strong> You can generate reports showing how employees are utilized across different project categories, helping understand resource allocation by project type, client type, or other categorization schemes.</p>
+                <p><strong>When Disabled:</strong> Category-based utilization reports are not available.</p>
+                <p><strong>Use Case:</strong> Enabled for managers and analysts who need to understand resource allocation across different project categories and make strategic resource planning decisions.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Data Dump Report</strong>
+                <p>Controls access to comprehensive, raw data export reports containing detailed system data.</p>
+                <p><strong>When Enabled:</strong> You can generate data dump reports containing detailed, unformatted data exports suitable for analysis, import into other systems, or comprehensive data review. These reports typically contain extensive data in formats like CSV or Excel.</p>
+                <p><strong>When Disabled:</strong> Data dump reports are not available, restricting access to detailed data exports.</p>
+                <p><strong>Use Case:</strong> Enabled for administrators, analysts, and users who need comprehensive data exports for analysis, reporting, or system integration. Disabled when detailed data exports should be restricted.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Resource Allocation Report</strong>
+                <p>Controls access to reports showing how resources (employees) are allocated across projects and activities.</p>
+                <p><strong>When Enabled:</strong> You can generate reports showing resource allocation, helping identify who is assigned to which projects, allocation percentages, and resource distribution. This is essential for resource planning and capacity management.</p>
+                <p><strong>When Disabled:</strong> Resource allocation reports are not available, restricting visibility into how resources are assigned and allocated.</p>
+                <p><strong>Use Case:</strong> Enabled for resource managers, project managers, and administrators who need to track and manage resource allocation. Disabled for individual contributors who don't need allocation visibility.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Project Completion Report</strong>
+                <p>Controls access to reports showing project completion status, progress, and completion metrics.</p>
+                <p><strong>When Enabled:</strong> You can generate reports showing which projects are completed, completion percentages, completion dates, and related completion metrics. This helps track project status and identify completed work.</p>
+                <p><strong>When Disabled:</strong> Project completion reports are not available.</p>
+                <p><strong>Use Case:</strong> Enabled for project managers, executives, and stakeholders who need to track project completion and status. Useful for portfolio management and project status reporting.</p>
+            </div>
+
+            <h3>Report Configuration</h3>
+            
+            <div class="field-description">
+                <strong>Enable Report Configuration</strong>
+                <p>Controls whether you can create, save, and manage custom report configurations and settings.</p>
+                <p><strong>When Enabled:</strong> You can create and save custom report configurations with specific filters, date ranges, team selections, and other parameters. Saved configurations can be reused, making it easier to generate frequently needed reports without re-entering parameters each time.</p>
+                <p><strong>When Disabled:</strong> You cannot save report configurations. You can still generate reports but must enter parameters each time, and cannot reuse saved configurations.</p>
+                <p><strong>Use Case:</strong> Enabled for users who frequently generate reports with specific parameters and want to save time by reusing configurations. Disabled when report configuration management should be restricted.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Switch Between Teams When Generating Reports</strong>
+                <p>Controls whether you can change which team's data you're including in reports using the team filter dropdown.</p>
+                <p><strong>When Enabled:</strong> You can use the team dropdown filter to switch between different teams and include their data in reports. This is useful for managers who oversee multiple teams or need cross-team reporting.</p>
+                <p><strong>When Disabled:</strong> Reports can only include data from teams you're directly assigned to. The team filter may be hidden or disabled, restricting reports to your own team's data only.</p>
+                <p><strong>Use Case:</strong> Typically enabled for managers, administrators, and cross-functional roles. Disabled for individual contributors who should only generate reports for their own team.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Access Scheduled Reports Across All Teams</strong>
+                <p>Controls whether you can view and access scheduled reports (automated reports sent on a schedule) from all teams, not just your own.</p>
+                <p><strong>When Enabled:</strong> You can view and access scheduled reports from all teams in the organization, providing cross-team visibility into automated reporting.</p>
+                <p><strong>When Disabled:</strong> You can only access scheduled reports from your own team. Scheduled reports from other teams are not visible or accessible.</p>
+                <p><strong>Use Case:</strong> Enabled for administrators and managers who need organization-wide visibility into scheduled reports. Disabled to maintain team boundaries and restrict access to team-specific scheduled reports.</p>
+            </div>
+        </section>
+
+        <section id="other-access" class="section">
+            <h2>🔧 Other Access Controls</h2>
+            
+            <h3>Purchase Order Access Controls</h3>
+            <p>Purchase Orders follow similar access control patterns as Projects, including basic CRUD permissions (create, edit, delete, view, archive, remove, duplicate), service line estimate controls (hours and costs), status management controls, team switching controls, and checklist controls. Additionally, there are specific purchase order controls:</p>
+            
+            <div class="field-description">
+                <strong>Access Other Teams' Purchase Orders</strong>
+                <p>Controls whether you can view and interact with purchase orders that belong to teams other than your own.</p>
+                <p><strong>When Enabled:</strong> You can open, view details, and potentially edit purchase orders from other teams (depending on your other permissions). This enables cross-team collaboration and visibility into purchase orders across the organization.</p>
+                <p><strong>When Disabled:</strong> You can only access purchase orders from your own team. Attempting to access other teams' purchase orders will result in an access denied message or the PO won't appear in your views.</p>
+                <p><strong>Use Case:</strong> Enabled for collaborative environments where teams need to see each other's purchase orders. Disabled for strict team isolation or when purchase order confidentiality requires team boundaries.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Show All Projects When Creating Purchase Orders</strong>
+                <p>Controls which projects appear in the project selection dropdown when creating a new purchase order.</p>
+                <p><strong>When Enabled:</strong> All projects in the system appear in the dropdown when creating a purchase order, regardless of team. This allows you to link purchase orders to any project.</p>
+                <p><strong>When Disabled:</strong> Only projects from your team appear in the dropdown, restricting purchase order creation to projects within your team.</p>
+                <p><strong>Use Case:</strong> Enabled when purchase orders need to be linked to projects across teams. Disabled to maintain team boundaries and ensure purchase orders are only created for team-specific projects.</p>
+            </div>
+
+            <h3>Bid Request Access Controls</h3>
+            <p>Bid Requests include basic CRUD permissions (create, edit, delete, view, archive, remove, duplicate), status management controls (change status, move status backwards, allowed status changes), and team switching controls (switch between teams when viewing bid requests). These controls work similarly to project access controls, allowing you to manage bid opportunities and track their status through various stages.</p>
+
+            <h3>Account Access Controls</h3>
+            
+            <div class="field-description">
+                <strong>Create Accounts</strong>
+                <p>Controls whether you can create new client or customer accounts in the system.</p>
+                <p><strong>When Enabled:</strong> You can create new accounts, setting up client information, contact details, and account settings. This is essential for sales and account management teams.</p>
+                <p><strong>When Disabled:</strong> You cannot create new accounts. Account creation features are hidden or disabled.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Edit Accounts</strong>
+                <p>Controls whether you can modify existing account information.</p>
+                <p><strong>When Enabled:</strong> You can update account details, contact information, settings, and other account fields.</p>
+                <p><strong>When Disabled:</strong> Accounts are read-only. You cannot modify account information.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Delete Accounts</strong>
+                <p>Controls whether you can mark accounts as deleted.</p>
+                <p><strong>When Enabled:</strong> You can delete accounts, which typically hides them from normal views but retains data for recovery purposes.</p>
+                <p><strong>When Disabled:</strong> You cannot delete accounts. Account deletion is not available.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Permanently Remove Accounts</strong>
+                <p>Controls whether you can permanently delete accounts from the system.</p>
+                <p><strong>When Enabled:</strong> You can permanently remove accounts, which cannot be undone and removes all account data.</p>
+                <p><strong>When Disabled:</strong> Permanent account removal is not available. Accounts can only be deleted (soft delete), not permanently removed.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Show Accounts from All Teams</strong>
+                <p>Controls whether accounts from all teams appear in account lists and dropdowns.</p>
+                <p><strong>When Enabled:</strong> Accounts from all teams are visible, allowing you to see and select accounts across the organization.</p>
+                <p><strong>When Disabled:</strong> Only accounts from your team are visible, maintaining team boundaries for account access.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Show All Accounts Regardless of Team</strong>
+                <p>Controls whether team filtering is applied when viewing accounts.</p>
+                <p><strong>When Enabled:</strong> All accounts are shown without team filtering, providing organization-wide account visibility.</p>
+                <p><strong>When Disabled:</strong> Accounts are filtered by team, showing only accounts relevant to your team assignments.</p>
+            </div>
+
+            <h3>Invoice Access Controls</h3>
+            
+            <div class="field-description">
+                <strong>Create Invoices</strong>
+                <p>Controls whether you can create new invoices in the system.</p>
+                <p><strong>When Enabled:</strong> You can create invoices, linking them to projects, purchase orders, or accounts, and setting up billing details.</p>
+                <p><strong>When Disabled:</strong> You cannot create invoices. Invoice creation features are hidden or disabled.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Edit Invoices</strong>
+                <p>Controls whether you can modify existing invoice information.</p>
+                <p><strong>When Enabled:</strong> You can update invoice details, amounts, dates, and other invoice fields.</p>
+                <p><strong>When Disabled:</strong> Invoices are read-only. You cannot modify invoice information once created.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Remove Invoices</strong>
+                <p>Controls whether you can remove invoices from the system.</p>
+                <p><strong>When Enabled:</strong> You can remove invoices, which may delete them permanently or mark them as removed depending on system configuration.</p>
+                <p><strong>When Disabled:</strong> You cannot remove invoices. Invoice removal is not available.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>View Invoices</strong>
+                <p>Controls whether you can view invoice information and details.</p>
+                <p><strong>When Enabled:</strong> You can access and view invoice details, amounts, dates, and related information.</p>
+                <p><strong>When Disabled:</strong> Invoices are not visible. You cannot access invoice information.</p>
+            </div>
+
+            <h3>Attendance Access Controls</h3>
+            
+            <div class="field-description">
+                <strong>Create Attendance Records</strong>
+                <p>Controls whether you can create new attendance entries or records.</p>
+                <p><strong>When Enabled:</strong> You can create attendance records, logging employee attendance, check-in/check-out times, and attendance-related information.</p>
+                <p><strong>When Disabled:</strong> You cannot create attendance records. Attendance creation features are hidden or disabled.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Delete Attendance Records</strong>
+                <p>Controls whether you can delete attendance entries.</p>
+                <p><strong>When Enabled:</strong> You can remove attendance records, allowing correction of attendance data.</p>
+                <p><strong>When Disabled:</strong> You cannot delete attendance records. Attendance data is permanent once created.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>View Attendance</strong>
+                <p>Controls whether you can view attendance information and records.</p>
+                <p><strong>When Enabled:</strong> You can access and view attendance data, including check-in/check-out times, attendance history, and related information.</p>
+                <p><strong>When Disabled:</strong> Attendance information is not visible. You cannot access attendance data.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Switch Teams When Viewing Attendance</strong>
+                <p>Controls whether you can change which team's attendance data you're viewing using the team filter dropdown.</p>
+                <p><strong>When Enabled:</strong> You can use the team dropdown filter to switch between different teams and view their attendance data. This is useful for managers who oversee multiple teams.</p>
+                <p><strong>When Disabled:</strong> You can only see attendance from teams you're directly assigned to. The team filter may be hidden or disabled.</p>
+            </div>
+
+            <h3>Holiday Access Controls</h3>
+            
+            <div class="field-description">
+                <strong>Create Holidays</strong>
+                <p>Controls whether you can create new holiday entries in the system calendar.</p>
+                <p><strong>When Enabled:</strong> You can create holidays, setting up company-wide or team-specific holidays, dates, and holiday information.</p>
+                <p><strong>When Disabled:</strong> You cannot create holidays. Holiday creation features are hidden or disabled.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Edit Holidays</strong>
+                <p>Controls whether you can modify existing holiday information.</p>
+                <p><strong>When Enabled:</strong> You can update holiday dates, names, descriptions, and other holiday fields.</p>
+                <p><strong>When Disabled:</strong> Holidays are read-only. You cannot modify holiday information once created.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Remove Holidays</strong>
+                <p>Controls whether you can remove holidays from the system calendar.</p>
+                <p><strong>When Enabled:</strong> You can remove holidays, deleting them from the calendar.</p>
+                <p><strong>When Disabled:</strong> You cannot remove holidays. Holiday removal is not available.</p>
+            </div>
+
+            <h3>Task Board Access Controls</h3>
+            <p>Task Boards include all work item access controls (as described in the Work Item Access Controls section) plus additional task board-specific controls:</p>
+            
+            <div class="field-description">
+                <strong>Multiple Task Boards Available</strong>
+                <p>Controls whether you can create and use multiple task boards (Kanban boards) for different views or purposes.</p>
+                <p><strong>When Enabled:</strong> You can create multiple task boards, each with its own configuration, columns, and task filtering. This allows you to organize tasks in different ways (e.g., by project, by team, by priority).</p>
+                <p><strong>When Disabled:</strong> Only a single default task board is available. You cannot create additional task boards.</p>
+                <p><strong>Use Case:</strong> Enabled when teams need multiple board views for different purposes or projects. Disabled to simplify the interface when a single board view is sufficient.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Access All Teams' Task Boards</strong>
+                <p>Controls whether you can view and access task boards from all teams, not just your own.</p>
+                <p><strong>When Enabled:</strong> You can access task boards from all teams in the organization, providing cross-team visibility into task management and workflows.</p>
+                <p><strong>When Disabled:</strong> You can only access task boards from your own team. Other teams' boards are not visible or accessible.</p>
+                <p><strong>Use Case:</strong> Enabled for managers and administrators who need organization-wide visibility. Disabled to maintain team boundaries and restrict board access to team members only.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Create Tasks from Task Board</strong>
+                <p>Controls whether you can create new tasks directly from the task board interface.</p>
+                <p><strong>When Enabled:</strong> You can add new tasks directly on the task board, typically by clicking an "Add Task" button or similar action. This provides quick task creation without navigating away from the board.</p>
+                <p><strong>When Disabled:</strong> You cannot create tasks from the board. Tasks must be created through other interfaces (e.g., project details page).</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Edit Tasks from Task Board</strong>
+                <p>Controls whether you can modify task information directly from the task board interface.</p>
+                <p><strong>When Enabled:</strong> You can edit task details, names, descriptions, assignments, and other fields directly from the board view, typically by clicking on tasks or using inline editing.</p>
+                <p><strong>When Disabled:</strong> Tasks on the board are read-only. You must navigate to the task details page to make edits.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Delete Tasks from Task Board</strong>
+                <p>Controls whether you can delete tasks directly from the task board.</p>
+                <p><strong>When Enabled:</strong> You can delete tasks from the board interface, typically through a delete action or button on task cards.</p>
+                <p><strong>When Disabled:</strong> You cannot delete tasks from the board. Task deletion must be done through other interfaces.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Remove Tasks from Task Board</strong>
+                <p>Controls whether you can permanently remove tasks directly from the task board.</p>
+                <p><strong>When Enabled:</strong> You can permanently remove tasks from the board, which cannot be undone.</p>
+                <p><strong>When Disabled:</strong> Permanent task removal is not available from the board interface.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Configure Task Board</strong>
+                <p>Controls whether you can modify task board settings, columns, filters, and other board configuration options.</p>
+                <p><strong>When Enabled:</strong> You can customize board columns, status columns, filters, grouping options, and other board settings to match your workflow preferences.</p>
+                <p><strong>When Disabled:</strong> Board configuration is read-only. You cannot modify board settings or layout.</p>
+                <p><strong>Use Case:</strong> Enabled for board owners and administrators who need to customize board layouts. Disabled when board configuration should be standardized across the organization.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Delete Work Items from Task Board</strong>
+                <p>Controls whether you can delete work items (time entries) directly from the task board interface.</p>
+                <p><strong>When Enabled:</strong> You can delete work items associated with tasks directly from the board view.</p>
+                <p><strong>When Disabled:</strong> Work item deletion is not available from the board. Work items must be deleted through other interfaces.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Remove Work Items from Task Board</strong>
+                <p>Controls whether you can permanently remove work items directly from the task board.</p>
+                <p><strong>When Enabled:</strong> You can permanently remove work items from the board, which cannot be undone.</p>
+                <p><strong>When Disabled:</strong> Permanent work item removal is not available from the board interface.</p>
+            </div>
+
+            <h3>Feedback Access Controls</h3>
+            
+            <h4>Feedback Templates</h4>
+            <p>Feedback templates are reusable forms or questionnaires used for collecting feedback. The following controls manage access to feedback templates:</p>
+            
+            <div class="field-description">
+                <strong>View Feedback Templates</strong>
+                <p>Controls whether you can view existing feedback templates.</p>
+                <p><strong>When Enabled:</strong> You can see and browse available feedback templates, viewing their structure, questions, and configuration.</p>
+                <p><strong>When Disabled:</strong> Feedback templates are not visible. You cannot access template information.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Create Feedback Templates</strong>
+                <p>Controls whether you can create new feedback templates.</p>
+                <p><strong>When Enabled:</strong> You can create new templates, defining questions, structure, and configuration for feedback collection.</p>
+                <p><strong>When Disabled:</strong> You cannot create new templates. Template creation is restricted.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Edit Feedback Templates</strong>
+                <p>Controls whether you can modify existing feedback template structure and questions.</p>
+                <p><strong>When Enabled:</strong> You can update template questions, structure, and configuration.</p>
+                <p><strong>When Disabled:</strong> Templates are read-only. You cannot modify template content.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Duplicate Feedback Templates</strong>
+                <p>Controls whether you can create copies of existing feedback templates.</p>
+                <p><strong>When Enabled:</strong> You can duplicate templates, creating new templates based on existing ones. This is useful for creating variations of templates or reusing template structures.</p>
+                <p><strong>When Disabled:</strong> Template duplication is not available.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Remove Feedback Templates</strong>
+                <p>Controls whether you can delete feedback templates from the system.</p>
+                <p><strong>When Enabled:</strong> You can remove templates, deleting them from the template library.</p>
+                <p><strong>When Disabled:</strong> Template removal is not available. Templates cannot be deleted.</p>
+            </div>
+
+            <h4>Feedback Requests</h4>
+            <p>Feedback requests are instances where feedback is solicited from specific individuals using a template. The following controls manage access to feedback requests:</p>
+            
+            <div class="field-description">
+                <strong>View Feedback Requests</strong>
+                <p>Controls whether you can view feedback requests that have been sent or received.</p>
+                <p><strong>When Enabled:</strong> You can see feedback requests, including requests sent to you, requests you've sent, and overall request status.</p>
+                <p><strong>When Disabled:</strong> Feedback requests are not visible. You cannot access request information.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Create Feedback Requests</strong>
+                <p>Controls whether you can create and send new feedback requests to others.</p>
+                <p><strong>When Enabled:</strong> You can create feedback requests, select recipients, choose templates, and send requests for feedback.</p>
+                <p><strong>When Disabled:</strong> You cannot create or send feedback requests. Request creation is restricted.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Edit Feedback Requests</strong>
+                <p>Controls whether you can modify feedback requests after they've been created.</p>
+                <p><strong>When Enabled:</strong> You can update request details, recipients, or other request information before activation.</p>
+                <p><strong>When Disabled:</strong> Requests are read-only once created. You cannot modify request details.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Activate Feedback Requests</strong>
+                <p>Controls whether you can activate feedback requests, making them active and sending them to recipients.</p>
+                <p><strong>When Enabled:</strong> You can activate feedback requests, which typically sends notifications to recipients and makes the request available for response.</p>
+                <p><strong>When Disabled:</strong> You cannot activate requests. Request activation is restricted to authorized users.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Remove Feedback Requests</strong>
+                <p>Controls whether you can delete feedback requests from the system.</p>
+                <p><strong>When Enabled:</strong> You can remove feedback requests, deleting them and canceling any pending requests.</p>
+                <p><strong>When Disabled:</strong> Request removal is not available. Requests cannot be deleted.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Update Feedback Status</strong>
+                <p>Controls whether you can change the status of feedback requests (e.g., from Pending to Completed, or from Active to Closed).</p>
+                <p><strong>When Enabled:</strong> You can update request status, tracking the progress and lifecycle of feedback requests.</p>
+                <p><strong>When Disabled:</strong> Request status is read-only. You cannot change request status.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Resend Feedback Requests</strong>
+                <p>Controls whether you can resend feedback requests to recipients, typically to remind them or send to additional recipients.</p>
+                <p><strong>When Enabled:</strong> You can resend requests, which may send reminder notifications or extend the request to additional recipients.</p>
+                <p><strong>When Disabled:</strong> Request resending is not available. Requests can only be sent once.</p>
+            </div>
+
+            <h3>Checklist Access Controls</h3>
+            <p>Checklists are reusable lists of items that can be attached to projects, tasks, or other entities. The following controls manage access to standalone checklists:</p>
+            
+            <div class="field-description">
+                <strong>View Checklists</strong>
+                <p>Controls whether you can view available checklist templates or saved checklists.</p>
+                <p><strong>When Enabled:</strong> You can see and browse checklists, viewing their items and structure.</p>
+                <p><strong>When Disabled:</strong> Checklists are not visible. You cannot access checklist information.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Create Checklists</strong>
+                <p>Controls whether you can create new checklist templates or saved checklists.</p>
+                <p><strong>When Enabled:</strong> You can create new checklists, defining items and structure for reuse across projects or tasks.</p>
+                <p><strong>When Disabled:</strong> You cannot create new checklists. Checklist creation is restricted.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Edit Checklists</strong>
+                <p>Controls whether you can modify existing checklist items and structure.</p>
+                <p><strong>When Enabled:</strong> You can update checklist items, add or remove items, and modify checklist structure.</p>
+                <p><strong>When Disabled:</strong> Checklists are read-only. You cannot modify checklist content.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Duplicate Checklists</strong>
+                <p>Controls whether you can create copies of existing checklists.</p>
+                <p><strong>When Enabled:</strong> You can duplicate checklists, creating new checklists based on existing ones. This is useful for creating variations or reusing checklist structures.</p>
+                <p><strong>When Disabled:</strong> Checklist duplication is not available.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Remove Checklists</strong>
+                <p>Controls whether you can delete checklists from the system.</p>
+                <p><strong>When Enabled:</strong> You can remove checklists, deleting them from the checklist library.</p>
+                <p><strong>When Disabled:</strong> Checklist removal is not available. Checklists cannot be deleted.</p>
+            </div>
+
+            <h3>User Teams Access Controls</h3>
+            <p>Teams are organizational units that group employees and projects. The following controls manage access to team management:</p>
+            
+            <div class="field-description">
+                <strong>Create Teams</strong>
+                <p>Controls whether you can create new teams in the organization.</p>
+                <p><strong>When Enabled:</strong> You can create new teams, setting up team names, members, and team configuration. This is essential for organizational structure management.</p>
+                <p><strong>When Disabled:</strong> You cannot create new teams. Team creation is restricted to administrators.</p>
+                <p><strong>Use Case:</strong> Enabled for HR administrators and organizational managers who need to set up team structures. Disabled for regular users to maintain organizational structure integrity.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Delete Teams</strong>
+                <p>Controls whether you can mark teams as deleted.</p>
+                <p><strong>When Enabled:</strong> You can delete teams, which typically hides them from normal views but retains team data and member associations for recovery purposes.</p>
+                <p><strong>When Disabled:</strong> You cannot delete teams. Team deletion is restricted.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Permanently Remove Teams</strong>
+                <p>Controls whether you can permanently delete teams from the system.</p>
+                <p><strong>When Enabled:</strong> You can permanently remove teams, which cannot be undone and may remove team associations and data.</p>
+                <p><strong>When Disabled:</strong> Permanent team removal is not available. Teams can only be deleted (soft delete), not permanently removed.</p>
+                <p><strong>Use Case:</strong> Typically restricted to system administrators only, as permanent team removal can have significant organizational impact.</p>
+            </div>
+
+            <h3>Profile Settings Access Controls</h3>
+            <p>Profile settings control access to various system configuration and personalization options:</p>
+            
+            <div class="field-description">
+                <strong>Register Devices</strong>
+                <p>Controls whether you can register devices (such as mobile devices or computers) for system access or authentication.</p>
+                <p><strong>When Enabled:</strong> You can register devices, which may be used for two-factor authentication, device-based access control, or device management.</p>
+                <p><strong>When Disabled:</strong> Device registration is not available. You cannot register new devices.</p>
+                <p><strong>Use Case:</strong> Enabled when device-based authentication or access control is used. Disabled when device registration should be managed by administrators only.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Access Scheduler View</strong>
+                <p>Controls whether you can access the scheduler or calendar view interface.</p>
+                <p><strong>When Enabled:</strong> You can access scheduler views, which may show resource schedules, project timelines, or calendar-based planning interfaces.</p>
+                <p><strong>When Disabled:</strong> Scheduler views are not accessible. Scheduler features are hidden or disabled.</p>
+                <p><strong>Use Case:</strong> Enabled for users who need calendar or scheduling functionality. Disabled when scheduler views are not needed or should be restricted.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>View Service Health</strong>
+                <p>Controls whether you can view system service health, status, and monitoring information.</p>
+                <p><strong>When Enabled:</strong> You can access service health dashboards, status pages, and system monitoring information, helping you understand system availability and performance.</p>
+                <p><strong>When Disabled:</strong> Service health information is not visible. System status and health monitoring are restricted.</p>
+                <p><strong>Use Case:</strong> Typically enabled for administrators and technical users who need to monitor system health. Disabled for regular users who don't need system-level information.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Access Company Settings</strong>
+                <p>Controls whether you can access and modify company-wide settings and configuration.</p>
+                <p><strong>When Enabled:</strong> You can access company settings pages, where you can configure organization-wide options, preferences, and system settings.</p>
+                <p><strong>When Disabled:</strong> Company settings are not accessible. Company configuration is restricted to administrators.</p>
+                <p><strong>Use Case:</strong> Typically restricted to administrators and authorized users only, as company settings affect the entire organization.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Change Localization Settings</strong>
+                <p>Controls whether you can modify localization settings such as language, date format, timezone, and regional preferences.</p>
+                <p><strong>When Enabled:</strong> You can change your personal localization settings, customizing how dates, times, numbers, and text are displayed based on your regional preferences.</p>
+                <p><strong>When Disabled:</strong> Localization settings are read-only or managed centrally. You cannot change personal localization preferences.</p>
+                <p><strong>Use Case:</strong> Typically enabled for all users to allow personalization of display formats. Disabled when localization should be standardized across the organization.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Configure Notifications</strong>
+                <p>Controls whether you can access and modify notification settings and preferences.</p>
+                <p><strong>When Enabled:</strong> You can configure notification preferences, choosing which types of notifications you receive, notification channels (email, in-app, etc.), and notification frequency.</p>
+                <p><strong>When Disabled:</strong> Notification settings are not accessible. Notification preferences are managed centrally or cannot be customized.</p>
+                <p><strong>Use Case:</strong> Typically enabled for all users to allow personalization of notification preferences. Disabled when notification settings should be standardized or managed centrally.</p>
+            </div>
+        </section>
+
+        <section id="troubleshooting" class="section">
+            <h2>🔧 Troubleshooting Access Issues</h2>
+            
+            <h3>I Can't See a Feature</h3>
+            <div class="steps">
+                <div class="step">
+                    <strong>Check Module Access</strong>
+                    <div class="step-detail">
+                        Verify you have access to the module containing the feature. Check the left sidebar menu.
+                    </div>
+                </div>
+                <div class="step">
+                    <strong>Check Feature Access</strong>
+                    <div class="step-detail">
+                        The feature may be disabled for your role. Contact your administrator.
+                    </div>
+                </div>
+                <div class="step">
+                    <strong>Check Team Assignment</strong>
+                    <div class="step-detail">
+                        Some features require you to be assigned to a specific team.
+                    </div>
+                </div>
+                <div class="step">
+                    <strong>Refresh the Page</strong>
+                    <div class="step-detail">
+                        Sometimes permissions are updated but the page needs to be refreshed.
+                    </div>
+                </div>
+            </div>
+
+            <h3>I Can't Edit Something</h3>
+            <div class="steps">
+                <div class="step">
+                    <strong>Check Edit Permission</strong>
+                    <div class="step-detail">
+                        You may only have view permission, not edit permission.
+                    </div>
+                </div>
+                <div class="step">
+                    <strong>Check Item Status</strong>
+                    <div class="step-detail">
+                        Some items cannot be edited when in certain statuses (e.g., completed, archived).
+                    </div>
+                </div>
+                <div class="step">
+                    <strong>Check Date Restrictions</strong>
+                    <div class="step-detail">
+                        There may be date-based restrictions preventing edits (e.g., can't edit last month's timesheet after X days).
+                    </div>
+                </div>
+                <div class="step">
+                    <strong>Check Team Access</strong>
+                    <div class="step-detail">
+                        You may not have access to edit items from other teams.
+                    </div>
+                </div>
+            </div>
+
+            <h3>I Can't Create Something</h3>
+            <div class="steps">
+                <div class="step">
+                    <strong>Check Create Permission</strong>
+                    <div class="step-detail">
+                        Verify you have create permission for that item type.
+                    </div>
+                </div>
+                <div class="step">
+                    <strong>Check Date Restrictions</strong>
+                    <div class="step-detail">
+                        There may be restrictions on when you can create items (e.g., can't create work items for dates more than X days in the past).
+                    </div>
+                </div>
+                <div class="step">
+                    <strong>Check Required Fields</strong>
+                    <div class="step-detail">
+                        Ensure all required fields are filled and valid.
+                    </div>
+                </div>
+            </div>
+
+            <h3>I Can't See Other Teams' Data</h3>
+            <div class="steps">
+                <div class="step">
+                    <strong>Check Team Access Control</strong>
+                    <div class="step-detail">
+                        The <strong>allowAccessToOtherUserTeamProjects</strong> or similar setting may be disabled.
+                    </div>
+                </div>
+                <div class="step">
+                    <strong>Check Team Filter</strong>
+                    <div class="step-detail">
+                        You may need to use the team filter dropdown to switch teams (if <strong>switchUserTeamsEnabled</strong> is true).
+                    </div>
+                </div>
+                <div class="step">
+                    <strong>Contact Administrator</strong>
+                    <div class="step-detail">
+                        If you need cross-team access, contact your administrator to update your permissions.
+                    </div>
+                </div>
+            </div>
+
+            <h3>I Can't Change Status</h3>
+            <div class="steps">
+                <div class="step">
+                    <strong>Check Status Change Permission</strong>
+                    <div class="step-detail">
+                        Verify <strong>allowStatusChange</strong> is enabled for your role.
+                    </div>
+                </div>
+                <div class="step">
+                    <strong>Check Status Options</strong>
+                    <div class="step-detail">
+                        The <strong>changeableStatus</strong> setting may restrict which statuses you can change to.
+                    </div>
+                </div>
+                <div class="step">
+                    <strong>Check Status Level Down</strong>
+                    <div class="step-detail">
+                        If trying to move backwards, verify <strong>allowStatusLevelDown</strong> is enabled.
+                    </div>
+                </div>
+            </div>
+
+            <h3>Getting Help</h3>
+            <p>If you continue to experience access issues:</p>
+            <ol style="margin-left: 1.5rem;">
+                <li>Contact your system administrator</li>
+                <li>Contact your team lead or manager</li>
+                <li>Provide specific details:
+                    <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                        <li>What feature you're trying to access</li>
+                        <li>What action you're trying to perform</li>
+                        <li>Any error messages you see</li>
+                        <li>Your role and team assignment</li>
+                    </ul>
+                </li>
+            </ol>
+
+            <div class="warning">
+                <strong>⚠️ Important:</strong> Never share your login credentials with others. Access controls are in place for security and data protection. If you need additional access, go through proper channels.
+            </div>
+        </section>
+    </main>
+
+    <footer style="background: var(--text-dark); color: white; padding: 2rem 0; margin-top: 3rem; text-align: center;">
+        <div class="container">
+            <p>&copy; 2024 Famstack. All rights reserved.</p>
+            <p style="margin-top: 1rem;">
+                <a href="index.html" style="color: white; text-decoration: underline; margin: 0 1rem;">Documentation</a>
+                <a href="faq/index.html" style="color: white; text-decoration: underline; margin: 0 1rem;">FAQ</a>
+            </p>
+        </div>
+    </footer>
+
+    <script src="js/navigation.js"></script>
+    <script src="js/search.js"></script>
+</body>
+</html>
+

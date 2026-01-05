@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sales Module - Famstack Users Guide</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <img src="/favicon.ico" alt="Famstack Logo" class="header-logo" onerror="this.style.display='none'">
+                <div class="header-text">
+                    <h1>Famstack Users Guide</h1>
+                    <p class="subtitle">Complete Documentation & User Manual</p>
+                    <p class="version">Version 1.0</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="getting-started.html">Getting Started</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="tasks.html">Tasks</a></li>
+                <li><a href="hrms.html">HRMS</a></li>
+                <li><a href="sales.html" class="active">Sales</a></li>
+                <li><a href="reports.html">Reports</a></li>
+                <li><a href="advanced.html">Advanced</a></li>
+                <li><a href="access-controls.html">Access Controls</a></li>
+                <li><a href="application-configuration.html">Application Configuration</a></li>
+                <li><a href="faq/index.html">FAQ</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <aside class="sidebar">
+        <ul>
+            <li class="section-title">Sales Module</li>
+            <li><a href="sales.html" class="active">Sales Overview</a></li>
+            <li><a href="#bid-requests">Bid Requests</a></li>
+            <li><a href="#creating-bids">Creating Bid Requests</a></li>
+            <li><a href="#bid-details">Bid Request Details</a></li>
+            <li><a href="#purchase-orders">Purchase Orders</a></li>
+            <li><a href="#creating-pos">Creating Purchase Orders</a></li>
+            <li><a href="#po-details">Purchase Order Details</a></li>
+        </ul>
+    </aside>
+
+    <main>
+        <div class="breadcrumb">
+            <a href="index.html">Home</a> <span>→</span> Sales Module
+        </div>
+
+        <section id="bid-requests" class="section">
+            <h2>📝 Bid Requests</h2>
+            
+            <h3>Understanding Bid Requests</h3>
+            <p>Bid Requests represent opportunities to submit proposals for potential projects. They track the sales process from initial opportunity through to project creation.</p>
+
+            <h4>Accessing Bid Requests</h4>
+            <div class="steps">
+                <div class="step">
+                    Navigate to <strong>Sales → Bid Requests</strong> from the left sidebar
+                </div>
+                <div class="step">
+                    List of bid requests is displayed
+                </div>
+            </div>
+
+            <h3>Bid Request List View</h3>
+            <p>The list shows bid requests with:</p>
+            <ul style="margin-left: 1.5rem;">
+                <li>Bid request number/ID</li>
+                <li>Client/Account name</li>
+                <li>Bid title/description</li>
+                <li>Status (New, Submitted, Won, Lost, etc.)</li>
+                <li>Submission date</li>
+                <li>Value/Amount</li>
+                <li>Probability</li>
+            </ul>
+
+            <h3>Filtering Bid Requests</h3>
+            <p>Filter by:</p>
+            <ul style="margin-left: 1.5rem;">
+                <li><strong>Status:</strong> All, New, In Progress, Won, Lost</li>
+                <li><strong>Account:</strong> Filter by client</li>
+                <li><strong>Date Range:</strong> Filter by submission or due date</li>
+                <li><strong>Search:</strong> Search by bid number, title, or account</li>
+            </ul>
+        </section>
+
+        <section id="creating-bids" class="section">
+            <h2>➕ Creating Bid Requests</h2>
+            
+            <h3>Step-by-Step Creation</h3>
+            <div class="steps">
+                <div class="step">
+                    <strong>Step 1: Open Create Form</strong>
+                    <div class="step-detail">
+                        Click <strong>"CREATE BID REQUEST"</strong> button in the Bid Requests page
+                    </div>
+                </div>
+                <div class="step">
+                    <strong>Step 2: Enter Basic Information</strong>
+                    <div class="step-detail">
+                        Fill in required fields:
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                            <li><strong>Bid Title:</strong> Descriptive name for the bid</li>
+                            <li><strong>Account:</strong> Select or create client account</li>
+                            <li><strong>Bid Number:</strong> Reference number (may be auto-generated)</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="step">
+                    <strong>Step 3: Set Dates</strong>
+                    <div class="step-detail">
+                        Enter:
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                            <li><strong>Submission Date:</strong> When bid is due</li>
+                            <li><strong>Expected Start Date:</strong> If won, when work would begin</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="step">
+                    <strong>Step 4: Enter Details</strong>
+                    <div class="step-detail">
+                        Add:
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                            <li><strong>Description:</strong> Detailed bid information</li>
+                            <li><strong>Value:</strong> Estimated contract value</li>
+                            <li><strong>Probability:</strong> Likelihood of winning (percentage)</li>
+                            <li><strong>Requirements:</strong> Client requirements and scope</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="step">
+                    <strong>Step 5: Assign Team</strong>
+                    <div class="step-detail">
+                        Select team responsible for preparing the bid
+                    </div>
+                </div>
+                <div class="step">
+                    <strong>Step 6: Submit</strong>
+                    <div class="step-detail">
+                        Click <strong>"Create"</strong> to save the bid request
+                    </div>
+                </div>
+            </div>
+
+            <h3>Bid Request Fields</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Field</th>
+                        <th>Required</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Bid Title</strong></td>
+                        <td>✅ Yes</td>
+                        <td>Name/description of the bid opportunity</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Account</strong></td>
+                        <td>✅ Yes</td>
+                        <td>Client account this bid is for</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Bid Number</strong></td>
+                        <td>❌ No</td>
+                        <td>Reference number (may auto-generate)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Submission Date</strong></td>
+                        <td>✅ Yes</td>
+                        <td>When the bid is due</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Value</strong></td>
+                        <td>❌ No</td>
+                        <td>Estimated contract value</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Probability</strong></td>
+                        <td>❌ No</td>
+                        <td>Win probability percentage</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Description</strong></td>
+                        <td>❌ No</td>
+                        <td>Detailed bid information</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Team</strong></td>
+                        <td>✅ Yes</td>
+                        <td>Team responsible for bid</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="bid-details" class="section">
+            <h2>📋 Bid Request Details</h2>
+            
+            <h3>Viewing Bid Details</h3>
+            <div class="steps">
+                <div class="step">
+                    Click on a bid request from the list
+                </div>
+                <div class="step">
+                    Bid details page opens
+                </div>
+            </div>
+
+            <h3>Bid Details Sections</h3>
+            
+            <h4>General Information</h4>
+            <p>Shows all basic bid information:</p>
+            <ul style="margin-left: 1.5rem;">
+                <li>Bid number and title</li>
+                <li>Account information</li>
+                <li>Status</li>
+                <li>Dates</li>
+                <li>Value and probability</li>
+                <li>Description</li>
+            </ul>
+
+            <h4>Status Management</h4>
+            <p>Update bid status as it progresses:</p>
+            <div class="steps">
+                <div class="step">
+                    Find Status field or dropdown
+                </div>
+                <div class="step">
+                    Select new status:
+                    <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                        <li><strong>New:</strong> Just created</li>
+                        <li><strong>In Progress:</strong> Being prepared</li>
+                        <li><strong>Submitted:</strong> Bid has been submitted</li>
+                        <li><strong>Won:</strong> Bid was successful</li>
+                        <li><strong>Lost:</strong> Bid was unsuccessful</li>
+                        <li><strong>Cancelled:</strong> Bid opportunity cancelled</li>
+                    </ul>
+                </div>
+                <div class="step">
+                    Save changes
+                </div>
+            </div>
+
+            <h4>Converting to Project</h4>
+            <p>When a bid is won, convert it to a project:</p>
+            <div class="steps">
+                <div class="step">
+                    Set bid status to "Won"
+                </div>
+                <div class="step">
+                    Click <strong>"Create Project"</strong> or <strong>"Convert to Project"</strong> button
+                </div>
+                <div class="step">
+                    Project creation form opens with bid information pre-filled
+                </div>
+                <div class="step">
+                    Review and adjust project details
+                </div>
+                <div class="step">
+                    Create the project
+                </div>
+            </div>
+
+            <h3>Editing Bid Requests</h3>
+            <div class="steps">
+                <div class="step">
+                    Open bid details
+                </div>
+                <div class="step">
+                    Click <strong>"Edit"</strong> button
+                </div>
+                <div class="step">
+                    Modify fields as needed
+                </div>
+                <div class="step">
+                    Save changes
+                </div>
+            </div>
+
+            <h3>Deleting Bid Requests</h3>
+            <div class="steps">
+                <div class="step">
+                    Open bid details
+                </div>
+                <div class="step">
+                    Click <strong>"Delete"</strong> from actions menu
+                </div>
+                <div class="step">
+                    Confirm deletion
+                </div>
+            </div>
+        </section>
+
+        <section id="purchase-orders" class="section">
+            <h2>🛒 Purchase Orders</h2>
+            
+            <h3>Understanding Purchase Orders</h3>
+            <p>Purchase Orders (POs) represent approved work authorizations from clients. They are often created from won bids and used to create projects.</p>
+
+            <h4>Accessing Purchase Orders</h4>
+            <div class="steps">
+                <div class="step">
+                    Navigate to <strong>Sales → Purchase Orders</strong>
+                </div>
+                <div class="step">
+                    List of purchase orders is displayed
+                </div>
+            </div>
+
+            <h3>Purchase Order List</h3>
+            <p>The list shows:</p>
+            <ul style="margin-left: 1.5rem;">
+                <li>PO number</li>
+                <li>Client/Account name</li>
+                <li>Related project (if created)</li>
+                <li>Status</li>
+                <li>PO date</li>
+                <li>Value/Amount</li>
+                <li>Service lines</li>
+            </ul>
+
+            <h3>Filtering Purchase Orders</h3>
+            <p>Filter by:</p>
+            <ul style="margin-left: 1.5rem;">
+                <li><strong>Status:</strong> All, Active, Completed, Cancelled</li>
+                <li><strong>Account:</strong> Filter by client</li>
+                <li><strong>Date Range:</strong> Filter by PO date</li>
+                <li><strong>Search:</strong> Search by PO number or account</li>
+            </ul>
+        </section>
+
+        <section id="creating-pos" class="section">
+            <h2>➕ Creating Purchase Orders</h2>
+            
+            <h3>Step-by-Step Creation</h3>
+            <div class="steps">
+                <div class="step">
+                    <strong>Step 1: Open Create Form</strong>
+                    <div class="step-detail">
+                        Click <strong>"CREATE PURCHASE ORDER"</strong> button
+                    </div>
+                </div>
+                <div class="step">
+                    <strong>Step 2: Enter Basic Information</strong>
+                    <div class="step-detail">
+                        Fill in:
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                            <li><strong>PO Number:</strong> Purchase order number from client</li>
+                            <li><strong>Account:</strong> Client account</li>
+                            <li><strong>PO Date:</strong> Date of purchase order</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="step">
+                    <strong>Step 3: Set Dates</strong>
+                    <div class="step-detail">
+                        Enter:
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                            <li><strong>Estimated Start Date:</strong> When work should begin</li>
+                            <li><strong>Estimated Completion Date:</strong> When work should be completed</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="step">
+                    <strong>Step 4: Add Service Lines</strong>
+                    <div class="step-detail">
+                        Add service line estimates:
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                            <li>Click "Add Service Line"</li>
+                            <li>Select service line type</li>
+                            <li>Enter estimated hours</li>
+                            <li>Add team member estimates if needed</li>
+                            <li>Repeat for each service line</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="step">
+                    <strong>Step 5: Enter Amount</strong>
+                    <div class="step-detail">
+                        Enter total PO value/amount
+                    </div>
+                </div>
+                <div class="step">
+                    <strong>Step 6: Add Description</strong>
+                    <div class="step-detail">
+                        Add any additional notes or requirements
+                    </div>
+                </div>
+                <div class="step">
+                    <strong>Step 7: Submit</strong>
+                    <div class="step-detail">
+                        Click <strong>"Create"</strong> to save
+                    </div>
+                </div>
+            </div>
+
+            <h3>Creating PO from Bid Request</h3>
+            <div class="steps">
+                <div class="step">
+                    Open won bid request
+                </div>
+                <div class="step">
+                    Click <strong>"Create Purchase Order"</strong>
+                </div>
+                <div class="step">
+                    PO form opens with bid information pre-filled
+                </div>
+                <div class="step">
+                    Complete PO details
+                </div>
+                <div class="step">
+                    Create PO
+                </div>
+            </div>
+        </section>
+
+        <section id="po-details" class="section">
+            <h2>📋 Purchase Order Details</h2>
+            
+            <h3>Viewing PO Details</h3>
+            <div class="steps">
+                <div class="step">
+                    Click on a purchase order from the list
+                </div>
+                <div class="step">
+                    PO details page opens
+                </div>
+            </div>
+
+            <h3>PO Details Sections</h3>
+            
+            <h4>General Information</h4>
+            <p>Shows:</p>
+            <ul style="margin-left: 1.5rem;">
+                <li>PO number</li>
+                <li>Account information</li>
+                <li>PO date</li>
+                <li>Estimated dates</li>
+                <li>Total value</li>
+                <li>Service lines breakdown</li>
+            </ul>
+
+            <h4>Service Lines</h4>
+            <p>Detailed view of service line estimates:</p>
+            <ul style="margin-left: 1.5rem;">
+                <li>Service line type</li>
+                <li>Estimated hours</li>
+                <li>Team member allocations</li>
+                <li>Cost breakdown</li>
+            </ul>
+
+            <h3>Creating Project from PO</h3>
+            <div class="steps">
+                <div class="step">
+                    Open PO details
+                </div>
+                <div class="step">
+                    Click <strong>"Create Project"</strong> button
+                </div>
+                <div class="step">
+                    Project creation form opens with PO information pre-filled:
+                    <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                        <li>Account</li>
+                        <li>Dates</li>
+                        <li>Service line estimates</li>
+                        <li>Team assignments</li>
+                    </ul>
+                </div>
+                <div class="step">
+                    Complete remaining project fields
+                </div>
+                <div class="step">
+                    Create project
+                </div>
+            </div>
+
+            <div class="tip">
+                <strong>💡 Tip:</strong> Creating projects from POs ensures all billing and estimate information is correctly transferred.
+            </div>
+
+            <h3>Editing Purchase Orders</h3>
+            <div class="steps">
+                <div class="step">
+                    Open PO details
+                </div>
+                <div class="step">
+                    Click <strong>"Edit"</strong> button
+                </div>
+                <div class="step">
+                    Modify fields as needed
+                </div>
+                <div class="step">
+                    Save changes
+                </div>
+            </div>
+
+            <div class="warning">
+                <strong>⚠️ Note:</strong> If a project has been created from the PO, some fields may be locked to maintain data integrity.
+            </div>
+
+            <h3>PO Status Management</h3>
+            <p>Update PO status:</p>
+            <ul style="margin-left: 1.5rem;">
+                <li><strong>Active:</strong> PO is active and work can begin</li>
+                <li><strong>In Progress:</strong> Work has started</li>
+                <li><strong>Completed:</strong> All work is complete</li>
+                <li><strong>Cancelled:</strong> PO has been cancelled</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer style="background: var(--text-dark); color: white; padding: 2rem 0; margin-top: 3rem; text-align: center;">
+        <div class="container">
+            <p>&copy; 2024 Famstack. All rights reserved.</p>
+            <p style="margin-top: 1rem;">
+                <a href="index.html" style="color: white; text-decoration: underline; margin: 0 1rem;">Documentation</a>
+                <a href="faq/index.html" style="color: white; text-decoration: underline; margin: 0 1rem;">FAQ</a>
+            </p>
+        </div>
+    </footer>
+
+    <script src="js/navigation.js"></script>
+    <script src="js/search.js"></script>
+</body>
+</html>
+

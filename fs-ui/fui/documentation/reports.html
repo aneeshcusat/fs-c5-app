@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reports - Famstack Users Guide</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <img src="/favicon.ico" alt="Famstack Logo" class="header-logo" onerror="this.style.display='none'">
+                <div class="header-text">
+                    <h1>Famstack Users Guide</h1>
+                    <p class="subtitle">Complete Documentation & User Manual</p>
+                    <p class="version">Version 1.0</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="getting-started.html">Getting Started</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="tasks.html">Tasks</a></li>
+                <li><a href="hrms.html">HRMS</a></li>
+                <li><a href="sales.html">Sales</a></li>
+                <li><a href="reports.html" class="active">Reports</a></li>
+                <li><a href="advanced.html">Advanced</a></li>
+                <li><a href="access-controls.html">Access Controls</a></li>
+                <li><a href="application-configuration.html">Application Configuration</a></li>
+                <li><a href="faq/index.html">FAQ</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <aside class="sidebar">
+        <ul>
+            <li class="section-title">Reports</li>
+            <li><a href="reports.html" class="active">Reports Overview</a></li>
+            <li><a href="#utilization">Utilization Reports</a></li>
+            <li><a href="#project-reports">Project Reports</a></li>
+            <li><a href="#time-reports">Time Reports</a></li>
+            <li><a href="#resource-reports">Resource Reports</a></li>
+            <li><a href="#exporting">Exporting Reports</a></li>
+            <li><a href="#scheduled">Scheduled Reports</a></li>
+        </ul>
+    </aside>
+
+    <main>
+        <div class="breadcrumb">
+            <a href="index.html">Home</a> <span>→</span> Reports
+        </div>
+
+        <section id="utilization" class="section">
+            <h2>📊 Utilization Reports</h2>
+            
+            <h3>Employee Utilization Report</h3>
+            <p>Shows how employees are utilizing their time across projects.</p>
+
+            <h4>Generating Employee Utilization Report</h4>
+            <div class="steps">
+                <div class="step">
+                    Navigate to <strong>Project → Reports</strong>
+                </div>
+                <div class="step">
+                    Select <strong>"Employee Utilization"</strong> from report dropdown
+                </div>
+                <div class="step">
+                    Set date range
+                </div>
+                <div class="step">
+                    Select teams/employees to include
+                </div>
+                <div class="step">
+                    Set utilization limits (lower and upper) if needed
+                </div>
+                <div class="step">
+                    Click <strong>"Generate Report"</strong> or <strong>"View"</strong>
+                </div>
+            </div>
+
+            <h4>Report Contents</h4>
+            <p>The report shows:</p>
+            <ul style="margin-left: 1.5rem;">
+                <li>Employee name</li>
+                <li>Total hours worked</li>
+                <li>Billable vs non-billable hours</li>
+                <li>Utilization percentage</li>
+                <li>Breakdown by project</li>
+                <li>Comparison to targets</li>
+            </ul>
+
+            <h3>My Utilization Report</h3>
+            <p>Personal utilization report showing your own time utilization.</p>
+            <div class="steps">
+                <div class="step">
+                    Select <strong>"My Utilization"</strong> report
+                </div>
+                <div class="step">
+                    Set date range
+                </div>
+                <div class="step">
+                    Generate report
+                </div>
+            </div>
+
+            <h3>Weekwise Employee Utilization Monthly</h3>
+            <p>Shows weekly breakdown of employee utilization for a month.</p>
+            <div class="steps">
+                <div class="step">
+                    Select <strong>"Weekwise Employee Utilization Monthly"</strong>
+                </div>
+                <div class="step">
+                    Select month
+                </div>
+                <div class="step">
+                    Select teams/employees
+                </div>
+                <div class="step">
+                    Generate report
+                </div>
+            </div>
+
+            <h3>Utilization by Skills</h3>
+            <p>Shows utilization broken down by employee skills.</p>
+            <div class="steps">
+                <div class="step">
+                    Select <strong>"Utilization By Skills"</strong>
+                </div>
+                <div class="step">
+                    Set filters
+                </div>
+                <div class="step">
+                    Generate report
+                </div>
+            </div>
+
+            <h3>Notifying Defaulters</h3>
+            <p>For Employee Utilization report, you can notify employees who fall below utilization thresholds:</p>
+            <div class="steps">
+                <div class="step">
+                    Generate Employee Utilization report
+                </div>
+                <div class="step">
+                    Set lower limit threshold
+                </div>
+                <div class="step">
+                    Click <strong>"Notify Defaulters"</strong> button
+                </div>
+                <div class="step">
+                    System sends email notifications to employees below threshold
+                </div>
+            </div>
+        </section>
+
+        <section id="project-reports" class="section">
+            <h2>📁 Project Reports</h2>
+            
+            <h3>Estimate vs Actual Reports</h3>
+            
+            <h4>Est vs Actual by Deliverables Date</h4>
+            <p>Compares estimated vs actual hours by task/deliverable completion date.</p>
+            <div class="steps">
+                <div class="step">
+                    Select <strong>"Est vs Actual by Deliverables Date"</strong>
+                </div>
+                <div class="step">
+                    Select projects
+                </div>
+                <div class="step">
+                    Set date range
+                </div>
+                <div class="step">
+                    Generate report
+                </div>
+            </div>
+
+            <h4>Est vs Actual by Activities Date</h4>
+            <p>Compares estimated vs actual hours by activity/work item date.</p>
+            <div class="steps">
+                <div class="step">
+                    Select <strong>"Est vs Actual by Activities Date"</strong>
+                </div>
+                <div class="step">
+                    Set filters
+                </div>
+                <div class="step">
+                    Generate report
+                </div>
+            </div>
+
+            <h3>15% Report</h3>
+            <p>Shows projects that are 15% complete or have reached 15% milestone.</p>
+            <div class="steps">
+                <div class="step">
+                    Select <strong>"15% Report"</strong>
+                </div>
+                <div class="step">
+                    Set date range
+                </div>
+                <div class="step">
+                    Generate report
+                </div>
+            </div>
+
+            <h3>Project Details by Skills</h3>
+            <p>Shows project details organized by required skills.</p>
+            <div class="steps">
+                <div class="step">
+                    Select <strong>"Project Details By Skills"</strong>
+                </div>
+                <div class="step">
+                    Set filters
+                </div>
+                <div class="step">
+                    Generate report
+                </div>
+            </div>
+
+            <h3>Project Completion Report</h3>
+            <p>Shows completed projects within a date range.</p>
+            <div class="steps">
+                <div class="step">
+                    Select <strong>"Project Completion Report"</strong>
+                </div>
+                <div class="step">
+                    Set completion date range
+                </div>
+                <div class="step">
+                    Generate report
+                </div>
+            </div>
+
+            <h3>Site Activity Report</h3>
+            <p>Shows activity/work items for site-based projects.</p>
+            <div class="steps">
+                <div class="step">
+                    Select <strong>"Site Activity"</strong>
+                </div>
+                <div class="step">
+                    Set filters
+                </div>
+                <div class="step">
+                    Generate report
+                </div>
+            </div>
+        </section>
+
+        <section id="time-reports" class="section">
+            <h2>⏰ Time Reports</h2>
+            
+            <h3>My Timesheet Data</h3>
+            <p>View your own timesheet data in report format.</p>
+            <div class="steps">
+                <div class="step">
+                    Select <strong>"My Timesheet Data"</strong>
+                </div>
+                <div class="step">
+                    Set date range
+                </div>
+                <div class="step">
+                    Generate report
+                </div>
+            </div>
+
+            <h3>My Data Dump</h3>
+            <p>Export all your timesheet data.</p>
+            <div class="steps">
+                <div class="step">
+                    Select <strong>"My Data Dump"</strong>
+                </div>
+                <div class="step">
+                    Set date range
+                </div>
+                <div class="step">
+                    Generate and export
+                </div>
+            </div>
+
+            <h3>Weekly Project Hours</h3>
+            <p>Shows hours worked per project per week.</p>
+            <div class="steps">
+                <div class="step">
+                    Select <strong>"Weekly Project Hours"</strong>
+                </div>
+                <div class="step">
+                    Set date range
+                </div>
+                <div class="step">
+                    Select projects
+                </div>
+                <div class="step">
+                    Generate report
+                </div>
+            </div>
+
+            <h3>Weekly PO Estimation</h3>
+            <p>Shows weekly estimation breakdown by purchase order.</p>
+            <div class="steps">
+                <div class="step">
+                    Select <strong>"Weekly PO Estimation"</strong>
+                </div>
+                <div class="step">
+                    Set filters
+                </div>
+                <div class="step">
+                    Generate report
+                </div>
+            </div>
+        </section>
+
+        <section id="resource-reports" class="section">
+            <h2>👥 Resource Reports</h2>
+            
+            <h3>Resource Allocation Report</h3>
+            <p>Shows how resources (employees) are allocated across projects.</p>
+            <div class="steps">
+                <div class="step">
+                    Select <strong>"Resource Allocation Report"</strong>
+                </div>
+                <div class="step">
+                    Set date range
+                </div>
+                <div class="step">
+                    Select teams/employees
+                </div>
+                <div class="step">
+                    Generate report
+                </div>
+            </div>
+
+            <h4>Report Contents</h4>
+            <p>Shows:</p>
+            <ul style="margin-left: 1.5rem;">
+                <li>Employee name</li>
+                <li>Projects assigned</li>
+                <li>Allocated hours per project</li>
+                <li>Total allocation</li>
+                <li>Availability</li>
+            </ul>
+
+            <h3>Utilization by Project Category</h3>
+            <p>Shows utilization broken down by project category.</p>
+            <div class="steps">
+                <div class="step">
+                    Select <strong>"Utilization By Skills and Project Category"</strong>
+                </div>
+                <div class="step">
+                    Set filters
+                </div>
+                <div class="step">
+                    Generate report
+                </div>
+            </div>
+        </section>
+
+        <section id="exporting" class="section">
+            <h2>📥 Exporting Reports</h2>
+            
+            <h3>Export Formats</h3>
+            <p>Reports can typically be exported in:</p>
+            <ul style="margin-left: 1.5rem;">
+                <li><strong>Excel (.xlsx):</strong> For data analysis</li>
+                <li><strong>PDF:</strong> For sharing and printing</li>
+                <li><strong>CSV:</strong> For importing into other systems</li>
+            </ul>
+
+            <h3>How to Export</h3>
+            <div class="steps">
+                <div class="step">
+                    Generate the report (view it first)
+                </div>
+                <div class="step">
+                    Click <strong>"Export"</strong> button
+                </div>
+                <div class="step">
+                    Select export format (Excel, PDF, CSV)
+                </div>
+                <div class="step">
+                    File downloads automatically
+                </div>
+            </div>
+
+            <h3>Export Options</h3>
+            <p>Some reports offer export options:</p>
+            <ul style="margin-left: 1.5rem;">
+                <li>Include/exclude specific columns</li>
+                <li>Format options (colors, borders)</li>
+                <li>Page orientation (for PDF)</li>
+                <li>Date format</li>
+            </ul>
+
+            <h3>Emailing Reports</h3>
+            <p>Some reports can be emailed directly:</p>
+            <div class="steps">
+                <div class="step">
+                    Generate report
+                </div>
+                <div class="step">
+                    Click <strong>"Email Report"</strong> button
+                </div>
+                <div class="step">
+                    Enter recipient email addresses
+                </div>
+                <div class="step">
+                    Add subject and message
+                </div>
+                <div class="step">
+                    Select format (Excel, PDF)
+                </div>
+                <div class="step">
+                    Click <strong>"Send"</strong>
+                </div>
+            </div>
+        </section>
+
+        <section id="scheduled" class="section">
+            <h2>📅 Scheduled Reports</h2>
+            
+            <h3>Creating Report Configurations</h3>
+            <p>Save report configurations for easy reuse:</p>
+            <div class="steps">
+                <div class="step">
+                    Generate a report with your desired filters
+                </div>
+                <div class="step">
+                    Click <strong>"Save Configuration"</strong> or <strong>"Create Report Config"</strong>
+                </div>
+                <div class="step">
+                    Enter configuration name
+                </div>
+                <div class="step">
+                    Save the configuration
+                </div>
+            </div>
+
+            <h3>Using Saved Configurations</h3>
+            <div class="steps">
+                <div class="step">
+                    Go to Reports page
+                </div>
+                <div class="step">
+                    Select report type
+                </div>
+                <div class="step">
+                    Select saved configuration from dropdown
+                </div>
+                <div class="step">
+                    Filters are automatically applied
+                </div>
+                <div class="step">
+                    Generate report
+                </div>
+            </div>
+
+            <h3>Scheduling Reports (If Available)</h3>
+            <p>Some organizations may have scheduled report functionality:</p>
+            <div class="steps">
+                <div class="step">
+                    Create report configuration
+                </div>
+                <div class="step">
+                    Click <strong>"Schedule"</strong> option
+                </div>
+                <div class="step">
+                    Set schedule frequency (Daily, Weekly, Monthly)
+                </div>
+                <div class="step">
+                    Set recipients
+                </div>
+                <div class="step">
+                    Save schedule
+                </div>
+            </div>
+
+            <div class="note">
+                <strong>📌 Note:</strong> Scheduled reports feature depends on your organization's configuration.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>📊 Data Dump Reports</h2>
+            
+            <h3>Data Dump</h3>
+            <p>Export all project data in raw format for analysis.</p>
+            <div class="steps">
+                <div class="step">
+                    Select <strong>"Data Dump"</strong>
+                </div>
+                <div class="step">
+                    Set date range
+                </div>
+                <div class="step">
+                    Select data types to include
+                </div>
+                <div class="step">
+                    Export
+                </div>
+            </div>
+
+            <h3>Project Feedback Dump</h3>
+            <p>Export all project feedback data.</p>
+            <div class="steps">
+                <div class="step">
+                    Select <strong>"Project Feedback Dump"</strong>
+                </div>
+                <div class="step">
+                    Set filters
+                </div>
+                <div class="step">
+                    Export
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer style="background: var(--text-dark); color: white; padding: 2rem 0; margin-top: 3rem; text-align: center;">
+        <div class="container">
+            <p>&copy; 2024 Famstack. All rights reserved.</p>
+            <p style="margin-top: 1rem;">
+                <a href="index.html" style="color: white; text-decoration: underline; margin: 0 1rem;">Documentation</a>
+                <a href="faq/index.html" style="color: white; text-decoration: underline; margin: 0 1rem;">FAQ</a>
+            </p>
+        </div>
+    </footer>
+
+    <script src="js/navigation.js"></script>
+    <script src="js/search.js"></script>
+</body>
+</html>
+

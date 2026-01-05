@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Application Configuration - Famstack Users Guide</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <img src="/favicon.ico" alt="Famstack Logo" class="header-logo" onerror="this.style.display='none'">
+                <div class="header-text">
+                    <h1>Famstack Users Guide</h1>
+                    <p class="subtitle">Complete Documentation & User Manual</p>
+                    <p class="version">Version 1.0</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="getting-started.html">Getting Started</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="tasks.html">Tasks</a></li>
+                <li><a href="hrms.html">HRMS</a></li>
+                <li><a href="sales.html">Sales</a></li>
+                <li><a href="reports.html">Reports</a></li>
+                <li><a href="advanced.html">Advanced</a></li>
+                <li><a href="access-controls.html">Access Controls</a></li>
+                <li><a href="application-configuration.html" class="active">Application Configuration</a></li>
+                <li><a href="faq/index.html">FAQ</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <aside class="sidebar">
+        <ul>
+            <li class="section-title">Application Configuration</li>
+            <li><a href="application-configuration.html" class="active">Overview</a></li>
+            <li><a href="#understanding">Understanding Configuration</a></li>
+            <li><a href="#hrms-config">HRMS Module Configuration</a></li>
+            <li><a href="#project-config">Project Module Configuration</a></li>
+            <li><a href="#nonproject-config">Non-Project Module Configuration</a></li>
+            <li><a href="#sales-config">Sales Module Configuration</a></li>
+        </ul>
+    </aside>
+
+    <main>
+        <div class="breadcrumb">
+            <a href="index.html">Home</a> <span>→</span> Application Configuration
+        </div>
+
+        <section id="understanding" class="section">
+            <h2>⚙️ Understanding Application Configuration</h2>
+            
+            <h3>What is Application Configuration?</h3>
+            <p>Application configuration settings allow your organization to customize the system to match your business processes, terminology, and workflow requirements. These settings control dropdown values, field visibility, feature availability, and default behaviors across different modules.</p>
+
+            <h3>How Configuration Works</h3>
+            <p>The system uses a hierarchical configuration structure:</p>
+            
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h4>Organization Level</h4>
+                    <p>Root-level settings that apply to the entire organization</p>
+                </div>
+                <div class="feature-card">
+                    <h4>Module Level</h4>
+                    <p>Settings specific to each module (HRMS, Project, Sales, etc.)</p>
+                </div>
+                <div class="feature-card">
+                    <h4>Team Level</h4>
+                    <p>Settings that can be customized for specific teams (if enabled)</p>
+                </div>
+                <div class="feature-card">
+                    <h4>User Level</h4>
+                    <p>Personal preferences and settings for individual users</p>
+                </div>
+            </div>
+
+            <h3>Configuration Types</h3>
+            <ul style="margin-left: 1.5rem;">
+                <li><strong>Dropdown Lists:</strong> Predefined values that appear in selection fields (e.g., employee bands, project categories)</li>
+                <li><strong>Feature Toggles:</strong> Enable or disable specific features and functionalities</li>
+                <li><strong>Multi-Level Hierarchies:</strong> Complex nested structures (e.g., Service Line → Delivery Category → Task Category)</li>
+                <li><strong>Default Values:</strong> Pre-filled values for new records</li>
+                <li><strong>Notification Settings:</strong> Email addresses and notification preferences</li>
+            </ul>
+
+            <div class="note">
+                <strong>📌 Note:</strong> Configuration settings are managed by system administrators. Changes to configuration may affect how you interact with the system. If you notice unexpected behavior or missing options, contact your administrator.
+            </div>
+        </section>
+
+        <section id="hrms-config" class="section">
+            <h2>👥 HRMS Module Configuration</h2>
+            
+            <p>The HRMS module configuration includes settings for employee management, organizational structure, and HR-related data fields.</p>
+
+            <h3>Employee Classification Settings</h3>
+            
+            <div class="field-description">
+                <strong>Employee Bands</strong>
+                <p>Defines the band structure used to classify employees in the organization (e.g., Band A, Band B, Band C, etc.).</p>
+                <p><strong>Purpose:</strong> Used for employee categorization, reporting, and organizational hierarchy. Bands typically represent different levels of seniority or compensation ranges.</p>
+                <p><strong>Usage:</strong> When creating or editing employee profiles, you can select from the configured bands. This helps maintain consistency in employee classification across the organization.</p>
+                <p><strong>Example Values:</strong> Band A, Band B, Band C, Band D, Band E, Band F</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Employee Grades</strong>
+                <p>Defines the grade levels within each band (e.g., A 1, A 2, B 1, B 2, etc.).</p>
+                <p><strong>Purpose:</strong> Provides a more granular classification system within bands. Grades help differentiate between employees at similar band levels.</p>
+                <p><strong>Usage:</strong> Used in employee profiles to specify exact grade level, which may be used for compensation, reporting, and organizational structure purposes.</p>
+                <p><strong>Example Values:</strong> A 1, A 2, B 1, B 2, B 3, C 1, C 2, C 3, D 1, D 2, D 3, E 1, E 2, F 1, F 2</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Employee Skills</strong>
+                <p>Defines the list of technical and professional skills that can be assigned to employees.</p>
+                <p><strong>Purpose:</strong> Used for skill-based resource allocation, project assignment, and matching employees to projects based on required skills.</p>
+                <p><strong>Usage:</strong> When creating employee profiles or searching for resources, you can assign and filter by these skills. This helps ensure employees are matched to projects that require their expertise.</p>
+                <p><strong>Example Values:</strong> Java developer, Web developer, UI developer, Data Analyst, Business analyst, Backend developer, Data scientist</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Employee Domains</strong>
+                <p>Defines the business domains or practice areas in which employees work.</p>
+                <p><strong>Purpose:</strong> Used to categorize employees by their area of expertise or business domain. Helps in resource planning and domain-specific reporting.</p>
+                <p><strong>Usage:</strong> Assigned to employees to indicate their primary domain of work, which can be used for filtering, reporting, and resource allocation.</p>
+                <p><strong>Example Values:</strong> DPG, Data science, DE, DM</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Employee Certifications</strong>
+                <p>Defines the list of professional certifications that employees can hold.</p>
+                <p><strong>Purpose:</strong> Tracks professional certifications and credentials held by employees. Useful for compliance, skill verification, and project requirements.</p>
+                <p><strong>Usage:</strong> Assigned to employee profiles to record their certifications. Can be used for filtering employees with specific certifications when assigning to projects.</p>
+                <p><strong>Example Values:</strong> Certification 1, Certification 2</p>
+            </div>
+
+            <h3>Geographic and Location Settings</h3>
+            
+            <div class="field-description">
+                <strong>Employee Countries</strong>
+                <p>Defines the list of countries where employees are located or can work.</p>
+                <p><strong>Purpose:</strong> Used for geographic reporting, timezone management, and location-based resource allocation.</p>
+                <p><strong>Usage:</strong> Assigned to employees to indicate their work location. Helps in understanding geographic distribution of resources and managing timezone considerations.</p>
+                <p><strong>Example Values:</strong> India, Singapore, USA, UAE, UK</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Employee Locations</strong>
+                <p>Defines specific office locations and cities where employees work.</p>
+                <p><strong>Purpose:</strong> Provides detailed location information for employees, useful for office management, local reporting, and resource planning.</p>
+                <p><strong>Usage:</strong> Assigned to employees to specify their exact work location. Can include both domestic and international office locations.</p>
+                <p><strong>Example Values:</strong> Bengaluru, Mumbai, Hyderabad, Gurugram, New Delhi, Dubai, and various US locations (WA - Washington, CA - California, NY - New York, etc.)</p>
+            </div>
+
+            <h3>Employment Type and Structure</h3>
+            
+            <div class="field-description">
+                <strong>Employee Types</strong>
+                <p>Defines the types of employment arrangements in the organization.</p>
+                <p><strong>Purpose:</strong> Categorizes employees by their employment contract type. Used for reporting, compliance, and resource planning.</p>
+                <p><strong>Usage:</strong> Assigned to employees to indicate whether they are permanent, contract, consultant, or intern. This affects billing, reporting, and resource availability.</p>
+                <p><strong>Example Values:</strong> Permanent, Contract, Consultant, Intern</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Organizational Divisions</strong>
+                <p>Defines the major business divisions or units within the organization.</p>
+                <p><strong>Purpose:</strong> Represents the top-level organizational structure. Used for high-level reporting, resource allocation, and organizational hierarchy.</p>
+                <p><strong>Usage:</strong> Assigned to employees and projects to indicate which division they belong to. Helps in divisional reporting and resource management.</p>
+                <p><strong>Example Values:</strong> Market Intelligence, Research AI, AI-Labs, Life Sciences, Digital & Advanced Analytics, Support</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Departments</strong>
+                <p>Defines the departments within divisions. Provides a more detailed organizational structure.</p>
+                <p><strong>Purpose:</strong> Represents departmental organization within divisions. Used for departmental reporting, resource allocation, and organizational management.</p>
+                <p><strong>Usage:</strong> Assigned to employees to indicate their department. Can be used for filtering, reporting, and understanding departmental resource distribution.</p>
+                <p><strong>Example Values:</strong> Market Intelligence, Research AI, Advisory, Insights & Analytics, Artificial Intelligence & Product Engineering, Life Sciences, Digital & Advanced Analytics, Finance & Accounts, Human Resources, Information Technology, Sales, and many more</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Sub Departments</strong>
+                <p>Defines sub-departments or teams within departments. Provides the most granular organizational structure.</p>
+                <p><strong>Purpose:</strong> Represents teams or sub-units within departments. Used for detailed organizational reporting and team-level resource management.</p>
+                <p><strong>Usage:</strong> Assigned to employees to indicate their specific sub-department or team. Helps in team-level reporting and resource allocation.</p>
+                <p><strong>Example Values:</strong> Includes various sub-departments like AMRI, Global Primary Research, Visual Services, Quality Assurance, Product Management, Talent Management, Data Processing, Analytics, and many more</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Employee Designations</strong>
+                <p>Defines job titles and designations used in the organization.</p>
+                <p><strong>Purpose:</strong> Standardizes job titles across the organization. Used for organizational hierarchy, reporting, and employee classification.</p>
+                <p><strong>Usage:</strong> Assigned to employees to indicate their job title. Used in organizational charts, reporting, and understanding the hierarchy.</p>
+                <p><strong>Example Values:</strong> Includes executive roles (Senior Vice President, Vice President, Associate Vice President), management roles (Senior Director, Director, Senior Manager, Manager), technical roles (Principal Data Scientist, Senior Data Scientist, Data Scientist, Lead Software Engineer, Senior Software Engineer), and operational roles (Senior Analyst, Analyst, Trainee, Intern)</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Educational Qualifications</strong>
+                <p>Defines the educational qualification levels for employees.</p>
+                <p><strong>Purpose:</strong> Tracks educational background of employees. Used for reporting, compliance, and understanding workforce qualifications.</p>
+                <p><strong>Usage:</strong> Assigned to employee profiles to record their highest educational qualification. Can be used for filtering and reporting purposes.</p>
+                <p><strong>Example Values:</strong> Doctorate, Masters, Bachelors, Diploma</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Service Categories</strong>
+                <p>Defines the service categories that employees can be assigned to based on their role and function.</p>
+                <p><strong>Purpose:</strong> Categorizes employees by the type of service they provide. Used for resource allocation, billing, and service-based reporting.</p>
+                <p><strong>Usage:</strong> Assigned to employees to indicate their service category. Helps in understanding resource distribution across different service types.</p>
+                <p><strong>Example Values:</strong> Advisory, AI-Labs, Delivery, Enabler, Leadership, Presales, Product, Sales, Support</p>
+            </div>
+
+            <h3>Practice Configuration</h3>
+            
+            <div class="field-description">
+                <strong>Practice Mapping (Multi-Level Hierarchy)</strong>
+                <p>Defines a hierarchical structure for practices, with primary practices containing secondary practices.</p>
+                <p><strong>Purpose:</strong> Organizes employees and projects by practice areas in a hierarchical structure. Allows for both primary and secondary practice assignments.</p>
+                <p><strong>Structure:</strong> Two-level hierarchy:
+                    <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                        <li><strong>Level 2 - Primary Practice:</strong> Top-level practice areas</li>
+                        <li><strong>Level 1 - Secondary Practice:</strong> Sub-practices within primary practices</li>
+                    </ul>
+                </p>
+                <p><strong>Usage:</strong> Employees and projects can be assigned to both a primary practice and one or more secondary practices. This allows for flexible categorization and cross-practice collaboration.</p>
+                <p><strong>Example Structure:</strong>
+                    <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                        <li>Primary Practice → Secondary Practice, Secondary Practice 1</li>
+                        <li>Primary Practice 1 → Secondary Practice, Secondary Practice 1, Secondary Practice 2</li>
+                    </ul>
+                </p>
+            </div>
+
+            <div class="field-description">
+                <strong>Team Names</strong>
+                <p>Defines the teams within the organization. Teams can be dynamically created and managed.</p>
+                <p><strong>Purpose:</strong> Represents working teams or groups of employees. Used for team-based project assignment, reporting, and resource allocation.</p>
+                <p><strong>Usage:</strong> Teams are created and managed separately. Employees are assigned to teams, and teams can be assigned to projects. This enables team-based collaboration and reporting.</p>
+                <p><strong>Note:</strong> Team names are typically managed dynamically and may not appear in the configuration if teams are created on-demand.</p>
+            </div>
+        </section>
+
+        <section id="project-config" class="section">
+            <h2>📁 Project Module Configuration</h2>
+            
+            <p>The Project module configuration includes settings for project creation, service line management, categories, notifications, and project-related workflows.</p>
+
+            <h3>Service Line Configuration</h3>
+            
+            <div class="field-description">
+                <strong>Enable Single Service Line Selection</strong>
+                <p>Controls whether projects can have only one service line selected, or multiple service lines.</p>
+                <p><strong>When Enabled:</strong> When creating or editing projects, you can select only one service line. This simplifies project setup and ensures projects are focused on a single service area.</p>
+                <p><strong>When Disabled:</strong> Projects can have multiple service lines, allowing for more complex projects that span multiple service areas.</p>
+                <p><strong>Use Case:</strong> Enable when projects typically focus on a single service area. Disable when projects often involve multiple service lines and you need to track work across different service areas.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Enable Multiple Service Lines with Estimates</strong>
+                <p>Controls whether projects can have multiple service lines with individual time and cost estimates for each.</p>
+                <p><strong>When Enabled:</strong> Projects can include multiple service lines, each with its own estimated hours and costs. This allows for detailed estimation and tracking across different service areas.</p>
+                <p><strong>When Disabled:</strong> Service line estimates are not available or limited. Projects may only have overall estimates without service line breakdown.</p>
+                <p><strong>Use Case:</strong> Enable when you need detailed cost and time breakdowns by service line for budgeting and planning. Disable when simple project-level estimates are sufficient.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Service Line Configuration (Multi-Level Hierarchy)</strong>
+                <p>Defines a three-level hierarchical structure for categorizing project work: Service Line → Delivery Category → Task Category.</p>
+                <p><strong>Purpose:</strong> Provides a comprehensive categorization system for project work, enabling detailed tracking, reporting, and billing by service line, delivery category, and task category.</p>
+                <p><strong>Structure:</strong> Three-level hierarchy:
+                    <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                        <li><strong>Level 3 - Service Line:</strong> Top-level service categories (e.g., Coding, Analysis, Reporting, Data Processing)</li>
+                        <li><strong>Level 2 - Delivery Category:</strong> Sub-categories within service lines (e.g., QC, General, Programming, Adverse Event)</li>
+                        <li><strong>Level 1 - Task Category:</strong> Specific task types within delivery categories (e.g., Coding - OE, Review - OE, Overview - OE)</li>
+                    </ul>
+                </p>
+                <p><strong>Usage:</strong> When creating tasks or work items, you select from this hierarchy. This enables detailed categorization of work for accurate tracking, billing, and reporting.</p>
+                <p><strong>Example Structure:</strong>
+                    <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                        <li><strong>Coding</strong> → QC → QC - OE, QC - OS, Overview - OE</li>
+                        <li><strong>Coding</strong> → Programming → Coding - OE, Review - OE, Re-work/changes - OE</li>
+                        <li><strong>Analysis</strong> → PM, Data Analysis, Data Processing, QC, Presentation/Insights</li>
+                        <li><strong>Project Management</strong> → QA, Setup, Closure, General, Quality, Re-work, Fieldwork</li>
+                    </ul>
+                </p>
+            </div>
+
+            <div class="field-description">
+                <strong>Restrict Project Assignment by Employee Service Line</strong>
+                <p>Controls whether employees can only be assigned to projects that match their assigned service lines.</p>
+                <p><strong>When Enabled:</strong> When assigning employees to projects, only employees whose service lines match the project's service line are available for selection. This ensures proper skill matching.</p>
+                <p><strong>When Disabled:</strong> Any employee can be assigned to any project regardless of service line matching.</p>
+                <p><strong>Use Case:</strong> Enable when you want to ensure employees are only assigned to projects that match their expertise. Disable when cross-service line assignments are common and desired.</p>
+            </div>
+
+            <h3>Project Category and Classification</h3>
+            
+            <div class="field-description">
+                <strong>Enable Category Selection</strong>
+                <p>Controls whether project category selection is available when creating or editing projects.</p>
+                <p><strong>When Enabled:</strong> Projects can be assigned to categories, allowing for better organization and filtering of projects.</p>
+                <p><strong>When Disabled:</strong> Project category selection is not available. Projects cannot be categorized.</p>
+                <p><strong>Use Case:</strong> Enable when you need to organize projects by categories for reporting and management purposes.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Project Categories</strong>
+                <p>Defines the list of categories that can be assigned to projects.</p>
+                <p><strong>Purpose:</strong> Used to classify projects by type, client, or other organizational criteria. Helps in project organization, filtering, and reporting.</p>
+                <p><strong>Usage:</strong> Assigned to projects during creation or editing. Can be used to filter project lists and generate category-based reports.</p>
+                <p><strong>Example Values:</strong> Project Category2, Project Category3, Project Category4, Project Category5, Project Category6, Project Category7, Project Category8</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Delivery Categories</strong>
+                <p>Defines categories for project deliverables and delivery types.</p>
+                <p><strong>Purpose:</strong> Used to categorize project deliverables and delivery methods. Helps in tracking different types of deliverables and delivery approaches.</p>
+                <p><strong>Usage:</strong> Used when creating tasks or deliverables to indicate the delivery category. Can be used for reporting and tracking delivery types.</p>
+                <p><strong>Example Values:</strong> Task Category, Task Category1, Task Category2, Task Category3, Task Category4, Task Category5, Task Category6, Task Category7</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Task Categories</strong>
+                <p>Defines categories for individual tasks within projects.</p>
+                <p><strong>Purpose:</strong> Provides a classification system for tasks. Helps in organizing and categorizing different types of work within projects.</p>
+                <p><strong>Usage:</strong> Assigned to tasks to indicate their category. Can be used for task filtering, reporting, and organization.</p>
+                <p><strong>Example Values:</strong> Task Act Category, Task Act Category1, Task Act Category2, Task Act Category3, Task Act Category4, Task Act Category5, Task Act Category6, Task Act Category7</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Service Categories</strong>
+                <p>Defines the types of services that projects can provide.</p>
+                <p><strong>Purpose:</strong> Categorizes projects by the type of service they deliver. Used for service-based reporting and project classification.</p>
+                <p><strong>Usage:</strong> Assigned to projects to indicate the service category. Helps in understanding the distribution of projects across different service types.</p>
+                <p><strong>Example Values:</strong> Full Service, MRPO, Sample Only, Qualitative</p>
+            </div>
+
+            <h3>Purchase Order Integration</h3>
+            
+            <div class="field-description">
+                <strong>Purchase Order Mandatory for Projects</strong>
+                <p>Controls whether a purchase order must be linked to a project before it can be created or activated.</p>
+                <p><strong>When Enabled:</strong> Projects cannot be created or activated without an associated purchase order. This ensures all projects have proper authorization and billing setup.</p>
+                <p><strong>When Disabled:</strong> Projects can be created without purchase orders. Purchase orders are optional.</p>
+                <p><strong>Use Case:</strong> Enable when all projects must have purchase orders for compliance and billing purposes. Disable when some projects may not require purchase orders (e.g., internal projects).</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Purchase Order Import from Salesforce Enabled</strong>
+                <p>Controls whether purchase orders can be imported from Salesforce integration.</p>
+                <p><strong>When Enabled:</strong> Purchase orders can be automatically imported from Salesforce, reducing manual data entry and ensuring data consistency.</p>
+                <p><strong>When Disabled:</strong> Purchase orders must be created manually in the system. Salesforce integration for purchase orders is not available.</p>
+                <p><strong>Use Case:</strong> Enable when you have Salesforce integration and want to automate purchase order creation. Disable when purchase orders are managed entirely within this system.</p>
+            </div>
+
+            <h3>Project Account Settings</h3>
+            
+            <div class="field-description">
+                <strong>Project Accounts by User Teams Disabled</strong>
+                <p>Controls whether project accounts are filtered by user teams or available across all teams.</p>
+                <p><strong>When Enabled:</strong> Project accounts are restricted to teams. Users can only see and select accounts from their assigned teams.</p>
+                <p><strong>When Disabled:</strong> Project accounts are available across all teams. Users can see and select accounts from any team.</p>
+                <p><strong>Use Case:</strong> Enable when you want to maintain team boundaries for account access. Disable when accounts should be shared across teams.</p>
+            </div>
+
+            <h3>Project Date Management</h3>
+            
+            <div class="field-description">
+                <strong>Update Deliverable Estimated Dates When Project End Date Changes</strong>
+                <p>Controls whether task/deliverable estimated end dates are automatically updated when the project's estimated end date is changed.</p>
+                <p><strong>When Enabled:</strong> When you change a project's estimated end date, all associated deliverables' estimated end dates are automatically adjusted proportionally. This maintains the relationship between project and deliverable timelines.</p>
+                <p><strong>When Disabled:</strong> Deliverable dates remain unchanged when project dates are modified. You must manually update deliverable dates if needed.</p>
+                <p><strong>Use Case:</strong> Enable when you want automatic synchronization between project and deliverable dates. Disable when deliverable dates should be managed independently.</p>
+            </div>
+
+            <h3>Notification Email Settings</h3>
+            
+            <div class="field-description">
+                <strong>Default Purchase Order Notification Emails</strong>
+                <p>Defines the default email addresses that receive notifications when purchase orders are created, updated, or have status changes.</p>
+                <p><strong>Purpose:</strong> Ensures relevant stakeholders are automatically notified about purchase order activities without requiring manual email configuration for each purchase order.</p>
+                <p><strong>Usage:</strong> These email addresses are automatically included in purchase order notifications. Additional recipients can be added for specific purchase orders if needed.</p>
+                <p><strong>Example Values:</strong> DG.DAA@course5i.com, DG.MIA@course5i.com</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Default Purchase Order Notification Emails for Finance Team</strong>
+                <p>Defines the default email addresses for the finance team that receive purchase order notifications.</p>
+                <p><strong>Purpose:</strong> Ensures the finance team is automatically notified about purchase order activities for financial tracking and processing.</p>
+                <p><strong>Usage:</strong> Finance team email addresses are automatically included in purchase order notifications. Separate from general purchase order notifications to ensure finance visibility.</p>
+                <p><strong>Example Values:</strong> DG.DAA@course5i.com, DG.MIA@course5i.com</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Default Project Notification Emails</strong>
+                <p>Defines the default email addresses that receive notifications when projects are created, updated, or have status changes.</p>
+                <p><strong>Purpose:</strong> Ensures relevant stakeholders are automatically notified about project activities without requiring manual email configuration for each project.</p>
+                <p><strong>Usage:</strong> These email addresses are automatically included in project notifications. Project-specific recipients can be added if needed.</p>
+                <p><strong>Example Values:</strong> DG.DAA@course5i.com, DG.MIA@course5i.com</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Default Project Notification Emails for Finance Team</strong>
+                <p>Defines the default email addresses for the finance team that receive project notifications.</p>
+                <p><strong>Purpose:</strong> Ensures the finance team is automatically notified about project activities for financial tracking, billing, and budget management.</p>
+                <p><strong>Usage:</strong> Finance team email addresses are automatically included in project notifications. Separate from general project notifications to ensure finance visibility.</p>
+                <p><strong>Example Values:</strong> DG.DAA@course5i.com, DG.MIA@course5i.com</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Default PII (Personally Identifiable Information) Notification Emails</strong>
+                <p>Defines the default email addresses that receive notifications related to personally identifiable information handling in projects.</p>
+                <p><strong>Purpose:</strong> Ensures data compliance and security teams are notified about PII-related activities for compliance monitoring and data protection.</p>
+                <p><strong>Usage:</strong> These email addresses receive notifications when projects involve PII data or when PII-related activities occur. Critical for data compliance and security.</p>
+                <p><strong>Example Values:</strong> datacompliance@course5i.comm</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Default Deliverable Notification Emails</strong>
+                <p>Defines the default email addresses that receive notifications when deliverables are created, updated, or completed.</p>
+                <p><strong>Purpose:</strong> Ensures relevant stakeholders are automatically notified about deliverable activities and milestones.</p>
+                <p><strong>Usage:</strong> These email addresses are automatically included in deliverable notifications. Helps keep stakeholders informed about project progress and deliverable status.</p>
+                <p><strong>Example Values:</strong> DG.DAA@course5i.com, DG.MIA@course5i.com</p>
+            </div>
+
+            <h3>Additional Project Settings</h3>
+            
+            <div class="field-description">
+                <strong>Tool Names</strong>
+                <p>Defines the tools and software applications that can be used in projects.</p>
+                <p><strong>Purpose:</strong> Tracks which tools are used in projects for resource planning, skill requirements, and project setup.</p>
+                <p><strong>Usage:</strong> Assigned to projects to indicate required or used tools. Can be used for resource allocation and ensuring projects have access to necessary tools.</p>
+                <p><strong>Example Values:</strong> Microsoft Office, Power BI</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Product Names</strong>
+                <p>Defines the products or solutions that projects are related to or deliver.</p>
+                <p><strong>Purpose:</strong> Tracks which products are associated with projects for product-based reporting and resource allocation.</p>
+                <p><strong>Usage:</strong> Assigned to projects to indicate related products. Helps in product-based project tracking and reporting.</p>
+                <p><strong>Example Values:</strong> Microsoft Office, Power BI</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Survey Types</strong>
+                <p>Defines the types of surveys that can be conducted in projects.</p>
+                <p><strong>Purpose:</strong> Categorizes projects by survey methodology. Used for survey-based projects to specify the type of survey being conducted.</p>
+                <p><strong>Usage:</strong> Assigned to projects that involve surveys to indicate the survey type. Helps in planning, resource allocation, and methodology tracking.</p>
+                <p><strong>Example Values:</strong> Online, CATI, CAPI, Mobile, Recruit to Web, IDI (Recruitment only), IDI (Recruitment, Interview), TDI (Recruitment only), TDI(Recruitment, Interview), Mystery Shopping, FGD (Recruitment only), FGD (Recruitment, Moderation), Ethnography (Recruitment only), Ethnography(Recruitment, Moderation), Others</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Timezone Configuration</strong>
+                <p>Defines the timezones that can be assigned to projects.</p>
+                <p><strong>Purpose:</strong> Ensures projects are scheduled and managed according to the correct timezone. Important for global projects and client coordination.</p>
+                <p><strong>Usage:</strong> Assigned to projects to indicate the primary timezone. Affects scheduling, deadlines, and time-based reporting.</p>
+                <p><strong>Example Values:</strong> AU (Australia), SG (Singapore), IST (Indian Standard Time), GMT (Greenwich Mean Time), EST (Eastern Standard Time), PST (Pacific Standard Time), CST (Central Standard Time)</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Sample Configuration</strong>
+                <p>Defines whether project samples are provided by clients or generated internally.</p>
+                <p><strong>Purpose:</strong> Tracks the source of project samples for reporting and project setup purposes.</p>
+                <p><strong>Usage:</strong> Assigned to projects to indicate sample source. Helps in understanding project requirements and resource needs.</p>
+                <p><strong>Example Values:</strong> Client, Internal</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Currency Configuration</strong>
+                <p>Defines the currencies that can be used for project billing and financial tracking.</p>
+                <p><strong>Purpose:</strong> Supports multi-currency projects and ensures proper financial tracking in the project's currency.</p>
+                <p><strong>Usage:</strong> Assigned to projects to indicate the billing currency. Affects cost estimates, invoicing, and financial reporting.</p>
+                <p><strong>Example Values:</strong> USD (US Dollar), EUR (Euro), GBP (British Pound), SGD (Singapore Dollar), AUD (Australian Dollar), INR (Indian Rupee)</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Feedback Service Line Configuration</strong>
+                <p>Defines service lines that can be used specifically for feedback collection and management.</p>
+                <p><strong>Purpose:</strong> Categorizes feedback by service line, enabling service-line-specific feedback tracking and reporting.</p>
+                <p><strong>Usage:</strong> Used when creating feedback requests to associate them with specific service lines. Helps in organizing and analyzing feedback by service area.</p>
+                <p><strong>Example Values:</strong> Feedback Service Line, Feedback Service Line 1, Feedback Service Line 2</p>
+            </div>
+        </section>
+
+        <section id="nonproject-config" class="section">
+            <h2>📋 Non-Project Module Configuration</h2>
+            
+            <p>The Non-Project module configuration includes settings for non-billable work, administrative activities, and internal time tracking.</p>
+
+            <h3>Non-Billable Categories</h3>
+            
+            <div class="field-description">
+                <strong>Non-Billable Categories</strong>
+                <p>Defines the categories of work that are not billable to clients. These represent internal activities, administrative work, and other non-client-facing activities.</p>
+                <p><strong>Purpose:</strong> Provides a comprehensive list of non-billable work categories for accurate time tracking and reporting. Helps distinguish between billable and non-billable hours.</p>
+                <p><strong>Usage:</strong> When logging non-billable time entries, you select from these categories. This ensures consistent categorization of non-billable work across the organization.</p>
+                <p><strong>Example Values:</strong> Internal Team Meeting and Admin Work, Snacks / Lunch / Dinner, Knowledge Development and Training, Imparting Trainings, Technical Downtime / IT issues, Client Meeting, Internal product/solution development and Support, CSR, Documentation, Timesheet Updation, Handover, Marketing Collaterals, POC, Project Management (Mails, Queries and Task), Reading Manuals and R&D, Recruitment Activities/Interviews, Onsite Client Visits, Presales Proposals, QC Changes, Feedback Sharing, Additional Support</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Exclude Additional Fields for Specific Categories</strong>
+                <p>Defines non-billable categories that don't require additional detail fields when logging time.</p>
+                <p><strong>Purpose:</strong> Simplifies time entry for certain categories that don't need detailed information. Reduces data entry time and complexity.</p>
+                <p><strong>Usage:</strong> When logging time for these categories, additional fields (like project details, descriptions, etc.) are hidden or not required. This streamlines time entry for routine activities.</p>
+                <p><strong>Example Values:</strong> Leave, Holiday, Internal Team Meeting and Admin Work, Snacks / Lunch / Dinner, Knowledge Development and Training, Imparting Trainings, Technical Downtime / IT issues</p>
+            </div>
+
+            <h3>Non-Billable Classification</h3>
+            
+            <div class="field-description">
+                <strong>Non-Billable Divisions</strong>
+                <p>Defines the divisions that can be associated with non-billable work.</p>
+                <p><strong>Purpose:</strong> Allows categorization of non-billable work by division for divisional reporting and resource allocation.</p>
+                <p><strong>Usage:</strong> Assigned to non-billable time entries to indicate which division the work relates to. Helps in understanding non-billable time distribution across divisions.</p>
+                <p><strong>Example Values:</strong> RAI, LS, MIA, DAA</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Non-Billable Client Partners</strong>
+                <p>Defines client partners that can be associated with non-billable work (e.g., internal meetings with client partners, presales activities).</p>
+                <p><strong>Purpose:</strong> Tracks non-billable activities related to specific client partners for relationship management and reporting.</p>
+                <p><strong>Usage:</strong> Assigned to non-billable time entries when the activity relates to a specific client partner. Helps in tracking relationship-building activities.</p>
+                <p><strong>Example Values:</strong> Client Partner 1, Client Partner 2, Client Partner 3, Client Partner 4</p>
+            </div>
+        </section>
+
+        <section id="sales-config" class="section">
+            <h2>💼 Sales Module Configuration</h2>
+            
+            <p>The Sales module configuration includes settings for bid requests, purchase orders, client information, and sales-related data fields.</p>
+
+            <h3>Study and Methodology Settings</h3>
+            
+            <div class="field-description">
+                <strong>Mode and Kind of Study</strong>
+                <p>Defines the types of studies and methodologies that can be specified in bid requests and sales opportunities.</p>
+                <p><strong>Purpose:</strong> Categorizes sales opportunities and bid requests by study type and methodology. Helps in understanding the types of studies being pursued and won.</p>
+                <p><strong>Usage:</strong> Assigned to bid requests to indicate the type of study being proposed. Used for reporting, resource planning, and understanding sales pipeline by study type.</p>
+                <p><strong>Example Values:</strong> Online Quantitative, Online Quant - Central Location Test, Face to Face Quantitative, CATI Quantitative, Online Qualitative, Offline Qualitative (Specify – FGDs, IDIs), Others</p>
+            </div>
+
+            <h3>Client Information Settings</h3>
+            
+            <div class="field-description">
+                <strong>Sales Client Names</strong>
+                <p>Defines the list of client names used in sales opportunities and bid requests.</p>
+                <p><strong>Purpose:</strong> Standardizes client naming in the sales module. Ensures consistent client identification across bid requests and sales opportunities.</p>
+                <p><strong>Usage:</strong> Assigned to bid requests and sales opportunities to indicate the client. Used for client-based reporting and tracking sales activities by client.</p>
+                <p><strong>Example Values:</strong> Client Name 1, Client Name 2, Client Name 3, Client Name 4</p>
+            </div>
+
+            <h3>Decision Maker Categories</h3>
+            
+            <div class="field-description">
+                <strong>Decision Maker Types (DM)</strong>
+                <p>Defines the types of decision makers involved in sales opportunities.</p>
+                <p><strong>Purpose:</strong> Categorizes decision makers by their role and function. Helps in understanding the decision-making structure and targeting appropriate stakeholders.</p>
+                <p><strong>Usage:</strong> Assigned to contacts or stakeholders in bid requests to indicate their decision-making role. Used for stakeholder analysis and sales strategy.</p>
+                <p><strong>Example Values:</strong> BDM (Business Decision Maker), ITDM (IT Decision Maker), Financial DM (Financial Decision Maker), Travel DM (Travel Decision Maker), Advertiser / Marketing, Logistics / Procurement</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Decision Maker Designations</strong>
+                <p>Defines the job title levels of decision makers in sales opportunities.</p>
+                <p><strong>Purpose:</strong> Categorizes decision makers by seniority level. Helps in understanding the level of decision makers involved and tailoring sales approaches.</p>
+                <p><strong>Usage:</strong> Assigned to contacts in bid requests to indicate their designation level. Used for reporting and understanding decision-making hierarchy.</p>
+                <p><strong>Example Values:</strong> Manager+, VP+ (Vice President and above), C Level (C-Suite executives)</p>
+            </div>
+
+            <h3>Company Information Settings</h3>
+            
+            <div class="field-description">
+                <strong>Company Size Categories</strong>
+                <p>Defines the size categories for companies in sales opportunities.</p>
+                <p><strong>Purpose:</strong> Categorizes potential clients by company size. Used for market segmentation, reporting, and understanding the types of companies being targeted.</p>
+                <p><strong>Usage:</strong> Assigned to bid requests or client records to indicate company size. Helps in sales strategy and resource allocation based on company size.</p>
+                <p><strong>Example Values:</strong> Small Business, SMB (Small and Medium Business), LE (Large Enterprise)</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Company Turnover Ranges</strong>
+                <p>Defines revenue/turnover ranges for companies in sales opportunities.</p>
+                <p><strong>Purpose:</strong> Categorizes companies by revenue size. Used for market analysis, reporting, and understanding the financial scale of potential clients.</p>
+                <p><strong>Usage:</strong> Assigned to bid requests or client records to indicate company turnover. Helps in sales strategy and opportunity assessment.</p>
+                <p><strong>Example Values:</strong> Upto $100mn, 100 – 300mn, 500+mn</p>
+            </div>
+
+            <h3>Healthcare and Medical Settings</h3>
+            
+            <div class="field-description">
+                <strong>Medical Professionals</strong>
+                <p>Defines the types of medical professionals that can be targeted in healthcare-related sales opportunities.</p>
+                <p><strong>Purpose:</strong> Categorizes target audiences for healthcare and life sciences sales opportunities. Used for healthcare-specific bid requests and studies.</p>
+                <p><strong>Usage:</strong> Assigned to bid requests in the healthcare/life sciences domain to indicate the target medical professional types. Helps in study design and resource planning.</p>
+                <p><strong>Example Values:</strong> General Physicians / Family Physicians, Cardiologist, Dentist, Pediatrician, Oncologist, Plastic Surgeon, Pulmonologist, Veterinary, Lab Technician/Lab Director</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Patient Categories</strong>
+                <p>Defines the types of patients that can be targeted in healthcare-related studies.</p>
+                <p><strong>Purpose:</strong> Categorizes patient populations for healthcare studies. Used for healthcare-specific bid requests and study design.</p>
+                <p><strong>Usage:</strong> Assigned to bid requests in the healthcare domain to indicate target patient categories. Helps in study design and understanding study requirements.</p>
+                <p><strong>Example Values:</strong> Diabetic, Cancer, Asthma, Obesity, Psoriasis, Anxiety/Hypertension, Skin infection, Chronical disease</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Hospital Types</strong>
+                <p>Defines the types of hospitals that can be involved in healthcare studies.</p>
+                <p><strong>Purpose:</strong> Categorizes healthcare facilities for healthcare-related studies. Used for healthcare-specific bid requests and study planning.</p>
+                <p><strong>Usage:</strong> Assigned to bid requests in the healthcare domain to indicate hospital types. Helps in study design and resource planning.</p>
+                <p><strong>Example Values:</strong> Private, Government</p>
+            </div>
+
+            <h3>Geographic Settings</h3>
+            
+            <div class="field-description">
+                <strong>Sales Countries</strong>
+                <p>Defines the countries where sales opportunities and studies can be conducted.</p>
+                <p><strong>Purpose:</strong> Tracks the geographic scope of sales opportunities. Used for geographic reporting and understanding market coverage.</p>
+                <p><strong>Usage:</strong> Assigned to bid requests to indicate target countries. Helps in geographic reporting and resource allocation by region.</p>
+                <p><strong>Example Values:</strong> US, UK, Australia, Brazil, Canada, China, France, Germany, India, Japan, Mexico, Spain, UAE, Italy, Netherland, Malaysia, Thailand, Philippines, Indonesia</p>
+            </div>
+
+            <h3>Notification Settings</h3>
+            
+            <div class="field-description">
+                <strong>Default Sales Notification Emails</strong>
+                <p>Defines the default email addresses that receive notifications for bid requests and sales opportunities.</p>
+                <p><strong>Purpose:</strong> Ensures relevant stakeholders are automatically notified about bid request activities, status changes, and sales opportunities.</p>
+                <p><strong>Usage:</strong> These email addresses are automatically included in bid request and sales notifications. Helps keep the sales team informed about opportunities and activities.</p>
+                <p><strong>Example Values:</strong> bids@course5i.com</p>
+            </div>
+        </section>
+
+        <section id="configuration-management" class="section">
+            <h2>🔧 Configuration Management</h2>
+            
+            <h3>Understanding Configuration States</h3>
+            
+            <div class="field-description">
+                <strong>Locked Configuration</strong>
+                <p>A locked configuration cannot be modified at the current level. It inherits its value from a parent level (organization, team, etc.).</p>
+                <p><strong>When Locked:</strong> The configuration value is read-only and cannot be changed. You must modify it at the parent level if changes are needed.</p>
+                <p><strong>When Unlocked:</strong> The configuration can be customized at the current level, allowing for level-specific customization.</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Hidden Configuration</strong>
+                <p>A hidden configuration is not visible in the user interface, even though it may have a value.</p>
+                <p><strong>When Hidden:</strong> The configuration field does not appear in forms or settings pages. Users cannot see or interact with it.</p>
+                <p><strong>When Visible:</strong> The configuration appears in the interface and can be viewed and modified (if not locked).</p>
+            </div>
+
+            <div class="field-description">
+                <strong>Overridden Configuration</strong>
+                <p>An overridden configuration has been customized at the current level, overriding the parent value.</p>
+                <p><strong>When Overridden:</strong> The current level has its own value that differs from the parent. This allows for level-specific customization.</p>
+                <p><strong>When Not Overridden:</strong> The configuration uses the parent value. Changes at the parent level will affect this level.</p>
+            </div>
+
+            <h3>Configuration Hierarchy</h3>
+            <p>Configuration settings follow a hierarchy:</p>
+            <ol style="margin-left: 1.5rem;">
+                <li><strong>Organization Level (Root):</strong> Default values that apply to the entire organization</li>
+                <li><strong>Team Level:</strong> Values that can override organization defaults for specific teams</li>
+                <li><strong>User Level:</strong> Personal preferences that can override team or organization defaults</li>
+            </ol>
+
+            <div class="tip">
+                <strong>💡 Tip:</strong> When a configuration is locked, it means the value is inherited from a parent level. To change it, you need to modify it at the parent level or unlock it at the current level.
+            </div>
+
+            <h3>Multi-Level Configurations</h3>
+            <p>Some configurations use multi-level hierarchies (e.g., Service Line → Delivery Category → Task Category). These allow for:</p>
+            <ul style="margin-left: 1.5rem;">
+                <li>Detailed categorization and organization</li>
+                <li>Hierarchical reporting and filtering</li>
+                <li>Flexible structure that can be expanded as needed</li>
+                <li>Consistent data organization across the system</li>
+            </ul>
+
+            <div class="note">
+                <strong>📌 Note:</strong> Configuration changes may affect how you interact with the system. If you notice missing options or unexpected behavior after a configuration update, contact your system administrator.
+            </div>
+        </section>
+    </main>
+
+    <footer style="background: var(--text-dark); color: white; padding: 2rem 0; margin-top: 3rem; text-align: center;">
+        <div class="container">
+            <p>&copy; 2024 Famstack. All rights reserved.</p>
+            <p style="margin-top: 1rem;">
+                <a href="index.html" style="color: white; text-decoration: underline; margin: 0 1rem;">Documentation</a>
+                <a href="faq/index.html" style="color: white; text-decoration: underline; margin: 0 1rem;">FAQ</a>
+            </p>
+        </div>
+    </footer>
+
+    <script src="js/navigation.js"></script>
+    <script src="js/search.js"></script>
+</body>
+</html>
+

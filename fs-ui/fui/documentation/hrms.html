@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HRMS Module - Famstack Users Guide</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <img src="/favicon.ico" alt="Famstack Logo" class="header-logo" onerror="this.style.display='none'">
+                <div class="header-text">
+                    <h1>Famstack Users Guide</h1>
+                    <p class="subtitle">Complete Documentation & User Manual</p>
+                    <p class="version">Version 1.0</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="getting-started.html">Getting Started</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="tasks.html">Tasks</a></li>
+                <li><a href="hrms.html" class="active">HRMS</a></li>
+                <li><a href="sales.html">Sales</a></li>
+                <li><a href="reports.html">Reports</a></li>
+                <li><a href="advanced.html">Advanced</a></li>
+                <li><a href="access-controls.html">Access Controls</a></li>
+                <li><a href="application-configuration.html">Application Configuration</a></li>
+                <li><a href="faq/index.html">FAQ</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <aside class="sidebar">
+        <ul>
+            <li class="section-title">HRMS Module</li>
+            <li><a href="hrms.html" class="active">HRMS Overview</a></li>
+            <li><a href="#timesheet">Timesheet</a></li>
+            <li><a href="#employees">Employees</a></li>
+            <li><a href="#attendance">Attendance</a></li>
+            <li><a href="#invoices">Invoices</a></li>
+            <li><a href="#profile">Profile & Settings</a></li>
+        </ul>
+    </aside>
+
+    <main>
+        <div class="breadcrumb">
+            <a href="index.html">Home</a> <span>→</span> HRMS Module
+        </div>
+
+        <section id="timesheet" class="section">
+            <h2>⏰ Timesheet Management</h2>
+            
+            <h3>Understanding Timesheets</h3>
+            <p>Timesheets are used to log hours worked on projects and tasks. This is essential for tracking time, billing clients, and resource planning.</p>
+
+            <h4>Accessing Your Timesheet</h4>
+            <div class="steps">
+                <div class="step">
+                    Navigate to <strong>HRMS → Timesheet</strong> from the left sidebar
+                </div>
+                <div class="step">
+                    Your timesheet for the current week will be displayed
+                </div>
+            </div>
+
+            <h3>Timesheet Structure</h3>
+            <p>The timesheet is organized by week (Monday to Sunday):</p>
+            <ul style="margin-left: 1.5rem;">
+                <li><strong>Date Column:</strong> Each day of the week</li>
+                <li><strong>Project/Task Rows:</strong> Each row represents a project-task combination</li>
+                <li><strong>Hours Cells:</strong> Enter hours worked for each day</li>
+                <li><strong>Total Column:</strong> Weekly total for each project-task</li>
+            </ul>
+
+            <h3>Entering Time</h3>
+            
+            <h4>Step-by-Step Time Entry</h4>
+            <div class="steps">
+                <div class="step">
+                    <strong>Select Week</strong>
+                    <div class="step-detail">
+                        Use the date picker at the top to navigate to the week you want to enter time for
+                    </div>
+                </div>
+                <div class="step">
+                    <strong>Add Project-Task Row</strong>
+                    <div class="step-detail">
+                        Click <strong>"Add Row"</strong> or <strong>"Add Time Entry"</strong> button
+                    </div>
+                </div>
+                <div class="step">
+                    <strong>Select Project</strong>
+                    <div class="step-detail">
+                        From the dropdown, select the project you worked on
+                    </div>
+                </div>
+                <div class="step">
+                    <strong>Select Task</strong>
+                    <div class="step-detail">
+                        Select the specific task/deliverable within that project
+                    </div>
+                </div>
+                <div class="step">
+                    <strong>Enter Hours</strong>
+                    <div class="step-detail">
+                        Click in the cell for each day and enter hours worked (e.g., "8", "4.5", "2.25")
+                    </div>
+                </div>
+                <div class="step">
+                    <strong>Add Description (Optional)</strong>
+                    <div class="step-detail">
+                        Click on the description area to add notes about what work was done
+                    </div>
+                </div>
+                <div class="step">
+                    <strong>Save</strong>
+                    <div class="step-detail">
+                        Click <strong>"Save"</strong> or the system may auto-save as you type
+                    </div>
+                </div>
+            </div>
+
+            <h3>Timesheet Features</h3>
+            
+            <h4>Copy Previous Week</h4>
+            <p>To quickly copy time entries from the previous week:</p>
+            <div class="steps">
+                <div class="step">
+                    Click <strong>"Copy from Previous Week"</strong> button
+                </div>
+                <div class="step">
+                    Review and adjust the copied entries
+                </div>
+                <div class="step">
+                    Save changes
+                </div>
+            </div>
+
+            <h4>Bulk Time Entry</h4>
+            <p>For entering the same hours across multiple days:</p>
+            <div class="steps">
+                <div class="step">
+                    Select multiple day cells (hold Ctrl/Cmd and click)
+                </div>
+                <div class="step">
+                    Enter hours - it will fill all selected cells
+                </div>
+            </div>
+
+            <h4>Time Validation</h4>
+            <p>The system validates:</p>
+            <ul style="margin-left: 1.5rem;">
+                <li>Total hours per day (may have limits)</li>
+                <li>Hours are positive numbers</li>
+                <li>Project-task combinations are valid</li>
+            </ul>
+
+            <h3>Submitting Timesheet</h3>
+            <div class="steps">
+                <div class="step">
+                    Review all entries for accuracy
+                </div>
+                <div class="step">
+                    Ensure all required days have time entries
+                </div>
+                <div class="step">
+                    Click <strong>"Submit Timesheet"</strong> button
+                </div>
+                <div class="step">
+                    Confirm submission in popup dialog
+                </div>
+                <div class="step">
+                    Timesheet is locked and cannot be edited (may require approval to unlock)
+                </div>
+            </div>
+
+            <div class="warning">
+                <strong>⚠️ Important:</strong> Once submitted, timesheets typically cannot be edited. Review carefully before submitting.
+            </div>
+
+            <h3>Editing Submitted Timesheets</h3>
+            <p>If you need to edit a submitted timesheet:</p>
+            <div class="steps">
+                <div class="step">
+                    Contact your manager or administrator
+                </div>
+                <div class="step">
+                    They may need to unlock it for editing
+                </div>
+                <div class="step">
+                    Make corrections
+                </div>
+                <div class="step">
+                    Re-submit if required
+                </div>
+            </div>
+
+            <h3>Viewing Timesheet History</h3>
+            <div class="steps">
+                <div class="step">
+                    Use the date picker to navigate to past weeks
+                </div>
+                <div class="step">
+                    View submitted timesheets (read-only)
+                </div>
+                <div class="step">
+                    See approval status if applicable
+                </div>
+            </div>
+
+            <h3>Syncing with External Leave Systems</h3>
+            <p>If your organization uses external leave management:</p>
+            <div class="steps">
+                <div class="step">
+                    Click <strong>"Sync Leaves"</strong> button (if available)
+                </div>
+                <div class="step">
+                    System fetches leave data from external system
+                </div>
+                <div class="step">
+                    Leave days are automatically marked in timesheet
+                </div>
+            </div>
+        </section>
+
+        <section id="employees" class="section">
+            <h2>👥 Employee Management</h2>
+            
+            <h3>Accessing Employee List</h3>
+            <div class="steps">
+                <div class="step">
+                    Navigate to <strong>HRMS → Employees</strong>
+                </div>
+                <div class="step">
+                    List of employees is displayed
+                </div>
+            </div>
+
+            <h3>Viewing Employees</h3>
+            
+            <h4>Grid View</h4>
+            <p>Employee cards show:</p>
+            <ul style="margin-left: 1.5rem;">
+                <li>Profile picture</li>
+                <li>Name</li>
+                <li>Employee code</li>
+                <li>Team/department</li>
+                <li>Role</li>
+                <li>Status (Active/Inactive)</li>
+            </ul>
+
+            <h4>List View</h4>
+            <p>Table format with columns:</p>
+            <ul style="margin-left: 1.5rem;">
+                <li>Name</li>
+                <li>Employee Code</li>
+                <li>Email</li>
+                <li>Team</li>
+                <li>Role</li>
+                <li>Status</li>
+                <li>Actions</li>
+            </ul>
+
+            <h3>Filtering Employees</h3>
+            <p>Filter by:</p>
+            <ul style="margin-left: 1.5rem;">
+                <li><strong>Status:</strong> All, Active, Inactive</li>
+                <li><strong>Team:</strong> Select specific teams</li>
+                <li><strong>Search:</strong> Search by name, code, or email</li>
+            </ul>
+
+            <h3>Creating New Employees</h3>
+            <div class="steps">
+                <div class="step">
+                    Click <strong>"CREATE EMPLOYEE"</strong> button
+                </div>
+                <div class="step">
+                    Fill in employee form:
+                    <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                        <li>Name (required)</li>
+                        <li>Email (required)</li>
+                        <li>Employee Code (required)</li>
+                        <li>Team assignment</li>
+                        <li>Role</li>
+                        <li>Phone number</li>
+                        <li>Start date</li>
+                        <li>Other details</li>
+                    </ul>
+                </div>
+                <div class="step">
+                    Click <strong>"Create"</strong>
+                </div>
+            </div>
+
+            <h3>Editing Employees</h3>
+            <div class="steps">
+                <div class="step">
+                    Find employee in list
+                </div>
+                <div class="step">
+                    Click <strong>"Edit"</strong> from dropdown menu
+                </div>
+                <div class="step">
+                    Update information
+                </div>
+                <div class="step">
+                    Save changes
+                </div>
+            </div>
+
+            <h3>Activating/Deactivating Employees</h3>
+            <div class="steps">
+                <div class="step">
+                    Find employee
+                </div>
+                <div class="step">
+                    Click <strong>"Activate"</strong> or <strong>"Deactivate"</strong>
+                </div>
+                <div class="step">
+                    Confirm action
+                </div>
+            </div>
+
+            <h3>Setting Employee Exit Date</h3>
+            <div class="steps">
+                <div class="step">
+                    Edit employee
+                </div>
+                <div class="step">
+                    Set exit date field
+                </div>
+                <div class="step">
+                    Employee will be marked inactive after exit date
+                </div>
+            </div>
+
+            <h3>Viewing Employee Details</h3>
+            <div class="steps">
+                <div class="step">
+                    Click on employee name
+                </div>
+                <div class="step">
+                    View detailed information:
+                    <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                        <li>Personal information</li>
+                        <li>Project assignments</li>
+                        <li>Timesheet history</li>
+                        <li>Skills and certifications</li>
+                        <li>Performance metrics</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="attendance" class="section">
+            <h2>📅 Attendance Management</h2>
+            
+            <h3>Understanding Attendance</h3>
+            <p>The Attendance module tracks employee attendance, leaves, and time off.</p>
+
+            <h4>Accessing Attendance</h4>
+            <div class="steps">
+                <div class="step">
+                    Navigate to <strong>HRMS → Attendance</strong>
+                </div>
+                <div class="step">
+                    Calendar view of attendance is displayed
+                </div>
+            </div>
+
+            <h3>Viewing Attendance Calendar</h3>
+            <p>The calendar shows:</p>
+            <ul style="margin-left: 1.5rem;">
+                <li>Working days</li>
+                <li>Leaves (marked with different colors)</li>
+                <li>Holidays</li>
+                <li>Absences</li>
+            </ul>
+
+            <h3>Marking Attendance</h3>
+            <div class="steps">
+                <div class="step">
+                    Select date(s) on calendar
+                </div>
+                <div class="step">
+                    Click <strong>"Mark Attendance"</strong> or similar
+                </div>
+                <div class="step">
+                    Select status (Present, Absent, Leave, etc.)
+                </div>
+                <div class="step">
+                    Add notes if required
+                </div>
+                <div class="step">
+                    Save
+                </div>
+            </div>
+
+            <h3>Applying for Leave</h3>
+            <div class="steps">
+                <div class="step">
+                    Select date range
+                </div>
+                <div class="step">
+                    Click <strong>"Apply Leave"</strong>
+                </div>
+                <div class="step">
+                    Select leave type (Sick, Vacation, Personal, etc.)
+                </div>
+                <div class="step">
+                    Enter reason
+                </div>
+                <div class="step">
+                    Submit for approval
+                </div>
+            </div>
+
+            <h3>Viewing Leave Balance</h3>
+            <p>Check your available leave balance:</p>
+            <ul style="margin-left: 1.5rem;">
+                <li>Navigate to Attendance page</li>
+                <li>View leave balance summary</li>
+                <li>See breakdown by leave type</li>
+            </ul>
+        </section>
+
+        <section id="invoices" class="section">
+            <h2>💰 Invoice Management</h2>
+            
+            <h3>Understanding Invoices</h3>
+            <p>The Invoice module manages client invoices, billing, and payment tracking.</p>
+
+            <h4>Accessing Invoices</h4>
+            <div class="steps">
+                <div class="step">
+                    Navigate to <strong>HRMS → Invoices</strong> or <strong>Project → Invoices</strong>
+                </div>
+                <div class="step">
+                    List of invoices is displayed
+                </div>
+            </div>
+
+            <h3>Viewing Invoices</h3>
+            <p>Invoice list shows:</p>
+            <ul style="margin-left: 1.5rem;">
+                <li>Invoice number</li>
+                <li>Client/Account name</li>
+                <li>Project</li>
+                <li>Amount</li>
+                <li>Status (Draft, Sent, Paid, Overdue)</li>
+                <li>Due date</li>
+            </ul>
+
+            <h3>Creating Invoices</h3>
+            <div class="steps">
+                <div class="step">
+                    Click <strong>"CREATE INVOICE"</strong>
+                </div>
+                <div class="step">
+                    Select project
+                </div>
+                <div class="step">
+                    Select billing period
+                </div>
+                <div class="step">
+                    Review time entries and billable hours
+                </div>
+                <div class="step">
+                    Adjust rates if needed
+                </div>
+                <div class="step">
+                    Add line items
+                </div>
+                <div class="step">
+                    Review total amount
+                </div>
+                <div class="step">
+                    Click <strong>"Create Invoice"</strong>
+                </div>
+            </div>
+
+            <h3>Invoice Details</h3>
+            <p>Click on an invoice to view:</p>
+            <ul style="margin-left: 1.5rem;">
+                <li>Full invoice details</li>
+                <li>Line items breakdown</li>
+                <li>Time entries included</li>
+                <li>Payment history</li>
+                <li>Download PDF</li>
+            </ul>
+
+            <h3>Updating Invoice Status</h3>
+            <div class="steps">
+                <div class="step">
+                    Open invoice details
+                </div>
+                <div class="step">
+                    Change status (e.g., Draft → Sent → Paid)
+                </div>
+                <div class="step">
+                    Add payment details if marking as paid
+                </div>
+                <div class="step">
+                    Save changes
+                </div>
+            </div>
+        </section>
+
+        <section id="profile" class="section">
+            <h2>👤 Profile & Settings</h2>
+            
+            <h3>Accessing Your Profile</h3>
+            <div class="steps">
+                <div class="step">
+                    Click your profile icon (top right)
+                </div>
+                <div class="step">
+                    Select <strong>"Profile"</strong> from dropdown
+                </div>
+            </div>
+
+            <h3>Viewing Profile Information</h3>
+            <p>Your profile shows:</p>
+            <ul style="margin-left: 1.5rem;">
+                <li>Personal information (name, email, phone)</li>
+                <li>Profile picture</li>
+                <li>Team memberships</li>
+                <li>Roles and permissions</li>
+                <li>Project assignments</li>
+                <li>Skills and certifications</li>
+            </ul>
+
+            <h3>Updating Profile</h3>
+            <div class="steps">
+                <div class="step">
+                    Click <strong>"Edit Profile"</strong>
+                </div>
+                <div class="step">
+                    Update information
+                </div>
+                <div class="step">
+                    Save changes
+                </div>
+            </div>
+
+            <h3>Changing Password</h3>
+            <div class="steps">
+                <div class="step">
+                    Go to Profile → Settings
+                </div>
+                <div class="step">
+                    Find "Change Password" section
+                </div>
+                <div class="step">
+                    Enter current password
+                </div>
+                <div class="step">
+                    Enter new password
+                </div>
+                <div class="step">
+                    Confirm new password
+                </div>
+                <div class="step">
+                    Click <strong>"Update Password"</strong>
+                </div>
+            </div>
+
+            <h3>Updating Profile Picture</h3>
+            <div class="steps">
+                <div class="step">
+                    Click on current profile picture
+                </div>
+                <div class="step">
+                    Select image file
+                </div>
+                <div class="step">
+                    Crop/resize if needed
+                </div>
+                <div class="step">
+                    Save
+                </div>
+            </div>
+
+            <h3>Application Settings</h3>
+            <p>Access application configuration:</p>
+            <div class="steps">
+                <div class="step">
+                    Navigate to <strong>HRMS → Settings</strong> or <strong>Application Config</strong>
+                </div>
+                <div class="step">
+                    Configure:
+                    <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                        <li>Email notifications</li>
+                        <li>Default preferences</li>
+                        <li>Display options</li>
+                        <li>Integration settings</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer style="background: var(--text-dark); color: white; padding: 2rem 0; margin-top: 3rem; text-align: center;">
+        <div class="container">
+            <p>&copy; 2024 Famstack. All rights reserved.</p>
+            <p style="margin-top: 1rem;">
+                <a href="index.html" style="color: white; text-decoration: underline; margin: 0 1rem;">Documentation</a>
+                <a href="faq/index.html" style="color: white; text-decoration: underline; margin: 0 1rem;">FAQ</a>
+            </p>
+        </div>
+    </footer>
+
+    <script src="js/navigation.js"></script>
+    <script src="js/search.js"></script>
+</body>
+</html>
+
