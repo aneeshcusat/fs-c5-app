@@ -1582,24 +1582,44 @@ button.microsoftlogin {
 .bottonrighthelpmenu {
     z-index: 50;
     height: 40px;
-    width: 40px;
-    border: 1px solid gray;
+    min-width: 40px;
+    border: none;
     bottom: 0;
     right: 0;
     position: fixed;
-    margin-bottom: 5px;
+    margin-bottom: 25px;
     margin-right: 5px;
     justify-content: center;
     align-items: center;
     display: flex;
-    background-color: rgba(255, 255, 255, var(--bg-opacity));
-    border-radius: 9999px;
-    background-color: white;
+    background-color: transparent;
 }
 
 .bottonrighthelpmenu:hover {
-    background-color: rgb(94, 170, 87);
-    cursor: help;
+    background-color: transparent;
+    cursor: default;
+}
+
+.page-help-icon {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px;
+    background-color: white;
+    border: 2px solid #5ea657;
+    color: #5ea657;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.page-help-icon:hover {
+    background-color: #5ea657;
+    color: white;
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(94, 166, 87, 0.4);
+    border-color: #5ea657;
 }
 
 /*react-select*/
