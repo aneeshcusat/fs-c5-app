@@ -270,6 +270,11 @@
 
     .brand-name{
         margin-top: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        position: relative;
     }
     .sidebar-nav{
         height: calc(100vh - 58px);
@@ -282,10 +287,26 @@
     }
     .menu_option{
         @include transition(all .3s ease-in-out);
-        opacity: 0.3;
+        opacity: 0.8;
+        margin-left: auto;
+        flex-shrink: 0;
+        z-index: 10;
+        position: relative;
+        padding: 6px 8px;
+        min-width: 32px;
+        height: 32px;
+        display: inline-flex !important;
+        align-items: center;
+        justify-content: center;
+        border-radius: 4px;
+        float: none !important;
         &.active,
         &:hover{
             opacity: 1;
+            background: rgba(37, 99, 235, 0.1);
+        }
+        &.active {
+            background: rgba(37, 99, 235, 0.15);
         }
     }
     .nav-link,

@@ -1,5 +1,80 @@
 // Navigation functionality
 document.addEventListener('DOMContentLoaded', function() {
+    // Add hamburger menu toggle for mobile
+    function initMobileMenu() {
+        const nav = document.querySelector('nav');
+        const navUl = document.querySelector('nav ul');
+        const navContainer = document.querySelector('nav .container');
+        
+        if (!nav || !navUl || !navContainer) return;
+        
+        // Check if hamburger button already exists
+        let menuToggle = nav.querySelector('.menu-toggle');
+        
+        if (!menuToggle) {
+            // Create hamburger button
+            menuToggle = document.createElement('button');
+            menuToggle.className = 'menu-toggle';
+            menuToggle.setAttribute('aria-label', 'Toggle menu');
+            menuToggle.setAttribute('aria-expanded', 'false');
+            menuToggle.innerHTML = `
+                <span></span>
+                <span></span>
+                <span></span>
+            `;
+            
+            // Insert before nav ul
+            navContainer.insertBefore(menuToggle, navUl);
+            
+            // Toggle menu on click
+            menuToggle.addEventListener('click', function() {
+                const isOpen = navUl.classList.toggle('menu-open');
+                menuToggle.classList.toggle('active', isOpen);
+                menuToggle.setAttribute('aria-expanded', isOpen);
+            });
+            
+            // Close menu when clicking outside
+            document.addEventListener('click', function(event) {
+                if (!nav.contains(event.target) && navUl.classList.contains('menu-open')) {
+                    navUl.classList.remove('menu-open');
+                    menuToggle.classList.remove('active');
+                    menuToggle.setAttribute('aria-expanded', 'false');
+                }
+            });
+            
+            // Close menu when clicking a link
+            navUl.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', function() {
+                    if (window.innerWidth <= 768) {
+                        navUl.classList.remove('menu-open');
+                        menuToggle.classList.remove('active');
+                        menuToggle.setAttribute('aria-expanded', 'false');
+                    }
+                });
+            });
+        }
+    }
+    
+    // Initialize mobile menu
+    initMobileMenu();
+    
+    // Reinitialize on resize
+    let resizeTimer;
+    window.addEventListener('resize', function() {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(function() {
+            const navUl = document.querySelector('nav ul');
+            const menuToggle = document.querySelector('nav .menu-toggle');
+            if (window.innerWidth > 768 && navUl) {
+                navUl.classList.remove('menu-open');
+                if (menuToggle) {
+                    menuToggle.classList.remove('active');
+                    menuToggle.setAttribute('aria-expanded', 'false');
+                }
+            }
+        }, 250);
+    });
+    
     // Calculate header and nav heights and set navigation positions
     function setNavigationPosition() {
         const header = document.querySelector('header');

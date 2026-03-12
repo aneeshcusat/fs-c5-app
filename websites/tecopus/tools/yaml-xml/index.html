@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YAML / XML Tools - Tecopus</title>
+    <link rel="icon" type="image/svg+xml" href="../../shared/icon.svg">
+    <link rel="alternate icon" href="../../shared/favicon.ico">
+    <link rel="stylesheet" href="../../shared/styles.css">
+    <style>
+        .coming-soon {
+            padding: 2rem;
+            text-align: center;
+            background: var(--bg-tertiary);
+            border-radius: var(--border-radius);
+            border: 2px dashed var(--border-color);
+            color: var(--text-muted);
+        }
+        .coming-soon-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        .tool-section {
+            padding: 0.75rem;
+        }
+        .tool-description {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+            font-size: 0.875rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <div class="header-content">
+                <a href="../../index.html" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 0.75rem;">
+                    <img src="../../shared/icon.svg" alt="Tecopus" style="width: 32px; height: 32px; flex-shrink: 0;">
+                    <h1 class="logo">Tecopus</h1>
+                </a>
+                <div class="header-actions">
+                    <button class="btn-icon" id="themeToggle" title="Toggle Dark Mode">
+                        <span class="icon">🌙</span>
+                    </button>
+                    <button class="btn-icon" id="helpBtn" title="Help & Shortcuts">
+                        <span class="icon">?</span>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <!-- Sidebar Navigation -->
+            <aside class="sidebar">
+                <nav class="nav-menu">
+                    <button class="nav-item active" data-tab="yaml-formatter">
+                        <span class="nav-icon">✨</span>
+                        <span class="nav-label">YAML Format</span>
+                    </button>
+                    <button class="nav-item" data-tab="yaml-json">
+                        <span class="nav-icon">🔄</span>
+                        <span class="nav-label">YAML ↔ JSON</span>
+                    </button>
+                    <button class="nav-item" data-tab="xml-formatter">
+                        <span class="nav-icon">📝</span>
+                        <span class="nav-label">XML Format</span>
+                    </button>
+                    <button class="nav-item" data-tab="xml-compare">
+                        <span class="nav-icon">🔀</span>
+                        <span class="nav-label">XML Compare</span>
+                    </button>
+                    <button class="nav-item" data-tab="xml-json">
+                        <span class="nav-icon">🔄</span>
+                        <span class="nav-label">XML ↔ JSON</span>
+                    </button>
+                    <button class="nav-item" data-tab="xpath">
+                        <span class="nav-icon">🔍</span>
+                        <span class="nav-label">XPath Tester</span>
+                    </button>
+                </nav>
+            </aside>
+
+            <!-- Content Area -->
+            <div class="content-area">
+                <!-- YAML Formatter Tab -->
+                <div class="tab-content active" id="yaml-formatter-tab">
+                    <div class="toolbar">
+                        <div class="toolbar-group">
+                            <a href="../yaml-formatter/index.html" class="btn btn-primary">
+                                <span class="icon">✨</span> Open YAML Formatter Tool
+                            </a>
+                        </div>
+                    </div>
+                    <div class="editor-wrapper">
+                        <div class="editor-header">
+                            <span class="editor-title">YAML Formatter & Validator</span>
+                        </div>
+                        <div class="tool-section">
+                            <p class="tool-description">Format, validate, and minify YAML files with syntax highlighting and error detection.</p>
+                            <a href="../yaml-formatter/index.html" class="btn btn-primary">Open Tool →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- YAML JSON Converter Tab -->
+                <div class="tab-content" id="yaml-json-tab">
+                    <div class="editor-wrapper">
+                        <div class="editor-header">
+                            <span class="editor-title">YAML ↔ JSON Converter</span>
+                        </div>
+                        <div class="tool-section">
+                            <p class="tool-description">Convert between YAML and JSON formats with bidirectional conversion support.</p>
+                            <div class="coming-soon">
+                                <div class="coming-soon-icon">🚧</div>
+                                <p>Coming soon!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- XML Formatter Tab -->
+                <div class="tab-content" id="xml-formatter-tab">
+                    <div class="editor-wrapper">
+                        <div class="editor-header">
+                            <span class="editor-title">XML Formatter / Minifier</span>
+                        </div>
+                        <div class="tool-section">
+                            <p class="tool-description">Format XML with proper indentation or minify it for production use.</p>
+                            <div class="coming-soon">
+                                <div class="coming-soon-icon">🚧</div>
+                                <p>Coming soon!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- XML Compare Tab -->
+                <div class="tab-content" id="xml-compare-tab">
+                    <div class="editor-wrapper">
+                        <div class="editor-header">
+                            <span class="editor-title">XML Compare Tool</span>
+                        </div>
+                        <div class="tool-section">
+                            <p class="tool-description">Compare two XML files and highlight differences with side-by-side view.</p>
+                            <div class="coming-soon">
+                                <div class="coming-soon-icon">🚧</div>
+                                <p>Coming soon!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- XML JSON Converter Tab -->
+                <div class="tab-content" id="xml-json-tab">
+                    <div class="editor-wrapper">
+                        <div class="editor-header">
+                            <span class="editor-title">XML ↔ JSON Converter</span>
+                        </div>
+                        <div class="tool-section">
+                            <p class="tool-description">Convert between XML and JSON formats with proper structure preservation.</p>
+                            <div class="coming-soon">
+                                <div class="coming-soon-icon">🚧</div>
+                                <p>Coming soon!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- XPath Tester Tab -->
+                <div class="tab-content" id="xpath-tab">
+                    <div class="editor-wrapper">
+                        <div class="editor-header">
+                            <span class="editor-title">XPath / XQuery Tester</span>
+                        </div>
+                        <div class="tool-section">
+                            <p class="tool-description">Test XPath and XQuery expressions against XML documents with real-time results.</p>
+                            <div class="coming-soon">
+                                <div class="coming-soon-icon">🚧</div>
+                                <p>Coming soon!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../../shared/app.js"></script>
+    <script>
+        // Tab switching functionality
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('click', function() {
+                const tab = this.getAttribute('data-tab');
+                
+                // Update active nav item
+                document.querySelectorAll('.nav-item').forEach(nav => nav.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Update active tab content
+                document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+                document.getElementById(`${tab}-tab`).classList.add('active');
+            });
+        });
+
+        // Handle initial tab from URL hash
+        if (window.location.hash) {
+            const hash = window.location.hash.substring(1);
+            const navItem = document.querySelector(`[data-tab="${hash}"]`);
+            if (navItem) {
+                navItem.click();
+            }
+        }
+    </script>
+</body>
+</html>

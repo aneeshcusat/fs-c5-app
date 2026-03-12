@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time, Date & Localization Tools - Tecopus</title>
+    <link rel="icon" type="image/svg+xml" href="../../shared/icon.svg">
+    <link rel="alternate icon" href="../../shared/favicon.ico">
+    <link rel="stylesheet" href="../../shared/styles.css">
+    <style>
+        .category-hub { max-width: 1800px; margin: 0 auto; padding: 2rem; }
+        .category-nav { position: sticky; top: 80px; background: var(--bg-glass-strong); backdrop-filter: blur(20px); border-radius: var(--border-radius-lg); padding: 1.5rem; margin-bottom: 2rem; border: 1px solid var(--border-color); box-shadow: var(--shadow-md); }
+        .category-nav h2 { font-size: 1.25rem; font-weight: 700; margin-bottom: 1rem; }
+        .nav-links { display: flex; flex-direction: column; gap: 0.5rem; }
+        .nav-link { padding: 0.75rem 1rem; border-radius: var(--border-radius-sm); text-decoration: none; color: var(--text-secondary); transition: all var(--transition-base); border-left: 3px solid transparent; }
+        .nav-link:hover { background: var(--bg-hover); color: var(--primary-color); border-left-color: var(--primary-color); transform: translateX(4px); }
+        .tool-section { scroll-margin-top: 100px; background: var(--bg-glass-strong); backdrop-filter: blur(20px); border-radius: var(--border-radius-lg); padding: 2rem; margin-bottom: 2rem; border: 1px solid var(--border-color); box-shadow: var(--shadow-lg); }
+        .tool-section h2 { font-size: 1.75rem; font-weight: 800; margin-bottom: 1rem; background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; border-bottom: 2px solid var(--border-color); padding-bottom: 0.5rem; }
+        .tool-description { color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.6; }
+        .coming-soon { padding: 2rem; text-align: center; background: var(--bg-tertiary); border-radius: var(--border-radius); border: 2px dashed var(--border-color); color: var(--text-muted); }
+        .coming-soon-icon { font-size: 3rem; margin-bottom: 1rem; }
+        @media (min-width: 1024px) { .category-layout { display: grid; grid-template-columns: 300px 1fr; gap: 2rem; } }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <div class="header-content">
+                <a href="../../index.html" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 0.75rem;">
+                    <img src="../../shared/icon.svg" alt="Tecopus" style="width: 32px; height: 32px; flex-shrink: 0;">
+                    <h1 class="logo">Tecopus</h1>
+                </a>
+                <div class="header-actions">
+                    <button class="btn-icon" id="themeToggle" title="Toggle Dark Mode">
+                        <span class="icon">🌙</span>
+                    </button>
+                    <button class="btn-icon" id="helpBtn" title="Help & Shortcuts">
+                        <span class="icon">?</span>
+                    </button>
+                </div>
+            </div>
+        </header>
+        <main class="main-content">
+            <div class="category-hub">
+                <div class="tool-header" style="margin-bottom: 2rem;">
+                    <h1>⏰ Time, Date & Localization Tools</h1>
+                    <p style="color: var(--text-secondary); margin-top: 0.5rem;">Convert timestamps, timezones, and dates</p>
+                </div>
+                <div class="category-layout">
+                    <nav class="category-nav">
+                        <h2>Quick Navigation</h2>
+                        <div class="nav-links">
+                            <a href="#unix-timestamp" class="nav-link">Unix Timestamp ↔ Human Date Converter</a>
+                            <a href="#timezone-converter" class="nav-link">Time Zone Converter</a>
+                            <a href="#cron-generator" class="nav-link">Cron Expression Generator</a>
+                            <a href="#cron-explainer" class="nav-link">Cron Expression Explainer</a>
+                            <a href="#date-difference" class="nav-link">Date Difference Calculator</a>
+                            <a href="#iso-validator" class="nav-link">ISO-8601 Validator</a>
+                            <a href="#epoch-millis" class="nav-link">Epoch Milliseconds Converter</a>
+                            <a href="#business-days" class="nav-link">Business Days Calculator</a>
+                            <a href="#relative-time" class="nav-link">Relative Time Generator ("2 hours ago")</a>
+                            <a href="#log-timestamp" class="nav-link">Log Timestamp Normalizer (multi-TZ logs)</a>
+                        </div>
+                    </nav>
+                    <div class="tools-content">
+                        <section id="unix-timestamp" class="tool-section">
+                            <h2>Unix Timestamp ↔ Human Date Converter</h2>
+                            <p class="tool-description">Access this tool directly.</p>
+                            <a href="../unix-timestamp/index.html" class="btn btn-primary">Open Tool →</a>
+                        </section>
+                        <section id="timezone-converter" class="tool-section">
+                            <h2>Time Zone Converter</h2>
+                            <p class="tool-description">This tool is coming soon.</p>
+                            <div class="coming-soon"><div class="coming-soon-icon">🚧</div><p>Coming soon!</p></div>
+                        </section>
+                        <section id="cron-generator" class="tool-section">
+                            <h2>Cron Expression Generator</h2>
+                            <p class="tool-description">This tool is coming soon.</p>
+                            <div class="coming-soon"><div class="coming-soon-icon">🚧</div><p>Coming soon!</p></div>
+                        </section>
+                        <section id="cron-explainer" class="tool-section">
+                            <h2>Cron Expression Explainer</h2>
+                            <p class="tool-description">This tool is coming soon.</p>
+                            <div class="coming-soon"><div class="coming-soon-icon">🚧</div><p>Coming soon!</p></div>
+                        </section>
+                        <section id="date-difference" class="tool-section">
+                            <h2>Date Difference Calculator</h2>
+                            <p class="tool-description">This tool is coming soon.</p>
+                            <div class="coming-soon"><div class="coming-soon-icon">🚧</div><p>Coming soon!</p></div>
+                        </section>
+                        <section id="iso-validator" class="tool-section">
+                            <h2>ISO-8601 Validator</h2>
+                            <p class="tool-description">This tool is coming soon.</p>
+                            <div class="coming-soon"><div class="coming-soon-icon">🚧</div><p>Coming soon!</p></div>
+                        </section>
+                        <section id="epoch-millis" class="tool-section">
+                            <h2>Epoch Milliseconds Converter</h2>
+                            <p class="tool-description">This tool is coming soon.</p>
+                            <div class="coming-soon"><div class="coming-soon-icon">🚧</div><p>Coming soon!</p></div>
+                        </section>
+                        <section id="business-days" class="tool-section">
+                            <h2>Business Days Calculator</h2>
+                            <p class="tool-description">This tool is coming soon.</p>
+                            <div class="coming-soon"><div class="coming-soon-icon">🚧</div><p>Coming soon!</p></div>
+                        </section>
+                        <section id="relative-time" class="tool-section">
+                            <h2>Relative Time Generator ("2 hours ago")</h2>
+                            <p class="tool-description">This tool is coming soon.</p>
+                            <div class="coming-soon"><div class="coming-soon-icon">🚧</div><p>Coming soon!</p></div>
+                        </section>
+                        <section id="log-timestamp" class="tool-section">
+                            <h2>Log Timestamp Normalizer (multi-TZ logs)</h2>
+                            <p class="tool-description">This tool is coming soon.</p>
+                            <div class="coming-soon"><div class="coming-soon-icon">🚧</div><p>Coming soon!</p></div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="../../shared/app.js"></script>
+    <script>
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.getElementById(this.getAttribute('href').substring(1))?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+        const sections = document.querySelectorAll('.tool-section');
+        const navLinks = document.querySelectorAll('.nav-link');
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(s => { if (window.pageYOffset >= s.offsetTop - 150) current = s.getAttribute('id'); });
+            navLinks.forEach(l => {
+                if (l.getAttribute('href') === `#${current}`) {
+                    l.style.background = 'var(--bg-hover)'; l.style.color = 'var(--primary-color)'; l.style.borderLeftColor = 'var(--primary-color)';
+                } else { l.style.background = ''; l.style.color = ''; l.style.borderLeftColor = ''; }
+            });
+        });
+    </script>
+</body>
+</html>

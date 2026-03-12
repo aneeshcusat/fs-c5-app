@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tecopus Developer Tools Suite - Professional Developer Tools</title>
+    <link rel="icon" type="image/svg+xml" href="shared/icon.svg">
+    <link rel="alternate icon" href="shared/favicon.ico">
+    <link rel="apple-touch-icon" href="shared/icon.svg">
+    <link rel="stylesheet" href="shared/styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <div class="header-content">
+                <a href="index.html" class="header-logo-link">
+                    <img src="shared/icon.svg" alt="Tecopus" class="header-icon">
+                    <div class="header-brand">
+                    <h1 class="logo">Tecopus</h1>
+                        <span class="logo-tagline">Developer Tools Suite</span>
+                    </div>
+                </a>
+                <div class="header-actions">
+                    <button class="btn-icon" id="themeToggle" title="Toggle Dark Mode">
+                        <span class="icon">🌙</span>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <!-- Hero Section -->
+            <div class="hero-section">
+                <!-- Floating Tool Icons Background -->
+                <div class="hero-tools-background">
+                    <div class="floating-tool-icon" style="top: 10%; left: 8%; animation-delay: 0s;">🔧</div>
+                    <div class="floating-tool-icon" style="top: 15%; right: 10%; animation-delay: 0.5s;">⚙️</div>
+                    <div class="floating-tool-icon" style="top: 25%; left: 5%; animation-delay: 1s;">🛠️</div>
+                    <div class="floating-tool-icon" style="top: 30%; right: 8%; animation-delay: 1.5s;">🔨</div>
+                    <div class="floating-tool-icon" style="bottom: 20%; left: 12%; animation-delay: 2s;">📐</div>
+                    <div class="floating-tool-icon" style="bottom: 15%; right: 6%; animation-delay: 2.5s;">🔩</div>
+                </div>
+
+                <!-- Main Hero Content -->
+                <div class="hero-content-wrapper">
+                    <div class="hero-brand">
+                        <div class="hero-icon-container">
+                            <img src="shared/icon.svg" alt="Tecopus" class="hero-main-icon">
+                            <div class="icon-glow"></div>
+                        </div>
+                        <div class="hero-text">
+                            <h1 class="hero-title">Tecopus</h1>
+                            <p class="hero-tagline">Developer Tools Suite</p>
+                            <p class="hero-subtitle">64 professional tools for developers. Fast, free, and easy to use.</p>
+                        </div>
+                    </div>
+
+                    <!-- Search Bar - More Prominent -->
+                <div class="hero-search">
+                    <div class="search-wrapper">
+                        <span class="search-icon">🔍</span>
+                            <input type="text" id="searchInput" placeholder="Search 67+ developer tools... (e.g., JSON, Base64, SQL, UUID)" autocomplete="off">
+                        <div class="search-hint">
+                            <span class="kbd">Ctrl</span> + <span class="kbd">K</span> to search
+                        </div>
+                    </div>
+                </div>
+
+                    <!-- Popular Tools Quick Access -->
+                    <div class="popular-tools">
+                        <p class="popular-tools-label">Popular Tools:</p>
+                        <div class="popular-tools-grid">
+                            <a href="tools/json-operations/index.html" class="popular-tool-badge">
+                                <span class="tool-emoji">📋</span>
+                                <span>JSON</span>
+                            </a>
+                            <a href="tools/base64/index.html" class="popular-tool-badge">
+                                <span class="tool-emoji">🔢</span>
+                                <span>Base64</span>
+                            </a>
+                            <a href="tools/uuid-generator/index.html" class="popular-tool-badge">
+                                <span class="tool-emoji">🆔</span>
+                                <span>UUID</span>
+                            </a>
+                            <a href="tools/sql-formatter/index.html" class="popular-tool-badge">
+                                <span class="tool-emoji">💾</span>
+                                <span>SQL</span>
+                            </a>
+                            <a href="tools/jwt-decoder/index.html" class="popular-tool-badge">
+                                <span class="tool-emoji">🎫</span>
+                                <span>JWT</span>
+                            </a>
+                            <a href="tools/hash-generator/index.html" class="popular-tool-badge">
+                                <span class="tool-emoji">🔐</span>
+                                <span>Hash</span>
+                            </a>
+                            <a href="tools/regex-tester/index.html" class="popular-tool-badge">
+                                <span class="tool-emoji">🧪</span>
+                                <span>Regex</span>
+                            </a>
+                            <a href="tools/text-compare/index.html" class="popular-tool-badge">
+                                <span class="tool-emoji">🔀</span>
+                                <span>Compare</span>
+                            </a>
+                        </div>
+                    </div>
+
+                <!-- Quick Stats -->
+                <div class="quick-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">64</span>
+                            <span class="stat-label">Tools</span>
+                        </div>
+                    <div class="stat-item">
+                        <span class="stat-number">7</span>
+                        <span class="stat-label">Categories</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">100%</span>
+                        <span class="stat-label">Free</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">⚡</span>
+                            <span class="stat-label">Fast</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Categories Grid -->
+            <div class="categories-grid" id="categoriesGrid">
+                <!-- YAML / XML Tools -->
+                <div class="category-card" data-category="yaml-xml">
+                    <div class="category-header">
+                        <span class="category-icon">📄</span>
+                        <h2 class="category-name">YAML / XML</h2>
+                    </div>
+                    <p class="category-description">Format, validate, and convert YAML and XML files</p>
+                    <div class="category-tools">
+                        <a href="tools/yaml-xml/index.html#yaml-formatter" class="tool-link">YAML Formatter & Validator</a>
+                        <a href="tools/yaml-xml/index.html#yaml-json-converter" class="tool-link">YAML ↔ JSON Converter</a>
+                        <a href="tools/yaml-xml/index.html#xml-formatter" class="tool-link">XML Formatter / Minifier</a>
+                        <a href="tools/yaml-xml/index.html#xml-compare" class="tool-link">XML Compare Tool</a>
+                        <a href="tools/yaml-xml/index.html#xml-json-converter" class="tool-link">XML ↔ JSON Converter</a>
+                        <a href="tools/yaml-xml/index.html#xpath-tester" class="tool-link">XPath / XQuery Tester</a>
+                    </div>
+                    <div class="category-count">6 tools</div>
+                    <a href="tools/yaml-xml/index.html" class="btn btn-primary" style="margin-top: 1rem; width: 100%;">View All YAML/XML Tools →</a>
+                </div>
+
+                <!-- Text & Comparison Tools -->
+                <div class="category-card" data-category="text-diff">
+                    <div class="category-header">
+                        <span class="category-icon">📊</span>
+                        <h2 class="category-name">Text & Comparison</h2>
+                    </div>
+                    <p class="category-description">Compare texts, files, and find differences</p>
+                    <div class="category-tools">
+                        <a href="tools/text-diff/index.html#text-compare" class="tool-link">Text Compare</a>
+                        <a href="tools/text-diff/index.html#case-insensitive" class="tool-link">Case-Insensitive Compare</a>
+                        <a href="tools/text-diff/index.html#whitespace-aware" class="tool-link">Whitespace-Aware Compare</a>
+                        <a href="tools/text-diff/index.html#file-compare" class="tool-link">File Compare</a>
+                        <a href="tools/text-diff/index.html#folder-compare" class="tool-link">Folder Compare</a>
+                        <a href="tools/text-diff/index.html#list-compare" class="tool-link">List Compare</a>
+                        <a href="tools/text-diff/index.html#csv-compare" class="tool-link">CSV Compare</a>
+                        <a href="tools/text-diff/index.html#log-diff" class="tool-link">Log File Diff</a>
+                        <a href="tools/text-diff/index.html#config-compare" class="tool-link">Config Compare</a>
+                        <a href="tools/text-diff/index.html#regex-matcher" class="tool-link">Regex Matcher</a>
+                        <a href="tools/text-diff/index.html#regex-tester" class="tool-link">Regex Tester</a>
+                    </div>
+                    <div class="category-count">11 tools</div>
+                    <a href="tools/text-diff/index.html" class="btn btn-primary" style="margin-top: 1rem; width: 100%;">View All Text/Diff Tools →</a>
+                </div>
+
+                <!-- Encoding & Decoding -->
+                <div class="category-card" data-category="encoding">
+                    <div class="category-header">
+                        <span class="category-icon">🔐</span>
+                        <h2 class="category-name">Encoding & Decoding</h2>
+                    </div>
+                    <p class="category-description">Encode, decode, and transform data</p>
+                    <div class="category-tools">
+                        <a href="tools/encoding/index.html#base64" class="tool-link">Base64 Encode/Decode</a>
+                        <a href="tools/encoding/index.html#url-encode" class="tool-link">URL Encode/Decode</a>
+                        <a href="tools/encoding/index.html#jwt-decoder" class="tool-link">JWT Decoder & Validator</a>
+                        <a href="tools/encoding/index.html#html-encode" class="tool-link">HTML Encode/Decode</a>
+                        <a href="tools/encoding/index.html#unicode" class="tool-link">Unicode Converter</a>
+                        <a href="tools/encoding/index.html#ascii-hex" class="tool-link">ASCII ↔ Hex Converter</a>
+                        <a href="tools/encoding/index.html#rot13" class="tool-link">ROT13 / Caesar Cipher</a>
+                        <a href="tools/encoding/index.html#gzip" class="tool-link">Gzip Compress/Decompress</a>
+                        <a href="tools/encoding/index.html#json-escape" class="tool-link">Escape/Unescape JSON</a>
+                    </div>
+                    <div class="category-count">9 tools</div>
+                    <a href="tools/encoding/index.html" class="btn btn-primary" style="margin-top: 1rem; width: 100%;">View All Encoding Tools →</a>
+                </div>
+
+                <!-- Time & Date -->
+                <div class="category-card" data-category="time-date">
+                    <div class="category-header">
+                        <span class="category-icon">⏰</span>
+                        <h2 class="category-name">Time & Date</h2>
+                    </div>
+                    <p class="category-description">Convert timestamps, timezones, and dates</p>
+                    <div class="category-tools">
+                        <a href="tools/time-date/index.html#unix-timestamp" class="tool-link">Unix Timestamp Converter</a>
+                        <a href="tools/time-date/index.html#timezone-converter" class="tool-link">Time Zone Converter</a>
+                        <a href="tools/time-date/index.html#cron-generator" class="tool-link">Cron Expression Generator</a>
+                        <a href="tools/time-date/index.html#cron-explainer" class="tool-link">Cron Expression Explainer</a>
+                        <a href="tools/time-date/index.html#date-difference" class="tool-link">Date Difference Calculator</a>
+                        <a href="tools/time-date/index.html#iso-validator" class="tool-link">ISO-8601 Validator</a>
+                        <a href="tools/time-date/index.html#epoch-millis" class="tool-link">Epoch Milliseconds</a>
+                        <a href="tools/time-date/index.html#business-days" class="tool-link">Business Days Calculator</a>
+                        <a href="tools/time-date/index.html#relative-time" class="tool-link">Relative Time Generator</a>
+                        <a href="tools/time-date/index.html#log-timestamp" class="tool-link">Log Timestamp Normalizer</a>
+                    </div>
+                    <div class="category-count">10 tools</div>
+                    <a href="tools/time-date/index.html" class="btn btn-primary" style="margin-top: 1rem; width: 100%;">View All Time/Date Tools →</a>
+                </div>
+
+                <!-- API & Integration -->
+                <div class="category-card" data-category="api">
+                    <div class="category-header">
+                        <span class="category-icon">🔌</span>
+                        <h2 class="category-name">API & Integration</h2>
+                    </div>
+                    <p class="category-description">Build, test, and debug APIs</p>
+                    <div class="category-tools">
+                        <a href="tools/api-integration/index.html#rest-api-builder" class="tool-link">REST API Request Builder</a>
+                        <a href="tools/api-integration/index.html#curl-generator" class="tool-link">cURL Command Generator</a>
+                        <a href="tools/api-integration/index.html#http-header-builder" class="tool-link">HTTP Header Builder</a>
+                        <a href="tools/api-integration/index.html#oauth-decoder" class="tool-link">OAuth Token Decoder</a>
+                        <a href="tools/api-integration/index.html#api-validator" class="tool-link">API Payload Validator</a>
+                        <a href="tools/api-integration/index.html#openapi-viewer" class="tool-link">OpenAPI / Swagger Viewer</a>
+                        <a href="tools/api-integration/index.html#swagger-sdk" class="tool-link">Swagger to Client SDK</a>
+                        <a href="tools/api-integration/index.html#api-mock-server" class="tool-link">API Mock Server</a>
+                        <a href="tools/api-integration/index.html#webhook-tester" class="tool-link">Webhook Tester</a>
+                        <a href="tools/api-integration/index.html#graphql-builder" class="tool-link">GraphQL Query Builder</a>
+                    </div>
+                    <div class="category-count">10 tools</div>
+                    <a href="tools/api-integration/index.html" class="btn btn-primary" style="margin-top: 1rem; width: 100%;">View All API Tools →</a>
+                </div>
+
+                <!-- Code Utilities -->
+                <div class="category-card" data-category="code">
+                    <div class="category-header">
+                        <span class="category-icon">💻</span>
+                        <h2 class="category-name">Code Utilities</h2>
+                    </div>
+                    <p class="category-description">Format, generate, and manipulate code</p>
+                    <div class="category-tools">
+                        <a href="tools/code-utilities/index.html#code-formatter" class="tool-link">Code Formatter</a>
+                        <a href="tools/code-utilities/index.html#code-minifier" class="tool-link">Code Minifier</a>
+                        <a href="tools/code-utilities/index.html#code-diff" class="tool-link">Code Diff Tool</a>
+                        <a href="tools/code-utilities/index.html#snippet-generator" class="tool-link">Snippet Generator</a>
+                        <a href="tools/code-utilities/index.html#uuid-generator" class="tool-link">UUID / ULID Generator</a>
+                        <a href="tools/code-utilities/index.html#hash-generator" class="tool-link">Hash Generator</a>
+                        <a href="tools/code-utilities/index.html#password-generator" class="tool-link">Password Generator</a>
+                        <a href="tools/code-utilities/index.html#env-generator" class="tool-link">Environment Variable Generator</a>
+                        <a href="tools/code-utilities/index.html#env-validator" class="tool-link">.env File Validator</a>
+                        <a href="tools/code-utilities/index.html#comment-remover" class="tool-link">Code Comment Remover</a>
+                    </div>
+                    <div class="category-count">10 tools</div>
+                    <a href="tools/code-utilities/index.html" class="btn btn-primary" style="margin-top: 1rem; width: 100%;">View All Code Tools →</a>
+                </div>
+
+                <!-- Database & Query -->
+                <div class="category-card" data-category="database">
+                    <div class="category-header">
+                        <span class="category-icon">🗄️</span>
+                        <h2 class="category-name">Database & Query</h2>
+                    </div>
+                    <p class="category-description">SQL formatting, validation, and database tools</p>
+                    <div class="category-tools">
+                        <a href="tools/database/index.html#sql-formatter" class="tool-link">SQL Formatter</a>
+                        <a href="tools/database/index.html#sql-validator" class="tool-link">SQL Query Validator</a>
+                        <a href="tools/database/index.html#sql-nosql-converter" class="tool-link">SQL to NoSQL Converter</a>
+                        <a href="tools/database/index.html#query-plan-visualizer" class="tool-link">Query Plan Visualizer</a>
+                        <a href="tools/database/index.html#mongodb-builder" class="tool-link">MongoDB Query Builder</a>
+                        <a href="tools/database/index.html#redis-inspector" class="tool-link">Redis Key Inspector</a>
+                        <a href="tools/database/index.html#schema-diff" class="tool-link">DB Schema Diff Tool</a>
+                        <a href="tools/database/index.html#csv-sql-generator" class="tool-link">CSV ↔ SQL Insert Generator</a>
+                        <a href="tools/database/index.html#data-masking" class="tool-link">Data Masking Tool</a>
+                    </div>
+                    <div class="category-count">8 tools</div>
+                    <a href="tools/database/index.html" class="btn btn-primary" style="margin-top: 1rem; width: 100%;">View All Database Tools →</a>
+                </div>
+            </div>
+
+            <!-- Search Results (hidden by default) -->
+            <div id="searchResults" class="search-results" style="display: none;">
+                <h2 class="results-title">Search Results</h2>
+                <div class="results-grid" id="resultsGrid"></div>
+            </div>
+        </main>
+    </div>
+
+    <script src="shared/app.js"></script>
+    <script>
+        // Enhanced Search Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('searchInput');
+            const categoriesGrid = document.getElementById('categoriesGrid');
+            const searchResults = document.getElementById('searchResults');
+            const resultsGrid = document.getElementById('resultsGrid');
+            
+            // All tools data - Complete list
+            const allTools = [
+                // YAML/XML (6 tools)
+                { name: 'YAML Formatter & Validator', url: 'tools/yaml-formatter/index.html', category: 'yaml-xml', icon: '✨' },
+                { name: 'YAML ↔ JSON Converter', url: 'tools/yaml-xml/index.html#yaml-json-converter', category: 'yaml-xml', icon: '🔄' },
+                { name: 'XML Formatter / Minifier', url: 'tools/yaml-xml/index.html#xml-formatter', category: 'yaml-xml', icon: '📝' },
+                { name: 'XML Compare Tool', url: 'tools/yaml-xml/index.html#xml-compare', category: 'yaml-xml', icon: '🔀' },
+                { name: 'XML ↔ JSON Converter', url: 'tools/yaml-xml/index.html#xml-json-converter', category: 'yaml-xml', icon: '🔄' },
+                { name: 'XPath / XQuery Tester', url: 'tools/yaml-xml/index.html#xpath-tester', category: 'yaml-xml', icon: '🔍' },
+                
+                // Text/Diff (11 tools)
+                { name: 'Text Compare (Side-by-Side Diff)', url: 'tools/text-compare/index.html', category: 'text-diff', icon: '🔀' },
+                { name: 'Case-Insensitive Text Compare', url: 'tools/text-diff/index.html#case-insensitive', category: 'text-diff', icon: '🔤' },
+                { name: 'Whitespace-Aware Text Compare', url: 'tools/text-diff/index.html#whitespace-aware', category: 'text-diff', icon: '📝' },
+                { name: 'Line-by-Line File Compare', url: 'tools/text-diff/index.html#file-compare', category: 'text-diff', icon: '📄' },
+                { name: 'Folder / Directory Compare', url: 'tools/text-diff/index.html#folder-compare', category: 'text-diff', icon: '📁' },
+                { name: 'List Compare (Intersection / Difference / Union)', url: 'tools/text-diff/index.html#list-compare', category: 'text-diff', icon: '📋' },
+                { name: 'CSV Compare Tool', url: 'tools/text-diff/index.html#csv-compare', category: 'text-diff', icon: '📊' },
+                { name: 'Log File Diff Tool', url: 'tools/text-diff/index.html#log-diff', category: 'text-diff', icon: '📜' },
+                { name: 'Configuration File Compare', url: 'tools/text-diff/index.html#config-compare', category: 'text-diff', icon: '⚙️' },
+                { name: 'Regex-Based Text Matcher', url: 'tools/text-diff/index.html#regex-matcher', category: 'text-diff', icon: '🔍' },
+                { name: 'Regex Tester & Visualizer', url: 'tools/regex-tester/index.html', category: 'text-diff', icon: '🧪' },
+                
+                // Encoding (9 tools)
+                { name: 'Base64 Encode / Decode', url: 'tools/base64/index.html', category: 'encoding', icon: '🔢' },
+                { name: 'URL Encode / Decode', url: 'tools/url-encode/index.html', category: 'encoding', icon: '🔗' },
+                { name: 'JWT Decoder & Validator', url: 'tools/jwt-decoder/index.html', category: 'encoding', icon: '🎫' },
+                { name: 'HTML Encode / Decode', url: 'tools/encoding/index.html#html-encode', category: 'encoding', icon: '🌐' },
+                { name: 'Unicode Converter', url: 'tools/encoding/index.html#unicode', category: 'encoding', icon: '🔤' },
+                { name: 'ASCII ↔ Hex Converter', url: 'tools/encoding/index.html#ascii-hex', category: 'encoding', icon: '🔢' },
+                { name: 'ROT13 / Caesar Cipher Tool', url: 'tools/encoding/index.html#rot13', category: 'encoding', icon: '🔐' },
+                { name: 'Gzip Compress / Decompress', url: 'tools/encoding/index.html#gzip', category: 'encoding', icon: '🗜️' },
+                { name: 'Escape / Unescape JSON Strings', url: 'tools/encoding/index.html#json-escape', category: 'encoding', icon: '📋' },
+                
+                // Time/Date (10 tools)
+                { name: 'Unix Timestamp ↔ Human Date Converter', url: 'tools/unix-timestamp/index.html', category: 'time-date', icon: '🕐' },
+                { name: 'Time Zone Converter', url: 'tools/time-date/index.html#timezone-converter', category: 'time-date', icon: '🌍' },
+                { name: 'Cron Expression Generator', url: 'tools/time-date/index.html#cron-generator', category: 'time-date', icon: '⏰' },
+                { name: 'Cron Expression Explainer', url: 'tools/time-date/index.html#cron-explainer', category: 'time-date', icon: '📖' },
+                { name: 'Date Difference Calculator', url: 'tools/time-date/index.html#date-difference', category: 'time-date', icon: '📅' },
+                { name: 'ISO-8601 Validator', url: 'tools/time-date/index.html#iso-validator', category: 'time-date', icon: '✓' },
+                { name: 'Epoch Milliseconds Converter', url: 'tools/time-date/index.html#epoch-millis', category: 'time-date', icon: '⏱️' },
+                { name: 'Business Days Calculator', url: 'tools/time-date/index.html#business-days', category: 'time-date', icon: '💼' },
+                { name: 'Relative Time Generator ("2 hours ago")', url: 'tools/time-date/index.html#relative-time', category: 'time-date', icon: '🕒' },
+                { name: 'Log Timestamp Normalizer (multi-TZ logs)', url: 'tools/time-date/index.html#log-timestamp', category: 'time-date', icon: '📜' },
+                
+                // API/Integration (10 tools)
+                { name: 'REST API Request Builder (like Postman Lite)', url: 'tools/api-integration/index.html#rest-api-builder', category: 'api', icon: '🚀' },
+                { name: 'cURL Command Generator', url: 'tools/api-integration/index.html#curl-generator', category: 'api', icon: '💻' },
+                { name: 'HTTP Header Builder', url: 'tools/api-integration/index.html#http-header-builder', category: 'api', icon: '📋' },
+                { name: 'OAuth Token Decoder', url: 'tools/api-integration/index.html#oauth-decoder', category: 'api', icon: '🔐' },
+                { name: 'API Payload Validator', url: 'tools/api-integration/index.html#api-validator', category: 'api', icon: '✓' },
+                { name: 'OpenAPI / Swagger Viewer', url: 'tools/api-integration/index.html#openapi-viewer', category: 'api', icon: '📄' },
+                { name: 'Swagger to Client SDK Generator', url: 'tools/api-integration/index.html#swagger-sdk', category: 'api', icon: '🔧' },
+                { name: 'API Mock Server', url: 'tools/api-integration/index.html#api-mock-server', category: 'api', icon: '🎭' },
+                { name: 'Webhook Tester', url: 'tools/api-integration/index.html#webhook-tester', category: 'api', icon: '🔔' },
+                { name: 'GraphQL Query Builder & Validator', url: 'tools/api-integration/index.html#graphql-builder', category: 'api', icon: '🔷' },
+                
+                // Code Utilities (10 tools)
+                { name: 'Code Formatter (Java, JS, Python, SQL)', url: 'tools/code-utilities/index.html#code-formatter', category: 'code', icon: '✨' },
+                { name: 'Code Minifier', url: 'tools/code-utilities/index.html#code-minifier', category: 'code', icon: '🗜️' },
+                { name: 'Code Diff Tool', url: 'tools/code-utilities/index.html#code-diff', category: 'code', icon: '🔀' },
+                { name: 'Snippet Generator', url: 'tools/code-utilities/index.html#snippet-generator', category: 'code', icon: '📝' },
+                { name: 'UUID / ULID Generator', url: 'tools/uuid-generator/index.html', category: 'code', icon: '🆔' },
+                { name: 'Hash Generator (MD5, SHA-256, SHA-512)', url: 'tools/hash-generator/index.html', category: 'code', icon: '🔐' },
+                { name: 'Password Generator', url: 'tools/password-generator/index.html', category: 'code', icon: '🔑' },
+                { name: 'Environment Variable Generator', url: 'tools/code-utilities/index.html#env-generator', category: 'code', icon: '🌍' },
+                { name: '.env File Validator', url: 'tools/code-utilities/index.html#env-validator', category: 'code', icon: '✓' },
+                { name: 'Code Comment Remover', url: 'tools/code-utilities/index.html#comment-remover', category: 'code', icon: '🗑️' },
+                
+                // Database (8 tools)
+                { name: 'SQL Formatter', url: 'tools/sql-formatter/index.html', category: 'database', icon: '✨' },
+                { name: 'SQL Query Validator', url: 'tools/database/index.html#sql-validator', category: 'database', icon: '✓' },
+                { name: 'SQL to NoSQL Query Converter', url: 'tools/database/index.html#sql-nosql-converter', category: 'database', icon: '🔄' },
+                { name: 'Query Plan Visualizer', url: 'tools/database/index.html#query-plan-visualizer', category: 'database', icon: '📊' },
+                { name: 'MongoDB Query Builder', url: 'tools/database/index.html#mongodb-builder', category: 'database', icon: '🍃' },
+                { name: 'Redis Key Inspector', url: 'tools/database/index.html#redis-inspector', category: 'database', icon: '🔍' },
+                { name: 'DB Schema Diff Tool', url: 'tools/database/index.html#schema-diff', category: 'database', icon: '🔀' },
+                { name: 'CSV ↔ SQL Insert Generator', url: 'tools/database/index.html#csv-sql-generator', category: 'database', icon: '📊' },
+                { name: 'Data Masking Tool for DB Dumps', url: 'tools/database/index.html#data-masking', category: 'database', icon: '🎭' },
+            ];
+
+            searchInput.addEventListener('input', function(e) {
+                const searchTerm = e.target.value.toLowerCase().trim();
+                
+                if (!searchTerm) {
+                    categoriesGrid.style.display = 'grid';
+                    searchResults.style.display = 'none';
+                    return;
+                }
+
+                // Filter tools
+                const filteredTools = allTools.filter(tool => 
+                    tool.name.toLowerCase().includes(searchTerm) ||
+                    tool.category.toLowerCase().includes(searchTerm)
+                );
+
+                // Show results
+                categoriesGrid.style.display = 'none';
+                searchResults.style.display = 'block';
+                
+                if (filteredTools.length === 0) {
+                    resultsGrid.innerHTML = `
+                        <div style="grid-column: 1/-1; text-align: center; padding: 3rem; color: var(--text-muted);">
+                            <div style="font-size: 3rem; margin-bottom: 1rem;">🔍</div>
+                            <p style="font-size: 1.125rem;">No tools found matching "${e.target.value}"</p>
+                            <p style="font-size: 0.875rem; margin-top: 0.5rem;">Try a different search term</p>
+                        </div>
+                    `;
+                } else {
+                    resultsGrid.innerHTML = filteredTools.map(tool => `
+                        <a href="${tool.url}" class="tool-card">
+                            <span class="tool-icon">${tool.icon}</span>
+                            <h3>${tool.name}</h3>
+                        </a>
+                    `).join('');
+                }
+            });
+
+            // Keyboard shortcut
+            document.addEventListener('keydown', function(e) {
+                if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+                    e.preventDefault();
+                    searchInput.focus();
+                    searchInput.select();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Text Diff Tool - Tecopus</title>
+    <link rel="icon" type="image/svg+xml" href="../../shared/icon.svg">
+    <link rel="alternate icon" href="../../shared/favicon.ico">
+    <link rel="apple-touch-icon" href="../../shared/icon.svg">
+    <link rel="stylesheet" href="../../shared/styles.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <div class="header-content">
+                <a href="../../index.html" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 0.75rem;">
+                    <img src="../../shared/icon.svg" alt="Tecopus" style="width: 32px; height: 32px; flex-shrink: 0;">
+                    <h1 class="logo">Tecopus</h1>
+                </a>
+                <div class="header-actions">
+                    <button class="btn-icon" id="themeToggle" title="Toggle Dark Mode">
+                        <span class="icon">🌙</span>
+                    </button>
+                    <button class="btn-icon" id="helpBtn" title="Help & Shortcuts">
+                        <span class="icon">?</span>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <main class="tool-container">
+            <div class="tool-header">
+                <h1>🔀 Advanced Text Diff Tool</h1>
+            </div>
+
+            <div class="tool-content">
+                <div id="statusMessage"></div>
+
+                <!-- Privacy Mode Toggle -->
+                <div class="privacy-banner" id="privacyBanner">
+                    <div class="privacy-content">
+                        <span class="privacy-icon">🔒</span>
+                        <span>Privacy Mode: All processing happens in your browser. No data is uploaded to servers.</span>
+                        <button class="btn-icon-small" id="closePrivacyBanner" title="Dismiss">×</button>
+                    </div>
+                </div>
+
+                <!-- Main Toolbar -->
+                <div class="toolbar">
+                    <div class="toolbar-group">
+                        <button class="btn btn-primary" id="compareBtn" data-shortcut="process">
+                            <span>⚡</span> Compare
+                        </button>
+                        <button class="btn btn-secondary" id="swapBtn" title="Swap A/B">
+                            <span>🔄</span> Swap
+                        </button>
+                        <button class="btn btn-secondary" id="clearBtn">
+                            <span>🗑️</span> Clear
+                        </button>
+                        <button class="btn btn-secondary" id="sampleBtn" title="Load Sample Data">
+                            <span>📝</span> Sample
+                        </button>
+                    </div>
+                    <div class="toolbar-group">
+                        <select id="viewMode" class="select-control">
+                            <option value="side-by-side">Side-by-Side</option>
+                            <option value="unified">Unified</option>
+                        </select>
+                        <select id="diffGranularity" class="select-control">
+                            <option value="line">Line Diff</option>
+                            <option value="word">Word Diff</option>
+                            <option value="char">Character Diff</option>
+                        </select>
+                    </div>
+                    <div class="toolbar-group">
+                        <button class="btn btn-secondary" id="exportBtn" title="Export Results">
+                            <span>💾</span> Export
+                        </button>
+                        <button class="btn btn-secondary" id="shareBtn" title="Share Comparison">
+                            <span>🔗</span> Share
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Comparison Options -->
+                <div class="options-panel">
+                    <div class="options-header">
+                        <h3>Comparison Options</h3>
+                        <button class="btn-icon-small" id="toggleOptions" title="Toggle Options">▼</button>
+                    </div>
+                    <div class="options-content" id="optionsContent">
+                        <div class="options-grid">
+                            <div class="option-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="ignoreWhitespace">
+                                    Ignore Whitespace
+                                </label>
+                                <select id="whitespaceMode" class="select-control-small" disabled>
+                                    <option value="all">All whitespace</option>
+                                    <option value="changes">Only changes</option>
+                                    <option value="leading-trailing">Leading/trailing</option>
+                                </select>
+                            </div>
+                            <div class="option-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="ignoreCase"> Ignore Case
+                                </label>
+                            </div>
+                            <div class="option-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="ignoreBlankLines"> Ignore Blank Lines
+                                </label>
+                            </div>
+                            <div class="option-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="ignoreLineEndings"> Ignore Line Endings
+                                </label>
+                            </div>
+                            <div class="option-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="normalizeLineEndings"> Normalize Line Endings
+                                </label>
+                                <select id="lineEndingMode" class="select-control-small" disabled>
+                                    <option value="lf">LF (\n)</option>
+                                    <option value="crlf">CRLF (\r\n)</option>
+                                </select>
+                            </div>
+                            <div class="option-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="detectMovedBlocks"> Detect Moved Blocks
+                                </label>
+                            </div>
+                        </div>
+                        <div class="options-advanced">
+                            <h4>Advanced Options</h4>
+                            <div class="options-grid">
+                                <div class="option-group">
+                                    <label>Encoding:</label>
+                                    <select id="encoding" class="select-control-small">
+                                        <option value="utf-8">UTF-8</option>
+                                        <option value="iso-8859-1">ISO-8859-1</option>
+                                        <option value="windows-1252">Windows-1252</option>
+                                        <option value="auto">Auto-detect</option>
+                                    </select>
+                                </div>
+                                <div class="option-group">
+                                    <label>Transform Profile:</label>
+                                    <select id="transformProfile" class="select-control-small">
+                                        <option value="none">None</option>
+                                        <option value="json">JSON Normalize</option>
+                                        <option value="yaml">YAML Normalize</option>
+                                        <option value="xml">XML Canonical</option>
+                                        <option value="trim">Trim Spaces</option>
+                                    </select>
+                                </div>
+                                <div class="option-group">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" id="clientSideOnly"> Client-Side Only (Privacy)
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- File Upload Areas -->
+                <div class="tool-grid">
+                    <div class="editor-wrapper">
+                        <div class="editor-header">
+                            <span class="editor-title">Text A</span>
+                            <div class="editor-header-actions">
+                                <input type="file" id="fileA" accept=".txt,.md,.log,.csv,.json,.xml,.yaml,.yml,.ini,.properties,.env,.sql" style="display: none;" multiple>
+                                <button class="btn-icon-small" id="uploadA" title="Upload File">📁</button>
+                                <button class="btn-icon-small" id="clearA" title="Clear">×</button>
+                            </div>
+                        </div>
+                        <div class="drop-zone" id="dropZoneA">
+                            <textarea id="textA" placeholder="Paste text, drag & drop file, or click 📁 to upload..."></textarea>
+                            <div class="drop-overlay" id="dropOverlayA">Drop file here</div>
+                        </div>
+                        <div class="file-info" id="fileInfoA"></div>
+                    </div>
+
+                    <div class="editor-wrapper">
+                        <div class="editor-header">
+                            <span class="editor-title">Text B</span>
+                            <div class="editor-header-actions">
+                                <input type="file" id="fileB" accept=".txt,.md,.log,.csv,.json,.xml,.yaml,.yml,.ini,.properties,.env,.sql" style="display: none;" multiple>
+                                <button class="btn-icon-small" id="uploadB" title="Upload File">📁</button>
+                                <button class="btn-icon-small" id="clearB" title="Clear">×</button>
+                            </div>
+                        </div>
+                        <div class="drop-zone" id="dropZoneB">
+                            <textarea id="textB" placeholder="Paste text, drag & drop file, or click 📁 to upload..."></textarea>
+                            <div class="drop-overlay" id="dropOverlayB">Drop file here</div>
+                        </div>
+                        <div class="file-info" id="fileInfoB"></div>
+                    </div>
+                </div>
+
+                <!-- 3-Way Merge Option -->
+                <div class="merge-option" id="mergeOption" style="display: none;">
+                    <div class="editor-wrapper">
+                        <div class="editor-header">
+                            <span class="editor-title">Base (for 3-way merge)</span>
+                            <div class="editor-header-actions">
+                                <input type="file" id="fileBase" accept=".txt,.md,.log,.csv,.json,.xml,.yaml,.yml,.ini,.properties,.env,.sql" style="display: none;">
+                                <button class="btn-icon-small" id="uploadBase" title="Upload File">📁</button>
+                                <button class="btn-icon-small" id="clearBase" title="Clear">×</button>
+                            </div>
+                        </div>
+                        <div class="drop-zone" id="dropZoneBase">
+                            <textarea id="textBase" placeholder="Base version for 3-way merge..."></textarea>
+                            <div class="drop-overlay" id="dropOverlayBase">Drop file here</div>
+                        </div>
+                    </div>
+                    <div class="merge-controls">
+                        <button class="btn btn-secondary" id="enable3Way">Enable 3-Way Merge</button>
+                        <button class="btn btn-secondary" id="disable3Way" style="display: none;">Disable 3-Way Merge</button>
+                    </div>
+                </div>
+
+                <!-- Diff View Container -->
+                <div class="diff-container">
+                    <div class="diff-header">
+                        <div class="diff-header-left">
+                            <h3>Diff View</h3>
+                            <div class="diff-controls">
+                                <button class="btn-icon-small" id="prevChange" title="Previous Change">↑</button>
+                                <button class="btn-icon-small" id="nextChange" title="Next Change">↓</button>
+                                <input type="text" id="searchDiff" placeholder="Search in diff..." class="search-input">
+                            </div>
+                        </div>
+                        <div class="diff-header-right">
+                            <div class="diff-stats-summary" id="diffStatsSummary"></div>
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="showLineNumbers"> Line Numbers
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="showMinimap"> Minimap
+                            </label>
+                        </div>
+                    </div>
+                    <div class="diff-view-wrapper">
+                        <div class="changes-sidebar" id="changesSidebar">
+                            <h4>Changes</h4>
+                            <div id="changesList"></div>
+                        </div>
+                        <div class="diff-view-main" id="diffViewMain">
+                            <div id="diffView" class="diff-view"></div>
+                        </div>
+                        <div class="minimap-container" id="minimapContainer" style="display: none;">
+                            <div id="minimap"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Detailed Stats -->
+                <div class="diff-stats-detailed" id="diffStatsDetailed" style="display: none;">
+                    <div class="stat-item">
+                        <span class="stat-label">Added Lines</span>
+                        <span class="stat-value" id="addedCount" style="color: var(--success-color);">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Removed Lines</span>
+                        <span class="stat-value" id="removedCount" style="color: var(--danger-color);">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Modified Lines</span>
+                        <span class="stat-value" id="modifiedCount" style="color: var(--warning-color);">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Unchanged Lines</span>
+                        <span class="stat-value" id="unchangedCount" style="color: var(--text-secondary);">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Moved Blocks</span>
+                        <span class="stat-value" id="movedBlocksCount" style="color: var(--info-color);">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Similarity</span>
+                        <span class="stat-value" id="similarity">0%</span>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Export Modal -->
+    <div class="modal" id="exportModal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Export Diff</h3>
+                <button class="btn-icon-small" id="closeExportModal">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="export-options">
+                    <button class="btn btn-primary" id="exportUnified">Export Unified Diff</button>
+                    <button class="btn btn-primary" id="exportHTML">Export HTML Report</button>
+                    <button class="btn btn-primary" id="exportJSON">Export JSON</button>
+                    <button class="btn btn-primary" id="exportPDF">Export PDF</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../shared/app.js"></script>
+    <script src="diff-engine.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

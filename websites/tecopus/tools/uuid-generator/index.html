@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UUID / ULID Generator - Tecopus</title>
+    <link rel="icon" type="image/svg+xml" href="../../shared/icon.svg">
+    <link rel="alternate icon" href="../../shared/favicon.ico">
+    <link rel="apple-touch-icon" href="../../shared/icon.svg">
+    <link rel="stylesheet" href="../../shared/styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <div class="header-content">
+                <a href="../../index.html" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 0.75rem;">
+                    <img src="../../shared/icon.svg" alt="Tecopus" style="width: 32px; height: 32px; flex-shrink: 0;">
+                    <h1 class="logo">Tecopus</h1>
+                </a>
+                <div class="header-actions">
+                    <button class="btn-icon" id="themeToggle" title="Toggle Dark Mode">
+                        <span class="icon">🌙</span>
+                    </button>
+                    <button class="btn-icon" id="helpBtn" title="Help & Shortcuts">
+                        <span class="icon">?</span>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <main class="tool-container">
+            <div class="tool-header">
+                <h1>🆔 UUID / ULID Generator</h1>
+            </div>
+
+            <div class="tool-content">
+                <div id="statusMessage"></div>
+
+                <div class="toolbar">
+                    <div class="toolbar-group">
+                        <select id="typeSelect" style="padding: 0.75rem 1rem; border: 2px solid var(--border-color); border-radius: var(--border-radius-sm); background: var(--bg-primary); color: var(--text-primary); font-weight: 600; font-size: 0.875rem; cursor: pointer;">
+                            <option value="uuid4">UUID v4 (Random)</option>
+                            <option value="uuid1">UUID v1 (Time-based)</option>
+                            <option value="ulid">ULID</option>
+                        </select>
+                        <input type="number" id="countInput" value="1" min="1" max="1000" placeholder="Count" style="width: 100px; padding: 0.75rem 1rem; border: 2px solid var(--border-color); border-radius: var(--border-radius-sm); background: var(--bg-primary); color: var(--text-primary); font-weight: 600; font-size: 0.875rem;">
+                        <button class="btn btn-primary" id="generateBtn" data-shortcut="process">
+                            <span>⚡</span> Generate
+                        </button>
+                    </div>
+                    <div class="toolbar-group">
+                        <button class="btn btn-secondary" id="copyBtn">
+                            <span>📋</span> Copy All
+                        </button>
+                        <button class="btn btn-secondary" id="downloadBtn" data-shortcut="download">
+                            <span>💾</span> Download
+                        </button>
+                        <button class="btn btn-secondary" id="clearBtn">
+                            <span>🗑️</span> Clear
+                        </button>
+                    </div>
+                    <div class="toolbar-group" style="margin-left: auto;">
+                        <span class="badge" id="countBadge">0 IDs</span>
+                    </div>
+                </div>
+
+                <div class="editor-wrapper">
+                    <div class="editor-header">
+                        <span class="editor-title">Generated IDs</span>
+                        <div class="editor-header-actions">
+                            <div class="editor-controls">
+                                <div class="editor-stats" id="charCount">0 characters</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="drop-zone">
+                        <textarea id="outputArea" readonly placeholder="Generated IDs will appear here...&#10;&#10;Click 'Generate' to create UUIDs or ULIDs"></textarea>
+                    </div>
+                </div>
+
+                <div class="tool-grid">
+                    <div class="editor-wrapper">
+                        <div class="editor-header">
+                            <span class="editor-title">Statistics</span>
+                        </div>
+                        <div class="drop-zone">
+                            <div class="output-area" id="stats" style="min-height: 200px; border: none; background: var(--bg-primary);"></div>
+                        </div>
+                    </div>
+                    <div class="editor-wrapper">
+                        <div class="editor-header">
+                            <span class="editor-title">Quick Actions</span>
+                        </div>
+                        <div class="drop-zone" style="padding: 1rem; display: flex; flex-direction: column; gap: 0.75rem; background: var(--bg-primary);">
+                            <button class="btn btn-secondary" id="generate10Btn" style="width: 100%; justify-content: center;">
+                                Generate 10 IDs
+                            </button>
+                            <button class="btn btn-secondary" id="generate100Btn" style="width: 100%; justify-content: center;">
+                                Generate 100 IDs
+                            </button>
+                            <button class="btn btn-secondary" id="validateBtn" style="width: 100%; justify-content: center;">
+                                Validate Selected
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../../shared/app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uuid@9.0.0/dist/umd/uuid.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

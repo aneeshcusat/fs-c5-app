@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Encode / Decode - Tecopus</title>
+    <link rel="icon" type="image/svg+xml" href="../../shared/icon.svg">
+    <link rel="alternate icon" href="../../shared/favicon.ico">
+    <link rel="apple-touch-icon" href="../../shared/icon.svg">
+    <link rel="stylesheet" href="../../shared/styles.css">
+    <style>
+        .mode-selector {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        .mode-btn {
+            padding: 0.5rem 1rem;
+            border: 2px solid var(--border-color);
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        .mode-btn.active {
+            background: var(--primary-gradient);
+            color: white;
+            border-color: var(--primary-color);
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <div class="header-content">
+                <a href="../../index.html" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 0.75rem;">
+                    <img src="../../shared/icon.svg" alt="Tecopus" style="width: 32px; height: 32px; flex-shrink: 0;">
+                    <h1 class="logo">Tecopus</h1>
+                </a>
+                <div class="header-actions">
+                    <button class="btn-icon" id="themeToggle" title="Toggle Dark Mode">
+                        <span class="icon">🌙</span>
+                    </button>
+                    <button class="btn-icon" id="helpBtn" title="Help & Shortcuts">
+                        <span class="icon">?</span>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <main class="tool-container">
+            <div class="tool-header">
+                <h1>🔗 URL Encode / Decode</h1>
+            </div>
+
+            <div class="tool-content">
+                <div id="statusMessage"></div>
+
+                <div class="mode-selector">
+                    <button class="mode-btn active" data-mode="encode">Encode</button>
+                    <button class="mode-btn" data-mode="decode">Decode</button>
+                </div>
+
+                <div class="toolbar">
+                    <div class="toolbar-group">
+                        <button class="btn btn-primary" id="processBtn" data-shortcut="process">Process</button>
+                        <button class="btn btn-secondary" id="copyBtn">Copy</button>
+                        <button class="btn btn-secondary" id="downloadBtn" data-shortcut="download">Download</button>
+                    </div>
+                </div>
+
+                <div class="tool-grid">
+                    <div class="editor-wrapper">
+                        <div class="editor-header">
+                            <span class="editor-title">Input</span>
+                        </div>
+                        <div class="drop-zone">
+                            <textarea id="inputText" placeholder="Enter URL or encoded string..."></textarea>
+                        </div>
+                    </div>
+
+                    <div class="editor-wrapper">
+                        <div class="editor-header">
+                            <span class="editor-title">Output</span>
+                        </div>
+                        <div class="drop-zone">
+                            <textarea id="outputText" readonly placeholder="Output will appear here..."></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../../shared/app.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

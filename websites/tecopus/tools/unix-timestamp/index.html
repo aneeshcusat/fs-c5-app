@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unix Timestamp ↔ Human Date Converter - Tecopus</title>
+    <link rel="icon" type="image/svg+xml" href="../../shared/icon.svg">
+    <link rel="alternate icon" href="../../shared/favicon.ico">
+    <link rel="apple-touch-icon" href="../../shared/icon.svg">
+    <link rel="stylesheet" href="../../shared/styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <div class="header-content">
+                <a href="../../index.html" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 0.75rem;">
+                    <img src="../../shared/icon.svg" alt="Tecopus" style="width: 32px; height: 32px; flex-shrink: 0;">
+                    <h1 class="logo">Tecopus</h1>
+                </a>
+                <div class="header-actions">
+                    <button class="btn-icon" id="themeToggle" title="Toggle Dark Mode">
+                        <span class="icon">🌙</span>
+                    </button>
+                    <button class="btn-icon" id="helpBtn" title="Help & Shortcuts">
+                        <span class="icon">?</span>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <main class="tool-container">
+            <div class="tool-header">
+                <h1>🕐 Unix Timestamp ↔ Human Date Converter</h1>
+            </div>
+
+            <div class="tool-content">
+                <div id="statusMessage"></div>
+
+                <div class="toolbar">
+                    <div class="toolbar-group">
+                        <button class="btn btn-primary" id="convertBtn">Convert</button>
+                        <button class="btn btn-secondary" id="useNowBtn">Use Current Time</button>
+                    </div>
+                    <div class="toolbar-group">
+                        <button class="btn btn-secondary" id="copyBtn">Copy</button>
+                    </div>
+                </div>
+
+                <div class="tool-grid" style="grid-template-columns: 1fr 1fr;">
+                    <div class="editor-wrapper">
+                        <div class="editor-header">
+                            <span class="editor-title">Unix Timestamp (seconds)</span>
+                        </div>
+                        <div class="drop-zone" style="padding: 1rem; background: var(--bg-primary);">
+                            <input type="number" id="timestampInput" placeholder="Enter Unix timestamp..." style="width: 100%; padding: 1rem; border: 2px solid var(--border-color); border-radius: var(--border-radius-sm); background: var(--bg-primary); color: var(--text-primary); font-size: 1rem; font-weight: 600;">
+                        </div>
+                    </div>
+
+                    <div class="editor-wrapper">
+                        <div class="editor-header">
+                            <span class="editor-title">Date & Time</span>
+                        </div>
+                        <div class="drop-zone" style="padding: 1rem; background: var(--bg-primary);">
+                            <input type="datetime-local" id="dateInput" style="width: 100%; padding: 1rem; border: 2px solid var(--border-color); border-radius: var(--border-radius-sm); background: var(--bg-primary); color: var(--text-primary); font-size: 1rem;">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tool-grid">
+                    <div class="editor-wrapper">
+                        <div class="editor-header">
+                            <span class="editor-title">Converted Results</span>
+                        </div>
+                        <div class="drop-zone">
+                            <div class="output-area" id="results" style="border: none; background: var(--bg-primary); flex: 1;"></div>
+                        </div>
+                    </div>
+
+                    <div class="editor-wrapper">
+                        <div class="editor-header">
+                            <span class="editor-title">Additional Formats</span>
+                        </div>
+                        <div class="drop-zone">
+                            <div class="output-area" id="formats" style="border: none; background: var(--bg-primary); flex: 1;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../../shared/app.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

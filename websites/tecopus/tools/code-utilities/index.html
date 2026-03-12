@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Utilities & Generators - Tecopus</title>
+    <link rel="icon" type="image/svg+xml" href="../../shared/icon.svg">
+    <link rel="alternate icon" href="../../shared/favicon.ico">
+    <link rel="stylesheet" href="../../shared/styles.css">
+    <style>
+        .coming-soon {
+            padding: 2rem;
+            text-align: center;
+            background: var(--bg-tertiary);
+            border-radius: var(--border-radius);
+            border: 2px dashed var(--border-color);
+            color: var(--text-muted);
+        }
+        .coming-soon-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        .tool-section {
+            padding: 0.75rem;
+        }
+        .tool-description {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+            font-size: 0.875rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <div class="header-content">
+                <a href="../../index.html" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 0.75rem;">
+                    <img src="../../shared/icon.svg" alt="Tecopus" style="width: 32px; height: 32px; flex-shrink: 0;">
+                    <h1 class="logo">Tecopus</h1>
+                </a>
+                <div class="header-actions">
+                    <button class="btn-icon" id="themeToggle" title="Toggle Dark Mode">
+                        <span class="icon">🌙</span>
+                    </button>
+                    <button class="btn-icon" id="helpBtn" title="Help & Shortcuts">
+                        <span class="icon">?</span>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <!-- Sidebar Navigation -->
+            <aside class="sidebar">
+                <nav class="nav-menu">
+                    <button class="nav-item active" data-tab="formatter">
+                        <span class="nav-icon">✨</span>
+                        <span class="nav-label">Formatter</span>
+                    </button>
+                    <button class="nav-item" data-tab="minifier">
+                        <span class="nav-icon">🗜️</span>
+                        <span class="nav-label">Minifier</span>
+                    </button>
+                    <button class="nav-item" data-tab="diff">
+                        <span class="nav-icon">🔀</span>
+                        <span class="nav-label">Diff</span>
+                    </button>
+                    <button class="nav-item" data-tab="snippet">
+                        <span class="nav-icon">📝</span>
+                        <span class="nav-label">Snippet</span>
+                    </button>
+                    <button class="nav-item" data-tab="uuid">
+                        <span class="nav-icon">🆔</span>
+                        <span class="nav-label">UUID</span>
+                    </button>
+                    <button class="nav-item" data-tab="hash">
+                        <span class="nav-icon">🔐</span>
+                        <span class="nav-label">Hash</span>
+                    </button>
+                    <button class="nav-item" data-tab="password">
+                        <span class="nav-icon">🔑</span>
+                        <span class="nav-label">Password</span>
+                    </button>
+                    <button class="nav-item" data-tab="env-gen">
+                        <span class="nav-icon">🌍</span>
+                        <span class="nav-label">Env Gen</span>
+                    </button>
+                    <button class="nav-item" data-tab="env-val">
+                        <span class="nav-icon">✓</span>
+                        <span class="nav-label">Env Valid</span>
+                    </button>
+                    <button class="nav-item" data-tab="comments">
+                        <span class="nav-icon">🗑️</span>
+                        <span class="nav-label">Comments</span>
+                    </button>
+                </nav>
+            </aside>
+
+            <!-- Content Area -->
+            <div class="content-area">
+                <!-- Formatter Tab -->
+                <div class="tab-content active" id="formatter-tab">
+                    <div class="editor-wrapper">
+                        <div class="editor-header">
+                            <span class="editor-title">Code Formatter</span>
+                        </div>
+                        <div class="tool-section">
+                            <p class="tool-description">Format code in Java, JavaScript, Python, SQL and more.</p>
+                            <div class="coming-soon">
+                                <div class="coming-soon-icon">🚧</div>
+                                <p>Coming soon!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Minifier Tab -->
+                <div class="tab-content" id="minifier-tab">
+                    <div class="editor-wrapper">
+                        <div class="editor-header">
+                            <span class="editor-title">Code Minifier</span>
+                        </div>
+                        <div class="tool-section">
+                            <p class="tool-description">Minify code for production use.</p>
+                            <div class="coming-soon">
+                                <div class="coming-soon-icon">🚧</div>
+                                <p>Coming soon!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Diff Tab -->
+                <div class="tab-content" id="diff-tab">
+                    <div class="editor-wrapper">
+                        <div class="editor-header">
+                            <span class="editor-title">Code Diff Tool</span>
+                        </div>
+                        <div class="tool-section">
+                            <p class="tool-description">Compare code differences.</p>
+                            <div class="coming-soon">
+                                <div class="coming-soon-icon">🚧</div>
+                                <p>Coming soon!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Snippet Tab -->
+                <div class="tab-content" id="snippet-tab">
+                    <div class="editor-wrapper">
+                        <div class="editor-header">
+                            <span class="editor-title">Snippet Generator</span>
+                        </div>
+                        <div class="tool-section">
+                            <p class="tool-description">Generate code snippets.</p>
+                            <div class="coming-soon">
+                                <div class="coming-soon-icon">🚧</div>
+                                <p>Coming soon!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- UUID Tab -->
+                <div class="tab-content" id="uuid-tab">
+                    <div class="toolbar">
+                        <div class="toolbar-group">
+                            <a href="../uuid-generator/index.html" class="btn btn-primary">
+                                <span class="icon">🆔</span> Open UUID Generator Tool
+                            </a>
+                        </div>
+                    </div>
+                    <div class="editor-wrapper">
+                        <div class="editor-header">
+                            <span class="editor-title">UUID / ULID Generator</span>
+                        </div>
+                        <div class="tool-section">
+                            <p class="tool-description">Generate UUIDs and ULIDs for your applications.</p>
+                            <a href="../uuid-generator/index.html" class="btn btn-primary">Open Tool →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hash Tab -->
+                <div class="tab-content" id="hash-tab">
+                    <div class="toolbar">
+                        <div class="toolbar-group">
+                            <a href="../hash-generator/index.html" class="btn btn-primary">
+                                <span class="icon">🔐</span> Open Hash Generator Tool
+                            </a>
+                        </div>
+                    </div>
+                    <div class="editor-wrapper">
+                        <div class="editor-header">
+                            <span class="editor-title">Hash Generator</span>
+                        </div>
+                        <div class="tool-section">
+                            <p class="tool-description">Generate MD5, SHA-256, SHA-512 and other hash values.</p>
+                            <a href="../hash-generator/index.html" class="btn btn-primary">Open Tool →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Password Tab -->
+                <div class="tab-content" id="password-tab">
+                    <div class="toolbar">
+                        <div class="toolbar-group">
+                            <a href="../password-generator/index.html" class="btn btn-primary">
+                                <span class="icon">🔑</span> Open Password Generator Tool
+                            </a>
+                        </div>
+                    </div>
+                    <div class="editor-wrapper">
+                        <div class="editor-header">
+                            <span class="editor-title">Password Generator</span>
+                        </div>
+                        <div class="tool-section">
+                            <p class="tool-description">Generate secure passwords with customizable options.</p>
+                            <a href="../password-generator/index.html" class="btn btn-primary">Open Tool →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Env Gen Tab -->
+                <div class="tab-content" id="env-gen-tab">
+                    <div class="editor-wrapper">
+                        <div class="editor-header">
+                            <span class="editor-title">Environment Variable Generator</span>
+                        </div>
+                        <div class="tool-section">
+                            <p class="tool-description">Generate environment variable files.</p>
+                            <div class="coming-soon">
+                                <div class="coming-soon-icon">🚧</div>
+                                <p>Coming soon!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Env Val Tab -->
+                <div class="tab-content" id="env-val-tab">
+                    <div class="editor-wrapper">
+                        <div class="editor-header">
+                            <span class="editor-title">.env File Validator</span>
+                        </div>
+                        <div class="tool-section">
+                            <p class="tool-description">Validate .env files for syntax errors.</p>
+                            <div class="coming-soon">
+                                <div class="coming-soon-icon">🚧</div>
+                                <p>Coming soon!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Comments Tab -->
+                <div class="tab-content" id="comments-tab">
+                    <div class="editor-wrapper">
+                        <div class="editor-header">
+                            <span class="editor-title">Code Comment Remover</span>
+                        </div>
+                        <div class="tool-section">
+                            <p class="tool-description">Remove comments from code files.</p>
+                            <div class="coming-soon">
+                                <div class="coming-soon-icon">🚧</div>
+                                <p>Coming soon!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../../shared/app.js"></script>
+    <script>
+        // Tab switching functionality
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('click', function() {
+                const tab = this.getAttribute('data-tab');
+                
+                // Update active nav item
+                document.querySelectorAll('.nav-item').forEach(nav => nav.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Update active tab content
+                document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+                document.getElementById(`${tab}-tab`).classList.add('active');
+            });
+        });
+
+        // Handle initial tab from URL hash
+        if (window.location.hash) {
+            const hash = window.location.hash.substring(1);
+            const navItem = document.querySelector(`[data-tab="${hash}"]`);
+            if (navItem) {
+                navItem.click();
+            }
+        }
+    </script>
+</body>
+</html>

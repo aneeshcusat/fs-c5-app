@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON Operations Tool - Tecopus</title>
+    <link rel="icon" type="image/svg+xml" href="../../shared/icon.svg">
+    <link rel="alternate icon" href="../../shared/favicon.ico">
+    <link rel="apple-touch-icon" href="../../shared/icon.svg">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="header-content">
+                <a href="../../index.html" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 0.75rem;">
+                    <img src="../../shared/icon.svg" alt="Tecopus" style="width: 32px; height: 32px; flex-shrink: 0;">
+                    <h1 class="logo">Tecopus</h1>
+                </a>
+                <div class="header-actions">
+                    <button class="btn-icon" id="themeToggle" title="Toggle Dark Mode">
+                        <span class="icon">🌙</span>
+                    </button>
+                    <button class="btn-icon" id="helpBtn" title="Help & Shortcuts">
+                        <span class="icon">?</span>
+                    </button>
+                    <button class="btn-icon" id="exportSettingsBtn" title="Export Settings">
+                        <span class="icon">⚙️</span>
+                    </button>
+                    <input type="file" id="importSettingsInput" accept=".json" style="display: none;">
+                    <button class="btn-icon" id="importSettingsBtn" title="Import Settings">
+                        <span class="icon">📥</span>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Sidebar Navigation -->
+            <aside class="sidebar">
+                <nav class="nav-menu">
+                    <button class="nav-item active" data-tab="editor">
+                        <span class="nav-icon">📝</span>
+                        <span class="nav-label">Editor</span>
+                    </button>
+                    <button class="nav-item" data-tab="compare">
+                        <span class="nav-icon">🔀</span>
+                        <span class="nav-label">Compare</span>
+                    </button>
+                    <button class="nav-item" data-tab="search">
+                        <span class="nav-icon">🔍</span>
+                        <span class="nav-label">Search</span>
+                    </button>
+                    <button class="nav-item" data-tab="transform">
+                        <span class="nav-icon">⚙️</span>
+                        <span class="nav-label">Transform</span>
+                    </button>
+                    <button class="nav-item" data-tab="schema">
+                        <span class="nav-icon">📋</span>
+                        <span class="nav-label">Schema</span>
+                    </button>
+                    <button class="nav-item" data-tab="convert">
+                        <span class="nav-icon">🔄</span>
+                        <span class="nav-label">Convert</span>
+                    </button>
+                    <button class="nav-item" data-tab="quality">
+                        <span class="nav-icon">🛡️</span>
+                        <span class="nav-label">Quality</span>
+                    </button>
+                    <button class="nav-item" data-tab="batch">
+                        <span class="nav-icon">📦</span>
+                        <span class="nav-label">Batch</span>
+                    </button>
+                    <button class="nav-item" data-tab="analyze">
+                        <span class="nav-icon">📊</span>
+                        <span class="nav-label">Analyze</span>
+                    </button>
+                </nav>
+            </aside>
+
+            <!-- Content Area -->
+            <div class="content-area">
+                <!-- Editor Tab -->
+                <div class="tab-content active" id="editor-tab">
+                    <div class="toolbar">
+                        <div class="toolbar-group">
+                            <button class="btn btn-primary" id="loadFileBtn">
+                                <span class="icon">📁</span> Load File
+                            </button>
+                            <button class="btn btn-secondary" id="loadUrlBtn">
+                                <span class="icon">🔗</span> Load URL
+                            </button>
+                            <input type="file" id="fileInput" accept=".json,.jsonc" style="display: none;">
+                            <input type="text" id="urlInput" placeholder="Enter JSON URL" class="url-input" style="display: none;">
+                        </div>
+                        <div class="toolbar-group">
+                            <button class="btn btn-success" id="validateBtn">
+                                <span class="icon">✓</span> Validate
+                            </button>
+                            <button class="btn btn-info" id="formatBtn">
+                                <span class="icon">✨</span> Format
+                            </button>
+                            <button class="btn btn-info" id="minifyBtn">
+                                <span class="icon">🗜️</span> Minify
+                            </button>
+                            <button class="btn btn-secondary" id="sortKeysBtn">
+                                <span class="icon">🔤</span> Sort Keys
+                            </button>
+                        </div>
+                        <div class="toolbar-group">
+                            <button class="btn btn-secondary" id="undoBtn" title="Undo (Ctrl+Z)">
+                                <span class="icon">↶</span> Undo
+                            </button>
+                            <button class="btn btn-secondary" id="redoBtn" title="Redo (Ctrl+Y)">
+                                <span class="icon">↷</span> Redo
+                            </button>
+                            <button class="btn btn-secondary" id="historyBtn" title="History">
+                                <span class="icon">🕐</span> History
+                            </button>
+                        </div>
+                        <div class="toolbar-group">
+                            <button class="btn btn-info" id="searchReplaceBtn">
+                                <span class="icon">🔍</span> Search & Replace
+                            </button>
+                            <button class="btn btn-success" id="downloadBtn">
+                                <span class="icon">💾</span> Download
+                            </button>
+                            <button class="btn btn-secondary" id="copyBtn">
+                                <span class="icon">📋</span> Copy
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="editor-container">
+                            <div class="editor-wrapper">
+                                <div class="editor-header">
+                                    <span class="editor-title">JSON Input</span>
+                                    <div class="editor-header-actions">
+                                    <div class="view-switcher">
+                                        <button class="view-btn active" data-view="text" title="Text View">
+                                            <span class="icon">📝</span> Text
+                                        </button>
+                                        <button class="view-btn" data-view="tree" title="Tree View">
+                                            <span class="icon">🌳</span> Tree
+                                        </button>
+                                        <button class="view-btn" data-view="form" title="Form View">
+                                            <span class="icon">📋</span> Form
+                                        </button>
+                                        <button class="view-btn" data-view="code" title="Code View">
+                                            <span class="icon">💻</span> Code
+                                        </button>
+                                        <button class="view-btn" data-view="table" title="Table View">
+                                            <span class="icon">📊</span> Table
+                                        </button>
+                                    </div>
+                                    <div class="editor-controls">
+                                        <button class="btn-icon-tiny" id="collapseAllBtn" title="Collapse All">
+                                            <span class="icon">⬆</span>
+                                        </button>
+                                        <button class="btn-icon-tiny" id="expandAllBtn" title="Expand All">
+                                            <span class="icon">⬇</span>
+                                        </button>
+                                        <div class="editor-stats" id="editorStats"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Search & Replace Bar -->
+                            <div class="search-replace-bar" id="searchReplaceBar" style="display: none;">
+                                <div class="search-replace-group">
+                                    <div class="search-group">
+                                        <input type="text" id="searchInputField" class="search-input-field" placeholder="Search...">
+                                        <button class="btn-icon-tiny" id="findPrevBtn" title="Find Previous (Shift+F3)">
+                                            <span class="icon">↑</span>
+                                        </button>
+                                        <button class="btn-icon-tiny" id="findNextBtn" title="Find Next (F3)">
+                                            <span class="icon">↓</span>
+                                        </button>
+                                        <span class="match-count" id="matchCount"></span>
+                                    </div>
+                                    <div class="replace-group">
+                                        <input type="text" id="replaceInputField" class="replace-input-field" placeholder="Replace with...">
+                                        <button class="btn btn-small" id="replaceBtn" title="Replace">
+                                            <span class="icon">🔄</span> Replace
+                                        </button>
+                                        <button class="btn btn-small" id="replaceAllBtn" title="Replace All">
+                                            <span class="icon">🔄</span> Replace All
+                                        </button>
+                                    </div>
+                                    <div class="search-options">
+                                        <label class="checkbox-label">
+                                            <input type="checkbox" id="matchCase"> Match Case
+                                        </label>
+                                        <label class="checkbox-label">
+                                            <input type="checkbox" id="useRegex"> Regex
+                                        </label>
+                                        <label class="checkbox-label">
+                                            <input type="checkbox" id="wholeWord"> Whole Word
+                                        </label>
+                                        <button class="btn-icon-tiny" id="closeSearchReplaceBtn" title="Close (Esc)">
+                                            <span class="icon">✕</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Filter Bar -->
+                            <div class="filter-bar" id="filterBar">
+                                <div class="filter-group">
+                                    <input type="text" id="filterInput" class="filter-input" placeholder="Filter by key or value...">
+                                    <select id="filterType" class="filter-select">
+                                        <option value="all">All Types</option>
+                                        <option value="string">String</option>
+                                        <option value="number">Number</option>
+                                        <option value="boolean">Boolean</option>
+                                        <option value="object">Object</option>
+                                        <option value="array">Array</option>
+                                        <option value="null">Null</option>
+                                    </select>
+                                    <select id="filterDepth" class="filter-select">
+                                        <option value="all">All Depths</option>
+                                        <option value="1">Depth 1</option>
+                                        <option value="2">Depth 2</option>
+                                        <option value="3">Depth 3</option>
+                                        <option value="4">Depth 4+</option>
+                                    </select>
+                                    <button class="btn-icon-tiny" id="clearFilterBtn" title="Clear Filter">
+                                        <span class="icon">✕</span>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <!-- View Container -->
+                            <div class="view-container" id="viewContainer">
+                                <!-- Text View -->
+                                <div class="view-content active" data-view="text">
+                                <div class="drop-zone" id="dropZone">
+                                        <div class="editor-container-wrapper">
+                                            <div class="fold-gutter" id="foldGutter"></div>
+                                    <textarea id="jsonInput" class="json-editor" placeholder='Paste your JSON here or drag & drop a file...&#10;&#10;Example:&#10;{&#10;  "name": "John Doe",&#10;  "age": 30,&#10;  "city": "New York"&#10;}'></textarea>
+                                        </div>
+                                    <div class="drop-overlay" id="dropOverlay">
+                                        <div class="drop-message">Drop JSON file here</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Tree View -->
+                                <div class="view-content" data-view="tree">
+                                    <div class="tree-view-container">
+                                        <div class="tree-controls-bar">
+                                            <button class="btn btn-small" id="expandEditorTree">Expand All</button>
+                                            <button class="btn btn-small" id="collapseEditorTree">Collapse All</button>
+                                            <button class="btn btn-small" id="copyPathBtn">Copy Path</button>
+                                        </div>
+                                        <div id="editorTreeView" class="tree-view-integrated"></div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Form View -->
+                                <div class="view-content" data-view="form">
+                                    <div class="form-view-container" id="formViewContainer">
+                                        <div class="form-placeholder">Form view will appear here</div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Code View -->
+                                <div class="view-content" data-view="code">
+                                    <div class="code-view-container" id="codeViewContainer">
+                                        <pre><code id="codeViewContent" class="language-json"></code></pre>
+                                    </div>
+                                </div>
+                                
+                                <!-- Table View -->
+                                <div class="view-content" data-view="table">
+                                    <div class="table-view-container" id="tableViewContainer">
+                                        <div class="table-placeholder">Table view will appear here</div>
+                                    </div>
+                                    </div>
+                                </div>
+                                <div class="editor-footer">
+                                    <div class="validation-status" id="validationStatus"></div>
+                                    <div class="editor-options">
+                                        <label class="checkbox-label">
+                                            <input type="checkbox" id="autoFormat"> Auto-format
+                                        </label>
+                                        <label class="checkbox-label">
+                                            <input type="checkbox" id="lineNumbers"> Line numbers
+                                        </label>
+                                        <select id="indentSize" class="select-small">
+                                            <option value="2">2 spaces</option>
+                                            <option value="4" selected>4 spaces</option>
+                                            <option value="tab">Tab</option>
+                                        </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Compare Tab -->
+                <div class="tab-content" id="compare-tab">
+                    <div class="toolbar">
+                        <div class="toolbar-group">
+                            <button class="btn btn-primary" id="loadFile1Btn">
+                                <span class="icon">📁</span> Load File 1
+                            </button>
+                            <button class="btn btn-primary" id="loadFile2Btn">
+                                <span class="icon">📁</span> Load File 2
+                            </button>
+                        </div>
+                        <div class="toolbar-group">
+                            <input type="text" id="compareSearchInput" class="search-input-compare" placeholder="Search in diff...">
+                            <button class="btn btn-secondary" id="compareSearchBtn">
+                                <span class="icon">🔍</span> Search
+                            </button>
+                            <button class="btn btn-secondary" id="compareSearchPrev">
+                                <span class="icon">↑</span> Prev
+                            </button>
+                            <button class="btn btn-secondary" id="compareSearchNext">
+                                <span class="icon">↓</span> Next
+                            </button>
+                        </div>
+                        <div class="toolbar-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="ignoreOrder"> Ignore Order
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="ignorePaths"> Ignore Paths
+                            </label>
+                            <button class="btn btn-info" id="generatePatchBtn">
+                                <span class="icon">📝</span> Generate Patch
+                            </button>
+                        </div>
+                        <div class="toolbar-group">
+                            <button class="btn btn-secondary" id="expandAllDiffBtn">
+                                <span class="icon">⬇</span> Expand All
+                            </button>
+                            <button class="btn btn-secondary" id="collapseAllDiffBtn">
+                                <span class="icon">⬆</span> Collapse All
+                            </button>
+                        </div>
+                    </div>
+                    <div class="compare-container">
+                        <div class="compare-pane">
+                            <div class="editor-header">
+                                <span>JSON 1</span>
+                                <div class="editor-header-actions">
+                                    <button class="btn-icon-tiny" id="toggleCompare1TreeBtn" title="Toggle Tree View">
+                                        <span class="icon">🌳</span>
+                                    </button>
+                                    <button class="btn-icon-small" id="formatCompare1Btn" title="Format">
+                                        <span class="icon">✨</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="editor-layout-compare">
+                                <div class="tree-panel compare-tree" id="compare1TreePanel">
+                                    <div class="tree-panel-header">
+                                        <span>Tree</span>
+                                        <button class="btn-icon-tiny toggle-tree-btn" id="toggleCompare1Tree" title="Toggle Tree View">
+                                            <span class="icon">◀</span>
+                                        </button>
+                                    </div>
+                                    <div class="tree-panel-content">
+                                        <div id="compare1TreeView" class="tree-view"></div>
+                                    </div>
+                                    <div class="tree-resize-handle" data-panel="compare1TreePanel"></div>
+                                </div>
+                                <div class="compare-editor-wrapper">
+                                    <div class="line-numbers" id="lineNumbers1"></div>
+                                    <textarea id="compareInput1" class="json-editor compare-editor" spellcheck="false"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="compare-pane">
+                            <div class="editor-header">
+                                <span>JSON 2</span>
+                                <div class="editor-header-actions">
+                                    <button class="btn-icon-tiny" id="toggleCompare2TreeBtn" title="Toggle Tree View">
+                                        <span class="icon">🌳</span>
+                                    </button>
+                                    <button class="btn-icon-small" id="formatCompare2Btn" title="Format">
+                                        <span class="icon">✨</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="editor-layout-compare">
+                                <div class="tree-panel compare-tree" id="compare2TreePanel">
+                                    <div class="tree-panel-header">
+                                        <span>Tree</span>
+                                        <button class="btn-icon-tiny toggle-tree-btn" id="toggleCompare2Tree" title="Toggle Tree View">
+                                            <span class="icon">◀</span>
+                                        </button>
+                                    </div>
+                                    <div class="tree-panel-content">
+                                        <div id="compare2TreeView" class="tree-view"></div>
+                                    </div>
+                                    <div class="tree-resize-handle" data-panel="compare2TreePanel"></div>
+                                </div>
+                                <div class="compare-editor-wrapper">
+                                    <div class="line-numbers" id="lineNumbers2"></div>
+                                    <textarea id="compareInput2" class="json-editor compare-editor" spellcheck="false"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="diff-results-container">
+                        <div class="diff-results-header">
+                            <span>Diff Results</span>
+                            <div class="diff-stats" id="diffStats"></div>
+                        </div>
+                        <div class="diff-results" id="diffResults"></div>
+                    </div>
+                </div>
+
+                <!-- Search Tab -->
+                <div class="tab-content" id="search-tab">
+                    <div class="search-toolbar">
+                        <div class="search-input-group">
+                            <input type="text" id="searchInput" class="search-input" placeholder="Search JSON...">
+                            <select id="searchType" class="select-medium">
+                                <option value="text">Text Search</option>
+                                <option value="key">Key Search</option>
+                                <option value="value">Value Search</option>
+                                <option value="path">Path Search</option>
+                                <option value="jsonpath">JSONPath</option>
+                                <option value="regex">Regex Search</option>
+                            </select>
+                            <button class="btn btn-info" id="jsonpathBuilderBtn" title="JSONPath Query Builder">
+                                <span class="icon">🔧</span> Builder
+                            </button>
+                            <button class="btn btn-primary" id="searchBtn">Search</button>
+                        </div>
+                        <div class="filter-group">
+                            <label>Filter by Type:</label>
+                            <label class="checkbox-label"><input type="checkbox" class="type-filter" value="string" checked> String</label>
+                            <label class="checkbox-label"><input type="checkbox" class="type-filter" value="number" checked> Number</label>
+                            <label class="checkbox-label"><input type="checkbox" class="type-filter" value="boolean" checked> Boolean</label>
+                            <label class="checkbox-label"><input type="checkbox" class="type-filter" value="object" checked> Object</label>
+                            <label class="checkbox-label"><input type="checkbox" class="type-filter" value="array" checked> Array</label>
+                        </div>
+                    </div>
+                    <div class="search-results-container">
+                        <div class="tree-view-container">
+                            <div class="tree-header">
+                                <span>JSON Tree View</span>
+                                <button class="btn btn-small" id="expandAllBtn">Expand All</button>
+                                <button class="btn btn-small" id="collapseAllBtn">Collapse All</button>
+                            </div>
+                            <div id="treeView" class="tree-view"></div>
+                        </div>
+                        <div class="search-results">
+                            <div class="results-header">Search Results</div>
+                            <div id="searchResults" class="results-list"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Transform Tab -->
+                <div class="tab-content" id="transform-tab">
+                    <div class="transform-toolbar">
+                        <div class="toolbar-group">
+                            <button class="btn btn-primary" id="addKeyBtn">Add Key</button>
+                            <button class="btn btn-primary" id="removeKeyBtn">Remove Key</button>
+                            <button class="btn btn-primary" id="renameKeyBtn">Rename Key</button>
+                            <button class="btn btn-info" id="flattenBtn">Flatten</button>
+                            <button class="btn btn-info" id="unflattenBtn">Unflatten</button>
+                            <button class="btn btn-info" id="extractBtn">Extract Path</button>
+                            <button class="btn btn-info" id="mergeBtn">Merge JSON</button>
+                        </div>
+                    </div>
+                    <div class="transform-container">
+                        <div class="transform-input">
+                            <div class="editor-header">
+                                <span>Input JSON</span>
+                                <button class="btn-icon-tiny" id="toggleTransformInputTreeBtn" title="Toggle Tree View">
+                                    <span class="icon">🌳</span>
+                                </button>
+                            </div>
+                            <div class="editor-layout-split">
+                                <div class="tree-panel split-tree" id="transformInputTreePanel">
+                                    <div class="tree-panel-header">
+                                        <span>Tree</span>
+                                        <button class="btn-icon-tiny toggle-tree-btn" id="toggleTransformInputTree" title="Toggle Tree View">
+                                            <span class="icon">◀</span>
+                                        </button>
+                                    </div>
+                                    <div class="tree-panel-content">
+                                        <div id="transformInputTreeView" class="tree-view"></div>
+                                    </div>
+                                </div>
+                                <textarea id="transformInput" class="json-editor"></textarea>
+                            </div>
+                        </div>
+                        <div class="transform-output">
+                            <div class="editor-header">
+                                <span>Transformed JSON</span>
+                                <button class="btn-icon-tiny" id="toggleTransformOutputTreeBtn" title="Toggle Tree View">
+                                    <span class="icon">🌳</span>
+                                </button>
+                            </div>
+                            <div class="editor-layout-split">
+                                <div class="tree-panel split-tree" id="transformOutputTreePanel">
+                                    <div class="tree-panel-header">
+                                        <span>Tree</span>
+                                        <button class="btn-icon-tiny toggle-tree-btn" id="toggleTransformOutputTree" title="Toggle Tree View">
+                                            <span class="icon">◀</span>
+                                        </button>
+                                    </div>
+                                    <div class="tree-panel-content">
+                                        <div id="transformOutputTreeView" class="tree-view"></div>
+                                    </div>
+                                    <div class="tree-resize-handle" data-panel="transformOutputTreePanel"></div>
+                                </div>
+                                <textarea id="transformOutput" class="json-editor" readonly></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Schema Tab -->
+                <div class="tab-content" id="schema-tab">
+                    <div class="toolbar">
+                        <div class="toolbar-group">
+                            <button class="btn btn-primary" id="generateSchemaBtn">Generate Schema</button>
+                            <button class="btn btn-success" id="validateSchemaBtn">Validate Against Schema</button>
+                            <button class="btn btn-info" id="schemaDiffBtn">Schema Diff</button>
+                            <button class="btn btn-secondary" id="schemaToJsonBtn">Schema → JSON</button>
+                        </div>
+                    </div>
+                    <div class="schema-container">
+                        <div class="schema-input">
+                            <div class="editor-header">
+                                <span>JSON Data</span>
+                                <button class="btn-icon-tiny" id="toggleSchemaInputTreeBtn" title="Toggle Tree View">
+                                    <span class="icon">🌳</span>
+                                </button>
+                            </div>
+                            <div class="editor-layout-split">
+                                <div class="tree-panel split-tree" id="schemaInputTreePanel">
+                                    <div class="tree-panel-header">
+                                        <span>Tree</span>
+                                        <button class="btn-icon-tiny toggle-tree-btn" id="toggleSchemaInputTree" title="Toggle Tree View">
+                                            <span class="icon">◀</span>
+                                        </button>
+                                    </div>
+                                    <div class="tree-panel-content">
+                                        <div id="schemaInputTreeView" class="tree-view"></div>
+                                    </div>
+                                    <div class="tree-resize-handle" data-panel="schemaInputTreePanel"></div>
+                                </div>
+                                <textarea id="schemaInput" class="json-editor"></textarea>
+                            </div>
+                        </div>
+                        <div class="schema-output">
+                            <div class="editor-header">
+                                <span>JSON Schema</span>
+                                <button class="btn-icon-tiny" id="toggleSchemaOutputTreeBtn" title="Toggle Tree View">
+                                    <span class="icon">🌳</span>
+                                </button>
+                            </div>
+                            <div class="editor-layout-split">
+                                <div class="tree-panel split-tree" id="schemaOutputTreePanel">
+                                    <div class="tree-panel-header">
+                                        <span>Tree</span>
+                                        <button class="btn-icon-tiny toggle-tree-btn" id="toggleSchemaOutputTree" title="Toggle Tree View">
+                                            <span class="icon">◀</span>
+                                        </button>
+                                    </div>
+                                    <div class="tree-panel-content">
+                                        <div id="schemaOutputTreeView" class="tree-view"></div>
+                                    </div>
+                                    <div class="tree-resize-handle" data-panel="schemaOutputTreePanel"></div>
+                                </div>
+                                <textarea id="schemaOutput" class="json-editor"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Convert Tab -->
+                <div class="tab-content" id="convert-tab">
+                    <div class="toolbar">
+                        <div class="toolbar-group">
+                            <select id="convertFormat" class="select-medium">
+                                <option value="csv">CSV</option>
+                                <option value="xml">XML</option>
+                                <option value="yaml">YAML</option>
+                                <option value="excel">Excel</option>
+                                <option value="typescript">TypeScript Interface</option>
+                                <option value="python">Python Dataclass</option>
+                                <option value="java">Java POJO</option>
+                                <option value="csharp">C# Model</option>
+                                <option value="javascript">JavaScript Object</option>
+                                <option value="graphql">GraphQL Schema</option>
+                                <option value="openapi">OpenAPI/Swagger</option>
+                                <option value="postman">Postman Collection</option>
+                                <option value="curl">cURL Commands</option>
+                                <option value="sql">SQL INSERT</option>
+                                <option value="mongodb">MongoDB Query</option>
+                                <option value="html">HTML Table</option>
+                                <option value="markdown">Markdown Table</option>
+                            </select>
+                            <button class="btn btn-primary" id="convertBtn">Convert</button>
+                            <button class="btn btn-success" id="downloadConvertBtn">Download</button>
+                        </div>
+                    </div>
+                    <div class="convert-container">
+                        <div class="convert-input">
+                            <div class="editor-header">
+                                <span>JSON Input</span>
+                                <button class="btn-icon-tiny" id="toggleConvertInputTreeBtn" title="Toggle Tree View">
+                                    <span class="icon">🌳</span>
+                                </button>
+                            </div>
+                            <div class="editor-layout-split">
+                                <div class="tree-panel split-tree" id="convertInputTreePanel">
+                                    <div class="tree-panel-header">
+                                        <span>Tree</span>
+                                        <button class="btn-icon-tiny toggle-tree-btn" id="toggleConvertInputTree" title="Toggle Tree View">
+                                            <span class="icon">◀</span>
+                                        </button>
+                                    </div>
+                                    <div class="tree-panel-content">
+                                        <div id="convertInputTreeView" class="tree-view"></div>
+                                    </div>
+                                    <div class="tree-resize-handle" data-panel="convertInputTreePanel"></div>
+                                </div>
+                                <textarea id="convertInput" class="json-editor"></textarea>
+                            </div>
+                        </div>
+                        <div class="convert-output">
+                            <div class="editor-header">
+                                <span>Converted Output</span>
+                                <button class="btn-icon-tiny" id="toggleConvertOutputTreeBtn" title="Toggle Tree View">
+                                    <span class="icon">🌳</span>
+                                </button>
+                            </div>
+                            <div class="editor-layout-split">
+                                <div class="tree-panel split-tree" id="convertOutputTreePanel">
+                                    <div class="tree-panel-header">
+                                        <span>Tree</span>
+                                        <button class="btn-icon-tiny toggle-tree-btn" id="toggleConvertOutputTree" title="Toggle Tree View">
+                                            <span class="icon">◀</span>
+                                        </button>
+                                    </div>
+                                    <div class="tree-panel-content">
+                                        <div id="convertOutputTreeView" class="tree-view"></div>
+                                    </div>
+                                    <div class="tree-resize-handle" data-panel="convertOutputTreePanel"></div>
+                                </div>
+                                <textarea id="convertOutput" class="json-editor" readonly></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Batch Tab -->
+                <div class="tab-content" id="batch-tab">
+                    <div class="toolbar">
+                        <div class="toolbar-group">
+                            <button class="btn btn-primary" id="loadBatchFilesBtn">
+                                <span class="icon">📁</span> Load Multiple Files
+                            </button>
+                            <input type="file" id="batchFileInput" multiple accept=".json,.jsonc" style="display: none;">
+                            <button class="btn btn-info" id="processBatchBtn">
+                                <span class="icon">⚙️</span> Process All
+                            </button>
+                            <select id="batchOperation" class="select-medium">
+                                <option value="validate">Validate</option>
+                                <option value="format">Format</option>
+                                <option value="minify">Minify</option>
+                                <option value="sort">Sort Keys</option>
+                                <option value="transform">Transform</option>
+                            </select>
+                        </div>
+                        <div class="toolbar-group">
+                            <button class="btn btn-success" id="downloadBatchBtn">
+                                <span class="icon">💾</span> Download All
+                            </button>
+                            <button class="btn btn-secondary" id="clearBatchBtn">
+                                <span class="icon">🗑️</span> Clear
+                            </button>
+                        </div>
+                    </div>
+                    <div class="batch-container">
+                        <div class="batch-files-list">
+                            <div class="batch-header">
+                                <span>Loaded Files (0)</span>
+                                <div class="batch-stats" id="batchStats"></div>
+                            </div>
+                            <div id="batchFilesList" class="files-list"></div>
+                        </div>
+                        <div class="batch-results">
+                            <div class="results-header">Processing Results</div>
+                            <div id="batchResults" class="results-content"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Analyze Tab -->
+                <div class="tab-content" id="analyze-tab">
+                    <div class="toolbar">
+                        <div class="toolbar-group">
+                            <button class="btn btn-primary" id="analyzeBtn">
+                                <span class="icon">📊</span> Analyze JSON
+                            </button>
+                            <button class="btn btn-info" id="exportAnalysisBtn">
+                                <span class="icon">📥</span> Export Report
+                            </button>
+                        </div>
+                    </div>
+                    <div class="analyze-container">
+                        <div class="analyze-input">
+                            <div class="editor-header">
+                                <span>JSON Input</span>
+                                <button class="btn-icon-tiny" id="toggleAnalyzeInputTreeBtn" title="Toggle Tree View">
+                                    <span class="icon">🌳</span>
+                                </button>
+                            </div>
+                            <div class="editor-layout-split">
+                                <div class="tree-panel split-tree" id="analyzeInputTreePanel">
+                                    <div class="tree-panel-header">
+                                        <span>Tree</span>
+                                        <button class="btn-icon-tiny toggle-tree-btn" id="toggleAnalyzeInputTree" title="Toggle Tree View">
+                                            <span class="icon">◀</span>
+                                        </button>
+                                    </div>
+                                    <div class="tree-panel-content">
+                                        <div id="analyzeInputTreeView" class="tree-view"></div>
+                                    </div>
+                                    <div class="tree-resize-handle" data-panel="analyzeInputTreePanel"></div>
+                                </div>
+                                <textarea id="analyzeInput" class="json-editor"></textarea>
+                            </div>
+                        </div>
+                        <div class="analyze-results">
+                            <div class="results-header">Analysis Report</div>
+                            <div id="analyzeReport" class="analysis-report"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quality Tab -->
+                <div class="tab-content" id="quality-tab">
+                    <div class="toolbar">
+                        <div class="toolbar-group">
+                            <button class="btn btn-primary" id="scanQualityBtn">Scan Quality</button>
+                            <button class="btn btn-warning" id="detectPIIBtn">Detect PII</button>
+                            <button class="btn btn-danger" id="maskSensitiveBtn">Mask Sensitive</button>
+                        </div>
+                    </div>
+                    <div class="quality-container">
+                        <div class="quality-input">
+                            <div class="editor-header">
+                                <span>JSON Input</span>
+                                <button class="btn-icon-tiny" id="toggleQualityInputTreeBtn" title="Toggle Tree View">
+                                    <span class="icon">🌳</span>
+                                </button>
+                            </div>
+                            <div class="editor-layout-split">
+                                <div class="tree-panel split-tree" id="qualityInputTreePanel">
+                                    <div class="tree-panel-header">
+                                        <span>Tree</span>
+                                        <button class="btn-icon-tiny toggle-tree-btn" id="toggleQualityInputTree" title="Toggle Tree View">
+                                            <span class="icon">◀</span>
+                                        </button>
+                                    </div>
+                                    <div class="tree-panel-content">
+                                        <div id="qualityInputTreeView" class="tree-view"></div>
+                                    </div>
+                                    <div class="tree-resize-handle" data-panel="qualityInputTreePanel"></div>
+                                </div>
+                                <textarea id="qualityInput" class="json-editor"></textarea>
+                            </div>
+                        </div>
+                        <div class="quality-results">
+                            <div class="results-header">Quality Report</div>
+                            <div id="qualityReport" class="quality-report"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- JSONPath Builder Modal -->
+    <div id="jsonpathModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>JSONPath Query Builder</h2>
+                <button class="modal-close" id="closeJsonpathModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="jsonpath-examples">
+                    <h3>Common Patterns:</h3>
+                    <div class="example-list">
+                        <button class="example-btn" data-path="$..*">All values: $..*</button>
+                        <button class="example-btn" data-path="$..name">All 'name' fields: $..name</button>
+                        <button class="example-btn" data-path="$[*]">All array items: $[*]</button>
+                        <button class="example-btn" data-path="$..[?(@.age > 18)]">Filter by condition: $..[?(@.age > 18)]</button>
+                        <button class="example-btn" data-path="$..[?(@.price)]">Has property: $..[?(@.price)]</button>
+                    </div>
+                </div>
+                <div class="jsonpath-input-group">
+                    <label>JSONPath Expression:</label>
+                    <input type="text" id="jsonpathExpression" class="jsonpath-input" placeholder="e.g., $..name or $[*].id">
+                    <button class="btn btn-primary" id="executeJsonpathBtn">Execute</button>
+                </div>
+                <div id="jsonpathResults" class="jsonpath-results"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modals -->
+    <div id="helpModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Help & Keyboard Shortcuts</h2>
+                <button class="modal-close" id="closeHelpModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <h3>Keyboard Shortcuts</h3>
+                <ul>
+                    <li><kbd>Ctrl+Z</kbd> / <kbd>Cmd+Z</kbd> - Undo</li>
+                    <li><kbd>Ctrl+Y</kbd> / <kbd>Cmd+Y</kbd> - Redo</li>
+                    <li><kbd>Ctrl+F</kbd> / <kbd>Cmd+F</kbd> - Open Search & Replace</li>
+                    <li><kbd>F3</kbd> - Find Next</li>
+                    <li><kbd>Shift+F3</kbd> - Find Previous</li>
+                    <li><kbd>Esc</kbd> - Close Search & Replace</li>
+                    <li><kbd>Ctrl+S</kbd> / <kbd>Cmd+S</kbd> - Download</li>
+                    <li><kbd>Tab</kbd> - Indent</li>
+                    <li><kbd>Shift+Tab</kbd> - Unindent</li>
+                </ul>
+                <h3>Search & Replace Features</h3>
+                <ul>
+                    <li><strong>Match Case:</strong> Case-sensitive search</li>
+                    <li><strong>Regex:</strong> Use regular expressions</li>
+                    <li><strong>Whole Word:</strong> Match complete words only</li>
+                    <li><strong>Replace:</strong> Replace current match</li>
+                    <li><strong>Replace All:</strong> Replace all matches at once</li>
+                </ul>
+                <h3>New Features</h3>
+                <ul>
+                    <li><strong>Batch Processing:</strong> Process multiple JSON files at once</li>
+                    <li><strong>JSON Analysis:</strong> Size, depth, and performance metrics</li>
+                    <li><strong>Enhanced JSONPath:</strong> Query builder with examples</li>
+                    <li><strong>More Formats:</strong> GraphQL, OpenAPI, Postman, cURL, SQL, MongoDB</li>
+                    <li><strong>Code Generators:</strong> JavaScript/TypeScript object exports</li>
+                    <li><strong>Better Error Reporting:</strong> Detailed diagnostics and suggestions</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
