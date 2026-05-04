@@ -34,7 +34,7 @@
 }
 
 .progress-indicator-percentage {
-    color: #2563eb;
+    color: #1e40af;
     font-weight: 600;
 }
 
@@ -47,7 +47,7 @@
 
 .progress-bar-indeterminate {
     animation: progress-indeterminate 1.5s ease-in-out infinite;
-    background: linear-gradient(90deg, #2563eb 0%, #06b6d4 50%, #2563eb 100%);
+    background: linear-gradient(90deg, #1e40af 0%, #06b6d4 50%, #1e40af 100%);
     background-size: 200% 100%;
 }
 

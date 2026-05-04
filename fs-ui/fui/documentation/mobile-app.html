@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile App User Manual - Famstack Users Guide</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <img src="/favicon.ico" alt="Famstack Logo" class="header-logo" onerror="this.style.display='none'">
+                <div class="header-text">
+                    <h1>Famstack Users Guide</h1>
+                    <p class="subtitle">Complete Documentation & User Manual</p>
+                    <p class="version">Version 1.0</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="getting-started.html">Getting Started</a></li>
+                <li><a href="mobile-app.html" class="active">Mobile App</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="tasks.html">Tasks</a></li>
+                <li><a href="hrms.html">HRMS</a></li>
+                <li><a href="sales.html">Sales</a></li>
+                <li><a href="reports.html">Reports</a></li>
+                <li><a href="advanced.html">Advanced</a></li>
+                <li><a href="access-controls.html">Access Controls</a></li>
+                <li><a href="application-configuration.html">Application Configuration</a></li>
+                <li><a href="faq/index.html">FAQ</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <aside class="sidebar">
+        <ul>
+            <li class="section-title">Mobile App Guide</li>
+            <li><a href="#overview" class="active">Overview</a></li>
+            <li><a href="#prerequisites">Prerequisites</a></li>
+            <li><a href="#signup-registration">Signup / Device Registration</a></li>
+            <li><a href="#barcode-generation">QR / Barcode Generation</a></li>
+            <li><a href="#login-process">Login Process</a></li>
+            <li><a href="#post-login">After Login</a></li>
+            <li><a href="#timesheet">Timesheet Entry</a></li>
+            <li><a href="#tasks-projects">Tasks and Projects</a></li>
+            <li><a href="#troubleshooting">Troubleshooting</a></li>
+            <li><a href="#security">Security and Best Practices</a></li>
+        </ul>
+    </aside>
+
+    <main>
+        <div class="breadcrumb">
+            <a href="index.html">Home</a> <span>→</span> Mobile App User Manual
+        </div>
+
+        <section id="overview" class="section">
+            <h2>📱 Mobile App User Manual</h2>
+            <p>This page is the complete guide for using the Famstack mobile app, including first-time registration (signup flow), QR/barcode-based login setup, PIN and biometric login, and daily usage for tasks, projects, and timesheet entry.</p>
+
+            <div class="info">
+                <strong>Who should read this:</strong> End users, project team members, and administrators onboarding users to the mobile app.
+            </div>
+        </section>
+
+        <section id="prerequisites" class="section">
+            <h2>✅ Prerequisites</h2>
+            <h3>Before you start</h3>
+            <ul style="margin-left: 1.5rem;">
+                <li>You must have an active Famstack account (email/user ID managed by your organization).</li>
+                <li>Your organization must enable mobile access and device registration permissions.</li>
+                <li>Install the Famstack mobile app on your Android/iOS device.</li>
+                <li>Keep your web app session open to generate the registration QR code.</li>
+            </ul>
+
+            <div class="note">
+                <strong>📌 Note:</strong> In this system, first-time mobile "signup" is done through device registration from the web app (not a public self-signup form).
+            </div>
+        </section>
+
+        <section id="signup-registration" class="section">
+            <h2>🆕 Signup / Device Registration Process</h2>
+            <p>Mobile app onboarding is a secure device registration flow linked to your existing web account.</p>
+
+            <h3>Step-by-step</h3>
+            <div class="steps">
+                <div class="step">
+                    <strong>Step 1: Log in to Famstack Web</strong>
+                    <div class="step-detail">Sign in with your email and password (or Microsoft SSO if enabled).</div>
+                </div>
+                <div class="step">
+                    <strong>Step 2: Open Mobile Registration</strong>
+                    <div class="step-detail">
+                        Click the mobile registration icon (phone + QR indicator). This icon appears only when:
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                            <li>Device registration is enabled in profile/settings controls</li>
+                            <li>Your user has device app access enabled</li>
+                            <li>Your device is not already registered</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="step">
+                    <strong>Step 3: Open the mobile app</strong>
+                    <div class="step-detail">Launch the app and go to User Login.</div>
+                </div>
+                <div class="step">
+                    <strong>Step 4: Scan the QR code</strong>
+                    <div class="step-detail">Use the QR scanner icon in the mobile login screen to scan the web-generated code.</div>
+                </div>
+                <div class="step">
+                    <strong>Step 5: Create your 4-digit PIN</strong>
+                    <div class="step-detail">After successful registration/authentication, set a 4-digit unlock PIN (mandatory for quick login).</div>
+                </div>
+                <div class="step">
+                    <strong>Step 6: Optionally enable biometric login</strong>
+                    <div class="step-detail">If supported on your device, you can enable fingerprint/face unlock immediately after PIN setup.</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="barcode-generation" class="section">
+            <h2>🔳 QR / Barcode Generation and Scan Details</h2>
+            <h3>How the web app generates the QR code</h3>
+            <p>The web app creates a registration URL using backend endpoint + device registration path + your user parameters (`emailId` and `userId`). This URL is rendered as a QR code in the mobile registration popup.</p>
+
+            <h3>What happens when mobile scans the QR code</h3>
+            <ul style="margin-left: 1.5rem;">
+                <li>The mobile app reads the QR value (URL or path).</li>
+                <li>It extracts `emailId` and `userId` from query parameters.</li>
+                <li>It registers your device with a generated unique device ID.</li>
+                <li>It authenticates using the registered email + device ID and stores auth token/team info securely.</li>
+            </ul>
+
+            <div class="warning">
+                <strong>⚠️ Important:</strong> If the QR code does not contain valid `emailId` and `userId`, registration fails with "Invalid QR code."
+            </div>
+
+            <div class="tip">
+                <strong>💡 Tip:</strong> If your QR provides a full host URL, the mobile app updates API host settings from that QR so users can connect to the correct environment automatically.
+            </div>
+        </section>
+
+        <section id="login-process" class="section">
+            <h2>🔐 Complete Login Process</h2>
+
+            <h3>Available login methods</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Method</th>
+                        <th>When to use</th>
+                        <th>Requirements</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>User Login</strong></td>
+                        <td>First-time setup or fallback login</td>
+                        <td>Email + user ID/password flow from org setup</td>
+                    </tr>
+                    <tr>
+                        <td><strong>QR Login</strong></td>
+                        <td>Recommended first-time setup</td>
+                        <td>Web-generated registration QR</td>
+                    </tr>
+                    <tr>
+                        <td><strong>4 Digit PIN</strong></td>
+                        <td>Daily quick login</td>
+                        <td>PIN must be created after first successful login</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Biometric</strong></td>
+                        <td>Fastest login after onboarding</td>
+                        <td>PIN setup + device biometric support + enrollment enabled</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>First-time login flow (recommended)</h3>
+            <div class="steps">
+                <div class="step"><strong>1)</strong> Open mobile app → use User Login or scan QR code.</div>
+                <div class="step"><strong>2)</strong> After success, set your 4-digit PIN.</div>
+                <div class="step"><strong>3)</strong> Optionally enable biometric unlock.</div>
+                <div class="step"><strong>4)</strong> You are redirected to the Tasks screen.</div>
+            </div>
+
+            <h3>Returning user flow</h3>
+            <ul style="margin-left: 1.5rem;">
+                <li>If PIN exists: use the 4 Digit PIN tab.</li>
+                <li>If biometric is enabled and supported: biometric login can be auto-attempted.</li>
+                <li>If secure data cannot be read: use User Login or QR again to re-register session data.</li>
+            </ul>
+        </section>
+
+        <section id="post-login" class="section">
+            <h2>🚀 After Login: Main Navigation</h2>
+            <h3>Primary mobile areas</h3>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h4>Tasks</h4>
+                    <p>Week-based task activity list with filters (Completed, Ongoing, Assigned, All), search, and pull-to-refresh.</p>
+                </div>
+                <div class="feature-card">
+                    <h4>Projects</h4>
+                    <p>Project list with filters (Active, Archive, My Projects, Favorites), search, and details.</p>
+                </div>
+                <div class="feature-card">
+                    <h4>Timesheet</h4>
+                    <p>Daily and weekly hours summary with entry capture for billable, non-billable, and leave/holiday time.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="timesheet" class="section">
+            <h2>⏱️ Timesheet Entry (Mobile)</h2>
+            <h3>Daily categories</h3>
+            <ul style="margin-left: 1.5rem;">
+                <li><strong>Billable Time:</strong> Project + deliverable + category + work item + hours.</li>
+                <li><strong>Non Billable Time:</strong> Division, account, client partner, requesting team, category, work item, hours.</li>
+                <li><strong>Leave / Holiday:</strong> Work item (default LEAVE) + hours.</li>
+            </ul>
+
+            <h3>Entry process</h3>
+            <div class="steps">
+                <div class="step"><strong>Step 1:</strong> Open Timesheet from Tasks/Projects floating action button.</div>
+                <div class="step"><strong>Step 2:</strong> Select week/day and open the relevant section.</div>
+                <div class="step"><strong>Step 3:</strong> Tap <strong>+</strong>, fill required fields, then tap <strong>Save</strong>.</div>
+                <div class="step"><strong>Step 4:</strong> Confirm success toast; totals refresh in summary.</div>
+            </div>
+        </section>
+
+        <section id="tasks-projects" class="section">
+            <h2>📋 Tasks and Projects Usage</h2>
+            <h3>Tasks screen highlights</h3>
+            <ul style="margin-left: 1.5rem;">
+                <li>Search by task name (3+ characters).</li>
+                <li>Filter by status chips.</li>
+                <li>Tap any task row to open full task detail sheet.</li>
+                <li>Navigate week using left/right arrows.</li>
+            </ul>
+
+            <h3>Projects screen highlights</h3>
+            <ul style="margin-left: 1.5rem;">
+                <li>Search by project name, account, or project ID.</li>
+                <li>Filter by Active, Archive, My Projects, Favorites.</li>
+                <li>Tap project row to open complete project detail bottom sheet.</li>
+            </ul>
+        </section>
+
+        <section id="troubleshooting" class="section">
+            <h2>🛠️ Troubleshooting</h2>
+
+            <h3>QR scan fails</h3>
+            <ul style="margin-left: 1.5rem;">
+                <li>Reopen mobile registration popup in web app and generate a fresh QR.</li>
+                <li>Ensure camera permission is granted in the mobile OS settings.</li>
+                <li>Check if scanned value includes valid `emailId` and `userId` parameters.</li>
+            </ul>
+
+            <h3>PIN login not available</h3>
+            <ul style="margin-left: 1.5rem;">
+                <li>You must complete first-time User Login or QR login first.</li>
+                <li>Set PIN when prompted after successful first login.</li>
+            </ul>
+
+            <h3>Biometric option disabled</h3>
+            <ul style="margin-left: 1.5rem;">
+                <li>Device may not support local authentication.</li>
+                <li>OS-level biometrics might not be configured.</li>
+                <li>Enable biometric after a successful PIN-based setup.</li>
+            </ul>
+
+            <h3>Session/token issues</h3>
+            <ul style="margin-left: 1.5rem;">
+                <li>Use User Login or QR login again if secure storage data is unavailable.</li>
+                <li>If the issue persists, ask admin to verify mobile/device registration settings.</li>
+            </ul>
+        </section>
+
+        <section id="security" class="section">
+            <h2>🔒 Security and Best Practices</h2>
+            <ul style="margin-left: 1.5rem;">
+                <li>Do not share your registration QR code with other users.</li>
+                <li>Use a non-obvious 4-digit PIN and avoid reusing ATM PINs.</li>
+                <li>Enable biometric login only on trusted personal devices.</li>
+                <li>If device is lost, report immediately so admin can revoke device access.</li>
+                <li>Always logout if using shared or temporary devices.</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer style="background: var(--text-dark); color: white; padding: 2rem 0; margin-top: 3rem; text-align: center;">
+        <div class="container">
+            <p>&copy; 2024 Famstack. All rights reserved.</p>
+            <p style="margin-top: 1rem;">
+                <a href="index.html" style="color: white; text-decoration: underline; margin: 0 1rem;">Documentation</a>
+                <a href="faq/index.html" style="color: white; text-decoration: underline; margin: 0 1rem;">FAQ</a>
+            </p>
+        </div>
+    </footer>
+
+    <script src="js/navigation.js"></script>
+    <script src="js/search.js"></script>
+</body>
+</html>

@@ -1,15 +1,19 @@
 ﻿@import '../base/colors';
 
-$t2-pink:           #e8769f;
-$t2-greenlight:     #cedd7a;
-$t2-purple:         #5a5278;
-$t2-orangelight:    #e4bd51;
-$t2-darkblue:       #2c2945;
-$t2-dark:           #39374e;
-$t2-lightdark:      #3f3d56;
-$t2-xlightdark:     #706e85;
+// Enterprise palette: slate neutrals + single primary blue (aligned with app accents)
+$t2-accent:         #3b82f6;
+$t2-greenlight:     #10b981;
+$t2-primary:        #1e40af;
+$t2-orangelight:    #f59e0b;
+$t2-darkblue:       #0f172a;
+$t2-dark:           #1e293b;
+$t2-lightdark:      #334155;
+$t2-xlightdark:     #64748b;
 $t2-card:           #ffffff;
-$t2-xlight:         #f1f1f1;
+$t2-xlight:         #f1f5f9;
+$t2-danger:         #dc2626;
+$t2-pink:           $t2-accent;
+$t2-purple:         $t2-primary;
 
 
 ::selection {
@@ -63,18 +67,30 @@ a,
 }
 .bg-primary,
 .bg-info,
-.bg-warning,
 .btn-success{
     background-color: $t2-purple !important;
     border: transparent;
 }
+.bg-warning{
+    background-color: $t2-orangelight !important;
+    border: transparent;
+}
 .bg-success,
+.badge-success{
+    background-color: $t2-greenlight !important;
+    border: transparent;
+}
+.progress-bar{
+    background-color: $t2-accent;
+    border: transparent;
+}
 .bg-danger,
-.badge-success,
-.progress-bar,
-.btn-danger,
+.btn-danger{
+    background-color: $t2-danger !important;
+    border: transparent;
+}
 .btn-warning{
-    background-color: $t2-pink;
+    background-color: $t2-orangelight;
     border: transparent;
 }
 
@@ -370,16 +386,16 @@ body{
     background: $t2-greenlight;
 }
 .tag-orange{
-    background: $t2-pink;
+    background: $t2-orangelight;
 }
 .tag-danger{
-    background: $t2-pink;
+    background: $t2-danger;
 }
 .bg-success{
     background: $t2-greenlight !important;
 }
 .bg-danger{
-    background-color: $t2-pink !important;
+    background-color: $t2-danger !important;
 }
 .auth{
     .auth_left{
@@ -446,11 +462,15 @@ body{
         background: linear-gradient(45deg, $gray-400, $gray-700) !important;
     }
     .bg-success,
+    .badge-success{
+        background: linear-gradient(135deg, $t2-greenlight, #059669) !important;
+    }
     .bg-danger,
-    .badge-success,
-    .progress-bar,
     .btn-danger{
-        background: linear-gradient(45deg, $t2-purple, $t2-pink) !important;
+        background: linear-gradient(135deg, $t2-danger, #991b1b) !important;
+    }
+    .progress-bar{
+        background: linear-gradient(135deg, $t2-purple, $t2-accent) !important;
     }
 }
 .metismenu.grid{

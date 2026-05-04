@@ -81,8 +81,8 @@ ErrorDocument 500 /500.html
 # Prevent directory browsing
 Options -Indexes
 
-# Protect sensitive files
-<FilesMatch "\.(htaccess|htpasswd|ini|log|sh|sql|json)$">
+# Protect sensitive files (do not list .json: manifest.json and other static JSON must be served for PWA, config, etc.)
+<FilesMatch "\.(htaccess|htpasswd|ini|log|sh|sql)$">
     Order Allow,Deny
     Deny from all
 </FilesMatch>

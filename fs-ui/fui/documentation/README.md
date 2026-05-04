@@ -19,7 +19,20 @@ This documentation is organized into multiple detailed pages covering every aspe
 - User Profile & Settings
 - Troubleshooting Common Issues
 
-### 3. **projects.html** - Project Management
+### 3. **mobile-app.html** - Mobile App User Manual
+- Mobile onboarding and device registration ("signup") flow
+- QR/barcode generation and scanning process
+- Login options (User Login, QR Login, PIN, Biometric)
+- Tasks, projects, and timesheet usage in mobile app
+- Security best practices and troubleshooting
+
+### 4. **privacy-policy.html** - Privacy Policy
+- Public privacy policy for FamStack Mobile
+- Camera permission usage disclosure (`android.permission.CAMERA`)
+- Data collection, usage, storage, retention, and user choices
+- Suitable to use as Google Play privacy policy URL
+
+### 5. **projects.html** - Project Management
 - Project Dashboard
 - Project List (Grid and List views)
 - Creating Projects (step-by-step with all fields explained)
@@ -33,7 +46,7 @@ This documentation is organized into multiple detailed pages covering every aspe
 - Favorites
 - Duplicating Projects
 
-### 4. **tasks.html** - Tasks & Deliverables
+### 6. **tasks.html** - Tasks & Deliverables
 - Creating Tasks (from multiple locations)
 - Task Fields - Complete Reference
 - Editing Tasks
@@ -45,20 +58,20 @@ This documentation is organized into multiple detailed pages covering every aspe
 - To Do List
 - Task Activity Calendar
 
-### 5. **hrms.html** - HRMS Module
+### 7. **hrms.html** - HRMS Module
 - Timesheet Management (entering time, submitting, syncing leaves)
 - Employee Management (creating, editing, activating/deactivating)
 - Attendance Management
 - Invoice Management
 - Profile & Settings
 
-### 6. **sales.html** - Sales Module
+### 8. **sales.html** - Sales Module
 - Bid Requests (creating, viewing, converting to projects)
 - Purchase Orders (creating, viewing, converting to projects)
 - Status management
 - Integration with projects
 
-### 7. **reports.html** - Reports
+### 9. **reports.html** - Reports
 - Utilization Reports (Employee, My Utilization, Weekwise, By Skills)
 - Project Reports (Est vs Actual, 15% Report, Completion Report)
 - Time Reports (Timesheet Data, Data Dump, Weekly Hours)
@@ -67,7 +80,7 @@ This documentation is organized into multiple detailed pages covering every aspe
 - Scheduled Reports
 - Email Reports
 
-### 8. **advanced.html** - Advanced Features
+### 10. **advanced.html** - Advanced Features
 - Resource Planner (timeline views, allocation planning)
 - Feedback System (requesting, submitting, viewing)
 - Accounts Management
@@ -76,14 +89,14 @@ This documentation is organized into multiple detailed pages covering every aspe
 - Notifications
 - Integrations (SSO, External systems, API)
 
-### 9. **access-controls.html** - Access Controls & Permissions
+### 11. **access-controls.html** - Access Controls & Permissions
 - Understanding access controls
 - Module-level controls
 - Project, Task, Work Item, Timesheet access controls
 - Report access controls
 - Troubleshooting access issues
 
-### 10. **faq/index.html** - Frequently Asked Questions
+### 12. **faq/index.html** - Frequently Asked Questions
 - Comprehensive FAQ covering all modules
 - Common issues and solutions
 - Troubleshooting guides
@@ -120,6 +133,8 @@ This documentation is organized into multiple detailed pages covering every aspe
 public/documentation/
 ├── index.html              # Home page
 ├── getting-started.html    # Getting started guide
+├── mobile-app.html         # Mobile app user manual
+├── privacy-policy.html     # Mobile app privacy policy
 ├── projects.html          # Project management
 ├── tasks.html             # Tasks & deliverables
 ├── hrms.html              # HRMS module

@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mobile App User Guide</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #f5f7fb;
+      color: #1f2937;
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.5;
+      font-size: 15px;
+    }
+    .wrapper {
+      max-width: 860px;
+      margin: 24px auto;
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+    }
+    .content {
+      padding: 24px 28px;
+    }
+    h1, h2, h3 {
+      margin-top: 0;
+      color: #111827;
+    }
+    h1 {
+      font-size: 28px;
+      margin-bottom: 8px;
+    }
+    h2 {
+      font-size: 20px;
+      margin-top: 24px;
+      margin-bottom: 10px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    h3 {
+      font-size: 16px;
+      margin-top: 16px;
+      margin-bottom: 8px;
+    }
+    p {
+      margin: 8px 0;
+    }
+    ol, ul {
+      margin: 8px 0 8px 20px;
+      padding: 0;
+    }
+    li {
+      margin-bottom: 6px;
+    }
+    .meta {
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      padding: 12px 14px;
+      margin: 14px 0 18px;
+      font-size: 14px;
+    }
+    .note {
+      background: #ecfeff;
+      border-left: 4px solid #0891b2;
+      padding: 10px 12px;
+      margin: 12px 0;
+    }
+    .warning {
+      background: #fffbeb;
+      border-left: 4px solid #d97706;
+      padding: 10px 12px;
+      margin: 12px 0;
+    }
+    .toc a {
+      color: #1d4ed8;
+      text-decoration: none;
+    }
+    .toc a:hover {
+      text-decoration: underline;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 8px;
+      font-size: 14px;
+    }
+    th, td {
+      border: 1px solid #e5e7eb;
+      padding: 8px;
+      text-align: left;
+      vertical-align: top;
+    }
+    th {
+      background: #f9fafb;
+      font-weight: 600;
+    }
+    .footer {
+      margin-top: 28px;
+      font-size: 13px;
+      color: #6b7280;
+      border-top: 1px solid #e5e7eb;
+      padding-top: 10px;
+    }
+    @media print {
+      body {
+        background: #ffffff;
+      }
+      .wrapper {
+        margin: 0;
+        border: none;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="content">
+      <h1>Famstack Mobile App User Guide</h1>
+      <p>This guide is intended for end users who are using the Famstack mobile app</p>
+
+      <h2>Table of Contents</h2>
+      <ol class="toc">
+        <li><a href="#before-you-start">Before You Start</a></li>
+        <li><a href="#first-time-setup">First-Time Setup (Registration / Signup)</a></li>
+        <li><a href="#login-methods">Login Methods</a></li>
+        <li><a href="#daily-usage">Daily Usage</a></li>
+        <li><a href="#troubleshooting">Troubleshooting</a></li>
+        <li><a href="#security">Security Best Practices</a></li>
+      </ol>
+
+      <h2 id="before-you-start">1. Before You Start</h2>
+      <ul>
+        <li>You must have an active Famstack user account.</li>
+        <li>Mobile access and device registration must be enabled for your account.</li>
+        <li>Install the mobile app on your device.</li>
+        <li>Keep your web application session available for registration QR generation.</li>
+      </ul>
+      <div class="note">
+        In Famstack, mobile "signup" means <strong>device registration</strong> against your existing user account.
+      </div>
+
+      <h2 id="first-time-setup">2. First-Time Setup (Registration / Signup)</h2>
+      <h3>Step A: Generate Registration QR from Web App</h3>
+      <ol>
+        <li>Log in to the web application.</li>
+        <li>Open <strong>Mobile App Registration</strong> from your profile/settings area.</li>
+        <li>A QR code (barcode) will be shown for your user account.</li>
+      </ol>
+
+      <h3>Step B: Register the Mobile Device</h3>
+      <ol>
+        <li>Open the mobile app.</li>
+        <li>Go to <strong>User Login</strong> and tap the QR scanner icon.</li>
+        <li>Scan the QR code from the web app.</li>
+        <li>After successful registration, set your <strong>4-digit PIN</strong>.</li>
+        <li>Optionally enable <strong>Biometric Login</strong> (fingerprint/face unlock).</li>
+      </ol>
+
+      <div class="warning">
+        If scanning fails, regenerate the QR code and ensure camera permission is enabled.
+      </div>
+
+      <h2 id="login-methods">3. Login Methods</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Login Type</th>
+            <th>When to Use</th>
+            <th>Requirement</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>User Login</td>
+            <td>First-time setup or fallback</td>
+            <td>Registered account credentials</td>
+          </tr>
+          <tr>
+            <td>QR Login</td>
+            <td>First-time onboarding</td>
+            <td>QR from web registration screen</td>
+          </tr>
+          <tr>
+            <td>4-Digit PIN</td>
+            <td>Daily login</td>
+            <td>PIN created after first successful login</td>
+          </tr>
+          <tr>
+            <td>Biometric</td>
+            <td>Daily quick login</td>
+            <td>PIN setup + supported device biometric</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2 id="daily-usage">4. Daily Usage</h2>
+      <h3>Tasks</h3>
+      <ul>
+        <li>View task activities by week/day.</li>
+        <li>Use search and status filters (Completed, Ongoing, Assigned, All).</li>
+        <li>Tap a task to view complete details.</li>
+      </ul>
+
+      <h3>Projects</h3>
+      <ul>
+        <li>View projects and apply filters (Active, Archive, My Projects, Favorites).</li>
+        <li>Use search for project name/account/ID.</li>
+        <li>Tap a project row for detailed information.</li>
+      </ul>
+
+      <h3>Timesheet</h3>
+      <ul>
+        <li>Add entries under <strong>Billable</strong>, <strong>Non-Billable</strong>, or <strong>Leave / Holiday</strong>.</li>
+        <li>Select date and fill required fields.</li>
+        <li>Enter hours and tap <strong>Save</strong>.</li>
+      </ul>
+
+      <h2 id="troubleshooting">5. Troubleshooting</h2>
+      <ul>
+        <li><strong>QR not scanning:</strong> Reopen camera, verify permission, and regenerate QR from web app.</li>
+        <li><strong>PIN option unavailable:</strong> Complete first-time login and set PIN.</li>
+        <li><strong>Biometric disabled:</strong> Enable biometrics in device settings and retry.</li>
+        <li><strong>Login/session error:</strong> Use User Login or QR login again to refresh device session.</li>
+      </ul>
+
+      <h2 id="security">6. Security Best Practices</h2>
+      <ul>
+        <li>Do not share your registration QR code.</li>
+        <li>Do not share your PIN with anyone.</li>
+        <li>Enable biometric login only on trusted personal devices.</li>
+        <li>Report lost/stolen devices immediately to your administrator.</li>
+      </ul>
+
+      <div class="footer">
+        Famstack Mobile App User Guide | For support, contact your system administrator.
+      </div>
+    </div>
+  </div>
+</body>
+</html>
