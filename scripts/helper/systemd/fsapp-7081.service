@@ -1,0 +1,19 @@
+[Unit]
+Description=Famstack Spring Boot App (7081)
+After=network.target
+
+[Service]
+Type=simple
+User=ubuntu
+WorkingDirectory=/home/famstack-app/fsapp
+EnvironmentFile=/home/famstack-app/common/env/fsapp_7081.env
+ExecStart=/home/famstack-app/common/bin/run_java_app.sh /home/famstack-app/common/env/fsapp_7081.env
+SuccessExitStatus=143
+Restart=always
+RestartSec=10
+StandardOutput=append:/tmp/f7081_3.0.13_2.log
+StandardError=append:/tmp/f7081_3.0.13_2.log
+LimitNOFILE=65535
+
+[Install]
+WantedBy=multi-user.target

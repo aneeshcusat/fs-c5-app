@@ -1,0 +1,19 @@
+[Unit]
+Description=Famstack Email Service (6080)
+After=network.target
+
+[Service]
+Type=simple
+User=ubuntu
+WorkingDirectory=/home/famstack-app/fsemail
+EnvironmentFile=/home/famstack-app/common/env/fsemail_6080.env
+ExecStart=/home/famstack-app/common/bin/run_java_app.sh /home/famstack-app/common/env/fsemail_6080.env
+SuccessExitStatus=143
+Restart=always
+RestartSec=10
+StandardOutput=append:/tmp/f6080_3.0.9.log
+StandardError=append:/tmp/f6080_3.0.9.log
+LimitNOFILE=65535
+
+[Install]
+WantedBy=multi-user.target
