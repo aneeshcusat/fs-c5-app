@@ -9,9 +9,12 @@ from _page_data import (
 from _rich_content import callout, render_callouts, render_concepts, render_faq
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
+DOC_IMAGES_DIR = os.path.join(ROOT, "images")
+MARKETING_IMAGES_DIR = os.path.normpath(os.path.join(ROOT, "..", "marketing", "images"))
+APP_LOGO_SRC = os.path.normpath(os.path.join(ROOT, "..", "assets", "images", "custom"))
 
 # Bump when CSS/JS changes so browsers fetch fresh assets (avoid stale cache).
-DOCS_ASSET_VERSION = "20260604d"
+DOCS_ASSET_VERSION = "20260605j"
 
 TOP_NAV = [
     ("index.html", "Home", 0),
@@ -37,6 +40,28 @@ ROOT_NAV_HTML = """
       <li><a href="charts.html"{charts}>Charts</a></li>
       <li><a href="faq/index.html"{faq}>FAQ</a></li>
       <li><a href="admin.html"{admin}>Admin</a></li>"""
+
+
+def sync_brand_assets():
+    """Copy logos into documentation/images — pages must not reference ../assets."""
+    import shutil
+
+    os.makedirs(DOC_IMAGES_DIR, exist_ok=True)
+    pairs = (
+        ("tracopus-logo-light.png", "tracopus-logo.png"),
+        ("tracopus-logo-dark.png", "tracopus-logo2.png"),
+    )
+    fallbacks = {
+        "tracopus-logo-light.png": "tracopuslogo2.png",
+        "tracopus-logo-dark.png": "tracopuslogo.png",
+    }
+    for src_name, dest_name in pairs:
+        dest = os.path.join(DOC_IMAGES_DIR, dest_name)
+        src = os.path.join(MARKETING_IMAGES_DIR, src_name)
+        if not os.path.isfile(src):
+            src = os.path.join(APP_LOGO_SRC, fallbacks[src_name])
+        if os.path.isfile(src):
+            shutil.copy2(src, dest)
 
 
 def p(depth, path):
@@ -1485,6 +1510,7 @@ def generate_all():
     from _app_config_docs import generate_application_config_page
     from _site_faq import generate_faq_page
 
+    sync_brand_assets()
     created = []
 
     hrms_sidebar = [{"title": "HRMS"}] + [{"file": x["file"], "href": x["href"], "label": x["label"]} for x in HRMS_PAGES]

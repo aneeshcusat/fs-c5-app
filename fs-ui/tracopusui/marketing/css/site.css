@@ -1,6 +1,5 @@
 /* Tracopus marketing site — playful luxury */
 
-:root,
 [data-site-theme="light"] {
   color-scheme: light;
   --bg-deep: #f4fbf7;
@@ -72,6 +71,7 @@
   --text-2xs: 0.75rem;
 }
 
+:root,
 [data-site-theme="dark"] {
   color-scheme: dark;
   --bg-deep: #030712;
@@ -426,8 +426,7 @@ main {
 }
 
 .theme-toggle__icon { display: none; line-height: 1; }
-[data-site-theme="light"] .theme-toggle__icon--moon,
-:root:not([data-site-theme="dark"]) .theme-toggle__icon--moon { display: inline; }
+[data-site-theme="light"] .theme-toggle__icon--moon { display: inline; }
 [data-site-theme="dark"] .theme-toggle__icon--sun { display: inline; }
 
 /* Buttons */

@@ -9,9 +9,9 @@
 
   function getTheme() {
     try {
-      return localStorage.getItem(STORAGE_KEY) || 'light';
+      return localStorage.getItem(STORAGE_KEY) || 'dark';
     } catch (e) {
-      return 'light';
+      return 'dark';
     }
   }
 

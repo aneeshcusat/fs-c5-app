@@ -36,7 +36,12 @@ from _screenshots import PAGE_SCREENSHOTS, SCREENSHOTS
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 SCREENSHOTS_DIR = os.path.join(ROOT, "images", "screenshots")
-ASSET_V = "20260605i"
+IMAGES_DIR = os.path.join(ROOT, "images")
+APP_LOGO_SRC = os.path.normpath(os.path.join(ROOT, "..", "assets", "images", "custom"))
+LOGO_LIGHT_FILE = "tracopus-logo-light.png"
+LOGO_DARK_FILE = "tracopus-logo-dark.png"
+DEFAULT_SITE_THEME = "dark"
+ASSET_V = "20260605j"
 
 
 def is_demo_path(path):
@@ -71,19 +76,35 @@ def asset(depth, path):
     return f"{prefix}{path}?v={ASSET_V}"
 
 
+def sync_brand_assets():
+    """Copy app logos into marketing/images (site must not depend on ../assets)."""
+    import shutil
+
+    os.makedirs(IMAGES_DIR, exist_ok=True)
+    pairs = (
+        ("tracopuslogo2.png", LOGO_LIGHT_FILE),
+        ("tracopuslogo.png", LOGO_DARK_FILE),
+    )
+    for src_name, dest_name in pairs:
+        src = os.path.join(APP_LOGO_SRC, src_name)
+        dest = os.path.join(IMAGES_DIR, dest_name)
+        if os.path.isfile(src):
+            shutil.copy2(src, dest)
+
+
 def logo_light_src(depth):
-    return asset(depth, "../assets/images/custom/tracopuslogo2.png")
+    return asset(depth, f"images/{LOGO_LIGHT_FILE}")
 
 
 def logo_dark_src(depth):
-    return asset(depth, "../assets/images/custom/tracopuslogo.png")
+    return asset(depth, f"images/{LOGO_DARK_FILE}")
 
 
 def logo_img(depth, width, height=36):
     light = logo_light_src(depth)
     dark = logo_dark_src(depth)
     return (
-        f'<img class="site-logo" src="{light}" '
+        f'<img class="site-logo" src="{dark}" '
         f'data-logo-light="{light}" data-logo-dark="{dark}" '
         f'alt="{esc(SITE["name"])}" width="{width}" height="{height}">'
     )
@@ -1108,13 +1129,13 @@ def render_page(path, key):
     login_cls = "btn btn--sm btn--ghost workspace-signin-trigger"
 
     return f"""<!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-site-theme="{DEFAULT_SITE_THEME}">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="{esc(meta['desc'])}">
   <title>{esc(title)}</title>
-  <script>!function(){{try{{var t=localStorage.getItem("tracopus-site-theme")||"light";document.documentElement.setAttribute("data-site-theme",t)}}catch(e){{}}}}();</script>
+  <script>!function(){{try{{var t=localStorage.getItem("tracopus-site-theme")||"{DEFAULT_SITE_THEME}";document.documentElement.setAttribute("data-site-theme",t)}}catch(e){{}}}}();</script>
   <link rel="icon" href="{logo_dark_src(depth)}" type="image/png" id="site-favicon" data-favicon-light="{logo_light_src(depth)}" data-favicon-dark="{logo_dark_src(depth)}">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1131,7 +1152,7 @@ def render_page(path, key):
         <ul class="nav-list">
       {nav}
           <li class="nav-item">
-            <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Switch to dark theme" title="Toggle light / dark theme">
+            <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Switch to light theme" title="Toggle light / dark theme">
               <span class="theme-toggle__icon theme-toggle__icon--moon" aria-hidden="true">☾</span>
               <span class="theme-toggle__icon theme-toggle__icon--sun" aria-hidden="true">☀</span>
             </button>
@@ -1164,6 +1185,7 @@ def render_page(path, key):
 
 
 def generate_all():
+    sync_brand_assets()
     os.makedirs(os.path.join(ROOT, "solutions"), exist_ok=True)
     write_screenshot_placeholders()
     created = []
