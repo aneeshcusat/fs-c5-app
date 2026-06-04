@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" data-lux-palette="emerald">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Attendance — Tracopus User Guide</title>
+  <link rel="icon" href="../images/tracopus-logo.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css?v=20260604d">
+  <script src="../js/brand-config.js?v=20260604d"></script>
+</head>
+<body data-docs-depth="1">
+
+<header>
+  <div class="container">
+    <div class="header-content">
+      <div class="header-brand">
+        <a href="../index.html" class="header-brand__link" aria-label="User Guide home">
+          <img src="../images/tracopus-logo.png" alt="" class="header-logo" width="140" height="38">
+          <div class="header-brand__text">
+            <h1>User Guide</h1>
+            <p class="subtitle">Complete Documentation &amp; User Manual</p>
+            <p class="version">Luxury UI · Version 2.0</p>
+            <span class="lux-badge">Enterprise Work Intelligence</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<nav>
+  <div class="container">
+    <ul>
+            <li><a href="../index.html">Home</a></li>
+      <li><a href="../getting-started.html">Getting Started</a></li>
+      <li><a href="index.html" class="active">HRMS</a></li>
+      <li><a href="../sales/index.html">Sales</a></li>
+      <li><a href="../project/index.html">Project</a></li>
+      <li><a href="../mobile/index.html">Mobile</a></li>
+      <li><a href="../interface.html">Luxury UI</a></li>
+      <li><a href="../charts.html">Charts</a></li>
+      <li><a href="../faq/index.html">FAQ</a></li>
+      <li><a href="../admin.html">Admin</a></li>
+    </ul>
+  </div>
+</nav>
+
+<aside class="sidebar">
+  <ul>
+        <li class="section-title">HRMS</li>
+    <li><a href="index.html">HRMS Overview</a></li>
+    <li><a href="dashboard.html">Employee Dashboard</a></li>
+    <li><a href="employees.html">Employees</a></li>
+    <li><a href="timesheet.html">Timesheet</a></li>
+    <li><a href="attendance.html" class="active">Attendance</a></li>
+    <li><a href="invoices.html">Invoices</a></li>
+    <li><a href="invoice-details.html">Invoice Details</a></li>
+    <li><a href="profile.html">Employee Profile</a></li>
+    <li><a href="settings.html">Settings</a></li>
+    <li><a href="application-config.html">Application Configuration</a></li>
+  </ul>
+</aside>
+
+<main>
+    <div class="breadcrumb"><a href="../index.html">Home</a> → HRMS → Attendance</div>
+  
+<div class="doc-canvas">
+  <header class="doc-mast">
+    <div class="doc-mast__top">
+      <span class="doc-mast__eyebrow">HRMS · Attendance</span>
+      <div class="page-meta page-meta--inline">
+        <span class="page-meta__item"><strong>Route</strong> <code>/hrms/attendance</code></span>
+        <span class="page-meta__item"><strong>Menu</strong> HRMS → Attendance</span>
+      </div>
+    </div>
+    <h1 class="doc-mast__title">Attendance</h1>
+    <p class="doc-mast__lead">Matrix view with month navigation, team/employee filters, cell popovers for marking, and summary KPIs.</p>
+    <p class="doc-mast__purpose">Monthly attendance matrix for employees × days with marking and KPI summary.</p>
+  </header>
+
+  <div class="doc-flow">
+    <section class="doc-block" id="overview"><h2 class="doc-block__title">Overview</h2><p><strong>HRMS → Attendance</strong> gives HR and managers a month-at-a-glance view of who was present, absent, or on leave each day.</p></section>
+    <section class="doc-block doc-block--pair">
+      <div class="doc-split">
+        <div id="layout"><h2 class="doc-block__title">Screen layout</h2><p><strong>Header:</strong> Month prev/next, team filter, employee filter.<br><strong>Matrix:</strong> Rows = employees, columns = days of month, color-coded cells.<br><strong>Current-user panel:</strong> Highlights your own pattern.<br><strong>Summary section:</strong> KPIs and calendar stats for filtered scope.</p></div>
+        <div id="header-filters"><h2 class="doc-block__title">Header &amp; filters</h2><p><strong>Month navigation:</strong> prev/next controls<br><strong>Team filter:</strong> narrow roster scope<br><strong>Employee filter:</strong> single-person focus<br>No SHOW/SORT — matrix is filter-driven</p></div>
+      </div>
+    </section>
+    <section class="doc-block doc-block--summary lux-summary-section" id="summary-section"><h2 class="doc-block__title">Summary &amp; charts</h2><div class="lux-summary-block"><p class="lux-summary-intro">The <strong>Lux summary strip</strong> at the top of this screen is collapsible. Expand it to reveal KPI tiles and chart panels; collapse it for a wider register. All charts respect your active filters (SHOW preset, team scope, date range, text search).</p><div class="lux-summary-note"><span class="lux-summary-note__icon">◆</span> Emerald Luxury UI theme · chart data refreshes when filters change</div><div class="lux-summary-plain"><p>Summary section shows KPIs and calendar-oriented stats for the filtered team/employee/month scope — attendance rate, present/absent counts, and calendar heat indicators (not Apex charts).</p></div></div></section>
+    <section class="doc-block" id="main"><h2 class="doc-block__title">Main content &amp; actions</h2><p>Click cell → attendance popover (when permitted) to mark status. Details popover shows history for employee-day. Current-user panel highlights your own attendance pattern.</p></section>
+    <section class="doc-block doc-block--features" id="complete-features">
+  <h2 class="doc-block__title">Complete feature list</h2>
+  <p class="lux-features-intro">Every control, panel, and workflow on this screen.</p>
+  <ul class="lux-feature-list lux-feature-list--dense"><li class="lux-feature-item"><span class="lux-feature-item__icon">✓</span><div><strong>Luxury UI shell</strong><span>Emerald-themed glass cards, sticky gradient header, module sidebar, and responsive layout.</span></div></li><li class="lux-feature-item"><span class="lux-feature-item__icon">✓</span><div><strong>Documentation search</strong><span>Header search indexes all guide pages (docs site).</span></div></li><li class="lux-feature-item"><span class="lux-feature-item__icon">✓</span><div><strong>Collapsible summary strip</strong><span>KPI row and chart gallery above the register; expand/collapse persists in browser storage.</span></div></li><li class="lux-feature-item"><span class="lux-feature-item__icon">✓</span><div><strong>Month matrix</strong><span>Employees × days grid with present/absent/leave markers.</span></div></li><li class="lux-feature-item"><span class="lux-feature-item__icon">✓</span><div><strong>Month navigation</strong><span>Move between calendar months.</span></div></li><li class="lux-feature-item"><span class="lux-feature-item__icon">✓</span><div><strong>Team / employee filters</strong><span>Scope matrix to org unit or individual.</span></div></li><li class="lux-feature-item"><span class="lux-feature-item__icon">✓</span><div><strong>Cell popover marking</strong><span>Mark or correct attendance per day.</span></div></li><li class="lux-feature-item"><span class="lux-feature-item__icon">✓</span><div><strong>Summary KPIs</strong><span>Month-level attendance rate and absence counts.</span></div></li><li class="lux-feature-item"><span class="lux-feature-item__icon">✓</span><div><strong>Export</strong><span>Download matrix for payroll (permission dependent).</span></div></li></ul>
+</section>
+    <div class="doc-enrichment"><section class="doc-block doc-block--callouts" id="page-callouts"><h2 class="doc-block__title">Before you start</h2><div class="callout-stack callout-stack--dense"><div class="callout callout--warning"><div class="callout__icon">⚠️</div><div class="callout__body"><strong class="callout__title">Month close</strong><div class="callout__text">Finalize attendance before payroll export — retroactive edits may require HR ticket after lock.</div></div></div><div class="callout callout--tip"><div class="callout__icon">💡</div><div class="callout__body"><strong class="callout__title">Filter first</strong><div class="callout__text">Set team to your org unit before reviewing — full-company matrix is slow and error-prone.</div></div></div></div></section><div class="doc-enrich-grid"><section class="doc-block" id="who-uses-this"><h2 class="doc-block__title">Who uses this screen</h2><p class="audience-text">HR administrators and people managers marking or correcting daily attendance; payroll coordinators exporting month matrices. Individual contributors view attendance on Dashboard, not usually this matrix.</p><div class="callout callout--info"><div class="callout__icon">ℹ️</div><div class="callout__body"><strong class="callout__title">Monthly attendance control</strong><div class="callout__text">Open Attendance at month close to reconcile absences against timesheet leave rows and payroll export requirements.</div></div></div></section><section class="doc-block" id="key-concepts"><h2 class="doc-block__title">Key concepts</h2><div class="concept-grid"><article class="concept-card"><h3 class="concept-card__title">Month matrix</h3><p class="concept-card__desc">Employees as rows, calendar days as columns — color markers for present, absent, leave, holiday.</p></article><article class="concept-card"><h3 class="concept-card__title">Cell popover</h3><p class="concept-card__desc">Click a cell to mark or correct attendance for one employee-day.</p></article><article class="concept-card"><h3 class="concept-card__title">Team / employee filters</h3><p class="concept-card__desc">Narrow matrix to org unit or single person for focused correction.</p></article><article class="concept-card"><h3 class="concept-card__title">Summary KPIs</h3><p class="concept-card__desc">Month-level attendance rate and absence counts in the summary strip.</p></article><article class="concept-card"><h3 class="concept-card__title">Export</h3><p class="concept-card__desc">Download matrix for payroll systems — format and permission vary by deployment.</p></article></div></section><section class="doc-block" id="permissions"><h2 class="doc-block__title">Permissions</h2><div class="table-wrap"><table class="table table--permissions"><thead><tr><th>Role</th><th>Access on this screen</th></tr></thead><tbody><tr><td><strong>Individual contributor</strong></td><td>Typically no access; personal attendance visible on Dashboard.</td></tr><tr><td><strong>People manager</strong></td><td>View and mark attendance for direct reports' org units.</td></tr><tr><td><strong>HR administrator</strong></td><td>Full matrix access, export, bulk correction.</td></tr><tr><td><strong>Payroll coordinator</strong></td><td>Export read access; mark permission optional.</td></tr></tbody></table></div><div class="callout callout--note"><div class="callout__icon">📝</div><div class="callout__body"><strong class="callout__title">Administrator override</strong><div class="callout__text">Org administrators and service accounts configured in the Admin console may bypass row-level scopes shown above. When in doubt, confirm access with your Tracopus administrator.</div></div></div></section><section class="doc-block" id="controls-reference"><h2 class="doc-block__title">Controls reference</h2><div class="table-wrap"><table class="table table--controls"><thead><tr><th>Control</th><th>Description</th><th>Notes</th></tr></thead><tbody><tr><td><strong>Month navigation</strong></td><td>Previous / next month arrows.</td><td>Future months may be read-only.</td></tr><tr><td><strong>Team filter</strong></td><td>Scope rows to selected org units.</td><td>Combine with employee search.</td></tr><tr><td><strong>Employee search</strong></td><td>Jump to one person in large matrices.</td><td>Useful for 500+ rosters.</td></tr><tr><td><strong>Cell popover</strong></td><td>Mark present, absent, leave, holiday.</td><td>Writes audit log entry.</td></tr><tr><td><strong>Summary KPIs</strong></td><td>Attendance rate, absence count.</td><td>Updates with filters.</td></tr><tr><td><strong>Export</strong></td><td>Download CSV/Excel for payroll.</td><td>Role-dependent button visibility.</td></tr><tr><td><strong>Sync indicator</strong></td><td>Shows last integration pull if HRIS connected.</td><td>Admin view only.</td></tr></tbody></table></div></section></div><div class="doc-enrich-grid doc-enrich-grid--2"><section class="doc-block" id="common-mistakes"><h2 class="doc-block__title">Common mistakes</h2><div class="callout-stack callout-stack--dense"><div class="callout callout--warning"><div class="callout__icon">⚠️</div><div class="callout__body"><strong class="callout__title">Correcting attendance without checking timesheet</strong><div class="callout__text">Leave on timesheet but absent in matrix (or reverse) causes payroll disputes — reconcile both.</div></div></div><div class="callout callout--warning"><div class="callout__icon">⚠️</div><div class="callout__body"><strong class="callout__title">Bulk marking without filter</strong><div class="callout__text">Accidentally marking entire company present — always set team filter first.</div></div></div><div class="callout callout--warning"><div class="callout__icon">⚠️</div><div class="callout__body"><strong class="callout__title">Missing public holidays</strong><div class="callout__text">Holiday calendar must be configured in admin — otherwise manual holiday marks per employee.</div></div></div></div></section><section class="doc-block" id="faq"><h2 class="doc-block__title">FAQ</h2><div class="faq-list"><article class="faq-item"><h3 class="faq-item__q">How does attendance relate to timesheet?</h3><div class="faq-item__a">Timesheet leave hours and attendance markers should align; Dashboard attendance strip reads matrix data.</div></article><article class="faq-item"><h3 class="faq-item__q">Can employees self-mark?</h3><div class="faq-item__a">Some orgs enable self-service; most restrict marking to managers and HR.</div></article><article class="faq-item"><h3 class="faq-item__q">What export formats are supported?</h3><div class="faq-item__a">CSV and Excel common — confirm column mapping with payroll vendor.</div></article><article class="faq-item"><h3 class="faq-item__q">Is half-day absence supported?</h3><div class="faq-item__a">Popover options depend on org config — may show AM/PM or hours.</div></article></div></section></div><section class="doc-block doc-block--related" id="related-pages"><h2 class="doc-block__title">Related pages</h2><div class="related-links"><a class="related-link" href="timesheet.html"><span class="related-link__label">Timesheet</span><span class="related-link__desc">Leave hours should match matrix leave markers.</span></a><a class="related-link" href="dashboard.html"><span class="related-link__label">Employee Dashboard</span><span class="related-link__desc">My tab attendance strip source.</span></a><a class="related-link" href="employees.html"><span class="related-link__label">Employees</span><span class="related-link__desc">Matrix rows list active roster members.</span></a><a class="related-link" href="../admin.html"><span class="related-link__label">Admin guide</span><span class="related-link__desc">Holiday calendar and integration settings.</span></a></div></section></div>
+    <section class="doc-block doc-block--pair">
+      <div class="doc-split">
+        <div id="workflows"><h2 class="doc-block__title">Workflows</h2><ol><li>Select month with arrows.</li><li>Filter by team or individual.</li><li>Click cell to mark or view details.</li><li>Review summary KPIs for the scope.</li></ol></div>
+        <div class="doc-block--tips" id="tips"><h2 class="doc-block__title">Tips &amp; best practices</h2><div class="info"><strong>Tip:</strong> Combine employee filter with month navigation to audit one person's pattern before performance conversations.</div><div class="callout-stack"><h3 class="subheading">More guidance</h3><div class="callout callout--tip"><div class="callout__icon">💡</div><div class="callout__body"><strong class="callout__title">Remember</strong><div class="callout__text">Employees as rows, calendar days as columns — color markers for present, absent, leave, holiday.</div></div></div><div class="callout callout--info"><div class="callout__icon">ℹ️</div><div class="callout__body"><strong class="callout__title">How does attendance relate to timesheet?</strong><div class="callout__text">Timesheet leave hours and attendance markers should align; Dashboard attendance strip reads matrix data.</div></div></div></div></div>
+      </div>
+    </section>
+  </div>
+</div>
+<nav class="page-nav">
+  <a class="page-nav__prev" href="timesheet.html">← Timesheet</a>
+  <a class="page-nav__next" href="invoices.html">Invoices →</a>
+</nav>
+
+</main>
+
+<footer>
+  <div class="container">
+    <p>&copy; 2026 <span data-brand>Tracopus</span>. All rights reserved.</p>
+    <p style="margin-top:0.75rem;">
+      <a href="../index.html">Documentation</a>
+      <a href="../getting-started.html">Getting Started</a>
+      <a href="../charts.html">Charts</a>
+    </p>
+    <p class="footer-muted">For support, contact your workspace administrator.</p>
+  </div>
+</footer>
+
+<script src="../js/palette.js?v=20260604d"></script>
+<script src="../js/brand.js?v=20260604d"></script>
+<script src="../js/navigation.js?v=20260604d"></script>
+<script src="../js/search.js?v=20260604d"></script>
+</body>
+</html>

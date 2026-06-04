@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" data-lux-palette="emerald">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Invoice Details — Tracopus User Guide</title>
+  <link rel="icon" href="../images/tracopus-logo.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css?v=20260604d">
+  <script src="../js/brand-config.js?v=20260604d"></script>
+</head>
+<body data-docs-depth="1">
+
+<header>
+  <div class="container">
+    <div class="header-content">
+      <div class="header-brand">
+        <a href="../index.html" class="header-brand__link" aria-label="User Guide home">
+          <img src="../images/tracopus-logo.png" alt="" class="header-logo" width="140" height="38">
+          <div class="header-brand__text">
+            <h1>User Guide</h1>
+            <p class="subtitle">Complete Documentation &amp; User Manual</p>
+            <p class="version">Luxury UI · Version 2.0</p>
+            <span class="lux-badge">Enterprise Work Intelligence</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<nav>
+  <div class="container">
+    <ul>
+            <li><a href="../index.html">Home</a></li>
+      <li><a href="../getting-started.html">Getting Started</a></li>
+      <li><a href="index.html" class="active">HRMS</a></li>
+      <li><a href="../sales/index.html">Sales</a></li>
+      <li><a href="../project/index.html">Project</a></li>
+      <li><a href="../mobile/index.html">Mobile</a></li>
+      <li><a href="../interface.html">Luxury UI</a></li>
+      <li><a href="../charts.html">Charts</a></li>
+      <li><a href="../faq/index.html">FAQ</a></li>
+      <li><a href="../admin.html">Admin</a></li>
+    </ul>
+  </div>
+</nav>
+
+<aside class="sidebar">
+  <ul>
+        <li class="section-title">HRMS</li>
+    <li><a href="index.html">HRMS Overview</a></li>
+    <li><a href="dashboard.html">Employee Dashboard</a></li>
+    <li><a href="employees.html">Employees</a></li>
+    <li><a href="timesheet.html">Timesheet</a></li>
+    <li><a href="attendance.html">Attendance</a></li>
+    <li><a href="invoices.html">Invoices</a></li>
+    <li><a href="invoice-details.html" class="active">Invoice Details</a></li>
+    <li><a href="profile.html">Employee Profile</a></li>
+    <li><a href="settings.html">Settings</a></li>
+    <li><a href="application-config.html">Application Configuration</a></li>
+  </ul>
+</aside>
+
+<main>
+    <div class="breadcrumb"><a href="../index.html">Home</a> → HRMS → Invoice Details</div>
+  
+<div class="doc-canvas">
+  <header class="doc-mast">
+    <div class="doc-mast__top">
+      <span class="doc-mast__eyebrow">HRMS · Invoice Details</span>
+      <div class="page-meta page-meta--inline">
+        <span class="page-meta__item"><strong>Route</strong> <code>/hrms/invoice/details/:invoiceId</code></span>
+        <span class="page-meta__item"><strong>Menu</strong> HRMS → Invoice → Details</span>
+      </div>
+    </div>
+    <h1 class="doc-mast__title">Invoice Details</h1>
+    <p class="doc-mast__lead">Deep view of one invoice — line items, totals, linked employees, status transitions, PDF via document layout.</p>
+    <p class="doc-mast__purpose">Single invoice view with line items, linked employees, and document export.</p>
+  </header>
+
+  <div class="doc-flow">
+    <section class="doc-block" id="overview"><h2 class="doc-block__title">Overview</h2><p>Opened from Invoices list or direct URL <code>/hrms/invoice/details/:invoiceId</code>. Also available under document layout <code>/document/invoice/details/:invoiceId</code> for PDF-focused view.</p></section>
+    <section class="doc-block doc-block--pair">
+      <div class="doc-split">
+        <div id="layout"><h2 class="doc-block__title">Screen layout</h2><p><strong>Hero:</strong> Invoice number, status badge, account, FY, dates, total amount.<br><strong>Tabs/sections:</strong> Line items table, linked employees, notes, activity.<br><strong>Actions:</strong> Edit (when permitted), status transition, share/PDF.</p></div>
+        <div id="header-filters"><h2 class="doc-block__title">Header &amp; filters</h2><p>No list filters on detail page. Status may be changed via action buttons when role permits (Draft → Pending → Approved → Paid → Closed).</p></div>
+      </div>
+    </section>
+    <section class="doc-block doc-block--summary lux-summary-section" id="summary-section"><h2 class="doc-block__title">Summary &amp; charts</h2><div class="lux-summary-block"><p class="lux-summary-intro">The <strong>Lux summary strip</strong> at the top of this screen is collapsible. Expand it to reveal KPI tiles and chart panels; collapse it for a wider register. All charts respect your active filters (SHOW preset, team scope, date range, text search).</p><div class="lux-summary-note"><span class="lux-summary-note__icon">◆</span> Emerald Luxury UI theme · chart data refreshes when filters change</div><div class="lux-summary-plain"><p>Detail view — no summary strip. Line item totals roll up to header amount; linked employees show who is billable on this invoice.</p></div></div></section>
+    <section class="doc-block" id="main"><h2 class="doc-block__title">Main content &amp; actions</h2><p>Edit line items, add/remove rows, link employees, export PDF via document route for client delivery.</p></section>
+    <section class="doc-block doc-block--features" id="complete-features">
+  <h2 class="doc-block__title">Complete feature list</h2>
+  <p class="lux-features-intro">Every control, panel, and workflow on this screen.</p>
+  <ul class="lux-feature-list lux-feature-list--dense"><li class="lux-feature-item"><span class="lux-feature-item__icon">✓</span><div><strong>Luxury UI shell</strong><span>Emerald-themed glass cards, sticky gradient header, module sidebar, and responsive layout.</span></div></li><li class="lux-feature-item"><span class="lux-feature-item__icon">✓</span><div><strong>Documentation search</strong><span>Header search indexes all guide pages (docs site).</span></div></li><li class="lux-feature-item"><span class="lux-feature-item__icon">✓</span><div><strong>Invoice header</strong><span>Client, period, status, totals, and reference numbers.</span></div></li><li class="lux-feature-item"><span class="lux-feature-item__icon">✓</span><div><strong>Line items table</strong><span>Billable lines with quantity, rate, amount.</span></div></li><li class="lux-feature-item"><span class="lux-feature-item__icon">✓</span><div><strong>PDF preview / download</strong><span>Generate printable invoice document.</span></div></li><li class="lux-feature-item"><span class="lux-feature-item__icon">✓</span><div><strong>Status transitions</strong><span>Draft → sent → paid workflows (role dependent).</span></div></li><li class="lux-feature-item"><span class="lux-feature-item__icon">✓</span><div><strong>Related timesheet link</strong><span>Trace lines back to logged hours where configured.</span></div></li></ul>
+</section>
+    <div class="doc-enrichment"><section class="doc-block doc-block--callouts" id="page-callouts"><h2 class="doc-block__title">Before you start</h2><div class="callout-stack callout-stack--dense"><div class="callout callout--success"><div class="callout__icon">✅</div><div class="callout__body"><strong class="callout__title">Ready to send checklist</strong><div class="callout__text">PO on header · lines match approved timesheets · PDF preview current · client billing contact verified.</div></div></div><div class="callout callout--warning"><div class="callout__icon">⚠️</div><div class="callout__body"><strong class="callout__title">After mark sent</strong><div class="callout__text">Line edits lock — use void + reissue for corrections.</div></div></div></div></section><div class="doc-enrich-grid"><section class="doc-block" id="who-uses-this"><h2 class="doc-block__title">Who uses this screen</h2><p class="audience-text">Finance and billing staff editing invoice line items, generating PDFs, and progressing status from draft to paid. Account managers review before client send.</p><div class="callout callout--info"><div class="callout__icon">ℹ️</div><div class="callout__body"><strong class="callout__title">Single invoice workspace</strong><div class="callout__text">Open from Invoices register row click — this is where line-level edits, PDF preview, and status changes happen.</div></div></div></section><section class="doc-block" id="key-concepts"><h2 class="doc-block__title">Key concepts</h2><div class="concept-grid"><article class="concept-card"><h3 class="concept-card__title">Invoice header</h3><p class="concept-card__desc">Client, billing period, status badge, total amount, tax fields, and external reference numbers.</p></article><article class="concept-card"><h3 class="concept-card__title">Line items table</h3><p class="concept-card__desc">Quantity, rate, amount per row — billable from timesheet or manual adjustment lines.</p></article><article class="concept-card"><h3 class="concept-card__title">PDF generation</h3><p class="concept-card__desc">Preview and download printable invoice for client AP submission.</p></article><article class="concept-card"><h3 class="concept-card__title">Status transitions</h3><p class="concept-card__desc">Draft → sent → paid workflow with audit trail on each change.</p></article><article class="concept-card"><h3 class="concept-card__title">Related timesheet link</h3><p class="concept-card__desc">Trace individual lines back to employee/project hours where traceability is enabled.</p></article></div></section><section class="doc-block" id="permissions"><h2 class="doc-block__title">Permissions</h2><div class="table-wrap"><table class="table table--permissions"><thead><tr><th>Role</th><th>Access on this screen</th></tr></thead><tbody><tr><td><strong>Finance / billing</strong></td><td>Full edit on lines, PDF, status, and void.</td></tr><tr><td><strong>Account manager</strong></td><td>Edit drafts for owned accounts; cannot mark paid without finance.</td></tr><tr><td><strong>Project manager</strong></td><td>Read-only line view for reconciliation.</td></tr><tr><td><strong>Auditor (read-only)</strong></td><td>View sent/paid history without edit.</td></tr></tbody></table></div><div class="callout callout--note"><div class="callout__icon">📝</div><div class="callout__body"><strong class="callout__title">Administrator override</strong><div class="callout__text">Org administrators and service accounts configured in the Admin console may bypass row-level scopes shown above. When in doubt, confirm access with your Tracopus administrator.</div></div></div></section><section class="doc-block" id="controls-reference"><h2 class="doc-block__title">Controls reference</h2><div class="table-wrap"><table class="table table--controls"><thead><tr><th>Control</th><th>Description</th><th>Notes</th></tr></thead><tbody><tr><td><strong>Header fields</strong></td><td>Client, period, PO ref, status.</td><td>Some fields lock after Sent.</td></tr><tr><td><strong>Add line item</strong></td><td>Manual row with qty/rate.</td><td>Alternative to timesheet pool pull.</td></tr><tr><td><strong>Edit line</strong></td><td>Adjust qty, rate, description.</td><td>Audit logged per change.</td></tr><tr><td><strong>Remove line</strong></td><td>Delete draft lines only.</td><td>Sent invoices may restrict deletion.</td></tr><tr><td><strong>PDF preview</strong></td><td>Inline render before download.</td><td>Refresh after line edits.</td></tr><tr><td><strong>Status buttons</strong></td><td>Mark sent, mark paid, void.</td><td>Role-gated.</td></tr><tr><td><strong>Timesheet trace</strong></td><td>Link icon on billable lines.</td><td>Opens source hour entries.</td></tr></tbody></table></div></section></div><div class="doc-enrich-grid doc-enrich-grid--2"><section class="doc-block" id="common-mistakes"><h2 class="doc-block__title">Common mistakes</h2><div class="callout-stack callout-stack--dense"><div class="callout callout--warning"><div class="callout__icon">⚠️</div><div class="callout__body"><strong class="callout__title">Editing sent invoices</strong><div class="callout__text">Client-facing documents should be voided and reissued — direct edit after send breaks audit compliance.</div></div></div><div class="callout callout--warning"><div class="callout__icon">⚠️</div><div class="callout__body"><strong class="callout__title">Missing PO on header</strong><div class="callout__text">Add PO from Sales module before PDF send — retroactive AP rejection is costly.</div></div></div><div class="callout callout--warning"><div class="callout__icon">⚠️</div><div class="callout__body"><strong class="callout__title">Not refreshing PDF after edits</strong><div class="callout__text">Stale PDF attached to email — always preview after line changes.</div></div></div></div></section><section class="doc-block" id="faq"><h2 class="doc-block__title">FAQ</h2><div class="faq-list"><article class="faq-item"><h3 class="faq-item__q">Can I pull additional timesheet hours?</h3><div class="faq-item__a">Re-sync or add-from-pool actions on draft — unavailable after mark sent.</div></article><article class="faq-item"><h3 class="faq-item__q">What taxes are supported?</h3><div class="faq-item__a">Tax fields follow org finance config — consult admin for rate tables.</div></article><article class="faq-item"><h3 class="faq-item__q">How do clients receive invoices?</h3><div class="faq-item__a">Out-of-band email with PDF — Tracopus generates document; delivery may be manual or integrated.</div></article><article class="faq-item"><h3 class="faq-item__q">Can I duplicate an invoice?</h3><div class="faq-item__a">Copy-as-draft varies by deployment — otherwise create new with same client/period.</div></article></div></section></div><section class="doc-block doc-block--related" id="related-pages"><h2 class="doc-block__title">Related pages</h2><div class="related-links"><a class="related-link" href="invoices.html"><span class="related-link__label">Invoices</span><span class="related-link__desc">Return to register list.</span></a><a class="related-link" href="timesheet.html"><span class="related-link__label">Timesheet</span><span class="related-link__desc">Verify billable pool before finalizing lines.</span></a><a class="related-link" href="../sales/purchase-order-details.html"><span class="related-link__label">PO Details</span><span class="related-link__desc">Contract value and PO number reference.</span></a><a class="related-link" href="../project/accounts.html"><span class="related-link__label">Accounts</span><span class="related-link__desc">Client billing address and terms.</span></a></div></section></div>
+    <section class="doc-block doc-block--pair">
+      <div class="doc-split">
+        <div id="workflows"><h2 class="doc-block__title">Workflows</h2><ol><li>Open invoice from list.</li><li>Review line items and totals.</li><li>Transition status when approved.</li><li>Share PDF via document layout link.</li></ol></div>
+        <div class="doc-block--tips" id="tips"><h2 class="doc-block__title">Tips &amp; best practices</h2><div class="tip"><strong>Tip:</strong> Document layout strips app chrome — ideal for client-facing PDF links.</div><div class="callout-stack"><h3 class="subheading">More guidance</h3><div class="callout callout--tip"><div class="callout__icon">💡</div><div class="callout__body"><strong class="callout__title">Remember</strong><div class="callout__text">Client, billing period, status badge, total amount, tax fields, and external reference numbers.</div></div></div><div class="callout callout--info"><div class="callout__icon">ℹ️</div><div class="callout__body"><strong class="callout__title">Can I pull additional timesheet hours?</strong><div class="callout__text">Re-sync or add-from-pool actions on draft — unavailable after mark sent.</div></div></div></div></div>
+      </div>
+    </section>
+  </div>
+</div>
+<nav class="page-nav">
+  <a class="page-nav__prev" href="invoices.html">← Invoices</a>
+  <a class="page-nav__next" href="profile.html">Employee Profile →</a>
+</nav>
+
+</main>
+
+<footer>
+  <div class="container">
+    <p>&copy; 2026 <span data-brand>Tracopus</span>. All rights reserved.</p>
+    <p style="margin-top:0.75rem;">
+      <a href="../index.html">Documentation</a>
+      <a href="../getting-started.html">Getting Started</a>
+      <a href="../charts.html">Charts</a>
+    </p>
+    <p class="footer-muted">For support, contact your workspace administrator.</p>
+  </div>
+</footer>
+
+<script src="../js/palette.js?v=20260604d"></script>
+<script src="../js/brand.js?v=20260604d"></script>
+<script src="../js/navigation.js?v=20260604d"></script>
+<script src="../js/search.js?v=20260604d"></script>
+</body>
+</html>

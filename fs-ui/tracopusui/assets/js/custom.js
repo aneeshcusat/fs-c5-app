@@ -48,6 +48,10 @@ $(document).ready(function () {
     $(document).on('click', '.theme-div-close-link', function () {
         $('.theme_div').removeClass('open');
     });
+
+    $(document).on('click', '.setting-sidebar-close-link', function () {
+        $('.settings_right_sidebar').removeClass('open');
+    });
 });
 
 $(window).scroll(function(e){ 

@@ -15,24 +15,24 @@ What you get
 Expected target layout on server
 --------------------------------
 Copy this bundle to:
-  /home/famstack-app/common/source/
+  /home/famstack-app/fs-c5-app/scripts/helper/
 
 After copy, these paths should exist:
-  /home/famstack-app/common/source/bin
-  /home/famstack-app/common/source/env
-  /home/famstack-app/common/source/systemd
+  /home/famstack-app/fs-c5-app/scripts/helper/bin
+  /home/famstack-app/fs-c5-app/scripts/helper/env
+  /home/famstack-app/fs-c5-app/scripts/helper/systemd
 
 Install
 -------
 1. Copy files to server under:
-     /home/famstack-app/common/source/
+     /home/famstack-app/fs-c5-app/scripts/helper/
 
 2. Run:
-     chmod +x /home/famstack-app/common/source/bin/*.sh
-     sudo /home/famstack-app/common/source/bin/install_systemd_services.sh
+     chmod +x /home/famstack-app/fs-c5-app/scripts/helper/bin/*.sh
+     sudo /home/famstack-app/fs-c5-app/scripts/helper/bin/install_systemd_services.sh
 
 3. Start services:
-     /home/famstack-app/common/source/bin/start_all_services.sh
+     /home/famstack-app/fs-c5-app/scripts/helper/bin/start_all_services.sh
 
 Useful commands
 ---------------

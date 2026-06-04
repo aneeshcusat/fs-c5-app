@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en" data-lux-palette="emerald">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project List — Tracopus User Guide</title>
+  <link rel="icon" href="../images/tracopus-logo.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css?v=20260604d">
+  <script src="../js/brand-config.js?v=20260604d"></script>
+</head>
+<body data-docs-depth="1">
+
+<header>
+  <div class="container">
+    <div class="header-content">
+      <div class="header-brand">
+        <a href="../index.html" class="header-brand__link" aria-label="User Guide home">
+          <img src="../images/tracopus-logo.png" alt="" class="header-logo" width="140" height="38">
+          <div class="header-brand__text">
+            <h1>User Guide</h1>
+            <p class="subtitle">Complete Documentation &amp; User Manual</p>
+            <p class="version">Luxury UI · Version 2.0</p>
+            <span class="lux-badge">Enterprise Work Intelligence</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<nav>
+  <div class="container">
+    <ul>
+            <li><a href="../index.html">Home</a></li>
+      <li><a href="../getting-started.html">Getting Started</a></li>
+      <li><a href="../hrms/index.html">HRMS</a></li>
+      <li><a href="../sales/index.html">Sales</a></li>
+      <li><a href="index.html" class="active">Project</a></li>
+      <li><a href="../mobile/index.html">Mobile</a></li>
+      <li><a href="../interface.html">Luxury UI</a></li>
+      <li><a href="../charts.html">Charts</a></li>
+      <li><a href="../faq/index.html">FAQ</a></li>
+      <li><a href="../admin.html">Admin</a></li>
+    </ul>
+  </div>
+</nav>
+
+<aside class="sidebar">
+  <ul>
+        <li class="section-title">Project</li>
+    <li><a href="index.html">Project Overview</a></li>
+    <li><a href="dashboard.html">Project Dashboard</a></li>
+    <li><a href="project-list.html" class="active">Project List</a></li>
+    <li><a href="project-details.html">Project Details</a></li>
+    <li><a href="deliverables.html">Deliverables</a></li>
+    <li><a href="deliverable-details.html">Deliverable Details</a></li>
+    <li><a href="work-items.html">Work Items</a></li>
+    <li><a href="accounts.html">Accounts</a></li>
+    <li><a href="taskboard.html">Task Board</a></li>
+    <li><a href="task-activity.html">Task Activity</a></li>
+    <li><a href="team-capacity.html">Team Capacity</a></li>
+    <li><a href="reports.html">Reports</a></li>
+    <li><a href="feedback.html">Feedback</a></li>
+    <li><a href="notes.html">Notes</a></li>
+    <li><a href="calendar.html">Calendar</a></li>
+    <li><a href="file-manager.html">File Manager</a></li>
+    <li><a href="chat.html">Chat</a></li>
+    <li><a href="search.html">Global Search</a></li>
+  </ul>
+</aside>
+
+<main>
+    <div class="breadcrumb"><a href="../index.html">Home</a> → Project → Project List</div>
+  
+<div class="doc-canvas">
+  <header class="doc-mast">
+    <div class="doc-mast__top">
+      <span class="doc-mast__eyebrow">Project · Portfolio</span>
+      <div class="page-meta page-meta--inline">
+        <span class="page-meta__item"><strong>Route</strong> <code>/project/list</code></span>
+        <span class="page-meta__item"><strong>Menu</strong> Project → Project List</span>
+      </div>
+    </div>
+    <h1 class="doc-mast__title">Project List</h1>
+    <p class="doc-mast__lead">Primary project register with chips, sort controls, and chart-backed summary strip for portfolio health.</p>
+    <p class="doc-mast__purpose">Portfolio register with quick filters, list/grid views, and comprehensive summary analytics.</p>
+  </header>
+
+  <div class="doc-flow">
+    <section class="doc-block" id="overview"><h2 class="doc-block__title">Overview</h2><p><strong>Project List</strong> is the operational table for all delivery projects. It combines detailed rows with a broad summary layer to speed decisions.</p></section>
+    <section class="doc-block doc-block--pair">
+      <div class="doc-split">
+        <div id="layout"><h2 class="doc-block__title">Screen layout</h2><p><strong>Header:</strong> Create, quick chips, SHOW/SORT, team/date filters, text search, list/grid toggle.<br><strong>Summary:</strong> KPI cards, delivery funnel, stage flow, estimate gaps, and charts.<br><strong>Body:</strong> Table/grid of projects with status, account, team, schedule, and estimates.</p></div>
+        <div id="header-filters"><h2 class="doc-block__title">Header &amp; filters</h2><p><strong>Quick chips:</strong> All · Active · Archived · My projects · Favorite · New · In progress · Completed<br><strong>SHOW:</strong> All · Active · Archived · My Projects · Favorite<br><strong>SORT:</strong> Due Date · Est Start · Created · A–Z</p></div>
+      </div>
+    </section>
+    <section class="doc-block doc-block--summary lux-summary-section" id="summary-section"><h2 class="doc-block__title">Summary &amp; charts</h2><div class="lux-summary-block"><p class="lux-summary-intro">The <strong>Lux summary strip</strong> at the top of this screen is collapsible. Expand it to reveal KPI tiles and chart panels; collapse it for a wider register. All charts respect your active filters (SHOW preset, team scope, date range, text search).</p><p class="lux-summary-detail">Seventeen portfolio charts — click estimate gaps list when Hours estimated donut shows missing data.</p><div class="lux-summary-note"><span class="lux-summary-note__icon">◆</span> Emerald Luxury UI theme · chart data refreshes when filters change</div><h3 class="lux-summary-heading">Project list summary charts</h3><div class="lux-chart-grid"><article class="lux-chart-card">
+  <div class="lux-chart-card__head">
+    <h4 class="lux-chart-card__title">By status</h4>
+    <span class="badge badge-donut">Donut</span>
+  </div>
+  <dl class="lux-chart-card__meta">
+    <dt>What it measures</dt><dd>Active status mix</dd>
+    <dt>How to read it</dt><dd>Centre may show active count</dd>
+    <dt>How to use it</dt><dd>Portfolio skew check</dd>
+  </dl>
+  <p class="lux-chart-card__action"><strong>When to act:</strong> Filter list by status</p>
+</article><article class="lux-chart-card">
+  <div class="lux-chart-card__head">
+    <h4 class="lux-chart-card__title">Portfolio mix</h4>
+    <span class="badge badge-donut">Donut</span>
+  </div>
+  <dl class="lux-chart-card__meta">
+    <dt>What it measures</dt><dd>Open / completed / closed</dd>
+    <dt>How to read it</dt><dd>Live vs historical balance</dd>
+    <dt>How to use it</dt><dd>Reporting scope</dd>
+  </dl>
+  <p class="lux-chart-card__action"><strong>When to act:</strong> Toggle SHOW preset</p>
+</article><article class="lux-chart-card">
+  <div class="lux-chart-card__head">
+    <h4 class="lux-chart-card__title">Timeline health</h4>
+    <span class="badge badge-donut">Donut</span>
+  </div>
+  <dl class="lux-chart-card__meta">
+    <dt>What it measures</dt><dd>Overdue / due soon / on track / no date</dd>
+    <dt>How to read it</dt><dd>Risk concentration</dd>
+    <dt>How to use it</dt><dd>Scheduling interventions</dd>
+  </dl>
+  <p class="lux-chart-card__action"><strong>When to act:</strong> Open overdue projects</p>
+</article><article class="lux-chart-card">
+  <div class="lux-chart-card__head">
+    <h4 class="lux-chart-card__title">Creation trend</h4>
+    <span class="badge badge-area">Area</span>
+  </div>
+  <dl class="lux-chart-card__meta">
+    <dt>What it measures</dt><dd>New projects, 6 months</dd>
+    <dt>How to read it</dt><dd>Intake spikes or quiet periods</dd>
+    <dt>How to use it</dt><dd>Capacity forecasting</dd>
+  </dl>
+  <p class="lux-chart-card__action"><strong>When to act:</strong> Plan hiring if trend rises</p>
+</article><article class="lux-chart-card">
+  <div class="lux-chart-card__head">
+    <h4 class="lux-chart-card__title">Project types</h4>
+    <span class="badge badge-bar">H-bar</span>
+  </div>
+  <dl class="lux-chart-card__meta">
+    <dt>What it measures</dt><dd>Delivery model mix</dd>
+    <dt>How to read it</dt><dd>Service line distribution</dd>
+    <dt>How to use it</dt><dd>Strategic focus</dd>
+  </dl>
+  <p class="lux-chart-card__action"><strong>When to act:</strong> Align sales pipeline</p>
+</article><article class="lux-chart-card">
+  <div class="lux-chart-card__head">
+    <h4 class="lux-chart-card__title">Billing mix</h4>
+    <span class="badge badge-donut">Donut</span>
+  </div>
+  <dl class="lux-chart-card__meta">
+    <dt>What it measures</dt><dd>Billable type split</dd>
+    <dt>How to read it</dt><dd>Finance alignment</dd>
+    <dt>How to use it</dt><dd>Revenue recognition</dd>
+  </dl>
+  <p class="lux-chart-card__action"><strong>When to act:</strong> Review non-billable share</p>
+</article><article class="lux-chart-card">
+  <div class="lux-chart-card__head">
+    <h4 class="lux-chart-card__title">PO linkage</h4>
+    <span class="badge badge-donut">Donut</span>
+  </div>
+  <dl class="lux-chart-card__meta">
+    <dt>What it measures</dt><dd>PO-linked vs standalone</dd>
+    <dt>How to read it</dt><dd>Contract coverage</dd>
+    <dt>How to use it</dt><dd>Sales follow-up</dd>
+  </dl>
+  <p class="lux-chart-card__action"><strong>When to act:</strong> Link orphan projects</p>
+</article><article class="lux-chart-card">
+  <div class="lux-chart-card__head">
+    <h4 class="lux-chart-card__title">Completed share</h4>
+    <span class="badge badge-donut">Donut %</span>
+  </div>
+  <dl class="lux-chart-card__meta">
+    <dt>What it measures</dt><dd>Completed vs in delivery</dd>
+    <dt>How to read it</dt><dd>Throughput ratio</dd>
+    <dt>How to use it</dt><dd>Delivery performance</dd>
+  </dl>
+  <p class="lux-chart-card__action"><strong>When to act:</strong> Celebrate + learn from delays</p>
+</article><article class="lux-chart-card">
+  <div class="lux-chart-card__head">
+    <h4 class="lux-chart-card__title">Open pipeline load</h4>
+    <span class="badge badge-donut">Donut %</span>
+  </div>
+  <dl class="lux-chart-card__meta">
+    <dt>What it measures</dt><dd>New / assigned / in progress</dd>
+    <dt>How to read it</dt><dd>Funnel concentration</dd>
+    <dt>How to use it</dt><dd>WIP management</dd>
+  </dl>
+  <p class="lux-chart-card__action"><strong>When to act:</strong> Limit new starts if overloaded</p>
+</article><article class="lux-chart-card">
+  <div class="lux-chart-card__head">
+    <h4 class="lux-chart-card__title">Automation</h4>
+    <span class="badge badge-donut">Donut</span>
+  </div>
+  <dl class="lux-chart-card__meta">
+    <dt>What it measures</dt><dd>Automation enabled vs disabled</dd>
+    <dt>How to read it</dt><dd>Workflow adoption</dd>
+    <dt>How to use it</dt><dd>Efficiency drive</dd>
+  </dl>
+  <p class="lux-chart-card__action"><strong>When to act:</strong> Enable automation on eligible projects</p>
+</article><article class="lux-chart-card">
+  <div class="lux-chart-card__head">
+    <h4 class="lux-chart-card__title">Top accounts</h4>
+    <span class="badge badge-bar">H-bar</span>
+  </div>
+  <dl class="lux-chart-card__meta">
+    <dt>What it measures</dt><dd>Top 8 accounts by project count</dd>
+    <dt>How to read it</dt><dd>Client concentration risk</dd>
+    <dt>How to use it</dt><dd>Account strategy</dd>
+  </dl>
+  <p class="lux-chart-card__action"><strong>When to act:</strong> Diversify portfolio</p>
+</article><article class="lux-chart-card">
+  <div class="lux-chart-card__head">
+    <h4 class="lux-chart-card__title">By team</h4>
+    <span class="badge badge-bar">H-bar</span>
+  </div>
+  <dl class="lux-chart-card__meta">
+    <dt>What it measures</dt><dd>Top 8 teams by project count</dd>
+    <dt>How to read it</dt><dd>Load distribution</dd>
+    <dt>How to use it</dt><dd>Team balancing</dd>
+  </dl>
+  <p class="lux-chart-card__action"><strong>When to act:</strong> Reassign if uneven</p>
+</article><article class="lux-chart-card">
+  <div class="lux-chart-card__head">
+    <h4 class="lux-chart-card__title">Priority</h4>
+    <span class="badge badge-bar">V-bar</span>
+  </div>
+  <dl class="lux-chart-card__meta">
+    <dt>What it measures</dt><dd>Urgent / high / medium / low</dd>
+    <dt>How to read it</dt><dd>Escalation volume</dd>
+    <dt>How to use it</dt><dd>War-room focus</dd>
+  </dl>
+  <p class="lux-chart-card__action"><strong>When to act:</strong> Triage urgent projects first</p>
+</article><article class="lux-chart-card">
+  <div class="lux-chart-card__head">
+    <h4 class="lux-chart-card__title">Shared visibility</h4>
+    <span class="badge badge-donut">Donut</span>
+  </div>
+  <dl class="lux-chart-card__meta">
+    <dt>What it measures</dt><dd>Shared vs private projects</dd>
+    <dt>How to read it</dt><dd>Collaboration vs restricted</dd>
+    <dt>How to use it</dt><dd>Security review</dd>
+  </dl>
+  <p class="lux-chart-card__action"><strong>When to act:</strong> Adjust sharing settings</p>
+</article><article class="lux-chart-card">
+  <div class="lux-chart-card__head">
+    <h4 class="lux-chart-card__title">Complexity</h4>
+    <span class="badge badge-bar">V-bar</span>
+  </div>
+  <dl class="lux-chart-card__meta">
+    <dt>What it measures</dt><dd>Basic / medium / complex</dd>
+    <dt>How to read it</dt><dd>Resourcing needs</dd>
+    <dt>How to use it</dt><dd>Staff senior leads on complex</dd>
+  </dl>
+  <p class="lux-chart-card__action"><strong>When to act:</strong> Right-size teams</p>
+</article><article class="lux-chart-card">
+  <div class="lux-chart-card__head">
+    <h4 class="lux-chart-card__title">Capex / Opex</h4>
+    <span class="badge badge-donut">Donut</span>
+  </div>
+  <dl class="lux-chart-card__meta">
+    <dt>What it measures</dt><dd>Capital vs operating</dd>
+    <dt>How to read it</dt><dd>Financial classification</dd>
+    <dt>How to use it</dt><dd>Finance reporting</dd>
+  </dl>
+  <p class="lux-chart-card__action"><strong>When to act:</strong> Tag projects correctly</p>
+</article><article class="lux-chart-card">
+  <div class="lux-chart-card__head">
+    <h4 class="lux-chart-card__title">Hours estimated</h4>
+    <span class="badge badge-donut">Donut</span>
+  </div>
+  <dl class="lux-chart-card__meta">
+    <dt>What it measures</dt><dd>With hours vs missing estimates</dd>
+    <dt>How to read it</dt><dd>Planning completeness</dd>
+    <dt>How to use it</dt><dd>Estimate hygiene</dd>
+  </dl>
+  <p class="lux-chart-card__action"><strong>When to act:</strong> Click gap list to add estimates</p>
+</article></div></div></section>
+    <section class="doc-block" id="main"><h2 class="doc-block__title">Main content &amp; actions</h2><p>Click a row to open Project Details. Use combined chips + filters + search to isolate high-risk subsets before taking action.</p></section>
+    <section class="doc-block doc-block--features" id="complete-features">
+  <h2 class="doc-block__title">Complete feature list</h2>
+  <p class="lux-features-intro">Every control, panel, and workflow on this screen.</p>
+  <ul class="lux-feature-list lux-feature-list--dense"><li class="lux-feature-item"><span class="lux-feature-item__icon">✓</span><div><strong>Luxury UI shell</strong><span>Emerald-themed glass cards, sticky gradient header, module sidebar, and responsive layout.</span></div></li><li class="lux-feature-item"><span class="lux-feature-item__icon">✓</span><div><strong>Documentation search</strong><span>Header search indexes all guide pages (docs site).</span></div></li><li class="lux-feature-item"><span class="lux-feature-item__icon">✓</span><div><strong>Collapsible summary strip</strong><span>KPI row and chart gallery above the register; expand/collapse persists in browser storage.</span></div></li><li class="lux-feature-item"><span class="lux-feature-item__icon">✓</span><div><strong>Seventeen summary charts</strong><span>Full portfolio analytics gallery.</span></div></li><li class="lux-feature-item"><span class="lux-feature-item__icon">✓</span><div><strong>CREATE project</strong><span>New project wizard with type, team, dates.</span></div></li><li class="lux-feature-item"><span class="lux-feature-item__icon">✓</span><div><strong>SHOW presets</strong><span>All · Active · Completed · My projects.</span></div></li><li class="lux-feature-item"><span class="lux-feature-item__icon">✓</span><div><strong>SORT / Filter / Team</strong><span>Standard Lux list header controls.</span></div></li><li class="lux-feature-item"><span class="lux-feature-item__icon">✓</span><div><strong>Estimate gaps list</strong><span>Clickable list of projects missing hour estimates.</span></div></li><li class="lux-feature-item"><span class="lux-feature-item__icon">✓</span><div><strong>Grid / List toggle</strong><span>Card or table register.</span></div></li></ul>
+</section>
+    <div class="doc-enrichment"><section class="doc-block doc-block--callouts" id="page-callouts"><h2 class="doc-block__title">Before you start</h2><div class="callout-stack callout-stack--dense"><div class="callout callout--warning"><div class="callout__icon">⚠️</div><div class="callout__body"><strong class="callout__title">Missing PO</strong><div class="callout__text">PO linkage donut red slice — fix before client billing cycle.</div></div></div><div class="callout callout--tip"><div class="callout__icon">💡</div><div class="callout__body"><strong class="callout__title">Planning sprint</strong><div class="callout__text">Export estimate gaps list weekly; assign estimates in deliverables screen.</div></div></div></div></section><div class="doc-enrich-grid"><section class="doc-block" id="who-uses-this"><h2 class="doc-block__title">Who uses this screen</h2><p class="audience-text">Project managers and portfolio leads running the master project register — create projects, fix estimate gaps, and analyze seventeen summary charts.</p><div class="callout callout--info"><div class="callout__icon">ℹ️</div><div class="callout__body"><strong class="callout__title">Primary PM register</strong><div class="callout__text">Most PM time splits between this screen and Taskboard — use SHOW presets and estimate gaps list weekly.</div></div></div></section><section class="doc-block" id="key-concepts"><h2 class="doc-block__title">Key concepts</h2><div class="concept-grid"><article class="concept-card"><h3 class="concept-card__title">Project register</h3><p class="concept-card__desc">Grid or list of projects with status, account, dates, team, priority, PO link.</p></article><article class="concept-card"><h3 class="concept-card__title">Seventeen summary charts</h3><p class="concept-card__desc">Status, timeline health, billing mix, PO linkage, automation, complexity, hours estimated.</p></article><article class="concept-card"><h3 class="concept-card__title">CREATE project</h3><p class="concept-card__desc">Wizard: type, team, dates, account, PO optional.</p></article><article class="concept-card"><h3 class="concept-card__title">Estimate gaps list</h3><p class="concept-card__desc">Clickable projects missing hour estimates — planning completeness signal.</p></article><article class="concept-card"><h3 class="concept-card__title">SHOW presets</h3><p class="concept-card__desc">All · Active · Completed · My projects quick filters.</p></article></div></section><section class="doc-block" id="permissions"><h2 class="doc-block__title">Permissions</h2><div class="table-wrap"><table class="table table--permissions"><thead><tr><th>Role</th><th>Access on this screen</th></tr></thead><tbody><tr><td><strong>Project manager</strong></td><td>Create/edit projects in scope; full register and charts.</td></tr><tr><td><strong>Portfolio manager</strong></td><td>All teams; reassign PM; archive completed.</td></tr><tr><td><strong>Team member</strong></td><td>My projects preset; read-only on others unless shared.</td></tr><tr><td><strong>Sales / finance</strong></td><td>Read-only for PO and billing fields.</td></tr></tbody></table></div><div class="callout callout--note"><div class="callout__icon">📝</div><div class="callout__body"><strong class="callout__title">Administrator override</strong><div class="callout__text">Org administrators and service accounts configured in the Admin console may bypass row-level scopes shown above. When in doubt, confirm access with your Tracopus administrator.</div></div></div></section><section class="doc-block" id="controls-reference"><h2 class="doc-block__title">Controls reference</h2><div class="table-wrap"><table class="table table--controls"><thead><tr><th>Control</th><th>Description</th><th>Notes</th></tr></thead><tbody><tr><td><strong>CREATE project</strong></td><td>New project wizard.</td><td>Link PO when available.</td></tr><tr><td><strong>SHOW presets</strong></td><td>All/Active/Completed/My.</td><td>Combines with SORT.</td></tr><tr><td><strong>SORT / Filter</strong></td><td>Column sort, text search.</td><td>Standard Lux header.</td></tr><tr><td><strong>Team selection</strong></td><td>Multi-team scope.</td><td>Drives all 17 charts.</td></tr><tr><td><strong>Estimate gaps</strong></td><td>List of missing estimates.</td><td>Click to open project.</td></tr><tr><td><strong>Grid / List toggle</strong></td><td>Card vs table.</td><td>—</td></tr><tr><td><strong>Row click</strong></td><td>Open project-details.</td><td>Hero + tabs.</td></tr><tr><td><strong>Summary strip</strong></td><td>17 chart gallery.</td><td>Collapse for register focus.</td></tr></tbody></table></div></section></div><div class="doc-enrich-grid doc-enrich-grid--2"><section class="doc-block" id="common-mistakes"><h2 class="doc-block__title">Common mistakes</h2><div class="callout-stack callout-stack--dense"><div class="callout callout--warning"><div class="callout__icon">⚠️</div><div class="callout__body"><strong class="callout__title">Creating project without PO for contracted work</strong><div class="callout__text">Invoice and traceability break — link PO from Sales first.</div></div></div><div class="callout callout--warning"><div class="callout__icon">⚠️</div><div class="callout__body"><strong class="callout__title">Ignoring timeline health donut</strong><div class="callout__text">Due-soon slice needs date edits on project-details before overdue.</div></div></div><div class="callout callout--warning"><div class="callout__icon">⚠️</div><div class="callout__body"><strong class="callout__title">My projects only for PMs</strong><div class="callout__text">PMs must clear All/Active view for team accountability.</div></div></div></div></section><section class="doc-block" id="faq"><h2 class="doc-block__title">FAQ</h2><div class="faq-list"><article class="faq-item"><h3 class="faq-item__q">What are estimate gaps?</h3><div class="faq-item__a">Projects without planned hours on deliverables — hurts Est vs Actual reports.</div></article><article class="faq-item"><h3 class="faq-item__q">How many charts respect filters?</h3><div class="faq-item__a">All seventeen when summary strip expanded.</div></article><article class="faq-item"><h3 class="faq-item__q">Can I bulk update status?</h3><div class="faq-item__a">Bulk actions vary — often per-row on project-details.</div></article><article class="faq-item"><h3 class="faq-item__q">PO linkage donut meaning?</h3><div class="faq-item__a">Shows projects missing PO — finance follow-up needed.</div></article></div></section></div><section class="doc-block doc-block--related" id="related-pages"><h2 class="doc-block__title">Related pages</h2><div class="related-links"><a class="related-link" href="project-details.html"><span class="related-link__label">Project Details</span><span class="related-link__desc">Single project hub.</span></a><a class="related-link" href="dashboard.html"><span class="related-link__label">Project Dashboard</span><span class="related-link__desc">Portfolio-level KPIs.</span></a><a class="related-link" href="../sales/purchase-orders.html"><span class="related-link__label">Purchase Orders</span><span class="related-link__desc">Source PO for linkage.</span></a><a class="related-link" href="reports.html"><span class="related-link__label">Reports</span><span class="related-link__desc">Est vs Actual exports.</span></a></div></section></div>
+    <section class="doc-block doc-block--pair">
+      <div class="doc-split">
+        <div id="workflows"><h2 class="doc-block__title">Workflows</h2><ol><li>Pick quick chip (for example, Active).</li><li>Set team/date filters and search text.</li><li>Review charts and funnel for bottlenecks.</li><li>Open a target project from the filtered list.</li></ol></div>
+        <div class="doc-block--tips" id="tips"><h2 class="doc-block__title">Tips &amp; best practices</h2><div class="warning"><strong>Tip:</strong> Watch <em>Timeline health</em> and <em>Hours estimated</em> panels together to catch overdue projects with missing planning data.</div><div class="callout-stack"><h3 class="subheading">More guidance</h3><div class="callout callout--tip"><div class="callout__icon">💡</div><div class="callout__body"><strong class="callout__title">Remember</strong><div class="callout__text">Grid or list of projects with status, account, dates, team, priority, PO link.</div></div></div><div class="callout callout--info"><div class="callout__icon">ℹ️</div><div class="callout__body"><strong class="callout__title">What are estimate gaps?</strong><div class="callout__text">Projects without planned hours on deliverables — hurts Est vs Actual reports.</div></div></div></div></div>
+      </div>
+    </section>
+  </div>
+</div>
+<nav class="page-nav">
+  <a class="page-nav__prev" href="dashboard.html">← Project Dashboard</a>
+  <a class="page-nav__next" href="project-details.html">Project Details →</a>
+</nav>
+
+</main>
+
+<footer>
+  <div class="container">
+    <p>&copy; 2026 <span data-brand>Tracopus</span>. All rights reserved.</p>
+    <p style="margin-top:0.75rem;">
+      <a href="../index.html">Documentation</a>
+      <a href="../getting-started.html">Getting Started</a>
+      <a href="../charts.html">Charts</a>
+    </p>
+    <p class="footer-muted">For support, contact your workspace administrator.</p>
+  </div>
+</footer>
+
+<script src="../js/palette.js?v=20260604d"></script>
+<script src="../js/brand.js?v=20260604d"></script>
+<script src="../js/navigation.js?v=20260604d"></script>
+<script src="../js/search.js?v=20260604d"></script>
+</body>
+</html>

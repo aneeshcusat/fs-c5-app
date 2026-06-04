@@ -18,13 +18,13 @@ $lightgray:             #E6E9ED;
 $mediumgray:            #AAB2BD;
 $darkgray:              #434A54;
 
-// color
-$body-color:            #f4f6f9;
-$font-color:            $darkgray;
+// color (cool neutrals; surfaces align with theme2)
+$body-color:            #f1f5f9;
+$font-color:            #334155;
 $card-color:            $white;
-$link-color:            #6290d0;
-$link-hover:            #0E9BE2;
-$body-bg:               #f5f7fb;
+$link-color:            #2563eb;
+$link-hover:            #1d4ed8;
+$body-bg:               #f1f5f9;
 
 $headings-margin-bottom: .66em;
 $headings-font-family: inherit;
@@ -48,8 +48,8 @@ $yiq-text-light: $white;
 
 // Borders
 $border-width: 1px;
-$border-color: rgba(0, 40, 100, .12);
-$border-color-dark: rgba(0, 40, 100, .24);
+$border-color: rgba(15, 23, 42, 0.08);
+$border-color-dark: rgba(15, 23, 42, 0.14);
 
 // Border Radius
 $border-radius-extra-small:     0.125rem    !default;

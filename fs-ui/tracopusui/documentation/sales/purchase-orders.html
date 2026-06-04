@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en" data-lux-palette="emerald">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Purchase Orders — Tracopus User Guide</title>
+  <link rel="icon" href="../images/tracopus-logo.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css?v=20260604d">
+  <script src="../js/brand-config.js?v=20260604d"></script>
+</head>
+<body data-docs-depth="1">
+
+<header>
+  <div class="container">
+    <div class="header-content">
+      <div class="header-brand">
+        <a href="../index.html" class="header-brand__link" aria-label="User Guide home">
+          <img src="../images/tracopus-logo.png" alt="" class="header-logo" width="140" height="38">
+          <div class="header-brand__text">
+            <h1>User Guide</h1>
+            <p class="subtitle">Complete Documentation &amp; User Manual</p>
+            <p class="version">Luxury UI · Version 2.0</p>
+            <span class="lux-badge">Enterprise Work Intelligence</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<nav>
+  <div class="container">
+    <ul>
+            <li><a href="../index.html">Home</a></li>
+      <li><a href="../getting-started.html">Getting Started</a></li>
+      <li><a href="../hrms/index.html">HRMS</a></li>
+      <li><a href="index.html" class="active">Sales</a></li>
+      <li><a href="../project/index.html">Project</a></li>
+      <li><a href="../mobile/index.html">Mobile</a></li>
+      <li><a href="../interface.html">Luxury UI</a></li>
+      <li><a href="../charts.html">Charts</a></li>
+      <li><a href="../faq/index.html">FAQ</a></li>
+      <li><a href="../admin.html">Admin</a></li>
+    </ul>
+  </div>
+</nav>
+
+<aside class="sidebar">
+  <ul>
+        <li class="section-title">Sales</li>
+    <li><a href="index.html">Sales Overview</a></li>
+    <li><a href="bid-requests.html">Bid Requests</a></li>
+    <li><a href="bid-details.html">Bid Details</a></li>
+    <li><a href="purchase-orders.html" class="active">Purchase Orders</a></li>
+    <li><a href="purchase-order-details.html">PO Details</a></li>
+  </ul>
+</aside>
+
+<main>
+    <div class="breadcrumb"><a href="../index.html">Home</a> → Sales → Purchase Orders</div>
+  
+<div class="doc-canvas">
+  <header class="doc-mast">
+    <div class="doc-mast__top">
+      <span class="doc-mast__eyebrow">Sales · Purchase Orders</span>
+      <div class="page-meta page-meta--inline">
+        <span class="page-meta__item"><strong>Route</strong> <code>/sales/purchaseorders</code></span>
+        <span class="page-meta__item"><strong>Menu</strong> Sales → Purchase Orders</span>
+      </div>
+    </div>
+    <h1 class="doc-mast__title">Purchase Orders</h1>
+    <p class="doc-mast__lead">Purchase order list representing contracts that may link to bids and spawn delivery projects.</p>
+    <p class="doc-mast__purpose">Contract register with delivery funnel and 11 summary chart panels.</p>
+  </header>
+
+  <div class="doc-flow">
+    <section class="doc-block" id="overview"><h2 class="doc-block__title">Overview</h2><p><strong>Sales → Purchase Orders</strong> (<code>/sales/purchaseorders</code>) tracks signed contracts from creation through completion and closure.</p></section>
+    <section class="doc-block doc-block--pair">
+      <div class="doc-split">
+        <div id="layout"><h2 class="doc-block__title">Screen layout</h2><p><strong>Header:</strong> Create, quick filters, SHOW, SORT, team, text filter, grid/list.<br><strong>Summary:</strong> Delivery funnel + 11 chart panels.<br><strong>Register:</strong> PO rows with status, account, delivery team.</p></div>
+        <div id="header-filters"><h2 class="doc-block__title">Header &amp; filters</h2><p><strong>Quick filters:</strong> All · Active · New · Created · In progress · Completed · Closed · Deleted · Archived<br><strong>SHOW/SORT/team/filter/grid</strong> — same Lux list pattern as Bid Requests<br><strong>Create</strong> — PO wizard</p></div>
+      </div>
+    </section>
+    <section class="doc-block doc-block--summary lux-summary-section" id="summary-section"><h2 class="doc-block__title">Summary &amp; charts</h2><div class="lux-summary-block"><p class="lux-summary-intro">The <strong>Lux summary strip</strong> at the top of this screen is collapsible. Expand it to reveal KPI tiles and chart panels; collapse it for a wider register. All charts respect your active filters (SHOW preset, team scope, date range, text search).</p><p class="lux-summary-detail">Contract portfolio analytics for the filtered PO register.</p><div class="lux-summary-note"><span class="lux-summary-note__icon">◆</span> Emerald Luxury UI theme · chart data refreshes when filters change</div><h3 class="lux-summary-heading">Purchase order summary charts</h3><div class="lux-chart-grid"><article class="lux-chart-card">
+  <div class="lux-chart-card__head">
+    <h4 class="lux-chart-card__title">Delivery funnel</h4>
+    <span class="badge badge-funnel">Diagram</span>
+  </div>
+  <dl class="lux-chart-card__meta">
+    <dt>What it measures</dt><dd>Stage progression horizontal</dd>
+    <dt>How to read it</dt><dd>Width = volume at each stage</dd>
+    <dt>How to use it</dt><dd>Contract pipeline shape</dd>
+  </dl>
+  <p class="lux-chart-card__action"><strong>When to act:</strong> Unblock stuck stages</p>
+</article><article class="lux-chart-card">
+  <div class="lux-chart-card__head">
+    <h4 class="lux-chart-card__title">By status</h4>
+    <span class="badge badge-donut">Donut</span>
+  </div>
+  <dl class="lux-chart-card__meta">
+    <dt>What it measures</dt><dd>Active contract statuses</dd>
+    <dt>How to read it</dt><dd>Live workload mix</dd>
+    <dt>How to use it</dt><dd>Operations review</dd>
+  </dl>
+  <p class="lux-chart-card__action"><strong>When to act:</strong> Filter PO list</p>
+</article><article class="lux-chart-card">
+  <div class="lux-chart-card__head">
+    <h4 class="lux-chart-card__title">Portfolio mix</h4>
+    <span class="badge badge-donut">Donut</span>
+  </div>
+  <dl class="lux-chart-card__meta">
+    <dt>What it measures</dt><dd>Pipeline / completed / closed / archived</dd>
+    <dt>How to read it</dt><dd>Active vs historical balance</dd>
+    <dt>How to use it</dt><dd>Portfolio reporting</dd>
+  </dl>
+  <p class="lux-chart-card__action"><strong>When to act:</strong> Archive completed contracts</p>
+</article><article class="lux-chart-card">
+  <div class="lux-chart-card__head">
+    <h4 class="lux-chart-card__title">Delivery health</h4>
+    <span class="badge badge-donut">Donut</span>
+  </div>
+  <dl class="lux-chart-card__meta">
+    <dt>What it measures</dt><dd>Timeline risk on open contracts</dd>
+    <dt>How to read it</dt><dd>Overdue vs on-track split</dd>
+    <dt>How to use it</dt><dd>Risk escalation</dd>
+  </dl>
+  <p class="lux-chart-card__action"><strong>When to act:</strong> Open overdue PO details</p>
+</article><article class="lux-chart-card">
+  <div class="lux-chart-card__head">
+    <h4 class="lux-chart-card__title">Creation trend</h4>
+    <span class="badge badge-area">Area smooth</span>
+  </div>
+  <dl class="lux-chart-card__meta">
+    <dt>What it measures</dt><dd>New contracts, 6 months</dd>
+    <dt>How to read it</dt><dd>Intake rate over time</dd>
+    <dt>How to use it</dt><dd>Sales-to-delivery handoff</dd>
+  </dl>
+  <p class="lux-chart-card__action"><strong>When to act:</strong> Plan delivery capacity</p>
+</article><article class="lux-chart-card">
+  <div class="lux-chart-card__head">
+    <h4 class="lux-chart-card__title">Project types</h4>
+    <span class="badge badge-bar">V-bar distributed</span>
+  </div>
+  <dl class="lux-chart-card__meta">
+    <dt>What it measures</dt><dd>Contract delivery types</dd>
+    <dt>How to read it</dt><dd>Service mix under contract</dd>
+    <dt>How to use it</dt><dd>Resource alignment</dd>
+  </dl>
+  <p class="lux-chart-card__action"><strong>When to act:</strong> Match teams to types</p>
+</article><article class="lux-chart-card">
+  <div class="lux-chart-card__head">
+    <h4 class="lux-chart-card__title">Creation channel</h4>
+    <span class="badge badge-donut">Donut</span>
+  </div>
+  <dl class="lux-chart-card__meta">
+    <dt>What it measures</dt><dd>Salesforce vs manual</dd>
+    <dt>How to read it</dt><dd>Integration adoption</dd>
+    <dt>How to use it</dt><dd>Data governance</dd>
+  </dl>
+  <p class="lux-chart-card__action"><strong>When to act:</strong> Prefer CRM-created POs</p>
+</article><article class="lux-chart-card">
+  <div class="lux-chart-card__head">
+    <h4 class="lux-chart-card__title">Bid linkage</h4>
+    <span class="badge badge-donut">Donut</span>
+  </div>
+  <dl class="lux-chart-card__meta">
+    <dt>What it measures</dt><dd>Bid-linked vs standalone</dd>
+    <dt>How to read it</dt><dd>Sales traceability</dd>
+    <dt>How to use it</dt><dd>Revenue attribution</dd>
+  </dl>
+  <p class="lux-chart-card__action"><strong>When to act:</strong> Link standalone POs to bids</p>
+</article><article class="lux-chart-card">
+  <div class="lux-chart-card__head">
+    <h4 class="lux-chart-card__title">Funnel volume</h4>
+    <span class="badge badge-bar">H-bar</span>
+  </div>
+  <dl class="lux-chart-card__meta">
+    <dt>What it measures</dt><dd>Per-stage counts</dd>
+    <dt>How to read it</dt><dd>Bottleneck identification</dd>
+    <dt>How to use it</dt><dd>Stage SLA review</dd>
+  </dl>
+  <p class="lux-chart-card__action"><strong>When to act:</strong> Escalate stuck volume</p>
+</article><article class="lux-chart-card">
+  <div class="lux-chart-card__head">
+    <h4 class="lux-chart-card__title">Top accounts</h4>
+    <span class="badge badge-bar">H-bar</span>
+  </div>
+  <dl class="lux-chart-card__meta">
+    <dt>What it measures</dt><dd>Top accounts by contract count</dd>
+    <dt>How to read it</dt><dd>Client concentration</dd>
+    <dt>How to use it</dt><dd>Account management</dd>
+  </dl>
+  <p class="lux-chart-card__action"><strong>When to act:</strong> Diversify if one bar dominates</p>
+</article><article class="lux-chart-card">
+  <div class="lux-chart-card__head">
+    <h4 class="lux-chart-card__title">By team</h4>
+    <span class="badge badge-bar">H-bar</span>
+  </div>
+  <dl class="lux-chart-card__meta">
+    <dt>What it measures</dt><dd>Contracts per delivery team</dd>
+    <dt>How to read it</dt><dd>Team load from sales</dd>
+    <dt>How to use it</dt><dd>Capacity planning</dd>
+  </dl>
+  <p class="lux-chart-card__action"><strong>When to act:</strong> Rebalance assignments</p>
+</article></div></div></section>
+    <section class="doc-block" id="main"><h2 class="doc-block__title">Main content &amp; actions</h2><p>Create: Contract core → Client &amp; account → Delivery scope → References &amp; ownership. Link originating bid when applicable.</p></section>
+    <section class="doc-block doc-block--features" id="complete-features">
+  <h2 class="doc-block__title">Complete feature list</h2>
+  <p class="lux-features-intro">Every control, panel, and workflow on this screen.</p>
+  <ul class="lux-feature-list lux-feature-list--dense"><li class="lux-feature-item"><span class="lux-feature-item__icon">✓</span><div><strong>Luxury UI shell</strong><span>Emerald-themed glass cards, sticky gradient header, module sidebar, and responsive layout.</span></div></li><li class="lux-feature-item"><span class="lux-feature-item__icon">✓</span><div><strong>Documentation search</strong><span>Header search indexes all guide pages (docs site).</span></div></li><li class="lux-feature-item"><span class="lux-feature-item__icon">✓</span><div><strong>Collapsible summary strip</strong><span>KPI row and chart gallery above the register; expand/collapse persists in browser storage.</span></div></li><li class="lux-feature-item"><span class="lux-feature-item__icon">✓</span><div><strong>Eleven PO charts</strong><span>Funnel, donut, area, and bar contract analytics.</span></div></li><li class="lux-feature-item"><span class="lux-feature-item__icon">✓</span><div><strong>CREATE contract</strong><span>New purchase order from bid or standalone.</span></div></li><li class="lux-feature-item"><span class="lux-feature-item__icon">✓</span><div><strong>SHOW / SORT / Filter</strong><span>Contract status, team, text search.</span></div></li><li class="lux-feature-item"><span class="lux-feature-item__icon">✓</span><div><strong>Delivery health donut</strong><span>Overdue vs on-track open contracts.</span></div></li><li class="lux-feature-item"><span class="lux-feature-item__icon">✓</span><div><strong>Row → PO details</strong><span>Full contract record and delivery tabs.</span></div></li></ul>
+</section>
+    <div class="doc-enrichment"><section class="doc-block doc-block--callouts" id="page-callouts"><h2 class="doc-block__title">Before you start</h2><div class="callout-stack callout-stack--dense"><div class="callout callout--alert"><div class="callout__icon">🚨</div><div class="callout__body"><strong class="callout__title">Overdue contracts</strong><div class="callout__text">Cross-check Delivery health donut with Project timeline — fix dates in one system if mismatched.</div></div></div><div class="callout callout--tip"><div class="callout__icon">💡</div><div class="callout__body"><strong class="callout__title">Account concentration</strong><div class="callout__text">Top accounts chart — diversify if one client exceeds policy threshold.</div></div></div></div></section><div class="doc-enrich-grid"><section class="doc-block" id="who-uses-this"><h2 class="doc-block__title">Who uses this screen</h2><p class="audience-text">Sales managers, delivery leads, and finance tracking signed contracts — status, delivery health, and account concentration. Primary register after bids convert to POs.</p><div class="callout callout--info"><div class="callout__icon">ℹ️</div><div class="callout__body"><strong class="callout__title">Contract register</strong><div class="callout__text">Monitor Delivery health donut daily — overdue contracts need PM intervention on linked projects.</div></div></div></section><section class="doc-block" id="key-concepts"><h2 class="doc-block__title">Key concepts</h2><div class="concept-grid"><article class="concept-card"><h3 class="concept-card__title">PO register</h3><p class="concept-card__desc">Contracts with status, account, value, dates, bid linkage, and team assignment.</p></article><article class="concept-card"><h3 class="concept-card__title">Eleven summary charts</h3><p class="concept-card__desc">Delivery funnel, status mix, timeline health, creation trend, top accounts, team load.</p></article><article class="concept-card"><h3 class="concept-card__title">CREATE contract</h3><p class="concept-card__desc">New PO from won bid or standalone for repeat business.</p></article><article class="concept-card"><h3 class="concept-card__title">Delivery health donut</h3><p class="concept-card__desc">Overdue vs on-track open contracts — key PM escalation signal.</p></article><article class="concept-card"><h3 class="concept-card__title">Bid linkage donut</h3><p class="concept-card__desc">Traceability from sales opportunity to signed contract.</p></article></div></section><section class="doc-block" id="permissions"><h2 class="doc-block__title">Permissions</h2><div class="table-wrap"><table class="table table--permissions"><thead><tr><th>Role</th><th>Access on this screen</th></tr></thead><tbody><tr><td><strong>Sales manager</strong></td><td>Create POs; edit contract metadata; view all team contracts.</td></tr><tr><td><strong>Delivery / PM lead</strong></td><td>View and update delivery-related status; create projects.</td></tr><tr><td><strong>Finance</strong></td><td>Read values and accounts for invoice PO references.</td></tr><tr><td><strong>Executive</strong></td><td>Read-only portfolio analytics.</td></tr></tbody></table></div><div class="callout callout--note"><div class="callout__icon">📝</div><div class="callout__body"><strong class="callout__title">Administrator override</strong><div class="callout__text">Org administrators and service accounts configured in the Admin console may bypass row-level scopes shown above. When in doubt, confirm access with your Tracopus administrator.</div></div></div></section><section class="doc-block" id="controls-reference"><h2 class="doc-block__title">Controls reference</h2><div class="table-wrap"><table class="table table--controls"><thead><tr><th>Control</th><th>Description</th><th>Notes</th></tr></thead><tbody><tr><td><strong>CREATE contract</strong></td><td>New PO wizard.</td><td>Can link bid on create.</td></tr><tr><td><strong>SHOW / SORT / Filter</strong></td><td>Contract status, team, search.</td><td>Standard Lux header.</td></tr><tr><td><strong>Team scope</strong></td><td>Filter register and charts.</td><td>—</td></tr><tr><td><strong>Delivery health donut</strong></td><td>Overdue vs on-track.</td><td>Act on red slice first.</td></tr><tr><td><strong>Row → PO details</strong></td><td>Full contract record.</td><td>Milestones and projects tabs.</td></tr><tr><td><strong>Summary strip</strong></td><td>Eleven chart panels.</td><td>Respects filters.</td></tr><tr><td><strong>Export</strong></td><td>Contract list download.</td><td>Finance use.</td></tr></tbody></table></div></section></div><div class="doc-enrich-grid doc-enrich-grid--2"><section class="doc-block" id="common-mistakes"><h2 class="doc-block__title">Common mistakes</h2><div class="callout-stack callout-stack--dense"><div class="callout callout--warning"><div class="callout__icon">⚠️</div><div class="callout__body"><strong class="callout__title">Standalone PO without account</strong><div class="callout__text">Breaks invoice and project linkage — always select account.</div></div></div><div class="callout callout--warning"><div class="callout__icon">⚠️</div><div class="callout__body"><strong class="callout__title">Ignoring overdue health slice</strong><div class="callout__text">Small overdue slice compounds — review linked project dates weekly.</div></div></div><div class="callout callout--warning"><div class="callout__icon">⚠️</div><div class="callout__body"><strong class="callout__title">Duplicate PO for same SOW</strong><div class="callout__text">Check bid linkage donut — merge or archive duplicates.</div></div></div></div></section><section class="doc-block" id="faq"><h2 class="doc-block__title">FAQ</h2><div class="faq-list"><article class="faq-item"><h3 class="faq-item__q">PO vs project?</h3><div class="faq-item__a">PO = commercial contract; Project = delivery execution — one PO may spawn one or more projects.</div></article><article class="faq-item"><h3 class="faq-item__q">Can PO exist without bid?</h3><div class="faq-item__a">Yes — standalone for extensions; bid linkage donut tracks mix.</div></article><article class="faq-item"><h3 class="faq-item__q">Who updates contract value?</h3><div class="faq-item__a">Sales manager or finance on detail page — may need approval workflow.</div></article><article class="faq-item"><h3 class="faq-item__q">How is overdue calculated?</h3><div class="faq-item__a">Compare contract end/milestone dates to today for open statuses.</div></article></div></section></div><section class="doc-block doc-block--related" id="related-pages"><h2 class="doc-block__title">Related pages</h2><div class="related-links"><a class="related-link" href="purchase-order-details.html"><span class="related-link__label">PO Details</span><span class="related-link__desc">Milestones, create project.</span></a><a class="related-link" href="bid-details.html"><span class="related-link__label">Bid Details</span><span class="related-link__desc">Originating opportunity.</span></a><a class="related-link" href="../project/project-list.html"><span class="related-link__label">Project List</span><span class="related-link__desc">Delivery records from POs.</span></a><a class="related-link" href="../hrms/invoices.html"><span class="related-link__label">Invoices</span><span class="related-link__desc">PO number on client invoices.</span></a></div></section></div>
+    <section class="doc-block doc-block--pair">
+      <div class="doc-split">
+        <div id="workflows"><h2 class="doc-block__title">Workflows</h2><ol><li>Create PO from list or from won bid.</li><li>Complete wizard steps.</li><li>Activate contract.</li><li>Create linked projects from PO detail.</li></ol></div>
+        <div class="doc-block--tips" id="tips"><h2 class="doc-block__title">Tips &amp; best practices</h2><div class="warning"><strong>Tip:</strong> Delivery health donut flags overdue contracts — prioritize before client escalation.</div><div class="callout-stack"><h3 class="subheading">More guidance</h3><div class="callout callout--tip"><div class="callout__icon">💡</div><div class="callout__body"><strong class="callout__title">Remember</strong><div class="callout__text">Contracts with status, account, value, dates, bid linkage, and team assignment.</div></div></div><div class="callout callout--info"><div class="callout__icon">ℹ️</div><div class="callout__body"><strong class="callout__title">PO vs project?</strong><div class="callout__text">PO = commercial contract; Project = delivery execution — one PO may spawn one or more projects.</div></div></div></div></div>
+      </div>
+    </section>
+  </div>
+</div>
+<nav class="page-nav">
+  <a class="page-nav__prev" href="bid-details.html">← Bid Details</a>
+  <a class="page-nav__next" href="purchase-order-details.html">PO Details →</a>
+</nav>
+
+</main>
+
+<footer>
+  <div class="container">
+    <p>&copy; 2026 <span data-brand>Tracopus</span>. All rights reserved.</p>
+    <p style="margin-top:0.75rem;">
+      <a href="../index.html">Documentation</a>
+      <a href="../getting-started.html">Getting Started</a>
+      <a href="../charts.html">Charts</a>
+    </p>
+    <p class="footer-muted">For support, contact your workspace administrator.</p>
+  </div>
+</footer>
+
+<script src="../js/palette.js?v=20260604d"></script>
+<script src="../js/brand.js?v=20260604d"></script>
+<script src="../js/navigation.js?v=20260604d"></script>
+<script src="../js/search.js?v=20260604d"></script>
+</body>
+</html>

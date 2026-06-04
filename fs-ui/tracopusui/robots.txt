@@ -1,3 +1,36 @@
-# https://www.robotstxt.org/robotstxt.html
+# robots.txt for Famstack
+
 User-agent: *
-Disallow:
+Allow: /
+Allow: /marketing/
+Allow: /documentation/
+Disallow: /api/
+Disallow: /_actions/
+Disallow: /_reducers/
+Disallow: /_services/
+Disallow: /_helpers/
+Disallow: /_constants/
+Disallow: /src/
+Disallow: /node_modules/
+Disallow: /*.json$
+Disallow: /*.js$
+Disallow: /*.jsx$
+
+# Sitemap location
+Sitemap: https://famstack.com/sitemap.xml
+
+# Crawl-delay (optional, adjust as needed)
+Crawl-delay: 1
+
+# Specific bot rules
+User-agent: Googlebot
+Allow: /
+Disallow: /api/
+
+User-agent: Bingbot
+Allow: /
+Disallow: /api/
+
+User-agent: Slurp
+Allow: /
+Disallow: /api/

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" data-lux-palette="emerald">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Timesheet — Tracopus User Guide</title>
+  <link rel="icon" href="../images/tracopus-logo.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css?v=20260604d">
+  <script src="../js/brand-config.js?v=20260604d"></script>
+</head>
+<body data-docs-depth="1">
+
+<header>
+  <div class="container">
+    <div class="header-content">
+      <div class="header-brand">
+        <a href="../index.html" class="header-brand__link" aria-label="User Guide home">
+          <img src="../images/tracopus-logo.png" alt="" class="header-logo" width="140" height="38">
+          <div class="header-brand__text">
+            <h1>User Guide</h1>
+            <p class="subtitle">Complete Documentation &amp; User Manual</p>
+            <p class="version">Luxury UI · Version 2.0</p>
+            <span class="lux-badge">Enterprise Work Intelligence</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<nav>
+  <div class="container">
+    <ul>
+            <li><a href="../index.html">Home</a></li>
+      <li><a href="../getting-started.html">Getting Started</a></li>
+      <li><a href="index.html" class="active">HRMS</a></li>
+      <li><a href="../sales/index.html">Sales</a></li>
+      <li><a href="../project/index.html">Project</a></li>
+      <li><a href="../mobile/index.html">Mobile</a></li>
+      <li><a href="../interface.html">Luxury UI</a></li>
+      <li><a href="../charts.html">Charts</a></li>
+      <li><a href="../faq/index.html">FAQ</a></li>
+      <li><a href="../admin.html">Admin</a></li>
+    </ul>
+  </div>
+</nav>
+
+<aside class="sidebar">
+  <ul>
+        <li class="section-title">HRMS</li>
+    <li><a href="index.html">HRMS Overview</a></li>
+    <li><a href="dashboard.html">Employee Dashboard</a></li>
+    <li><a href="employees.html">Employees</a></li>
+    <li><a href="timesheet.html" class="active">Timesheet</a></li>
+    <li><a href="attendance.html">Attendance</a></li>
+    <li><a href="invoices.html">Invoices</a></li>
+    <li><a href="invoice-details.html">Invoice Details</a></li>
+    <li><a href="profile.html">Employee Profile</a></li>
+    <li><a href="settings.html">Settings</a></li>
+    <li><a href="application-config.html">Application Configuration</a></li>
+  </ul>
+</aside>
+
+<main>
+    <div class="breadcrumb"><a href="../index.html">Home</a> → HRMS → Timesheet</div>
+  
+<div class="doc-canvas">
+  <header class="doc-mast">
+    <div class="doc-mast__top">
+      <span class="doc-mast__eyebrow">HRMS · Timesheet</span>
+      <div class="page-meta page-meta--inline">
+        <span class="page-meta__item"><strong>Route</strong> <code>/hrms/timesheet</code></span>
+        <span class="page-meta__item"><strong>Menu</strong> HRMS → Time Sheet</span>
+      </div>
+    </div>
+    <h1 class="doc-mast__title">Timesheet</h1>
+    <p class="doc-mast__lead">Monday–Sunday grid with entry modal, week navigation, employee selector for managers, and validation summary panel.</p>
+    <p class="doc-mast__purpose">Weekly timesheet grid for logging billable, non-billable, and leave hours.</p>
+  </header>
+
+  <div class="doc-flow">
+    <section class="doc-block" id="overview"><h2 class="doc-block__title">Overview</h2><p><strong>HRMS → Time Sheet</strong> (<code>/hrms/timesheet</code>) is where billable project time, non-billable overhead, and leave are recorded for payroll and utilization reporting.</p></section>
+    <section class="doc-block doc-block--pair">
+      <div class="doc-split">
+        <div id="layout"><h2 class="doc-block__title">Screen layout</h2><p><strong>Header:</strong> Week navigation arrows (prev/next Monday–Sunday week), employee selector (managers), Add entry button, Sync external leaves.<br><strong>Grid:</strong> Rows per day with hour totals; cells clickable.<br><strong>Summary panel:</strong> Week totals, billable vs non-billable split, submission guidance, validation hints.</p></div>
+        <div id="header-filters"><h2 class="doc-block__title">Header &amp; filters</h2><p><strong>Week navigation:</strong> ← → arrows select target week<br><strong>Employee selector:</strong> review direct reports' sheets (permission required)<br><strong>Add entry:</strong> opens entry detail modal<br><strong>Sync external leaves:</strong> pulls approved leave from HR integration<br>No SHOW/SORT chips — scope is week + employee</p></div>
+      </div>
+    </section>
+    <section class="doc-block doc-block--summary lux-summary-section" id="summary-section"><h2 class="doc-block__title">Summary &amp; charts</h2><div class="lux-summary-block"><p class="lux-summary-intro">The <strong>Lux summary strip</strong> at the top of this screen is collapsible. Expand it to reveal KPI tiles and chart panels; collapse it for a wider register. All charts respect your active filters (SHOW preset, team scope, date range, text search).</p><div class="lux-summary-note"><span class="lux-summary-note__icon">◆</span> Emerald Luxury UI theme · chart data refreshes when filters change</div><div class="lux-summary-plain"><p>Summary panel shows week totals and billable ratio — KPI tiles rather than Apex charts. Validation hints flag missing targets or policy violations inline.</p></div></div></section>
+    <section class="doc-block" id="main"><h2 class="doc-block__title">Main content &amp; actions</h2><p>Click day cell or Add entry → modal with billable (project-linked), non-billable, or leave/holiday type → enter hours (H or H.MM) → project/deliverable fields for billable → Save.</p></section>
+    <section class="doc-block doc-block--features" id="complete-features">
+  <h2 class="doc-block__title">Complete feature list</h2>
+  <p class="lux-features-intro">Every control, panel, and workflow on this screen.</p>
+  <ul class="lux-feature-list lux-feature-list--dense"><li class="lux-feature-item"><span class="lux-feature-item__icon">✓</span><div><strong>Luxury UI shell</strong><span>Emerald-themed glass cards, sticky gradient header, module sidebar, and responsive layout.</span></div></li><li class="lux-feature-item"><span class="lux-feature-item__icon">✓</span><div><strong>Documentation search</strong><span>Header search indexes all guide pages (docs site).</span></div></li><li class="lux-feature-item"><span class="lux-feature-item__icon">✓</span><div><strong>Week navigation</strong><span>Previous/next Monday–Sunday week selector.</span></div></li><li class="lux-feature-item"><span class="lux-feature-item__icon">✓</span><div><strong>Employee selector</strong><span>Managers review direct reports' sheets (permission required).</span></div></li><li class="lux-feature-item"><span class="lux-feature-item__icon">✓</span><div><strong>Add entry modal</strong><span>Billable, non-billable, or leave/holiday with H or H.MM hours.</span></div></li><li class="lux-feature-item"><span class="lux-feature-item__icon">✓</span><div><strong>Day cell editing</strong><span>Click any day cell to open entry detail.</span></div></li><li class="lux-feature-item"><span class="lux-feature-item__icon">✓</span><div><strong>Sync external leaves</strong><span>Pull approved leave from HR integration.</span></div></li><li class="lux-feature-item"><span class="lux-feature-item__icon">✓</span><div><strong>Validation summary</strong><span>Week totals, billable ratio, and inline policy hints.</span></div></li><li class="lux-feature-item"><span class="lux-feature-item__icon">✓</span><div><strong>Project/deliverable linking</strong><span>Billable entries tie to project hierarchy.</span></div></li></ul>
+</section>
+    <div class="doc-enrichment"><section class="doc-block doc-block--callouts" id="page-callouts"><h2 class="doc-block__title">Before you start</h2><div class="callout-stack callout-stack--dense"><div class="callout callout--warning"><div class="callout__icon">⚠️</div><div class="callout__body"><strong class="callout__title">Week lock deadline</strong><div class="callout__text">After payroll lock, corrections require HR admin — note your org's cutoff (often Monday noon).</div></div></div><div class="callout callout--tip"><div class="callout__icon">💡</div><div class="callout__body"><strong class="callout__title">Billable accuracy</strong><div class="callout__text">Match timesheet project codes to the PO or SOW referenced on the purchase order in Sales.</div></div></div></div></section><div class="doc-enrich-grid"><section class="doc-block" id="who-uses-this"><h2 class="doc-block__title">Who uses this screen</h2><p class="audience-text">All employees who log working hours; managers who review and approve direct reports' timesheets; finance staff tracing billable hours toward invoices. This is the most frequently used HRMS screen after Dashboard.</p><div class="callout callout--info"><div class="callout__icon">ℹ️</div><div class="callout__body"><strong class="callout__title">Log hours before week close</strong><div class="callout__text">Enter time daily or at minimum before your org's submission deadline — late entries skew utilization on Dashboard and delay invoice generation.</div></div></div></section><section class="doc-block" id="key-concepts"><h2 class="doc-block__title">Key concepts</h2><div class="concept-grid"><article class="concept-card"><h3 class="concept-card__title">Week grid</h3><p class="concept-card__desc">Monday–Sunday columns with one row per project/deliverable or entry type; navigate previous/next week with header arrows.</p></article><article class="concept-card"><h3 class="concept-card__title">Entry types</h3><p class="concept-card__desc">Billable (client/project work), non-billable (internal), and leave/holiday — each affects utilization calculations differently.</p></article><article class="concept-card"><h3 class="concept-card__title">H vs H.MM format</h3><p class="concept-card__desc">Hours accept decimal (1.5) or H.MM (1.30 = one hour thirty minutes) depending on org config.</p></article><article class="concept-card"><h3 class="concept-card__title">Project linking</h3><p class="concept-card__desc">Billable rows require project and often deliverable selection — ties hours to portfolio and invoicing.</p></article><article class="concept-card"><h3 class="concept-card__title">Validation summary</h3><p class="concept-card__desc">Footer totals for week hours, billable ratio, and inline policy warnings (over 40h, missing project, etc.).</p></article></div></section><section class="doc-block" id="permissions"><h2 class="doc-block__title">Permissions</h2><div class="table-wrap"><table class="table table--permissions"><thead><tr><th>Role</th><th>Access on this screen</th></tr></thead><tbody><tr><td><strong>Individual contributor</strong></td><td>Create and edit own timesheet for open weeks; view past submitted weeks.</td></tr><tr><td><strong>People manager</strong></td><td>View and edit direct reports' timesheets when granted; cannot override locked payroll periods.</td></tr><tr><td><strong>HR administrator</strong></td><td>Broad edit access across employees; sync external leave integration.</td></tr><tr><td><strong>Finance (read-only)</strong></td><td>View billable lines linked to invoice candidates; no hour entry.</td></tr></tbody></table></div><div class="callout callout--note"><div class="callout__icon">📝</div><div class="callout__body"><strong class="callout__title">Administrator override</strong><div class="callout__text">Org administrators and service accounts configured in the Admin console may bypass row-level scopes shown above. When in doubt, confirm access with your Tracopus administrator.</div></div></div></section><section class="doc-block" id="controls-reference"><h2 class="doc-block__title">Controls reference</h2><div class="table-wrap"><table class="table table--controls"><thead><tr><th>Control</th><th>Description</th><th>Notes</th></tr></thead><tbody><tr><td><strong>Week navigation</strong></td><td>Previous / next week buttons.</td><td>Locked weeks show read-only cells.</td></tr><tr><td><strong>Employee selector</strong></td><td>Managers pick a report from dropdown.</td><td>Hidden for individual contributors.</td></tr><tr><td><strong>Add entry</strong></td><td>Modal for new billable, non-billable, or leave row.</td><td>Requires project for billable.</td></tr><tr><td><strong>Day cell click</strong></td><td>Opens entry detail for that day.</td><td>Supports split hours across types.</td></tr><tr><td><strong>Sync external leaves</strong></td><td>Pull approved leave from HR integration.</td><td>Admin or manager action.</td></tr><tr><td><strong>Validation summary</strong></td><td>Week totals and policy hints.</td><td>Red indicators block submit if enforced.</td></tr><tr><td><strong>Project / deliverable picker</strong></td><td>Searchable hierarchy for billable rows.</td><td>Same projects as Project module.</td></tr></tbody></table></div></section></div><div class="doc-enrich-grid doc-enrich-grid--2"><section class="doc-block" id="common-mistakes"><h2 class="doc-block__title">Common mistakes</h2><div class="callout-stack callout-stack--dense"><div class="callout callout--warning"><div class="callout__icon">⚠️</div><div class="callout__body"><strong class="callout__title">Logging everything as billable</strong><div class="callout__text">Inflates client-facing utilization and invoice risk — use non-billable for internal meetings and training.</div></div></div><div class="callout callout--warning"><div class="callout__icon">⚠️</div><div class="callout__body"><strong class="callout__title">Waiting until Friday night</strong><div class="callout__text">Recall suffers; daily 5-minute entry improves accuracy and project allocation.</div></div></div><div class="callout callout--warning"><div class="callout__icon">⚠️</div><div class="callout__body"><strong class="callout__title">Wrong deliverable selection</strong><div class="callout__text">Hours roll into incorrect milestone on Est vs Actual reports — confirm deliverable before saving.</div></div></div></div></section><section class="doc-block" id="faq"><h2 class="doc-block__title">FAQ</h2><div class="faq-list"><article class="faq-item"><h3 class="faq-item__q">Can I copy last week's entries?</h3><div class="faq-item__a">Use duplicate-row actions where enabled, or re-open recent week as reference — auto-copy varies by deployment.</div></article><article class="faq-item"><h3 class="faq-item__q">What happens when a week is locked?</h3><div class="faq-item__a">Cells become read-only; contact HR admin for corrections with audit trail.</div></article><article class="faq-item"><h3 class="faq-item__q">Does mobile sync with web?</h3><div class="faq-item__a">Yes — Mobile Timesheet uses the same validation rules; see mobile/timesheet.html.</div></article><article class="faq-item"><h3 class="faq-item__q">How do leave hours appear?</h3><div class="faq-item__a">Leave rows reduce available hours in utilization but are excluded from billable numerator.</div></article></div></section></div><section class="doc-block doc-block--related" id="related-pages"><h2 class="doc-block__title">Related pages</h2><div class="related-links"><a class="related-link" href="dashboard.html"><span class="related-link__label">Employee Dashboard</span><span class="related-link__desc">Utilization charts reflect timesheet totals.</span></a><a class="related-link" href="invoices.html"><span class="related-link__label">Invoices</span><span class="related-link__desc">Billable hours aggregate into invoice drafts.</span></a><a class="related-link" href="../project/project-details.html"><span class="related-link__label">Project Details</span><span class="related-link__desc">Confirm deliverable hierarchy for billable linking.</span></a><a class="related-link" href="../mobile/timesheet.html"><span class="related-link__label">Mobile Timesheet</span><span class="related-link__desc">Log hours from phone in the field.</span></a></div></section></div>
+    <section class="doc-block doc-block--pair">
+      <div class="doc-split">
+        <div id="workflows"><h2 class="doc-block__title">Workflows</h2><ol><li>Use week arrows to select target week.</li><li>If permitted, switch employee via selector.</li><li>Click day cell or Add entry.</li><li>Choose entry type and fill hours + project fields.</li><li>Save — review summary panel for totals.</li></ol></div>
+        <div class="doc-block--tips" id="tips"><h2 class="doc-block__title">Tips &amp; best practices</h2><div class="tip"><strong>Mobile:</strong> Field logging via mobile Record screen — see <a href="../mobile/timesheet.html">Mobile Timesheet</a>. Access rules apply on both platforms.</div><div class="callout-stack"><h3 class="subheading">More guidance</h3><div class="callout callout--tip"><div class="callout__icon">💡</div><div class="callout__body"><strong class="callout__title">Remember</strong><div class="callout__text">Monday–Sunday columns with one row per project/deliverable or entry type; navigate previous/next week with header arrows.</div></div></div><div class="callout callout--info"><div class="callout__icon">ℹ️</div><div class="callout__body"><strong class="callout__title">Can I copy last week's entries?</strong><div class="callout__text">Use duplicate-row actions where enabled, or re-open recent week as reference — auto-copy varies by deployment.</div></div></div></div></div>
+      </div>
+    </section>
+  </div>
+</div>
+<nav class="page-nav">
+  <a class="page-nav__prev" href="employees.html">← Employees</a>
+  <a class="page-nav__next" href="attendance.html">Attendance →</a>
+</nav>
+
+</main>
+
+<footer>
+  <div class="container">
+    <p>&copy; 2026 <span data-brand>Tracopus</span>. All rights reserved.</p>
+    <p style="margin-top:0.75rem;">
+      <a href="../index.html">Documentation</a>
+      <a href="../getting-started.html">Getting Started</a>
+      <a href="../charts.html">Charts</a>
+    </p>
+    <p class="footer-muted">For support, contact your workspace administrator.</p>
+  </div>
+</footer>
+
+<script src="../js/palette.js?v=20260604d"></script>
+<script src="../js/brand.js?v=20260604d"></script>
+<script src="../js/navigation.js?v=20260604d"></script>
+<script src="../js/search.js?v=20260604d"></script>
+</body>
+</html>

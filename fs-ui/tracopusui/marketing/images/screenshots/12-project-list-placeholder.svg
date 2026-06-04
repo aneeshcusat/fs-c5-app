@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="800" viewBox="0 0 1280 800" role="img" aria-label="Project register placeholder">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ecfdf5"/>
+      <stop offset="45%" stop-color="#f8fafc"/>
+      <stop offset="100%" stop-color="#d1fae5"/>
+    </linearGradient>
+    <linearGradient id="shine" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#06b6d4" stop-opacity="0.08"/>
+    </linearGradient>
+  </defs>
+  <rect width="1280" height="800" fill="url(#bg)"/>
+  <rect width="1280" height="800" fill="url(#shine)"/>
+  <rect x="24" y="24" width="1232" height="752" rx="18" fill="#ffffff" fill-opacity="0.72" stroke="#059669" stroke-opacity="0.18"/>
+  <text x="640.0" y="364.0" text-anchor="middle" font-family="system-ui,sans-serif" font-size="22" font-weight="700" fill="#047857">Project register</text>
+  <text x="640.0" y="404.0" text-anchor="middle" font-family="ui-monospace,monospace" font-size="14" fill="#475569">12-project-list.webp</text>
+  <text x="640.0" y="434.0" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" fill="#64748b">Project → Project List · 1440×900</text>
+  <text x="640.0" y="760" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" fill="#94a3b8">Drop screenshot in public/tracopus.com/images/screenshots/</text>
+</svg>

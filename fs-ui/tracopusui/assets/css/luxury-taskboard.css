@@ -1,0 +1,1697 @@
+/* Taskboard — luxury execution board */
+.lux-taskboard {
+  --tb-primary: #5b5ff4;
+  --tb-accent: #14b8a6;
+  width: 100%;
+  padding-bottom: var(--lux-page-block-bottom, 0.85rem);
+}
+
+.lux-taskboard__member-bar {
+  margin: 0 0.75rem 0.65rem;
+}
+
+.lux-taskboard__workspace {
+  margin: 0 0.75rem;
+  padding: 0 0 1.5rem;
+}
+
+.right_sidebar.create_taskboardconfig-right_sidebar.lux-create-panel {
+  width: min(920px, 96vw) !important;
+  max-width: 96vw;
+  z-index: 1060;
+}
+
+.right_sidebar.create_taskboardconfig-right_sidebar.lux-create-panel.open {
+  right: 0 !important;
+  width: min(1080px, 96vw) !important;
+}
+
+.lux-create-panel--taskboard-config-wide.open {
+  width: min(1080px, 96vw) !important;
+  max-width: 96vw;
+}
+
+.lux-create-panel--taskboard-config.open {
+  width: min(920px, 96vw);
+  max-width: 96vw;
+}
+
+.lux-taskboard .section-body,
+.lux-taskboard .container-fluid {
+  max-width: none;
+}
+
+.lux-taskboard-summary__header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex-shrink: 0;
+}
+
+.lux-taskboard-summary__configure-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  min-height: 1.875rem;
+  padding: 0 0.65rem;
+  border: 1px solid rgba(91, 95, 244, 0.35);
+  border-radius: 9911px;
+  background: rgba(91, 95, 244, 0.08);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--tb-primary);
+  cursor: pointer;
+}
+
+.lux-taskboard-summary__configure-btn:hover {
+  background: rgba(91, 95, 244, 0.14);
+  border-color: var(--tb-primary);
+}
+
+.lux-taskboard__member-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1rem;
+  border-radius: 14px;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  background: linear-gradient(135deg, rgba(91, 95, 244, 0.06), rgba(20, 184, 166, 0.04));
+}
+
+.lux-taskboard__member-label {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #64748b;
+  margin-right: 0.35rem;
+}
+
+.lux-taskboard__member-chip {
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  background: #fff;
+  border-radius: 999px;
+  padding: 0.28rem 0.75rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #475569;
+  transition: border-color 0.12s, box-shadow 0.12s, color 0.12s;
+}
+
+.lux-taskboard__member-chip:hover {
+  border-color: rgba(91, 95, 244, 0.4);
+  color: var(--tb-primary);
+}
+
+.lux-taskboard__member-chip.is-active {
+  border-color: var(--tb-primary);
+  background: rgba(91, 95, 244, 0.1);
+  color: var(--tb-primary);
+  box-shadow: 0 4px 14px rgba(91, 95, 244, 0.15);
+}
+
+.lux-taskboard-summary__chart-empty {
+  margin: 2rem 0;
+  text-align: center;
+  font-size: 0.8125rem;
+  color: #94a3b8;
+}
+
+/* Kanban */
+.lux-taskboard-kanban {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.75rem;
+  align-items: start;
+}
+
+.lux-taskboard-col {
+  min-height: 420px;
+  border-radius: 16px;
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  background: rgba(248, 250, 252, 0.85);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.lux-taskboard-col.is-droppable {
+  border-color: var(--tb-primary);
+  box-shadow: inset 0 0 0 2px rgba(91, 95, 244, 0.2);
+}
+
+.lux-taskboard-col__head {
+  padding: 0.75rem 0.85rem;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.12);
+  background: #fff;
+}
+
+.lux-taskboard-col.is-planned .lux-taskboard-col__head {
+  background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+}
+.lux-taskboard-col.is-todo .lux-taskboard-col__head {
+  background: linear-gradient(135deg, rgba(14, 165, 233, 0.08), #fff);
+}
+.lux-taskboard-col.is-progress .lux-taskboard-col__head {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), #fff);
+}
+.lux-taskboard-col.is-done .lux-taskboard-col__head {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), #fff);
+}
+
+.lux-taskboard-col__head-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.lux-taskboard-col__title {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 0;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.lux-taskboard-col__count {
+  font-size: 0.75rem;
+  font-weight: 800;
+  padding: 0.1rem 0.45rem;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.06);
+  color: #475569;
+}
+
+.lux-taskboard-col__hint {
+  margin: 0.25rem 0 0;
+  font-size: 0.625rem;
+  color: #94a3b8;
+}
+
+.lux-taskboard-col__body {
+  flex: 1;
+  padding: 0.65rem;
+  overflow-y: auto;
+  max-height: calc(100vh - 320px);
+}
+
+.lux-taskboard-col__drop {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 56px;
+  margin-bottom: 0.5rem;
+  border-radius: 12px;
+  border: 2px dashed rgba(91, 95, 244, 0.35);
+  background: rgba(91, 95, 244, 0.06);
+  color: var(--tb-primary);
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
+
+.lux-taskboard-card {
+  list-style: none;
+  margin: 0 0 0.55rem;
+  padding: 0;
+}
+
+.lux-taskboard-card.is-dragging {
+  opacity: 0.35;
+}
+
+.lux-taskboard-card__shell {
+  border-radius: 16px;
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  background:
+    radial-gradient(circle at 100% 0%, rgba(91, 95, 244, 0.06), transparent 48%),
+    #fff;
+  box-shadow: 0 8px 22px rgba(15, 23, 42, 0.06);
+  cursor: grab;
+  transition: box-shadow 0.14s, border-color 0.14s, transform 0.14s;
+  overflow: hidden;
+}
+
+.lux-taskboard-card__shell:hover {
+  border-color: rgba(91, 95, 244, 0.4);
+  box-shadow: 0 14px 32px rgba(91, 95, 244, 0.14);
+  transform: translateY(-2px);
+}
+
+.lux-taskboard-card.is-overdue .lux-taskboard-card__shell {
+  border-color: rgba(244, 63, 94, 0.35);
+}
+
+.lux-taskboard-card__accent {
+  height: 3px;
+}
+
+.lux-taskboard-card.is-stage-planned .lux-taskboard-card__accent { background: linear-gradient(90deg, #94a3b8, #cbd5e1); }
+.lux-taskboard-card.is-stage-todo .lux-taskboard-card__accent { background: linear-gradient(90deg, #0ea5e9, #38bdf8); }
+.lux-taskboard-card.is-stage-progress .lux-taskboard-card__accent { background: linear-gradient(90deg, #f59e0b, #fbbf24); }
+.lux-taskboard-card.is-stage-done .lux-taskboard-card__accent { background: linear-gradient(90deg, #10b981, #34d399); }
+
+.lux-taskboard-card__head {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 0.65rem 0.35rem;
+}
+
+.lux-taskboard-card__drag {
+  color: #cbd5e1;
+  font-size: 0.875rem;
+  flex-shrink: 0;
+}
+
+.lux-taskboard-card__badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.lux-taskboard-card__status,
+.lux-taskboard-card__stage {
+  font-size: 0.5625rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 0.1rem 0.38rem;
+  border-radius: 999px;
+}
+
+.lux-taskboard-card__status.is-sky { background: rgba(14, 165, 233, 0.14); color: #0284c7; }
+.lux-taskboard-card__status.is-indigo { background: rgba(99, 102, 241, 0.14); color: #4f46e5; }
+.lux-taskboard-card__status.is-amber { background: rgba(245, 158, 11, 0.16); color: #b45309; }
+.lux-taskboard-card__status.is-green { background: rgba(16, 185, 129, 0.14); color: #059669; }
+.lux-taskboard-card__status.is-slate { background: rgba(100, 116, 139, 0.14); color: #475569; }
+
+.lux-taskboard-card__stage.is-slate { background: #f1f5f9; color: #64748b; }
+.lux-taskboard-card__stage.is-sky { background: rgba(14, 165, 233, 0.1); color: #0369a1; }
+.lux-taskboard-card__stage.is-amber { background: rgba(245, 158, 11, 0.12); color: #b45309; }
+.lux-taskboard-card__stage.is-green { background: rgba(16, 185, 129, 0.12); color: #047857; }
+
+.lux-taskboard-card__ref {
+  font-size: 0.625rem;
+  font-weight: 700;
+  color: #94a3b8;
+  flex-shrink: 0;
+}
+
+.lux-taskboard-card__main {
+  padding: 0 0.65rem 0.5rem;
+}
+
+.lux-taskboard-card__title {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 800;
+  color: #0f172a;
+  line-height: 1.35;
+}
+
+.lux-taskboard-card__desc {
+  margin: 0.3rem 0 0;
+  font-size: 0.75rem;
+  color: #64748b;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.lux-taskboard-card__line {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.35rem;
+  margin: 0.35rem 0 0;
+  font-size: 0.6875rem;
+  color: #475569;
+  line-height: 1.35;
+}
+
+.lux-taskboard-card__line i {
+  color: #94a3b8;
+  margin-top: 0.1rem;
+}
+
+.lux-taskboard-card__line em {
+  margin-left: 0.35rem;
+  font-style: normal;
+  font-size: 0.625rem;
+  color: #94a3b8;
+}
+
+.lux-taskboard-card__line.is-deliverable span {
+  font-weight: 600;
+}
+
+.lux-taskboard-card__meta {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.35rem 0.5rem;
+  margin-top: 0.55rem;
+  padding: 0.5rem 0.55rem;
+  border-radius: 10px;
+  background: rgba(248, 250, 252, 0.9);
+  border: 1px solid rgba(148, 163, 184, 0.12);
+}
+
+.lux-taskboard-card__meta-item span {
+  display: block;
+  font-size: 0.5625rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #94a3b8;
+}
+
+.lux-taskboard-card__meta-item strong {
+  display: block;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  color: #334155;
+  margin-top: 0.1rem;
+}
+
+.lux-taskboard-card__meta-item.is-warn strong {
+  color: #e11d48;
+}
+
+.lux-taskboard-card__meta-item.is-assignee {
+  grid-column: 1 / -1;
+}
+
+.lux-taskboard-card__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  margin-top: 0.45rem;
+}
+
+.lux-taskboard-card__chip {
+  font-size: 0.5625rem;
+  font-weight: 700;
+  padding: 0.14rem 0.42rem;
+  border-radius: 6px;
+  background: #f1f5f9;
+  color: #475569;
+}
+
+.lux-taskboard-card__chip.is-category {
+  background: rgba(245, 158, 11, 0.12);
+  color: #b45309;
+}
+
+.lux-taskboard-card__chip.is-billable {
+  background: rgba(91, 95, 244, 0.1);
+  color: #4f46e5;
+}
+
+.lux-taskboard-card__chip.is-paused {
+  background: rgba(245, 158, 11, 0.14);
+  color: #b45309;
+}
+
+.lux-taskboard-card__chip.is-overdue {
+  background: rgba(244, 63, 94, 0.12);
+  color: #e11d48;
+}
+
+.lux-taskboard-card__foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.35rem;
+  padding: 0.5rem 0.65rem 0.6rem;
+  border-top: 1px solid rgba(148, 163, 184, 0.12);
+  background: rgba(248, 250, 252, 0.6);
+  font-size: 0.6875rem;
+  color: #64748b;
+}
+
+.lux-taskboard-card__foot-hint {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-weight: 600;
+  color: #94a3b8;
+}
+
+.lux-taskboard-card__actions {
+  display: flex;
+  gap: 0.15rem;
+}
+
+.lux-taskboard-card__action {
+  width: 28px;
+  height: 28px;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: #64748b;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.lux-taskboard-card__action:hover {
+  background: rgba(91, 95, 244, 0.1);
+  color: var(--tb-primary);
+}
+
+.lux-taskboard-card__timer {
+  flex: 1;
+  min-width: 0;
+}
+
+/* List view — luxury register */
+.lux-taskboard-list-shell {
+  margin: 0 0.75rem;
+}
+
+.lux-taskboard-list {
+  --lux-taskboard-list-cols:
+    2.5rem minmax(14rem, 1.6fr) minmax(6.5rem, 0.75fr) minmax(6rem, 0.7fr) minmax(9rem, 0.95fr)
+    minmax(5.5rem, 0.65fr) minmax(7.5rem, auto);
+}
+
+.lux-taskboard-list__head,
+.lux-taskboard-list__item {
+  display: grid;
+  grid-template-columns: var(--lux-taskboard-list-cols);
+  align-items: center;
+  gap: 0.45rem;
+  min-width: 0;
+}
+
+.lux-taskboard-list__head,
+.lux-taskboard-list__item {
+  min-width: 52rem;
+}
+
+.lux-taskboard-list__head {
+  position: sticky;
+  top: 0;
+  z-index: 4;
+  margin-bottom: 0.4rem;
+  padding: 0.6rem 0.75rem 0.6rem 0.85rem;
+  border: 1px solid rgba(226, 232, 240, 0.95);
+  border-radius: 14px;
+  background:
+    radial-gradient(circle at 0% 0%, rgba(91, 95, 244, 0.06), transparent 50%),
+    rgba(248, 250, 252, 0.98);
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.04);
+}
+
+.lux-taskboard-list__head-cell {
+  font-size: 0.625rem;
+  font-weight: 800;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: #64748b;
+}
+
+.lux-taskboard-list__head-cell.is-center {
+  text-align: center;
+}
+
+.lux-taskboard-list__head-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.28rem;
+}
+
+.lux-taskboard-list__head-label i {
+  color: var(--tb-primary);
+  font-size: 0.6875rem;
+}
+
+.lux-taskboard-list__body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  overflow-x: auto;
+  padding-bottom: 0.35rem;
+}
+
+.lux-taskboard-list__item {
+  position: relative;
+  padding: 0.7rem 0.75rem 0.7rem 0.85rem;
+  border: 1px solid rgba(226, 232, 240, 0.95);
+  border-radius: 16px;
+  background:
+    radial-gradient(circle at 100% 0%, rgba(91, 95, 244, 0.05), transparent 46%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.99), rgba(248, 250, 252, 0.97));
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.04);
+  transition: border-color 0.14s, box-shadow 0.14s, transform 0.14s;
+}
+
+.lux-taskboard-list__item:hover {
+  border-color: rgba(91, 95, 244, 0.22);
+  box-shadow: 0 10px 24px rgba(91, 95, 244, 0.1);
+  transform: translateY(-1px);
+}
+
+.lux-taskboard-list__item.is-deleted {
+  opacity: 0.72;
+  background: rgba(248, 250, 252, 0.85);
+}
+
+.lux-taskboard-list__item.is-overdue {
+  border-color: rgba(244, 63, 94, 0.28);
+}
+
+.lux-taskboard-list__accent {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  border-radius: 16px 0 0 16px;
+}
+
+.lux-taskboard-list__item.is-stage-planned .lux-taskboard-list__accent {
+  background: linear-gradient(180deg, #94a3b8, #cbd5e1);
+}
+.lux-taskboard-list__item.is-stage-todo .lux-taskboard-list__accent {
+  background: linear-gradient(180deg, #0ea5e9, #38bdf8);
+}
+.lux-taskboard-list__item.is-stage-progress .lux-taskboard-list__accent {
+  background: linear-gradient(180deg, #f59e0b, #fbbf24);
+}
+.lux-taskboard-list__item.is-stage-done .lux-taskboard-list__accent {
+  background: linear-gradient(180deg, #10b981, #34d399);
+}
+
+.lux-taskboard-list__index {
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: #94a3b8;
+}
+
+.lux-taskboard-list__title {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 800;
+  color: #0f172a;
+  line-height: 1.35;
+}
+
+.lux-taskboard-list__desc {
+  margin: 0.2rem 0 0;
+  font-size: 0.6875rem;
+  color: #64748b;
+  line-height: 1.35;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.lux-taskboard-list__task-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.65rem;
+  margin-top: 0.35rem;
+}
+
+.lux-taskboard-list__ref {
+  font-size: 0.625rem;
+  font-weight: 700;
+  color: #94a3b8;
+}
+
+.lux-taskboard-list__line {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.625rem;
+  font-weight: 600;
+  color: #64748b;
+}
+
+.lux-taskboard-list__line i {
+  color: #94a3b8;
+  font-size: 0.6875rem;
+}
+
+.lux-taskboard-list__column-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.28rem;
+  font-size: 0.625rem;
+  font-weight: 800;
+  padding: 0.2rem 0.5rem;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.lux-taskboard-list__column-pill.is-slate { background: #f1f5f9; color: #64748b; }
+.lux-taskboard-list__column-pill.is-sky { background: rgba(14, 165, 233, 0.12); color: #0369a1; }
+.lux-taskboard-list__column-pill.is-amber { background: rgba(245, 158, 11, 0.14); color: #b45309; }
+.lux-taskboard-list__column-pill.is-green { background: rgba(16, 185, 129, 0.12); color: #047857; }
+
+.lux-taskboard-list__col--category {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  align-items: flex-start;
+}
+
+.lux-taskboard-list__category-pill {
+  font-size: 0.625rem;
+  font-weight: 700;
+  padding: 0.12rem 0.4rem;
+  border-radius: 6px;
+  background: rgba(245, 158, 11, 0.12);
+  color: #b45309;
+}
+
+.lux-taskboard-list__scope-pill {
+  font-size: 0.5625rem;
+  font-weight: 700;
+  padding: 0.1rem 0.35rem;
+  border-radius: 6px;
+  background: #f1f5f9;
+  color: #64748b;
+}
+
+.lux-taskboard-list__scope-pill.is-billable {
+  background: rgba(91, 95, 244, 0.1);
+  color: #4f46e5;
+}
+
+.lux-taskboard-list__schedule-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.25rem 0.5rem;
+}
+
+.lux-taskboard-list__schedule-grid em {
+  display: block;
+  font-size: 0.5625rem;
+  font-weight: 700;
+  font-style: normal;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #94a3b8;
+}
+
+.lux-taskboard-list__schedule-grid strong {
+  display: block;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  color: #334155;
+}
+
+.lux-taskboard-list__schedule-grid .is-warn strong {
+  color: #e11d48;
+}
+
+.lux-taskboard-list__owner {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin-top: 0.35rem;
+  font-size: 0.625rem;
+  font-weight: 600;
+  color: #64748b;
+}
+
+.lux-taskboard-list__col--status {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.lux-taskboard-list__status-pill {
+  font-size: 0.625rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  padding: 0.15rem 0.45rem;
+  border-radius: 999px;
+}
+
+.lux-taskboard-list__status-pill.is-sky { background: rgba(14, 165, 233, 0.14); color: #0284c7; }
+.lux-taskboard-list__status-pill.is-indigo { background: rgba(99, 102, 241, 0.14); color: #4f46e5; }
+.lux-taskboard-list__status-pill.is-amber { background: rgba(245, 158, 11, 0.16); color: #b45309; }
+.lux-taskboard-list__status-pill.is-green { background: rgba(16, 185, 129, 0.14); color: #059669; }
+.lux-taskboard-list__status-pill.is-slate { background: rgba(100, 116, 139, 0.14); color: #475569; }
+
+.lux-taskboard-list__overdue-tag,
+.lux-taskboard-list__paused-tag {
+  font-size: 0.5625rem;
+  font-weight: 800;
+  padding: 0.08rem 0.35rem;
+  border-radius: 999px;
+}
+
+.lux-taskboard-list__overdue-tag {
+  background: rgba(244, 63, 94, 0.12);
+  color: #e11d48;
+}
+
+.lux-taskboard-list__paused-tag {
+  background: rgba(245, 158, 11, 0.14);
+  color: #b45309;
+}
+
+.lux-taskboard-list__col--actions {
+  justify-self: end;
+  align-self: center;
+}
+
+.lux-taskboard-list__actions {
+  display: inline-flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.28rem;
+  max-width: 100%;
+}
+
+.lux-taskboard-list__icon-btn {
+  flex-shrink: 0;
+  width: 1.85rem;
+  height: 1.85rem;
+  padding: 0;
+  border: 1px solid rgba(148, 163, 184, 0.28);
+  border-radius: 9px;
+  background: #fff;
+  color: #64748b;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8125rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: border-color 0.12s, color 0.12s, background 0.12s, box-shadow 0.12s;
+}
+
+.lux-taskboard-list__icon-btn:hover {
+  border-color: rgba(91, 95, 244, 0.4);
+  color: var(--tb-primary);
+  box-shadow: 0 4px 10px rgba(91, 95, 244, 0.12);
+}
+
+.lux-taskboard-list__icon-btn.is-play {
+  border-color: rgba(245, 158, 11, 0.35);
+  color: #d97706;
+  background: rgba(255, 251, 235, 0.9);
+}
+
+.lux-taskboard-list__icon-btn.is-play:hover {
+  border-color: #f59e0b;
+  color: #b45309;
+  background: rgba(254, 243, 199, 0.95);
+}
+
+.lux-taskboard-list__icon-btn.is-done {
+  border-color: rgba(16, 185, 129, 0.35);
+  color: #059669;
+  background: rgba(236, 253, 245, 0.9);
+}
+
+.lux-taskboard-list__icon-btn.is-done:hover {
+  border-color: #10b981;
+  color: #047857;
+  background: rgba(209, 250, 229, 0.95);
+}
+
+.lux-taskboard-list__icon-btn.is-delete {
+  border-color: rgba(244, 63, 94, 0.35);
+  color: #e11d48;
+  background: rgba(254, 226, 226, 0.55);
+}
+
+.lux-taskboard-list__icon-btn.is-delete:hover {
+  border-color: #f43f5e;
+  color: #fff;
+  background: #e11d48;
+}
+
+.lux-taskboard-list__icon-btn.is-delete.is-restore {
+  border-color: rgba(16, 185, 129, 0.35);
+  color: #059669;
+  background: rgba(236, 253, 245, 0.9);
+}
+
+.lux-taskboard-list__icon-btn.is-delete.is-restore:hover {
+  border-color: #10b981;
+  color: #047857;
+  background: rgba(209, 250, 229, 0.95);
+}
+
+.lux-taskboard-list__icon-btn.is-remove {
+  border-color: rgba(148, 163, 184, 0.35);
+  color: #64748b;
+}
+
+.lux-taskboard-list__icon-btn.is-remove:hover {
+  border-color: rgba(100, 116, 139, 0.5);
+  color: #475569;
+}
+
+.lux-taskboard-list__icon-btn.is-remove.is-confirm {
+  border-color: #b91c1c;
+  color: #fff;
+  background: #dc2626;
+  box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
+}
+
+.lux-taskboard-list__icon-btn.is-remove.is-confirm:hover {
+  background: #b91c1c;
+}
+
+.lux-taskboard-list__item.is-skeleton {
+  padding: 0;
+  border: none;
+  box-shadow: none;
+  background: transparent;
+}
+
+/* Configure panel — board workspace */
+.lux-create-panel--taskboard-config .lux-create-panel__body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  padding: 0.65rem 0.85rem 0;
+}
+
+.lux-tb-config {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.lux-tb-config__toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.lux-tb-config__toolbar-stat {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  background: rgba(248, 250, 252, 0.95);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  color: #64748b;
+}
+
+.lux-tb-config__toolbar-stat.is-active {
+  background: rgba(16, 185, 129, 0.1);
+  border-color: rgba(16, 185, 129, 0.25);
+  color: #047857;
+}
+
+.lux-tb-config__hero {
+  flex-shrink: 0;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 0.85rem;
+  padding: 0.85rem 1rem;
+  border-radius: 14px;
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  background: linear-gradient(135deg, rgba(91, 95, 244, 0.07), rgba(20, 184, 166, 0.05));
+}
+
+.lux-tb-config__hero-title {
+  margin: 0;
+  font-size: 0.9375rem;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.lux-tb-config__hero-copy p {
+  margin: 0.35rem 0 0;
+  font-size: 0.75rem;
+  color: #64748b;
+  line-height: 1.45;
+}
+
+.lux-tb-config__hero-tips {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.lux-tb-config__hero-tips li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.4rem;
+  font-size: 0.6875rem;
+  color: #475569;
+  line-height: 1.35;
+}
+
+.lux-tb-config__hero-tips i {
+  color: var(--tb-primary);
+  margin-top: 0.1rem;
+}
+
+.lux-tb-config__layout {
+  display: grid;
+  grid-template-columns: minmax(16rem, 20rem) minmax(0, 1fr);
+  gap: 0;
+  flex: 1;
+  min-height: 0;
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  border-radius: 16px;
+  overflow: hidden;
+  background: #fff;
+}
+
+.lux-tb-config__list-pane {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  border-right: 1px solid rgba(148, 163, 184, 0.16);
+  background: #f8fafc;
+}
+
+.lux-tb-config__list-head {
+  padding: 0.85rem 0.75rem 0.65rem;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.14);
+}
+
+.lux-tb-config__list-head-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.lux-tb-config__list-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #64748b;
+}
+
+.lux-tb-config__list-sub {
+  margin: 0.35rem 0 0;
+  font-size: 0.6875rem;
+  color: #94a3b8;
+}
+
+.lux-tb-config__new-btn {
+  padding: 0.35rem 0.5rem !important;
+  min-width: 2rem;
+}
+
+.lux-tb-config__filter {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.55rem;
+  padding: 0.42rem 0.55rem;
+  border-radius: 10px;
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  background: #fff;
+}
+
+.lux-tb-config__filter input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 0.8125rem;
+  background: transparent;
+  color: #0f172a;
+}
+
+.lux-tb-config__filter i {
+  color: #94a3b8;
+  font-size: 0.875rem;
+}
+
+.lux-tb-config__list-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0.55rem;
+  min-height: 0;
+}
+
+.lux-tb-config__board-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.lux-tb-config__board-card {
+  border-radius: 12px;
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  background: #fff;
+  overflow: hidden;
+  transition: border-color 0.12s, box-shadow 0.12s;
+}
+
+.lux-tb-config__board-card.is-selected {
+  border-color: var(--tb-primary);
+  box-shadow: 0 8px 22px rgba(91, 95, 244, 0.14);
+}
+
+.lux-tb-config__board-card.is-inactive {
+  opacity: 0.82;
+}
+
+.lux-tb-config__board-card-main {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 0.65rem 0.7rem 0.5rem;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.lux-tb-config__board-card-top {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-bottom: 0.35rem;
+}
+
+.lux-tb-config__board-status {
+  font-size: 0.5625rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 0.1rem 0.38rem;
+  border-radius: 999px;
+}
+
+.lux-tb-config__board-status.is-live {
+  background: rgba(16, 185, 129, 0.12);
+  color: #047857;
+}
+
+.lux-tb-config__board-status.is-off {
+  background: rgba(148, 163, 184, 0.14);
+  color: #64748b;
+}
+
+.lux-tb-config__board-team {
+  font-size: 0.5625rem;
+  font-weight: 700;
+  color: #94a3b8;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.lux-tb-config__board-name {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.lux-tb-config__board-desc {
+  margin: 0.25rem 0 0;
+  font-size: 0.6875rem;
+  color: #64748b;
+  line-height: 1.35;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.lux-tb-config__board-meta {
+  margin-top: 0.35rem;
+  font-size: 0.625rem;
+  font-weight: 600;
+  color: #94a3b8;
+}
+
+.lux-tb-config__member-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  margin-top: 0.4rem;
+}
+
+.lux-tb-config__member-pill {
+  font-size: 0.5625rem;
+  font-weight: 700;
+  padding: 0.1rem 0.38rem;
+  border-radius: 6px;
+  background: rgba(91, 95, 244, 0.1);
+  color: #4f46e5;
+}
+
+.lux-tb-config__member-pill.is-more {
+  background: #f1f5f9;
+  color: #64748b;
+}
+
+.lux-tb-config__board-card-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.25rem;
+  padding: 0.35rem 0.5rem 0.45rem;
+  border-top: 1px solid rgba(148, 163, 184, 0.1);
+  background: rgba(248, 250, 252, 0.7);
+}
+
+.lux-tb-config__toggle {
+  border: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+}
+
+.lux-tb-config__toggle-track {
+  display: block;
+  width: 2.1rem;
+  height: 1.15rem;
+  border-radius: 999px;
+  background: #cbd5e1;
+  position: relative;
+  transition: background 0.14s;
+}
+
+.lux-tb-config__toggle.is-on .lux-tb-config__toggle-track {
+  background: var(--tb-primary);
+}
+
+.lux-tb-config__toggle-thumb {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 0.85rem;
+  height: 0.85rem;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.2);
+  transition: transform 0.14s;
+}
+
+.lux-tb-config__toggle.is-on .lux-tb-config__toggle-thumb {
+  transform: translateX(0.95rem);
+}
+
+.lux-tb-config__icon-btn {
+  width: 1.75rem;
+  height: 1.75rem;
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  border-radius: 8px;
+  background: #fff;
+  color: #64748b;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: border-color 0.12s, color 0.12s, background 0.12s;
+}
+
+.lux-tb-config__icon-btn:hover {
+  border-color: var(--tb-primary);
+  color: var(--tb-primary);
+}
+
+.lux-tb-config__icon-btn.is-danger {
+  border-color: rgba(244, 63, 94, 0.45);
+  color: #e11d48;
+  background: rgba(254, 226, 226, 0.65);
+}
+
+.lux-tb-config__icon-btn.is-danger:hover {
+  border-color: #f43f5e;
+  color: #fff;
+  background: #e11d48;
+}
+
+.lux-tb-config__icon-btn.is-danger.is-confirm {
+  border-color: #b91c1c;
+  color: #fff;
+  background: #dc2626;
+  box-shadow: 0 4px 12px rgba(220, 38, 38, 0.35);
+}
+
+.lux-tb-config__empty {
+  text-align: center;
+  padding: 1.25rem 0.75rem;
+}
+
+.lux-tb-config__empty-icon {
+  display: inline-flex;
+  width: 2.5rem;
+  height: 2.5rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background: rgba(91, 95, 244, 0.1);
+  color: var(--tb-primary);
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.lux-tb-config__empty strong {
+  display: block;
+  font-size: 0.875rem;
+  color: #0f172a;
+}
+
+.lux-tb-config__empty p {
+  margin: 0.35rem 0 0.75rem;
+  font-size: 0.75rem;
+  color: #64748b;
+}
+
+.lux-tb-config__list-no-match {
+  margin: 0.75rem;
+  font-size: 0.75rem;
+  color: #94a3b8;
+  text-align: center;
+}
+
+.lux-tb-config__editor {
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: #fff;
+}
+
+.lux-tb-config__editor-pane {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  height: 100%;
+}
+
+.lux-tb-config__editor-scroll {
+  flex: 1;
+  min-height: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: 0.85rem 1rem 0.75rem;
+  -webkit-overflow-scrolling: touch;
+}
+
+.lux-tb-config__editor-placeholder {
+  flex: 1;
+  min-height: 0;
+  padding: 0.85rem 1rem;
+  overflow-y: auto;
+}
+
+.lux-tb-config__editor-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.65rem;
+}
+
+.lux-tb-config__editor-kicker {
+  font-size: 0.625rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #94a3b8;
+}
+
+.lux-tb-config__editor-title {
+  margin: 0.15rem 0 0;
+  font-size: 1.125rem;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.lux-tb-config__editor-sub {
+  margin: 0.3rem 0 0;
+  font-size: 0.75rem;
+  color: #64748b;
+  line-height: 1.4;
+  max-width: 28rem;
+}
+
+.lux-tb-config__steps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-bottom: 0.75rem;
+}
+
+.lux-tb-config__step {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.625rem;
+  font-weight: 700;
+  padding: 0.2rem 0.5rem;
+  border-radius: 999px;
+  border: 1px dashed rgba(148, 163, 184, 0.35);
+  color: #94a3b8;
+}
+
+.lux-tb-config__step.is-done {
+  border-style: solid;
+  border-color: rgba(91, 95, 244, 0.25);
+  background: rgba(91, 95, 244, 0.08);
+  color: #4f46e5;
+}
+
+.lux-tb-config__error {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 0.65rem;
+  margin-bottom: 0.65rem;
+  border-radius: 10px;
+  background: rgba(244, 63, 94, 0.08);
+  border: 1px solid rgba(244, 63, 94, 0.2);
+  color: #be123c;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.lux-tb-config__sections {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  flex: 1;
+}
+
+.lux-tb-config__section {
+  padding: 0.75rem 0.85rem;
+  border-radius: 14px;
+  border: 1px solid rgba(148, 163, 184, 0.14);
+  background: rgba(248, 250, 252, 0.6);
+}
+
+.lux-tb-config__section-title {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin: 0;
+  font-size: 0.875rem;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.lux-tb-config__section-hint {
+  margin: 0.3rem 0 0.65rem;
+  font-size: 0.6875rem;
+  color: #94a3b8;
+  line-height: 1.4;
+}
+
+.lux-tb-config__fields {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.lux-tb-config__fields--2 {
+  grid-template-columns: 1fr 1fr;
+}
+
+.lux-tb-config__add-member {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  gap: 0.5rem;
+  align-items: end;
+  margin-bottom: 0.65rem;
+}
+
+.lux-tb-config__roster-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.lux-tb-config__roster-item {
+  display: grid;
+  grid-template-columns: 1.5rem 1fr auto;
+  gap: 0.5rem;
+  align-items: center;
+  padding: 0.5rem 0.6rem;
+  border-radius: 10px;
+  border: 1px solid rgba(148, 163, 184, 0.14);
+  background: #fff;
+}
+
+.lux-tb-config__roster-index {
+  font-size: 0.6875rem;
+  font-weight: 800;
+  color: #94a3b8;
+}
+
+.lux-tb-config__roster-person strong {
+  display: block;
+  font-size: 0.8125rem;
+  color: #0f172a;
+}
+
+.lux-tb-config__roster-person span {
+  font-size: 0.625rem;
+  color: #64748b;
+}
+
+.lux-tb-config__roster-empty {
+  text-align: center;
+  padding: 1rem;
+  border-radius: 10px;
+  border: 1px dashed rgba(148, 163, 184, 0.25);
+  color: #94a3b8;
+  font-size: 0.75rem;
+}
+
+.lux-tb-config__roster-empty i {
+  display: block;
+  font-size: 1.25rem;
+  margin-bottom: 0.35rem;
+  color: #cbd5e1;
+}
+
+.lux-tb-config__footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+  margin: 0;
+  padding: 0.75rem 1rem;
+  border-top: 1px solid rgba(148, 163, 184, 0.18);
+  background: #fff;
+  box-shadow: 0 -6px 16px rgba(15, 23, 42, 0.05);
+  z-index: 2;
+}
+
+.lux-tb-config__footer .lux-planner-btn {
+  min-height: 2.125rem;
+}
+
+/* Legacy configure (unused) */
+.lux-taskboard-config {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.lux-taskboard-config__form-card,
+.lux-taskboard-config__list-card {
+  border-radius: 16px;
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  background: #fff;
+  padding: 1rem 1.1rem;
+}
+
+.lux-taskboard-config__section-title {
+  margin: 0 0 0.75rem;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.lux-taskboard-config__grid {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 1rem;
+}
+
+.lux-taskboard-config__roster {
+  margin-top: 0.75rem;
+  border-radius: 12px;
+  border: 1px solid rgba(148, 163, 184, 0.14);
+  overflow: hidden;
+}
+
+.lux-taskboard-config__roster-head {
+  display: grid;
+  grid-template-columns: 40px 1fr 1fr 40px;
+  gap: 0.5rem;
+  padding: 0.5rem 0.65rem;
+  font-size: 0.625rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #94a3b8;
+  background: #f8fafc;
+}
+
+.lux-taskboard-config__roster-row {
+  display: grid;
+  grid-template-columns: 40px 1fr 1fr 40px;
+  gap: 0.5rem;
+  align-items: center;
+  padding: 0.45rem 0.65rem;
+  border-top: 1px solid rgba(148, 163, 184, 0.1);
+  font-size: 0.8125rem;
+}
+
+.lux-taskboard-config__add-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  gap: 0.5rem;
+  align-items: end;
+  margin-bottom: 0.65rem;
+}
+
+.lux-taskboard-config__boards {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.lux-taskboard-config__board-row {
+  display: grid;
+  grid-template-columns: 32px 1fr 1.2fr auto;
+  gap: 0.65rem;
+  align-items: center;
+  padding: 0.7rem 0.85rem;
+  border-radius: 12px;
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  background: #f8fafc;
+}
+
+.lux-taskboard-config__board-row.is-editing {
+  border-color: var(--tb-primary);
+  background: rgba(91, 95, 244, 0.05);
+}
+
+/* Status update modal */
+.lux-taskboard-modal .modal-content,
+.lux-taskboard-modal > div {
+  border-radius: 20px;
+  overflow: hidden;
+  border: none;
+  box-shadow: 0 24px 64px rgba(15, 23, 42, 0.2);
+  max-width: 920px;
+  width: calc(100vw - 2rem);
+}
+
+.lux-taskboard-modal__hero {
+  padding: 1rem 1.25rem;
+  background: linear-gradient(135deg, rgba(91, 95, 244, 0.12), rgba(20, 184, 166, 0.08));
+  border-bottom: 1px solid rgba(148, 163, 184, 0.15);
+}
+
+.lux-taskboard-modal__hero h3 {
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.lux-taskboard-modal__hero p {
+  margin: 0.3rem 0 0;
+  font-size: 0.8125rem;
+  color: #64748b;
+}
+
+.lux-taskboard-modal__body {
+  padding: 1rem 1.25rem 1.25rem;
+}
+
+.lux-taskboard-modal__task-card {
+  border-radius: 14px;
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  background: #f8fafc;
+  padding: 0.85rem 1rem;
+  margin-bottom: 1rem;
+}
+
+.lux-taskboard-modal__layout {
+  display: grid;
+  grid-template-columns: 1.2fr 0.9fr;
+  gap: 1rem;
+}
+
+@media (max-width: 1200px) {
+  .lux-taskboard-kanban {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .lux-taskboard-kanban {
+    grid-template-columns: 1fr;
+  }
+  .lux-taskboard-list__head,
+  .lux-taskboard-list__item {
+    min-width: 0;
+    grid-template-columns: 1fr;
+  }
+
+  .lux-taskboard-list__col--actions {
+    justify-self: stretch;
+  }
+
+  .lux-taskboard-list__actions {
+    justify-content: flex-start;
+  }
+  .lux-tb-config__layout {
+    grid-template-columns: 1fr;
+  }
+  .lux-tb-config__hero {
+    grid-template-columns: 1fr;
+  }
+  .lux-tb-config__fields--2,
+  .lux-tb-config__add-member {
+    grid-template-columns: 1fr;
+  }
+  .lux-taskboard-config__grid {
+    grid-template-columns: 1fr;
+  }
+  .lux-taskboard-modal__layout {
+    grid-template-columns: 1fr;
+  }
+}
