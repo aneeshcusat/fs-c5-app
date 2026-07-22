@@ -1,6 +1,7 @@
 {
-  "short_name": "fui App",
-  "name": "fui App",
+  "short_name": "Tracopus",
+  "name": "Tracopus",
+  "description": "Tracopus workforce and project operations",
   "icons": [
     {
       "src": "favicon.ico",
@@ -15,6 +16,6 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
+  "theme_color": "#166534",
   "background_color": "#ffffff"
 }

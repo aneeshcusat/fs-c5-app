@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en" data-lux-theme="luxury" data-lux-palette="emerald">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leave Management — Tracopus User Guide</title>
+  <meta name="description" content="Apply for leave, track balances, submit for approval, and see manager decisions — with working-week and holiday aware day counts.">
+  <meta name="keywords" content="tracopus, documentation, user guide, hrms, leaves, leave, management">
+  <link rel="canonical" href="https://tracopus.com/documentation/hrms/leaves.html">
+  <meta name="robots" content="index, follow">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Tracopus">
+  <meta property="og:title" content="Leave Management — Tracopus User Guide">
+  <meta property="og:description" content="Apply for leave, track balances, submit for approval, and see manager decisions — with working-week and holiday aware day counts.">
+  <meta property="og:url" content="https://tracopus.com/documentation/hrms/leaves.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Leave Management — Tracopus User Guide">
+  <meta name="twitter:description" content="Apply for leave, track balances, submit for approval, and see manager decisions — with working-week and holiday aware day counts.">
+  <script src="../js/docs-analytics.js?v=20260719a" defer></script>
+  <link rel="stylesheet" href="../css/styles.css?v=20260718g">
+  <script src="../js/brand-config.js?v=20260619e"></script>
+</head>
+<body data-docs-depth="1">
+
+<header aria-label="Site header"></header>
+
+<main>
+  <div class="breadcrumb"><a href="../index.html">Home</a> → HRMS → Leave Management</div>
+
+  <div class="doc-canvas">
+    <header class="doc-mast">
+      <div class="doc-mast__top">
+        <span class="doc-mast__eyebrow">HRMS · Leave Management</span>
+        <div class="page-meta page-meta--inline">
+          <span class="page-meta__item"><strong>Route</strong> <code>/hrms/leaves</code> · <code>/people/leaves</code></span>
+          <span class="page-meta__item"><strong>Flag</strong> <code>leaveManagementEnabled</code></span>
+        </div>
+      </div>
+      <h1 class="doc-mast__title">Leave Management</h1>
+      <p class="doc-mast__lead">Apply for leave, track balances, submit for approval, and see manager decisions — with working-week and holiday aware day counts.</p>
+      <p class="doc-mast__purpose">Scroll to <a href="#flowcharts">Flowcharts</a> for animated step-by-step diagrams. Admin setup: <a href="leave-configuration.html">Leave Configuration</a>.</p>
+    </header>
+
+    <div class="doc-flow">
+      <section class="doc-block" id="flowcharts">
+        <h2 class="doc-block__title">Flowcharts</h2>
+        <p>Each diagram auto-plays steps when it scrolls into view. Use <strong>Play / Pause</strong>, or click a step to jump. Matching flowchart nodes highlight as you go.</p>
+
+        <article class="diagram-card" data-diagram-autoplay="true">
+          <header class="diagram-card__head">
+            <div class="diagram-card__titles">
+              <h3>1 — End-to-end leave</h3>
+              <p class="diagram-card__desc">The full path from “policy ready” to timesheet impact. Use this when explaining leave to a new team.</p>
+            </div>
+            <div class="diagram-card__controls">
+              <button type="button" data-diagram-prev aria-label="Previous step"><i class="fe fe-chevron-left" aria-hidden="true"></i></button>
+              <button type="button" data-diagram-play aria-pressed="false"><i class="fe fe-play" aria-hidden="true"></i><span>Play</span></button>
+              <button type="button" data-diagram-next aria-label="Next step"><i class="fe fe-chevron-right" aria-hidden="true"></i></button>
+            </div>
+          </header>
+          <div class="diagram-card__chart">
+            <pre class="mermaid">
+flowchart TD
+  A[Policy and balances ready] --> B[Apply]
+  B --> C[Submit]
+  C --> D[Approve or Reject]
+  D --> E[Balance + timesheet]
+            </pre>
+          </div>
+          <ol class="diagram-steps">
+            <li class="diagram-step is-active"><span class="diagram-step__index">1</span><div class="diagram-step__body"><strong>Policy and balances ready</strong><span>Published leave policy (or classic) plus opening balance or accrual so the employee has available days.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">2</span><div class="diagram-step__body"><strong>Apply</strong><span>Employee opens Leave Management, picks type and dates; day count uses their working week and holidays.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">3</span><div class="diagram-step__body"><strong>Submit</strong><span>Overlap and working-day checks run; pending balance is reserved; approver is notified.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">4</span><div class="diagram-step__body"><strong>Approve or Reject</strong><span>Manager or delegate decides. Reject requires a comment and releases pending balance.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">5</span><div class="diagram-step__body"><strong>Balance + timesheet</strong><span>On approve: debit ledger, promote leave TaskActivities, optional attendance sync.</span></div></li>
+          </ol>
+          <p class="diagram-card__progress" data-diagram-progress></p>
+        </article>
+
+        <article class="diagram-card" data-diagram-autoplay="true">
+          <header class="diagram-card__head">
+            <div class="diagram-card__titles">
+              <h3>2 — Request lifecycle statuses</h3>
+              <p class="diagram-card__desc">How a leave row moves through workflow statuses, including reject and withdraw paths.</p>
+            </div>
+            <div class="diagram-card__controls">
+              <button type="button" data-diagram-prev aria-label="Previous step"><i class="fe fe-chevron-left" aria-hidden="true"></i></button>
+              <button type="button" data-diagram-play aria-pressed="false"><i class="fe fe-play" aria-hidden="true"></i><span>Play</span></button>
+              <button type="button" data-diagram-next aria-label="Next step"><i class="fe fe-chevron-right" aria-hidden="true"></i></button>
+            </div>
+          </header>
+          <div class="diagram-card__chart">
+            <pre class="mermaid">
+flowchart TD
+  C[CREATED] --> S[SUBMITTED]
+  S --> A[APPROVED]
+  A --> P[Promoted / Synced]
+  S --> R[REJECTED]
+  S --> W[Withdraw / Cancel]
+  W --> Rel[Pending released]
+  R --> Rel
+            </pre>
+          </div>
+          <ol class="diagram-steps">
+            <li class="diagram-step is-active"><span class="diagram-step__index">1</span><div class="diagram-step__body"><strong>CREATED</strong><span>Draft leave after create; not yet in the manager queue.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">2</span><div class="diagram-step__body"><strong>SUBMITTED</strong><span>Awaiting approval; balance held as pending.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">3</span><div class="diagram-step__body"><strong>APPROVED</strong><span>Authority accepted; debit starts; promotion may still be pending/retrying.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">4</span><div class="diagram-step__body"><strong>Promoted / Synced</strong><span>Timesheet leave activities exist; attendance may show LEAVE when sync is on.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">5</span><div class="diagram-step__body"><strong>REJECTED</strong><span>Manager declines with comment; pending balance released.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">6</span><div class="diagram-step__body"><strong>Withdraw / Cancel</strong><span>Employee or HR stops the request per status rules.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">7</span><div class="diagram-step__body"><strong>Pending released</strong><span>Held days return to available after reject/withdraw.</span></div></li>
+          </ol>
+          <p class="diagram-card__progress" data-diagram-progress></p>
+        </article>
+
+        <article class="diagram-card" data-diagram-autoplay="true">
+          <header class="diagram-card__head">
+            <div class="diagram-card__titles">
+              <h3>3 — Employee apply leave</h3>
+              <p class="diagram-card__desc">What the employee does in the Apply leave drawer, including fixing overlap or non-working ranges.</p>
+            </div>
+            <div class="diagram-card__controls">
+              <button type="button" data-diagram-prev aria-label="Previous step"><i class="fe fe-chevron-left" aria-hidden="true"></i></button>
+              <button type="button" data-diagram-play aria-pressed="false"><i class="fe fe-play" aria-hidden="true"></i><span>Play</span></button>
+              <button type="button" data-diagram-next aria-label="Next step"><i class="fe fe-chevron-right" aria-hidden="true"></i></button>
+            </div>
+          </header>
+          <div class="diagram-card__chart">
+            <pre class="mermaid">
+flowchart TD
+  O[Open Leaves] --> B[Check balance]
+  B --> A[Apply leave]
+  A --> T[Pick type and dates]
+  T --> D[Review day count]
+  D --> V{Overlap or non-working only?}
+  V -->|Yes| Fix[Fix dates]
+  Fix --> T
+  V -->|No| Sub[Submit for approval]
+            </pre>
+          </div>
+          <ol class="diagram-steps">
+            <li class="diagram-step is-active"><span class="diagram-step__index">1</span><div class="diagram-step__body"><strong>Open Leaves</strong><span>HRMS → Leaves (or People → Leaves) with leave module enabled.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">2</span><div class="diagram-step__body"><strong>Check balance</strong><span>Confirm available days for the leave type on the balance cards.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">3</span><div class="diagram-step__body"><strong>Apply leave</strong><span>Open the apply drawer from the header action.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">4</span><div class="diagram-step__body"><strong>Pick type and dates</strong><span>Choose leave type, from/to, optional half-day and reason.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">5</span><div class="diagram-step__body"><strong>Review day count</strong><span>Count excludes weekly offs and holidays for this employee.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">6</span><div class="diagram-step__body"><strong>Overlap / non-working check</strong><span>System blocks bad ranges; fix dates if needed.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">7</span><div class="diagram-step__body"><strong>Fix dates</strong><span>Adjust range until overlap and working-day rules pass.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">8</span><div class="diagram-step__body"><strong>Submit for approval</strong><span>Request becomes SUBMITTED and appears in the manager queue.</span></div></li>
+          </ol>
+          <p class="diagram-card__progress" data-diagram-progress></p>
+        </article>
+
+        <article class="diagram-card" data-diagram-autoplay="true">
+          <header class="diagram-card__head">
+            <div class="diagram-card__titles">
+              <h3>4 — Manager approve / reject</h3>
+              <p class="diagram-card__desc">Manager or delegate decision path from pending panel or Approvals inbox.</p>
+            </div>
+            <div class="diagram-card__controls">
+              <button type="button" data-diagram-prev aria-label="Previous step"><i class="fe fe-chevron-left" aria-hidden="true"></i></button>
+              <button type="button" data-diagram-play aria-pressed="false"><i class="fe fe-play" aria-hidden="true"></i><span>Play</span></button>
+              <button type="button" data-diagram-next aria-label="Next step"><i class="fe fe-chevron-right" aria-hidden="true"></i></button>
+            </div>
+          </header>
+          <div class="diagram-card__chart">
+            <pre class="mermaid">
+flowchart TD
+  P[Pending panel or Approvals inbox] --> Rev[Review dates and days]
+  Rev --> Dec{Decision}
+  Dec -->|Approve| Deb[Debit balance]
+  Deb --> Pro[Promote TaskActivity]
+  Pro --> Att[Attendance sync if flagged]
+  Dec -->|Reject| Com[Reject + required comment]
+  Com --> Rel[Pending balance released]
+            </pre>
+          </div>
+          <ol class="diagram-steps">
+            <li class="diagram-step is-active"><span class="diagram-step__index">1</span><div class="diagram-step__body"><strong>Open pending</strong><span>Leave Management pending panel or Workspace Approvals inbox.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">2</span><div class="diagram-step__body"><strong>Review</strong><span>Check employee, type, dates, day count, and reason.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">3</span><div class="diagram-step__body"><strong>Decision</strong><span>Approve or reject (reject needs a comment).</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">4</span><div class="diagram-step__body"><strong>Debit balance</strong><span>Approved leave moves days from pending to used.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">5</span><div class="diagram-step__body"><strong>Promote TaskActivity</strong><span>Leave days appear on timesheet; retries if promotion fails.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">6</span><div class="diagram-step__body"><strong>Attendance sync</strong><span>When flagged, writes LEAVE / HALF_DAY on the attendance matrix.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">7</span><div class="diagram-step__body"><strong>Reject + comment</strong><span>Employee is notified; request closed as REJECTED.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">8</span><div class="diagram-step__body"><strong>Pending released</strong><span>Held balance returns to available.</span></div></li>
+          </ol>
+          <p class="diagram-card__progress" data-diagram-progress></p>
+        </article>
+
+        <article class="diagram-card" data-diagram-autoplay="true">
+          <header class="diagram-card__head">
+            <div class="diagram-card__titles">
+              <h3>5 — How day count is resolved</h3>
+              <p class="diagram-card__desc">Why Saturday may count (Mon–Sat) or Friday may not (Sun–Thu). Priority: employee override → jurisdiction → team → fallback.</p>
+            </div>
+            <div class="diagram-card__controls">
+              <button type="button" data-diagram-prev aria-label="Previous step"><i class="fe fe-chevron-left" aria-hidden="true"></i></button>
+              <button type="button" data-diagram-play aria-pressed="false"><i class="fe fe-play" aria-hidden="true"></i><span>Play</span></button>
+              <button type="button" data-diagram-next aria-label="Next step"><i class="fe fe-chevron-right" aria-hidden="true"></i></button>
+            </div>
+          </header>
+          <div class="diagram-card__chart">
+            <pre class="mermaid">
+flowchart TD
+  Emp[Leave subject employeeId] --> Res[Working-day resolver]
+  Res --> P1{Override?}
+  P1 -->|Yes| WD[Workdays set]
+  P1 -->|No| P2{Jurisdiction rule?}
+  P2 -->|Yes| WD
+  P2 -->|No| P3[Team / schedule / Mon-Fri]
+  P3 --> WD
+  WD --> Hol[Minus holidays]
+  Hol --> Days[numberOfDays]
+            </pre>
+          </div>
+          <ol class="diagram-steps">
+            <li class="diagram-step is-active"><span class="diagram-step__index">1</span><div class="diagram-step__body"><strong>Leave subject</strong><span>Resolver uses the employee the leave is for — not only the team.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">2</span><div class="diagram-step__body"><strong>Working-day resolver</strong><span>Single service used by create, submit, promote, and the apply drawer.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">3</span><div class="diagram-step__body"><strong>Employee override?</strong><span>Personal working-day rule wins if assigned.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">4</span><div class="diagram-step__body"><strong>Workdays set</strong><span>ISO weekdays that count (e.g. 1–5 or 7,1–4 for Sun–Thu).</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">5</span><div class="diagram-step__body"><strong>Jurisdiction rule?</strong><span>Country/region pattern if the employee is assigned a leave jurisdiction.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">6</span><div class="diagram-step__body"><strong>Team / schedule / Mon–Fri</strong><span>Team-default rule, then work schedule/shift, then Mon–Fri.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">7</span><div class="diagram-step__body"><strong>Minus holidays</strong><span>People holidays matching assigned calendar keys are excluded.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">8</span><div class="diagram-step__body"><strong>numberOfDays</strong><span>Server recalculates on create/submit; drawer estimate is guidance only.</span></div></li>
+          </ol>
+          <p class="diagram-card__progress" data-diagram-progress></p>
+        </article>
+      </section>
+
+      <section class="doc-block" id="overview">
+        <h2 class="doc-block__title">Overview</h2>
+        <p><strong>HRMS → Leaves</strong> is the employee and manager hub for time off. When <code>leaveManagementEnabled</code> is on, you create and submit requests here; managers approve from the pending panel or Approvals inbox.</p>
+      </section>
+
+      <section class="doc-block" id="use-cases">
+        <h2 class="doc-block__title">Feature &amp; use-case map</h2>
+        <div class="table-wrap">
+          <table class="table">
+            <thead><tr><th>Use case</th><th>Who</th><th>What happens</th></tr></thead>
+            <tbody>
+              <tr><td>View balances</td><td>Employee</td><td>Available / used / pending by type</td></tr>
+              <tr><td>Apply full-day / half-day</td><td>Employee</td><td>Create + submit; day count from resolver</td></tr>
+              <tr><td>Approve / reject</td><td>Manager / delegate</td><td>Debit + promote, or release pending</td></tr>
+              <tr><td>Withdraw / cancel</td><td>Employee / HR</td><td>Balance reverse/release per status</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="doc-block doc-block--related" id="related-pages">
+        <h2 class="doc-block__title">Related pages</h2>
+        <div class="related-links">
+          <a class="related-link" href="leave-configuration.html"><span class="related-link__label">Leave Configuration</span><span class="related-link__desc">Admin setup + configure flowcharts.</span></a>
+          <a class="related-link" href="attendance.html"><span class="related-link__label">Attendance</span><span class="related-link__desc">Leave sync and month matrix.</span></a>
+          <a class="related-link" href="../user-guide/hrms/hrms-apply-leave.html"><span class="related-link__label">Scenario: Apply leave</span><span class="related-link__desc">Step-by-step employee flow.</span></a>
+          <a class="related-link" href="../user-guide/hrms/hrms-approve-leave.html"><span class="related-link__label">Scenario: Approve leave</span><span class="related-link__desc">Manager approve/reject path.</span></a>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <nav class="page-nav">
+    <a class="page-nav__prev" href="timesheet-approval.html">← Timesheet Approval</a>
+    <a class="page-nav__next" href="leave-configuration.html">Leave Configuration →</a>
+  </nav>
+</main>
+
+<footer>
+  <div class="container">
+    <p>&copy; 2026 <span data-brand>Tracopus</span>. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="../js/palette.js?v=20260619e"></script>
+<script src="../js/brand.js?v=20260619e"></script>
+<script src="../js/docs-utility-config.js?v=20260720b"></script>
+<script src="../js/nav-config.js?v=20260619e"></script>
+<script src="../js/navigation.js?v=20260619e"></script>
+<script src="../js/site-enhancements.js?v=20260718d"></script>
+<script src="../js/search.js?v=20260619e"></script>
+<script type="module">
+  import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+  mermaid.initialize({
+    startOnLoad: true,
+    theme: "base",
+    securityLevel: "loose",
+    flowchart: { curve: "basis", htmlLabels: true },
+    themeVariables: {
+      primaryColor: "#d8f3dc",
+      primaryTextColor: "#1b4332",
+      primaryBorderColor: "#40916c",
+      lineColor: "#52796f",
+      secondaryColor: "#f1faee",
+      tertiaryColor: "#ffffff",
+      fontFamily: "Inter, system-ui, sans-serif",
+    },
+  });
+  setTimeout(() => {
+    if (window.TracopusDocsDiagrams) window.TracopusDocsDiagrams.boot();
+  }, 600);
+</script>
+<script src="../js/docs-diagrams.js?v=20260718e"></script>
+</body>
+</html>

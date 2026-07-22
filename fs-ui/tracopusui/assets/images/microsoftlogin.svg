@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="215" height="41" viewBox="0 0 215 41" role="img" aria-label="Sign in with Microsoft">
+  <title>Sign in with Microsoft</title>
+  <rect width="215" height="41" fill="#ffffff" stroke="#8c8c8c" stroke-width="1"/>
+  <g transform="translate(12, 12.5)">
+    <rect x="0" y="0" width="7.5" height="7.5" fill="#f25022"/>
+    <rect x="8.5" y="0" width="7.5" height="7.5" fill="#7fba00"/>
+    <rect x="0" y="8.5" width="7.5" height="7.5" fill="#00a4ef"/>
+    <rect x="8.5" y="8.5" width="7.5" height="7.5" fill="#ffb900"/>
+  </g>
+  <text
+    x="40"
+    y="26"
+    fill="#5e5e5e"
+    font-family="Segoe UI, Helvetica Neue, Arial, sans-serif"
+    font-size="13"
+    font-weight="600"
+  >Sign in with Microsoft</text>
+</svg>

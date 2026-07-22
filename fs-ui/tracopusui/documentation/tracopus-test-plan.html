@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en" data-lux-theme="luxury" data-lux-palette="emerald">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test Plan — Tracopus Documentation</title>
+  <meta name="description" content="Test Plan — Tracopus Documentation — Tracopus user guide for enterprise work intelligence.">
+  <meta name="keywords" content="tracopus, documentation, user guide, test, plan, —">
+  <link rel="canonical" href="https://tracopus.com/documentation/tracopus-test-plan.html">
+  <meta name="robots" content="index, follow">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Tracopus">
+  <meta property="og:title" content="Test Plan — Tracopus Documentation — Tracopus User Guide">
+  <meta property="og:description" content="Test Plan — Tracopus Documentation — Tracopus user guide for enterprise work intelligence.">
+  <meta property="og:url" content="https://tracopus.com/documentation/tracopus-test-plan.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Test Plan — Tracopus Documentation — Tracopus User Guide">
+  <meta name="twitter:description" content="Test Plan — Tracopus Documentation — Tracopus user guide for enterprise work intelligence.">
+  <script src="js/docs-analytics.js?v=20260719a" defer></script>
+  <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="images/tracopus-logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css?v=20260718g">
+  <link rel="stylesheet" href="css/test-plan.css?v=20260711a">
+  <script src="js/brand-config.js?v=20260711a"></script>
+</head>
+<body class="test-plan-site" data-docs-depth="0">
+
+<header aria-label="Site header"></header>
+
+<main>
+  <div class="breadcrumb">
+    <a href="index.html">Documentation</a>
+    <span aria-hidden="true"> / </span>
+    <a href="tracopus-use-case-catalog.html">Use Case Catalog</a>
+    <span aria-hidden="true"> / </span>
+    Test Plan
+  </div>
+
+  <section class="section">
+    <div class="page-hero">
+      <div class="eyebrow">Official Documentation · QA Traceability</div>
+      <h1>Tracopus Test Plan</h1>
+      <p class="lead">Every test scenario mapped to a use case page: <strong>what to test</strong>, <strong>steps to reproduce</strong>, <strong>expected result</strong>, and <strong>expected behavior</strong>. Filter by module or test type; each scenario links back to its use case in the catalog.</p>
+      <div class="tp-stat-grid">
+        <div class="tp-stat-card"><strong id="tp-count">—</strong><span>test scenarios</span></div>
+        <div class="tp-stat-card"><strong id="tp-usecase-count">—</strong><span>linked use cases</span></div>
+        <div class="tp-stat-card"><strong>8750</strong><span>P0/P1 with backend validation</span></div>
+        <div class="tp-stat-card"><strong>8784</strong><span>gap GD01–GD16 tests</span></div>
+      </div>
+    </div>
+
+    <div class="callout callout--tip">
+      <div class="callout__icon">📋</div>
+      <div class="callout__body">
+        <strong class="callout__title">Final gap discovery matrix</strong>
+        <div class="callout__text"><strong>10478</strong> total scenarios including <strong>8784</strong> GD01–GD16 reviews across <strong>721</strong> use cases. Filter by module or type. PASS remains <strong>0</strong> until staging live evidence.</div>
+      </div>
+    </div>
+
+    <div class="callout callout--info">
+      <div class="callout__icon">ℹ️</div>
+      <div class="callout__body">
+        <strong class="callout__title">Traceability</strong>
+        <div class="callout__text">Each test links to its parent use case in the <a href="tracopus-use-case-catalog.html">Use Case Catalog</a>. Use case pages list all linked tests. Copy steps into your QA tool or Playwright suite; attach test ID (e.g. <code>project-portfolio-tp-smoke</code>) for requirements traceability.</div>
+      </div>
+    </div>
+
+    <div class="callout callout--tip">
+      <div class="callout__icon">💡</div>
+      <div class="callout__body">
+        <strong class="callout__title">Test types</strong>
+        <div class="callout__text"><strong>Smoke</strong> — page load. <strong>Functional</strong> — business scenario. <strong>Verification</strong> — acceptance checklist. <strong>Permission</strong> / <strong>Security</strong> — access control. <strong>Regression</strong> — shadow table isolation. <strong>Negative</strong> — feature flag off. Dispositions: <strong>SHIPPED</strong>, <strong>OUT_OF_SCOPE</strong>, <strong>BLOCKED</strong>. Status: LIVE_BACKEND_VERIFIED, CODE_PATH_VERIFIED, PLANNED.</div>
+      </div>
+    </div>
+
+    <div class="tp-toolbar" role="search">
+      <div class="tp-toolbar__row">
+        <div class="tp-toolbar__search">
+          <input type="search" id="tp-search" placeholder="Search tests, use cases, routes, expected results…" aria-label="Search test scenarios">
+        </div>
+      </div>
+      <div class="tp-toolbar__row">
+        <div class="tp-filters" id="tp-filters" aria-label="Filter by module"></div>
+      </div>
+      <div class="tp-toolbar__row">
+        <div class="tp-type-filters" id="tp-type-filters" aria-label="Filter by test type"></div>
+      </div>
+    </div>
+
+    <div class="tp-layout">
+      <nav class="tp-toc" id="tp-toc" aria-label="Table of contents">
+        <h2>Jump to module</h2>
+        <div id="tp-toc-links"></div>
+      </nav>
+
+      <div class="tp-main">
+        <div id="tp-content"></div>
+        <div class="tp-empty is-hidden" id="tp-empty">No tests match your search. Try a different term or clear filters.</div>
+      </div>
+    </div>
+
+    <div class="palette-section" style="margin-top:2rem;">
+      <h4>Documentation theme palette</h4>
+      <p style="font-size:0.875rem;color:var(--text-light);margin-bottom:0;">Default: <strong>Emerald</strong> Luxury UI.</p>
+      <div id="palette-grid" class="palette-grid"></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <p>&copy; 2026 <span data-brand>Tracopus</span>. Test Plan.</p>
+    <p style="margin-top:0.75rem;">
+      <a href="index.html">Documentation</a>
+      <a href="tracopus-use-case-catalog.html">Use Case Catalog</a>
+      <a href="user-guide/index.html">Scenario Guide</a>
+      <a href="getting-started.html">Getting Started</a>
+    </p>
+    <p class="footer-muted">Generated from use case catalog — regenerate with <code>node js/generate-test-plan.mjs</code></p>
+  </div>
+</footer>
+
+<script src="js/palette.js?v=20260711a"></script>
+<script src="js/brand.js?v=20260711a"></script>
+<script src="js/test-plan-data.js?v=20260711a"></script>
+<script src="js/docs-utility-config.js?v=20260720b"></script>
+<script src="js/nav-config.js?v=20260711a"></script>
+<script src="js/navigation.js?v=20260711a"></script>
+<script src="js/site-enhancements.js?v=20260718d"></script>
+<script src="js/search.js?v=20260711a"></script>
+<script src="js/test-plan.js?v=20260711a"></script>
+</body>
+</html>

@@ -1,0 +1,4 @@
+# Built artifacts — keep jars local / release storage, not git
+fs-app/*.jar
+.DS_Store
+**/.DS_Store

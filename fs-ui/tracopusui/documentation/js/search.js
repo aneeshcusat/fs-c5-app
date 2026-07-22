@@ -2,10 +2,21 @@
   'use strict';
 
   function getBasePath() {
-    return '';
+    var depth = parseInt(document.body.getAttribute('data-docs-depth') || '0', 10);
+    return depth > 0 ? '../' : '';
   }
 
-  var basePath = getBasePath();
+  function getBasePathAtLoad() {
+    var depth = 0;
+    if (document.body) {
+      depth = parseInt(document.body.getAttribute('data-docs-depth') || '0', 10);
+    } else if (/\/(project|sales|mobile|hrms|faq)\//.test(window.location.pathname)) {
+      depth = 1;
+    }
+    return depth > 0 ? '../' : '';
+  }
+
+  var basePath = getBasePathAtLoad();
   var documentationPages = [
   {
     "title": "Home",
@@ -15,6 +26,53 @@
       "home",
       "overview",
       "guide"
+    ]
+  },
+  {
+    "title": "Scenario User Guide",
+    "url": "user-guide/index.html",
+    "description": "65 step-by-step workflows — permissions, flags, warnings, QA checklists",
+    "keywords": [
+      "scenario",
+      "workflow",
+      "steps",
+      "test",
+      "qa",
+      "permissions"
+    ]
+  },
+  {
+    "title": "All scenarios",
+    "url": "user-guide/scenarios.html",
+    "description": "Flat index of all 65 scenario workflows",
+    "keywords": [
+      "scenarios",
+      "all",
+      "workflows",
+      "index"
+    ]
+  },
+  {
+    "title": "Create employee (scenario)",
+    "url": "user-guide/hrms/hrms-create-employee.html",
+    "description": "HRMS wizard — create employee with access and sign-in",
+    "keywords": [
+      "create",
+      "employee",
+      "hrms",
+      "wizard",
+      "onboarding"
+    ]
+  },
+  {
+    "title": "Create project (scenario)",
+    "url": "user-guide/project/project-create-project.html",
+    "description": "7-step project wizard walkthrough",
+    "keywords": [
+      "create",
+      "project",
+      "wizard",
+      "delivery"
     ]
   },
   {
@@ -178,18 +236,123 @@
   {
     "title": "Timesheet",
     "url": "hrms/timesheet.html",
-    "description": "Timesheet documentation page",
+    "description": "Weekly timesheet grid — billable, non-billable, and leave entry",
     "keywords": [
       "hrms",
-      "timesheet"
+      "timesheet",
+      "hours",
+      "week grid"
+    ]
+  },
+  {
+    "title": "Timesheet Approval",
+    "url": "hrms/timesheet-approval.html",
+    "description": "Submit, manager approve, conflict resolution, payroll lock, and approval delegation",
+    "keywords": [
+      "hrms",
+      "timesheet",
+      "approval",
+      "pending",
+      "delegation",
+      "lock",
+      "payroll"
+    ]
+  },
+  {
+    "title": "Leave Management",
+    "url": "hrms/leaves.html",
+    "description": "Native leave apply/approve lifecycle, balances, working-week day counts, timesheet promotion",
+    "keywords": [
+      "hrms",
+      "leave",
+      "leave management",
+      "balance",
+      "accrual",
+      "approve",
+      "apply leave",
+      "working days",
+      "half-day",
+      "pending"
+    ]
+  },
+  {
+    "title": "Leave Configuration",
+    "url": "hrms/leave-configuration.html",
+    "description": "Admin leave setup: Global Policy Center, holidays, working days, jurisdictions, employee balances, org/role flags",
+    "keywords": [
+      "leave configuration",
+      "global leave policy",
+      "leave policies",
+      "holiday calendar",
+      "legal calendars",
+      "working days",
+      "working-day rules",
+      "employee leave config",
+      "accrual",
+      "jurisdiction",
+      "publish",
+      "leaveAdditional",
+      "Sun-Thu",
+      "Mon-Sat"
     ]
   },
   {
     "title": "Attendance",
     "url": "hrms/attendance.html",
-    "description": "Attendance documentation page",
+    "description": "Attendance matrix, mark, regularization, approvals, leave sync, payroll lock — with Mermaid flowcharts",
     "keywords": [
       "hrms",
+      "attendance",
+      "matrix",
+      "regularization",
+      "mark attendance",
+      "payroll lock",
+      "leave sync",
+      "flowchart"
+    ]
+  },
+  {
+    "title": "Unified Audit Trail",
+    "url": "hrms/audit-trail.html",
+    "description": "Unified audit timeline across HRMS and project screens — actor and entity history",
+    "keywords": [
+      "audit",
+      "history",
+      "timeline",
+      "activity",
+      "approval",
+      "hrms",
+      "project"
+    ]
+  },
+  {
+    "title": "Persona Navigation",
+    "url": "hrms/persona-navigation.html",
+    "description": "Turn off personas, modules, or pages org-wide, or customize which personas can open each page",
+    "keywords": [
+      "persona",
+      "persona navigation",
+      "pagePersonaMap",
+      "disabledPersonas",
+      "disabledPaths",
+      "access",
+      "admin",
+      "kill switch",
+      "org access"
+    ]
+  },
+  {
+    "title": "User Flows",
+    "url": "user-flows/index.html",
+    "description": "User flow hub linking scenario walkthroughs, screen guides, and the use case catalog",
+    "keywords": [
+      "user flows",
+      "workflows",
+      "scenarios",
+      "use cases",
+      "persona navigation",
+      "timesheet",
+      "leave",
       "attendance"
     ]
   },
@@ -232,7 +395,7 @@
   {
     "title": "Application Configuration",
     "url": "hrms/application-config.html",
-    "description": "org.json application configuration, role.json access control, FAQ and common mistakes",
+    "description": "org.json application configuration, role.json access control, personaNavigationAdditional, personaModules, FAQ and common mistakes",
     "keywords": [
       "appconfig",
       "application configuration",
@@ -240,6 +403,11 @@
       "org.json",
       "role.json",
       "permissions",
+      "persona",
+      "personaNavigationAdditional",
+      "pagePersonaMap",
+      "personaModules",
+      "persona navigation",
       "hrms",
       "admin",
       "service line",
@@ -2533,7 +2701,14 @@
     }
     searchResults.innerHTML = results.map(function (result, index) {
       var isAnchor = result.url.indexOf('#') === 0;
-      var fullUrl = isAnchor ? window.location.pathname.split('/').pop() + result.url : result.url;
+      var fullUrl;
+      if (isAnchor) {
+        fullUrl = (window.location.pathname.split('/').pop() || 'index.html') + result.url;
+      } else if (result.url.indexOf('../') === 0 || result.url.indexOf('/') === 0) {
+        fullUrl = result.url;
+      } else {
+        fullUrl = getBasePath() + result.url;
+      }
       return '<div class="result-item ' + (index === 0 ? 'active' : '') + '">' +
         '<a href="' + fullUrl + '">' +
         '<div class="result-title">' + highlightText(result.title, query) + '</div>' +
@@ -2545,17 +2720,19 @@
   }
 
   function createSearchUI() {
-    var headerContent = document.querySelector('header .header-content');
-    if (!headerContent || document.getElementById('docSearchInput')) return;
+    var actions =
+      document.querySelector('.docs-shell-actions') ||
+      document.querySelector('header .header-content');
+    if (!actions || document.getElementById('docSearchInput')) return;
 
     var searchContainer = document.createElement('div');
     searchContainer.className = 'search-container';
     searchContainer.innerHTML =
       '<div class="search-wrapper">' +
-      '<input type="text" id="docSearchInput" class="search-input" placeholder="Search documentation…" autocomplete="off" />' +
-      '<span class="search-icon">🔍</span>' +
+      '<input type="text" id="docSearchInput" class="search-input" placeholder="Search…" autocomplete="off" />' +
+      '<kbd class="search-kbd" aria-hidden="true">⌘K</kbd>' +
       '<div id="searchResults" class="search-results"></div></div>';
-    headerContent.appendChild(searchContainer);
+    actions.appendChild(searchContainer);
 
     var searchInput = document.getElementById('docSearchInput');
     var searchResults = document.getElementById('searchResults');
@@ -2583,9 +2760,16 @@
     });
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', createSearchUI);
-  } else {
-    createSearchUI();
+  function bootSearch() {
+    if (document.querySelector('.docs-shell-actions') || document.querySelector('header .header-content')) {
+      createSearchUI();
+    }
   }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', bootSearch);
+  } else {
+    bootSearch();
+  }
+  document.addEventListener('docs-header-ready', bootSearch);
 })();

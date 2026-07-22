@@ -1,66 +1,35 @@
 <!DOCTYPE html>
-<html lang="en" data-lux-palette="emerald">
+<html lang="en" data-lux-theme="luxury" data-lux-palette="emerald">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Admin &amp; Access — Tracopus User Guide</title>
-  <link rel="icon" href="images/tracopus-logo.png" type="image/png">
+  <meta name="description" content="Admin &amp;amp; Access — Tracopus user guide for enterprise work intelligence.">
+  <meta name="keywords" content="tracopus, documentation, user guide, admin, &amp;amp;, access">
+  <link rel="canonical" href="https://tracopus.com/documentation/admin.html">
+  <meta name="robots" content="index, follow">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Tracopus">
+  <meta property="og:title" content="Admin &amp;amp; Access — Tracopus User Guide">
+  <meta property="og:description" content="Admin &amp;amp; Access — Tracopus user guide for enterprise work intelligence.">
+  <meta property="og:url" content="https://tracopus.com/documentation/admin.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Admin &amp;amp; Access — Tracopus User Guide">
+  <meta name="twitter:description" content="Admin &amp;amp; Access — Tracopus user guide for enterprise work intelligence.">
+  <script src="js/docs-analytics.js?v=20260719a" defer></script>
+  <link rel="apple-touch-icon" href="images/tracopus-logo.png">
+  <link rel="icon" href="images/favicon.ico" type="image/x-icon">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=20260604a">
-  <script src="js/brand-config.js?v=20260604a"></script>
+  <link rel="stylesheet" href="css/styles.css?v=20260718g">
+  <script src="js/brand-config.js?v=20260619e"></script>
 </head>
 <body data-docs-depth="0">
 
-<header>
-  <div class="container">
-    <div class="header-content">
-      <div class="header-brand">
-        <a href="index.html" class="header-brand__link" aria-label="User Guide home">
-          <img src="images/tracopus-logo.png" alt="" class="header-logo" width="140" height="38">
-          <div class="header-brand__text">
-            <h1>User Guide</h1>
-            <p class="subtitle">Complete Documentation &amp; User Manual</p>
-            <p class="version">Luxury UI · Version 2.0</p>
-            <span class="lux-badge">Enterprise Work Intelligence</span>
-          </div>
-        </a>
-      </div>
-    </div>
-  </div>
-</header>
+<header aria-label="Site header"></header>
 
-<nav>
-  <div class="container">
-    <ul>
 
-      <li><a href="index.html">Home</a></li>
-      <li><a href="getting-started.html">Getting Started</a></li>
-      <li><a href="hrms/index.html">HRMS</a></li>
-      <li><a href="sales/index.html">Sales</a></li>
-      <li><a href="project/index.html">Project</a></li>
-      <li><a href="mobile/index.html">Mobile</a></li>
-      <li><a href="interface.html">Luxury UI</a></li>
-      <li><a href="charts.html">Charts</a></li>
-      <li><a href="faq/index.html">FAQ</a></li>
-      <li><a href="admin.html" class="active">Admin</a></li>
-    </ul>
-  </div>
-</nav>
-
-<aside class="sidebar">
-  <ul>
-        <li class="section-title">On this page</li>
-    <li><a href="admin.html#overview">Access overview</a></li>
-    <li><a href="admin.html#modules">Module access</a></li>
-    <li><a href="admin.html#project">Project access</a></li>
-    <li><a href="admin.html#timesheet">Timesheet rules</a></li>
-    <li><a href="admin.html#appconfig">Application config</a></li>
-    <li><a href="admin.html#settings">Organization settings</a></li>
-    <li><a href="admin.html#reports-feedback">Reports &amp; feedback</a></li>
-  </ul>
-</aside>
 
 <main>
     <div class="breadcrumb"><a href="index.html">Home</a> → Admin &amp; Access</div>
@@ -68,7 +37,7 @@
     <div class="page-hero">
       <div class="eyebrow">Chapter 9 · For admins &amp; power users</div>
       <h2>Admin &amp; Access</h2>
-      <p>How permissions shape what you see in the Luxury UI — module menus, project scoping, timesheet date policies, and application configuration.</p>
+      <p>How permissions shape what you see in the Luxury UI — module menus, project scoping, timesheet date policies, and application configuration. Scenario pages document the same flags with step-by-step workflows in the <a href="user-guide/index.html">Scenario User Guide</a>.</p>
     </div>
   </section>
 
@@ -78,11 +47,49 @@
     <ol>
       <li><strong>Module level</strong> — can you see HRMS, Sales, or Project directories at all?</li>
       <li><strong>Page level</strong> — which routes within a module appear in the sidebar?</li>
+      <li><strong>Persona level</strong> — which persona views you may switch into, and which pages each persona can open (org map + kill switches)</li>
       <li><strong>Action level</strong> — create, edit, delete, assign, mark attendance, etc.</li>
       <li><strong>Record level</strong> — project membership, team scope, shared vs private visibility</li>
       <li><strong>Field level</strong> — timesheet date windows, report type availability</li>
     </ol>
     <p>Mobile receives an encrypted access control payload on login; web evaluates permissions from the authenticated user session.</p>
+  </section>
+
+  <section class="section" id="persona-access">
+    <h2>Persona access &amp; navigation</h2>
+    <p>Tracopus separates <strong>who may use a persona</strong> (role) from <strong>org-wide page mapping and kill switches</strong> (organization).</p>
+    <div class="table-wrap">
+      <table class="table">
+        <thead><tr><th>Surface</th><th>Route</th><th>Stores in</th><th>What you configure</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>Roles &amp; permissions</td>
+            <td><code>/admin/roles</code></td>
+            <td><code>role.json</code> → HRMS → <code>personaModules</code></td>
+            <td>Allowed personas, default persona, switcher; page preview writes the shared org page map</td>
+          </tr>
+          <tr>
+            <td>Persona navigation</td>
+            <td><code>/admin/persona-navigation</code></td>
+            <td><code>org.json</code> → HRMS → <code>personaNavigationAdditional</code></td>
+            <td><strong>Turn off</strong> personas/modules/pages; <strong>Page access</strong> — one page at a time, Product default vs Custom. Screen guide: <a href="hrms/persona-navigation.html">Persona Navigation</a>. Scenario: <a href="user-guide/admin/admin-persona-navigation.html">Turn off org access</a>.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <h3>Defaults</h3>
+    <ul>
+      <li><strong>Org seed:</strong> empty <code>pagePersonaMap</code> and empty disable lists — catalog sidebar <code>personas[]</code> apply until you customize a page.</li>
+      <li><strong>Site Admin role seed:</strong> all personas allowed, <code>defaultPersona: ADMIN</code>, switcher on.</li>
+    </ul>
+    <h3>Evaluation order</h3>
+    <ol>
+      <li>Role module / menu flags</li>
+      <li>Role <code>personaModules</code> (or Automatic heuristic if never saved)</li>
+      <li>Org <code>pagePersonaMap</code> override when present</li>
+      <li>Org <code>disabledPersonas</code> / <code>disabledPaths</code> / <code>disabledModules</code> — always win</li>
+    </ol>
+    <p>Permission matrix on Roles stays under <strong>Advanced</strong>. Full key reference: <a href="hrms/application-config.html#cfg-personaNavigationAdditional">personaNavigationAdditional</a> and <a href="hrms/application-config.html#access-personaModules">personaModules</a>.</p>
   </section>
 
   <section class="section" id="modules">
@@ -152,10 +159,11 @@
     <p><code>/hrms/appconfig</code> — hierarchical configuration tree per team (admin access required).</p>
     <h3>What admins configure</h3>
     <ul>
-      <li><strong>Application configuration (org.json)</strong> — dropdown lists, service line trees, notification emails, feature toggles</li>
-      <li><strong>Access control (role.json)</strong> — module visibility, CRUD permissions, timesheet windows, report access</li>
+      <li><strong>Application configuration (org.json)</strong> — dropdown lists, service line trees, notification emails, feature toggles, <code>personaNavigationAdditional</code></li>
+      <li><strong>Access control (role.json)</strong> — module visibility, CRUD permissions, timesheet windows, report access, <code>personaModules</code></li>
       <li>Team-scoped overrides inherited from parent org nodes with lock/hide/inherit controls</li>
       <li>Role bar for assigning role templates to org units during editing</li>
+      <li>Dedicated UIs: <strong>Admin → Roles</strong> (persona-first) and <strong>Admin → Persona navigation</strong> (simplified Turn off / Page access)</li>
     </ul>
     <p><a href="hrms/application-config.html" class="quick-link">Open full Application Configuration reference →</a> — every key from <code>org.json</code> and <code>role.json</code> with descriptions, sample values, and UI workflow notes.</p>
   </section>
@@ -187,6 +195,7 @@
     <p>&copy; 2026 <span data-brand>Tracopus</span>. All rights reserved.</p>
     <p style="margin-top:0.75rem;">
       <a href="index.html">Documentation</a>
+      <a href="user-guide/index.html">Scenario Guide</a>
       <a href="getting-started.html">Getting Started</a>
       <a href="charts.html">Charts</a>
     </p>
@@ -194,9 +203,12 @@
   </div>
 </footer>
 
-<script src="js/palette.js?v=20260604a"></script>
-<script src="js/brand.js?v=20260604a"></script>
-<script src="js/navigation.js?v=20260604a"></script>
-<script src="js/search.js?v=20260604a"></script>
+<script src="js/palette.js?v=20260619e"></script>
+<script src="js/brand.js?v=20260619e"></script>
+<script src="js/docs-utility-config.js?v=20260720b"></script>
+<script src="js/nav-config.js?v=20260619e"></script>
+<script src="js/navigation.js?v=20260619e"></script>
+<script src="js/site-enhancements.js?v=20260718d"></script>
+<script src="js/search.js?v=20260619e"></script>
 </body>
 </html>

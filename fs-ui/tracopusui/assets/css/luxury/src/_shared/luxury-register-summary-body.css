@@ -1,0 +1,34 @@
+/* ========== shared/luxury-register-summary-body.css ========== */
+/* Collapse/expand shells for register summary panel bodies */
+
+.lux-bid-summary__body,
+.lux-emp-summary__body,
+.lux-ts-summary__body,
+.lux-acct-summary__body {
+    overflow: hidden;
+    transition: max-height 0.28s ease, opacity 0.22s ease;
+}
+
+.lux-bid-summary.is-collapsed .lux-bid-summary__body,
+.lux-emp-summary.is-collapsed .lux-emp-summary__body,
+.lux-ts-summary.is-collapsed .lux-ts-summary__body,
+.lux-acct-summary.is-collapsed .lux-acct-summary__body,
+.lux-acct-summary--insights.is-collapsed .lux-acct-summary__body {
+    max-height: 0;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.lux-bid-summary:not(.is-collapsed) .lux-bid-summary__body,
+.lux-emp-summary:not(.is-collapsed) .lux-emp-summary__body,
+.lux-ts-summary:not(.is-collapsed) .lux-ts-summary__body,
+.lux-acct-summary:not(.is-collapsed) .lux-acct-summary__body,
+.lux-acct-summary--insights:not(.is-collapsed) .lux-acct-summary__body {
+    opacity: 1;
+}
+
+.lux-att-summary.is-collapsed .lux-att-summary__body,
+.lux-inv-summary.is-collapsed .lux-inv-summary__body,
+.lux-activity-summary.is-collapsed .lux-activity-summary__body {
+    display: none;
+}

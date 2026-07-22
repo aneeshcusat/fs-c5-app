@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en" data-lux-theme="luxury" data-lux-palette="emerald">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leave Anomaly & Fairness — Tracopus User Guide</title>
+  <meta name="description" content="Register view for anomaly rules, flagged reviews, and fairness snapshots — no self-serve write UI; seed via API. Flags never auto-reject leave.">
+  <meta name="keywords" content="tracopus, documentation, user guide, hrms, leave, anomaly, &amp;, fairness">
+  <link rel="canonical" href="https://tracopus.com/documentation/hrms/leave-anomaly.html">
+  <meta name="robots" content="index, follow">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Tracopus">
+  <meta property="og:title" content="Leave Anomaly &amp; Fairness — Tracopus User Guide">
+  <meta property="og:description" content="Register view for anomaly rules, flagged reviews, and fairness snapshots — no self-serve write UI; seed via API. Flags never auto-reject leave.">
+  <meta property="og:url" content="https://tracopus.com/documentation/hrms/leave-anomaly.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Leave Anomaly &amp; Fairness — Tracopus User Guide">
+  <meta name="twitter:description" content="Register view for anomaly rules, flagged reviews, and fairness snapshots — no self-serve write UI; seed via API. Flags never auto-reject leave.">
+  <script src="../js/docs-analytics.js?v=20260719a" defer></script>
+  <link rel="stylesheet" href="../css/styles.css?v=20260718g">
+  <script src="../js/brand-config.js?v=20260619e"></script>
+</head>
+<body data-docs-depth="1">
+
+<header aria-label="Site header"></header>
+
+<main>
+  <div class="breadcrumb"><a href="../index.html">Home</a> → HRMS → Leave Anomaly & Fairness</div>
+
+  <div class="doc-canvas">
+    <header class="doc-mast">
+      <div class="doc-mast__top">
+        <span class="doc-mast__eyebrow">HRMS · Leave</span>
+        <div class="page-meta page-meta--inline">
+          <span class="page-meta__item"><strong>Route</strong> <code>/admin/leave/anomaly-rules</code> · <code>/admin/leave/anomaly-review</code> · <code>/admin/leave/fairness-analytics</code></span>
+          
+        </div>
+      </div>
+      <h1 class="doc-mast__title">Leave Anomaly & Fairness</h1>
+      <p class="doc-mast__lead">Register view for anomaly rules, flagged reviews, and fairness snapshots — no self-serve write UI; seed via API. Flags never auto-reject leave.</p>
+      <p class="doc-mast__purpose">Register view — seed via API. Flowcharts: rule → detect → review.</p>
+    </header>
+
+    <div class="doc-flow">
+      <section class="doc-block" id="flowcharts">
+        <h2 class="doc-block__title">Flowcharts</h2>
+        <p>Each diagram auto-plays steps when it scrolls into view. Use <strong>Play / Pause</strong>, or click a step to jump.</p>
+
+        <article class="diagram-card" data-diagram-autoplay="true">
+          <header class="diagram-card__head">
+            <div class="diagram-card__titles">
+              <h3>1 — Anomaly detection</h3>
+              <p class="diagram-card__desc">Rules scan leave activity and open review items.</p>
+            </div>
+            <div class="diagram-card__controls">
+              <button type="button" data-diagram-prev aria-label="Previous step"><i class="fe fe-chevron-left" aria-hidden="true"></i></button>
+              <button type="button" data-diagram-play aria-pressed="false"><i class="fe fe-play" aria-hidden="true"></i><span>Play</span></button>
+              <button type="button" data-diagram-next aria-label="Next step"><i class="fe fe-chevron-right" aria-hidden="true"></i></button>
+            </div>
+          </header>
+          <div class="diagram-card__chart">
+            <pre class="mermaid">
+flowchart TD
+  R[Anomaly rules] --> S[Scan leave data]
+  S --> F{Flag?}
+  F -->|No| Ok[No action]
+  F -->|Yes| Q[Review queue]
+  Q --> Act[HR action]
+            </pre>
+          </div>
+          <ol class="diagram-steps">
+            <li class="diagram-step is-active"><span class="diagram-step__index">1</span><div class="diagram-step__body"><strong>Anomaly rules</strong><span>Thresholds for frequency, clustering, or balance drift.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">2</span><div class="diagram-step__body"><strong>Scan leave data</strong><span>Scheduled or on-demand scan.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">3</span><div class="diagram-step__body"><strong>Flag?</strong><span>Rule match opens a review item.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">4</span><div class="diagram-step__body"><strong>No action</strong><span>Within expected patterns.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">5</span><div class="diagram-step__body"><strong>Review queue</strong><span>Anomaly review console.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">6</span><div class="diagram-step__body"><strong>HR action</strong><span>Dismiss, investigate, or adjust policy.</span></div></li>
+          </ol>
+          <p class="diagram-card__progress" data-diagram-progress></p>
+        </article>
+
+        <article class="diagram-card" data-diagram-autoplay="true">
+          <header class="diagram-card__head">
+            <div class="diagram-card__titles">
+              <h3>2 — Fairness analytics</h3>
+              <p class="diagram-card__desc">Team-level views for approval latency and rejection rates.</p>
+            </div>
+            <div class="diagram-card__controls">
+              <button type="button" data-diagram-prev aria-label="Previous step"><i class="fe fe-chevron-left" aria-hidden="true"></i></button>
+              <button type="button" data-diagram-play aria-pressed="false"><i class="fe fe-play" aria-hidden="true"></i><span>Play</span></button>
+              <button type="button" data-diagram-next aria-label="Next step"><i class="fe fe-chevron-right" aria-hidden="true"></i></button>
+            </div>
+          </header>
+          <div class="diagram-card__chart">
+            <pre class="mermaid">
+flowchart TD
+  Data[Leave + approvals] --> Fair[Fairness analytics]
+  Fair --> Lat[Latency]
+  Fair --> Rej[Rejection rate]
+  Fair --> Dist[Distribution by team]
+            </pre>
+          </div>
+          <ol class="diagram-steps">
+            <li class="diagram-step is-active"><span class="diagram-step__index">1</span><div class="diagram-step__body"><strong>Leave + approvals</strong><span>Source operational events.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">2</span><div class="diagram-step__body"><strong>Fairness analytics</strong><span>Aggregate dashboards.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">3</span><div class="diagram-step__body"><strong>Latency</strong><span>Time from submit to decide.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">4</span><div class="diagram-step__body"><strong>Rejection rate</strong><span>Approver outcomes by team.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">5</span><div class="diagram-step__body"><strong>Distribution by team</strong><span>Spot skewed patterns early.</span></div></li>
+          </ol>
+          <p class="diagram-card__progress" data-diagram-progress></p>
+        </article>
+      </section>
+
+      <section class="doc-block" id="overview">
+        <h2 class="doc-block__title">Overview</h2>
+        <p>Anomaly rules, review, and fairness analytics help HR spot unusual patterns without auto-rejecting leave. Screens are registers only — no self-serve write UI; seed via API. Do not store raw sensitive medical content in analytics stores.</p>
+      </section>
+
+      <section class="doc-block" id="how-to">
+        <h2 class="doc-block__title">How to use</h2>
+        <div class="steps">
+          <div class="step"><strong>1. Open anomaly rules</strong><div class="step-detail">Admin → Leave → Anomaly rules register.</div></div>
+          <div class="step"><strong>2. Review rules</strong><div class="step-detail">Inspect seeded rules; create/update via API.</div></div>
+          <div class="step"><strong>3. Work the review queue</strong><div class="step-detail">Inspect flags; dismiss or act via API.</div></div>
+          <div class="step"><strong>4. Fairness snapshots</strong><div class="step-detail">Inspect analytics registers for latency and reject patterns.</div></div>
+        </div>
+      </section>
+
+      <section class="doc-block doc-block--related" id="related-pages">
+        <h2 class="doc-block__title">Related pages</h2>
+        <div class="related-links">
+          <a class="related-link" href="leave-configuration.html"><span class="related-link__label">Leave Configuration</span><span class="related-link__desc">Policy changes from findings.</span></a>
+          <a class="related-link" href="leaves.html"><span class="related-link__label">Leave Management</span><span class="related-link__desc">Source requests.</span></a>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <nav class="page-nav">
+    <a class="page-nav__prev" href="index.html">← HRMS Overview</a>
+    <a class="page-nav__next" href="leave-configuration.html">Leave Configuration →</a>
+  </nav>
+</main>
+
+<footer>
+  <div class="container">
+    <p>&copy; 2026 <span data-brand>Tracopus</span>. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="../js/palette.js?v=20260619e"></script>
+<script src="../js/brand.js?v=20260619e"></script>
+<script src="../js/docs-utility-config.js?v=20260720b"></script>
+<script src="../js/nav-config.js?v=20260619e"></script>
+<script src="../js/navigation.js?v=20260619e"></script>
+<script src="../js/site-enhancements.js?v=20260718d"></script>
+<script src="../js/search.js?v=20260619e"></script>
+<script type="module">
+  import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+  mermaid.initialize({
+    startOnLoad: true,
+    theme: "base",
+    securityLevel: "loose",
+    flowchart: { curve: "basis", htmlLabels: true },
+    themeVariables: {
+      primaryColor: "#d8f3dc",
+      primaryTextColor: "#1b4332",
+      primaryBorderColor: "#40916c",
+      lineColor: "#52796f",
+      secondaryColor: "#f1faee",
+      tertiaryColor: "#ffffff",
+      fontFamily: "Inter, system-ui, sans-serif",
+    },
+  });
+  setTimeout(() => {
+    if (window.TracopusDocsDiagrams) window.TracopusDocsDiagrams.boot();
+  }, 600);
+</script>
+<script src="../js/docs-diagrams.js?v=20260718e"></script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+/* ========== shared/luxury-register-summary-collapsed-strip.css ========== */
+/* Collapsed summary row layout (filters + caption when panel is minimized) */
+
+.lux-bid-summary__collapsed-strip,
+.lux-emp-summary__collapsed-strip,
+.lux-acct-summary__collapsed-strip {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.45rem;
+}
+
+.lux-bid-summary__collapsed-strip {
+    margin-top: 0.45rem;
+}
+
+.lux-emp-summary__collapsed-strip {
+    gap: 0.45rem 0.65rem;
+}
+
+.lux-att-summary__collapsed-strip {
+    padding-top: 0.15rem;
+}

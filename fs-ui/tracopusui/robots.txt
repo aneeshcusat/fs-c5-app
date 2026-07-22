@@ -1,36 +1,34 @@
-# robots.txt for Famstack
+# robots.txt for Tracopus
 
 User-agent: *
 Allow: /
-Allow: /marketing/
 Allow: /documentation/
+Allow: /documentation/user-guide/
 Disallow: /api/
-Disallow: /_actions/
-Disallow: /_reducers/
-Disallow: /_services/
-Disallow: /_helpers/
-Disallow: /_constants/
 Disallow: /src/
 Disallow: /node_modules/
-Disallow: /*.json$
-Disallow: /*.js$
-Disallow: /*.jsx$
+Disallow: /people/
+Disallow: /project/
+Disallow: /admin/
+Disallow: /hrms/
+Disallow: /workspace/
+Disallow: /finance/
+Disallow: /payroll/
 
-# Sitemap location
-Sitemap: https://famstack.com/sitemap.xml
+Sitemap: https://tracopus.com/sitemap.xml
 
-# Crawl-delay (optional, adjust as needed)
-Crawl-delay: 1
-
-# Specific bot rules
 User-agent: Googlebot
 Allow: /
+Allow: /documentation/
 Disallow: /api/
+Disallow: /people/
+Disallow: /project/
+Disallow: /admin/
 
 User-agent: Bingbot
 Allow: /
+Allow: /documentation/
 Disallow: /api/
-
-User-agent: Slurp
-Allow: /
-Disallow: /api/
+Disallow: /people/
+Disallow: /project/
+Disallow: /admin/

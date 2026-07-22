@@ -1,68 +1,35 @@
 <!DOCTYPE html>
-<html lang="en" data-lux-palette="emerald">
+<html lang="en" data-lux-theme="luxury" data-lux-palette="emerald">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Employee Profile — Tracopus User Guide</title>
-  <link rel="icon" href="../images/tracopus-logo.png" type="image/png">
+  <meta name="description" content="Multi-section profile: general info, security settings, notifications, account activity with charts.">
+  <meta name="keywords" content="tracopus, documentation, user guide, hrms, profile, employee">
+  <link rel="canonical" href="https://tracopus.com/documentation/hrms/profile.html">
+  <meta name="robots" content="index, follow">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Tracopus">
+  <meta property="og:title" content="Employee Profile — Tracopus User Guide">
+  <meta property="og:description" content="Multi-section profile: general info, security settings, notifications, account activity with charts.">
+  <meta property="og:url" content="https://tracopus.com/documentation/hrms/profile.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Employee Profile — Tracopus User Guide">
+  <meta name="twitter:description" content="Multi-section profile: general info, security settings, notifications, account activity with charts.">
+  <script src="../js/docs-analytics.js?v=20260719a" defer></script>
+  <link rel="apple-touch-icon" href="../images/tracopus-logo.png">
+  <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/styles.css?v=20260604d">
-  <script src="../js/brand-config.js?v=20260604d"></script>
+  <link rel="stylesheet" href="../css/styles.css?v=20260718g">
+  <script src="../js/brand-config.js?v=20260619e"></script>
 </head>
 <body data-docs-depth="1">
 
-<header>
-  <div class="container">
-    <div class="header-content">
-      <div class="header-brand">
-        <a href="../index.html" class="header-brand__link" aria-label="User Guide home">
-          <img src="../images/tracopus-logo.png" alt="" class="header-logo" width="140" height="38">
-          <div class="header-brand__text">
-            <h1>User Guide</h1>
-            <p class="subtitle">Complete Documentation &amp; User Manual</p>
-            <p class="version">Luxury UI · Version 2.0</p>
-            <span class="lux-badge">Enterprise Work Intelligence</span>
-          </div>
-        </a>
-      </div>
-    </div>
-  </div>
-</header>
+<header aria-label="Site header"></header>
 
-<nav>
-  <div class="container">
-    <ul>
-            <li><a href="../index.html">Home</a></li>
-      <li><a href="../getting-started.html">Getting Started</a></li>
-      <li><a href="index.html" class="active">HRMS</a></li>
-      <li><a href="../sales/index.html">Sales</a></li>
-      <li><a href="../project/index.html">Project</a></li>
-      <li><a href="../mobile/index.html">Mobile</a></li>
-      <li><a href="../interface.html">Luxury UI</a></li>
-      <li><a href="../charts.html">Charts</a></li>
-      <li><a href="../faq/index.html">FAQ</a></li>
-      <li><a href="../admin.html">Admin</a></li>
-    </ul>
-  </div>
-</nav>
 
-<aside class="sidebar">
-  <ul>
-        <li class="section-title">HRMS</li>
-    <li><a href="index.html">HRMS Overview</a></li>
-    <li><a href="dashboard.html">Employee Dashboard</a></li>
-    <li><a href="employees.html">Employees</a></li>
-    <li><a href="timesheet.html">Timesheet</a></li>
-    <li><a href="attendance.html">Attendance</a></li>
-    <li><a href="invoices.html">Invoices</a></li>
-    <li><a href="invoice-details.html">Invoice Details</a></li>
-    <li><a href="profile.html" class="active">Employee Profile</a></li>
-    <li><a href="settings.html">Settings</a></li>
-    <li><a href="application-config.html">Application Configuration</a></li>
-  </ul>
-</aside>
 
 <main>
     <div class="breadcrumb"><a href="../index.html">Home</a> → HRMS → Employee Profile</div>
@@ -82,7 +49,41 @@
   </header>
 
   <div class="doc-flow">
-    <section class="doc-block" id="overview"><h2 class="doc-block__title">Overview</h2><p><code>/hrms/profile/:employeeId</code> — opened from Employees list or account menu. Shows hero header with photo, role, team, and side navigation between sections.</p></section>
+    
+    <section class="doc-block" id="flowcharts">
+      <h2 class="doc-block__title">Flowcharts</h2>
+      <p>Each diagram auto-plays when it scrolls into view. Use <strong>Play / Pause</strong> or click a step.</p>
+
+        <article class="diagram-card" data-diagram-autoplay="true">
+          <header class="diagram-card__head">
+            <div class="diagram-card__titles">
+              <h3>1 — Profile tabs</h3>
+              <p class="diagram-card__desc">Navigate personal, leave, security, and settings views.</p>
+            </div>
+            <div class="diagram-card__controls">
+              <button type="button" data-diagram-prev aria-label="Previous step"><i class="fe fe-chevron-left" aria-hidden="true"></i></button>
+              <button type="button" data-diagram-play aria-pressed="false"><i class="fe fe-play" aria-hidden="true"></i><span>Play</span></button>
+              <button type="button" data-diagram-next aria-label="Next step"><i class="fe fe-chevron-right" aria-hidden="true"></i></button>
+            </div>
+          </header>
+          <div class="diagram-card__chart">
+            <pre class="mermaid">
+flowchart TD
+  Hero[Profile hero] --> Nav[Tab nav]
+  Nav --> View[Active view]
+  View --> Save[Save changes]
+            </pre>
+          </div>
+          <ol class="diagram-steps">
+            <li class="diagram-step is-active"><span class="diagram-step__index">1</span><div class="diagram-step__body"><strong>Profile hero</strong><span>Photo, role, KPI glance.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">2</span><div class="diagram-step__body"><strong>Tab nav</strong><span>Personal, leave, security, etc.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">3</span><div class="diagram-step__body"><strong>Active view</strong><span>Edit fields for that tab.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">4</span><div class="diagram-step__body"><strong>Save changes</strong><span>Persist where editable.</span></div></li>
+          </ol>
+          <p class="diagram-card__progress" data-diagram-progress></p>
+        </article>
+    </section>
+<section class="doc-block" id="overview"><h2 class="doc-block__title">Overview</h2><p><code>/hrms/profile/:employeeId</code> — opened from Employees list or account menu. Shows hero header with photo, role, team, and side navigation between sections.</p></section>
     <section class="doc-block doc-block--pair">
       <div class="doc-split">
         <div id="layout"><h2 class="doc-block__title">Screen layout</h2><p><strong>Hero:</strong> Name, title, team, status, avatar.<br><strong>Side nav:</strong> General · Security · Notifications · Account activity.<br><strong>Content:</strong> Section-specific forms and read-only fields.<br><strong>Activity tab:</strong> Timeline with activity charts.</p></div>
@@ -117,6 +118,7 @@
     <p>&copy; 2026 <span data-brand>Tracopus</span>. All rights reserved.</p>
     <p style="margin-top:0.75rem;">
       <a href="../index.html">Documentation</a>
+      <a href="../user-guide/index.html">Scenario Guide</a>
       <a href="../getting-started.html">Getting Started</a>
       <a href="../charts.html">Charts</a>
     </p>
@@ -124,9 +126,19 @@
   </div>
 </footer>
 
-<script src="../js/palette.js?v=20260604d"></script>
-<script src="../js/brand.js?v=20260604d"></script>
-<script src="../js/navigation.js?v=20260604d"></script>
-<script src="../js/search.js?v=20260604d"></script>
+<script src="../js/palette.js?v=20260619e"></script>
+<script src="../js/brand.js?v=20260619e"></script>
+<script src="../js/docs-utility-config.js?v=20260720b"></script>
+<script src="../js/nav-config.js?v=20260619e"></script>
+<script src="../js/navigation.js?v=20260619e"></script>
+<script src="../js/site-enhancements.js?v=20260718d"></script>
+<script src="../js/search.js?v=20260619e"></script>
+<script type="module">
+  import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+  mermaid.initialize({ startOnLoad: true, theme: "base", securityLevel: "loose", flowchart: { curve: "basis", htmlLabels: true },
+    themeVariables: { primaryColor: "#d8f3dc", primaryTextColor: "#1b4332", primaryBorderColor: "#40916c", lineColor: "#52796f", secondaryColor: "#f1faee", tertiaryColor: "#ffffff", fontFamily: "Inter, system-ui, sans-serif" } });
+  setTimeout(() => { if (window.TracopusDocsDiagrams) window.TracopusDocsDiagrams.boot(); }, 600);
+</script>
+<script src="../js/docs-diagrams.js?v=20260718e"></script>
 </body>
 </html>

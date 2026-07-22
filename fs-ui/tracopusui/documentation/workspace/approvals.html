@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en" data-lux-theme="luxury" data-lux-palette="emerald">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Approvals — Tracopus User Guide</title>
+  <meta name="description" content="Universal approval inbox — filter by status, domain, and priority, then approve or reject without leaving the page.">
+  <meta name="keywords" content="tracopus, documentation, user guide, workspace, approvals, my">
+  <link rel="canonical" href="https://tracopus.com/documentation/workspace/approvals.html">
+  <meta name="robots" content="index, follow">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Tracopus">
+  <meta property="og:title" content="My Approvals — Tracopus User Guide">
+  <meta property="og:description" content="Universal approval inbox — filter by status, domain, and priority, then approve or reject without leaving the page.">
+  <meta property="og:url" content="https://tracopus.com/documentation/workspace/approvals.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="My Approvals — Tracopus User Guide">
+  <meta name="twitter:description" content="Universal approval inbox — filter by status, domain, and priority, then approve or reject without leaving the page.">
+  <script src="../js/docs-analytics.js?v=20260719a" defer></script>
+  <link rel="stylesheet" href="../css/styles.css?v=20260718g">
+  <script src="../js/brand-config.js?v=20260619e"></script>
+</head>
+<body data-docs-depth="1">
+
+<header aria-label="Site header"></header>
+
+<main>
+  <div class="breadcrumb"><a href="../index.html">Home</a> → Workspace → My Approvals</div>
+
+  <div class="doc-canvas">
+    <header class="doc-mast">
+      <div class="doc-mast__top">
+        <span class="doc-mast__eyebrow">Workspace · Approvals</span>
+        <div class="page-meta page-meta--inline">
+          <span class="page-meta__item"><strong>Route</strong> <code>/workspace/approvals</code></span>
+          <span class="page-meta__item"><strong>Flag</strong> <code>approvalsEnabled</code></span>
+        </div>
+      </div>
+      <h1 class="doc-mast__title">My Approvals</h1>
+      <p class="doc-mast__lead">Universal approval inbox — filter by status, domain, and priority, then approve or reject without leaving the page.</p>
+      <p class="doc-mast__purpose">Scroll to <a href="#flowcharts">Flowcharts</a>. Related: <a href="../user-guide/workspace/workspace-approvals.html">Scenario walkthrough</a>.</p>
+    </header>
+
+    <div class="doc-flow">
+      <section class="doc-block" id="flowcharts">
+        <h2 class="doc-block__title">Flowcharts</h2>
+        <p>Each diagram auto-plays when it scrolls into view. Use <strong>Play / Pause</strong>, or click a step to jump.</p>
+
+        <article class="diagram-card" data-diagram-autoplay="true">
+          <header class="diagram-card__head">
+            <div class="diagram-card__titles">
+              <h3>1 — Review and decide</h3>
+              <p class="diagram-card__desc">From inbox open through approve or reject with an optional comment.</p>
+            </div>
+            <div class="diagram-card__controls">
+              <button type="button" data-diagram-prev aria-label="Previous step"><i class="fe fe-chevron-left" aria-hidden="true"></i></button>
+              <button type="button" data-diagram-play aria-pressed="false"><i class="fe fe-play" aria-hidden="true"></i><span>Play</span></button>
+              <button type="button" data-diagram-next aria-label="Next step"><i class="fe fe-chevron-right" aria-hidden="true"></i></button>
+            </div>
+          </header>
+          <div class="diagram-card__chart">
+            <pre class="mermaid">
+flowchart TD
+  A[Open My Approvals] --> B[Filter pending]
+  B --> C[Open request]
+  C --> D{Approve or Reject}
+  D -->|Approve| E[Optional comment]
+  D -->|Reject| F[Comment required]
+  E --> G[Inbox refreshes]
+  F --> G
+            </pre>
+          </div>
+          <ol class="diagram-steps">
+            <li class="diagram-step is-active"><span class="diagram-step__index">1</span><div class="diagram-step__body"><strong>Open My Approvals</strong><span>Workspace → My approvals (or header shortcut when enabled).</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">2</span><div class="diagram-step__body"><strong>Filter pending</strong><span>Status defaults to Pending. Narrow by domain, priority, or search.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">3</span><div class="diagram-step__body"><strong>Open request</strong><span>Click a register row to open the detail drawer.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">4</span><div class="diagram-step__body"><strong>Approve or Reject</strong><span>Approve may allow an optional comment; reject usually requires one.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">5</span><div class="diagram-step__body"><strong>Inbox refreshes</strong><span>List and KPIs update after the action succeeds.</span></div></li>
+          </ol>
+          <p class="diagram-card__progress" data-diagram-progress></p>
+        </article>
+
+        <article class="diagram-card" data-diagram-autoplay="true">
+          <header class="diagram-card__head">
+            <div class="diagram-card__titles">
+              <h3>2 — SLA and analytics</h3>
+              <p class="diagram-card__desc">Use the SLA banner and Analytics tab when the queue is aging.</p>
+            </div>
+            <div class="diagram-card__controls">
+              <button type="button" data-diagram-prev aria-label="Previous step"><i class="fe fe-chevron-left" aria-hidden="true"></i></button>
+              <button type="button" data-diagram-play aria-pressed="false"><i class="fe fe-play" aria-hidden="true"></i><span>Play</span></button>
+              <button type="button" data-diagram-next aria-label="Next step"><i class="fe fe-chevron-right" aria-hidden="true"></i></button>
+            </div>
+          </header>
+          <div class="diagram-card__chart">
+            <pre class="mermaid">
+flowchart TD
+  S[SLA banner] --> H[Review high priority]
+  H --> I[Pending + High filter]
+  I --> R[Clear overdue first]
+  A2[Analytics tab] --> D2[Domain bottlenecks]
+            </pre>
+          </div>
+          <ol class="diagram-steps">
+            <li class="diagram-step is-active"><span class="diagram-step__index">1</span><div class="diagram-step__body"><strong>SLA banner</strong><span>Appears when items are overdue or due within 48 hours.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">2</span><div class="diagram-step__body"><strong>Review high priority</strong><span>Banner CTA focuses Pending + High priority.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">3</span><div class="diagram-step__body"><strong>Analytics tab</strong><span>Hero nav switches to queue health by domain and aging.</span></div></li>
+          </ol>
+          <p class="diagram-card__progress" data-diagram-progress></p>
+        </article>
+      </section>
+
+      <section class="doc-block" id="overview">
+        <h2 class="doc-block__title">Overview</h2>
+        <p><strong>My Approvals</strong> aggregates decisions you (or you as delegate) can take across HRMS and delivery domains. Source records stay in their modules; this page is the action inbox, not a second data store.</p>
+      </section>
+
+      <section class="doc-block" id="how-to">
+        <h2 class="doc-block__title">How to use</h2>
+        <div class="steps">
+          <div class="step"><strong>1. Start on Pending</strong><div class="step-detail">Status chips default to Pending. Use All only when auditing history.</div></div>
+          <div class="step"><strong>2. Narrow the queue</strong><div class="step-detail">Domain and Priority dropdowns, plus search on requester/subject/module.</div></div>
+          <div class="step"><strong>3. Act from the drawer</strong><div class="step-detail">Open a row, review context, approve or reject, then refresh if needed.</div></div>
+          <div class="step"><strong>4. Save a view</strong><div class="step-detail">Use saved views for recurring filters (e.g. Leave + High).</div></div>
+        </div>
+      </section>
+
+      <section class="doc-block doc-block--related" id="related-pages">
+        <h2 class="doc-block__title">Related pages</h2>
+        <div class="related-links">
+          <a class="related-link" href="../hrms/timesheet-approval.html"><span class="related-link__label">Timesheet Approval</span><span class="related-link__desc">Domain-specific timesheet decisions.</span></a>
+          <a class="related-link" href="../hrms/leaves.html"><span class="related-link__label">Leave Management</span><span class="related-link__desc">Leave requests that feed the inbox.</span></a>
+          <a class="related-link" href="../admin/notification-templates.html"><span class="related-link__label">Notification templates</span><span class="related-link__desc">Emails and in-app copy for approval events.</span></a>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <nav class="page-nav">
+    <a class="page-nav__prev" href="../index.html">← Documentation home</a>
+    <a class="page-nav__next" href="../admin/dashboard.html">Admin dashboard →</a>
+  </nav>
+</main>
+
+<footer>
+  <div class="container">
+    <p>&copy; 2026 <span data-brand>Tracopus</span>. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="../js/palette.js?v=20260619e"></script>
+<script src="../js/brand.js?v=20260619e"></script>
+<script src="../js/docs-utility-config.js?v=20260720b"></script>
+<script src="../js/nav-config.js?v=20260619e"></script>
+<script src="../js/navigation.js?v=20260619e"></script>
+<script src="../js/site-enhancements.js?v=20260718d"></script>
+<script src="../js/search.js?v=20260619e"></script>
+<script type="module">
+  import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+  mermaid.initialize({
+    startOnLoad: true,
+    theme: "base",
+    securityLevel: "loose",
+    flowchart: { curve: "basis", htmlLabels: true },
+    themeVariables: {
+      primaryColor: "#d8f3dc",
+      primaryTextColor: "#1b4332",
+      primaryBorderColor: "#40916c",
+      lineColor: "#52796f",
+      secondaryColor: "#f1faee",
+      tertiaryColor: "#ffffff",
+      fontFamily: "Inter, system-ui, sans-serif",
+    },
+  });
+  setTimeout(() => {
+    if (window.TracopusDocsDiagrams) window.TracopusDocsDiagrams.boot();
+  }, 600);
+</script>
+<script src="../js/docs-diagrams.js?v=20260718e"></script>
+</body>
+</html>

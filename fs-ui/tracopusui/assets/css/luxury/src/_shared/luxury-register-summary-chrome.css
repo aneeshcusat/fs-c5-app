@@ -1,0 +1,31 @@
+/* ========== shared/luxury-register-summary-chrome.css ========== */
+/* Shared summary chrome patterns reused by register pages */
+
+.lux-ts-summary__toggle,
+.lux-att-summary__toggle,
+.lux-inv-summary__toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.28rem;
+    flex-shrink: 0;
+    min-height: 1.75rem;
+    padding: 0 0.55rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 9911px;
+    background: rgba(255, 255, 255, 0.9);
+    font-size: 0.6875rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #64748b;
+    cursor: pointer;
+    transition: border-color 0.14s ease, color 0.14s ease, background 0.14s ease;
+}
+
+.lux-ts-summary__toggle:hover,
+.lux-att-summary__toggle:hover,
+.lux-inv-summary__toggle:hover {
+    border-color: rgba(var(--lux-primary-rgb, 91, 95, 244), 0.24);
+    color: var(--lux-primary-dark, #3730a3);
+    background: rgba(var(--lux-primary-rgb, 91, 95, 244), 0.06);
+}

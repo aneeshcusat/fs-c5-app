@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en" data-lux-theme="luxury" data-lux-palette="emerald">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unified Audit Trail — Tracopus User Guide</title>
+  <meta name="description" content="A single luxury timeline for meaningful actions — who did what, when, and on which record — across projects, HR, and profile activity.">
+  <meta name="keywords" content="tracopus, documentation, user guide, hrms, audit, trail, unified">
+  <link rel="canonical" href="https://tracopus.com/documentation/hrms/audit-trail.html">
+  <meta name="robots" content="index, follow">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Tracopus">
+  <meta property="og:title" content="Unified Audit Trail — Tracopus User Guide">
+  <meta property="og:description" content="A single luxury timeline for meaningful actions — who did what, when, and on which record — across projects, HR, and profile activity.">
+  <meta property="og:url" content="https://tracopus.com/documentation/hrms/audit-trail.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Unified Audit Trail — Tracopus User Guide">
+  <meta name="twitter:description" content="A single luxury timeline for meaningful actions — who did what, when, and on which record — across projects, HR, and profile activity.">
+  <script src="../js/docs-analytics.js?v=20260719a" defer></script>
+  <link rel="stylesheet" href="../css/styles.css?v=20260718g">
+  <script src="../js/brand-config.js?v=20260619e"></script>
+</head>
+<body data-docs-depth="1">
+
+<header aria-label="Site header"></header>
+
+<main>
+  <div class="breadcrumb"><a href="../index.html">Home</a> → HRMS → Unified Audit Trail</div>
+
+  <div class="doc-canvas">
+    <header class="doc-mast">
+      <div class="doc-mast__top">
+        <span class="doc-mast__eyebrow">HRMS · Unified Audit</span>
+        <div class="page-meta page-meta--inline">
+          <span class="page-meta__item"><strong>Write flag</strong> <code>auditEnabled</code></span>
+          <span class="page-meta__item"><strong>UI flag</strong> <code>auditUiEnabled</code></span>
+        </div>
+      </div>
+      <h1 class="doc-mast__title">Unified Audit Trail</h1>
+      <p class="doc-mast__lead">A single luxury timeline for meaningful actions — who did what, when, and on which record — across projects, HR, and profile activity.</p>
+      <p class="doc-mast__purpose">Replaces the old History tab data source with a fresh append-only audit stream. Recording is best-effort and never blocks saves or approvals.</p>
+    </header>
+
+    <div class="doc-flow">
+      <section class="doc-block" id="overview">
+        <h2 class="doc-block__title">Overview</h2>
+        <p>The unified audit system records events when users (or delegates) perform tracked actions. Events appear in <strong>Audit</strong> tabs on project, purchase contract, deliverable, work item, profile, attendance, timesheet, and leave screens.</p>
+        <p>Legacy <code>@History</code> and <code>ItemAdditional</code> HISTORY feeds are <strong>not</strong> shown in the new UI. History starts from go-live when your administrator enables audit writes.</p>
+      </section>
+
+      <section class="doc-block doc-block--pair">
+        <div class="doc-split">
+          <div id="where">
+            <h2 class="doc-block__title">Where to find audit</h2>
+            <ul>
+              <li><strong>Profile → Account activity</strong> — actor timeline + entity filter</li>
+              <li><strong>Project / PO / Deliverable</strong> — Comments | Audit tabs</li>
+              <li><strong>Work item</strong> — activity register audit mode</li>
+              <li><strong>Attendance</strong> — audit feed with deep links to day cells</li>
+              <li><strong>Timesheet week</strong> — submit/approve/lock events</li>
+              <li><strong>Leave drawer</strong> — request lifecycle with redaction</li>
+            </ul>
+          </div>
+          <div id="tracked">
+            <h2 class="doc-block__title">What is tracked</h2>
+            <ul>
+              <li>Project, PO, deliverable, work item lifecycle</li>
+              <li>Comments, checklist updates, estimates</li>
+              <li>Employee profile and role changes</li>
+              <li>Attendance mark, approve, reject, removal</li>
+              <li>Leave submit, approve, reject, withdraw</li>
+              <li>Timesheet submit, approve, reject, lock</li>
+              <li>Login and password change (security)</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="doc-block" id="timeline-ui">
+        <h2 class="doc-block__title">Timeline UI</h2>
+        <p>Each event shows <strong>headline</strong>, <strong>actor</strong>, <strong>timestamp</strong>, action chip (Approved, Submitted, etc.), and optional metadata (status change, acting-for manager, approval comment).</p>
+        <p>Pagination uses server-side <code>pageInfo.hasMore</code> — use prev/next at the bottom of the trail. Delegate actions display <strong>Acting for {name}</strong> when metadata includes acting-for fields.</p>
+      </section>
+
+      <section class="doc-block" id="access">
+        <h2 class="doc-block__title">Access &amp; privacy</h2>
+        <div class="table-wrap">
+          <table class="table table--permissions">
+            <thead><tr><th>Scope</th><th>Who can view</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Actor timeline</strong></td><td>Self, direct manager, or approval delegate (attendance/timesheet/leave).</td></tr>
+              <tr><td><strong>Employee / HR entity</strong></td><td>Same rules on the subject employee.</td></tr>
+              <tr><td><strong>Project / PO / deliverable</strong></td><td>Users on the same org team as the resource.</td></tr>
+              <tr><td><strong>Leave metadata</strong></td><td>Reason and remarks redacted for non-self viewers.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="doc-block doc-block--features" id="complete-features">
+        <h2 class="doc-block__title">What's new</h2>
+        <ul class="lux-feature-list lux-feature-list--dense">
+          <li class="lux-feature-item"><span class="lux-feature-item__icon">✓</span><div><strong>Luxury timeline</strong><span>Shared <code>AuditTrailSection</code> component across modules.</span></div></li>
+          <li class="lux-feature-item"><span class="lux-feature-item__icon">✓</span><div><strong>Actor + entity queries</strong><span>Filter profile activity by entity type (attendance, leave, etc.).</span></div></li>
+          <li class="lux-feature-item"><span class="lux-feature-item__icon">✓</span><div><strong>Attendance deep links</strong><span>Jump from audit event to attendance detail popover.</span></div></li>
+          <li class="lux-feature-item"><span class="lux-feature-item__icon">✓</span><div><strong>CSV export</strong><span>Compliance export with same permission checks (admin).</span></div></li>
+          <li class="lux-feature-item"><span class="lux-feature-item__icon">✓</span><div><strong>Fail-safe writes</strong><span>Audit DB errors never fail leave approve, timesheet submit, or project save.</span></div></li>
+          <li class="lux-feature-item"><span class="lux-feature-item__icon">✓</span><div><strong>Dedup</strong><span>Duplicate events suppressed via natural key — safe retries.</span></div></li>
+        </ul>
+      </section>
+
+      <div class="doc-enrichment">
+        <section class="doc-block doc-block--callouts" id="page-callouts">
+          <h2 class="doc-block__title">Administrator setup</h2>
+          <div class="callout-stack callout-stack--dense">
+            <div class="callout callout--info"><div class="callout__icon">ℹ️</div><div class="callout__body"><strong class="callout__title">Enable writes</strong><div class="callout__text">Set <code>auditEnabled: true</code> per org after DB migration. UI can show with <code>auditUiEnabled: true</code> (default).</div></div></div>
+            <div class="callout callout--tip"><div class="callout__icon">💡</div><div class="callout__body"><strong class="callout__title">Empty timeline?</strong><div class="callout__text">Events appear only after enablement — perform a tracked action to verify.</div></div></div>
+          </div>
+        </section>
+
+        <section class="doc-block doc-block--related" id="related-pages">
+          <h2 class="doc-block__title">Related pages</h2>
+          <div class="related-links">
+            <a class="related-link" href="profile.html"><span class="related-link__label">Employee Profile</span><span class="related-link__desc">Account activity actor timeline.</span></a>
+            <a class="related-link" href="../project/project-details.html"><span class="related-link__label">Project Details</span><span class="related-link__desc">Activity tab Audit panel.</span></a>
+            <a class="related-link" href="leaves.html"><span class="related-link__label">Leave Management</span><span class="related-link__desc">Leave audit drawer.</span></a>
+            <a class="related-link" href="timesheet-approval.html"><span class="related-link__label">Timesheet Approval</span><span class="related-link__desc">Week workflow events.</span></a>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <nav class="page-nav">
+    <a class="page-nav__prev" href="attendance.html">← Attendance</a>
+    <a class="page-nav__next" href="invoices.html">Invoices →</a>
+  </nav>
+</main>
+
+<footer>
+  <div class="container">
+    <p>&copy; 2026 <span data-brand>Tracopus</span>. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="../js/palette.js?v=20260619e"></script>
+<script src="../js/brand.js?v=20260619e"></script>
+<script src="../js/docs-utility-config.js?v=20260720b"></script>
+<script src="../js/nav-config.js?v=20260619e"></script>
+<script src="../js/navigation.js?v=20260619e"></script>
+<script src="../js/site-enhancements.js?v=20260718d"></script>
+<script src="../js/search.js?v=20260619e"></script>
+</body>
+</html>

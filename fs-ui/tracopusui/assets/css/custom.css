@@ -1,12 +1,12 @@
 /* ========== App design tokens (align with public/assets/css/theme2.css) ========== */
 :root {
-    --app-color-primary: #1e40af;
-    --app-color-primary-hover: #1d4ed8;
-    --app-color-primary-light: #3b82f6;
-    --app-color-focus-ring: rgba(30, 64, 175, 0.25);
+    --app-color-primary: #166534;
+    --app-color-primary-hover: #14532d;
+    --app-color-primary-light: #4ade80;
+    --app-color-focus-ring: rgba(22, 101, 52, 0.25);
     --app-color-text: #0f172a;
     --app-color-muted: #64748b;
-    --app-font-sans: Roboto, -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    --app-font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
     --lux-brand-font: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     --app-radius-md: 8px;
     --app-shadow-card: 0 1px 2px rgba(15, 23, 42, 0.05), 0 4px 16px rgba(15, 23, 42, 0.06);
@@ -188,38 +188,7 @@ body.font-roboto {
     padding-bottom: 12px;
 }
 
-.custom-alert-bar {
-    position: absolute;
-    top: 0;
-    z-index: 10000;
-    width: 100%;
-    opacity: 0.94;
-}
-
-/* Page-level error strip (MainLayout): align with shell + card radius */
-#main_content > .custom-alert-bar.alert {
-    left: var(--app-sidebar-width);
-    width: calc(100% - var(--app-sidebar-width));
-    border-radius: var(--app-radius-md);
-    border: 1px solid rgba(220, 38, 38, 0.28);
-    box-shadow: var(--app-shadow-card);
-    margin-top: 0.625rem;
-    padding: 0.65rem 1rem;
-}
-
-@media screen and (max-width: 1200px) {
-    #main_content > .custom-alert-bar.alert {
-        left: var(--app-sidebar-rail);
-        width: calc(100% - var(--app-sidebar-rail));
-    }
-}
-
-@media screen and (max-width: 767px) {
-    #main_content > .custom-alert-bar.alert {
-        left: 0;
-        width: 100%;
-    }
-}
+/* Page-level alert strip: see .lux-page-alert in luxury.css */
 
 .page .table {
     font-size: var(--app-text-body);
@@ -1246,7 +1215,7 @@ p.overflow {
 
 .table-calendar td.weekend,
 .table-calendar td.holiday {
-    color: red;
+    color: #dc2626;
 }
 
 .table-calendar td.currentDay span {
@@ -1273,7 +1242,8 @@ p.overflow {
 }
 
 .table-calendar td.holiday span {
-    background: #ff8383;
+    background: linear-gradient(145deg, #ef4444, #dc2626);
+    color: #fff;
 }
 
 .table-calendar td.active span {
@@ -1660,6 +1630,15 @@ button.microsoftlogin {
     background: none;
     margin: 0;
     padding: 0;
+    line-height: 0;
+    cursor: pointer;
+}
+
+button.microsoftlogin img {
+    display: block;
+    width: 215px;
+    height: 41px;
+    image-rendering: -webkit-optimize-contrast;
 }
 
 .passwordinputcontainer {
@@ -1685,16 +1664,52 @@ button.microsoftlogin {
     cursor: pointer;
 }
 
+/* Auth pages: full-bleed, no right-edge gutter from body/#root */
+html:has(.auth),
+body:has(.auth) {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+body:has(.auth) #root {
+    width: 100%;
+    max-width: 100%;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
 .auth {
     display: flex;
+    flex-direction: column;
+    position: relative;
     min-height: 100vh;
     height: 100vh;
     max-height: 100vh;
     width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
     align-items: stretch;
     justify-content: stretch;
-    background: transparent;
+    background: #0c1222;
     overflow: hidden;
+}
+
+.auth > * {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    min-height: 0;
+    margin: 0;
+    padding: 0;
 }
 
 .auth .card:not(.auth-login__card) {
@@ -3108,4 +3123,43 @@ body.device-registration-popup-open #left-sidebar {
     font-size: 0.6875rem;
     color: #64748b;
     line-height: 1.45;
+}
+/* Admin hub tabs (Developer portal / Workflow automation) */
+.lux-admin-hub-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0;
+  padding: 0.3rem;
+  border-radius: 14px;
+  background: linear-gradient(180deg, rgba(15, 23, 42, 0.045), rgba(15, 23, 42, 0.03));
+  border: 1px solid rgba(226, 232, 240, 0.85);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.7) inset;
+}
+.lux-admin-hub-tabs__tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-height: 2.35rem;
+  padding: 0.45rem 0.95rem;
+  border-radius: 10px;
+  color: #475569;
+  font-size: 0.84rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background 0.15s ease, color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+}
+.lux-admin-hub-tabs__tab .fe {
+  font-size: 0.95rem;
+}
+.lux-admin-hub-tabs__tab:hover {
+  background: rgba(255, 255, 255, 0.9);
+  color: #0f172a;
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+.lux-admin-hub-tabs__tab.is-active {
+  background: #fff;
+  color: #0f172a;
+  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.08);
 }

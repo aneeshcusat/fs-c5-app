@@ -1,0 +1,18 @@
+/* ========== shared/luxury-register-summary-captions.css ========== */
+/* Reusable typography for collapsed-line/context blocks */
+
+.lux-ts-summary__collapsed-line,
+.lux-ts-summary__context,
+.lux-att-summary__collapsed-line,
+.lux-inv-summary__collapsed-line,
+.lux-inv-summary__context {
+    margin: 0;
+    font-size: 0.75rem;
+    color: #64748b;
+    line-height: 1.45;
+}
+
+.lux-ts-summary__collapsed-line,
+.lux-ts-summary__context {
+    font-weight: 600;
+}

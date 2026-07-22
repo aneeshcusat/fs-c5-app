@@ -1,68 +1,35 @@
 <!DOCTYPE html>
-<html lang="en" data-lux-palette="emerald">
+<html lang="en" data-lux-theme="luxury" data-lux-palette="emerald">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Getting Started — Tracopus User Guide</title>
-  <link rel="icon" href="images/tracopus-logo.png" type="image/png">
+  <meta name="description" content="Getting Started — Tracopus user guide for enterprise work intelligence.">
+  <meta name="keywords" content="tracopus, documentation, user guide, getting, started">
+  <link rel="canonical" href="https://tracopus.com/documentation/getting-started.html">
+  <meta name="robots" content="index, follow">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Tracopus">
+  <meta property="og:title" content="Getting Started — Tracopus User Guide">
+  <meta property="og:description" content="Getting Started — Tracopus user guide for enterprise work intelligence.">
+  <meta property="og:url" content="https://tracopus.com/documentation/getting-started.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Getting Started — Tracopus User Guide">
+  <meta name="twitter:description" content="Getting Started — Tracopus user guide for enterprise work intelligence.">
+  <script src="js/docs-analytics.js?v=20260719a" defer></script>
+  <link rel="apple-touch-icon" href="images/tracopus-logo.png">
+  <link rel="icon" href="images/favicon.ico" type="image/x-icon">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=20260604a">
-  <script src="js/brand-config.js?v=20260604a"></script>
+  <link rel="stylesheet" href="css/styles.css?v=20260718g">
+  <script src="js/brand-config.js?v=20260619e"></script>
 </head>
 <body data-docs-depth="0">
 
-<header>
-  <div class="container">
-    <div class="header-content">
-      <div class="header-brand">
-        <a href="index.html" class="header-brand__link" aria-label="User Guide home">
-          <img src="images/tracopus-logo.png" alt="" class="header-logo" width="140" height="38">
-          <div class="header-brand__text">
-            <h1>User Guide</h1>
-            <p class="subtitle">Complete Documentation &amp; User Manual</p>
-            <p class="version">Luxury UI · Version 2.0</p>
-            <span class="lux-badge">Enterprise Work Intelligence</span>
-          </div>
-        </a>
-      </div>
-    </div>
-  </div>
-</header>
+<header aria-label="Site header"></header>
 
-<nav>
-  <div class="container">
-    <ul>
 
-      <li><a href="index.html">Home</a></li>
-      <li><a href="getting-started.html" class="active">Getting Started</a></li>
-      <li><a href="hrms/index.html">HRMS</a></li>
-      <li><a href="sales/index.html">Sales</a></li>
-      <li><a href="project/index.html">Project</a></li>
-      <li><a href="mobile/index.html">Mobile</a></li>
-      <li><a href="interface.html">Luxury UI</a></li>
-      <li><a href="charts.html">Charts</a></li>
-      <li><a href="faq/index.html">FAQ</a></li>
-      <li><a href="admin.html">Admin</a></li>
-    </ul>
-  </div>
-</nav>
-
-<aside class="sidebar">
-  <ul>
-        <li class="section-title">On this page</li>
-    <li><a href="getting-started.html#login">Login &amp; authentication</a></li>
-    <li><a href="getting-started.html#sso">Microsoft SSO</a></li>
-    <li><a href="getting-started.html#password">Forgot password</a></li>
-    <li><a href="getting-started.html#activation">Account activation</a></li>
-    <li><a href="getting-started.html#navigation">Navigation</a></li>
-    <li><a href="getting-started.html#concepts">Core concepts</a></li>
-    <li><a href="getting-started.html#first-steps">First steps</a></li>
-    <li><a href="getting-started.html#faq">FAQ</a></li>
-    <li><a href="getting-started.html#profile">Your profile</a></li>
-  </ul>
-</aside>
 
 <main>
     <div class="breadcrumb"><a href="index.html">Home</a> → Getting Started</div>
@@ -162,6 +129,23 @@
     <div class="callout callout--info"><div class="callout__icon">ℹ️</div><div class="callout__body"><strong class="callout__title">Need deeper detail?</strong><div class="callout__text">Each screen in HRMS, Sales, Project, and Mobile has a dedicated guide with charts, features, permissions, and common mistakes — open the module index from the top navigation.</div></div></div>
   </section>
 
+  <section class="section" id="scenario-guide">
+    <h2>Scenario user guide</h2>
+    <p>When you need to <strong>complete a task</strong> (not just understand a screen), open the <a href="user-guide/index.html">Scenario User Guide</a>. It documents 65 workflows across 15 modules with:</p>
+    <ul>
+      <li><strong>Required permissions</strong> — RBAC config paths your admin must enable</li>
+      <li><strong>Org &amp; feature flags</strong> — behavior when Application Config toggles are on or off</li>
+      <li><strong>Warnings &amp; considerations</strong> — common failures and planning notes</li>
+      <li><strong>Numbered steps</strong> and a <strong>QA verification checklist</strong> per scenario</li>
+    </ul>
+    <div class="page-index-grid">
+      <a class="page-index-card" href="user-guide/auth/auth-login-email.html"><strong>Sign in</strong><span>Email/password login scenario</span></a>
+      <a class="page-index-card" href="user-guide/hrms/hrms-log-timesheet.html"><strong>Log timesheet</strong><span>Weekly hour entry</span></a>
+      <a class="page-index-card" href="user-guide/workspace/workspace-approvals.html"><strong>Approvals inbox</strong><span>Approve timesheet, leave, attendance</span></a>
+      <a class="page-index-card" href="user-guide/scenarios.html"><strong>All 65 scenarios</strong><span>Complete workflow index</span></a>
+    </div>
+  </section>
+
   <section class="section" id="profile">
     <h2>Your profile</h2>
     <p>Open the account menu (avatar) in the header → <strong>Profile</strong> to view your employee record, skills, security settings, notifications, and account activity. Managers can open any employee from HRMS → Employees.</p>
@@ -175,6 +159,7 @@
     <p>&copy; 2026 <span data-brand>Tracopus</span>. All rights reserved.</p>
     <p style="margin-top:0.75rem;">
       <a href="index.html">Documentation</a>
+      <a href="user-guide/index.html">Scenario Guide</a>
       <a href="getting-started.html">Getting Started</a>
       <a href="charts.html">Charts</a>
     </p>
@@ -182,9 +167,12 @@
   </div>
 </footer>
 
-<script src="js/palette.js?v=20260604a"></script>
-<script src="js/brand.js?v=20260604a"></script>
-<script src="js/navigation.js?v=20260604a"></script>
-<script src="js/search.js?v=20260604a"></script>
+<script src="js/palette.js?v=20260619e"></script>
+<script src="js/brand.js?v=20260619e"></script>
+<script src="js/docs-utility-config.js?v=20260720b"></script>
+<script src="js/nav-config.js?v=20260619e"></script>
+<script src="js/navigation.js?v=20260619e"></script>
+<script src="js/site-enhancements.js?v=20260718d"></script>
+<script src="js/search.js?v=20260619e"></script>
 </body>
 </html>

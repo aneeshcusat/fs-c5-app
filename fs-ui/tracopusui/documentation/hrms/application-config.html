@@ -1,87 +1,35 @@
 <!DOCTYPE html>
-<html lang="en" data-lux-palette="emerald">
+<html lang="en" data-lux-theme="luxury" data-lux-palette="emerald">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Application Configuration — Tracopus User Guide</title>
-  <link rel="icon" href="../images/tracopus-logo.png" type="image/png">
+  <meta name="description" content="Application Configuration — Tracopus user guide for enterprise work intelligence.">
+  <meta name="keywords" content="tracopus, documentation, user guide, hrms, application, config, configuration">
+  <link rel="canonical" href="https://tracopus.com/documentation/hrms/application-config.html">
+  <meta name="robots" content="index, follow">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Tracopus">
+  <meta property="og:title" content="Application Configuration — Tracopus User Guide">
+  <meta property="og:description" content="Application Configuration — Tracopus user guide for enterprise work intelligence.">
+  <meta property="og:url" content="https://tracopus.com/documentation/hrms/application-config.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Application Configuration — Tracopus User Guide">
+  <meta name="twitter:description" content="Application Configuration — Tracopus user guide for enterprise work intelligence.">
+  <script src="../js/docs-analytics.js?v=20260719a" defer></script>
+  <link rel="apple-touch-icon" href="../images/tracopus-logo.png">
+  <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/styles.css?v=20260604d">
-  <script src="../js/brand-config.js?v=20260604d"></script>
+  <link rel="stylesheet" href="../css/styles.css?v=20260718g">
+  <script src="../js/brand-config.js?v=20260713c"></script>
 </head>
 <body data-docs-depth="1">
 
-<header>
-  <div class="container">
-    <div class="header-content">
-      <div class="header-brand">
-        <a href="../index.html" class="header-brand__link" aria-label="User Guide home">
-          <img src="../images/tracopus-logo.png" alt="" class="header-logo" width="140" height="38">
-          <div class="header-brand__text">
-            <h1>User Guide</h1>
-            <p class="subtitle">Complete Documentation &amp; User Manual</p>
-            <p class="version">Luxury UI · Version 2.0</p>
-            <span class="lux-badge">Enterprise Work Intelligence</span>
-          </div>
-        </a>
-      </div>
-    </div>
-  </div>
-</header>
+<header aria-label="Site header"></header>
 
-<nav>
-  <div class="container">
-    <ul>
-            <li><a href="../index.html">Home</a></li>
-      <li><a href="../getting-started.html">Getting Started</a></li>
-      <li><a href="index.html" class="active">HRMS</a></li>
-      <li><a href="../sales/index.html">Sales</a></li>
-      <li><a href="../project/index.html">Project</a></li>
-      <li><a href="../mobile/index.html">Mobile</a></li>
-      <li><a href="../interface.html">Luxury UI</a></li>
-      <li><a href="../charts.html">Charts</a></li>
-      <li><a href="../faq/index.html">FAQ</a></li>
-      <li><a href="../admin.html">Admin</a></li>
-    </ul>
-  </div>
-</nav>
 
-<aside class="sidebar">
-  <ul>
-        <li class="section-title">HRMS</li>
-    <li><a href="index.html">HRMS Overview</a></li>
-    <li><a href="dashboard.html">Employee Dashboard</a></li>
-    <li><a href="employees.html">Employees</a></li>
-    <li><a href="timesheet.html">Timesheet</a></li>
-    <li><a href="attendance.html">Attendance</a></li>
-    <li><a href="invoices.html">Invoices</a></li>
-    <li><a href="invoice-details.html">Invoice Details</a></li>
-    <li><a href="profile.html">Employee Profile</a></li>
-    <li><a href="settings.html">Settings</a></li>
-    <li><a href="application-config.html" class="active">Application Configuration</a></li>
-    <li class="section-title">On this page</li>
-    <li><a href="#overview">Overview</a></li>
-    <li><a href="#ui-layout">Screen layout</a></li>
-    <li><a href="#application-configuration">Application config</a></li>
-    <li><a href="#access-control">Access control</a></li>
-    <li><a href="#config-schema">Schema</a></li>
-    <li><a href="#workflows">Workflows</a></li>
-    <li class="section-title">FAQ & mistakes</li>
-    <li><a href="#faq">FAQ — all questions</a></li>
-    <li><a href="#faq-access">Access & getting started</a></li>
-    <li><a href="#faq-org-tree">Org tree & inherit</a></li>
-    <li><a href="#faq-saving">Saving & filters</a></li>
-    <li><a href="#faq-app-data">Application config data</a></li>
-    <li><a href="#faq-roles">Roles & permissions</a></li>
-    <li><a href="#faq-timesheet">Timesheet rules</a></li>
-    <li><a href="#faq-troubleshooting">Troubleshooting</a></li>
-    <li><a href="#mistakes">Common mistakes</a></li>
-    <li><a href="#related">Related guides</a></li>
-    <li><a href="#tips">Tips</a></li>
-  </ul>
-</aside>
 
 <main>
     <div class="breadcrumb"><a href="../index.html">Home</a> → HRMS → Application Configuration</div>
@@ -93,33 +41,56 @@
       <div class="appcfg-hero__top">
         <span class="appcfg-hero__eyebrow">HRMS · Administration · Reference</span>
         <div class="appcfg-hero__pills">
-          <span class="appcfg-pill"><strong>Route</strong> <code>/hrms/appconfig</code></span>
+          <span class="appcfg-pill"><strong>Route</strong> <code>/admin/appconfig</code> · <code>/hrms/appconfig</code></span>
           <span class="appcfg-pill"><strong>UI</strong> ApplicationConfigPage</span>
           <span class="appcfg-pill appcfg-pill--accent">org.json + role.json</span>
         </div>
       </div>
-      <h1 class="appcfg-hero__title">Application Configuration<br><span>&amp; Access Control</span></h1>
-      <p class="appcfg-hero__lead">The definitive guide to organization master data, feature toggles, and role permissions — every key documented with live values, UI behaviour, and downstream impact across HRMS, Project, Sales, and Timesheet.</p>
+      <div class="appcfg-hero__copy">
+        <h1 class="appcfg-hero__title">Application Configuration<br><span>&amp; Access Control</span></h1>
+        <p class="appcfg-hero__lead">The definitive guide to organization master data, feature toggles, and role permissions — every key documented with live values, UI behaviour, and downstream impact across HRMS, Project, Sales, and Timesheet.</p>
+      </div>
       <div class="appcfg-stat-grid">
-        <article class="appcfg-stat"><span class="appcfg-stat__value">57</span><span class="appcfg-stat__label">App config keys</span><span class="appcfg-stat__hint">org.json · 4 modules</span></article>
+        <article class="appcfg-stat"><span class="appcfg-stat__value">58</span><span class="appcfg-stat__label">App config keys</span><span class="appcfg-stat__hint">org.json · 4 modules</span></article>
         <article class="appcfg-stat"><span class="appcfg-stat__value">399+</span><span class="appcfg-stat__label">Configured values</span><span class="appcfg-stat__hint">Lists, trees, toggles</span></article>
-        <article class="appcfg-stat"><span class="appcfg-stat__value">31</span><span class="appcfg-stat__label">Access groups</span><span class="appcfg-stat__hint">role.json · 3 modules</span></article>
+        <article class="appcfg-stat"><span class="appcfg-stat__value">32</span><span class="appcfg-stat__label">Access groups</span><span class="appcfg-stat__hint">role.json · 3 modules</span></article>
         <article class="appcfg-stat appcfg-stat--highlight"><span class="appcfg-stat__value">191/232</span><span class="appcfg-stat__label">Permissions on</span><span class="appcfg-stat__hint">Site Admin reference role</span></article>
       </div>
       <div class="appcfg-hero__actions">
         <a class="appcfg-btn appcfg-btn--primary" href="#application-configuration">Application config ↓</a>
         <a class="appcfg-btn appcfg-btn--ghost" href="#access-control">Access control ↓</a>
+        <a class="appcfg-btn appcfg-btn--ghost" href="../admin.html#persona-access">Persona access</a>
         <a class="appcfg-btn appcfg-btn--ghost" href="../admin.html#appconfig">Admin overview</a>
       </div>
     </div>
   </header>
 
   <div class="appcfg-toolbar" id="appcfg-toolbar">
-    <div class="appcfg-toolbar__search">
-      <span class="appcfg-toolbar__search-icon" aria-hidden="true">⌕</span>
-      <input type="search" id="appcfg-search" class="appcfg-toolbar__input" placeholder="Filter by key, label, value, or permission flag…" autocomplete="off" aria-label="Filter configuration reference">
+    <div class="appcfg-toolbar__row">
+      <div class="appcfg-toolbar__search">
+        <span class="appcfg-toolbar__search-icon" aria-hidden="true">⌕</span>
+        <input type="search" id="appcfg-search" class="appcfg-toolbar__input" placeholder="Filter by key, label, value, or permission flag…" autocomplete="off" aria-label="Filter configuration reference">
+      </div>
     </div>
-    <nav class="appcfg-jump" aria-label="Jump to module"><a class="appcfg-jump__link appcfg-jump__link--org" href="#org-hrms">👥 HRMS</a><a class="appcfg-jump__link appcfg-jump__link--org" href="#org-project">📁 PROJECT</a><a class="appcfg-jump__link appcfg-jump__link--org" href="#org-nonproject">⏱ NONPROJECT</a><a class="appcfg-jump__link appcfg-jump__link--org" href="#org-sales">💼 SALES</a><a class="appcfg-jump__link appcfg-jump__link--role" href="#role-hrms">👥 HRMS access</a><a class="appcfg-jump__link appcfg-jump__link--role" href="#role-project">📁 PROJECT access</a><a class="appcfg-jump__link appcfg-jump__link--role" href="#role-sales">💼 SALES access</a></nav>
+    <div class="appcfg-jump-wrap">
+      <div class="appcfg-jump-group">
+        <span class="appcfg-jump-group__label">Org</span>
+        <nav class="appcfg-jump" aria-label="Jump to org modules">
+          <a class="appcfg-jump__link appcfg-jump__link--org" href="#org-hrms">HRMS</a>
+          <a class="appcfg-jump__link appcfg-jump__link--org" href="#org-project">PROJECT</a>
+          <a class="appcfg-jump__link appcfg-jump__link--org" href="#org-nonproject">NONPROJECT</a>
+          <a class="appcfg-jump__link appcfg-jump__link--org" href="#org-sales">SALES</a>
+        </nav>
+      </div>
+      <div class="appcfg-jump-group">
+        <span class="appcfg-jump-group__label">Roles</span>
+        <nav class="appcfg-jump" aria-label="Jump to role modules">
+          <a class="appcfg-jump__link appcfg-jump__link--role" href="#role-hrms">HRMS access</a>
+          <a class="appcfg-jump__link appcfg-jump__link--role" href="#role-project">PROJECT access</a>
+          <a class="appcfg-jump__link appcfg-jump__link--role" href="#role-sales">SALES access</a>
+        </nav>
+      </div>
+    </div>
   </div>
   <p class="appcfg-empty" id="appcfg-empty" hidden>No matching configuration keys — try a shorter term or clear the filter.</p>
 
@@ -131,13 +102,13 @@
           <span class="appcfg-dual-card__icon">🏢</span>
           <h3 class="appcfg-dual-card__title">Application configuration</h3>
           <p class="appcfg-dual-card__desc"><strong>org.json</strong> seeds dropdown lists, email routing, service-line trees, and boolean feature flags. Org units inherit from parent nodes; child teams override with the chain icon.</p>
-          <ul class="appcfg-dual-card__list"><li>Bands, departments, skills</li><li>categoryMap service-line tree</li><li>PO &amp; project notification emails</li><li>Timesheet non-billable categories</li></ul>
+          <ul class="appcfg-dual-card__list"><li>Bands, departments, skills</li><li>categoryMap service-line tree</li><li>PO &amp; project notification emails</li><li>Persona navigation map &amp; org kill switches</li></ul>
         </article>
         <article class="appcfg-dual-card appcfg-dual-card--role">
           <span class="appcfg-dual-card__icon">🔐</span>
           <h3 class="appcfg-dual-card__title">Access control</h3>
           <p class="appcfg-dual-card__desc"><strong>role.json</strong> defines module visibility and CRUD gates. Roles attach to org units via Role Bar; users receive effective permissions on login refresh.</p>
-          <ul class="appcfg-dual-card__list"><li>Sidebar module toggles</li><li>Timesheet edit windows</li><li>Report catalog access</li><li>Project status transition rules</li></ul>
+          <ul class="appcfg-dual-card__list"><li>Sidebar module toggles</li><li>Persona access (<code>personaModules</code>)</li><li>Timesheet edit windows</li><li>Report catalog access</li></ul>
         </article>
       </div>
       <div class="concept-grid appcfg-concept-grid">
@@ -212,7 +183,7 @@
       <div class="config-module-block__title-row">
         <h3 class="config-module-block__title">HRMS</h3>
         <span class="config-module-block__status config-module-block__status--enabled">enabled</span>
-        <span class="config-module-block__count">16 keys</span>
+        <span class="config-module-block__count">17 keys</span>
       </div>
       <p class="config-module-block__tagline">Workforce master data — bands, departments, skills, practice hierarchy</p>
       <p class="config-module-block__intro">Module <code>HRMS</code> · locked=false · parentEnabled=true</p>
@@ -586,6 +557,180 @@
         <span class="config-value-count">2 item(s)</span>
       </div>
       <ul class="config-tree-preview"><li><strong>Primary Practice</strong> (2 sub-keys)</li><li><strong>Primary Practice 1</strong> (3 sub-keys)</li></ul><p class="config-value-count">Multi-level tree — expand in App Config UI</p>
+    </div>
+  </div>
+</article>
+<article class="config-doc-card module-hrms" id="cfg-personaNavigationAdditional" data-search="personanavigationadditional persona navigation pagepersonamap disabledpersonas disabledpaths disabledmodules org kill switch turn off page access org.json admin persona-navigation roles sidebar personas catalog defaults">
+  <div class="config-doc-card__accent"></div>
+  <div class="config-doc-card__inner">
+    <div class="config-doc-card__head">
+      <div class="config-doc-card__title-row">
+        <h4 class="config-doc-card__title">Persona navigation access</h4>
+        <span class="config-type-badge">Property map</span>
+      </div>
+      <code class="config-doc-card__key">personaNavigationAdditional</code>
+    </div>
+    <p class="config-doc-card__desc">Org-wide page→persona map and kill switches. Prefer the simplified UI at <strong>Admin → Persona navigation</strong> (<code>/admin/persona-navigation</code>): <em>Turn off</em> (personas / modules / pages) and <em>Page access</em> (pick one page, Product default vs Custom personas). Also editable under Application Config → Org → HRMS.</p>
+    <p class="config-doc-card__affects"><span class="config-doc-card__affects-icon">↗</span> Sidebar filtering, route guards, persona switcher, Admin → Roles page toggles (shared org map)</p>
+    <div class="config-doc-card__props"><span class="config-prop-chip">inputType · list</span><span class="config-prop-chip config-prop-chip--warn">longList</span></div>
+    <div class="config-doc-card__values">
+      <div class="config-doc-card__values-head">
+        <strong class="config-doc-card__values-label">Seed defaults (<code>org.json</code>)</strong>
+        <span class="config-value-count">4 fields</span>
+      </div>
+      <div class="access-table-wrap">
+        <table class="table table--permissions table--premium">
+          <thead><tr><th>Field</th><th>What it controls</th><th>Default</th></tr></thead>
+          <tbody>
+            <tr><td><code class="perm-key">pagePersonaMap</code></td><td>Path → allowed persona codes. Empty = use shipped sidebar <code>personas[]</code> catalog defaults.</td><td class="perm-val"><code class="perm-code">{}</code></td></tr>
+            <tr><td><code class="perm-key">disabledPersonas</code></td><td>Org kill: listed personas unavailable to everyone.</td><td class="perm-val"><code class="perm-code">[]</code></td></tr>
+            <tr><td><code class="perm-key">disabledPaths</code></td><td>Org kill: listed routes hidden for everyone. Protected: roles, persona-navigation, appconfig, setup-checklist.</td><td class="perm-val"><code class="perm-code">[]</code></td></tr>
+            <tr><td><code class="perm-key">disabledModules</code></td><td>Org kill: whole product areas hidden (permission-module keys).</td><td class="perm-val"><code class="perm-code">[]</code></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="config-value-count">Org disables always win over role <code>personaModules</code> and page-map allow lists.</p>
+    </div>
+  </div>
+</article>
+<article class="config-doc-card module-hrms" id="cfg-attendanceAdditional" data-search="attendanceadditional attendance regularization attendanceregularizationenabled missed punch correction manager approval attendance matrix org switch employees managers delegates">
+  <div class="config-doc-card__accent"></div>
+  <div class="config-doc-card__inner">
+    <div class="config-doc-card__head">
+      <div class="config-doc-card__title-row">
+        <h4 class="config-doc-card__title">Attendance additional (org)</h4>
+        <span class="config-type-badge">Feature toggles</span>
+      </div>
+      <code class="config-doc-card__key">attendanceAdditional</code>
+    </div>
+    <p class="config-doc-card__desc"><strong>Why:</strong> Org-level attendance enhancement flags. Today the primary seed flag is regularization — missed punch / correction requests that go through manager approval instead of silently rewriting the matrix.</p>
+    <p class="config-doc-card__affects"><span class="config-doc-card__affects-icon">↗</span> <strong>Who:</strong> Admins set org policy. Employees submit corrections; reporting managers and attendance-scoped delegates approve. Requires role <code>hrmsModules.attendanceEnabled</code>.</p>
+    <p class="config-doc-card__related"><strong>Related:</strong> Role <code>attendance</code> / <code>attendanceAdditional</code> (mark, approveTeam, auto-approve off for production), org <code>approvalDelegation</code>, Workspace Approvals inbox.</p>
+    <div class="config-doc-card__props"><span class="config-prop-chip">inputType · list</span><span class="config-prop-chip config-prop-chip--warn">longList</span></div>
+    <div class="config-doc-card__values">
+      <div class="config-doc-card__values-head">
+        <strong class="config-doc-card__values-label">Seed flags (<code>org.json</code>)</strong>
+        <span class="config-value-count">1 field</span>
+      </div>
+      <div class="access-table-wrap">
+        <table class="table table--permissions table--premium">
+          <thead><tr><th>Flag</th><th>What it controls</th><th>Who / related</th><th>Default</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><code class="perm-key">attendanceRegularizationEnabled</code></td>
+              <td>Turns on regularization request → approve flows on Attendance.</td>
+              <td>Employees request; managers/delegates approve. Related: role attendance access + <code>approvalDelegationEnabled</code>.</td>
+              <td class="perm-val"><span class="perm-badge perm-badge--on">true</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</article>
+<article class="config-doc-card module-hrms" id="cfg-timesheetAdditional" data-search="timesheetadditional timesheetapprovalenabled timesheetreopenenabled timesheetintelligenceenabled submit approve reject reopen staging week workflow managers employees delegates">
+  <div class="config-doc-card__accent"></div>
+  <div class="config-doc-card__inner">
+    <div class="config-doc-card__head">
+      <div class="config-doc-card__title-row">
+        <h4 class="config-doc-card__title">Timesheet additional (org)</h4>
+        <span class="config-type-badge">Feature toggles</span>
+      </div>
+      <code class="config-doc-card__key">timesheetAdditional</code>
+    </div>
+    <p class="config-doc-card__desc"><strong>Why:</strong> Org master switches for week-based timesheet approval, reopen, and intelligence. Without <code>timesheetApprovalEnabled</code>, saves stay on the legacy TaskActivity path and approval APIs fail closed.</p>
+    <p class="config-doc-card__affects"><span class="config-doc-card__affects-icon">↗</span> <strong>Who:</strong> Admins enable for the org. Employees submit weeks; managers and timesheet-scoped delegates approve/reject. Role <code>enableTimeSheetApproval</code> grants Approve UI — it does not replace this org switch.</p>
+    <p class="config-doc-card__related"><strong>Related:</strong> Role <code>timeSheet.enableTimeSheetApproval</code> / <code>enableTimeSheetReopen</code>, role <code>timesheetAdditional</code> auto-approve flags (keep <strong>off</strong> for production), org <code>approvalDelegation</code>, <code>tracopusWorkspaceAdditional.universalApprovalInboxEnabled</code>.</p>
+    <div class="config-doc-card__props"><span class="config-prop-chip">inputType · list</span><span class="config-prop-chip config-prop-chip--warn">longList</span></div>
+    <div class="config-doc-card__values">
+      <div class="config-doc-card__values-head">
+        <strong class="config-doc-card__values-label">Seed flags (<code>org.json</code>)</strong>
+        <span class="config-value-count">3 fields</span>
+      </div>
+      <div class="access-table-wrap">
+        <table class="table table--permissions table--premium">
+          <thead><tr><th>Flag</th><th>What it controls</th><th>Who / related</th><th>Default</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><code class="perm-key">timesheetApprovalEnabled</code></td>
+              <td>Submit → pending → approve/reject → lock via TimesheetWeek staging.</td>
+              <td>Employees submit; managers/delegates approve. Related: role <code>enableTimeSheetApproval</code>.</td>
+              <td class="perm-val"><span class="perm-badge perm-badge--on">true</span></td>
+            </tr>
+            <tr>
+              <td><code class="perm-key">timesheetReopenEnabled</code></td>
+              <td>Allows reopening approved/locked weeks for correction.</td>
+              <td>Managers (and owners in solo/self-approved cases). Related: role <code>enableTimeSheetReopen</code>.</td>
+              <td class="perm-val"><span class="perm-badge perm-badge--on">true</span></td>
+            </tr>
+            <tr>
+              <td><code class="perm-key">timesheetIntelligenceEnabled</code></td>
+              <td>Timesheet intelligence / billability helper panels.</td>
+              <td>Managers with Timesheet access. Related: usually needs approval workflow on.</td>
+              <td class="perm-val"><span class="perm-badge perm-badge--on">true</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</article>
+<article class="config-doc-card module-hrms" id="cfg-approvalDelegation" data-search="approvaldelegation approvaldelegationenabled approvalreminderenabled slafirstreminderdays slarepeatreminderdays employeemanualremindercooldownhours delegate coverage acting for manager leave attendance timesheet">
+  <div class="config-doc-card__accent"></div>
+  <div class="config-doc-card__inner">
+    <div class="config-doc-card__head">
+      <div class="config-doc-card__title-row">
+        <h4 class="config-doc-card__title">Approval delegation (org)</h4>
+        <span class="config-type-badge">Feature toggles</span>
+      </div>
+      <code class="config-doc-card__key">approvalDelegation</code>
+    </div>
+    <p class="config-doc-card__desc"><strong>Why:</strong> Lets managers assign trusted colleagues to cover attendance, timesheet, and/or leave approvals while away. Delegates are <em>added</em> as effective approvers — the reporting manager still sees and can act on the same pending requests.</p>
+    <p class="config-doc-card__affects"><span class="config-doc-card__affects-icon">↗</span> <strong>Who:</strong> Admins enable org-wide. Managers create/revoke on Profile → Approval delegation. Delegates act from module pending panels and Workspace Approvals (Acting for badge). Employees may nudge approvers subject to cooldown.</p>
+    <p class="config-doc-card__related"><strong>Related:</strong> Org <code>timesheetApprovalEnabled</code>, attendance regularization, leave workflows; role timesheet/attendance approve flags; <code>adminModules.delegationEnabled</code> / Profile access; reminder SLA fields in this same group.</p>
+    <div class="config-doc-card__props"><span class="config-prop-chip">inputType · list</span><span class="config-prop-chip config-prop-chip--warn">longList</span></div>
+    <div class="config-doc-card__values">
+      <div class="config-doc-card__values-head">
+        <strong class="config-doc-card__values-label">Seed flags (<code>org.json</code>)</strong>
+        <span class="config-value-count">5 fields</span>
+      </div>
+      <div class="access-table-wrap">
+        <table class="table table--permissions table--premium">
+          <thead><tr><th>Flag</th><th>What it controls</th><th>Who / related</th><th>Default</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><code class="perm-key">approvalDelegationEnabled</code></td>
+              <td>Master switch for create/list/act-as delegation.</td>
+              <td>Managers + delegates. Related domain approval org flags.</td>
+              <td class="perm-val"><span class="perm-badge perm-badge--on">true</span></td>
+            </tr>
+            <tr>
+              <td><code class="perm-key">approvalReminderEnabled</code></td>
+              <td>Automatic SLA reminder emails for pending approvals.</td>
+              <td>Managers + delegates as recipients. Related: SLA day fields below.</td>
+              <td class="perm-val"><span class="perm-badge perm-badge--on">true</span></td>
+            </tr>
+            <tr>
+              <td><code class="perm-key">slaFirstReminderDays</code></td>
+              <td>Days pending before the first automatic reminder.</td>
+              <td>Admin policy; affects approver inboxes/email.</td>
+              <td class="perm-val"><code class="perm-code">2</code></td>
+            </tr>
+            <tr>
+              <td><code class="perm-key">slaRepeatReminderDays</code></td>
+              <td>Days between repeat reminders while still pending.</td>
+              <td>Admin policy; same recipients as first reminder.</td>
+              <td class="perm-val"><code class="perm-code">2</code></td>
+            </tr>
+            <tr>
+              <td><code class="perm-key">employeeManualReminderCooldownHours</code></td>
+              <td>Cooldown before an employee can re-nudge the same request.</td>
+              <td>Employees send; managers/delegates receive.</td>
+              <td class="perm-val"><code class="perm-code">24</code></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </article></div>
@@ -1607,9 +1752,9 @@
       <div class="config-module-block__title-row">
         <h3 class="config-module-block__title">HRMS</h3>
         <span class="config-module-block__status config-module-block__status--enabled">enabled</span>
-        <span class="config-module-block__count">8 keys</span>
+        <span class="config-module-block__count">9 keys</span>
       </div>
-      <p class="config-module-block__tagline">Workforce master data — bands, departments, skills, practice hierarchy</p>
+      <p class="config-module-block__tagline">Workforce permissions — modules, CRUD, persona access</p>
       <p class="config-module-block__intro">Module <code>HRMS</code> · locked=false · parentEnabled=true</p>
     </div>
     <button type="button" class="appcfg-module-toggle" aria-expanded="true">Collapse module</button>
@@ -1772,7 +1917,7 @@
 </div>
   </div>
 </article>
-<article class="config-doc-card config-doc-card--access module-hrms" id="access-attendance" data-search="attendance attendance matrix permissions mark, delete, view attendance cells. createenabled true deleteenabled true viewenabled true">
+<article class="config-doc-card config-doc-card--access module-hrms" id="access-attendance" data-search="attendance attendance matrix permissions mark delete view edit approve team attendance cells createenabled editenabled deleteenabled viewenabled true">
   <div class="config-doc-card__accent"></div>
   <div class="config-doc-card__inner">
     <div class="config-doc-card__head">
@@ -1782,44 +1927,83 @@
       </div>
       <code class="config-doc-card__key">attendance</code>
     </div>
-    <p class="config-doc-card__desc">Mark, delete, view attendance cells.</p>
+    <p class="config-doc-card__desc"><strong>Why:</strong> CRUD gate for the Attendance matrix. <strong>Who:</strong> Roles that need to mark, view, or help approve attendance (managers typically need <code>editEnabled</code> or <code>attendanceAdditional.approveTeamEnabled</code>). <strong>Related:</strong> <code>attendanceAdditional</code> mark/auto-approve/approveTeam flags; org regularization + delegation.</p>
     
-<div class="access-perm-meter" aria-label="3 of 3 permissions enabled">
+<div class="access-perm-meter" aria-label="4 of 4 permissions enabled">
   <div class="access-perm-meter__bar"><div class="access-perm-meter__fill" style="width:100%"></div></div>
-  <span class="access-perm-meter__label"><strong>3</strong> / 3 enabled</span>
+  <span class="access-perm-meter__label"><strong>4</strong> / 4 enabled</span>
 </div>
     <div class="config-doc-card__props"><span class="config-prop-chip">inputType · <code>group</code></span><span class="config-prop-chip config-prop-chip--warn">longList</span></div>
     
 <div class="access-table-wrap">
   <table class="table table--permissions table--premium">
     <thead><tr><th>Flag</th><th>What it controls</th><th>Site Admin</th></tr></thead>
-    <tbody><tr><td><code class="perm-key">createEnabled</code></td><td>Allow creating new records.</td><td class="perm-val"><span class="perm-badge perm-badge--on">true</span></td></tr><tr><td><code class="perm-key">deleteEnabled</code></td><td>Hard delete (where supported).</td><td class="perm-val"><span class="perm-badge perm-badge--on">true</span></td></tr><tr><td><code class="perm-key">viewEnabled</code></td><td>Read-only access to records.</td><td class="perm-val"><span class="perm-badge perm-badge--on">true</span></td></tr></tbody>
+    <tbody><tr><td><code class="perm-key">createEnabled</code></td><td>Legacy create gate (prefer markOwn/Others flags in attendanceAdditional).</td><td class="perm-val"><span class="perm-badge perm-badge--on">true</span></td></tr><tr><td><code class="perm-key">editEnabled</code></td><td>Helps unlock team approve UI when approveTeam/auto-approve-others are off.</td><td class="perm-val"><span class="perm-badge perm-badge--on">true</span></td></tr><tr><td><code class="perm-key">deleteEnabled</code></td><td>Hard delete (where supported); prefer removeOwn/Others flags.</td><td class="perm-val"><span class="perm-badge perm-badge--on">true</span></td></tr><tr><td><code class="perm-key">viewEnabled</code></td><td>Read attendance matrix / day cells.</td><td class="perm-val"><span class="perm-badge perm-badge--on">true</span></td></tr></tbody>
   </table>
 </div>
   </div>
 </article>
-<article class="config-doc-card config-doc-card--access module-hrms" id="access-attendanceAdditional" data-search="attendanceadditional attendance scope switch team scope on attendance matrix. switchuserteamsenabled true">
+<article class="config-doc-card config-doc-card--access module-hrms" id="access-attendanceAdditional" data-search="attendanceadditional attendance scope switch autoapprove own others approveteamenabled mark remove attendance matrix switchuserteamsenabled">
   <div class="config-doc-card__accent"></div>
   <div class="config-doc-card__inner">
     <div class="config-doc-card__head">
       <div class="config-doc-card__title-row">
-        <h4 class="config-doc-card__title">Attendance scope</h4>
+        <h4 class="config-doc-card__title">Attendance additional (role)</h4>
         <span class="config-type-badge config-type-badge--access">list</span>
       </div>
       <code class="config-doc-card__key">attendanceAdditional</code>
     </div>
-    <p class="config-doc-card__desc">Switch team scope on attendance matrix.</p>
+    <p class="config-doc-card__desc"><strong>Why:</strong> Role behaviour for marking, removing, auto-approving, and approving team attendance. <strong>Who:</strong> Employees use mark/remove-own; managers use mark-others + approveTeam. <strong>Related:</strong> Org <code>attendanceAdditional.attendanceRegularizationEnabled</code>, org <code>approvalDelegation</code>. Production seed keeps auto-approve <strong>off</strong> and <code>approveTeamEnabled</code> on.</p>
     
-<div class="access-perm-meter" aria-label="1 of 1 permissions enabled">
-  <div class="access-perm-meter__bar"><div class="access-perm-meter__fill" style="width:100%"></div></div>
-  <span class="access-perm-meter__label"><strong>1</strong> / 1 enabled</span>
+<div class="access-perm-meter" aria-label="6 of 8 permissions enabled">
+  <div class="access-perm-meter__bar"><div class="access-perm-meter__fill" style="width:75%"></div></div>
+  <span class="access-perm-meter__label"><strong>6</strong> / 8 enabled</span>
 </div>
     <div class="config-doc-card__props"><span class="config-prop-chip">inputType · <code>list</code></span><span class="config-prop-chip config-prop-chip--warn">longList</span></div>
     
 <div class="access-table-wrap">
   <table class="table table--permissions table--premium">
     <thead><tr><th>Flag</th><th>What it controls</th><th>Site Admin</th></tr></thead>
-    <tbody><tr><td><code class="perm-key">switchUserTeamsEnabled</code></td><td>Change team scope dropdown to view other teams' data.</td><td class="perm-val"><span class="perm-badge perm-badge--on">true</span></td></tr></tbody>
+    <tbody>
+      <tr><td><code class="perm-key">switchUserTeamsEnabled</code></td><td>Change team scope on the attendance matrix.</td><td class="perm-val"><span class="perm-badge perm-badge--on">true</span></td></tr>
+      <tr><td><code class="perm-key">autoApproveOwnAttendanceEnabled</code></td><td>Skip PENDING_APPROVAL when marking own attendance. Keep off for manager review.</td><td class="perm-val"><span class="perm-badge perm-badge--off">false</span></td></tr>
+      <tr><td><code class="perm-key">autoApproveOthersAttendanceEnabled</code></td><td>Auto-approve when marking for others. Keep off for production; do not use as the only approve gate.</td><td class="perm-val"><span class="perm-badge perm-badge--off">false</span></td></tr>
+      <tr><td><code class="perm-key">approveTeamEnabled</code></td><td>Role may approve team pending attendance (and related flows) without auto-approve.</td><td class="perm-val"><span class="perm-badge perm-badge--on">true</span></td></tr>
+      <tr><td><code class="perm-key">markOwnAttendanceEnabled</code></td><td>Mark own attendance days.</td><td class="perm-val"><span class="perm-badge perm-badge--on">true</span></td></tr>
+      <tr><td><code class="perm-key">markOthersAttendanceEnabled</code></td><td>Mark attendance for other employees in scope.</td><td class="perm-val"><span class="perm-badge perm-badge--on">true</span></td></tr>
+      <tr><td><code class="perm-key">removeOwnAttendanceEnabled</code></td><td>Request/remove own attendance where supported.</td><td class="perm-val"><span class="perm-badge perm-badge--on">true</span></td></tr>
+      <tr><td><code class="perm-key">removeOthersAttendanceEnabled</code></td><td>Remove others’ attendance in scope.</td><td class="perm-val"><span class="perm-badge perm-badge--on">true</span></td></tr>
+    </tbody>
+  </table>
+</div>
+  </div>
+</article>
+<article class="config-doc-card config-doc-card--access module-hrms" id="access-personaModules" data-search="personamodules persona access allowedpersonas defaultpersona personaswitchenabled role.json admin roles persona switcher site admin employee manager hr_admin executive">
+  <div class="config-doc-card__accent"></div>
+  <div class="config-doc-card__inner">
+    <div class="config-doc-card__head">
+      <div class="config-doc-card__title-row">
+        <h4 class="config-doc-card__title">Persona access</h4>
+        <span class="config-type-badge config-type-badge--access">list</span>
+      </div>
+      <code class="config-doc-card__key">personaModules</code>
+    </div>
+    <p class="config-doc-card__desc">Which personas this <strong>role</strong> may use. Edited from <strong>Admin → Roles &amp; permissions</strong> (persona-first UI) or Application Config → Role → HRMS. Page toggles on Roles write the shared org <code>pagePersonaMap</code>; org kill switches live only on Persona navigation.</p>
+    
+<div class="access-perm-meter" aria-label="Site Admin seed: all personas allowed">
+  <div class="access-perm-meter__bar"><div class="access-perm-meter__fill" style="width:100%"></div></div>
+  <span class="access-perm-meter__label"><strong>Configured</strong> · Site Admin seed</span>
+</div>
+    <div class="config-doc-card__props"><span class="config-prop-chip">inputType · <code>list</code></span><span class="config-prop-chip config-prop-chip--warn">longList</span></div>
+    
+<div class="access-table-wrap">
+  <table class="table table--permissions table--premium">
+    <thead><tr><th>Flag</th><th>What it controls</th><th>Site Admin</th></tr></thead>
+    <tbody>
+      <tr><td><code class="perm-key">allowedPersonas</code></td><td>Explicit list of personas this role may activate. Absent = Automatic (derived from module flags until saved).</td><td class="perm-val"><code class="perm-code">EMPLOYEE…ADMIN</code> (all)</td></tr>
+      <tr><td><code class="perm-key">defaultPersona</code></td><td>Landing persona when switcher is available.</td><td class="perm-val"><code class="perm-code">ADMIN</code></td></tr>
+      <tr><td><code class="perm-key">personaSwitchEnabled</code></td><td>Show header persona switcher for users in this role.</td><td class="perm-val"><span class="perm-badge perm-badge--on">true</span></td></tr>
+    </tbody>
   </table>
 </div>
   </div>
@@ -2180,28 +2364,57 @@
 </div>
   </div>
 </article>
-<article class="config-doc-card config-doc-card--access module-project" id="access-timeSheet" data-search="timesheet timesheet policy entry/edit/approval, past/future weeks, max hours, team/employee switch. enabletimesheetentry true enabletimesheetedit false enabletimesheetapproval false allowleaveandholidayforfuture true allowleaveandholidayforpast true listonlycurrentteamproject true restrictedbyskillsenabled false disableworkitemcreatebeforeyworkingdaysafterxhours disablenonprojectworkitemcreatebeforexworkingdays disablenonprojectworkitemcreateafterxworkingdays disableprojectworkitemcreatebeforexworkingdays disableprojectworkitemcreateafterxworkingdays disablelastmonthafterxdays enablefuturetimesheetview false enablepasttimesheetview true maxhoursallowedtoenter switchuserteamsenabled true switchemployeesenabled true timesheetnonbillableshowallaccountsenabled true">
+<article class="config-doc-card config-doc-card--access module-project" id="access-timeSheet" data-search="timesheet timesheet policy entry edit approval reopen past future weeks max hours team employee switch enabletimesheetentry enabletimesheetedit enabletimesheetapproval enabletimesheetreopen">
   <div class="config-doc-card__accent"></div>
   <div class="config-doc-card__inner">
     <div class="config-doc-card__head">
       <div class="config-doc-card__title-row">
-        <h4 class="config-doc-card__title">Timesheet policy</h4>
+        <h4 class="config-doc-card__title">Timesheet policy (role)</h4>
         <span class="config-type-badge config-type-badge--access">list</span>
       </div>
       <code class="config-doc-card__key">timeSheet</code>
     </div>
-    <p class="config-doc-card__desc">Entry/edit/approval, past/future weeks, max hours, team/employee switch.</p>
+    <p class="config-doc-card__desc"><strong>Why:</strong> Role-level entry/edit/approve/reopen and window limits for the timesheet grid. <strong>Who:</strong> Employees need entry/edit; managers need <code>enableTimeSheetApproval</code> (and usually reopen). <strong>Related:</strong> Org <code>timesheetAdditional.timesheetApprovalEnabled</code> / reopen; role <code>timesheetAdditional</code> auto-approve (keep off); org <code>approvalDelegation</code>.</p>
     
-<div class="access-perm-meter" aria-label="8 of 12 permissions enabled">
-  <div class="access-perm-meter__bar"><div class="access-perm-meter__fill" style="width:67%"></div></div>
-  <span class="access-perm-meter__label"><strong>8</strong> / 12 enabled</span>
+<div class="access-perm-meter" aria-label="production seed values">
+  <div class="access-perm-meter__bar"><div class="access-perm-meter__fill" style="width:85%"></div></div>
+  <span class="access-perm-meter__label"><strong>Seed</strong> · Site Admin</span>
 </div>
     <div class="config-doc-card__props"><span class="config-prop-chip">inputType · <code>list</code></span><span class="config-prop-chip config-prop-chip--warn">longList</span></div>
     
 <div class="access-table-wrap">
   <table class="table table--permissions table--premium">
     <thead><tr><th>Flag</th><th>What it controls</th><th>Site Admin</th></tr></thead>
-    <tbody><tr><td><code class="perm-key">enableTimeSheetEntry</code></td><td>Allow logging hours.</td><td class="perm-val"><span class="perm-badge perm-badge--on">true</span></td></tr><tr><td><code class="perm-key">enableTimeSheetEdit</code></td><td>Allow editing submitted entries.</td><td class="perm-val"><span class="perm-badge perm-badge--off">false</span></td></tr><tr><td><code class="perm-key">enableTimeSheetApproval</code></td><td>Manager approval workflow.</td><td class="perm-val"><span class="perm-badge perm-badge--off">false</span></td></tr><tr><td><code class="perm-key">allowLeaveAndHolidayForFuture</code></td><td>Book leave on future dates.</td><td class="perm-val"><span class="perm-badge perm-badge--on">true</span></td></tr><tr><td><code class="perm-key">allowLeaveAndHolidayForPast</code></td><td>Book leave retroactively.</td><td class="perm-val"><span class="perm-badge perm-badge--on">true</span></td></tr><tr><td><code class="perm-key">listOnlyCurrentTeamProject</code></td><td>Filter lists to current team scope only.</td><td class="perm-val"><span class="perm-badge perm-badge--on">true</span></td></tr><tr><td><code class="perm-key">restrictedBySkillsEnabled</code></td><td>Filter assignees by skill tags.</td><td class="perm-val"><span class="perm-badge perm-badge--off">false</span></td></tr><tr><td><code class="perm-key">disableWorkItemCreateBeforeYWorkingDaysAfterXHours</code></td><td>Cutoff rule: block create before N working days after hour X.</td><td class="perm-val"><code class="perm-code">15</code></td></tr><tr><td><code class="perm-key">disableNonProjectWorkItemCreateBeforeXWorkingDays</code></td><td>-1 = disabled; else days before today allowed for non-project entries.</td><td class="perm-val"><code class="perm-code">-1</code></td></tr><tr><td><code class="perm-key">disableNonProjectWorkItemCreateAfterXWorkingDays</code></td><td>Forward limit for non-project create.</td><td class="perm-val"><code class="perm-code">-1</code></td></tr><tr><td><code class="perm-key">disableProjectWorkItemCreateBeforeXWorkingDays</code></td><td>Retro limit for project work items.</td><td class="perm-val"><code class="perm-code">-1</code></td></tr><tr><td><code class="perm-key">disableProjectWorkItemCreateAfterXWorkingDays</code></td><td>Forward limit for project work items.</td><td class="perm-val"><code class="perm-code">-1</code></td></tr><tr><td><code class="perm-key">disableLastMonthAfterXDays</code></td><td>Lock prior month after X days into current month.</td><td class="perm-val"><code class="perm-code">3</code></td></tr><tr><td><code class="perm-key">enableFutureTimeSheetView</code></td><td>Navigate to future weeks.</td><td class="perm-val"><span class="perm-badge perm-badge--off">false</span></td></tr><tr><td><code class="perm-key">enablePastTimeSheetView</code></td><td>Navigate to historical weeks.</td><td class="perm-val"><span class="perm-badge perm-badge--on">true</span></td></tr><tr><td><code class="perm-key">maxHoursAllowedToEnter</code></td><td>Daily or entry hour cap validation.</td><td class="perm-val"><code class="perm-code">10</code></td></tr><tr><td><code class="perm-key">switchUserTeamsEnabled</code></td><td>Change team scope dropdown to view other teams' data.</td><td class="perm-val"><span class="perm-badge perm-badge--on">true</span></td></tr><tr><td><code class="perm-key">switchEmployeesEnabled</code></td><td>Pick another employee in timesheet/task views.</td><td class="perm-val"><span class="perm-badge perm-badge--on">true</span></td></tr><tr><td><code class="perm-key">timeSheetNonBillableShowAllAccountsEnabled</code></td><td>Show all accounts on non-billable rows.</td><td class="perm-val"><span class="perm-badge perm-badge--on">true</span></td></tr></tbody>
+    <tbody><tr><td><code class="perm-key">enableTimeSheetEntry</code></td><td>Allow logging hours on the grid.</td><td class="perm-val"><span class="perm-badge perm-badge--on">true</span></td></tr><tr><td><code class="perm-key">enableTimeSheetEdit</code></td><td>Allow editing hours after entry (subject to windows).</td><td class="perm-val"><span class="perm-badge perm-badge--on">true</span></td></tr><tr><td><code class="perm-key">enableTimeSheetApproval</code></td><td>Role may Approve/Reject others’ weeks. Org workflow must also be on.</td><td class="perm-val"><span class="perm-badge perm-badge--on">true</span></td></tr><tr><td><code class="perm-key">enableTimeSheetReopen</code></td><td>Role may reopen approved weeks when org reopen is on.</td><td class="perm-val"><span class="perm-badge perm-badge--on">true</span></td></tr><tr><td><code class="perm-key">allowLeaveAndHolidayForFuture</code></td><td>Book leave/holiday on future dates in timesheet context.</td><td class="perm-val"><span class="perm-badge perm-badge--on">true</span></td></tr><tr><td><code class="perm-key">allowLeaveAndHolidayForPast</code></td><td>Book leave/holiday retroactively.</td><td class="perm-val"><span class="perm-badge perm-badge--on">true</span></td></tr><tr><td><code class="perm-key">listOnlyCurrentTeamProject</code></td><td>Filter project pickers to current team scope.</td><td class="perm-val"><span class="perm-badge perm-badge--on">true</span></td></tr><tr><td><code class="perm-key">restrictedBySkillsEnabled</code></td><td>Filter assignees by skill tags.</td><td class="perm-val"><span class="perm-badge perm-badge--on">true</span></td></tr><tr><td><code class="perm-key">disableWorkItemCreateBeforeYWorkingDaysAfterXHours</code></td><td>Cutoff rule: block create before N working days after hour X.</td><td class="perm-val"><code class="perm-code">15</code></td></tr><tr><td><code class="perm-key">disableNonProjectWorkItemCreateBeforeXWorkingDays</code></td><td>-1 = disabled; else days before today allowed for non-project entries.</td><td class="perm-val"><code class="perm-code">-1</code></td></tr><tr><td><code class="perm-key">disableNonProjectWorkItemCreateAfterXWorkingDays</code></td><td>Forward limit for non-project create.</td><td class="perm-val"><code class="perm-code">-1</code></td></tr><tr><td><code class="perm-key">disableProjectWorkItemCreateBeforeXWorkingDays</code></td><td>Retro limit for project work items.</td><td class="perm-val"><code class="perm-code">-1</code></td></tr><tr><td><code class="perm-key">disableProjectWorkItemCreateAfterXWorkingDays</code></td><td>Forward limit for project work items.</td><td class="perm-val"><code class="perm-code">-1</code></td></tr><tr><td><code class="perm-key">disableLastMonthAfterXDays</code></td><td>Lock prior month after X days into current month.</td><td class="perm-val"><code class="perm-code">3</code></td></tr><tr><td><code class="perm-key">enableFutureTimeSheetView</code></td><td>Navigate to future weeks.</td><td class="perm-val"><span class="perm-badge perm-badge--off">false</span></td></tr><tr><td><code class="perm-key">enablePastTimeSheetView</code></td><td>Navigate to historical weeks.</td><td class="perm-val"><span class="perm-badge perm-badge--on">true</span></td></tr><tr><td><code class="perm-key">maxHoursAllowedToEnter</code></td><td>Daily or entry hour cap validation.</td><td class="perm-val"><code class="perm-code">10</code></td></tr><tr><td><code class="perm-key">switchUserTeamsEnabled</code></td><td>Change team scope dropdown.</td><td class="perm-val"><span class="perm-badge perm-badge--on">true</span></td></tr><tr><td><code class="perm-key">switchEmployeesEnabled</code></td><td>Pick another employee in timesheet views.</td><td class="perm-val"><span class="perm-badge perm-badge--on">true</span></td></tr><tr><td><code class="perm-key">timeSheetNonBillableShowAllAccountsEnabled</code></td><td>Show all accounts on non-billable rows.</td><td class="perm-val"><span class="perm-badge perm-badge--on">true</span></td></tr></tbody>
+  </table>
+</div>
+  </div>
+</article>
+<article class="config-doc-card config-doc-card--access module-project" id="access-timesheetAdditional" data-search="timesheetadditional role autoapprove own others timesheet autoapproveowntimesheetenabled autoapproveotherstimesheetenabled production manager review">
+  <div class="config-doc-card__accent"></div>
+  <div class="config-doc-card__inner">
+    <div class="config-doc-card__head">
+      <div class="config-doc-card__title-row">
+        <h4 class="config-doc-card__title">Timesheet additional (role)</h4>
+        <span class="config-type-badge config-type-badge--access">list</span>
+      </div>
+      <code class="config-doc-card__key">timesheetAdditional</code>
+    </div>
+    <p class="config-doc-card__desc"><strong>Why:</strong> Role auto-approve behaviour for timesheet weeks. <strong>Who:</strong> Affects the employee/manager who submits or marks the week. <strong>Related:</strong> Org <code>timesheetApprovalEnabled</code> must be on for week workflow; keep these auto-approve flags <strong>false</strong> for production manager review. Pair with <code>timeSheet.enableTimeSheetApproval</code> for human approve.</p>
+    
+<div class="access-perm-meter" aria-label="0 of 2 auto-approve flags enabled">
+  <div class="access-perm-meter__bar"><div class="access-perm-meter__fill" style="width:0%"></div></div>
+  <span class="access-perm-meter__label"><strong>0</strong> / 2 auto-approve on</span>
+</div>
+    <div class="config-doc-card__props"><span class="config-prop-chip">inputType · <code>list</code></span><span class="config-prop-chip config-prop-chip--warn">longList</span></div>
+    
+<div class="access-table-wrap">
+  <table class="table table--permissions table--premium">
+    <thead><tr><th>Flag</th><th>What it controls</th><th>Site Admin</th></tr></thead>
+    <tbody>
+      <tr><td><code class="perm-key">autoApproveOwnTimesheetEnabled</code></td><td>Auto-approve own weeks on submit (skips manager queue).</td><td class="perm-val"><span class="perm-badge perm-badge--off">false</span></td></tr>
+      <tr><td><code class="perm-key">autoApproveOthersTimesheetEnabled</code></td><td>Auto-approve when acting on others’ weeks.</td><td class="perm-val"><span class="perm-badge perm-badge--off">false</span></td></tr>
+    </tbody>
   </table>
 </div>
   </div>
@@ -2502,8 +2715,8 @@
 </div>
 <div class="appcfg-faq-category" id="faq-roles">
   <h3 class="appcfg-faq-category__title"><span class="appcfg-faq-category__icon">🔐</span> Roles & access control</h3>
-  <p class="appcfg-faq-category__count">6 questions</p>
-  <div class="appcfg-faq-list"><div class="faq-item" id="faq-q-faq-roles-0"><div class="faq-item__q">How are roles assigned to users?</div><div class="faq-item__a">Roles attach to <strong>org units</strong> via <code>ApplicationConfigRoleBar</code> on an org node — not directly on user records. Users inherit the role mapped to their team’s org unit.</div></div><div class="faq-item" id="faq-q-faq-roles-1"><div class="faq-item__q">How do I create a custom Manager role?</div><div class="faq-item__a">Roles tab → (+) new role → configure module visibility and permission groups → save. Start from Site Admin and disable delete/archive/appconfig flags. Assign via Role Bar on delivery team org nodes.</div></div><div class="faq-item" id="faq-q-faq-roles-2"><div class="faq-item__q">Why can a user see a menu item but not perform actions?</div><div class="faq-item__a">Module visibility (<code>*Enabled</code> in hrmsModules/projectModules) is separate from CRUD groups (<code>createEnabled</code>, <code>editEnabled</code>). Enable both the module flag and the action flag in the correct permission group.</div></div><div class="faq-item" id="faq-q-faq-roles-3"><div class="faq-item__q">What is defaultRedirectPage?</div><div class="faq-item__a">Landing slug when the user opens a module (e.g. <code>dashboard</code>, <code>activites</code>, <code>bidrequests</code>). Set per role under HRMS/Project/Sales Modules Access.</div></div><div class="faq-item" id="faq-q-faq-roles-4"><div class="faq-item__q">How do report permissions work?</div><div class="faq-item__a"><code>reporting</code> group lists each report type as a boolean. Users only see reports they are allowed to run in the REPORT dropdown.</div></div><div class="faq-item" id="faq-q-faq-roles-5"><div class="faq-item__q">Can managers edit other employees’ timesheets?</div><div class="faq-item__a">Controlled by <code>timeSheet.switchEmployeesEnabled</code>, <code>enableTimeSheetEdit</code>, and related work-item flags. Set on the manager’s role template, not per user.</div></div></div>
+  <p class="appcfg-faq-category__count">10 questions</p>
+  <div class="appcfg-faq-list"><div class="faq-item" id="faq-q-faq-roles-0"><div class="faq-item__q">How are roles assigned to users?</div><div class="faq-item__a">Roles attach to <strong>org units</strong> via <code>ApplicationConfigRoleBar</code> on an org node — not directly on user records. Users inherit the role mapped to their team’s org unit.</div></div><div class="faq-item" id="faq-q-faq-roles-1"><div class="faq-item__q">How do I create a custom Manager role?</div><div class="faq-item__a">Roles tab → (+) new role → configure module visibility and permission groups → save. Start from Site Admin and disable delete/archive/appconfig flags. Assign via Role Bar on delivery team org nodes.</div></div><div class="faq-item" id="faq-q-faq-roles-2"><div class="faq-item__q">Why can a user see a menu item but not perform actions?</div><div class="faq-item__a">Module visibility (<code>*Enabled</code> in hrmsModules/projectModules) is separate from CRUD groups (<code>createEnabled</code>, <code>editEnabled</code>). Enable both the module flag and the action flag in the correct permission group.</div></div><div class="faq-item" id="faq-q-faq-roles-3"><div class="faq-item__q">What is defaultRedirectPage?</div><div class="faq-item__a">Landing slug when the user opens a module (e.g. <code>dashboard</code>, <code>activites</code>, <code>bidrequests</code>). Set per role under HRMS/Project/Sales Modules Access.</div></div><div class="faq-item" id="faq-q-faq-roles-4"><div class="faq-item__q">How do report permissions work?</div><div class="faq-item__a"><code>reporting</code> group lists each report type as a boolean. Users only see reports they are allowed to run in the REPORT dropdown.</div></div><div class="faq-item" id="faq-q-faq-roles-5"><div class="faq-item__q">Can managers edit other employees’ timesheets?</div><div class="faq-item__a">Controlled by <code>timeSheet.switchEmployeesEnabled</code>, <code>enableTimeSheetEdit</code>, and related work-item flags. Set on the manager’s role template, not per user.</div></div><div class="faq-item" id="faq-q-faq-roles-6"><div class="faq-item__q">Where is persona access configured — org.json or role.json?</div><div class="faq-item__a"><strong>Role</strong> which personas a user may switch into: <code>role.json</code> → HRMS → <code>personaModules</code> (Admin → Roles). <strong>Org</strong> page→persona map and kill switches: <code>org.json</code> → HRMS → <code>personaNavigationAdditional</code> (Admin → Persona navigation). Product page defaults live in the sidebar catalog until you customize a path.</div></div><div class="faq-item" id="faq-q-faq-roles-7"><div class="faq-item__q">How do I use the simplified Persona navigation page?</div><div class="faq-item__a">Open <code>/admin/persona-navigation</code>. <strong>Turn off</strong> — chip toggles for personas/modules and a searchable page list. <strong>Page access</strong> — select one page, choose Product default or Custom, then toggle personas. Click <strong>Save changes</strong> once. Roles links here via the Organization access card.</div></div><div class="faq-item" id="faq-q-faq-roles-8"><div class="faq-item__q">What are the seed defaults for persona config?</div><div class="faq-item__a"><code>org.json</code> seeds empty <code>pagePersonaMap</code> and empty <code>disabledPersonas</code> / <code>disabledPaths</code> / <code>disabledModules</code>. Site Admin <code>role.json</code> seeds all personas allowed, <code>defaultPersona: ADMIN</code>, <code>personaSwitchEnabled: true</code>.</div></div><div class="faq-item" id="faq-q-faq-roles-9"><div class="faq-item__q">Do org kill switches override role persona access?</div><div class="faq-item__a">Yes. Evaluation order: role module flags → role <code>personaModules</code> → org <code>pagePersonaMap</code> (if set) → org <code>disabledPersonas</code> / <code>disabledPaths</code> / <code>disabledModules</code> (always win). Protected admin paths cannot be killed.</div></div></div>
 </div>
 <div class="appcfg-faq-category" id="faq-timesheet">
   <h3 class="appcfg-faq-category__title"><span class="appcfg-faq-category__icon">⏱</span> Timesheet & work item rules</h3>
@@ -2655,7 +2868,7 @@
     </section>
   </div>
 </div>
-<script src="../js/app-config-page.js?v=20260604d"></script>
+<script src="../js/app-config-page.js?v=20260713c"></script>
 <nav class="page-nav appcfg-page-nav">
   <a class="page-nav__prev" href="settings.html">← Settings</a>
   <a class="page-nav__next" href="index.html">HRMS Overview →</a>
@@ -2668,6 +2881,7 @@
     <p>&copy; 2026 <span data-brand>Tracopus</span>. All rights reserved.</p>
     <p style="margin-top:0.75rem;">
       <a href="../index.html">Documentation</a>
+      <a href="../user-guide/index.html">Scenario Guide</a>
       <a href="../getting-started.html">Getting Started</a>
       <a href="../charts.html">Charts</a>
     </p>
@@ -2675,9 +2889,12 @@
   </div>
 </footer>
 
-<script src="../js/palette.js?v=20260604d"></script>
-<script src="../js/brand.js?v=20260604d"></script>
-<script src="../js/navigation.js?v=20260604d"></script>
-<script src="../js/search.js?v=20260604d"></script>
+<script src="../js/palette.js?v=20260713a"></script>
+<script src="../js/brand.js?v=20260713a"></script>
+<script src="../js/docs-utility-config.js?v=20260713a"></script>
+<script src="../js/nav-config.js?v=20260713a"></script>
+<script src="../js/navigation.js?v=20260713a"></script>
+<script src="../js/site-enhancements.js?v=20260718d"></script>
+<script src="../js/search.js?v=20260713a"></script>
 </body>
 </html>
