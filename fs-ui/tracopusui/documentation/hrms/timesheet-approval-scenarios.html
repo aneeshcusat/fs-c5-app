@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Timesheet Approval Scenarios — Coverage Map</title>
+  <meta name="description" content="Standalone coverage map of Tracopus timesheet approval scenarios: submit, approve, reopen, resubmit, reject, and work-item promotion." />
+  <style>
+    :root {
+      --bg: #f6f4ef;
+      --surface: #fffcf7;
+      --ink: #1c1917;
+      --muted: #57534e;
+      --line: #e7e5e0;
+      --accent: #0f766e;
+      --accent-soft: #ccfbf1;
+      --pass: #166534;
+      --pass-bg: #dcfce7;
+      --watch: #a16207;
+      --watch-bg: #fef3c7;
+      --info: #1e3a5f;
+      --info-bg: #e0f2fe;
+      --card-shadow: 0 1px 0 rgba(28, 25, 23, 0.06);
+      --radius: 12px;
+      --font: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+      --sans: "Avenir Next", "Segoe UI", system-ui, -apple-system, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(ellipse 80% 50% at 10% -10%, #d8f3ef 0%, transparent 55%),
+        radial-gradient(ellipse 60% 40% at 100% 0%, #f5e6d3 0%, transparent 50%),
+        var(--bg);
+      font-family: var(--sans);
+      font-size: 15px;
+      line-height: 1.55;
+    }
+
+    .wrap {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 2.5rem 1.25rem 4rem;
+    }
+
+    .brand {
+      font-family: var(--font);
+      font-size: clamp(2.4rem, 5vw, 3.4rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin: 0 0 0.35rem;
+      color: var(--ink);
+    }
+    .eyebrow {
+      font-size: 0.75rem;
+      font-weight: 650;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin: 0 0 0.75rem;
+    }
+    .lead {
+      max-width: 42rem;
+      color: var(--muted);
+      margin: 0 0 1.75rem;
+      font-size: 1.05rem;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 0.75rem;
+      margin-bottom: 1.75rem;
+    }
+    @media (max-width: 720px) {
+      .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    .stat {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 1rem 1.1rem;
+      box-shadow: var(--card-shadow);
+    }
+    .stat strong {
+      display: block;
+      font-family: var(--font);
+      font-size: 1.85rem;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+    .stat span {
+      color: var(--muted);
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+    .stat.pass strong { color: var(--pass); }
+    .stat.accent strong { color: var(--accent); }
+
+    .banner {
+      background: var(--accent-soft);
+      border: 1px solid #99f6e4;
+      border-radius: var(--radius);
+      padding: 1rem 1.15rem;
+      margin-bottom: 2rem;
+    }
+    .banner strong { color: var(--accent); }
+
+    h2 {
+      font-family: var(--font);
+      font-size: 1.55rem;
+      letter-spacing: -0.02em;
+      margin: 2.25rem 0 0.85rem;
+    }
+    h3 {
+      font-family: var(--font);
+      font-size: 1.15rem;
+      margin: 0 0 0.35rem;
+    }
+
+    .toc {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .toc a {
+      text-decoration: none;
+      color: var(--ink);
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 0.35rem 0.75rem;
+      font-size: 0.8rem;
+      font-weight: 650;
+    }
+    .toc a:hover { border-color: var(--accent); color: var(--accent); }
+
+    .flow {
+      display: grid;
+      gap: 0.55rem;
+      margin: 1rem 0 1.5rem;
+    }
+    .flow-step {
+      display: grid;
+      grid-template-columns: 3.2rem 1fr;
+      gap: 0.85rem;
+      align-items: start;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 0.85rem 1rem;
+    }
+    .flow-num {
+      width: 2.4rem;
+      height: 2.4rem;
+      border-radius: 50%;
+      background: var(--accent);
+      color: #fff;
+      display: grid;
+      place-items: center;
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+    .flow-step p { margin: 0.15rem 0 0; color: var(--muted); font-size: 0.9rem; }
+
+    .scenario {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 1.15rem 1.2rem 1.25rem;
+      margin-bottom: 0.85rem;
+      box-shadow: var(--card-shadow);
+    }
+    .scenario-head {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.5rem 0.75rem;
+      margin-bottom: 0.65rem;
+    }
+    .id {
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 0.78rem;
+      font-weight: 700;
+      background: var(--info-bg);
+      color: var(--info);
+      padding: 0.2rem 0.5rem;
+      border-radius: 6px;
+    }
+    .pill {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      padding: 0.22rem 0.55rem;
+      border-radius: 999px;
+    }
+    .pill.pass { background: var(--pass-bg); color: var(--pass); }
+    .pill.watch { background: var(--watch-bg); color: var(--watch); }
+
+    .meta {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.65rem 1rem;
+      margin-top: 0.75rem;
+    }
+    @media (max-width: 640px) {
+      .meta { grid-template-columns: 1fr; }
+    }
+    .meta dt {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 0 0 0.15rem;
+    }
+    .meta dd { margin: 0; font-size: 0.92rem; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin: 0.75rem 0 1.25rem;
+      font-size: 0.9rem;
+    }
+    th, td {
+      text-align: left;
+      padding: 0.7rem 0.85rem;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+    }
+    th {
+      background: #f0ebe3;
+      font-size: 0.72rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    tr:last-child td { border-bottom: none; }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.85rem;
+    }
+    @media (max-width: 720px) {
+      .grid-2 { grid-template-columns: 1fr; }
+    }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 1rem 1.1rem;
+    }
+    .card p { margin: 0.35rem 0 0; color: var(--muted); font-size: 0.9rem; }
+
+    footer {
+      margin-top: 2.5rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+    footer code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 0.8em;
+      background: #efeae2;
+      padding: 0.1rem 0.35rem;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <p class="eyebrow">Tracopus · HRMS · Timesheet</p>
+    <h1 class="brand">Timesheet approval scenarios</h1>
+    <p class="lead">
+      Standalone coverage map of the timesheet approval lifecycle: draft, submit, approve,
+      reopen, resubmit, reject, unlock, auto-approve, and how hours land in work items
+      (<code>TaskActivity</code> / <code>source=TIMESHEET</code>).
+    </p>
+
+    <div class="stats">
+      <div class="stat pass"><strong>9</strong><span>scenarios covered</span></div>
+      <div class="stat pass"><strong>9</strong><span>scenarios pass</span></div>
+      <div class="stat accent"><strong>7</strong><span>lifecycle steps</span></div>
+      <div class="stat"><strong>1</strong><span>optional E2E watch</span></div>
+    </div>
+
+    <div class="banner">
+      <strong>Verdict:</strong> Core lifecycle is coherent end-to-end. Week status, day rows, and
+      TIMESHEET work items stay aligned through approve → reopen → resubmit → approve/reject.
+      Partial-week (<code>partialWeekSubmissionEnabled</code>) adds submission batches on top of the same week/day model — toggle it in the
+      <a href="../data-flow/timesheet-flags-data-flow.html">interactive data-flow simulator</a>.
+    </div>
+
+    <nav class="toc" aria-label="On this page">
+      <a href="#happy-path">Happy path</a>
+      <a href="#partial-week">Partial-week on/off</a>
+      <a href="#scenarios">Scenarios S1–S9</a>
+      <a href="#gates">UI gates</a>
+      <a href="#work-items">Work items</a>
+      <a href="#residual">Residual</a>
+      <a href="#evidence">Evidence</a>
+    </nav>
+
+    <h2 id="partial-week">Partial-week submission (<code>partialWeekSubmissionEnabled</code>)</h2>
+    <table>
+      <thead>
+        <tr><th>Flag</th><th>Submit</th><th>Pending unit</th><th>Edit while pending</th><th>Approve / reject</th><th>Inbox id</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>OFF</strong> (default)</td>
+          <td>Full week</td>
+          <td>One week row</td>
+          <td>Week locked</td>
+          <td><code>/timesheets/{weekId}/approve|reject</code></td>
+          <td><code>WEEK:{id}</code></td>
+        </tr>
+        <tr>
+          <td><strong>ON</strong></td>
+          <td>Selected days (<code>activityDates</code>); multiple batches/week</td>
+          <td><code>ts_timesheet_submission_model</code> + day <code>submission_id</code></td>
+          <td>Leftover DRAFT/REJECTED days editable</td>
+          <td><code>/timesheets/submissions/{id}/approve|reject</code></td>
+          <td><code>SUBMISSION:{id}</code></td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="color:var(--muted);font-size:0.9rem;">Requires <code>timesheetApprovalEnabled</code>. Fully APPROVED weeks still need reopen before edit. See evidence <code>TIME-PARTIAL-WEEK-SUBMISSION.md</code>.</p>
+
+    <h2 id="happy-path">Happy path (status → work items)</h2>
+    <div class="flow">
+      <div class="flow-step">
+        <div class="flow-num">1</div>
+        <div>
+          <h3>Save draft</h3>
+          <p>Week stays DRAFT / REOPENED / REJECTED. Days → DRAFT. Work items unchanged.</p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">2</div>
+        <div>
+          <h3>Submit / Resubmit</h3>
+          <p>Week → PENDING_APPROVAL; clears prior approvedBy / rejection; REJECTED lines reactivated to ACTIVE. Work items not yet written (or remain demoted).</p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">3</div>
+        <div>
+          <h3>Approve</h3>
+          <p>Week → APPROVED. <code>promoteWeek</code> upserts TIMESHEET activities; leftover PENDING/DRAFT days cascade to APPROVED; orphans soft-deleted.</p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">4</div>
+        <div>
+          <h3>Reopen / Unlock</h3>
+          <p>Week → REOPENED; days → DRAFT. <code>demoteWeek</code> soft-deletes live TIMESHEET activities. Who: recorded approver, or manager if AUTO, or solo owner with no manager.</p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">5</div>
+        <div>
+          <h3>Edit + Resubmit</h3>
+          <p>Week → PENDING again; approval fields cleared. Work items stay demoted until next approve.</p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">6a</div>
+        <div>
+          <h3>Approve again</h3>
+          <p>Revive/upsert via <code>day.taskActivityId</code> / natural key; soft-delete orphans.</p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">6b</div>
+        <div>
+          <h3>Reject</h3>
+          <p>Week/days → REJECTED. <code>demoteWeek</code> ensures no live TIMESHEET hours remain.</p>
+        </div>
+      </div>
+    </div>
+
+    <h2 id="scenarios">Scenarios covered</h2>
+
+    <article class="scenario" id="s1">
+      <div class="scenario-head">
+        <span class="id">S1</span>
+        <h3>Draft → Submit → Approve</h3>
+        <span class="pill pass">Pass</span>
+      </div>
+      <p>Employee saves staging, submits; manager approves. Hours become work items.</p>
+      <dl class="meta">
+        <div><dt>Actors</dt><dd>Employee → Manager</dd></div>
+        <div><dt>Work items</dt><dd>promoteWeek upsert; orphan soft-delete; leftover days cascade APPROVED</dd></div>
+        <div><dt>Issue fixed</dt><dd>Zero-duration days could stay PENDING after week APPROVED</dd></div>
+        <div><dt>Fix</dt><dd><code>cascadeNonRejectedDaysToApproved</code></dd></div>
+      </dl>
+    </article>
+
+    <article class="scenario" id="s2">
+      <div class="scenario-head">
+        <span class="id">S2</span>
+        <h3>Approve → Reopen → Edit → Resubmit → Re-approve</h3>
+        <span class="pill pass">Pass</span>
+      </div>
+      <p>Full correction cycle after a prior promote.</p>
+      <dl class="meta">
+        <div><dt>Actors</dt><dd>Approver → Employee → Approver</dd></div>
+        <div><dt>Work items</dt><dd>demote on reopen; promote revives on re-approve</dd></div>
+        <div><dt>Issue fixed</dt><dd>Hours stayed live while REOPENED; orphan activities after day replace</dd></div>
+        <div><dt>Fix</dt><dd><code>demoteWeek</code> + promote orphan cleanup</dd></div>
+      </dl>
+    </article>
+
+    <article class="scenario" id="s3">
+      <div class="scenario-head">
+        <span class="id">S3</span>
+        <h3>Approve → Reopen → Resubmit → Reject</h3>
+        <span class="pill pass">Pass</span>
+      </div>
+      <p>Manager rejects after a prior promotion existed.</p>
+      <dl class="meta">
+        <div><dt>Actors</dt><dd>Approver → Employee → Approver</dd></div>
+        <div><dt>Work items</dt><dd>demoteWeek on reject — no live TIMESHEET rows</dd></div>
+        <div><dt>Issue fixed</dt><dd>Reject left APPROVED TaskActivities; utilization still showed hours</dd></div>
+        <div><dt>Fix</dt><dd><code>demoteWeek</code> in <code>processReject</code></dd></div>
+      </dl>
+    </article>
+
+    <article class="scenario" id="s4">
+      <div class="scenario-head">
+        <span class="id">S4</span>
+        <h3>Line reject → fix → Resubmit → Approve</h3>
+        <span class="pill pass">Pass</span>
+      </div>
+      <p>Single line rejected, employee corrects, week resubmitted and approved.</p>
+      <dl class="meta">
+        <div><dt>Actors</dt><dd>Manager → Employee → Manager</dd></div>
+        <div><dt>Work items</dt><dd>Line reactivated ACTIVE; promote includes hours again</dd></div>
+        <div><dt>Issue fixed</dt><dd>lineStatus stuck REJECTED; promoteWeek skipped the line</dd></div>
+        <div><dt>Fix</dt><dd><code>reactivateRejectedLines</code> + staging save reactivation</dd></div>
+      </dl>
+    </article>
+
+    <article class="scenario" id="s5">
+      <div class="scenario-head">
+        <span class="id">S5</span>
+        <h3>Dirty Save + Submit (first week)</h3>
+        <span class="pill pass">Pass</span>
+      </div>
+      <p>Employee edits cells and clicks Submit while unsaved.</p>
+      <dl class="meta">
+        <div><dt>Actors</dt><dd>Employee</dd></div>
+        <div><dt>Work items</dt><dd>N/A until approve</dd></div>
+        <div><dt>Issue fixed</dt><dd>Save callback dropped payload; setState race missed weekId</dd></div>
+        <div><dt>Fix</dt><dd>Forward save <code>payload</code> into submit (TimesheetPage + Employee360)</dd></div>
+      </dl>
+    </article>
+
+    <article class="scenario" id="s6">
+      <div class="scenario-head">
+        <span class="id">S6</span>
+        <h3>Auto-approve-own then reopen</h3>
+        <span class="pill pass">Pass</span>
+      </div>
+      <p>Submit with auto-approve → APPROVED (<code>approvalAuthorityType=AUTO</code>).</p>
+      <dl class="meta">
+        <div><dt>Actors</dt><dd>Employee (submit); Manager or solo owner (reopen)</dd></div>
+        <div><dt>Work items</dt><dd>Promoted on auto-approve path</dd></div>
+        <div><dt>Issue fixed</dt><dd>Employee always saw Reopen; solo owner with no manager was stuck</dd></div>
+        <div><dt>Fix</dt><dd>Has manager → only canAct reopens. No manager → owner may self-reopen</dd></div>
+      </dl>
+    </article>
+
+    <article class="scenario" id="s7">
+      <div class="scenario-head">
+        <span class="id">S7</span>
+        <h3>ADD TIME ENTRY by status</h3>
+        <span class="pill pass">Pass</span>
+      </div>
+      <p>Header / board create CTA gated by week status.</p>
+      <dl class="meta">
+        <div><dt>Allowed</dt><dd>DRAFT, REJECTED, REOPENED</dd></div>
+        <div><dt>Blocked</dt><dd>PENDING, APPROVED, LOCKED</dd></div>
+        <div><dt>Issue fixed</dt><dd>ADD ENTRY clickable on APPROVED</dd></div>
+        <div><dt>Fix</dt><dd><code>canAddTimesheetEntry</code></dd></div>
+      </dl>
+    </article>
+
+    <article class="scenario" id="s8">
+      <div class="scenario-head">
+        <span class="id">S8</span>
+        <h3>Unlock locked week</h3>
+        <span class="pill pass">Pass</span>
+      </div>
+      <p>LOCKED → unlock → REOPENED; days DRAFT; work items demoted.</p>
+      <dl class="meta">
+        <div><dt>Actors</dt><dd>Manager / delegate</dd></div>
+        <div><dt>Work items</dt><dd>demoteWeek on unlock</dd></div>
+        <div><dt>Issue fixed</dt><dd>Unlock left promoted hours live</dd></div>
+        <div><dt>Fix</dt><dd><code>demoteWeek</code> in <code>unlockWeeks</code></dd></div>
+      </dl>
+    </article>
+
+    <article class="scenario" id="s9">
+      <div class="scenario-head">
+        <span class="id">S9</span>
+        <h3>Orphan day replace after edit</h3>
+        <span class="pill pass">Pass</span>
+      </div>
+      <p>Approve₁ → reopen → change hours on same date → re-approve (canonical day kept).</p>
+      <dl class="meta">
+        <div><dt>Actors</dt><dd>Employee → Approver</dd></div>
+        <div><dt>Work items</dt><dd>Old TIMESHEET activity soft-deleted; current reused/updated</dd></div>
+        <div><dt>Issue fixed</dt><dd>Extra work-item hours (e.g. 11h vs 9h) from superseded day</dd></div>
+        <div><dt>Fix</dt><dd>Canonical days by line+date + orphan activity soft-delete</dd></div>
+      </dl>
+    </article>
+
+    <h2 id="gates">UI gates by status</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Status</th>
+          <th>Employee</th>
+          <th>Manager</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>DRAFT</td>
+          <td>ADD ENTRY · Save · Submit</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td>PENDING</td>
+          <td>Locked · no ADD · Remind</td>
+          <td>Approve / Reject (not own week)</td>
+        </tr>
+        <tr>
+          <td>APPROVED</td>
+          <td>No ADD · Reopen only if AUTO + no manager</td>
+          <td>Reopen if approvedBy, or canAct if AUTO</td>
+        </tr>
+        <tr>
+          <td>REOPENED</td>
+          <td>ADD · Edit · Resubmit</td>
+          <td>View</td>
+        </tr>
+        <tr>
+          <td>REJECTED</td>
+          <td>ADD · Resubmit</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td>LOCKED</td>
+          <td>No ADD · blocked</td>
+          <td>Unlock → REOPENED + demote</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2 id="work-items">Work-item reflection</h2>
+    <div class="grid-2">
+      <div class="card">
+        <h3>On approve — promote</h3>
+        <p>
+          <code>TimesheetPromotionService.promoteWeek</code> writes TaskActivity with
+          <code>source=TIMESHEET</code>, links day/week ids, <code>approvalStatus=APPROVED</code>.
+          Soft-deletes orphans not kept. After demote, revive uses <code>day.taskActivityId</code>.
+        </p>
+      </div>
+      <div class="card">
+        <h3>On reject / reopen / unlock — demote</h3>
+        <p>
+          <code>demoteWeek</code> soft-deletes live TIMESHEET activities for the week.
+          Non-TIMESHEET sources (TASK_BOARD / LEGACY) are left alone. Day links kept for revive.
+        </p>
+      </div>
+    </div>
+
+    <h2 id="residual">Residual / watch</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Area</th>
+          <th>Note</th>
+          <th>Risk</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Solo auto-approve owner</td>
+          <td>No reporting manager + AUTO: employee may self-reopen. With a manager, only manager/delegate canAct.</td>
+          <td><span class="pill pass">Fixed</span></td>
+        </tr>
+        <tr>
+          <td>Legacy weeks (null approvedBy)</td>
+          <td>Reopen falls back to canAct (manager/delegate), not employee.</td>
+          <td><span class="pill watch">By design</span></td>
+        </tr>
+        <tr>
+          <td>Live staging / Playwright</td>
+          <td>Unit/FE tests cover paths; full browser assert of work items after S2/S3 optional.</td>
+          <td><span class="pill watch">Watch</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2 id="evidence">Evidence docs</h2>
+    <table>
+      <thead>
+        <tr><th>Document</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><code>docs/enhancement-evidence/TIME-014-orphan-activity-cleanup.md</code></td></tr>
+        <tr><td><code>docs/enhancement-evidence/TIME-014-demote-on-reject-reopen.md</code></td></tr>
+        <tr><td><code>docs/enhancement-evidence/TIME-014-resubmit-line-and-save-payload.md</code></td></tr>
+        <tr><td><code>docs/enhancement-evidence/TIME-ux-reopen-add-entry-day-cascade.md</code></td></tr>
+        <tr><td><code>docs/enhancement-evidence/TIME-ux-solo-auto-approve-self-reopen.md</code></td></tr>
+        <tr><td><code>docs/enhancement-evidence/TIME-reopen-visibility.md</code></td></tr>
+        <tr><td><code>docs/enhancement-evidence/TIME-PARTIAL-WEEK-SUBMISSION.md</code></td></tr>
+      </tbody>
+    </table>
+
+    <footer>
+      <p>
+        Standalone coverage page · Tracopus timesheet approval · July 2026.
+        Open this file directly in a browser — no build step required.
+        Path: <code>fui/public/documentation/hrms/timesheet-approval-scenarios.html</code>
+      </p>
+    </footer>
+  </div>
+</body>
+</html>

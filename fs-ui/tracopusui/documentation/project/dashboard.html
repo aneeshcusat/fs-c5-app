@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en" data-lux-theme="luxury" data-lux-palette="emerald">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project Dashboard — Tracopus User Guide</title>
+  <meta name="description" content="Two perspectives: My projects for personal execution and Manager overview for portfolio-level decision making.">
+  <meta name="keywords" content="tracopus, documentation, user guide, project, dashboard">
+  <link rel="canonical" href="https://tracopus.com/documentation/project/dashboard.html">
+  <meta name="robots" content="index, follow">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Tracopus">
+  <meta property="og:title" content="Project Dashboard — Tracopus User Guide">
+  <meta property="og:description" content="Two perspectives: My projects for personal execution and Manager overview for portfolio-level decision making.">
+  <meta property="og:url" content="https://tracopus.com/documentation/project/dashboard.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Project Dashboard — Tracopus User Guide">
+  <meta name="twitter:description" content="Two perspectives: My projects for personal execution and Manager overview for portfolio-level decision making.">
+  <script src="../js/docs-analytics.js?v=20260719a" defer></script>
+  <link rel="apple-touch-icon" href="../images/tracopus-logo.png">
+  <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css?v=20260718g">
+  <script src="../js/brand-config.js?v=20260619e"></script>
+</head>
+<body data-docs-depth="1">
+
+<header aria-label="Site header"></header>
+
+
+
+<main>
+    <div class="breadcrumb"><a href="../index.html">Home</a> → Project → Project Dashboard</div>
+  
+<div class="doc-canvas">
+  <header class="doc-mast">
+    <div class="doc-mast__top">
+      <span class="doc-mast__eyebrow">Project · Dashboard</span>
+      <div class="page-meta page-meta--inline">
+        <span class="page-meta__item"><strong>Route</strong> <code>/project/dashboard</code></span>
+        <span class="page-meta__item"><strong>Menu</strong> Project → Dashboard</span>
+      </div>
+    </div>
+    <h1 class="doc-mast__title">Project Dashboard</h1>
+    <p class="doc-mast__lead">Two perspectives: My projects for personal execution and Manager overview for portfolio-level decision making.</p>
+    <p class="doc-mast__purpose">Personal and manager-level delivery analytics with lens switching and team scope controls.</p>
+  </header>
+
+  <div class="doc-flow">
+    <section class="doc-block" id="overview"><h2 class="doc-block__title">Overview</h2><p><strong>Project → Dashboard</strong> is the analytics-first entry point for delivery teams. It combines KPI cards and chart panels for portfolio health.</p></section>
+    <section class="doc-block doc-block--pair">
+      <div class="doc-split">
+        <div id="layout"><h2 class="doc-block__title">Screen layout</h2><p><strong>Top:</strong> Header with tab/lens controls.<br><strong>Body:</strong> Responsive analytics cards and charts.<br><strong>Manager view:</strong> Team selector and lens switches (Executive/Delivery/Finance).</p></div>
+        <div id="header-filters"><h2 class="doc-block__title">Header &amp; filters</h2><p><strong>Period:</strong> 1M · 6M · 1Y · YTD · ALL<br><strong>Filter:</strong> All · Active · Overdue · At risk · Completed<br><strong>Lens:</strong> Executive · Delivery · Finance<br><strong>Team scope:</strong> Multi-team selector (permission-based)</p></div>
+      </div>
+    </section>
+    <section class="doc-block doc-block--summary lux-summary-section" id="summary-section"><h2 class="doc-block__title">Summary &amp; charts</h2><div class="lux-summary-block"><p class="lux-summary-intro">The <strong>Lux summary strip</strong> at the top of this screen is collapsible. Expand it to reveal KPI tiles and chart panels; collapse it for a wider register. All charts respect your active filters (SHOW preset, team scope, date range, text search).</p><p class="lux-summary-detail">Period, filter, lens, and team scope drive all panels below.</p><div class="lux-summary-note"><span class="lux-summary-note__icon">◆</span> Emerald Luxury UI theme · chart data refreshes when filters change</div><h3 class="lux-summary-heading">My projects tab</h3><div class="lux-chart-grid"><article class="lux-chart-card">
+  <div class="lux-chart-card__head">
+    <h4 class="lux-chart-card__title">Workload trend</h4>
+    <span class="badge badge-line">Line</span>
+  </div>
+  <dl class="lux-chart-card__meta">
+    <dt>What it measures</dt><dd>Your assigned project hours over selected period</dd>
+    <dt>How to read it</dt><dd>Slope shows rising or falling load</dd>
+    <dt>How to use it</dt><dd>Personal capacity check</dd>
+  </dl>
+  <p class="lux-chart-card__action"><strong>When to act:</strong> Decline new assignments if overloaded</p>
+</article><article class="lux-chart-card">
+  <div class="lux-chart-card__head">
+    <h4 class="lux-chart-card__title">Performance radar</h4>
+    <span class="badge badge-bar">Radar</span>
+  </div>
+  <dl class="lux-chart-card__meta">
+    <dt>What it measures</dt><dd>Multi-axis delivery score across active projects</dd>
+    <dt>How to read it</dt><dd>Spikes show strengths; dips show risk areas</dd>
+    <dt>How to use it</dt><dd>Self-assessment before reviews</dd>
+  </dl>
+  <p class="lux-chart-card__action"><strong>When to act:</strong> Focus on lowest radar axis</p>
+</article><article class="lux-chart-card">
+  <div class="lux-chart-card__head">
+    <h4 class="lux-chart-card__title">Status donuts</h4>
+    <span class="badge badge-donut">Donut</span>
+  </div>
+  <dl class="lux-chart-card__meta">
+    <dt>What it measures</dt><dd>Your projects by delivery status</dd>
+    <dt>How to read it</dt><dd>Slice = share per status</dd>
+    <dt>How to use it</dt><dd>See if work is stuck in one state</dd>
+  </dl>
+  <p class="lux-chart-card__action"><strong>When to act:</strong> Open at-risk projects first</p>
+</article><article class="lux-chart-card">
+  <div class="lux-chart-card__head">
+    <h4 class="lux-chart-card__title">Estimate variance bars</h4>
+    <span class="badge badge-bar">Bar</span>
+  </div>
+  <dl class="lux-chart-card__meta">
+    <dt>What it measures</dt><dd>Planned vs logged hours variance per project</dd>
+    <dt>How to read it</dt><dd>Bar above zero = over run; below = under</dd>
+    <dt>How to use it</dt><dd>Estimate accuracy</dd>
+  </dl>
+  <p class="lux-chart-card__action"><strong>When to act:</strong> Update estimates on overrun projects</p>
+</article><article class="lux-chart-card">
+  <div class="lux-chart-card__head">
+    <h4 class="lux-chart-card__title">Portfolio treemap</h4>
+    <span class="badge badge-treemap">Treemap</span>
+  </div>
+  <dl class="lux-chart-card__meta">
+    <dt>What it measures</dt><dd>Your projects sized by effort or value</dd>
+    <dt>How to read it</dt><dd>Tile area = relative weight</dd>
+    <dt>How to use it</dt><dd>Where time concentrates</dd>
+  </dl>
+  <p class="lux-chart-card__action"><strong>When to act:</strong> Rebalance if one tile dominates</p>
+</article><article class="lux-chart-card">
+  <div class="lux-chart-card__head">
+    <h4 class="lux-chart-card__title">Estimate vs completion bubble</h4>
+    <span class="badge badge-bar">Bubble</span>
+  </div>
+  <dl class="lux-chart-card__meta">
+    <dt>What it measures</dt><dd>Completion % vs estimate size</dd>
+    <dt>How to read it</dt><dd>Top-right bubbles = large and nearly done</dd>
+    <dt>How to use it</dt><dd>Close-out prioritization</dd>
+  </dl>
+  <p class="lux-chart-card__action"><strong>When to act:</strong> Finish nearly-complete projects</p>
+</article></div><h3 class="lux-summary-heading">Manager overview tab</h3><div class="lux-chart-grid"><article class="lux-chart-card">
+  <div class="lux-chart-card__head">
+    <h4 class="lux-chart-card__title">Portfolio KPI cards</h4>
+    <span class="badge badge-line">KPI tiles</span>
+  </div>
+  <dl class="lux-chart-card__meta">
+    <dt>What it measures</dt><dd>Active, overdue, at-risk, completed counts</dd>
+    <dt>How to read it</dt><dd>Clickable tiles may pre-filter Project List</dd>
+    <dt>How to use it</dt><dd>Executive snapshot</dd>
+  </dl>
+  <p class="lux-chart-card__action"><strong>When to act:</strong> Click KPI to drill into list</p>
+</article><article class="lux-chart-card">
+  <div class="lux-chart-card__head">
+    <h4 class="lux-chart-card__title">Risk scatter</h4>
+    <span class="badge badge-bar">Scatter</span>
+  </div>
+  <dl class="lux-chart-card__meta">
+    <dt>What it measures</dt><dd>Projects plotted by risk vs impact</dd>
+    <dt>How to read it</dt><dd>Top-right dots = high priority risks</dd>
+    <dt>How to use it</dt><dd>Escalation triage</dd>
+  </dl>
+  <p class="lux-chart-card__action"><strong>When to act:</strong> Open flagged projects</p>
+</article><article class="lux-chart-card">
+  <div class="lux-chart-card__head">
+    <h4 class="lux-chart-card__title">Throughput views</h4>
+    <span class="badge badge-bar">Bar</span>
+  </div>
+  <dl class="lux-chart-card__meta">
+    <dt>What it measures</dt><dd>Completed deliverables or tasks over period</dd>
+    <dt>How to read it</dt><dd>Bar height = throughput volume</dd>
+    <dt>How to use it</dt><dd>Delivery velocity</dd>
+  </dl>
+  <p class="lux-chart-card__action"><strong>When to act:</strong> Investigate throughput drops</p>
+</article><article class="lux-chart-card">
+  <div class="lux-chart-card__head">
+    <h4 class="lux-chart-card__title">Velocity lines</h4>
+    <span class="badge badge-line">Line</span>
+  </div>
+  <dl class="lux-chart-card__meta">
+    <dt>What it measures</dt><dd>Trend of completion rate over time</dd>
+    <dt>How to read it</dt><dd>Upward = accelerating delivery</dd>
+    <dt>How to use it</dt><dd>Sprint/portfolio planning</dd>
+  </dl>
+  <p class="lux-chart-card__action"><strong>When to act:</strong> Adjust WIP if velocity falls</p>
+</article><article class="lux-chart-card">
+  <div class="lux-chart-card__head">
+    <h4 class="lux-chart-card__title">Deadline heatmap</h4>
+    <span class="badge badge-treemap">Heatmap</span>
+  </div>
+  <dl class="lux-chart-card__meta">
+    <dt>What it measures</dt><dd>Due dates density by week/day</dd>
+    <dt>How to read it</dt><dd>Hot cells = deadline clusters</dd>
+    <dt>How to use it</dt><dd>Schedule conflict detection</dd>
+  </dl>
+  <p class="lux-chart-card__action"><strong>When to act:</strong> Spread deadlines or add resources</p>
+</article></div><p><strong>Lens switch:</strong> Executive · Delivery · Finance reshapes manager chart set. KPI cards may deep-link to Project List with filters applied.</p></div></section>
+    <section class="doc-block" id="main"><h2 class="doc-block__title">Main content &amp; actions</h2><p>Use KPI cards and chart interactions to identify bottlenecks, then drill into the Project List for filtered operational records.</p></section>
+    <section class="doc-block doc-block--features" id="complete-features">
+  <h2 class="doc-block__title">Complete feature list</h2>
+  <p class="lux-features-intro">Every control, panel, and workflow on this screen.</p>
+  <ul class="lux-feature-list lux-feature-list--dense"><li class="lux-feature-item"><span class="lux-feature-item__icon">✓</span><div><strong>Luxury UI shell</strong><span>Emerald-themed glass cards, sticky gradient header, module sidebar, and responsive layout.</span></div></li><li class="lux-feature-item"><span class="lux-feature-item__icon">✓</span><div><strong>Documentation search</strong><span>Header search indexes all guide pages (docs site).</span></div></li><li class="lux-feature-item"><span class="lux-feature-item__icon">✓</span><div><strong>Collapsible summary strip</strong><span>KPI row and chart gallery above the register; expand/collapse persists in browser storage.</span></div></li><li class="lux-feature-item"><span class="lux-feature-item__icon">✓</span><div><strong>Portfolio KPIs</strong><span>Active projects, overdue, billable hours in summary strip.</span></div></li><li class="lux-feature-item"><span class="lux-feature-item__icon">✓</span><div><strong>My vs team views</strong><span>Scope toggle for personal vs org portfolio.</span></div></li><li class="lux-feature-item"><span class="lux-feature-item__icon">✓</span><div><strong>Quick links</strong><span>Jump to project list, taskboard, capacity.</span></div></li><li class="lux-feature-item"><span class="lux-feature-item__icon">✓</span><div><strong>Trend charts</strong><span>Creation and completion trends over time.</span></div></li></ul>
+</section>
+    <div class="doc-enrichment"><section class="doc-block doc-block--callouts" id="page-callouts"><h2 class="doc-block__title">Before you start</h2><div class="callout-stack callout-stack--dense"><div class="callout callout--info"><div class="callout__icon">ℹ️</div><div class="callout__body"><strong class="callout__title">Filter discipline</strong><div class="callout__text">Set team scope once per session — all summary charts inherit it.</div></div></div><div class="callout callout--tip"><div class="callout__icon">💡</div><div class="callout__body"><strong class="callout__title">Executive readout</strong><div class="callout__text">Collapse strip to KPI tiles only for screenshot-friendly status emails.</div></div></div></div></section><div class="doc-enrich-grid"><section class="doc-block" id="who-uses-this"><h2 class="doc-block__title">Who uses this screen</h2><p class="audience-text">Portfolio managers and PMs monitoring active project counts, overdue work, and billable hours trends. Individual contributors may see a scoped My view.</p><div class="callout callout--info"><div class="callout__icon">ℹ️</div><div class="callout__body"><strong class="callout__title">Portfolio pulse check</strong><div class="callout__text">Open Monday morning before standups — KPI tiles and trend charts reflect active header filters.</div></div></div></section><section class="doc-block" id="key-concepts"><h2 class="doc-block__title">Key concepts</h2><div class="concept-grid"><article class="concept-card"><h3 class="concept-card__title">Portfolio KPIs</h3><p class="concept-card__desc">Active projects, overdue count, billable hours in summary strip tiles.</p></article><article class="concept-card"><h3 class="concept-card__title">My vs team views</h3><p class="concept-card__desc">Toggle personal assigned work vs org portfolio scope.</p></article><article class="concept-card"><h3 class="concept-card__title">Trend charts</h3><p class="concept-card__desc">Project creation and completion over six months.</p></article><article class="concept-card"><h3 class="concept-card__title">Quick links</h3><p class="concept-card__desc">Jump to project list, taskboard, capacity from dashboard widgets.</p></article><article class="concept-card"><h3 class="concept-card__title">Filter inheritance</h3><p class="concept-card__desc">Team and date filters on header apply to all dashboard charts.</p></article></div></section><section class="doc-block" id="permissions"><h2 class="doc-block__title">Permissions</h2><div class="table-wrap"><table class="table table--permissions"><thead><tr><th>Role</th><th>Access on this screen</th></tr></thead><tbody><tr><td><strong>Individual contributor</strong></td><td>My view only — assigned projects and personal overdue tasks.</td></tr><tr><td><strong>Project manager</strong></td><td>Team-scoped portfolio KPIs and trends.</td></tr><tr><td><strong>Portfolio manager</strong></td><td>Full org or multi-team dashboard.</td></tr><tr><td><strong>Executive</strong></td><td>Read-only KPIs without create actions.</td></tr></tbody></table></div><div class="callout callout--note"><div class="callout__icon">📝</div><div class="callout__body"><strong class="callout__title">Administrator override</strong><div class="callout__text">Org administrators and service accounts configured in the Admin console may bypass row-level scopes shown above. When in doubt, confirm access with your Tracopus administrator.</div></div></div></section><section class="doc-block" id="controls-reference"><h2 class="doc-block__title">Controls reference</h2><div class="table-wrap"><table class="table table--controls"><thead><tr><th>Control</th><th>Description</th><th>Notes</th></tr></thead><tbody><tr><td><strong>My / Team toggle</strong></td><td>Switch portfolio scope.</td><td>Persists per session.</td></tr><tr><td><strong>Summary strip</strong></td><td>KPI tiles + trend charts.</td><td>Expand/collapse.</td></tr><tr><td><strong>Team filter</strong></td><td>Org unit scope.</td><td>Required for fair comparisons.</td></tr><tr><td><strong>Quick link: Project List</strong></td><td>Jump to register.</td><td>—</td></tr><tr><td><strong>Quick link: Taskboard</strong></td><td>Jump to kanban.</td><td>—</td></tr><tr><td><strong>Quick link: Capacity</strong></td><td>Jump to team capacity.</td><td>—</td></tr><tr><td><strong>Date range</strong></td><td>Scope trends.</td><td>If shown on header.</td></tr></tbody></table></div></section></div><div class="doc-enrich-grid doc-enrich-grid--2"><section class="doc-block" id="common-mistakes"><h2 class="doc-block__title">Common mistakes</h2><div class="callout-stack callout-stack--dense"><div class="callout callout--warning"><div class="callout__icon">⚠️</div><div class="callout__body"><strong class="callout__title">Reading KPIs without team filter</strong><div class="callout__text">Blended org numbers hide struggling teams — scope first.</div></div></div><div class="callout callout--warning"><div class="callout__icon">⚠️</div><div class="callout__body"><strong class="callout__title">Ignoring overdue tile</strong><div class="callout__text">Small overdue count still blocks client milestones — drill to project list.</div></div></div><div class="callout callout--warning"><div class="callout__icon">⚠️</div><div class="callout__body"><strong class="callout__title">Dashboard only, never taskboard</strong><div class="callout__text">KPIs lag — taskboard shows today's actionable cards.</div></div></div></div></section><section class="doc-block" id="faq"><h2 class="doc-block__title">FAQ</h2><div class="faq-list"><article class="faq-item"><h3 class="faq-item__q">Does dashboard create projects?</h3><div class="faq-item__a">No — read-only analytics; use Project List CREATE.</div></article><article class="faq-item"><h3 class="faq-item__q">How often do charts refresh?</h3><div class="faq-item__a">On filter change and page load — not real-time websocket.</div></article><article class="faq-item"><h3 class="faq-item__q">Billable hours source?</h3><div class="faq-item__a">HRMS timesheet entries linked to projects.</div></article><article class="faq-item"><h3 class="faq-item__q">Can I export dashboard?</h3><div class="faq-item__a">Use Reports module for exportable datasets.</div></article></div></section></div><section class="doc-block doc-block--related" id="related-pages"><h2 class="doc-block__title">Related pages</h2><div class="related-links"><a class="related-link" href="project-list.html"><span class="related-link__label">Project List</span><span class="related-link__desc">Drill into register from overdue KPI.</span></a><a class="related-link" href="taskboard.html"><span class="related-link__label">Taskboard</span><span class="related-link__desc">Daily execution view.</span></a><a class="related-link" href="reports.html"><span class="related-link__label">Reports</span><span class="related-link__desc">Exportable portfolio data.</span></a><a class="related-link" href="../hrms/dashboard.html"><span class="related-link__label">HRMS Dashboard</span><span class="related-link__desc">Personal utilization complement.</span></a></div></section></div>
+    <section class="doc-block doc-block--pair">
+      <div class="doc-split">
+        <div id="workflows"><h2 class="doc-block__title">Workflows</h2><div class="steps"><div class="step"><strong>Personal review</strong><div class="step-detail">Open My projects tab and inspect workload trend + variance panels.</div></div><div class="step"><strong>Manager review</strong><div class="step-detail">Switch to Manager overview → pick lens and team scope → flag at-risk projects.</div></div></div></div>
+        <div class="doc-block--tips" id="tips"><h2 class="doc-block__title">Tips &amp; best practices</h2><div class="note"><strong>Tip:</strong> Certain KPI cards pre-seed list filters and open Project List directly for follow-up action.</div><div class="callout-stack"><h3 class="subheading">More guidance</h3><div class="callout callout--tip"><div class="callout__icon">💡</div><div class="callout__body"><strong class="callout__title">Remember</strong><div class="callout__text">Active projects, overdue count, billable hours in summary strip tiles.</div></div></div><div class="callout callout--info"><div class="callout__icon">ℹ️</div><div class="callout__body"><strong class="callout__title">Does dashboard create projects?</strong><div class="callout__text">No — read-only analytics; use Project List CREATE.</div></div></div></div></div>
+      </div>
+    </section>
+  </div>
+</div>
+<nav class="page-nav">
+  <a class="page-nav__prev" href="index.html">← Project Overview</a>
+  <a class="page-nav__next" href="project-list.html">Project List →</a>
+</nav>
+
+</main>
+
+<footer>
+  <div class="container">
+    <p>&copy; 2026 <span data-brand>Tracopus</span>. All rights reserved.</p>
+    <p style="margin-top:0.75rem;">
+      <a href="../index.html">Documentation</a>
+      <a href="../user-guide/index.html">Scenario Guide</a>
+      <a href="../getting-started.html">Getting Started</a>
+      <a href="../charts.html">Charts</a>
+    </p>
+    <p class="footer-muted">For support, contact your workspace administrator.</p>
+  </div>
+</footer>
+
+<script src="../js/palette.js?v=20260619e"></script>
+<script src="../js/brand.js?v=20260619e"></script>
+<script src="../js/docs-utility-config.js?v=20260720b"></script>
+<script src="../js/nav-config.js?v=20260619e"></script>
+<script src="../js/navigation.js?v=20260619e"></script>
+<script src="../js/site-enhancements.js?v=20260718d"></script>
+<script src="../js/search.js?v=20260619e"></script>
+</body>
+</html>

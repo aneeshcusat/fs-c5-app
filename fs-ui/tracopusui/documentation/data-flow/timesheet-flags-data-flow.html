@@ -1,0 +1,2395 @@
+<!DOCTYPE html>
+<html lang="en" data-lux-theme="luxury" data-lux-palette="emerald">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="../js/docs-analytics.js?v=20260719a" defer></script>
+  <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css?v=20260718g">
+  <link rel="stylesheet" href="css/data-flow-doc-shell.css?v=20260724e">
+  <title>Timesheet Flags + Data Flow (Interactive Learning)</title>
+  <script type="module">
+    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+    mermaid.initialize({
+      startOnLoad: false,
+      theme: "base",
+      themeVariables: {
+        primaryColor: "#e8f1ee",
+        primaryTextColor: "#1a2e28",
+        primaryBorderColor: "#2f6f5e",
+        lineColor: "#3d5c52",
+        secondaryColor: "#f3eee6",
+        tertiaryColor: "#f7f4ef",
+        fontFamily: "IBM Plex Sans, system-ui, sans-serif"
+      },
+      flowchart: { curve: "basis", htmlLabels: true, nodeSpacing: 30, rankSpacing: 40 },
+      securityLevel: "loose"
+    });
+    window.__mermaid = mermaid;
+    window.dispatchEvent(new Event("mermaid-ready"));
+  </script>
+  <style>
+    :root {
+      --ink: #1a2e28;
+      --muted: #5a6e66;
+      --bg: #f4f1eb;
+      --paper: #fffdf9;
+      --line: #d8d0c4;
+      --accent: #2f6f5e;
+      --accent-soft: #e8f1ee;
+      --warn: #8a5a2b;
+      --warn-soft: #f5ebe0;
+      --danger: #9b2c2c;
+      --danger-soft: #fde8e8;
+      --danger-border: #e8a0a0;
+      --ok: #1f6b4a;
+      --ok-soft: #e4f3ec;
+      --off: #6b7280;
+      --off-soft: #eef0f2;
+      --flash: #fff3cd;
+      --draft: #5a6e66;
+      --pending: #6b5a2e;
+      --approved: #2f6f5e;
+      --rejected: #8b3a3a;
+      --reopened: #3d5a7a;
+      --font: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+      --mono: "IBM Plex Mono", "SF Mono", ui-monospace, monospace;
+      --switch-w: 48px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: var(--font);
+      color: var(--ink);
+      background:
+        radial-gradient(ellipse 70% 40% at 0% 0%, #e8f1ee, transparent 55%),
+        radial-gradient(ellipse 50% 35% at 100% 0%, #f3eee6, transparent 50%),
+        var(--bg);
+      line-height: 1.5;
+    }
+    a { color: var(--accent); }
+    code {
+      font-family: var(--mono);
+      font-size: 0.86em;
+      background: #efeae2;
+      padding: 0.08em 0.35em;
+      border-radius: 4px;
+    }
+    .wrap {
+      max-width: 1360px;
+      margin: 0 auto;
+      padding: 1.25rem 1rem 3rem;
+    }
+    .hero {
+      margin-bottom: 1rem;
+      padding-bottom: 0.85rem;
+      border-bottom: 1px solid var(--line);
+    }
+    .hero__eyebrow {
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 650;
+    }
+    .hero h1 {
+      margin: 0.3rem 0 0.35rem;
+      font-size: clamp(1.35rem, 2.5vw, 1.85rem);
+      letter-spacing: -0.02em;
+    }
+    .hero p { margin: 0; color: var(--muted); max-width: 54rem; font-size: 0.92rem; }
+
+    .layout { display: grid; gap: 1rem; }
+    @media (min-width: 1100px) {
+      .layout {
+        grid-template-columns: 340px 1fr;
+        align-items: start;
+      }
+      .panel-flags {
+        position: sticky;
+        top: 0.6rem;
+        max-height: calc(100vh - 1.2rem);
+        overflow: auto;
+      }
+      .doc-scroll {
+        max-height: calc(100vh - 1.2rem);
+        overflow: auto;
+      }
+    }
+
+    .panel {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 0.95rem 1rem 1.1rem;
+    }
+    .panel h2 { margin: 0 0 0.45rem; font-size: 0.95rem; }
+    .panel__hint {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin: 0 0 0.7rem;
+    }
+
+    .presets {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-bottom: 0.75rem;
+    }
+    .presets button {
+      font: inherit;
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 0.3rem 0.5rem;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: #faf8f4;
+      color: var(--ink);
+      cursor: pointer;
+    }
+    .presets button:hover { border-color: var(--accent); color: var(--accent); }
+    .presets button.is-active {
+      background: var(--accent-soft);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .group-label {
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--muted);
+      font-weight: 700;
+      margin: 0.85rem 0 0.4rem;
+      padding-top: 0.55rem;
+      border-top: 1px dashed var(--line);
+    }
+    .group-label:first-of-type {
+      margin-top: 0;
+      padding-top: 0;
+      border-top: 0;
+    }
+
+    /* —— Left toggles: fixed switch column, vertically centered —— */
+    .flag {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) var(--switch-w);
+      column-gap: 0.75rem;
+      align-items: center;
+      min-height: 52px;
+      padding: 0.4rem 0.55rem;
+      border-radius: 8px;
+      border: 1px solid transparent;
+      margin-bottom: 0.28rem;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .flag.is-flash {
+      background: var(--flash);
+      border-color: #e0c86a;
+    }
+    .flag.is-selected {
+      outline: 1px solid var(--accent);
+      background: #f7fbf9;
+    }
+    .flag__meta {
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.12rem;
+      justify-content: center;
+    }
+    .flag__name {
+      all: unset;
+      cursor: pointer;
+      font-weight: 650;
+      font-size: 0.84rem;
+      line-height: 1.25;
+      color: var(--ink);
+    }
+    .flag__name:hover { color: var(--accent); }
+    .flag__key {
+      font-family: var(--mono);
+      font-size: 0.62rem;
+      color: var(--muted);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .flag__scope {
+      display: inline-block;
+      width: fit-content;
+      font-size: 0.56rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      padding: 0.08rem 0.3rem;
+      border-radius: 4px;
+    }
+    .scope-org { background: var(--accent-soft); color: var(--accent); }
+    .scope-role { background: #e8eef5; color: #3d5a7a; }
+
+    .flag__toggle {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      width: var(--switch-w);
+      height: 100%;
+    }
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: var(--switch-w);
+      height: 26px;
+      flex-shrink: 0;
+    }
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+      position: absolute;
+    }
+    .switch .track {
+      position: absolute;
+      inset: 0;
+      background: #c5cdc8;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .switch .track::after {
+      content: "";
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      left: 3px;
+      top: 3px;
+      background: #fff;
+      border-radius: 50%;
+      transition: transform 0.2s;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.22);
+    }
+    .switch input:checked + .track { background: var(--accent); }
+    .switch input:checked + .track::after { transform: translateX(22px); }
+    .switch input:focus-visible + .track {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+
+    .flag-detail {
+      margin-top: 0.65rem;
+      padding: 0.7rem 0.8rem;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      font-size: 0.84rem;
+    }
+    .flag-detail h4 { margin: 0 0 0.3rem; font-size: 0.9rem; }
+    .flag-detail p { margin: 0 0 0.4rem; color: var(--muted); }
+    .when-pair { display: grid; gap: 0.4rem; }
+    @media (min-width: 360px) {
+      .when-pair { grid-template-columns: 1fr 1fr; }
+    }
+    .when {
+      border-radius: 6px;
+      padding: 0.45rem 0.55rem;
+      font-size: 0.78rem;
+    }
+    .when--on { background: var(--ok-soft); }
+    .when--off { background: var(--off-soft); }
+    .when strong {
+      display: block;
+      margin-bottom: 0.15rem;
+      font-size: 0.66rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    /* —— Right: change impact —— */
+    .change-banner {
+      display: none;
+      border-radius: 10px;
+      border: 2px solid #e0c86a;
+      background: linear-gradient(180deg, #fff8dc, #fff3cd);
+      padding: 0.75rem 0.9rem;
+      margin-bottom: 0.9rem;
+    }
+    .change-banner.is-visible { display: block; }
+    .change-banner__title {
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--warn);
+      margin: 0 0 0.35rem;
+    }
+    .change-banner__head {
+      font-size: 0.95rem;
+      margin: 0 0 0.55rem;
+    }
+    .impact-grid {
+      display: grid;
+      gap: 0.5rem;
+    }
+    @media (min-width: 640px) {
+      .impact-grid { grid-template-columns: 1fr 1fr; }
+    }
+    .impact-col {
+      border-radius: 8px;
+      padding: 0.5rem 0.65rem;
+      font-size: 0.82rem;
+    }
+    .impact-col--gained { background: var(--ok-soft); border: 1px solid #a8d4c0; }
+    .impact-col--lost { background: var(--danger-soft); border: 1px solid var(--danger-border); }
+    .impact-col h5 {
+      margin: 0 0 0.35rem;
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .impact-col ul {
+      margin: 0;
+      padding-left: 1.1rem;
+    }
+    .impact-col li { margin: 0.2rem 0; }
+    .impact-col--gained h5 { color: var(--ok); }
+    .impact-col--lost h5 { color: var(--danger); }
+    .impact-empty { color: var(--muted); font-style: italic; list-style: none; margin-left: -1.1rem; }
+
+    .mode-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.65rem;
+      border-radius: 999px;
+      margin-bottom: 0.75rem;
+    }
+    .mode-pill--staging { background: var(--ok-soft); color: var(--ok); }
+    .mode-pill--legacy { background: var(--warn-soft); color: var(--warn); }
+    .mode-pill--blocked { background: var(--danger-soft); color: var(--danger); }
+
+    /* —— Pipeline strip —— */
+    .pipeline {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 0.75rem 0.85rem 0.9rem;
+      margin-bottom: 1rem;
+    }
+    .pipeline__label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      margin-bottom: 0.55rem;
+    }
+    .pipeline__track {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: stretch;
+      gap: 0.35rem;
+    }
+    .pipe-node {
+      flex: 1 1 88px;
+      min-width: 88px;
+      max-width: 140px;
+      border-radius: 8px;
+      border: 2px solid var(--line);
+      padding: 0.45rem 0.4rem;
+      text-align: center;
+      background: #faf8f4;
+      position: relative;
+    }
+    .pipe-node__name {
+      font-size: 0.72rem;
+      font-weight: 700;
+      line-height: 1.2;
+      display: block;
+    }
+    .pipe-node__sub {
+      font-size: 0.62rem;
+      color: var(--muted);
+      display: block;
+      margin-top: 0.15rem;
+    }
+    .pipe-node__status {
+      display: block;
+      margin-top: 0.3rem;
+      font-size: 0.58rem;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .pipe-node.is-active {
+      background: var(--ok-soft);
+      border-color: #6fb897;
+    }
+    .pipe-node.is-active .pipe-node__status { color: var(--ok); }
+    .pipe-node.is-auto {
+      background: #e8eef5;
+      border-color: #8aa4c4;
+    }
+    .pipe-node.is-auto .pipe-node__status { color: #3d5a7a; }
+    .pipe-node.is-blocked {
+      background: var(--danger-soft);
+      border-color: var(--danger);
+      border-style: dashed;
+    }
+    .pipe-node.is-blocked .pipe-node__name,
+    .pipe-node.is-blocked .pipe-node__sub {
+      color: var(--danger);
+      text-decoration: line-through;
+    }
+    .pipe-node.is-blocked .pipe-node__status { color: var(--danger); }
+    .pipe-node.is-skip {
+      background: var(--off-soft);
+      border-color: #c5cad0;
+      opacity: 0.7;
+    }
+    .pipe-node.is-skip .pipe-node__status { color: var(--off); }
+    .pipe-arrow {
+      display: flex;
+      align-items: center;
+      color: var(--muted);
+      font-weight: 700;
+      font-size: 0.9rem;
+      flex: 0 0 auto;
+      padding: 0 0.05rem;
+    }
+    .pipe-arrow.is-blocked { color: var(--danger); }
+    .pipe-legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 0.55rem;
+      font-size: 0.72rem;
+      color: var(--muted);
+    }
+    .pipe-legend span::before {
+      content: "";
+      display: inline-block;
+      width: 0.65rem;
+      height: 0.65rem;
+      border-radius: 2px;
+      margin-right: 0.3rem;
+      vertical-align: -1px;
+      border: 1px solid transparent;
+    }
+    .pipe-legend .lg-active::before { background: var(--ok-soft); border-color: #6fb897; }
+    .pipe-legend .lg-blocked::before { background: var(--danger-soft); border-color: var(--danger); }
+    .pipe-legend .lg-auto::before { background: #e8eef5; border-color: #8aa4c4; }
+    .pipe-legend .lg-skip::before { background: var(--off-soft); border-color: #c5cad0; }
+
+    .toc {
+      background: #faf8f4;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 0.7rem 0.9rem;
+      margin-bottom: 1rem;
+    }
+    .toc h3 { margin: 0 0 0.4rem; font-size: 0.82rem; }
+    .toc ol {
+      margin: 0;
+      padding-left: 1.15rem;
+      font-size: 0.84rem;
+      columns: 1;
+    }
+    @media (min-width: 700px) { .toc ol { columns: 2; } }
+    .toc li { margin: 0.2rem 0; break-inside: avoid; }
+    .toc a { text-decoration: none; }
+    .toc a:hover { text-decoration: underline; }
+    .toc .blocked-link {
+      color: var(--danger);
+      font-weight: 650;
+    }
+    .toc .blocked-link::after {
+      content: " · BLOCKED";
+      font-size: 0.7em;
+      font-weight: 800;
+    }
+
+    /* —— Steps —— */
+    .step {
+      background: #faf8f4;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 1rem 1.05rem 1.15rem;
+      margin-bottom: 1rem;
+      scroll-margin-top: 0.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .step.is-flash {
+      background: var(--flash);
+      border-color: #e0c86a;
+      box-shadow: 0 0 0 2px rgba(224, 200, 106, 0.35);
+    }
+    .step.is-blocked {
+      background: #fff5f5;
+      border: 2px dashed var(--danger);
+      opacity: 1;
+    }
+    .step.is-blocked::before {
+      content: "BLOCKED · NOT IN DATA FLOW";
+      position: absolute;
+      top: 0;
+      right: 0;
+      background: var(--danger);
+      color: #fff;
+      font-size: 0.62rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      padding: 0.35rem 0.65rem;
+      border-bottom-left-radius: 8px;
+    }
+    .step.is-blocked .step__body {
+      opacity: 0.55;
+      filter: grayscale(0.35);
+      pointer-events: none;
+      user-select: none;
+    }
+    .block-reason {
+      display: none;
+      background: var(--danger-soft);
+      border: 1px solid var(--danger-border);
+      border-radius: 8px;
+      padding: 0.65rem 0.8rem;
+      margin: 0 0 0.85rem;
+      font-size: 0.88rem;
+      color: var(--danger);
+      font-weight: 650;
+    }
+    .step.is-blocked .block-reason { display: block; }
+    .block-reason strong {
+      display: block;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.2rem;
+    }
+
+    .step__head {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.4rem 0.65rem;
+      margin-bottom: 0.55rem;
+      padding-right: 8rem;
+    }
+    .step.is-blocked .step__head { padding-right: 11rem; }
+    .step__num {
+      flex: 0 0 auto;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 1.75rem;
+      height: 1.75rem;
+      border-radius: 999px;
+      background: var(--accent);
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.78rem;
+      line-height: 1;
+      position: relative;
+      z-index: 1;
+    }
+    .step.is-flash .step__num {
+      background: #b8860b;
+      box-shadow: 0 0 0 2px rgba(224, 200, 106, 0.55);
+    }
+    .step.is-blocked .step__num { background: var(--danger); }
+    .step h3 {
+      margin: 0;
+      font-size: 1.05rem;
+      flex: 1 1 auto;
+      min-width: 0;
+    }
+    .step.is-blocked h3 { color: var(--danger); text-decoration: line-through; }
+
+    .badge {
+      display: inline-block;
+      font-size: 0.65rem;
+      font-weight: 650;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      padding: 0.2rem 0.5rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+    }
+    .badge--draft { background: #eef1ef; color: var(--draft); border-color: #cfd8d4; }
+    .badge--pending { background: #f5f0e4; color: var(--pending); border-color: #e0d4b8; }
+    .badge--approved { background: var(--ok-soft); color: var(--approved); border-color: #b8d4c8; }
+    .badge--rejected { background: var(--danger-soft); color: var(--rejected); border-color: #e0bcbc; }
+    .badge--reopened { background: #e8eef5; color: var(--reopened); border-color: #b8c8dc; }
+    .badge--off { background: var(--danger-soft); color: var(--danger); border-color: var(--danger-border); }
+    .badge--auto { background: #e8eef5; color: #3d5a7a; border-color: #b8c8dc; }
+    .badge--legacy { background: var(--warn-soft); color: var(--warn); border-color: #e0d4b8; }
+    .badge--active { background: var(--ok-soft); color: var(--ok); border-color: #a8d4c0; }
+
+    .step__desc { color: var(--muted); margin: 0 0 0.75rem; font-size: 0.9rem; }
+
+    .callout {
+      border-left: 3px solid var(--accent);
+      background: var(--accent-soft);
+      padding: 0.6rem 0.85rem;
+      border-radius: 0 8px 8px 0;
+      margin: 0 0 0.85rem;
+      font-size: 0.88rem;
+    }
+    .callout--warn { border-left-color: var(--warn); background: var(--warn-soft); }
+    .callout--danger { border-left-color: var(--danger); background: var(--danger-soft); }
+    .callout--off { border-left-color: var(--off); background: var(--off-soft); }
+
+    .flow-cards {
+      display: grid;
+      gap: 0.45rem;
+      margin: 0.75rem 0 1rem;
+    }
+    @media (min-width: 720px) {
+      .flow-cards { grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); }
+    }
+    .flow-card {
+      border: 2px solid var(--line);
+      border-radius: 8px;
+      padding: 0.55rem 0.6rem;
+      background: #fff;
+      text-align: center;
+    }
+    .flow-card__table {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      font-weight: 650;
+      display: block;
+      margin-bottom: 0.25rem;
+      word-break: break-word;
+    }
+    .flow-card__action {
+      font-size: 0.72rem;
+      color: var(--muted);
+    }
+    .flow-card.is-write {
+      border-color: #6fb897;
+      background: var(--ok-soft);
+    }
+    .flow-card.is-write .flow-card__action { color: var(--ok); font-weight: 650; }
+    .flow-card.is-read {
+      border-color: #c5cad0;
+      background: #f3f4f6;
+    }
+    .flow-card.is-none {
+      border-color: var(--danger);
+      border-style: dashed;
+      background: var(--danger-soft);
+      opacity: 0.85;
+    }
+    .flow-card.is-none .flow-card__table,
+    .flow-card.is-none .flow-card__action {
+      color: var(--danger);
+      text-decoration: line-through;
+    }
+
+    .diagram {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 0.85rem;
+      margin: 0.75rem 0;
+      overflow-x: auto;
+    }
+    .diagram.is-dimmed {
+      opacity: 0.5;
+      filter: grayscale(0.4);
+      border-style: dashed;
+      border-color: var(--danger-border);
+    }
+    .diagram__label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+    }
+
+    .api {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      background: #1a2e28;
+      color: #e8f1ee;
+      padding: 0.45rem 0.65rem;
+      border-radius: 6px;
+      margin: 0.4rem 0 0.75rem;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+    .api span { color: #9fd4c0; }
+    .api.is-blocked {
+      background: #5c2a2a;
+      text-decoration: line-through;
+      opacity: 0.75;
+    }
+
+    ul.steps-list {
+      margin: 0.4rem 0 0.85rem;
+      padding-left: 1.15rem;
+      font-size: 0.88rem;
+    }
+    ul.steps-list li { margin: 0.28rem 0; }
+
+    table.data {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.78rem;
+      margin: 0.35rem 0 0.85rem;
+    }
+    table.data th, table.data td {
+      border: 1px solid var(--line);
+      padding: 0.35rem 0.5rem;
+      text-align: left;
+      vertical-align: top;
+    }
+    table.data th { background: #efeae2; font-weight: 650; }
+    table.data tr.changed td { background: #fff8e8; }
+    table.data .hl { background: #fff3cd; font-weight: 600; }
+
+    .delta {
+      font-size: 0.82rem;
+      margin: 0.2rem 0 0.35rem;
+    }
+    .delta strong { color: var(--accent); }
+
+    .table-map {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin: 0.5rem 0 0.75rem;
+    }
+    .pill {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      padding: 0.28rem 0.5rem;
+      border-radius: 6px;
+      background: #efeae2;
+      border: 1px solid var(--line);
+    }
+    .pill--core { background: #e8f1ee; border-color: #b8d4c8; }
+    .pill--stage { background: #f3eee6; border-color: #e0d4b8; }
+    .pill--skip {
+      background: var(--danger-soft);
+      border-color: var(--danger-border);
+      color: var(--danger);
+      text-decoration: line-through;
+    }
+
+    .scenario-box {
+      border: 1px dashed var(--line);
+      border-radius: 8px;
+      padding: 0.7rem 0.85rem;
+      background: #fff;
+      margin-bottom: 0.85rem;
+    }
+    .scenario-box h4 { margin: 0 0 0.3rem; font-size: 0.88rem; }
+    .scenario-box p { margin: 0; color: var(--muted); font-size: 0.85rem; }
+
+    footer.note {
+      margin-top: 0.75rem;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    /* —— Right tabs —— */
+    .right-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-bottom: 0.85rem;
+      padding-bottom: 0.65rem;
+      border-bottom: 1px solid var(--line);
+    }
+    .right-tabs__btn {
+      font: inherit;
+      font-size: 0.82rem;
+      font-weight: 650;
+      padding: 0.45rem 0.85rem;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: #faf8f4;
+      color: var(--muted);
+      cursor: pointer;
+      transition: background 0.15s, border-color 0.15s, color 0.15s;
+    }
+    .right-tabs__btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+    .right-tabs__btn.is-active {
+      background: var(--accent-soft);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+    .right-tabs__panel { display: none; }
+    .right-tabs__panel.is-active { display: block; }
+    .tab-panel-title {
+      margin: 0 0 0.65rem;
+      font-size: 0.95rem;
+    }
+
+    /* —— Flag behavior tab (from timesheet-app-config-flags.html) —— */
+    .bh-summary {
+      font-size: 0.95rem;
+      margin: 0 0 1rem;
+      color: var(--ink);
+    }
+    .bh-flow {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      align-items: center;
+      margin: 0 0 1.1rem;
+    }
+    .bh-flow-step {
+      font-size: 0.78rem;
+      font-weight: 650;
+      padding: 0.4rem 0.65rem;
+      border-radius: 6px;
+      border: 1px solid var(--line);
+      background: #faf8f4;
+      color: var(--muted);
+    }
+    .bh-flow-step.is-on {
+      background: var(--ok-soft);
+      border-color: #a8d4c0;
+      color: var(--ok);
+    }
+    .bh-flow-step.is-auto {
+      background: #e8eef5;
+      border-color: #b8c8dc;
+      color: #3d5a7a;
+    }
+    .bh-flow-step.is-off {
+      background: var(--off-soft);
+      border-color: #d5d8dc;
+      color: var(--off);
+      text-decoration: line-through;
+      opacity: 0.75;
+    }
+    .bh-flow-arrow { color: var(--muted); font-size: 0.85rem; }
+    .bh-cards {
+      display: grid;
+      gap: 0.65rem;
+    }
+    @media (min-width: 700px) {
+      .bh-cards { grid-template-columns: 1fr 1fr; }
+    }
+    .bh-card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 0.7rem 0.8rem;
+      background: #faf8f4;
+    }
+    .bh-card.is-flash {
+      background: var(--flash);
+      border-color: #e0c86a;
+    }
+    .bh-card__title {
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--muted);
+      margin: 0 0 0.35rem;
+    }
+    .bh-card__body { font-size: 0.88rem; margin: 0; }
+    .bh-card__body .on { color: var(--ok); font-weight: 650; }
+    .bh-card__body .off { color: var(--danger); font-weight: 650; }
+    .bh-card__body .partial { color: var(--warn); font-weight: 650; }
+    .bh-table-path {
+      margin-top: 1rem;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .bh-table-path__head {
+      background: #efeae2;
+      padding: 0.55rem 0.75rem;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--muted);
+    }
+    .bh-table-path__body {
+      padding: 0.75rem;
+      font-size: 0.88rem;
+    }
+    .bh-path-box {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      align-items: center;
+      margin-top: 0.5rem;
+    }
+    .bh-path-node {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      padding: 0.35rem 0.55rem;
+      border-radius: 6px;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+    .bh-path-node.is-active { background: var(--accent-soft); border-color: #a8d4c0; }
+    .bh-path-node.is-skip {
+      opacity: 0.45;
+      text-decoration: line-through;
+    }
+    .bh-diff-list {
+      margin: 0.75rem 0 0;
+      padding: 0;
+      list-style: none;
+    }
+    .bh-diff-list li {
+      font-size: 0.86rem;
+      padding: 0.45rem 0.6rem;
+      border-left: 3px solid var(--accent);
+      background: var(--accent-soft);
+      border-radius: 0 6px 6px 0;
+      margin-bottom: 0.35rem;
+    }
+    .bh-diff-list li.neg {
+      border-left-color: var(--danger);
+      background: var(--danger-soft);
+    }
+    .bh-diff-list li.neu {
+      border-left-color: var(--warn);
+      background: var(--warn-soft);
+    }
+    .bh-matrix {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.8rem;
+      margin-top: 1rem;
+    }
+    .bh-matrix th, .bh-matrix td {
+      border: 1px solid var(--line);
+      padding: 0.4rem 0.5rem;
+      text-align: left;
+      vertical-align: top;
+    }
+    .bh-matrix th { background: #efeae2; }
+    .bh-matrix td.yes { background: var(--ok-soft); color: var(--ok); font-weight: 650; }
+    .bh-matrix td.no { background: var(--danger-soft); color: var(--danger); font-weight: 650; }
+    .bh-matrix tr.is-flash td { outline: 2px solid #e0c86a; outline-offset: -2px; }
+    .bh-change-banner {
+      display: none;
+      background: var(--flash);
+      border: 1px solid #e0c86a;
+      border-radius: 8px;
+      padding: 0.55rem 0.75rem;
+      margin-bottom: 0.85rem;
+      font-size: 0.86rem;
+    }
+    .bh-change-banner.is-visible { display: block; }
+  </style>
+  <script src="../js/brand-config.js?v=20260619e"></script>
+</head>
+<body data-docs-depth="1" class="data-flow-doc-site">
+<header aria-label="Site header"></header>
+<div class="data-flow-doc-breadcrumb"><a href="../index.html">Documentation</a> → <a href="index.html">Data flow</a></div>
+<main class="data-flow-doc-main">
+  <div class="wrap">
+    <header class="hero">
+      <div class="hero__eyebrow">Learning · Ref Doc · Flags + Data Flow</div>
+      <h1>Timesheet approval — flags drive the data flow</h1>
+      <p>
+        Left: toggle Application Config flags. Right: use tabs for
+        <strong>Table data flow</strong> or <strong>Flag behavior</strong> — both update live.
+        Blocked steps are marked in red.
+        Toggle <strong>Partial-week submission</strong> to compare full-week vs day-batch approval
+        (<code>partialWeekSubmissionEnabled</code> on/off).
+        Example: Priya Nair (101), manager Arjun Mehta (55), week 2026-07-13.
+      </p>
+    </header>
+
+    <div class="layout">
+      <aside class="panel panel-flags">
+        <h2>Flag simulator</h2>
+        <p class="panel__hint">Toggle → both right tabs update (data flow + flag behavior).</p>
+        <div class="presets" id="presets">
+          <button type="button" data-preset="production">Production review</button>
+          <button type="button" data-preset="partial">Partial-week on</button>
+          <button type="button" data-preset="legacy">Legacy off</button>
+          <button type="button" data-preset="autoOwn">Auto-approve own</button>
+          <button type="button" data-preset="delegate">Delegation + inbox</button>
+          <button type="button" data-preset="locked">No reopen</button>
+        </div>
+        <div id="flagList"></div>
+        <div class="flag-detail" id="flagDetail"></div>
+      </aside>
+
+      <main class="panel doc-scroll">
+        <nav class="right-tabs" role="tablist" aria-label="Right panel views">
+          <button type="button" class="right-tabs__btn is-active" role="tab" aria-selected="true" data-tab="dataflow" id="tabBtnDataflow">Table data flow</button>
+          <button type="button" class="right-tabs__btn" role="tab" aria-selected="false" data-tab="behavior" id="tabBtnBehavior">Flag behavior</button>
+        </nav>
+
+        <div class="right-tabs__panel is-active" id="tabDataflow" role="tabpanel" aria-labelledby="tabBtnDataflow">
+          <div id="docPanel"></div>
+        </div>
+
+        <div class="right-tabs__panel" id="tabBehavior" role="tabpanel" aria-labelledby="tabBtnBehavior" hidden>
+          <h2 class="tab-panel-title">Live flag behavior</h2>
+          <div class="bh-change-banner" id="bhChangeBanner"></div>
+          <div id="bhModePill" class="mode-pill mode-pill--staging">Staging workflow</div>
+          <p class="bh-summary" id="bhSummary"></p>
+          <div class="bh-flow" id="bhFlow" aria-label="Workflow steps"></div>
+          <div class="bh-cards" id="bhCards"></div>
+          <div class="bh-table-path">
+            <div class="bh-table-path__head">Data path on Save (PUT /task/timesheet)</div>
+            <div class="bh-table-path__body">
+              <div id="bhPathDesc"></div>
+              <div class="bh-path-box" id="bhPathNodes"></div>
+            </div>
+          </div>
+          <table class="bh-matrix">
+            <thead>
+              <tr>
+                <th>Capability</th>
+                <th>Now</th>
+                <th>Why</th>
+              </tr>
+            </thead>
+            <tbody id="bhMatrixBody"></tbody>
+          </table>
+          <ul class="bh-diff-list" id="bhDiffList"></ul>
+        </div>
+      </main>
+    </div>
+
+    <footer class="note">
+      Path: <code>documentation/data-flow/timesheet-flags-data-flow.html</code> · <a href="index.html">hub</a>
+      · Related: <a href="./attendance-flags-data-flow.html">attendance</a>,
+      <a href="./leave-flags-data-flow.html">leave</a>,
+      <a href="./delegation-flags-data-flow.html">delegation</a>
+      · Tabs: <strong>Table data flow</strong> · <strong>Flag behavior</strong>
+    </footer>
+  </div>
+
+  <script>
+    const FLAG_DEFS = [
+      { id: "timesheetEnabled", scope: "org", group: "Menu / module", name: "Timesheet menu", key: "peopleModules.timesheetEnabled",
+        description: "Shows Timesheets in navigation.",
+        whenOn: "Timesheet routes can appear.", whenOff: "Timesheet UI hidden org-wide." },
+      { id: "timesheetApprovalEnabled", scope: "org", group: "Org · timesheetAdditional", name: "Approval workflow", key: "timesheetAdditional.timesheetApprovalEnabled",
+        description: "Master switch: staging weeks + submit/approve vs legacy TaskActivity save.",
+        whenOn: "Save → ts_timesheet_*; submit/approve/reject/lock work.", whenOff: "Save → fs_task_activity directly; workflow APIs fail closed. Partial-week also forced off." },
+      { id: "partialWeekSubmissionEnabled", scope: "org", group: "Org · timesheetAdditional", name: "Partial-week submission", key: "timesheetAdditional.partialWeekSubmissionEnabled",
+        description: "Submit day subsets as separate approval batches (needs approval workflow on). Default off = full-week only.",
+        whenOn: "Day chips + activityDates; ts_timesheet_submission_model batches; inbox SUBMISSION:{id}; leftover DRAFT days stay editable.",
+        whenOff: "Full-week submit/approve only; one PENDING week; week locked while pending; no submission table used." },
+      { id: "timesheetReopenEnabled", scope: "org", group: "Org · timesheetAdditional", name: "Timesheet reopen", key: "timesheetAdditional.timesheetReopenEnabled",
+        description: "Allow reopen of APPROVED/LOCKED weeks.",
+        whenOn: "Reopen CTA when role also allows.", whenOff: "Reopen hidden; submit/approve can still run." },
+      { id: "timesheetIntelligenceEnabled", scope: "org", group: "Org · timesheetAdditional", name: "Intelligence", key: "timesheetAdditional.timesheetIntelligenceEnabled",
+        description: "Billability / recommendation panels.",
+        whenOn: "Intel panels can load (usually needs approval on).", whenOff: "Intel hidden." },
+      { id: "approvalDelegationEnabled", scope: "org", group: "Org · approvalDelegation", name: "Approval delegation", key: "approvalDelegation.approvalDelegationEnabled",
+        description: "Delegates can approve timesheet pending.",
+        whenOn: "Delegates + manager can act.", whenOff: "Manager only." },
+      { id: "approvalReminderEnabled", scope: "org", group: "Org · approvalDelegation", name: "Approval reminders", key: "approvalDelegation.approvalReminderEnabled",
+        description: "SLA reminder emails for pending approvals.",
+        whenOn: "Reminder scheduler active.", whenOff: "No auto reminders." },
+      { id: "universalApprovalInboxEnabled", scope: "org", group: "Org · workspace", name: "Universal inbox", key: "tracopusWorkspaceAdditional.universalApprovalInboxEnabled",
+        description: "Workspace Approvals aggregates timesheet items.",
+        whenOn: "Inbox can show TIMESHEET items.", whenOff: "Universal inbox hidden." },
+      { id: "enableTimeSheetEntry", scope: "role", group: "Role · timeSheet", name: "Can enter hours", key: "timeSheet.enableTimeSheetEntry",
+        description: "Role may log hours.", whenOn: "Grid entry on.", whenOff: "Cannot add entries." },
+      { id: "enableTimeSheetEdit", scope: "role", group: "Role · timeSheet", name: "Can edit hours", key: "timeSheet.enableTimeSheetEdit",
+        description: "Role may edit hours.", whenOn: "Edit when week editable.", whenOff: "Cannot edit." },
+      { id: "enableTimeSheetApproval", scope: "role", group: "Role · timeSheet", name: "Can approve", key: "timeSheet.enableTimeSheetApproval",
+        description: "Role may Approve/Reject others’ weeks.", whenOn: "Approve UI for this role.", whenOff: "Cannot approve (others may)." },
+      { id: "enableTimeSheetReopen", scope: "role", group: "Role · timeSheet", name: "Can reopen", key: "timeSheet.enableTimeSheetReopen",
+        description: "Role may reopen; needs org reopen too.", whenOn: "Reopen if org allows.", whenOff: "This role cannot reopen." },
+      { id: "autoApproveOwnTimesheetEnabled", scope: "role", group: "Role · auto-approve", name: "Auto-approve own", key: "autoApproveOwnTimesheetEnabled",
+        description: "Own submit auto-approves (needs org approval).", whenOn: "Submit → APPROVED + promote.", whenOff: "Normal PENDING." },
+      { id: "autoApproveOthersTimesheetEnabled", scope: "role", group: "Role · auto-approve", name: "Auto-approve others", key: "autoApproveOthersTimesheetEnabled",
+        description: "Submit-for-others auto-approves.", whenOn: "Others’ submit auto-approved.", whenOff: "Others stay PENDING." },
+      { id: "restrictedBySkillsEnabled", scope: "role", group: "Role · timeSheet", name: "Restrict by skills", key: "timeSheet.restrictedBySkillsEnabled",
+        description: "Limit task/skill combinations on entry.", whenOn: "Skill validation on.", whenOff: "No skill restriction." }
+    ];
+
+    const PRESETS = {
+      production: {
+        timesheetEnabled: true, timesheetApprovalEnabled: true, partialWeekSubmissionEnabled: false,
+        timesheetReopenEnabled: true, timesheetIntelligenceEnabled: false, approvalDelegationEnabled: true,
+        approvalReminderEnabled: true, universalApprovalInboxEnabled: true, enableTimeSheetEntry: true,
+        enableTimeSheetEdit: true, enableTimeSheetApproval: true, enableTimeSheetReopen: true,
+        autoApproveOwnTimesheetEnabled: false, autoApproveOthersTimesheetEnabled: false, restrictedBySkillsEnabled: false
+      },
+      partial: {
+        timesheetEnabled: true, timesheetApprovalEnabled: true, partialWeekSubmissionEnabled: true,
+        timesheetReopenEnabled: true, timesheetIntelligenceEnabled: false, approvalDelegationEnabled: true,
+        approvalReminderEnabled: true, universalApprovalInboxEnabled: true, enableTimeSheetEntry: true,
+        enableTimeSheetEdit: true, enableTimeSheetApproval: true, enableTimeSheetReopen: true,
+        autoApproveOwnTimesheetEnabled: false, autoApproveOthersTimesheetEnabled: false, restrictedBySkillsEnabled: false
+      },
+      legacy: {
+        timesheetEnabled: true, timesheetApprovalEnabled: false, partialWeekSubmissionEnabled: false,
+        timesheetReopenEnabled: false, timesheetIntelligenceEnabled: false, approvalDelegationEnabled: false,
+        approvalReminderEnabled: false, universalApprovalInboxEnabled: false, enableTimeSheetEntry: true,
+        enableTimeSheetEdit: true, enableTimeSheetApproval: false, enableTimeSheetReopen: false,
+        autoApproveOwnTimesheetEnabled: false, autoApproveOthersTimesheetEnabled: false, restrictedBySkillsEnabled: false
+      },
+      autoOwn: {
+        timesheetEnabled: true, timesheetApprovalEnabled: true, partialWeekSubmissionEnabled: false,
+        timesheetReopenEnabled: true, timesheetIntelligenceEnabled: false, approvalDelegationEnabled: false,
+        approvalReminderEnabled: false, universalApprovalInboxEnabled: false, enableTimeSheetEntry: true,
+        enableTimeSheetEdit: true, enableTimeSheetApproval: true, enableTimeSheetReopen: true,
+        autoApproveOwnTimesheetEnabled: true, autoApproveOthersTimesheetEnabled: false, restrictedBySkillsEnabled: false
+      },
+      delegate: {
+        timesheetEnabled: true, timesheetApprovalEnabled: true, partialWeekSubmissionEnabled: false,
+        timesheetReopenEnabled: true, timesheetIntelligenceEnabled: true, approvalDelegationEnabled: true,
+        approvalReminderEnabled: true, universalApprovalInboxEnabled: true, enableTimeSheetEntry: true,
+        enableTimeSheetEdit: true, enableTimeSheetApproval: true, enableTimeSheetReopen: true,
+        autoApproveOwnTimesheetEnabled: false, autoApproveOthersTimesheetEnabled: false, restrictedBySkillsEnabled: false
+      },
+      locked: {
+        timesheetEnabled: true, timesheetApprovalEnabled: true, partialWeekSubmissionEnabled: false,
+        timesheetReopenEnabled: false, timesheetIntelligenceEnabled: false, approvalDelegationEnabled: false,
+        approvalReminderEnabled: false, universalApprovalInboxEnabled: false, enableTimeSheetEntry: true,
+        enableTimeSheetEdit: true, enableTimeSheetApproval: true, enableTimeSheetReopen: true,
+        autoApproveOwnTimesheetEnabled: false, autoApproveOthersTimesheetEnabled: false, restrictedBySkillsEnabled: false
+      }
+    };
+
+    let state = { ...PRESETS.production };
+    let prevState = { ...state };
+    let lastChanged = null;
+    let selectedFlagId = "timesheetApprovalEnabled";
+    let mermaidReady = false;
+    let renderSeq = 0;
+
+    function ctxFrom(f) {
+      const menu = !!f.timesheetEnabled;
+      const approval = !!f.timesheetApprovalEnabled;
+      const partial = approval && !!f.partialWeekSubmissionEnabled;
+      const reopenOrg = !!f.timesheetReopenEnabled;
+      const canEnter = menu && !!f.enableTimeSheetEntry;
+      const canEdit = menu && !!f.enableTimeSheetEdit;
+      const canApprove = menu && approval && !!f.enableTimeSheetApproval;
+      const canReopen = menu && approval && reopenOrg && !!f.enableTimeSheetReopen;
+      const autoOwn = approval && !!f.autoApproveOwnTimesheetEnabled;
+      const autoOthers = approval && !!f.autoApproveOthersTimesheetEnabled;
+      const delegation = approval && !!f.approvalDelegationEnabled;
+      const inbox = approval && !!f.universalApprovalInboxEnabled;
+      const reminders = approval && !!f.approvalReminderEnabled;
+      const intel = approval && !!f.timesheetIntelligenceEnabled;
+      const skills = !!f.restrictedBySkillsEnabled;
+      let mode = "legacy";
+      if (!menu) mode = "blocked";
+      else if (approval) mode = "staging";
+      return {
+        menu, approval, partial, reopenOrg, canEnter, canEdit, canApprove, canReopen,
+        autoOwn, autoOthers, delegation, inbox, reminders, intel, skills, mode,
+        caps: {
+          "Timesheet page visible": menu,
+          "Enter / save hours": canEnter,
+          "Staging tables (ts_timesheet_*)": menu && approval && canEnter,
+          "Submit for approval": menu && approval && canEnter,
+          "Partial-week day batches": partial && canEnter,
+          "Manager Approve / Reject": canApprove,
+          "Auto-approve own on submit": autoOwn,
+          "Promote → TaskActivity on approve": menu && approval,
+          "Reopen approved week": canReopen,
+          "Delegation for timesheet": delegation,
+          "Workspace Approvals inbox": inbox,
+          "Approval reminders": reminders,
+          "Intelligence panels": intel,
+          "Skill-restricted entry": skills && canEnter
+        }
+      };
+    }
+
+    function ctx() { return ctxFrom(state); }
+
+    /** Flag behavior tab — same logic as timesheet-app-config-flags.html */
+    function computeBehavior(f) {
+      const menu = !!f.timesheetEnabled;
+      const approval = !!f.timesheetApprovalEnabled;
+      const partial = approval && !!f.partialWeekSubmissionEnabled;
+      const reopenOrg = !!f.timesheetReopenEnabled;
+      const intel = !!f.timesheetIntelligenceEnabled;
+      const delegation = !!f.approvalDelegationEnabled;
+      const reminders = !!f.approvalReminderEnabled;
+      const inbox = !!f.universalApprovalInboxEnabled;
+      const entry = !!f.enableTimeSheetEntry;
+      const canApprove = !!f.enableTimeSheetApproval;
+      const canReopenRole = !!f.enableTimeSheetReopen;
+      const autoOwn = approval && !!f.autoApproveOwnTimesheetEnabled;
+      const autoOthers = approval && !!f.autoApproveOthersTimesheetEnabled;
+      const skills = !!f.restrictedBySkillsEnabled;
+
+      const canEnter = menu && entry;
+      const canSubmit = menu && approval && entry;
+      const canManagerApprove = menu && approval && canApprove;
+      const canReopen = menu && approval && reopenOrg && canReopenRole;
+      const showIntel = menu && intel && approval;
+      const showInboxTimesheet = menu && approval && inbox;
+      const delegateActs = menu && approval && delegation && canApprove;
+      const remindersActive = menu && approval && reminders;
+
+      let mode = "legacy";
+      if (!menu) mode = "blocked";
+      else if (approval) mode = "staging";
+
+      let summary;
+      if (!menu) {
+        summary = "Timesheet module is off — users won't see Timesheets. Other flags don't matter until the menu/module is on.";
+      } else if (!approval) {
+        summary = "Legacy mode: Save writes hours straight into fs_task_activity_model. There is no week staging, submit, or manager approve/reject cycle. Partial-week is unavailable.";
+      } else if (partial && autoOwn) {
+        summary = "Partial-week ON + auto-approve own: each day-batch submit can auto-approve that batch and promote those days; leftover DRAFT days stay editable for later batches.";
+      } else if (partial) {
+        summary = "Partial-week ON: submit selected days (activityDates) → ts_timesheet_submission_model batch → PENDING days only. Multiple batches per week; leftover DRAFT/REJECTED days remain editable. Approve/reject by submissionId; week status rolls up.";
+      } else if (autoOwn && !canApprove) {
+        summary = "Full-week staging on. Employees can submit the whole week; own weeks auto-approve. This role cannot approve others' weeks. Partial-week is OFF.";
+      } else if (autoOwn) {
+        summary = "Full-week staging on. Submitting your own week auto-approves (authority AUTO) and promotes to TaskActivity — no pending wait. Partial-week is OFF.";
+      } else {
+        summary = "Full-week staging (partial OFF): Save → ts_timesheet_* (DRAFT) → Submit entire week (PENDING_APPROVAL) → Manager Approve/Reject. Week locked while pending. Canonical hours in fs_task_activity_model only after promote.";
+      }
+
+      const steps = [
+        { id: "enter", label: "Add time", state: canEnter ? "on" : "off" },
+        { id: "save", label: approval ? "Save draft" : "Save (legacy)", state: canEnter ? "on" : "off" },
+        { id: "submit", label: partial ? "Submit day batch" : "Submit week", state: canSubmit ? (autoOwn || autoOthers ? "auto" : "on") : "off" },
+        { id: "pending", label: partial ? "Pending batch" : "Pending week", state: canSubmit && !autoOwn && !autoOthers ? "on" : "off" },
+        { id: "approve", label: autoOwn || autoOthers ? "Auto-approve" : (partial ? "Approve batch" : "Approve / Reject"), state: (canManagerApprove || autoOwn || autoOthers) ? (autoOwn || autoOthers ? "auto" : "on") : "off" },
+        { id: "promote", label: partial ? "Promote batch days" : "Promote → TaskActivity", state: "off" },
+        { id: "reopen", label: partial ? "Reopen week/batch" : "Reopen", state: canReopen ? "on" : "off" }
+      ];
+      if (approval && canSubmit && (canManagerApprove || autoOwn || autoOthers)) {
+        steps.find((s) => s.id === "promote").state = "on";
+      } else if (approval) {
+        steps.find((s) => s.id === "promote").state = canSubmit && autoOwn ? "on" : "off";
+      } else {
+        steps.find((s) => s.id === "promote").state = "off";
+        steps.find((s) => s.id === "promote").label = "N/A (legacy writes TA on save)";
+      }
+
+      const path = approval
+        ? (partial
+            ? {
+                desc: "TimesheetFacadeService → TimesheetWorkflowService.submit (activityDates) → ts_timesheet_submission_model; approve via /submissions/{id}.",
+                nodes: [
+                  { label: "PUT /task/timesheet", active: true },
+                  { label: "ts_timesheet_week", active: true },
+                  { label: "ts_timesheet_day", active: true },
+                  { label: "ts_timesheet_submission", active: true },
+                  { label: "fs_task_activity", active: false, skip: true }
+                ]
+              }
+            : {
+                desc: "TimesheetFacadeService → TimesheetStagingService.saveWeek — staging only until week approve.",
+                nodes: [
+                  { label: "PUT /task/timesheet", active: true },
+                  { label: "ts_timesheet_week", active: true },
+                  { label: "ts_timesheet_line", active: true },
+                  { label: "ts_timesheet_day", active: true },
+                  { label: "fs_task_activity", active: false, skip: true }
+                ]
+              })
+        : {
+            desc: "TimesheetFacadeService → LegacyTimesheetService — hours land in TaskActivity immediately.",
+            nodes: [
+              { label: "PUT /task/timesheet", active: true },
+              { label: "ts_timesheet_*", active: false, skip: true },
+              { label: "fs_task_activity_model", active: true }
+            ]
+          };
+
+      const cards = [
+        {
+          title: "Save path",
+          html: approval
+            ? `<span class="on">Staging</span> — week/line/day DRAFT; no TaskActivity yet`
+            : `<span class="partial">Legacy</span> — write <code>fs_task_activity_model</code> on save`
+        },
+        {
+          title: "Submit unit",
+          html: !canSubmit
+            ? `<span class="off">Unavailable</span> — need org approval + entry`
+            : partial
+              ? `<span class="on">Partial-week ON</span> — selected days → submission batch; leftover DRAFT editable`
+              : `<span class="on">Full week</span> — all days PENDING; week locked until decide`
+        },
+        {
+          title: "Submit for approval",
+          html: canSubmit
+            ? (autoOwn || autoOthers
+                ? `<span class="on">Available</span> — then <span class="partial">auto-approve</span>`
+                : partial
+                  ? `<span class="on">Available</span> → PENDING days + <code>ts_timesheet_submission</code>`
+                  : `<span class="on">Available</span> → week PENDING_APPROVAL`)
+            : `<span class="off">Unavailable</span> — need org approval + entry`
+        },
+        {
+          title: "Manager approve / reject",
+          html: canManagerApprove
+            ? (partial
+                ? `<span class="on">Enabled</span> — <code>/submissions/{id}/approve|reject</code> (multi-pending needs submissionId)`
+                : `<span class="on">Enabled</span> — week <code>/approve|reject</code>`)
+            : approval
+              ? `<span class="off">This role cannot approve</span> (org workflow may still run for other roles)`
+              : `<span class="off">N/A</span> — org approval off`
+        },
+        {
+          title: "Reopen after approve",
+          html: canReopen
+            ? (partial
+                ? `<span class="on">Enabled</span> — week and/or <code>submissionId</code> batch reopen`
+                : `<span class="on">Enabled</span> — demote TaskActivity, week REOPENED`)
+            : approval && !reopenOrg
+              ? `<span class="off">Blocked by org reopen flag</span>`
+              : approval && !canReopenRole
+                ? `<span class="off">Blocked by role reopen flag</span>`
+                : `<span class="off">Unavailable</span>`
+        },
+        {
+          title: "Delegation",
+          html: delegateActs
+            ? `<span class="on">Delegates can act</span> on timesheet pending`
+            : approval && !delegation
+              ? `<span class="off">Manager only</span>`
+              : `<span class="off">Off</span>`
+        },
+        {
+          title: "Workspace inbox / intel",
+          html: [
+            showInboxTimesheet
+              ? (partial ? `<span class="on">Inbox</span> <code>SUBMISSION:</code>` : `<span class="on">Inbox</span> <code>WEEK:</code>`)
+              : `<span class="off">Inbox</span>`,
+            showIntel ? `<span class="on">Intel</span>` : `<span class="off">Intel</span>`,
+            remindersActive ? `<span class="on">Reminders</span>` : `<span class="off">Reminders</span>`
+          ].join(" · ")
+        }
+      ];
+
+      const matrix = [
+        { cap: "See Timesheet page", ok: menu, why: menu ? "timesheetEnabled on" : "timesheetEnabled off" },
+        { cap: "Enter / save hours", ok: canEnter, why: canEnter ? (approval ? "entry + staging save" : "entry + legacy save") : "need menu + enableTimeSheetEntry" },
+        { cap: "Create ts_timesheet_week on save", ok: approval && canEnter, why: approval ? "org approval on" : "legacy — no week staging" },
+        { cap: "Submit week / days", ok: canSubmit, why: canSubmit ? (partial ? "approval + partial day batches" : "full-week approval workflow") : "timesheetApprovalEnabled off or no entry" },
+        { cap: "Partial-week submission batches", ok: partial && canEnter, why: partial ? "partialWeekSubmissionEnabled + approval" : "flag off — full week only" },
+        { cap: "Use ts_timesheet_submission_model", ok: partial && canEnter, why: partial ? "one row per submit batch" : "not used when partial off" },
+        { cap: "Edit leftover DRAFT while batch pending", ok: partial && canEnter, why: partial ? "2A — DRAFT/REJECTED days stay editable" : "full week locks while PENDING" },
+        { cap: "Manager Approve/Reject UI", ok: canManagerApprove, why: canManagerApprove ? "org approval + enableTimeSheetApproval" : "need both org + role approve flags" },
+        { cap: "Auto-approve on submit (own)", ok: autoOwn, why: autoOwn ? "approval + autoApproveOwnTimesheetEnabled" : "auto-own off or approval off" },
+        { cap: "Promote to fs_task_activity on approve", ok: approval, why: approval ? (partial ? "promoteDays for batch" : "promoteWeek on APPROVED") : "legacy already wrote TA on save" },
+        { cap: "Reopen approved week", ok: canReopen, why: canReopen ? "org reopen + role reopen + approval" : "missing org reopen, role reopen, or approval" },
+        { cap: "Delegate approves timesheet", ok: delegateActs, why: delegateActs ? "delegation + can approve" : "approvalDelegationEnabled or role approve off" },
+        { cap: "Timesheet in Workspace Approvals", ok: showInboxTimesheet, why: showInboxTimesheet ? "universalApprovalInboxEnabled + approval" : "inbox or approval off" },
+        { cap: "Intelligence panels", ok: showIntel, why: showIntel ? "intelligence + approval" : "timesheetIntelligenceEnabled off or approval off" },
+        { cap: "Skill-restricted entry", ok: skills && canEnter, why: skills ? "restrictedBySkillsEnabled on" : "no skill restriction" }
+      ];
+
+      return { mode, summary, steps, path, cards, matrix, partial };
+    }
+
+    function describeBehaviorChange(prev, next, changedId) {
+      const a = computeBehavior(prev);
+      const b = computeBehavior(next);
+      const diffs = [];
+      const def = FLAG_DEFS.find((d) => d.id === changedId);
+      const turnedOn = next[changedId] === true;
+
+      if (def) {
+        diffs.push({
+          type: turnedOn ? "pos" : "neg",
+          text: `${def.name} turned ${turnedOn ? "ON" : "OFF"} (${def.key})`
+        });
+      }
+      if (a.mode !== b.mode) {
+        diffs.push({ type: "neu", text: `Save mode: ${a.mode.toUpperCase()} → ${b.mode.toUpperCase()}` });
+      }
+      a.matrix.forEach((row, i) => {
+        if (row.ok !== b.matrix[i].ok) {
+          diffs.push({
+            type: b.matrix[i].ok ? "pos" : "neg",
+            text: `${row.cap}: ${row.ok ? "yes" : "no"} → ${b.matrix[i].ok ? "yes" : "no"}`
+          });
+        }
+      });
+      if (changedId === "timesheetApprovalEnabled") {
+        diffs.push({
+          type: "neu",
+          text: turnedOn
+            ? "Data flow: save now fills ts_timesheet_week/line/day; TaskActivity waits for approve."
+            : "Data flow: save writes fs_task_activity_model immediately; week workflow APIs fail closed; partial-week forced off."
+        });
+      }
+      if (changedId === "partialWeekSubmissionEnabled") {
+        diffs.push({
+          type: turnedOn ? "pos" : "neu",
+          text: turnedOn
+            ? "Submit unit = selected days → ts_timesheet_submission_model; leftover DRAFT days stay editable; inbox uses SUBMISSION:{id}."
+            : "Submit unit = full week only; no submission batches; week locks while PENDING; inbox uses WEEK:{id}."
+        });
+      }
+      if (changedId === "autoApproveOwnTimesheetEnabled" && next.timesheetApprovalEnabled) {
+        diffs.push({
+          type: turnedOn ? "pos" : "neu",
+          text: turnedOn
+            ? "Submit own week/batch skips PENDING and runs approve+promote with authority AUTO."
+            : "Submit own week/batch returns to normal manager PENDING_APPROVAL."
+        });
+      }
+      if (changedId === "timesheetReopenEnabled") {
+        diffs.push({
+          type: turnedOn ? "pos" : "neg",
+          text: turnedOn
+            ? "Approved weeks can be reopened (if role allows) → demote + REOPENED."
+            : "Reopen CTA hidden; approved hours stay locked unless unlock/payroll path."
+        });
+      }
+      if (changedId === "approvalDelegationEnabled" && next.timesheetApprovalEnabled) {
+        diffs.push({
+          type: turnedOn ? "pos" : "neg",
+          text: turnedOn
+            ? "Delegates with timesheet scope can approve in addition to the manager."
+            : "Only reporting manager remains effective approver."
+        });
+      }
+      return diffs;
+    }
+
+    function renderBehavior() {
+      const c = computeBehavior(state);
+      const pill = document.getElementById("bhModePill");
+      pill.className = "mode-pill mode-pill--" + (c.mode === "staging" ? "staging" : c.mode === "legacy" ? "legacy" : "blocked");
+      pill.textContent =
+        c.mode === "staging"
+          ? (state.partialWeekSubmissionEnabled
+              ? "Mode: Staging · partial-week batches"
+              : "Mode: Staging · full-week approval")
+          : c.mode === "legacy" ? "Mode: Legacy direct TaskActivity"
+            : "Mode: Timesheet module off";
+
+      document.getElementById("bhSummary").textContent = c.summary;
+
+      document.getElementById("bhFlow").innerHTML = c.steps
+        .map((s, i) => {
+          const arrow = i < c.steps.length - 1 ? `<span class="bh-flow-arrow">→</span>` : "";
+          return `<span class="bh-flow-step is-${s.state}">${esc(s.label)}</span>${arrow}`;
+        })
+        .join("");
+
+      document.getElementById("bhCards").innerHTML = c.cards
+        .map((card, idx) =>
+          `<div class="bh-card ${lastChanged && idx < 3 && (lastChanged === "timesheetApprovalEnabled" || lastChanged === "partialWeekSubmissionEnabled" || lastChanged.startsWith("auto")) ? "is-flash" : ""}">
+            <div class="bh-card__title">${esc(card.title)}</div>
+            <p class="bh-card__body">${card.html}</p>
+          </div>`
+        )
+        .join("");
+
+      document.getElementById("bhPathDesc").textContent = c.path.desc;
+      document.getElementById("bhPathNodes").innerHTML = c.path.nodes
+        .map((n, i) => {
+          const arrow = i < c.path.nodes.length - 1 ? `<span class="bh-flow-arrow">→</span>` : "";
+          const cls = n.skip ? "is-skip" : n.active ? "is-active" : "";
+          return `<span class="bh-path-node ${cls}">${esc(n.label)}</span>${arrow}`;
+        })
+        .join("");
+
+      document.getElementById("bhMatrixBody").innerHTML = c.matrix
+        .map((row) => {
+          const cls = row.ok ? "yes" : "no";
+          const flash =
+            lastChanged &&
+            describeBehaviorChange(prevState, state, lastChanged).some((d) => d.text.startsWith(row.cap))
+              ? "is-flash"
+              : "";
+          return `<tr class="${flash}"><td>${esc(row.cap)}</td><td class="${cls}">${row.ok ? "YES" : "NO"}</td><td>${esc(row.why)}</td></tr>`;
+        })
+        .join("");
+
+      const banner = document.getElementById("bhChangeBanner");
+      const diffList = document.getElementById("bhDiffList");
+      if (lastChanged) {
+        const diffs = describeBehaviorChange(prevState, state, lastChanged);
+        banner.className = "bh-change-banner is-visible";
+        banner.innerHTML = `<strong>What changed</strong> — toggled <code>${esc(lastChanged)}</code>. See highlights below.`;
+        diffList.innerHTML = diffs
+          .map((d) => `<li class="${d.type === "neg" ? "neg" : d.type === "neu" ? "neu" : ""}">${esc(d.text)}</li>`)
+          .join("");
+      } else {
+        banner.className = "bh-change-banner";
+        banner.innerHTML = "";
+        diffList.innerHTML = "";
+      }
+    }
+
+    function esc(s) {
+      return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    }
+
+    function impactDiff(prev, next) {
+      const a = ctxFrom(prev).caps;
+      const b = ctxFrom(next).caps;
+      const gained = [];
+      const lost = [];
+      Object.keys(b).forEach((k) => {
+        if (!a[k] && b[k]) gained.push(k);
+        if (a[k] && !b[k]) lost.push(k);
+      });
+      return { gained, lost };
+    }
+
+    function mermaidBlock(id, code, dimmed) {
+      return `<div class="diagram ${dimmed ? "is-dimmed" : ""}">
+        <div class="diagram__label">${dimmed ? "Diagram (blocked — not executed)" : "Data flow diagram"}</div>
+        <pre class="mermaid" id="${id}">${esc(code.trim())}</pre>
+      </div>`;
+    }
+
+    function flowCards(cards) {
+      return `<div class="flow-cards">${cards.map((c) => `
+        <div class="flow-card is-${c.kind}">
+          <span class="flow-card__table">${esc(c.table)}</span>
+          <span class="flow-card__action">${esc(c.action)}</span>
+        </div>`).join("")}</div>`;
+    }
+
+    function tableWeek(rows) {
+      return `<p class="delta"><strong>ts_timesheet_week_model</strong></p>
+        <table class="data"><thead><tr>
+          <th>id</th><th>employee_id</th><th>week_start</th><th>status</th>
+          <th>submitted_by</th><th>approved_by</th><th>rejected_by</th>
+        </tr></thead><tbody>${rows}</tbody></table>`;
+    }
+
+    function pipelineHtml(c) {
+      const nodes = [];
+      if (!c.menu) {
+        nodes.push({ name: "Timesheet UI", sub: "menu", state: "blocked", status: "Blocked" });
+        nodes.push({ name: "All workflow", sub: "N/A", state: "blocked", status: "Blocked" });
+      } else if (!c.approval) {
+        nodes.push({ name: "1. Enter hours", sub: "grid", state: c.canEnter ? "active" : "blocked", status: c.canEnter ? "Active" : "Blocked" });
+        nodes.push({ name: "2. Save", sub: "→ TaskActivity", state: c.canEnter ? "active" : "blocked", status: c.canEnter ? "Legacy write" : "Blocked" });
+        nodes.push({ name: "Staging week", sub: "ts_timesheet_*", state: "blocked", status: "Not used" });
+        nodes.push({ name: "Submit", sub: "PENDING", state: "blocked", status: "Blocked" });
+        nodes.push({ name: "Approve", sub: "promote", state: "blocked", status: "Blocked" });
+        nodes.push({ name: "Reopen", sub: "correct", state: "blocked", status: "Blocked" });
+      } else {
+        nodes.push({ name: "1. Enter hours", sub: "grid", state: c.canEnter ? "active" : "blocked", status: c.canEnter ? "Active" : "Blocked" });
+        nodes.push({ name: "2. Save draft", sub: "ts_* DRAFT", state: c.canEnter ? "active" : "blocked", status: c.canEnter ? "Active" : "Blocked" });
+        if (c.autoOwn) {
+          nodes.push({ name: "3. Submit", sub: c.partial ? "day batch auto" : "auto path", state: c.canEnter ? "auto" : "blocked", status: c.canEnter ? "Auto" : "Blocked" });
+          nodes.push({ name: "4. Pending", sub: "manager wait", state: "skip", status: "Skipped" });
+          nodes.push({ name: "5. Auto-approve", sub: c.partial ? "promoteDays" : "promote", state: c.canEnter ? "auto" : "blocked", status: c.canEnter ? "Auto" : "Blocked" });
+        } else if (c.partial) {
+          nodes.push({ name: "3. Submit batch", sub: "activityDates", state: c.canEnter ? "active" : "blocked", status: c.canEnter ? "Active" : "Blocked" });
+          nodes.push({ name: "4. Pending batch", sub: "SUBMISSION inbox", state: c.canEnter ? "active" : "blocked", status: c.canEnter ? "Active" : "Blocked" });
+          nodes.push({ name: "5. Approve batch", sub: "promoteDays", state: c.canApprove ? "active" : "blocked", status: c.canApprove ? "Active" : "Blocked" });
+        } else {
+          nodes.push({ name: "3. Submit", sub: "PENDING week", state: c.canEnter ? "active" : "blocked", status: c.canEnter ? "Active" : "Blocked" });
+          nodes.push({ name: "4. Pending", sub: "manager inbox", state: c.canEnter ? "active" : "blocked", status: c.canEnter ? "Active" : "Blocked" });
+          nodes.push({ name: "5. Approve/Reject", sub: "promote/demote", state: c.canApprove ? "active" : "blocked", status: c.canApprove ? "Active" : "Blocked" });
+        }
+        nodes.push({ name: "6. Reopen", sub: c.partial ? "week/batch" : "edit again", state: c.canReopen ? "active" : "blocked", status: c.canReopen ? "Active" : "Blocked" });
+      }
+
+      let track = "";
+      nodes.forEach((n, i) => {
+        if (i) {
+          const arrowBlocked = n.state === "blocked" || nodes[i - 1].state === "blocked";
+          track += `<span class="pipe-arrow ${arrowBlocked ? "is-blocked" : ""}" aria-hidden="true">→</span>`;
+        }
+        track += `<div class="pipe-node is-${n.state}">
+          <span class="pipe-node__name">${esc(n.name)}</span>
+          <span class="pipe-node__sub">${esc(n.sub)}</span>
+          <span class="pipe-node__status">${esc(n.status)}</span>
+        </div>`;
+      });
+
+      return `<div class="pipeline">
+        <div class="pipeline__label">End-to-end data flow (live for current flags)</div>
+        <div class="pipeline__track">${track}</div>
+        <div class="pipe-legend">
+          <span class="lg-active">Active</span>
+          <span class="lg-auto">Auto path</span>
+          <span class="lg-skip">Skipped</span>
+          <span class="lg-blocked">Blocked / not applicable</span>
+        </div>
+      </div>`;
+    }
+
+    function changeBannerHtml() {
+      if (!lastChanged) return "";
+      const def = FLAG_DEFS.find((d) => d.id === lastChanged);
+      const on = !!state[lastChanged];
+      const { gained, lost } = impactDiff(prevState, state);
+      const list = (items, empty) =>
+        items.length
+          ? items.map((i) => `<li>${esc(i)}</li>`).join("")
+          : `<li class="impact-empty">${empty}</li>`;
+
+      return `<div class="change-banner is-visible">
+        <div class="change-banner__title">What just changed</div>
+        <p class="change-banner__head">
+          <strong>${esc(def ? def.name : lastChanged)}</strong>
+          turned <code>${on ? "ON" : "OFF"}</code>
+          <span style="color:var(--muted)"> · ${esc(def ? def.key : lastChanged)}</span>
+        </p>
+        <div class="impact-grid">
+          <div class="impact-col impact-col--gained">
+            <h5>Now available / enabled</h5>
+            <ul>${list(gained, "No new capabilities")}</ul>
+          </div>
+          <div class="impact-col impact-col--lost">
+            <h5>Now blocked / removed</h5>
+            <ul>${list(lost, "Nothing newly blocked")}</ul>
+          </div>
+        </div>
+        <p style="margin:0.55rem 0 0;font-size:0.8rem;color:var(--muted)">
+          ${on ? esc(def.whenOn) : esc(def.whenOff)}
+          Red dashed sections below are <strong>not part of the active data flow</strong>.
+        </p>
+      </div>`;
+    }
+
+    function stepOpen(opts) {
+      const { id, num, title, badges, blocked, reason, flashIds } = opts;
+      const flash = lastChanged && flashIds && flashIds.includes(lastChanged);
+      const cls = [
+        "step",
+        blocked ? "is-blocked" : "",
+        flash ? "is-flash" : ""
+      ].filter(Boolean).join(" ");
+      const badgeHtml = (badges || []).map((b) => `<span class="badge badge--${b.t}">${esc(b.l)}</span>`).join("");
+      return `<section class="${cls}" id="${id}">
+        <div class="step__head">
+          <span class="step__num">${esc(String(num))}</span>
+          <h3>${title}</h3>
+          ${badgeHtml}
+          ${blocked ? `<span class="badge badge--off">Not applicable</span>` : `<span class="badge badge--active">In flow</span>`}
+        </div>
+        <div class="block-reason"><strong>Why this step is blocked</strong>${reason || ""}</div>
+        <div class="step__body">`;
+    }
+    function stepClose() { return `</div></section>`; }
+
+    function renderDoc() {
+      const c = ctx();
+      const seq = ++renderSeq;
+      let html = "";
+
+      html += changeBannerHtml();
+
+      const modeLabel =
+        c.mode === "staging" ? "Mode: Staging approval workflow"
+          : c.mode === "legacy" ? "Mode: Legacy direct TaskActivity"
+            : "Mode: Timesheet module off";
+      html += `<div class="mode-pill mode-pill--${c.mode === "staging" ? "staging" : c.mode === "legacy" ? "legacy" : "blocked"}">${modeLabel}</div>`;
+      html += pipelineHtml(c);
+
+      // TOC
+      html += `<nav class="toc"><h3>Steps</h3><ol>`;
+      html += `<li><a href="#t0">Table map</a></li>`;
+      html += `<li><a href="#tEx">Example cast</a></li>`;
+      if (!c.menu) {
+        html += `<li class="blocked-link">All entry / workflow</li>`;
+      } else if (!c.approval) {
+        html += `<li><a href="#tLegacy">Legacy: add time &amp; save</a></li>`;
+        html += `<li class="blocked-link">Submit / Approve / Reject / Reopen</li>`;
+      } else {
+        html += `<li class="${c.canEnter ? "" : "blocked-link"}"><a href="#t1">1. Save draft</a></li>`;
+        html += `<li class="${c.canEnter ? "" : "blocked-link"}"><a href="#t2">2. Submit</a></li>`;
+        html += `<li class="${c.canApprove || c.autoOwn ? "" : "blocked-link"}"><a href="#t3">3. Approve</a></li>`;
+        html += `<li class="${c.canApprove ? "" : "blocked-link"}"><a href="#t4">4. Reject</a></li>`;
+        html += `<li class="${c.canReopen ? "" : "blocked-link"}"><a href="#t5">5. Reopen → resubmit</a></li>`;
+        html += `<li><a href="#tLife">Lifecycle</a></li>`;
+      }
+      html += `</ol></nav>`;
+
+      if (!c.menu) {
+        html += stepOpen({
+          id: "t0", num: "!", title: "Timesheet module is off",
+          badges: [{ t: "off", l: "Menu off" }],
+          blocked: true,
+          reason: "<code>timesheetEnabled</code> is OFF. No UI, no saves, no tables written.",
+          flashIds: ["timesheetEnabled"]
+        });
+        html += `<p class="step__desc">Turn <strong>Timesheet menu</strong> ON to explore data flow.</p>`;
+        html += stepClose();
+        document.getElementById("docPanel").innerHTML = html;
+        return runMermaid(seq);
+      }
+
+      // Table map
+      if (c.approval) {
+        html += stepOpen({
+          id: "t0", num: "0", title: "Table map &amp; relationships",
+          badges: [{ t: "approved", l: "Staging on" }],
+          blocked: false,
+          flashIds: ["timesheetApprovalEnabled", "partialWeekSubmissionEnabled"]
+        });
+        html += `<p class="step__desc">Org approval is ON. Staging holds drafts; approve promotes into canonical hours.
+          Mode: <strong>${c.partial ? "partial-week batches" : "full-week submission"}</strong>
+          (<code>partialWeekSubmissionEnabled</code> ${c.partial ? "ON" : "OFF"}).</p>
+          <div class="table-map">
+            <span class="pill pill--stage">ts_timesheet_week_model</span>
+            <span class="pill pill--stage">ts_timesheet_line_model</span>
+            <span class="pill pill--stage">ts_timesheet_day_model</span>
+            ${c.partial ? `<span class="pill pill--stage">ts_timesheet_submission_model</span>` : `<span class="pill pill--skip">ts_timesheet_submission</span>`}
+            <span class="pill pill--stage">ts_timesheet_conflict_model</span>
+            <span class="pill pill--core">fs_task_activity_model</span>
+          </div>`;
+        html += flowCards([
+          { table: "Employee", action: "Owner", kind: "read" },
+          { table: "ts_timesheet_week", action: "1 per week", kind: "write" },
+          { table: "ts_timesheet_line", action: "Project/task row", kind: "write" },
+          { table: "ts_timesheet_day", action: c.partial ? "Hours + submission_id" : "Hours cells", kind: "write" },
+          { table: "ts_timesheet_submission", action: c.partial ? "1 per day-batch" : "NOT USED", kind: c.partial ? "write" : "none" },
+          { table: "fs_task_activity", action: "Only after APPROVE", kind: "read" }
+        ]);
+        if (c.partial) {
+          html += mermaidBlock("m-er", `
+flowchart LR
+  EMP["Employee 101"] --> WEEK["ts_timesheet_week"]
+  WEEK --> LINE["ts_timesheet_line"]
+  WEEK --> DAY["ts_timesheet_day"]
+  WEEK --> SUB["ts_timesheet_submission"]
+  SUB --> DAY
+  LINE --> DAY
+  DAY -->|"promoteDays on batch APPROVE"| TA["fs_task_activity<br/>source=TIMESHEET"]
+  classDef core fill:#e8f1ee,stroke:#2f6f5e
+  class TA core
+          `);
+          html += `<div class="callout">Partial ON — leftover DRAFT days stay editable while other days are PENDING/APPROVED. Fully APPROVED weeks still need reopen before edit.</div>`;
+        } else {
+          html += mermaidBlock("m-er", `
+flowchart LR
+  EMP["Employee 101"] --> WEEK["ts_timesheet_week"]
+  WEEK --> LINE["ts_timesheet_line"]
+  WEEK --> DAY["ts_timesheet_day"]
+  LINE --> DAY
+  DAY -->|"promote on APPROVE"| TA["fs_task_activity<br/>source=TIMESHEET"]
+  classDef core fill:#e8f1ee,stroke:#2f6f5e
+  class TA core
+          `);
+          html += `<div class="callout">Partial OFF — submit locks the whole week until approve/reject; no <code>ts_timesheet_submission</code> rows.</div>`;
+        }
+        if (c.delegation) html += `<div class="callout">Delegation ON — delegates can approve too.</div>`;
+        if (c.inbox) html += `<div class="callout">Universal inbox ON — pending weeks in Workspace Approvals.</div>`;
+        if (c.intel) html += `<div class="callout">Intelligence ON — billability panels can load.</div>`;
+        if (c.reminders) html += `<div class="callout">Reminders ON — SLA emails for pending.</div>`;
+        if (c.skills) html += `<div class="callout callout--warn">Skill restriction ON — entry validates skills.</div>`;
+        html += stepClose();
+      } else {
+        html += stepOpen({
+          id: "t0", num: "0", title: "Table map — legacy mode",
+          badges: [{ t: "legacy", l: "Approval off" }],
+          blocked: false,
+          flashIds: ["timesheetApprovalEnabled"]
+        });
+        html += `<p class="step__desc">Approval workflow OFF. Staging tables are <strong>not used</strong>. Hours go straight to TaskActivity.</p>
+          <div class="table-map">
+            <span class="pill pill--skip">ts_timesheet_week</span>
+            <span class="pill pill--skip">ts_timesheet_line</span>
+            <span class="pill pill--skip">ts_timesheet_day</span>
+            <span class="pill pill--core">fs_task_activity_model</span>
+          </div>`;
+        html += flowCards([
+          { table: "ts_timesheet_*", action: "NOT USED", kind: "none" },
+          { table: "fs_task_activity", action: "Written on SAVE", kind: "write" }
+        ]);
+        html += mermaidBlock("m-er-legacy", `
+flowchart LR
+  UI["Timesheet grid"] -->|PUT save| LEG["LegacyTimesheetService"]
+  LEG --> TA["fs_task_activity_model"]
+  UI -.->|blocked| ST["ts_timesheet_*"]
+  classDef bad fill:#fde8e8,stroke:#9b2c2c,stroke-dasharray: 5 5
+  class ST bad
+        `);
+        html += `<div class="callout callout--warn">Submit / approve / reject / reopen APIs fail closed.</div>`;
+        html += stepClose();
+      }
+
+      // Example
+      html += stepOpen({ id: "tEx", num: "★", title: "Example cast (test data)", badges: [], blocked: false });
+      html += `<div class="scenario-box"><h4>Story</h4>
+        <p>Priya Nair (101) logs Apollo Portal / API Integration (501) for week <code>2026-07-13</code>.
+        Manager Arjun Mehta (55).
+        ${c.partial ? " <strong>Partial-week ON</strong> — she can submit Mon–Tue first, then Wed later as a second batch." : " <strong>Partial-week OFF</strong> — she must submit the whole week in one go."}
+        ${c.autoOwn ? " Auto-approve own ON — submit skips pending." : ""}
+        ${c.delegation ? " Delegation ON." : ""}</p></div>
+        <table class="data">
+          <thead><tr><th>Role</th><th>Name</th><th>id</th></tr></thead>
+          <tbody>
+            <tr><td>Employee</td><td>Priya Nair</td><td>101</td></tr>
+            <tr><td>Manager</td><td>Arjun Mehta</td><td>55</td></tr>
+            <tr><td>Project / Task</td><td>Apollo / API Integration</td><td>9001 / 501</td></tr>
+            <tr><td>Week</td><td>2026-07-13 → 19</td><td>7001</td></tr>
+            ${c.partial ? "<tr><td>Submission batch 1</td><td>Mon–Tue</td><td>8801</td></tr>" : ""}
+          </tbody>
+        </table>
+        <p class="delta">480 mins = 8h · 240 mins = 4h</p>`;
+      html += stepClose();
+
+      // LEGACY only path
+      if (!c.approval) {
+        const blocked = !c.canEnter;
+        html += stepOpen({
+          id: "tLegacy", num: "1", title: "Add time → Save (legacy)",
+          badges: [{ t: "legacy", l: "No week status" }],
+          blocked,
+          reason: "Role <code>enableTimeSheetEntry</code> is OFF — cannot write hours.",
+          flashIds: ["timesheetApprovalEnabled", "enableTimeSheetEntry"]
+        });
+        html += `<p class="step__desc">No draft/submit. Each day becomes a TaskActivity on save.</p>
+          <div class="api ${blocked ? "is-blocked" : ""}"><span>PUT</span> /api/v2/task/timesheet → LegacyTimesheetService</div>`;
+        html += flowCards([
+          { table: "Grid cells", action: "Mon 8h · Tue 8h · Wed 4h", kind: "write" },
+          { table: "ts_timesheet_*", action: "SKIPPED", kind: "none" },
+          { table: "fs_task_activity", action: "INSERT/UPDATE now", kind: "write" }
+        ]);
+        html += mermaidBlock("m-legacy-save", `
+flowchart LR
+  UI["Enter hours"] --> SAVE["Save"]
+  SAVE --> TA["fs_task_activity<br/>id 12001..12003"]
+  SAVE -.->|not used| W["ts_timesheet_week"]
+  classDef bad fill:#fde8e8,stroke:#9b2c2c,stroke-dasharray: 5 5
+  class W bad
+        `, blocked);
+        html += `<p class="delta"><strong>After save — fs_task_activity_model</strong></p>
+          <table class="data">
+            <thead><tr><th>id</th><th>task_id</th><th>date</th><th>duration_mins</th><th>timesheet_week_id</th></tr></thead>
+            <tbody>
+              <tr class="changed"><td>12001</td><td>501</td><td>2026-07-13</td><td class="hl">480</td><td class="hl">null</td></tr>
+              <tr class="changed"><td>12002</td><td>501</td><td>2026-07-14</td><td class="hl">480</td><td class="hl">null</td></tr>
+              <tr class="changed"><td>12003</td><td>501</td><td>2026-07-15</td><td class="hl">240</td><td class="hl">null</td></tr>
+            </tbody>
+          </table>
+          <div class="callout callout--warn">Turn <strong>Approval workflow</strong> ON for staging + submit/approve data flow.</div>`;
+        html += stepClose();
+
+        // Show blocked staging steps as red stubs
+        ["Submit for approval", "Approve / promote", "Reject", "Reopen → resubmit"].forEach((title, i) => {
+          html += stepOpen({
+            id: `tBlocked${i}`,
+            num: String(i + 2),
+            title,
+            badges: [{ t: "off", l: "Requires approval flag" }],
+            blocked: true,
+            reason: "Org <code>timesheetApprovalEnabled</code> is OFF — this step is not in the legacy data path.",
+            flashIds: ["timesheetApprovalEnabled"]
+          });
+          html += `<p class="step__desc">Would touch <code>ts_timesheet_*</code> and promote/demote TaskActivity — not available in legacy mode.</p>`;
+          html += stepClose();
+        });
+
+        document.getElementById("docPanel").innerHTML = html;
+        return runMermaid(seq);
+      }
+
+      // ===== STAGING =====
+      // 1 Save
+      {
+        const blocked = !c.canEnter;
+        html += stepOpen({
+          id: "t1", num: "1", title: "Add time entry → Save draft",
+          badges: [{ t: "draft", l: "DRAFT" }],
+          blocked,
+          reason: "Role cannot enter hours (<code>enableTimeSheetEntry</code> OFF).",
+          flashIds: ["enableTimeSheetEntry", "enableTimeSheetEdit", "timesheetApprovalEnabled"]
+        });
+        html += `<p class="step__desc">Priya enters Mon–Wed and saves. Staging only — no TaskActivity yet.</p>
+          <div class="api ${blocked ? "is-blocked" : ""}"><span>PUT</span> /api/v2/task/timesheet → TimesheetStagingService.saveWeek</div>`;
+        html += flowCards([
+          { table: "ts_timesheet_week", action: "status = DRAFT", kind: "write" },
+          { table: "ts_timesheet_line", action: "ACTIVE row", kind: "write" },
+          { table: "ts_timesheet_day", action: "duration_mins", kind: "write" },
+          { table: "fs_task_activity", action: "NOT TOUCHED", kind: "none" }
+        ]);
+        html += mermaidBlock("m-save", `
+flowchart LR
+  UI["Grid hours"] --> W["week DRAFT"]
+  W --> L["line ACTIVE"]
+  L --> D["days DRAFT"]
+  D -.->|no promote| TA["fs_task_activity"]
+  classDef bad fill:#fde8e8,stroke:#9b2c2c,stroke-dasharray: 5 5
+  class TA bad
+        `, blocked);
+        html += tableWeek(`<tr class="changed"><td>7001</td><td>101</td><td>2026-07-13</td><td class="hl">DRAFT</td><td>null</td><td>null</td><td>null</td></tr>`);
+        html += `<p class="delta"><strong>ts_timesheet_day_model</strong></p>
+          <table class="data">
+            <thead><tr><th>id</th><th>date</th><th>duration_mins</th><th>status</th><th>task_activity_id</th></tr></thead>
+            <tbody>
+              <tr class="changed"><td>90001</td><td>2026-07-13</td><td class="hl">480</td><td class="hl">DRAFT</td><td>null</td></tr>
+              <tr class="changed"><td>90002</td><td>2026-07-14</td><td class="hl">480</td><td class="hl">DRAFT</td><td>null</td></tr>
+              <tr class="changed"><td>90003</td><td>2026-07-15</td><td class="hl">240</td><td class="hl">DRAFT</td><td>null</td></tr>
+            </tbody>
+          </table>
+          <div class="callout callout--warn">Save ≠ submit. Canonical hours still empty.</div>`;
+        html += stepClose();
+      }
+
+      // 2 Submit
+      {
+        const blocked = !c.canEnter;
+        const auto = c.autoOwn || c.autoOthers;
+        html += stepOpen({
+          id: "t2", num: "2", title: c.partial ? "Request for approval (partial day batch)" : "Request for approval (full week)",
+          badges: auto
+            ? [{ t: "auto", l: "Auto-approve path" }]
+            : (c.partial ? [{ t: "pending", l: "BATCH PENDING" }] : [{ t: "pending", l: "PENDING_APPROVAL" }]),
+          blocked,
+          reason: "Cannot submit without entry permission / menu.",
+          flashIds: ["partialWeekSubmissionEnabled", "autoApproveOwnTimesheetEnabled", "autoApproveOthersTimesheetEnabled", "timesheetApprovalEnabled"]
+        });
+        if (c.partial && !auto) {
+          html += `<p class="step__desc">Partial ON — Priya selects Mon–Tue (<code>activityDates</code>). Creates submission <code>8801</code>; those days → PENDING.
+            Wed stays DRAFT and remains editable. Inbox card id <code>SUBMISSION:8801</code>.</p>
+            <div class="api ${blocked ? "is-blocked" : ""}"><span>PATCH</span> /api/v2/timesheets/7001/submit?actorId=101 · body <code>{ activityDates: ["2026-07-13","2026-07-14"] }</code></div>`;
+          html += flowCards([
+            { table: "ts_timesheet_submission", action: "INSERT 8801 PENDING", kind: "write" },
+            { table: "ts_timesheet_day Mon–Tue", action: "PENDING + submission_id", kind: "write" },
+            { table: "ts_timesheet_day Wed", action: "stays DRAFT", kind: "read" },
+            { table: "ts_timesheet_week", action: "rollup PENDING", kind: "write" },
+            { table: "fs_task_activity", action: "STILL EMPTY", kind: "none" }
+          ]);
+          html += mermaidBlock("m-submit", `
+flowchart LR
+  D["Mon-Wed DRAFT"] -->|submit Mon-Tue| SUB["submission 8801"]
+  SUB --> P["days PENDING"]
+  D --> W["Wed DRAFT editable"]
+  P --> IN["Inbox SUBMISSION:8801"]
+  P -.->|not yet| TA["fs_task_activity"]
+  classDef bad fill:#fde8e8,stroke:#9b2c2c,stroke-dasharray: 5 5
+  class TA bad
+          `, blocked);
+          html += tableWeek(`<tr class="changed"><td>7001</td><td>101</td><td>2026-07-13</td><td class="hl">PENDING_APPROVAL</td><td class="hl">101</td><td>null</td><td>null</td></tr>`);
+          html += `<p class="delta"><strong>ts_timesheet_submission_model</strong></p>
+            <table class="data">
+              <thead><tr><th>id</th><th>week_id</th><th>status</th><th>date_from</th><th>date_to</th></tr></thead>
+              <tbody>
+                <tr class="changed"><td>8801</td><td>7001</td><td class="hl">PENDING_APPROVAL</td><td>2026-07-13</td><td>2026-07-14</td></tr>
+              </tbody>
+            </table>
+            <p class="delta"><strong>ts_timesheet_day_model</strong></p>
+            <table class="data">
+              <thead><tr><th>id</th><th>date</th><th>status</th><th>submission_id</th></tr></thead>
+              <tbody>
+                <tr class="changed"><td>90001</td><td>2026-07-13</td><td class="hl">PENDING_APPROVAL</td><td class="hl">8801</td></tr>
+                <tr class="changed"><td>90002</td><td>2026-07-14</td><td class="hl">PENDING_APPROVAL</td><td class="hl">8801</td></tr>
+                <tr><td>90003</td><td>2026-07-15</td><td>DRAFT</td><td>null</td></tr>
+              </tbody>
+            </table>
+            <div class="callout">Later she can submit Wed as batch 8802 while 8801 is still pending or already approved.</div>`;
+        } else {
+          html += `<p class="step__desc">${auto
+            ? "Auto-approve own is ON — submit continues into approve + promote (authority AUTO). Pending is skipped."
+            : "Partial OFF — entire week becomes PENDING. Manager (and delegates if ON) are notified. Still no TaskActivity. Week locked for edit."}</p>
+            <div class="api ${blocked ? "is-blocked" : ""}"><span>PATCH</span> /api/v2/timesheets/7001/submit?actorId=101</div>`;
+          if (auto) {
+            html += flowCards([
+              { table: "ts_timesheet_week", action: "→ APPROVED (AUTO)", kind: "write" },
+              { table: "ts_timesheet_day", action: "→ APPROVED", kind: "write" },
+              { table: "Pending inbox", action: "SKIPPED", kind: "none" },
+              { table: "fs_task_activity", action: "PROMOTED now", kind: "write" }
+            ]);
+            html += mermaidBlock("m-submit", `
+flowchart LR
+  D["DRAFT"] -->|submit| A["APPROVED + promote"]
+  A --> TA["fs_task_activity"]
+  D -.->|skipped| P["PENDING"]
+  classDef bad fill:#fde8e8,stroke:#9b2c2c,stroke-dasharray: 5 5
+  class P bad
+            `, blocked);
+          } else {
+            html += flowCards([
+              { table: "ts_timesheet_week", action: "→ PENDING_APPROVAL", kind: "write" },
+              { table: "ts_timesheet_day", action: "→ PENDING_APPROVAL", kind: "write" },
+              { table: "ts_timesheet_submission", action: "NOT USED", kind: "none" },
+              { table: "Inbox / reminders", action: c.inbox || c.reminders ? "WEEK:7001" : "Optional off", kind: c.inbox || c.reminders ? "write" : "read" },
+              { table: "fs_task_activity", action: "STILL EMPTY", kind: "none" }
+            ]);
+            html += mermaidBlock("m-submit", `
+flowchart LR
+  D["DRAFT"] -->|submit full week| P["PENDING_APPROVAL"]
+  P --> IN["Manager inbox${c.delegation ? " + delegate" : ""}"]
+  P -.->|not yet| TA["fs_task_activity"]
+  classDef bad fill:#fde8e8,stroke:#9b2c2c,stroke-dasharray: 5 5
+  class TA bad
+            `, blocked);
+            html += tableWeek(`<tr class="changed"><td>7001</td><td>101</td><td>2026-07-13</td><td class="hl">PENDING_APPROVAL</td><td class="hl">101</td><td>null</td><td>null</td></tr>`);
+          }
+        }
+        html += stepClose();
+      }
+
+      // 3 Approve
+      {
+        const blocked = !c.canApprove && !c.autoOwn;
+        html += stepOpen({
+          id: "t3", num: "3", title: c.partial ? "Approve batch (+ promoteDays)" : "Approve flow (+ promote)",
+          badges: [{ t: "approved", l: "APPROVED" }].concat(c.autoOwn ? [{ t: "auto", l: "AUTO" }] : []),
+          blocked,
+          reason: "This role cannot approve (<code>enableTimeSheetApproval</code> OFF) and auto-approve own is OFF.",
+          flashIds: ["partialWeekSubmissionEnabled", "enableTimeSheetApproval", "approvalDelegationEnabled", "autoApproveOwnTimesheetEnabled"]
+        });
+        if (c.partial && !c.autoOwn) {
+          html += `<p class="step__desc">Approve submission 8801 — promote Mon–Tue only. Wed still DRAFT. Week rolls up until all days APPROVED.</p>
+            <div class="api ${blocked ? "is-blocked" : ""}"><span>PATCH</span> /api/v2/timesheets/submissions/8801/approve?approverId=55 → promoteDays</div>`;
+          html += flowCards([
+            { table: "ts_timesheet_submission", action: "8801 → APPROVED", kind: "write" },
+            { table: "days Mon–Tue", action: "APPROVED + TA link", kind: "write" },
+            { table: "day Wed", action: "still DRAFT", kind: "read" },
+            { table: "fs_task_activity", action: "CREATE Mon–Tue only", kind: "write" }
+          ]);
+          html += mermaidBlock("m-approve", `
+flowchart TB
+  SUB["submission 8801 PENDING"] --> A["APPROVED"]
+  A -->|promoteDays| TA["fs_task_activity Mon-Tue"]
+  WED["Wed DRAFT"] -.->|later batch| SUB2["submission 8802"]
+          `, blocked);
+          html += tableWeek(`<tr class="changed"><td>7001</td><td>101</td><td>2026-07-13</td><td class="hl">PENDING_APPROVAL*</td><td>101</td><td class="hl">55</td><td>null</td></tr>`);
+          html += `<p class="delta">* Week stays non-APPROVED while Wed is still DRAFT. After Wed batch is approved, week → APPROVED and <code>approvedBy</code> stamps from last batch.</p>
+            <table class="data">
+              <thead><tr><th>id</th><th>duration</th><th>source</th><th>timesheet_day_id</th><th>deleted</th></tr></thead>
+              <tbody>
+                <tr class="changed"><td>12001</td><td>480</td><td class="hl">TIMESHEET</td><td>90001</td><td>false</td></tr>
+                <tr class="changed"><td>12002</td><td>480</td><td class="hl">TIMESHEET</td><td>90002</td><td>false</td></tr>
+                <tr><td colspan="5" style="color:var(--muted)">Wed (90003) — not promoted yet</td></tr>
+              </tbody>
+            </table>`;
+        } else {
+          html += `<p class="step__desc">Promote staging days into <code>fs_task_activity_model</code> (source TIMESHEET). Partial OFF — whole week.</p>
+            <div class="api ${blocked ? "is-blocked" : ""}"><span>PATCH</span> /api/v2/timesheets/7001/approve?approverId=55 → promoteWeek</div>`;
+          html += flowCards([
+            { table: "ts_timesheet_week", action: "→ APPROVED", kind: "write" },
+            { table: "ts_timesheet_day", action: "task_activity_id set", kind: "write" },
+            { table: "fs_task_activity", action: "CREATE / revive", kind: "write" }
+          ]);
+          html += mermaidBlock("m-approve", `
+flowchart TB
+  P["PENDING / AUTO"] --> W["week APPROVED"]
+  W --> D["days APPROVED"]
+  D -->|promoteWeek| TA["fs_task_activity<br/>source=TIMESHEET<br/>deleted=false"]
+  TA -->|back-link| D
+          `, blocked);
+          html += tableWeek(`<tr class="changed"><td>7001</td><td>101</td><td>2026-07-13</td><td class="hl">APPROVED</td><td>101</td><td class="hl">${c.autoOwn ? "101" : "55"}</td><td>null</td></tr>`);
+          html += `<p class="delta"><strong>fs_task_activity_model</strong></p>
+            <table class="data">
+              <thead><tr><th>id</th><th>duration</th><th>source</th><th>timesheet_day_id</th><th>deleted</th></tr></thead>
+              <tbody>
+                <tr class="changed"><td>12001</td><td>480</td><td class="hl">TIMESHEET</td><td>90001</td><td>false</td></tr>
+                <tr class="changed"><td>12002</td><td>480</td><td class="hl">TIMESHEET</td><td>90002</td><td>false</td></tr>
+                <tr class="changed"><td>12003</td><td>240</td><td class="hl">TIMESHEET</td><td>90003</td><td>false</td></tr>
+              </tbody>
+            </table>`;
+        }
+        html += stepClose();
+      }
+
+      // 4 Reject
+      {
+        const blocked = !c.canApprove;
+        html += stepOpen({
+          id: "t4", num: "4", title: c.partial ? "Reject batch / submission" : "Reject flow",
+          badges: [{ t: "rejected", l: "REJECTED" }],
+          blocked,
+          reason: "Need role <code>enableTimeSheetApproval</code> to reject.",
+          flashIds: ["partialWeekSubmissionEnabled", "enableTimeSheetApproval"]
+        });
+        if (c.partial) {
+          html += `<div class="scenario-box"><h4>Scenario B (partial)</h4>
+            <p>Two pending batches. Reject requires <code>submissionId</code>. Only that batch’s days → REJECTED; other batches unchanged.</p></div>
+            <div class="api ${blocked ? "is-blocked" : ""}"><span>PATCH</span> /api/v2/timesheets/submissions/8801/reject + comment</div>`;
+          html += flowCards([
+            { table: "ts_timesheet_submission", action: "8801 → REJECTED", kind: "write" },
+            { table: "days in batch", action: "→ REJECTED", kind: "write" },
+            { table: "other batches", action: "unchanged", kind: "read" },
+            { table: "fs_task_activity", action: "demoteDays if any", kind: "write" }
+          ]);
+          html += mermaidBlock("m-reject", `
+flowchart LR
+  S["submission PENDING"] -->|reject| R["REJECTED"]
+  R -->|demoteDays| TA["TaskActivity deleted"]
+  R --> FIX["Employee fix days → resubmit batch"]
+          `, blocked);
+        } else {
+          html += `<div class="scenario-box"><h4>Scenario B</h4>
+            <p>Week 7002 PENDING, Wed=10h. Arjun rejects: “Wed exceeds 8h.”</p></div>
+            <div class="api ${blocked ? "is-blocked" : ""}"><span>PATCH</span> …/reject + comment (required)</div>`;
+          html += flowCards([
+            { table: "ts_timesheet_week", action: "→ REJECTED", kind: "write" },
+            { table: "ts_timesheet_day", action: "→ REJECTED", kind: "write" },
+            { table: "fs_task_activity", action: "demote deleted=true", kind: "write" }
+          ]);
+          html += mermaidBlock("m-reject", `
+flowchart LR
+  P["PENDING"] -->|reject| R["REJECTED"]
+  R -->|demoteWeek| TA["TaskActivity deleted=true"]
+  R --> FIX["Employee fix → resubmit"]
+          `, blocked);
+          html += tableWeek(`<tr class="changed"><td>7002</td><td>101</td><td>2026-07-13</td><td class="hl">REJECTED</td><td>101</td><td>null</td><td class="hl">55</td></tr>`);
+        }
+        html += stepClose();
+      }
+
+      // 5 Reopen
+      {
+        const blocked = !c.canReopen;
+        let reason = "Reopen not available.";
+        if (!c.reopenOrg) reason = "Org <code>timesheetReopenEnabled</code> is OFF — reopen is removed from the data flow.";
+        else if (!state.enableTimeSheetReopen) reason = "Role <code>enableTimeSheetReopen</code> is OFF.";
+        html += stepOpen({
+          id: "t5", num: "5", title: c.partial
+            ? "Approve → Reopen (week or batch) → Edit → Submit again"
+            : "Approve → Reopen → Update → Draft → Submit again",
+          badges: [{ t: "reopened", l: "REOPENED" }],
+          blocked,
+          reason,
+          flashIds: ["partialWeekSubmissionEnabled", "timesheetReopenEnabled", "enableTimeSheetReopen"]
+        });
+        if (c.partial) {
+          html += `<div class="scenario-box"><h4>Scenario C (partial)</h4>
+            <p>Batch reopen with <code>submissionId</code> demotes only that batch’s days. Week reopen demotes all APPROVED days. Sequential reopen keeps week REOPENED so remaining batches stay reopenable.</p></div>`;
+          html += flowCards([
+            { table: "week", action: "→ REOPENED", kind: blocked ? "none" : "write" },
+            { table: "batch days", action: "→ DRAFT (submissionId cleared)", kind: blocked ? "none" : "write" },
+            { table: "fs_task_activity", action: "demoteDays", kind: blocked ? "none" : "write" },
+            { table: "other APPROVED days", action: "unchanged if batch reopen", kind: "read" }
+          ]);
+          html += mermaidBlock("m-reopen", `
+flowchart TD
+  A["APPROVED days"] -->|reopen submissionId| R["those days DRAFT"]
+  R -->|demoteDays| TA["TaskActivity deleted"]
+  R -->|edit + submit| P["new PENDING batch"]
+  P -->|approve| A2["APPROVED again"]
+          `, blocked);
+        } else {
+          html += `<div class="scenario-box"><h4>Scenario C</h4>
+            <p>Week APPROVED, Wed=4h. Need Wed=8h: reopen → edit → save → submit → approve.</p></div>`;
+          html += flowCards([
+            { table: "week", action: "APPROVED → REOPENED", kind: blocked ? "none" : "write" },
+            { table: "days", action: "→ DRAFT", kind: blocked ? "none" : "write" },
+            { table: "fs_task_activity", action: "demote deleted=true", kind: blocked ? "none" : "write" },
+            { table: "day 90003", action: "240 → 480 mins", kind: blocked ? "none" : "write" }
+          ]);
+          html += mermaidBlock("m-reopen", `
+flowchart TD
+  A["APPROVED"] -->|reopen| R["REOPENED"]
+  R -->|demote| TA["TaskActivity deleted"]
+  R -->|edit + save| D["days DRAFT Wed=8h"]
+  D -->|submit| P["PENDING"]
+  P -->|approve| A2["APPROVED again"]
+  A2 -->|promote| TA2["TaskActivity revived 480"]
+          `, blocked);
+          html += `<table class="data">
+            <thead><tr><th>Stage</th><th>Week</th><th>Wed mins</th><th>TaskActivity 12003</th></tr></thead>
+            <tbody>
+              <tr><td>Start</td><td>APPROVED</td><td>240</td><td>deleted=false</td></tr>
+              <tr class="changed"><td>After reopen</td><td class="hl">${blocked ? "(blocked)" : "REOPENED"}</td><td>240</td><td class="hl">${blocked ? "unchanged" : "deleted=true"}</td></tr>
+              <tr class="changed"><td>After save</td><td>${blocked ? "APPROVED" : "REOPENED"}</td><td class="hl">${blocked ? "240" : "480"}</td><td>${blocked ? "live" : "still deleted"}</td></tr>
+              <tr class="changed"><td>After re-approve</td><td class="hl">APPROVED</td><td class="hl">${blocked ? "240" : "480"}</td><td class="hl">${blocked ? "240 live" : "480 revived"}</td></tr>
+            </tbody>
+          </table>`;
+        }
+        html += stepClose();
+      }
+
+      // Lifecycle
+      html += stepOpen({ id: "tLife", num: "∞", title: "Status lifecycle", badges: [], blocked: false });
+      if (c.partial) {
+        html += mermaidBlock("m-life", `
+stateDiagram-v2
+  [*] --> DRAFT: save day
+  DRAFT --> PENDING_APPROVAL: submit batch
+  REJECTED --> PENDING_APPROVAL: resubmit batch
+  REOPENED --> PENDING_APPROVAL: submit batch
+  PENDING_APPROVAL --> APPROVED: approve submission
+  PENDING_APPROVAL --> REJECTED: reject submission
+  APPROVED --> REOPENED: reopen week/batch
+  note right of DRAFT: leftover days editable while other batches pending
+        `);
+      } else {
+        html += mermaidBlock("m-life", `
+stateDiagram-v2
+  [*] --> DRAFT: save
+  DRAFT --> PENDING_APPROVAL: submit
+  REJECTED --> PENDING_APPROVAL: resubmit
+  REOPENED --> PENDING_APPROVAL: submit
+  PENDING_APPROVAL --> APPROVED: approve
+  PENDING_APPROVAL --> REJECTED: reject
+  APPROVED --> REOPENED: reopen
+  APPROVED --> LOCKED: lock
+  LOCKED --> REOPENED: unlock
+        `);
+      }
+      html += `<ul class="steps-list">
+        <li>Partial-week: <strong style="color:${c.partial ? "var(--ok)" : "var(--muted)"}">${c.partial ? "ON — day batches + ts_timesheet_submission" : "OFF — full-week only"}</strong></li>
+        <li>Reopen in this config: <strong style="color:${c.canReopen ? "var(--ok)" : "var(--danger)"}">${c.canReopen ? "ACTIVE" : "BLOCKED"}</strong></li>
+        <li>Manager approve: <strong style="color:${c.canApprove ? "var(--ok)" : "var(--danger)"}">${c.canApprove ? "ACTIVE" : "BLOCKED"}</strong></li>
+        <li>Auto-approve own: <strong>${c.autoOwn ? "ON (skips PENDING)" : "OFF"}</strong></li>
+        <li>Delegation ${c.delegation ? "ON" : "OFF"} · Inbox ${c.inbox ? "ON" : "OFF"} · Reminders ${c.reminders ? "ON" : "OFF"}</li>
+      </ul>`;
+      html += stepClose();
+
+      document.getElementById("docPanel").innerHTML = html;
+      runMermaid(seq);
+    }
+
+    async function runMermaid(seq) {
+      if (!mermaidReady || !window.__mermaid) return;
+      if (seq !== renderSeq) return;
+      try {
+        await window.__mermaid.run({ nodes: document.querySelectorAll("#tabDataflow .mermaid") });
+      } catch (e) {
+        console.warn("mermaid", e);
+      }
+    }
+
+    function renderFlags() {
+      const root = document.getElementById("flagList");
+      const groups = [];
+      FLAG_DEFS.forEach((f) => { if (!groups.includes(f.group)) groups.push(f.group); });
+      root.innerHTML = groups.map((g) => {
+        const items = FLAG_DEFS.filter((f) => f.group === g).map((f) => `
+          <div class="flag ${lastChanged === f.id ? "is-flash" : ""} ${selectedFlagId === f.id ? "is-selected" : ""}">
+            <div class="flag__meta">
+              <button type="button" class="flag__name" data-select="${f.id}">${esc(f.name)}</button>
+              <span class="flag__key">${esc(f.key)}</span>
+              <span class="flag__scope ${f.scope === "org" ? "scope-org" : "scope-role"}">${f.scope}</span>
+            </div>
+            <div class="flag__toggle">
+              <label class="switch" title="Toggle ${esc(f.name)}">
+                <input type="checkbox" data-toggle="${f.id}" ${state[f.id] ? "checked" : ""} />
+                <span class="track"></span>
+              </label>
+            </div>
+          </div>`).join("");
+        return `<div class="group-label">${esc(g)}</div>${items}`;
+      }).join("");
+
+      const def = FLAG_DEFS.find((f) => f.id === selectedFlagId);
+      const fd = document.getElementById("flagDetail");
+      if (def) {
+        fd.innerHTML = `<h4>${esc(def.name)}</h4>
+          <p>${esc(def.description)}</p>
+          <p style="font-size:0.78rem">Currently <strong>${state[def.id] ? "ON" : "OFF"}</strong> · <code>${esc(def.key)}</code></p>
+          <div class="when-pair">
+            <div class="when when--on"><strong>When ON</strong>${esc(def.whenOn)}</div>
+            <div class="when when--off"><strong>When OFF</strong>${esc(def.whenOff)}</div>
+          </div>`;
+      }
+    }
+
+    let activeTab = "dataflow";
+
+    function switchTab(tabId) {
+      activeTab = tabId;
+      document.querySelectorAll(".right-tabs__btn").forEach((btn) => {
+        const on = btn.dataset.tab === tabId;
+        btn.classList.toggle("is-active", on);
+        btn.setAttribute("aria-selected", on ? "true" : "false");
+      });
+      document.querySelectorAll(".right-tabs__panel").forEach((panel) => {
+        const on = panel.id === (tabId === "dataflow" ? "tabDataflow" : "tabBehavior");
+        panel.classList.toggle("is-active", on);
+        if (on) panel.removeAttribute("hidden");
+        else panel.setAttribute("hidden", "");
+      });
+    }
+
+    function refresh() {
+      renderFlags();
+      renderDoc();
+      renderBehavior();
+    }
+
+    document.getElementById("flagList").addEventListener("change", (e) => {
+      const id = e.target.getAttribute("data-toggle");
+      if (!id) return;
+      prevState = { ...state };
+      state[id] = e.target.checked;
+      if (id === "timesheetApprovalEnabled" && !state.timesheetApprovalEnabled) {
+        state.partialWeekSubmissionEnabled = false;
+      }
+      if (id === "partialWeekSubmissionEnabled" && state.partialWeekSubmissionEnabled) {
+        state.timesheetApprovalEnabled = true;
+      }
+      lastChanged = id;
+      document.querySelectorAll("#presets button").forEach((b) => b.classList.remove("is-active"));
+      refresh();
+    });
+
+    document.getElementById("flagList").addEventListener("click", (e) => {
+      const id = e.target.getAttribute("data-select");
+      if (!id) return;
+      selectedFlagId = id;
+      renderFlags();
+    });
+
+    document.getElementById("presets").addEventListener("click", (e) => {
+      const name = e.target.getAttribute("data-preset");
+      if (!name || !PRESETS[name]) return;
+      prevState = { ...state };
+      state = { ...PRESETS[name] };
+      lastChanged =
+        name === "legacy" ? "timesheetApprovalEnabled"
+          : name === "autoOwn" ? "autoApproveOwnTimesheetEnabled"
+            : name === "locked" ? "timesheetReopenEnabled"
+              : name === "delegate" ? "approvalDelegationEnabled"
+                : name === "production" ? "timesheetApprovalEnabled"
+                  : null;
+      document.querySelectorAll("#presets button").forEach((b) =>
+        b.classList.toggle("is-active", b.dataset.preset === name)
+      );
+      refresh();
+    });
+
+    document.querySelector(".right-tabs").addEventListener("click", (e) => {
+      const tab = e.target.closest(".right-tabs__btn");
+      if (!tab || !tab.dataset.tab) return;
+      switchTab(tab.dataset.tab);
+    });
+
+    function boot() {
+      mermaidReady = true;
+      document.querySelector('#presets button[data-preset="production"]').classList.add("is-active");
+      refresh();
+    }
+    if (window.__mermaid) boot();
+    else window.addEventListener("mermaid-ready", boot);
+  </script>
+</main>
+<footer class="data-flow-doc-chrome">
+  <div class="container">
+    <p>
+      <a href="index.html">Data flow hub</a>
+      <a href="../index.html">Documentation home</a>
+      <a href="../user-guide/index.html">Scenario Guide</a>
+      <a href="../hrms/application-config.html">Application config</a>
+    </p>
+  </div>
+</footer>
+<script src="../js/palette.js?v=20260619e"></script>
+<script src="../js/brand.js?v=20260619e"></script>
+<script src="../js/docs-utility-config.js?v=20260720b"></script>
+<script src="../js/nav-config.js?v=20260724b"></script>
+<script src="../js/navigation.js?v=20260619e"></script>
+<script src="../js/site-enhancements.js?v=20260718d"></script>
+</body>
+</html>

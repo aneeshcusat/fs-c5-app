@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en" data-lux-theme="luxury" data-lux-palette="violet">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Roles &amp; Permissions — Tracopus User Guide</title>
+  <meta name="description" content="Configure role personaModules, default persona, switcher, and Advanced CRUD matrix at /admin/roles.">
+  <meta name="keywords" content="tracopus, documentation, admin, roles, personaModules, RBAC">
+  <link rel="canonical" href="https://tracopus.com/documentation/hrms/roles-permissions.html">
+  <script src="../js/docs-analytics.js?v=20260719a" defer></script>
+  <link rel="stylesheet" href="../css/styles.css?v=20260718g">
+  <link rel="stylesheet" href="../css/data-flow-bridge.css?v=20260724g">
+  <script src="../js/brand-config.js?v=20260619e"></script>
+</head>
+<body data-docs-depth="1">
+
+<header aria-label="Site header"></header>
+
+<main>
+  <div class="breadcrumb"><a href="../index.html">Home</a> → Admin → Roles &amp; Permissions</div>
+
+  <div class="doc-canvas">
+    <header class="doc-mast">
+      <div class="doc-mast__top">
+        <span class="doc-mast__eyebrow">Admin · Access &amp; approvals</span>
+        <div class="page-meta page-meta--inline">
+          <span class="page-meta__item"><strong>Route</strong> <code>/admin/roles</code></span>
+          <span class="page-meta__item"><strong>Store</strong> <code>role.json</code> → <code>personaModules</code></span>
+        </div>
+      </div>
+      <h1 class="doc-mast__title">Roles &amp; permissions</h1>
+      <p class="doc-mast__lead">Persona-first RBAC: choose which personas a role may use, set the default and switcher, preview page access, and open Advanced for the full module CRUD matrix.</p>
+      <p class="doc-mast__purpose">Scenario: <a href="../user-guide/admin/admin-role-permissions.html">Configure role persona access</a>. Org kills and per-page maps: <a href="persona-navigation.html">Persona navigation</a>.</p>
+    </header>
+
+    <div class="doc-flow">
+      <section class="doc-block doc-block--data-flow-bridge" id="interactive-data-flow">
+        <h2 class="doc-block__title">Interactive data flow</h2>
+        <p class="df-bridge-lead">Toggle rbacAdminEnabled, personaModules, Automatic vs configured mode, pagePersonaMap writes, and org kill overrides.</p>
+        <div class="df-bridge-actions">
+          <a class="df-bridge-cta df-bridge-cta--primary" href="../data-flow/admin-roles-flags-data-flow.html"><span>Primary simulator</span><strong>Roles &amp; permissions →</strong></a>
+          <a class="df-bridge-link" href="../data-flow/persona-navigation-flags-data-flow.html">Persona navigation simulator</a>
+          <a class="df-bridge-link" href="../data-flow/index.html">All simulators</a>
+        </div>
+      </section>
+
+      <section class="doc-block" id="overview">
+        <h2 class="doc-block__title">What this screen configures</h2>
+        <div class="table-wrap">
+          <table class="table">
+            <thead><tr><th>Tab / area</th><th>Writes to</th><th>Purpose</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><strong>Persona access</strong></td>
+                <td><code>personaModules</code></td>
+                <td><code>allowedPersonas</code>, <code>defaultPersona</code>, <code>personaSwitchEnabled</code>; Automatic vs explicit list</td>
+              </tr>
+              <tr>
+                <td><strong>Page preview</strong> (on Roles)</td>
+                <td>Org <code>pagePersonaMap</code></td>
+                <td>Same shared map as Persona navigation → Page access</td>
+              </tr>
+              <tr>
+                <td><strong>Organization access</strong> card</td>
+                <td>— (link out)</td>
+                <td>Opens Persona navigation for org-wide kills — not edited on Roles</td>
+              </tr>
+              <tr>
+                <td><strong>Advanced</strong></td>
+                <td><code>hrmsModules</code>, <code>projectModules</code>, CRUD groups</td>
+                <td>Module visibility and create/update/delete/archive flags</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Roles attach to <strong>org units</strong> via <code>ApplicationConfigRoleBar</code> — users inherit through team membership, not direct user assignment. After changes, affected users should re-login to refresh encrypted access.</p>
+      </section>
+
+      <section class="doc-block" id="evaluation">
+        <h2 class="doc-block__title">Evaluation order at runtime</h2>
+        <ol>
+          <li>Role module / menu flags (<code>*Enabled</code> in hrmsModules, projectModules, …)</li>
+          <li>Role <code>personaModules</code> — or Automatic heuristic when never saved</li>
+          <li>Org <code>pagePersonaMap</code> when an override exists for that route</li>
+          <li>Org <code>disabledPersonas</code>, <code>disabledPaths</code>, <code>disabledModules</code> — always win</li>
+        </ol>
+        <p>Menu visibility is not the same as API CRUD permission — backend RBAC enforces actions independently.</p>
+      </section>
+
+      <section class="doc-block" id="how-to">
+        <h2 class="doc-block__title">How to use</h2>
+        <div class="steps">
+          <div class="step"><strong>1. Confirm gates</strong><div class="step-detail">Org <code>rbacAdminEnabled</code> and your admin role <code>adminModules.rolesEnabled</code>.</div></div>
+          <div class="step"><strong>2. Pick a role template</strong><div class="step-detail">Start from Site Admin or clone Manager / Employee templates.</div></div>
+          <div class="step"><strong>3. Persona access</strong><div class="step-detail">Set allowed personas, default, and switcher — or leave Automatic until you Save explicit personas.</div></div>
+          <div class="step"><strong>4. Advanced (optional)</strong><div class="step-detail">Tune module visibility and CRUD groups; disable dangerous flags on custom roles.</div></div>
+          <div class="step"><strong>5. Assign via Role Bar</strong><div class="step-detail">Map the role to delivery / HR org units in Application Config.</div></div>
+          <div class="step"><strong>6. Verify</strong><div class="step-detail">Sign in as a test user — confirm switcher, sidebar, and deep links.</div></div>
+        </div>
+      </section>
+
+      <section class="doc-block doc-block--related" id="related-pages">
+        <h2 class="doc-block__title">Related pages</h2>
+        <div class="related-links">
+          <a class="related-link" href="../data-flow/admin-roles-flags-data-flow.html"><span class="related-link__label">Roles data flow simulator</span><span class="related-link__desc">personaModules, Role Bar, org overrides.</span></a>
+          <a class="related-link" href="persona-navigation.html"><span class="related-link__label">Persona navigation</span><span class="related-link__desc">Org kills and pagePersonaMap editor.</span></a>
+          <a class="related-link" href="application-config.html#access-personaModules"><span class="related-link__label">personaModules keys</span><span class="related-link__desc">Full Application Config reference.</span></a>
+          <a class="related-link" href="../user-guide/admin/admin-role-permissions.html"><span class="related-link__label">Scenario guide</span><span class="related-link__desc">7-step walkthrough with QA checklist.</span></a>
+          <a class="related-link" href="../user-flows/index.html"><span class="related-link__label">User flows hub</span><span class="related-link__desc">Bridge links for all admin workflows.</span></a>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <nav class="page-nav">
+    <a class="page-nav__prev" href="persona-navigation.html">← Persona Navigation</a>
+    <a class="page-nav__next" href="application-config.html">Application Config →</a>
+  </nav>
+</main>
+
+<footer>
+  <div class="container">
+    <p>&copy; 2026 <span data-brand>Tracopus</span>. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="../js/palette.js?v=20260619e"></script>
+<script src="../js/brand.js?v=20260619e"></script>
+<script src="../js/docs-utility-config.js?v=20260720b"></script>
+<script src="../js/nav-config.js?v=20260724g"></script>
+<script src="../js/navigation.js?v=20260619e"></script>
+<script src="../js/site-enhancements.js?v=20260718d"></script>
+<script src="../js/search.js?v=20260724g"></script>
+</body>
+</html>

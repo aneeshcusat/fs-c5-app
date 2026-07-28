@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en" data-lux-theme="luxury" data-lux-palette="emerald">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bid Requests — Tracopus User Guide</title>
+  <meta name="description" content="Full bid register with quick filters, SHOW/SORT, pipeline funnel diagram, and comprehensive summary analytics.">
+  <meta name="keywords" content="tracopus, documentation, user guide, sales, bid, requests">
+  <link rel="canonical" href="https://tracopus.com/documentation/sales/bid-requests.html">
+  <meta name="robots" content="index, follow">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Tracopus">
+  <meta property="og:title" content="Bid Requests — Tracopus User Guide">
+  <meta property="og:description" content="Full bid register with quick filters, SHOW/SORT, pipeline funnel diagram, and comprehensive summary analytics.">
+  <meta property="og:url" content="https://tracopus.com/documentation/sales/bid-requests.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Bid Requests — Tracopus User Guide">
+  <meta name="twitter:description" content="Full bid register with quick filters, SHOW/SORT, pipeline funnel diagram, and comprehensive summary analytics.">
+  <script src="../js/docs-analytics.js?v=20260719a" defer></script>
+  <link rel="apple-touch-icon" href="../images/tracopus-logo.png">
+  <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css?v=20260718g">
+  <script src="../js/brand-config.js?v=20260619e"></script>
+</head>
+<body data-docs-depth="1">
+
+<header aria-label="Site header"></header>
+
+
+
+<main>
+    <div class="breadcrumb"><a href="../index.html">Home</a> → Sales → Bid Requests</div>
+  
+<div class="doc-canvas">
+  <header class="doc-mast">
+    <div class="doc-mast__top">
+      <span class="doc-mast__eyebrow">Sales · Bid Requests</span>
+      <div class="page-meta page-meta--inline">
+        <span class="page-meta__item"><strong>Route</strong> <code>/sales/bidrequests</code></span>
+        <span class="page-meta__item"><strong>Menu</strong> Sales → Bid Requests</span>
+      </div>
+    </div>
+    <h1 class="doc-mast__title">Bid Requests</h1>
+    <p class="doc-mast__lead">Full bid register with quick filters, SHOW/SORT, pipeline funnel diagram, and comprehensive summary analytics.</p>
+    <p class="doc-mast__purpose">Bid pipeline list with stage funnel, 12 summary charts, and create wizard.</p>
+  </header>
+
+  <div class="doc-flow">
+    <section class="doc-block" id="overview"><h2 class="doc-block__title">Overview</h2><p><strong>Sales → Bid Requests</strong> (<code>/sales/bidrequests</code>) is the operational hub for presales opportunities from first intake through win or loss.</p></section>
+    <section class="doc-block doc-block--pair">
+      <div class="doc-split">
+        <div id="layout"><h2 class="doc-block__title">Screen layout</h2><p><strong>Header:</strong> Create, quick filter chips, SHOW, SORT, team selection, text filter, grid/list toggle.<br><strong>Summary:</strong> Pipeline funnel diagram + 12 chart panels.<br><strong>Register:</strong> Bid rows with stage, owner, study metadata.</p></div>
+        <div id="header-filters"><h2 class="doc-block__title">Header &amp; filters</h2><p><strong>Quick filters:</strong> All · Active · New · Assigned · In progress · Won · Lost · Deleted · Archived<br><strong>SHOW:</strong> All · Active · Archived · My bids · Favorite<br><strong>SORT:</strong> Due Date · Created · A–Z (toggle asc/desc)<br><strong>Filter list…</strong> · <strong>Team selection</strong> · <strong>Grid/List</strong> · <strong>Create</strong></p></div>
+      </div>
+    </section>
+    <section class="doc-block doc-block--summary lux-summary-section" id="summary-section"><h2 class="doc-block__title">Summary &amp; charts</h2><div class="lux-summary-block"><p class="lux-summary-intro">The <strong>Lux summary strip</strong> at the top of this screen is collapsible. Expand it to reveal KPI tiles and chart panels; collapse it for a wider register. All charts respect your active filters (SHOW preset, team scope, date range, text search).</p><p class="lux-summary-detail">Bid pipeline analytics refresh when SHOW, team, or search filters change.</p><div class="lux-summary-note"><span class="lux-summary-note__icon">◆</span> Emerald Luxury UI theme · chart data refreshes when filters change</div><h3 class="lux-summary-heading">Pipeline funnel</h3><div class="flow-diagram">
+<span class="flow-node">New</span><span class="flow-arrow">→</span>
+<span class="flow-node">Assigned</span><span class="flow-arrow">→</span>
+<span class="flow-node">In progress</span><span class="flow-arrow">→</span>
+<span class="flow-node">Won</span></div><p>Vertical stage funnel shows volume at each sales stage — widest stage = highest volume.</p><h3 class="lux-summary-heading">Bid request summary charts</h3><div class="lux-chart-grid"><article class="lux-chart-card">
+  <div class="lux-chart-card__head">
+    <h4 class="lux-chart-card__title">Bid intake trend</h4>
+    <span class="badge badge-area">Area</span>
+  </div>
+  <dl class="lux-chart-card__meta">
+    <dt>What it measures</dt><dd>New bids per month, 6 months</dd>
+    <dt>How to read it</dt><dd>Rising area = heavier sales intake</dd>
+    <dt>How to use it</dt><dd>Velocity tracking</dd>
+  </dl>
+  <p class="lux-chart-card__action"><strong>When to act:</strong> Staff bid desk if trend spikes</p>
+</article><article class="lux-chart-card">
+  <div class="lux-chart-card__head">
+    <h4 class="lux-chart-card__title">Win / loss snapshot</h4>
+    <span class="badge badge-bar">Column</span>
+  </div>
+  <dl class="lux-chart-card__meta">
+    <dt>What it measures</dt><dd>Won, lost, still open counts</dd>
+    <dt>How to read it</dt><dd>Compare column heights for win rate</dd>
+    <dt>How to use it</dt><dd>Pipeline outcome review</dd>
+  </dl>
+  <p class="lux-chart-card__action"><strong>When to act:</strong> Follow up open bids</p>
+</article><article class="lux-chart-card">
+  <div class="lux-chart-card__head">
+    <h4 class="lux-chart-card__title">Portfolio outcomes</h4>
+    <span class="badge badge-donut">Donut</span>
+  </div>
+  <dl class="lux-chart-card__meta">
+    <dt>What it measures</dt><dd>Open / won / lost / other closed</dd>
+    <dt>How to read it</dt><dd>Historical vs active balance</dd>
+    <dt>How to use it</dt><dd>Portfolio health</dd>
+  </dl>
+  <p class="lux-chart-card__action"><strong>When to act:</strong> Close stale open bids</p>
+</article><article class="lux-chart-card">
+  <div class="lux-chart-card__head">
+    <h4 class="lux-chart-card__title">Pipeline age</h4>
+    <span class="badge badge-donut">Donut</span>
+  </div>
+  <dl class="lux-chart-card__meta">
+    <dt>What it measures</dt><dd>Fresh / active / stale open bids</dd>
+    <dt>How to read it</dt><dd>Stale slice needs attention</dd>
+    <dt>How to use it</dt><dd>Aging pipeline cleanup</dd>
+  </dl>
+  <p class="lux-chart-card__action"><strong>When to act:</strong> Contact owners on stale bids</p>
+</article><article class="lux-chart-card">
+  <div class="lux-chart-card__head">
+    <h4 class="lux-chart-card__title">By status</h4>
+    <span class="badge badge-donut">Donut</span>
+  </div>
+  <dl class="lux-chart-card__meta">
+    <dt>What it measures</dt><dd>Active bid status mix</dd>
+    <dt>How to read it</dt><dd>Operational workload distribution</dd>
+    <dt>How to use it</dt><dd>Desk prioritization</dd>
+  </dl>
+  <p class="lux-chart-card__action"><strong>When to act:</strong> Filter list by status</p>
+</article><article class="lux-chart-card">
+  <div class="lux-chart-card__head">
+    <h4 class="lux-chart-card__title">Stage volume</h4>
+    <span class="badge badge-bar">H-bar</span>
+  </div>
+  <dl class="lux-chart-card__meta">
+    <dt>What it measures</dt><dd>Count per funnel stage</dd>
+    <dt>How to read it</dt><dd>Longest bar = bottleneck stage</dd>
+    <dt>How to use it</dt><dd>Process improvement</dd>
+  </dl>
+  <p class="lux-chart-card__action"><strong>When to act:</strong> Review stage SLAs</p>
+</article><article class="lux-chart-card">
+  <div class="lux-chart-card__head">
+    <h4 class="lux-chart-card__title">Geography mix</h4>
+    <span class="badge badge-bar">H-bar wide</span>
+  </div>
+  <dl class="lux-chart-card__meta">
+    <dt>What it measures</dt><dd>Countries represented</dd>
+    <dt>How to read it</dt><dd>Regional demand signal</dd>
+    <dt>How to use it</dt><dd>Territory planning</dd>
+  </dl>
+  <p class="lux-chart-card__action"><strong>When to act:</strong> Align with regional reps</p>
+</article><article class="lux-chart-card">
+  <div class="lux-chart-card__head">
+    <h4 class="lux-chart-card__title">Kind of study</h4>
+    <span class="badge badge-bar">H-bar</span>
+  </div>
+  <dl class="lux-chart-card__meta">
+    <dt>What it measures</dt><dd>Research study types</dd>
+    <dt>How to read it</dt><dd>Service line demand</dd>
+    <dt>How to use it</dt><dd>Capability investment</dd>
+  </dl>
+  <p class="lux-chart-card__action"><strong>When to act:</strong> Match to delivery teams</p>
+</article><article class="lux-chart-card">
+  <div class="lux-chart-card__head">
+    <h4 class="lux-chart-card__title">Bid type</h4>
+    <span class="badge badge-bar">V-bar</span>
+  </div>
+  <dl class="lux-chart-card__meta">
+    <dt>What it measures</dt><dd>Commercial vs study categories</dd>
+    <dt>How to read it</dt><dd>Revenue type mix</dd>
+    <dt>How to use it</dt><dd>Forecasting</dd>
+  </dl>
+  <p class="lux-chart-card__action"><strong>When to act:</strong> Filter bid list by type</p>
+</article><article class="lux-chart-card">
+  <div class="lux-chart-card__head">
+    <h4 class="lux-chart-card__title">CRM linkage</h4>
+    <span class="badge badge-donut">Donut</span>
+  </div>
+  <dl class="lux-chart-card__meta">
+    <dt>What it measures</dt><dd>Salesforce linked vs manual</dd>
+    <dt>How to read it</dt><dd>Integration completeness</dd>
+    <dt>How to use it</dt><dd>Data quality</dd>
+  </dl>
+  <p class="lux-chart-card__action"><strong>When to act:</strong> Link orphan bids to CRM</p>
+</article><article class="lux-chart-card">
+  <div class="lux-chart-card__head">
+    <h4 class="lux-chart-card__title">Owner workload</h4>
+    <span class="badge badge-bar">H-bar wide</span>
+  </div>
+  <dl class="lux-chart-card__meta">
+    <dt>What it measures</dt><dd>Bids per owner</dd>
+    <dt>How to read it</dt><dd>Balance assignments</dd>
+    <dt>How to use it</dt><dd>Rep capacity</dd>
+  </dl>
+  <p class="lux-chart-card__action"><strong>When to act:</strong> Reassign overloaded owners</p>
+</article><article class="lux-chart-card">
+  <div class="lux-chart-card__head">
+    <h4 class="lux-chart-card__title">Study disciplines</h4>
+    <span class="badge badge-bar">H-bar</span>
+  </div>
+  <dl class="lux-chart-card__meta">
+    <dt>What it measures</dt><dd>Tagged disciplines</dd>
+    <dt>How to read it</dt><dd>Capability demand</dd>
+    <dt>How to use it</dt><dd>Hiring/training signals</dd>
+  </dl>
+  <p class="lux-chart-card__action"><strong>When to act:</strong> Tag disciplines on new bids</p>
+</article></div></div></section>
+    <section class="doc-block" id="main"><h2 class="doc-block__title">Main content &amp; actions</h2><p>Click row for Bid Details. Create opens wizard: Study basics → Study setup → Screening → Additional → Quota (or Form mode).</p></section>
+    <section class="doc-block doc-block--features" id="complete-features">
+  <h2 class="doc-block__title">Complete feature list</h2>
+  <p class="lux-features-intro">Every control, panel, and workflow on this screen.</p>
+  <ul class="lux-feature-list lux-feature-list--dense"><li class="lux-feature-item"><span class="lux-feature-item__icon">✓</span><div><strong>Luxury UI shell</strong><span>Emerald-themed glass cards, sticky gradient header, module sidebar, and responsive layout.</span></div></li><li class="lux-feature-item"><span class="lux-feature-item__icon">✓</span><div><strong>Documentation search</strong><span>Header search indexes all guide pages (docs site).</span></div></li><li class="lux-feature-item"><span class="lux-feature-item__icon">✓</span><div><strong>Collapsible summary strip</strong><span>KPI row and chart gallery above the register; expand/collapse persists in browser storage.</span></div></li><li class="lux-feature-item"><span class="lux-feature-item__icon">✓</span><div><strong>Pipeline funnel chart</strong><span>Vertical stage funnel in summary strip.</span></div></li><li class="lux-feature-item"><span class="lux-feature-item__icon">✓</span><div><strong>Twelve bid charts</strong><span>Area, column, donut, and bar analytics panels.</span></div></li><li class="lux-feature-item"><span class="lux-feature-item__icon">✓</span><div><strong>CREATE bid</strong><span>New bid request wizard.</span></div></li><li class="lux-feature-item"><span class="lux-feature-item__icon">✓</span><div><strong>SHOW / SORT / Filter</strong><span>Status, owner, stage presets and text search.</span></div></li><li class="lux-feature-item"><span class="lux-feature-item__icon">✓</span><div><strong>Team scope</strong><span>Multi-team filter for register and charts.</span></div></li><li class="lux-feature-item"><span class="lux-feature-item__icon">✓</span><div><strong>Grid / List toggle</strong><span>Visual density control.</span></div></li><li class="lux-feature-item"><span class="lux-feature-item__icon">✓</span><div><strong>Row → bid details</strong><span>Open full bid record and documents.</span></div></li></ul>
+</section>
+    <div class="doc-enrichment"><section class="doc-block doc-block--callouts" id="page-callouts"><h2 class="doc-block__title">Before you start</h2><div class="callout-stack callout-stack--dense"><div class="callout callout--tip"><div class="callout__icon">💡</div><div class="callout__body"><strong class="callout__title">Monday review</strong><div class="callout__text">Sort by Pipeline age; call top five stale bid owners before noon.</div></div></div><div class="callout callout--note"><div class="callout__icon">📝</div><div class="callout__body"><strong class="callout__title">Chart drill-down</strong><div class="callout__text">Click funnel segments where enabled to filter register rows.</div></div></div></div></section><div class="doc-enrich-grid"><section class="doc-block" id="who-uses-this"><h2 class="doc-block__title">Who uses this screen</h2><p class="audience-text">Sales representatives and managers running the bid pipeline — creating opportunities, advancing stages, and analyzing win rates. Delivery staff occasionally view bids linked to their POs.</p><div class="callout callout--info"><div class="callout__icon">ℹ️</div><div class="callout__body"><strong class="callout__title">Daily sales register</strong><div class="callout__text">Open each morning to prioritize follow-ups using Pipeline age and Owner workload charts in the summary strip.</div></div></div></section><section class="doc-block" id="key-concepts"><h2 class="doc-block__title">Key concepts</h2><div class="concept-grid"><article class="concept-card"><h3 class="concept-card__title">Bid register</h3><p class="concept-card__desc">Sortable list/grid of open and closed bids with stage, owner, account, value, and dates.</p></article><article class="concept-card"><h3 class="concept-card__title">Twelve summary charts</h3><p class="concept-card__desc">Intake trend, win/loss, portfolio outcomes, pipeline age, geography, disciplines, CRM linkage.</p></article><article class="concept-card"><h3 class="concept-card__title">CREATE bid</h3><p class="concept-card__desc">Wizard for new bid with account, study type, owner, and initial stage.</p></article><article class="concept-card"><h3 class="concept-card__title">Stage progression</h3><p class="concept-card__desc">Move bids through funnel — updates funnel chart and stage volume bars.</p></article><article class="concept-card"><h3 class="concept-card__title">Team scope</h3><p class="concept-card__desc">Filter register and all charts to selected delivery/sales teams.</p></article></div></section><section class="doc-block" id="permissions"><h2 class="doc-block__title">Permissions</h2><div class="table-wrap"><table class="table table--permissions"><thead><tr><th>Role</th><th>Access on this screen</th></tr></thead><tbody><tr><td><strong>Sales representative</strong></td><td>Create bids; edit own; advance stages; attach documents on detail page.</td></tr><tr><td><strong>Sales manager</strong></td><td>Team filter; reassign owners; view all team bids.</td></tr><tr><td><strong>Delivery lead</strong></td><td>Read-only on bids linked to active POs or projects.</td></tr><tr><td><strong>Executive</strong></td><td>Read-only portfolio analytics with team scope.</td></tr></tbody></table></div><div class="callout callout--note"><div class="callout__icon">📝</div><div class="callout__body"><strong class="callout__title">Administrator override</strong><div class="callout__text">Org administrators and service accounts configured in the Admin console may bypass row-level scopes shown above. When in doubt, confirm access with your Tracopus administrator.</div></div></div></section><section class="doc-block" id="controls-reference"><h2 class="doc-block__title">Controls reference</h2><div class="table-wrap"><table class="table table--controls"><thead><tr><th>Control</th><th>Description</th><th>Notes</th></tr></thead><tbody><tr><td><strong>CREATE bid</strong></td><td>New bid wizard.</td><td>Requires account selection.</td></tr><tr><td><strong>SHOW / SORT / Filter</strong></td><td>Status, owner, stage presets; text search.</td><td>Standard Lux header.</td></tr><tr><td><strong>Team scope</strong></td><td>Multi-team checkbox.</td><td>Scopes register + 12 charts.</td></tr><tr><td><strong>Grid / List toggle</strong></td><td>Card vs table density.</td><td>—</td></tr><tr><td><strong>Summary strip</strong></td><td>Twelve chart panels.</td><td>Collapse when working register.</td></tr><tr><td><strong>Row → details</strong></td><td>Open bid-details.html context.</td><td>Full record and docs.</td></tr><tr><td><strong>Pipeline funnel chart</strong></td><td>Vertical stage funnel.</td><td>Identify bottleneck stage.</td></tr></tbody></table></div></section></div><div class="doc-enrich-grid doc-enrich-grid--2"><section class="doc-block" id="common-mistakes"><h2 class="doc-block__title">Common mistakes</h2><div class="callout-stack callout-stack--dense"><div class="callout callout--warning"><div class="callout__icon">⚠️</div><div class="callout__body"><strong class="callout__title">Leaving bids in first stage too long</strong><div class="callout__text">Pipeline age donut flags stale — advance or close to keep forecast honest.</div></div></div><div class="callout callout--warning"><div class="callout__icon">⚠️</div><div class="callout__body"><strong class="callout__title">Wrong owner assignment</strong><div class="callout__text">Owner workload chart skews — reassign when handoff occurs.</div></div></div><div class="callout callout--warning"><div class="callout__icon">⚠️</div><div class="callout__body"><strong class="callout__title">Skipping account linkage</strong><div class="callout__text">Orphan bids break PO and project traceability — always pick account on create.</div></div></div></div></section><section class="doc-block" id="faq"><h2 class="doc-block__title">FAQ</h2><div class="faq-list"><article class="faq-item"><h3 class="faq-item__q">How many charts update with filters?</h3><div class="faq-item__a">All twelve in summary strip respect SHOW, team, and text filters.</div></article><article class="faq-item"><h3 class="faq-item__q">Can I link Salesforce later?</h3><div class="faq-item__a">Sync indicator on detail page — manual bids can be linked if integration enabled.</div></article><article class="faq-item"><h3 class="faq-item__q">What closes a bid?</h3><div class="faq-item__a">Won (often creates PO path), Lost, or other closed statuses per org config.</div></article><article class="faq-item"><h3 class="faq-item__q">Do bids appear in Project module?</h3><div class="faq-item__a">Only after PO and project creation — bid itself stays in Sales.</div></article></div></section></div><section class="doc-block doc-block--related" id="related-pages"><h2 class="doc-block__title">Related pages</h2><div class="related-links"><a class="related-link" href="bid-details.html"><span class="related-link__label">Bid Details</span><span class="related-link__desc">Stage, documents, PO link.</span></a><a class="related-link" href="purchase-orders.html"><span class="related-link__label">Purchase Orders</span><span class="related-link__desc">Next step after Won.</span></a><a class="related-link" href="../project/accounts.html"><span class="related-link__label">Accounts</span><span class="related-link__desc">Client records on bids.</span></a><a class="related-link" href="../charts.html"><span class="related-link__label">Charts guide</span><span class="related-link__desc">How to read funnel and donut panels.</span></a></div></section></div>
+    <section class="doc-block doc-block--pair">
+      <div class="doc-split">
+        <div id="workflows"><h2 class="doc-block__title">Workflows</h2><ol><li>Click Create → complete wizard steps.</li><li>Submit — bid appears in New stage.</li><li>Assign owner to move to Assigned.</li><li>Progress through In progress to Won/Lost.</li></ol></div>
+        <div class="doc-block--tips" id="tips"><h2 class="doc-block__title">Tips &amp; best practices</h2><div class="note"><strong>Tip:</strong> Stale slice on Pipeline age donut → schedule follow-up or close dead opportunities.</div><div class="callout-stack"><h3 class="subheading">More guidance</h3><div class="callout callout--tip"><div class="callout__icon">💡</div><div class="callout__body"><strong class="callout__title">Remember</strong><div class="callout__text">Sortable list/grid of open and closed bids with stage, owner, account, value, and dates.</div></div></div><div class="callout callout--info"><div class="callout__icon">ℹ️</div><div class="callout__body"><strong class="callout__title">How many charts update with filters?</strong><div class="callout__text">All twelve in summary strip respect SHOW, team, and text filters.</div></div></div></div></div>
+      </div>
+    </section>
+  </div>
+</div>
+<nav class="page-nav">
+  <a class="page-nav__prev" href="index.html">← Sales Overview</a>
+  <a class="page-nav__next" href="bid-details.html">Bid Details →</a>
+</nav>
+
+</main>
+
+<footer>
+  <div class="container">
+    <p>&copy; 2026 <span data-brand>Tracopus</span>. All rights reserved.</p>
+    <p style="margin-top:0.75rem;">
+      <a href="../index.html">Documentation</a>
+      <a href="../user-guide/index.html">Scenario Guide</a>
+      <a href="../getting-started.html">Getting Started</a>
+      <a href="../charts.html">Charts</a>
+    </p>
+    <p class="footer-muted">For support, contact your workspace administrator.</p>
+  </div>
+</footer>
+
+<script src="../js/palette.js?v=20260619e"></script>
+<script src="../js/brand.js?v=20260619e"></script>
+<script src="../js/docs-utility-config.js?v=20260720b"></script>
+<script src="../js/nav-config.js?v=20260619e"></script>
+<script src="../js/navigation.js?v=20260619e"></script>
+<script src="../js/site-enhancements.js?v=20260718d"></script>
+<script src="../js/search.js?v=20260619e"></script>
+</body>
+</html>

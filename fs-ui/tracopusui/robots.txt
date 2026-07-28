@@ -1,0 +1,34 @@
+# robots.txt for Tracopus
+
+User-agent: *
+Allow: /
+Allow: /documentation/
+Allow: /documentation/user-guide/
+Disallow: /api/
+Disallow: /src/
+Disallow: /node_modules/
+Disallow: /people/
+Disallow: /project/
+Disallow: /admin/
+Disallow: /hrms/
+Disallow: /workspace/
+Disallow: /finance/
+Disallow: /payroll/
+
+Sitemap: https://tracopus.com/sitemap.xml
+
+User-agent: Googlebot
+Allow: /
+Allow: /documentation/
+Disallow: /api/
+Disallow: /people/
+Disallow: /project/
+Disallow: /admin/
+
+User-agent: Bingbot
+Allow: /
+Allow: /documentation/
+Disallow: /api/
+Disallow: /people/
+Disallow: /project/
+Disallow: /admin/

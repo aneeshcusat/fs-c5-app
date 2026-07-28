@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en" data-lux-theme="luxury" data-lux-palette="indigo">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Flows — Tracopus Documentation</title>
+  <meta name="description" content="Step-by-step workflows grouped in one place. Each card links to the scenario walkthrough, the screen reference guide, and the broader use case catalog.">
+  <meta name="keywords" content="tracopus, documentation, user guide, user, flows, —">
+  <link rel="canonical" href="https://tracopus.com/documentation/user-flows/index.html">
+  <meta name="robots" content="index, follow">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Tracopus">
+  <meta property="og:title" content="User Flows — Tracopus Documentation — Tracopus User Guide">
+  <meta property="og:description" content="Step-by-step workflows grouped in one place. Each card links to the scenario walkthrough, the screen reference guide, and the broader use case catalog.">
+  <meta property="og:url" content="https://tracopus.com/documentation/user-flows/index.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="User Flows — Tracopus Documentation — Tracopus User Guide">
+  <meta name="twitter:description" content="Step-by-step workflows grouped in one place. Each card links to the scenario walkthrough, the screen reference guide, and the broader use case catalog.">
+  <script src="../js/docs-analytics.js?v=20260719a" defer></script>
+  <link rel="stylesheet" href="../css/styles.css?v=20260718g">
+  <link rel="stylesheet" href="../css/data-flow-bridge.css?v=20260724g">
+  <script src="../js/brand-config.js?v=20260619e"></script>
+  <style>
+    .flow-bridge-grid {
+      display: grid;
+      gap: 0.85rem;
+      margin: 1rem 0 1.5rem;
+    }
+    @media (min-width: 720px) {
+      .flow-bridge-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body data-docs-depth="1" class="user-flows-hub-page">
+
+<header aria-label="Site header"></header>
+
+<main>
+  <div class="breadcrumb"><a href="../index.html">Home</a> → User Flows</div>
+
+  <div class="doc-canvas">
+    <header class="doc-mast">
+      <div class="doc-mast__top">
+        <span class="doc-mast__eyebrow">Documentation · Workflows</span>
+      </div>
+      <h1 class="doc-mast__title">User flows</h1>
+      <p class="doc-mast__lead">Step-by-step workflows grouped in one place. Each card links to the scenario walkthrough, the screen reference guide, and the broader use case catalog.</p>
+      <p class="doc-mast__purpose">Screen guides explain what the page shows. Scenarios explain how to complete the task. Use cases list the full business catalog.</p>
+    </header>
+
+    <div class="doc-flow">
+      <section class="doc-block doc-block--launch" id="launch">
+        <h2 class="doc-block__title">Open a workflow or simulator</h2>
+        <p style="font-size:0.9375rem;color:var(--text-light);margin:0 0 0.85rem;">Jump directly — scenario walkthroughs, interactive flag simulators (two tabs: table flow + live behavior), or the full data-flow hub.</p>
+        <div class="uf-launch-grid">
+          <a class="uf-launch-card" href="../data-flow/index.html"><strong>All data-flow simulators</strong><span>8 interactive tools — leave, timesheet, attendance, delegation, roles, persona, working day</span><em>Open hub →</em></a>
+          <a class="uf-launch-card" href="../data-flow/leave-flags-data-flow.html"><strong>Leave request simulator</strong><span>SUBMITTED → approve → promote</span><em>Open simulator →</em></a>
+          <a class="uf-launch-card" href="../data-flow/timesheet-flags-data-flow.html"><strong>Timesheet simulator</strong><span>Week status, submit, manager approve</span><em>Open simulator →</em></a>
+          <a class="uf-launch-card" href="../data-flow/attendance-flags-data-flow.html"><strong>Attendance simulator</strong><span>Mark, approve, regularization</span><em>Open simulator →</em></a>
+          <a class="uf-launch-card" href="../data-flow/delegation-flags-data-flow.html"><strong>Delegation &amp; inbox</strong><span>canAct, universal inbox, acting-for</span><em>Open simulator →</em></a>
+          <a class="uf-launch-card" href="../data-flow/admin-roles-flags-data-flow.html"><strong>Roles simulator</strong><span>personaModules, switcher, Role Bar, org overrides</span><em>Open simulator →</em></a>
+          <a class="uf-launch-card" href="../data-flow/persona-navigation-flags-data-flow.html"><strong>Persona nav simulator</strong><span>pagePersonaMap, org kill lists, route guards</span><em>Open simulator →</em></a>
+          <a class="uf-launch-card" href="../user-guide/index.html"><strong>Scenario User Guide</strong><span>65 step-by-step workflows with QA checklists</span><em>Open guide →</em></a>
+        </div>
+      </section>
+
+      <section class="doc-block" id="hubs">
+        <h2 class="doc-block__title">Documentation hubs</h2>
+        <div class="related-links">
+          <a class="related-link" href="../data-flow/index.html"><span class="related-link__label">Interactive data flow</span><span class="related-link__desc">Flag simulators — SQL, APIs, schedulers, authority</span></a>
+          <a class="related-link" href="../user-guide/index.html"><span class="related-link__label">Scenario User Guide</span><span class="related-link__desc">All modules · Feature → Scenario → Steps</span></a>
+          <a class="related-link" href="../user-guide/scenarios.html"><span class="related-link__label">All scenarios</span><span class="related-link__desc">Flat A–Z index of workflows</span></a>
+          <a class="related-link" href="../tracopus-use-case-catalog.html"><span class="related-link__label">Use Case Catalog</span><span class="related-link__desc">718 entries including gap discovery</span></a>
+          <a class="related-link" href="../index.html"><span class="related-link__label">Screen documentation</span><span class="related-link__desc">Page-by-page Luxury UI reference</span></a>
+        </div>
+      </section>
+
+      <section class="doc-block" id="admin-flows">
+        <h2 class="doc-block__title">Admin &amp; access flows</h2>
+        <div class="flow-bridge-legend" aria-label="Link types">
+          <span><i class="legend-dataflow" aria-hidden="true"></i> Data flow hub / simulator</span>
+          <span><i class="legend-scenario" aria-hidden="true"></i> User flow (scenario)</span>
+          <span><i class="legend-screen" aria-hidden="true"></i> Screen guide</span>
+          <span><i class="legend-catalog" aria-hidden="true"></i> Use cases</span>
+        </div>
+        <div class="flow-bridge-grid">
+          <article class="flow-bridge-card">
+            <h3>Persona navigation</h3>
+            <p>Turn off personas, modules, or pages org-wide, or customize which personas can open a page.</p>
+            <p class="flow-bridge-card__links-label">Open</p>
+            <div class="flow-bridge-links flow-bridge-links--four">
+              <a class="is-dataflow" href="../data-flow/persona-navigation-flags-data-flow.html">Data flow →</a>
+              <a class="is-scenario" href="../user-guide/admin/admin-persona-navigation.html">User flow →</a>
+              <a class="is-screen" href="../hrms/persona-navigation.html">Screen guide →</a>
+              <a class="is-catalog" href="../tracopus-use-case-catalog.html">Use cases →</a>
+            </div>
+          </article>
+          <article class="flow-bridge-card">
+            <h3>Roles &amp; persona modules</h3>
+            <p>Configure which personas a role may use, defaults, and the Advanced permission matrix.</p>
+            <p class="flow-bridge-card__links-label">Open</p>
+            <div class="flow-bridge-links flow-bridge-links--four">
+              <a class="is-dataflow" href="../data-flow/admin-roles-flags-data-flow.html">Data flow →</a>
+              <a class="is-scenario" href="../user-guide/admin/admin-role-permissions.html">User flow →</a>
+              <a class="is-screen" href="../hrms/roles-permissions.html">Screen guide →</a>
+              <a class="is-catalog" href="../tracopus-use-case-catalog.html">Use cases →</a>
+            </div>
+          </article>
+          <article class="flow-bridge-card">
+            <h3>Application configuration</h3>
+            <p>Edit org.json / role.json reference values and verify feature flags.</p>
+            <p class="flow-bridge-card__links-label">Open</p>
+            <div class="flow-bridge-links flow-bridge-links--four">
+              <a class="is-hub" href="../data-flow/index.html">Data flow hub →</a>
+              <a class="is-scenario" href="../user-guide/hrms/hrms-app-config.html">User flow →</a>
+              <a class="is-screen" href="../hrms/application-config.html">Screen guide →</a>
+              <a class="is-catalog" href="../tracopus-use-case-catalog.html">Use cases →</a>
+            </div>
+          </article>
+          <article class="flow-bridge-card">
+            <h3>Audit review</h3>
+            <p>Filter the unified audit trail and export evidence for compliance.</p>
+            <p class="flow-bridge-card__links-label">Open</p>
+            <div class="flow-bridge-links flow-bridge-links--four">
+              <a class="is-hub" href="../data-flow/index.html">Data flow hub →</a>
+              <a class="is-scenario" href="../user-guide/admin/admin-audit-review.html">User flow →</a>
+              <a class="is-screen" href="../hrms/audit-trail.html">Screen guide →</a>
+              <a class="is-catalog" href="../tracopus-use-case-catalog.html">Use cases →</a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="doc-block" id="hrms-flows">
+        <h2 class="doc-block__title">HRMS flows</h2>
+        <div class="flow-bridge-legend" aria-label="Link types">
+          <span><i class="legend-dataflow" aria-hidden="true"></i> Data flow hub / simulator</span>
+          <span><i class="legend-scenario" aria-hidden="true"></i> User flow (scenario)</span>
+          <span><i class="legend-screen" aria-hidden="true"></i> Screen guide</span>
+          <span><i class="legend-catalog" aria-hidden="true"></i> Use cases</span>
+        </div>
+        <div class="flow-bridge-grid">
+          <article class="flow-bridge-card">
+            <h3>Create employee</h3>
+            <p>Run the employee create wizard and provision access.</p>
+            <p class="flow-bridge-card__links-label">Open</p>
+            <div class="flow-bridge-links flow-bridge-links--four">
+              <a class="is-hub" href="../data-flow/index.html">Data flow hub →</a>
+              <a class="is-scenario" href="../user-guide/hrms/hrms-create-employee.html">User flow →</a>
+              <a class="is-screen" href="../hrms/employees.html">Screen guide →</a>
+              <a class="is-catalog" href="../tracopus-use-case-catalog.html">Use cases →</a>
+            </div>
+          </article>
+          <article class="flow-bridge-card">
+            <h3>Log &amp; submit timesheet</h3>
+            <p>Enter weekly hours, submit for approval, and verify locks.</p>
+            <p class="flow-bridge-card__links-label">Open</p>
+            <div class="flow-bridge-links flow-bridge-links--four">
+              <a class="is-dataflow" href="../data-flow/timesheet-flags-data-flow.html">Data flow →</a>
+              <a class="is-scenario" href="../user-guide/hrms/hrms-log-timesheet.html">User flow →</a>
+              <a class="is-screen" href="../hrms/timesheet.html">Screen guide →</a>
+              <a class="is-catalog" href="../tracopus-use-case-catalog.html">Use cases →</a>
+            </div>
+          </article>
+          <article class="flow-bridge-card">
+            <h3>Approve timesheet</h3>
+            <p>Manager approval inbox, reject/lock, and audit trail.</p>
+            <p class="flow-bridge-card__links-label">Open</p>
+            <div class="flow-bridge-links flow-bridge-links--four">
+              <a class="is-dataflow" href="../data-flow/timesheet-flags-data-flow.html">Data flow →</a>
+              <a class="is-scenario" href="../user-guide/hrms/hrms-approve-timesheet.html">User flow →</a>
+              <a class="is-screen" href="../hrms/timesheet-approval.html">Screen guide →</a>
+              <a class="is-catalog" href="../tracopus-use-case-catalog.html">Use cases →</a>
+            </div>
+          </article>
+          <article class="flow-bridge-card">
+            <h3>Apply &amp; approve leave</h3>
+            <p>Employee apply flow and manager approval with calendar impact.</p>
+            <p class="flow-bridge-card__links-label">Open</p>
+            <div class="flow-bridge-links flow-bridge-links--four">
+              <a class="is-dataflow" href="../data-flow/leave-flags-data-flow.html">Data flow →</a>
+              <a class="is-scenario" href="../user-guide/hrms/hrms-apply-leave.html">User flow →</a>
+              <a class="is-screen" href="../hrms/leaves.html">Screen guide →</a>
+              <a class="is-catalog" href="../tracopus-use-case-catalog.html">Use cases →</a>
+            </div>
+          </article>
+          <article class="flow-bridge-card">
+            <h3>Mark &amp; approve attendance</h3>
+            <p>Daily presence matrix and regularization approvals.</p>
+            <p class="flow-bridge-card__links-label">Open</p>
+            <div class="flow-bridge-links flow-bridge-links--four">
+              <a class="is-dataflow" href="../data-flow/attendance-flags-data-flow.html">Data flow →</a>
+              <a class="is-scenario" href="../user-guide/hrms/hrms-mark-attendance.html">User flow →</a>
+              <a class="is-screen" href="../hrms/attendance.html">Screen guide →</a>
+              <a class="is-catalog" href="../tracopus-use-case-catalog.html">Use cases →</a>
+            </div>
+          </article>
+          <article class="flow-bridge-card">
+            <h3>Shift policies</h3>
+            <p>Define work-week calendars used by leave day counting.</p>
+            <p class="flow-bridge-card__links-label">Open</p>
+            <div class="flow-bridge-links flow-bridge-links--four">
+              <a class="is-dataflow" href="../data-flow/working-day-flags-data-flow.html">Data flow →</a>
+              <a class="is-scenario" href="../user-guide/admin/admin-configure-global-leave.html">User flow →</a>
+              <a class="is-screen" href="../hrms/shift-policies.html">Screen guide →</a>
+              <a class="is-catalog" href="../tracopus-use-case-catalog.html">Use cases →</a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="doc-block" id="delivery-flows">
+        <h2 class="doc-block__title">Project &amp; sales flows</h2>
+        <div class="flow-bridge-legend" aria-label="Link types">
+          <span><i class="legend-dataflow" aria-hidden="true"></i> Data flow hub / simulator</span>
+          <span><i class="legend-scenario" aria-hidden="true"></i> User flow (scenario)</span>
+          <span><i class="legend-screen" aria-hidden="true"></i> Screen guide</span>
+          <span><i class="legend-catalog" aria-hidden="true"></i> Use cases</span>
+        </div>
+        <div class="flow-bridge-grid">
+          <article class="flow-bridge-card">
+            <h3>Create project</h3>
+            <p>Seven-step project create wizard for delivery teams.</p>
+            <p class="flow-bridge-card__links-label">Open</p>
+            <div class="flow-bridge-links flow-bridge-links--four">
+              <a class="is-hub" href="../data-flow/index.html">Data flow hub →</a>
+              <a class="is-scenario" href="../user-guide/project/project-create-project.html">User flow →</a>
+              <a class="is-screen" href="../project/project-list.html">Screen guide →</a>
+              <a class="is-catalog" href="../tracopus-use-case-catalog.html">Use cases →</a>
+            </div>
+          </article>
+          <article class="flow-bridge-card">
+            <h3>Task board</h3>
+            <p>Move work items across board columns and track activity.</p>
+            <p class="flow-bridge-card__links-label">Open</p>
+            <div class="flow-bridge-links flow-bridge-links--four">
+              <a class="is-hub" href="../data-flow/index.html">Data flow hub →</a>
+              <a class="is-scenario" href="../user-guide/project/index.html">User flow →</a>
+              <a class="is-screen" href="../project/taskboard.html">Screen guide →</a>
+              <a class="is-catalog" href="../tracopus-use-case-catalog.html">Use cases →</a>
+            </div>
+          </article>
+          <article class="flow-bridge-card">
+            <h3>Bid requests</h3>
+            <p>Intake and triage opportunities in the sales pipeline.</p>
+            <p class="flow-bridge-card__links-label">Open</p>
+            <div class="flow-bridge-links flow-bridge-links--four">
+              <a class="is-hub" href="../data-flow/index.html">Data flow hub →</a>
+              <a class="is-scenario" href="../user-guide/sales/index.html">User flow →</a>
+              <a class="is-screen" href="../sales/bid-requests.html">Screen guide →</a>
+              <a class="is-catalog" href="../tracopus-use-case-catalog.html">Use cases →</a>
+            </div>
+          </article>
+          <article class="flow-bridge-card">
+            <h3>Purchase orders</h3>
+            <p>Contract register and PO detail breakdown.</p>
+            <p class="flow-bridge-card__links-label">Open</p>
+            <div class="flow-bridge-links flow-bridge-links--four">
+              <a class="is-hub" href="../data-flow/index.html">Data flow hub →</a>
+              <a class="is-scenario" href="../user-guide/sales/index.html">User flow →</a>
+              <a class="is-screen" href="../sales/purchase-orders.html">Screen guide →</a>
+              <a class="is-catalog" href="../tracopus-use-case-catalog.html">Use cases →</a>
+            </div>
+          </article>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <nav class="page-nav">
+    <a class="page-nav__prev" href="../index.html">← Documentation home</a>
+    <a class="page-nav__next" href="../user-guide/index.html">Scenario Guide →</a>
+  </nav>
+</main>
+
+<footer>
+  <div class="container">
+    <p>&copy; 2026 <span data-brand>Tracopus</span>. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="../js/palette.js?v=20260619e"></script>
+<script src="../js/brand.js?v=20260619e"></script>
+<script src="../js/docs-utility-config.js?v=20260718a"></script>
+<script src="../js/nav-config.js?v=20260724b"></script>
+<script src="../js/navigation.js?v=20260718a"></script>
+<script src="../js/site-enhancements.js?v=20260718d"></script>
+<script src="../js/search.js?v=20260619e"></script>
+</body>
+</html>

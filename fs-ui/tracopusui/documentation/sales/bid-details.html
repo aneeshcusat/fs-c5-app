@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" data-lux-theme="luxury" data-lux-palette="emerald">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bid Details — Tracopus User Guide</title>
+  <meta name="description" content="Full bid fields, study metadata, status workflow, linked POs — opened from list or View Bid Details sidebar.">
+  <meta name="keywords" content="tracopus, documentation, user guide, sales, bid, details">
+  <link rel="canonical" href="https://tracopus.com/documentation/sales/bid-details.html">
+  <meta name="robots" content="index, follow">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Tracopus">
+  <meta property="og:title" content="Bid Details — Tracopus User Guide">
+  <meta property="og:description" content="Full bid fields, study metadata, status workflow, linked POs — opened from list or View Bid Details sidebar.">
+  <meta property="og:url" content="https://tracopus.com/documentation/sales/bid-details.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Bid Details — Tracopus User Guide">
+  <meta name="twitter:description" content="Full bid fields, study metadata, status workflow, linked POs — opened from list or View Bid Details sidebar.">
+  <script src="../js/docs-analytics.js?v=20260719a" defer></script>
+  <link rel="apple-touch-icon" href="../images/tracopus-logo.png">
+  <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css?v=20260718g">
+  <script src="../js/brand-config.js?v=20260619e"></script>
+</head>
+<body data-docs-depth="1">
+
+<header aria-label="Site header"></header>
+
+
+
+<main>
+    <div class="breadcrumb"><a href="../index.html">Home</a> → Sales → Bid Details</div>
+  
+<div class="doc-canvas">
+  <header class="doc-mast">
+    <div class="doc-mast__top">
+      <span class="doc-mast__eyebrow">Sales · Bid Details</span>
+      <div class="page-meta page-meta--inline">
+        <span class="page-meta__item"><strong>Route</strong> <code>/sales/bidrequest/:bidRequestId</code></span>
+        <span class="page-meta__item"><strong>Menu</strong> Sales → Bid Request Details</span>
+      </div>
+    </div>
+    <h1 class="doc-mast__title">Bid Details</h1>
+    <p class="doc-mast__lead">Full bid fields, study metadata, status workflow, linked POs — opened from list or View Bid Details sidebar.</p>
+    <p class="doc-mast__purpose">Single bid view with study metadata, status transitions, and linked purchase orders.</p>
+  </header>
+
+  <div class="doc-flow">
+    <section class="doc-block" id="overview"><h2 class="doc-block__title">Overview</h2><p><code>/sales/bidrequest/:bidRequestId</code> — comprehensive record for one bid request including study setup, screening, quota, and ownership.</p></section>
+    <section class="doc-block doc-block--pair">
+      <div class="doc-split">
+        <div id="layout"><h2 class="doc-block__title">Screen layout</h2><p><strong>Hero:</strong> Bid ID, status, owner, account, study type.<br><strong>Body:</strong> Section cards for study basics, setup, screening, additional fields, quota.<br><strong>Sidebar:</strong> Quick actions, linked POs, status history.</p></div>
+        <div id="header-filters"><h2 class="doc-block__title">Header &amp; filters</h2><p>Status transitions via action buttons (New → Assigned → In progress → Won/Lost). No list-level SHOW/SORT on detail page.</p></div>
+      </div>
+    </section>
+    <section class="doc-block doc-block--summary lux-summary-section" id="summary-section"><h2 class="doc-block__title">Summary &amp; charts</h2><p>Detail may include inline statistics for this bid's stage history where configured.</p></section>
+    <section class="doc-block" id="main"><h2 class="doc-block__title">Main content &amp; actions</h2><p>Update fields, change status, link/create purchase order from winning bid, open related projects.</p></section>
+    <section class="doc-block doc-block--features" id="complete-features">
+  <h2 class="doc-block__title">Complete feature list</h2>
+  <p class="lux-features-intro">Every control, panel, and workflow on this screen.</p>
+  <ul class="lux-feature-list lux-feature-list--dense"><li class="lux-feature-item"><span class="lux-feature-item__icon">✓</span><div><strong>Luxury UI shell</strong><span>Emerald-themed glass cards, sticky gradient header, module sidebar, and responsive layout.</span></div></li><li class="lux-feature-item"><span class="lux-feature-item__icon">✓</span><div><strong>Documentation search</strong><span>Header search indexes all guide pages (docs site).</span></div></li><li class="lux-feature-item"><span class="lux-feature-item__icon">✓</span><div><strong>Bid header</strong><span>Title, stage, owner, account, dates, value.</span></div></li><li class="lux-feature-item"><span class="lux-feature-item__icon">✓</span><div><strong>Stage progression</strong><span>Move bid through sales funnel stages.</span></div></li><li class="lux-feature-item"><span class="lux-feature-item__icon">✓</span><div><strong>Documents tab</strong><span>Attachments and proposals.</span></div></li><li class="lux-feature-item"><span class="lux-feature-item__icon">✓</span><div><strong>Activity log</strong><span>Status changes and comments.</span></div></li><li class="lux-feature-item"><span class="lux-feature-item__icon">✓</span><div><strong>Link to PO</strong><span>Create or associate purchase order.</span></div></li><li class="lux-feature-item"><span class="lux-feature-item__icon">✓</span><div><strong>CRM sync indicator</strong><span>Salesforce linkage status.</span></div></li></ul>
+</section>
+    <div class="doc-enrichment"><section class="doc-block doc-block--callouts" id="page-callouts"><h2 class="doc-block__title">Before you start</h2><div class="callout-stack callout-stack--dense"><div class="callout callout--success"><div class="callout__icon">✅</div><div class="callout__body"><strong class="callout__title">Win checklist</strong><div class="callout__text">Value confirmed · PO created/linked · delivery lead notified · documents uploaded.</div></div></div><div class="callout callout--warning"><div class="callout__icon">⚠️</div><div class="callout__body"><strong class="callout__title">Stage regression</strong><div class="callout__text">Moving backward may reset analytics — document reason in activity log.</div></div></div></div></section><div class="doc-enrich-grid"><section class="doc-block" id="who-uses-this"><h2 class="doc-block__title">Who uses this screen</h2><p class="audience-text">Bid owners and sales managers editing a single opportunity — stage, value, documents, and PO linkage. Account managers review before executive approval.</p><div class="callout callout--info"><div class="callout__icon">ℹ️</div><div class="callout__body"><strong class="callout__title">Single bid workspace</strong><div class="callout__text">Opened from Bid Requests row click — manage one opportunity end-to-end until Won/Lost.</div></div></div></section><section class="doc-block" id="key-concepts"><h2 class="doc-block__title">Key concepts</h2><div class="concept-grid"><article class="concept-card"><h3 class="concept-card__title">Bid header</h3><p class="concept-card__desc">Title, stage badge, owner, account, estimated value, key dates, study metadata.</p></article><article class="concept-card"><h3 class="concept-card__title">Stage progression</h3><p class="concept-card__desc">Buttons or dropdown to advance funnel — triggers activity log entry.</p></article><article class="concept-card"><h3 class="concept-card__title">Documents tab</h3><p class="concept-card__desc">Proposals, SOW drafts, client attachments.</p></article><article class="concept-card"><h3 class="concept-card__title">Activity log</h3><p class="concept-card__desc">Comments, stage changes, owner reassignments with timestamps.</p></article><article class="concept-card"><h3 class="concept-card__title">Link to PO</h3><p class="concept-card__desc">Create new PO or associate existing contract when bid wins.</p></article></div></section><section class="doc-block" id="permissions"><h2 class="doc-block__title">Permissions</h2><div class="table-wrap"><table class="table table--permissions"><thead><tr><th>Role</th><th>Access on this screen</th></tr></thead><tbody><tr><td><strong>Bid owner</strong></td><td>Full edit on owned bids; stage advance; document upload.</td></tr><tr><td><strong>Sales manager</strong></td><td>Edit team bids; reassign owner; approve stage jumps.</td></tr><tr><td><strong>Delivery lead</strong></td><td>Read-only unless contributor on bid team.</td></tr><tr><td><strong>Finance</strong></td><td>Read value and account; no stage edit.</td></tr></tbody></table></div><div class="callout callout--note"><div class="callout__icon">📝</div><div class="callout__body"><strong class="callout__title">Administrator override</strong><div class="callout__text">Org administrators and service accounts configured in the Admin console may bypass row-level scopes shown above. When in doubt, confirm access with your Tracopus administrator.</div></div></div></section><section class="doc-block" id="controls-reference"><h2 class="doc-block__title">Controls reference</h2><div class="table-wrap"><table class="table table--controls"><thead><tr><th>Control</th><th>Description</th><th>Notes</th></tr></thead><tbody><tr><td><strong>Stage control</strong></td><td>Advance or regress stage.</td><td>Regress may be restricted.</td></tr><tr><td><strong>Edit header</strong></td><td>Value, dates, study fields.</td><td>Audit logged.</td></tr><tr><td><strong>Documents tab</strong></td><td>Upload/download attachments.</td><td>Version not always tracked — use naming convention.</td></tr><tr><td><strong>Activity log</strong></td><td>Comments and system events.</td><td>@mention if enabled.</td></tr><tr><td><strong>Link to PO</strong></td><td>Create or associate PO.</td><td>Won stage typical trigger.</td></tr><tr><td><strong>CRM sync badge</strong></td><td>Salesforce link status.</td><td>Click to retry sync if failed.</td></tr><tr><td><strong>Owner reassign</strong></td><td>Manager action.</td><td>Notifies new owner.</td></tr></tbody></table></div></section></div><div class="doc-enrich-grid doc-enrich-grid--2"><section class="doc-block" id="common-mistakes"><h2 class="doc-block__title">Common mistakes</h2><div class="callout-stack callout-stack--dense"><div class="callout callout--warning"><div class="callout__icon">⚠️</div><div class="callout__body"><strong class="callout__title">Advancing to Won without PO plan</strong><div class="callout__text">Delivery team unprepared — create or link PO before or immediately on Won.</div></div></div><div class="callout callout--warning"><div class="callout__icon">⚠️</div><div class="callout__body"><strong class="callout__title">Documents in email only</strong><div class="callout__text">Attach to bid Documents tab — email threads are not searchable for audits.</div></div></div><div class="callout callout--warning"><div class="callout__icon">⚠️</div><div class="callout__body"><strong class="callout__title">Stale value field</strong><div class="callout__text">Forecast charts use header value — update after client negotiation.</div></div></div></div></section><section class="doc-block" id="faq"><h2 class="doc-block__title">FAQ</h2><div class="faq-list"><article class="faq-item"><h3 class="faq-item__q">Can I reopen a Lost bid?</h3><div class="faq-item__a">Org policy varies — may require manager approval and stage regression.</div></article><article class="faq-item"><h3 class="faq-item__q">How do I create PO from here?</h3><div class="faq-item__a">Link to PO action on Won bids — pre-fills account and value.</div></article><article class="faq-item"><h3 class="faq-item__q">Who sees activity comments?</h3><div class="faq-item__a">Bid team and managers with register access — not all employees.</div></article><article class="faq-item"><h3 class="faq-item__q">Does stage sync to Salesforce?</h3><div class="faq-item__a">When CRM integration enabled — check sync badge after changes.</div></article></div></section></div><section class="doc-block doc-block--related" id="related-pages"><h2 class="doc-block__title">Related pages</h2><div class="related-links"><a class="related-link" href="bid-requests.html"><span class="related-link__label">Bid Requests</span><span class="related-link__desc">Return to pipeline register.</span></a><a class="related-link" href="purchase-order-details.html"><span class="related-link__label">PO Details</span><span class="related-link__desc">After PO linked.</span></a><a class="related-link" href="../project/project-details.html"><span class="related-link__label">Project Details</span><span class="related-link__desc">If project spawned.</span></a><a class="related-link" href="../project/accounts.html"><span class="related-link__label">Accounts</span><span class="related-link__desc">Edit client on account record.</span></a></div></section></div>
+    <section class="doc-block doc-block--pair">
+      <div class="doc-split">
+        <div id="workflows"><h2 class="doc-block__title">Workflows</h2><ol><li>Open from Bid Requests list.</li><li>Review study metadata sections.</li><li>Update status as bid progresses.</li><li>On Won, create or link Purchase Order.</li></ol></div>
+        <div class="doc-block--tips" id="tips"><h2 class="doc-block__title">Tips &amp; best practices</h2><div class="info"><strong>Tip:</strong> CRM linkage donut on list page shows Salesforce integration completeness — fix unlinked bids here.</div><div class="callout-stack"><h3 class="subheading">More guidance</h3><div class="callout callout--tip"><div class="callout__icon">💡</div><div class="callout__body"><strong class="callout__title">Remember</strong><div class="callout__text">Title, stage badge, owner, account, estimated value, key dates, study metadata.</div></div></div><div class="callout callout--info"><div class="callout__icon">ℹ️</div><div class="callout__body"><strong class="callout__title">Can I reopen a Lost bid?</strong><div class="callout__text">Org policy varies — may require manager approval and stage regression.</div></div></div></div></div>
+      </div>
+    </section>
+  </div>
+</div>
+<nav class="page-nav">
+  <a class="page-nav__prev" href="bid-requests.html">← Bid Requests</a>
+  <a class="page-nav__next" href="purchase-orders.html">Purchase Orders →</a>
+</nav>
+
+</main>
+
+<footer>
+  <div class="container">
+    <p>&copy; 2026 <span data-brand>Tracopus</span>. All rights reserved.</p>
+    <p style="margin-top:0.75rem;">
+      <a href="../index.html">Documentation</a>
+      <a href="../user-guide/index.html">Scenario Guide</a>
+      <a href="../getting-started.html">Getting Started</a>
+      <a href="../charts.html">Charts</a>
+    </p>
+    <p class="footer-muted">For support, contact your workspace administrator.</p>
+  </div>
+</footer>
+
+<script src="../js/palette.js?v=20260619e"></script>
+<script src="../js/brand.js?v=20260619e"></script>
+<script src="../js/docs-utility-config.js?v=20260720b"></script>
+<script src="../js/nav-config.js?v=20260619e"></script>
+<script src="../js/navigation.js?v=20260619e"></script>
+<script src="../js/site-enhancements.js?v=20260718d"></script>
+<script src="../js/search.js?v=20260619e"></script>
+</body>
+</html>

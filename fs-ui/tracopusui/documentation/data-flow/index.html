@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en" data-lux-theme="luxury" data-lux-palette="emerald">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Data Flow — Tracopus Documentation</title>
+  <meta name="description" content="Interactive flag simulators and table-level data flows for leave policy, leave requests, timesheet, attendance, and approval delegation in Tracopus.">
+  <meta name="keywords" content="tracopus, documentation, data flow, leave policy, accrual, timesheet, attendance, delegation, app config flags">
+  <link rel="canonical" href="https://tracopus.com/documentation/data-flow/index.html">
+  <meta name="robots" content="index, follow">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Tracopus">
+  <meta property="og:title" content="Interactive Data Flow — Tracopus Documentation">
+  <meta property="og:description" content="Toggle org and role flags live; trace SQL, APIs, schedulers, and approval authority end-to-end.">
+  <meta property="og:url" content="https://tracopus.com/documentation/data-flow/index.html">
+  <script src="../js/docs-analytics.js?v=20260719a" defer></script>
+  <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css?v=20260718g">
+  <link rel="stylesheet" href="css/data-flow-hub.css?v=20260724g">
+  <script src="../js/brand-config.js?v=20260619e"></script>
+</head>
+<body data-docs-depth="1" class="data-flow-hub-page">
+
+<header aria-label="Site header"></header>
+
+<main>
+  <div class="breadcrumb"><a href="../index.html">Home</a> → Interactive Data Flow</div>
+
+  <div class="doc-canvas">
+    <header class="doc-mast">
+      <div class="doc-mast__top">
+        <span class="doc-mast__eyebrow">Documentation · Engineering reference</span>
+      </div>
+      <h1 class="doc-mast__title">Interactive data flow simulators</h1>
+      <p class="doc-mast__lead">Live flag toggles on the left, step-by-step table flows on the right. Each simulator traces real Tracopus tables (<code>fs_*</code> protected core, <code>ts_*</code> enhancement), REST APIs, schedulers, and approval authority — without changing production data.</p>
+      <p class="doc-mast__purpose">Pick a simulator below to launch the interactive tool. Toggle org/role flags and watch SQL steps, Mermaid diagrams, and capability matrices update in real time.</p>
+    </header>
+
+    <div class="doc-flow">
+      <section class="doc-block doc-block--flush-top" id="launch">
+        <h2 class="doc-block__title">Open a simulator</h2>
+        <p class="df-launch-intro">These are live learning tools — not static docs. Each page opens with a <strong>flag panel</strong> and two tabs: <strong>Table data flow</strong> and <strong>Flag behavior</strong>. Click a card to start.</p>
+        <div class="df-launch-grid df-launch-grid--all">
+          <a class="df-launch-card df-launch-card--policy" href="leave-policy-flags-data-flow.html">
+            <span class="df-launch-card__icon" aria-hidden="true">📋</span>
+            <span class="df-launch-card__label">Leave policy &amp; accrual</span>
+            <span class="df-launch-card__desc">GLP publish, opening balances, accrual &amp; carry-forward schedulers</span>
+            <span class="df-launch-card__action">Open simulator →</span>
+          </a>
+          <a class="df-launch-card df-launch-card--leave" href="leave-flags-data-flow.html">
+            <span class="df-launch-card__icon" aria-hidden="true">🏖️</span>
+            <span class="df-launch-card__label">Leave request &amp; approve</span>
+            <span class="df-launch-card__desc">SUBMITTED workflow, manager/delegate approve, promotion</span>
+            <span class="df-launch-card__action">Open simulator →</span>
+          </a>
+          <a class="df-launch-card df-launch-card--timesheet" href="timesheet-flags-data-flow.html">
+            <span class="df-launch-card__icon" aria-hidden="true">⏱️</span>
+            <span class="df-launch-card__label">Timesheet approval</span>
+            <span class="df-launch-card__desc">Week status, auto-approve flags, manager inbox</span>
+            <span class="df-launch-card__action">Open simulator →</span>
+          </a>
+          <a class="df-launch-card df-launch-card--attendance" href="attendance-flags-data-flow.html">
+            <span class="df-launch-card__icon" aria-hidden="true">✅</span>
+            <span class="df-launch-card__label">Attendance &amp; reg</span>
+            <span class="df-launch-card__desc">Mark, approve, regularization bridge</span>
+            <span class="df-launch-card__action">Open simulator →</span>
+          </a>
+          <a class="df-launch-card df-launch-card--delegation" href="delegation-flags-data-flow.html">
+            <span class="df-launch-card__icon" aria-hidden="true">🔀</span>
+            <span class="df-launch-card__label">Approval delegation</span>
+            <span class="df-launch-card__desc">resolve(), canAct, universal inbox, acting-for</span>
+            <span class="df-launch-card__action">Open simulator →</span>
+          </a>
+          <a class="df-launch-card df-launch-card--roles" href="admin-roles-flags-data-flow.html">
+            <span class="df-launch-card__icon" aria-hidden="true">🔐</span>
+            <span class="df-launch-card__label">Roles &amp; permissions</span>
+            <span class="df-launch-card__desc">personaModules, switcher, Automatic mode, Role Bar assignment</span>
+            <span class="df-launch-card__action">Open simulator →</span>
+          </a>
+          <a class="df-launch-card df-launch-card--persona" href="persona-navigation-flags-data-flow.html">
+            <span class="df-launch-card__icon" aria-hidden="true">🧭</span>
+            <span class="df-launch-card__label">Persona navigation</span>
+            <span class="df-launch-card__desc">pagePersonaMap, disabledPersonas, sidebar catalog</span>
+            <span class="df-launch-card__action">Open simulator →</span>
+          </a>
+          <a class="df-launch-card df-launch-card--wdr" href="working-day-flags-data-flow.html">
+            <span class="df-launch-card__icon" aria-hidden="true">📅</span>
+            <span class="df-launch-card__label">Working day resolver</span>
+            <span class="df-launch-card__desc">Shift policies, holidays, leave day count</span>
+            <span class="df-launch-card__action">Open simulator →</span>
+          </a>
+        </div>
+      </section>
+
+      <section class="doc-block" id="about">
+        <div class="df-hero-grid">
+          <div class="callout-stack">
+            <div class="callout callout--info">
+              <div class="callout__icon">ℹ️</div>
+              <div class="callout__body">
+                <strong class="callout__title">How these differ from screen docs &amp; scenarios</strong>
+                <div class="callout__text"><strong>Screen docs</strong> explain Luxury UI pages (charts, filters, buttons). <strong><a href="../user-guide/index.html">Scenario guide</a></strong> walks testers through clicks with permissions and checklists. <strong>Data flow simulators</strong> answer “what row changes in which table when this org flag flips?” — ideal for admins, backend engineers, and integration leads.</div>
+              </div>
+            </div>
+            <div class="callout callout--tip">
+              <div class="callout__icon">💡</div>
+              <div class="callout__body">
+                <strong class="callout__title">Two tabs on every simulator</strong>
+                <div class="callout__text"><strong>Table data flow</strong> — numbered steps, SQL samples, Mermaid diagrams, sample row diffs. <strong>Flag behavior</strong> — live journey strip, capability matrix, and change banner when you toggle a flag.</div>
+              </div>
+            </div>
+          </div>
+          <div class="df-stat-strip">
+            <div class="df-stat"><strong>8</strong><span>Simulators</span></div>
+            <div class="df-stat"><strong>2</strong><span>Tabs each</span></div>
+            <div class="df-stat"><strong>40+</strong><span>Flow steps</span></div>
+            <div class="df-stat"><strong>Live</strong><span>Flag toggles</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="doc-block" id="learning-path">
+        <h2 class="doc-block__title">Recommended learning path — leave stack</h2>
+        <p style="font-size:0.9375rem;color:var(--text-light);margin:0 0 0.75rem;">Start with policy and balances, then request/approve, then cross-cutting delegation.</p>
+        <div class="df-path">
+          <div class="df-path-step">
+            <span class="df-path-step__num">1</span>
+            <div class="df-path-step__body"><a class="df-path-link" href="leave-policy-flags-data-flow.html">Leave policy &amp; accrual</a> — Global Leave Policy Center, opening balance import, <code>LEAVE_ACCRUAL</code> / <code>LEAVE_CARRY_FORWARD</code> schedulers, balance ledger.</div>
+            <a class="df-path-step__cta" href="leave-policy-flags-data-flow.html">Open →</a>
+          </div>
+          <div class="df-path-step">
+            <span class="df-path-step__num">2</span>
+            <div class="df-path-step__body"><a class="df-path-link" href="leave-flags-data-flow.html">Leave request &amp; approve</a> — Create → SUBMITTED → manager/delegate approve → TaskActivity promotion → optional attendance sync.</div>
+            <a class="df-path-step__cta" href="leave-flags-data-flow.html">Open →</a>
+          </div>
+          <div class="df-path-step">
+            <span class="df-path-step__num">3</span>
+            <div class="df-path-step__body"><a class="df-path-link" href="delegation-flags-data-flow.html">Approval delegation</a> — <code>ts_approval_delegation_model</code>, <code>resolve()</code>, <code>canAct</code>, universal inbox, acting-for badges.</div>
+            <a class="df-path-step__cta" href="delegation-flags-data-flow.html">Open →</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="doc-block" id="simulators">
+        <h2 class="doc-block__title">Simulator details</h2>
+        <p style="font-size:0.9375rem;color:var(--text-light);margin:0 0 0.75rem;">Expanded summaries — each card links to the same interactive page as the launch strip above.</p>
+        <div class="df-card-grid df-card-grid--primary">
+          <a class="df-card df-card--policy" href="leave-policy-flags-data-flow.html">
+            <span class="df-card__eyebrow">Leave · Policy platform</span>
+            <h3>Leave policy &amp; accrual</h3>
+            <p>Global policy publish, <code>rules_json</code> accruals, employee balance rows, monthly accrual job, carry-forward/lapse, handoff to submit flow.</p>
+            <div class="df-card__meta">
+              <span class="df-tag is-leave">ts_leave_policy_version</span>
+              <span class="df-tag">Schedulers</span>
+              <span class="df-tag">GLP Center</span>
+            </div>
+            <span class="df-card__cta">Open simulator →</span>
+          </a>
+          <a class="df-card df-card--leave" href="leave-flags-data-flow.html">
+            <span class="df-card__eyebrow">Leave · Workflow</span>
+            <h3>Leave request &amp; approve</h3>
+            <p><code>fs_emp_leave_master_model</code> lifecycle, balance reserve on submit, pending SUBMITTED queue, approve/debit, promotion, universal inbox LEAVE domain.</p>
+            <div class="df-card__meta">
+              <span class="df-tag is-leave">SUBMITTED pending</span>
+              <span class="df-tag">Delegate approve</span>
+            </div>
+            <span class="df-card__cta">Open simulator →</span>
+          </a>
+          <a class="df-card df-card--timesheet" href="timesheet-flags-data-flow.html">
+            <span class="df-card__eyebrow">HRMS · Timesheet</span>
+            <h3>Timesheet flags &amp; approval</h3>
+            <p>Weekly timesheet workflow, auto-approve own/others, PENDING_APPROVAL weeks, manager approve, conflicts, reopen, TaskActivity promotion.</p>
+            <div class="df-card__meta">
+              <span class="df-tag is-ts">fs_task_activity</span>
+              <span class="df-tag">Week status</span>
+            </div>
+            <span class="df-card__cta">Open simulator →</span>
+          </a>
+          <a class="df-card df-card--attendance" href="attendance-flags-data-flow.html">
+            <span class="df-card__eyebrow">HRMS · Attendance</span>
+            <h3>Attendance &amp; regularization</h3>
+            <p>Mark attendance, PENDING_APPROVAL / auto-approve paths, regularization bridge to <code>fs_user_attendance_model</code>, delegate acting-for on pending.</p>
+            <div class="df-card__meta">
+              <span class="df-tag is-att">fs_user_attendance_model</span>
+              <span class="df-tag">Regularization</span>
+            </div>
+            <span class="df-card__cta">Open simulator →</span>
+          </a>
+          <a class="df-card df-card--delegation" href="delegation-flags-data-flow.html">
+            <span class="df-card__eyebrow">Cross-cutting · Authority</span>
+            <h3>Approval delegation</h3>
+            <p>Org master flag, delegation scopes (TIMESHEET / LEAVE / ATTENDANCE), effectiveApproverIds, per-domain pending queries, universal inbox merge + act.</p>
+            <div class="df-card__meta">
+              <span class="df-tag is-del">ts_approval_delegation</span>
+              <span class="df-tag">canAct</span>
+            </div>
+            <span class="df-card__cta">Open simulator →</span>
+          </a>
+          <a class="df-card df-card--roles" href="admin-roles-flags-data-flow.html">
+            <span class="df-card__eyebrow">Admin · RBAC</span>
+            <h3>Roles &amp; permissions</h3>
+            <p><code>personaModules</code>, Automatic vs configured allow list, defaultPersona, switcher, page preview → org <code>pagePersonaMap</code>, Role Bar inheritance.</p>
+            <div class="df-card__meta">
+              <span class="df-tag is-del">role.json</span>
+              <span class="df-tag">personaModules</span>
+            </div>
+            <span class="df-card__cta">Open simulator →</span>
+          </a>
+          <a class="df-card df-card--persona" href="persona-navigation-flags-data-flow.html">
+            <span class="df-card__eyebrow">Admin · Access</span>
+            <h3>Persona navigation</h3>
+            <p><code>personaNavigationAdditional</code>, disabledPersonas/paths/modules, pagePersonaMap route guards, role persona catalog merge.</p>
+            <div class="df-card__meta">
+              <span class="df-tag is-del">pagePersonaMap</span>
+              <span class="df-tag">Org kills</span>
+            </div>
+            <span class="df-card__cta">Open simulator →</span>
+          </a>
+          <a class="df-card df-card--wdr" href="working-day-flags-data-flow.html">
+            <span class="df-card__eyebrow">Leave · Calendar</span>
+            <h3>Working day resolver</h3>
+            <p>Shift policy assignment, jurisdiction holidays, WDR fallback chain, <code>leaveBlockNonWorkingDayLeave</code> validation on apply.</p>
+            <div class="df-card__meta">
+              <span class="df-tag is-att">fs_holiday_model</span>
+              <span class="df-tag">Shift policy</span>
+            </div>
+            <span class="df-card__cta">Open simulator →</span>
+          </a>
+        </div>
+      </section>
+
+      <section class="doc-block" id="coverage">
+        <h2 class="doc-block__title">What each simulator covers</h2>
+        <div class="df-table-wrap">
+          <table class="df-table">
+            <thead>
+              <tr><th>Simulator</th><th>Primary tables</th><th>Key org flags</th><th>Related guides</th><th></th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a href="leave-policy-flags-data-flow.html">Leave policy &amp; accrual</a></td>
+                <td><code>ts_leave_global_policy</code>, <code>ts_leave_policy_version</code>, balance ledger, <code>fs_schedule_model</code></td>
+                <td><code>leaveManagementEnabled</code>, <code>globalLeavePoliciesEnabled</code></td>
+                <td><a href="../user-guide/admin/admin-configure-global-leave.html">Configure global leave</a>, <a href="../user-guide/admin/admin-leave-ob-bulk-import.html">OB import</a></td>
+                <td><a class="df-table-open" href="leave-policy-flags-data-flow.html">Open</a></td>
+              </tr>
+              <tr>
+                <td><a href="leave-flags-data-flow.html">Leave request &amp; approve</a></td>
+                <td><code>fs_emp_leave_master_model</code>, balance engine, <code>fs_task_activity_model</code></td>
+                <td><code>leaveManagementEnabled</code>, <code>leaveAutoSyncToAttendance</code></td>
+                <td><a href="../user-guide/hrms/hrms-apply-leave.html">Apply leave</a>, <a href="../user-guide/hrms/hrms-approve-leave.html">Approve leave</a></td>
+                <td><a class="df-table-open" href="leave-flags-data-flow.html">Open</a></td>
+              </tr>
+              <tr>
+                <td><a href="timesheet-flags-data-flow.html">Timesheet</a></td>
+                <td>Timesheet week / day / submission staging, TaskActivity hours</td>
+                <td><code>timesheetApprovalEnabled</code>, <code>partialWeekSubmissionEnabled</code>, auto-approve flags</td>
+                <td><a href="../user-guide/hrms/hrms-log-timesheet.html">Log timesheet</a>, <a href="../user-guide/hrms/hrms-approve-timesheet.html">Approve timesheet</a></td>
+                <td><a class="df-table-open" href="timesheet-flags-data-flow.html">Open</a></td>
+              </tr>
+              <tr>
+                <td><a href="attendance-flags-data-flow.html">Attendance</a></td>
+                <td><code>fs_user_attendance_model</code>, regularization model</td>
+                <td><code>attendanceEnabled</code>, <code>attendanceRegularizationEnabled</code></td>
+                <td><a href="../user-guide/hrms/hrms-mark-attendance.html">Mark attendance</a>, <a href="../user-guide/hrms/hrms-approve-attendance.html">Approve attendance</a></td>
+                <td><a class="df-table-open" href="attendance-flags-data-flow.html">Open</a></td>
+              </tr>
+        <tr>
+          <td><a href="delegation-flags-data-flow.html">Delegation</a></td>
+          <td><code>ts_approval_delegation_model</code>, inbox adapters</td>
+          <td><code>approvalDelegationEnabled</code>, <code>universalApprovalInboxEnabled</code></td>
+          <td><a href="../workspace/approvals.html">My Approvals</a>, <a href="../user-guide/workspace/workspace-approvals.html">Workspace flow</a></td>
+          <td><a class="df-table-open" href="delegation-flags-data-flow.html">Open</a></td>
+        </tr>
+        <tr>
+          <td><a href="admin-roles-flags-data-flow.html">Roles &amp; permissions</a></td>
+          <td><code>role.json</code>, Application Config Role Bar</td>
+          <td><code>rbacAdminEnabled</code>, <code>personaModules</code>, <code>adminModules.rolesEnabled</code></td>
+          <td><a href="../hrms/roles-permissions.html">Roles screen guide</a>, <a href="../user-guide/admin/admin-role-permissions.html">Admin scenario</a></td>
+          <td><a class="df-table-open" href="admin-roles-flags-data-flow.html">Open</a></td>
+        </tr>
+        <tr>
+          <td><a href="persona-navigation-flags-data-flow.html">Persona navigation</a></td>
+          <td>Application Config snapshot, sidebar catalog</td>
+          <td><code>personaNavigationEnabled</code>, disabledPersonas, pagePersonaMap</td>
+          <td><a href="../hrms/persona-navigation.html">Persona navigation</a>, <a href="../user-guide/admin/admin-persona-navigation.html">Admin scenario</a></td>
+          <td><a class="df-table-open" href="persona-navigation-flags-data-flow.html">Open</a></td>
+        </tr>
+        <tr>
+          <td><a href="working-day-flags-data-flow.html">Working day resolver</a></td>
+          <td>Shift policy, <code>fs_holiday_model</code>, jurisdiction WDR</td>
+          <td><code>shiftPoliciesEnabled</code>, <code>leaveBlockNonWorkingDayLeave</code></td>
+          <td><a href="../hrms/shift-policies.html">Shift policies</a>, <a href="../hrms/leave-configuration.html">Leave config</a></td>
+          <td><a class="df-table-open" href="working-day-flags-data-flow.html">Open</a></td>
+        </tr>
+      </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="doc-block" id="schedulers">
+        <h2 class="doc-block__title">Schedulers referenced in simulators</h2>
+        <div class="concept-grid">
+          <article class="concept-card"><h3 class="concept-card__title">LEAVE_ACCRUAL</h3><p class="concept-card__desc">Monthly (1st, 06:00) — credits entitlements from published policy or classic config; idempotent ledger rows with <code>periodKey=yyyy-MM</code>.</p></article>
+          <article class="concept-card"><h3 class="concept-card__title">LEAVE_CARRY_FORWARD</h3><p class="concept-card__desc">Daily scan — applies carry-forward caps and fiscal/calendar lapse rules from <code>rules_json</code>.</p></article>
+          <article class="concept-card"><h3 class="concept-card__title">LEAVE_PROMOTION_RETRY</h3><p class="concept-card__desc">Every 15 min (optional) — retries failed TaskActivity promotion after leave approve.</p></article>
+          <article class="concept-card"><h3 class="concept-card__title">APPROVAL_SLA_REMINDER</h3><p class="concept-card__desc">Daily reminder emails for SUBMITTED leave / pending approvals when org reminder flag is on.</p></article>
+        </div>
+      </section>
+
+      <section class="doc-block" id="related">
+        <h2 class="doc-block__title">Related documentation</h2>
+        <div class="page-index-grid">
+          <a class="page-index-card" href="../hrms/leave-configuration.html"><strong>Leave configuration screen</strong><span>Policies, holidays, balances in Luxury UI</span></a>
+          <a class="page-index-card" href="../hrms/leaves.html"><strong>Leave management screen</strong><span>Employee register &amp; pending approvals UI</span></a>
+          <a class="page-index-card" href="../hrms/application-config.html"><strong>Application config reference</strong><span>org.json + role.json flag keys</span></a>
+          <a class="page-index-card" href="../user-flows/index.html"><strong>User flows hub</strong><span>Scenario ↔ screen ↔ catalog bridges</span></a>
+          <a class="page-index-card" href="../api-docs.html"><strong>API docs</strong><span>REST endpoints referenced in flow steps</span></a>
+        </div>
+      </section>
+
+      <section class="doc-block" id="faq">
+        <h2 class="doc-block__title">Frequently asked questions</h2>
+        <div class="faq-list">
+          <article class="faq-item"><h3 class="faq-item__q">Do flag toggles change my workspace?</h3><div class="faq-item__a">No. Simulators are read-only learning tools in the documentation site. They show what <em>would</em> happen if flags were ON or OFF — they do not call your Tracopus backend.</div></article>
+          <article class="faq-item"><h3 class="faq-item__q">Which simulator should I open first for leave go-live?</h3><div class="faq-item__a">Start with <a href="leave-policy-flags-data-flow.html">Leave policy &amp; accrual</a> (publish policy, import opening balances, verify accrual job), then <a href="leave-flags-data-flow.html">Leave request &amp; approve</a> for the employee/manager workflow.</div></article>
+          <article class="faq-item"><h3 class="faq-item__q">Where is SQL in the simulators?</h3><div class="faq-item__a">Each step in the <strong>Table data flow</strong> tab includes representative SQL blocks and sample row tables showing column values before/after the step.</div></article>
+          <article class="faq-item"><h3 class="faq-item__q">How do simulators relate to Application Config?</h3><div class="faq-item__a">Org flags come from <code>modules.HRMS.configurations.leaveAdditional</code> (and related paths). See <a href="../hrms/application-config.html">Application config reference</a> for the full key list; simulators show runtime effect per flag.</div></article>
+        </div>
+      </section>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <p>&copy; 2026 <span data-brand>Tracopus</span>. Interactive Data Flow reference.</p>
+    <p style="margin-top:0.75rem;">
+      <a href="../index.html">Documentation</a>
+      <a href="leave-policy-flags-data-flow.html">Leave policy simulator</a>
+      <a href="leave-flags-data-flow.html">Leave request simulator</a>
+      <a href="../user-guide/index.html">Scenario Guide</a>
+    </p>
+  </div>
+</footer>
+
+<script src="../js/palette.js?v=20260619e"></script>
+<script src="../js/brand.js?v=20260619e"></script>
+<script src="../js/docs-utility-config.js?v=20260720b"></script>
+<script src="../js/nav-config.js?v=20260724b"></script>
+<script src="../js/navigation.js?v=20260619e"></script>
+<script src="../js/site-enhancements.js?v=20260718d"></script>
+<script src="../js/search.js?v=20260619e"></script>
+</body>
+</html>

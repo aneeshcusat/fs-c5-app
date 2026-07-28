@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en" data-lux-theme="luxury" data-lux-palette="emerald">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task Activity — Tracopus User Guide</title>
+  <meta name="description" content="Month view and activity registers that combine scheduling context with execution analytics.">
+  <meta name="keywords" content="tracopus, documentation, user guide, project, task, activity">
+  <link rel="canonical" href="https://tracopus.com/documentation/project/task-activity.html">
+  <meta name="robots" content="index, follow">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Tracopus">
+  <meta property="og:title" content="Task Activity — Tracopus User Guide">
+  <meta property="og:description" content="Month view and activity registers that combine scheduling context with execution analytics.">
+  <meta property="og:url" content="https://tracopus.com/documentation/project/task-activity.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Task Activity — Tracopus User Guide">
+  <meta name="twitter:description" content="Month view and activity registers that combine scheduling context with execution analytics.">
+  <script src="../js/docs-analytics.js?v=20260719a" defer></script>
+  <link rel="apple-touch-icon" href="../images/tracopus-logo.png">
+  <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css?v=20260718g">
+  <script src="../js/brand-config.js?v=20260619e"></script>
+</head>
+<body data-docs-depth="1">
+
+<header aria-label="Site header"></header>
+
+
+
+<main>
+    <div class="breadcrumb"><a href="../index.html">Home</a> → Project → Task Activity</div>
+  
+<div class="doc-canvas">
+  <header class="doc-mast">
+    <div class="doc-mast__top">
+      <span class="doc-mast__eyebrow">Project · Activity Calendar</span>
+      <div class="page-meta page-meta--inline">
+        <span class="page-meta__item"><strong>Route</strong> <code>/project/activites</code></span>
+        <span class="page-meta__item"><strong>Menu</strong> Project → Task Activity</span>
+      </div>
+    </div>
+    <h1 class="doc-mast__title">Task Activity</h1>
+    <p class="doc-mast__lead">Month view and activity registers that combine scheduling context with execution analytics.</p>
+    <p class="doc-mast__purpose">Calendar-oriented activity tracking with pending/active registers and assignment workflows.</p>
+  </header>
+
+  <div class="doc-flow">
+    <section class="doc-block" id="overview"><h2 class="doc-block__title">Overview</h2><p>Task Activity connects calendar scheduling with actual activity execution, including assignment and checklist progress.</p></section>
+    <section class="doc-block doc-block--pair">
+      <div class="doc-split">
+        <div id="layout"><h2 class="doc-block__title">Screen layout</h2><p><strong>Top:</strong> Month controls and holiday context.<br><strong>Body:</strong> Pending/active activity tables and assignment panels.</p></div>
+        <div id="header-filters"><h2 class="doc-block__title">Header &amp; filters</h2><p>Use month/date scope, status filters, and search controls to focus operational windows.</p></div>
+      </div>
+    </section>
+    <section class="doc-block doc-block--summary lux-summary-section" id="summary-section"><h2 class="doc-block__title">Summary &amp; charts</h2><div class="lux-summary-block"><p class="lux-summary-intro">The <strong>Lux summary strip</strong> at the top of this screen is collapsible. Expand it to reveal KPI tiles and chart panels; collapse it for a wider register. All charts respect your active filters (SHOW preset, team scope, date range, text search).</p><p class="lux-summary-detail">Work item analytics for the filtered activity register.</p><div class="lux-summary-note"><span class="lux-summary-note__icon">◆</span> Emerald Luxury UI theme · chart data refreshes when filters change</div><h3 class="lux-summary-heading">Activity summary charts</h3><div class="lux-chart-grid"><article class="lux-chart-card">
+  <div class="lux-chart-card__head">
+    <h4 class="lux-chart-card__title">Status mix</h4>
+    <span class="badge badge-donut">Donut</span>
+  </div>
+  <dl class="lux-chart-card__meta">
+    <dt>What it measures</dt><dd>Completed, in progress, assigned, etc.</dd>
+    <dt>How to read it</dt><dd>Progress distribution</dd>
+    <dt>How to use it</dt><dd>Sprint health</dd>
+  </dl>
+  <p class="lux-chart-card__action"><strong>When to act:</strong> Clear in-progress items</p>
+</article><article class="lux-chart-card">
+  <div class="lux-chart-card__head">
+    <h4 class="lux-chart-card__title">Priority breakdown</h4>
+    <span class="badge badge-bar">Bar</span>
+  </div>
+  <dl class="lux-chart-card__meta">
+    <dt>What it measures</dt><dd>Urgent through low</dd>
+    <dt>How to read it</dt><dd>Escalation load</dd>
+    <dt>How to use it</dt><dd>Daily triage</dd>
+  </dl>
+  <p class="lux-chart-card__action"><strong>When to act:</strong> Address urgent bar first</p>
+</article><article class="lux-chart-card">
+  <div class="lux-chart-card__head">
+    <h4 class="lux-chart-card__title">Checklist progress</h4>
+    <span class="badge badge-donut">Donut</span>
+  </div>
+  <dl class="lux-chart-card__meta">
+    <dt>What it measures</dt><dd>Done vs open checklist items</dd>
+    <dt>How to read it</dt><dd>Sub-task completion</dd>
+    <dt>How to use it</dt><dd>Quality gate</dd>
+  </dl>
+  <p class="lux-chart-card__action"><strong>When to act:</strong> Close open checklist items</p>
+</article><article class="lux-chart-card">
+  <div class="lux-chart-card__head">
+    <h4 class="lux-chart-card__title">Activity type</h4>
+    <span class="badge badge-bar">Bar</span>
+  </div>
+  <dl class="lux-chart-card__meta">
+    <dt>What it measures</dt><dd>Work item type distribution</dd>
+    <dt>How to read it</dt><dd>Work mix</dd>
+    <dt>How to use it</dt><dd>Process analytics</dd>
+  </dl>
+  <p class="lux-chart-card__action"><strong>When to act:</strong> Filter activity list</p>
+</article><article class="lux-chart-card">
+  <div class="lux-chart-card__head">
+    <h4 class="lux-chart-card__title">Outcome</h4>
+    <span class="badge badge-donut">Donut</span>
+  </div>
+  <dl class="lux-chart-card__meta">
+    <dt>What it measures</dt><dd>Success / partial / blocked outcomes</dd>
+    <dt>How to read it</dt><dd>Delivery quality</dd>
+    <dt>How to use it</dt><dd>Retro input</dd>
+  </dl>
+  <p class="lux-chart-card__action"><strong>When to act:</strong> Investigate blocked outcomes</p>
+</article></div></div></section>
+    <section class="doc-block" id="main"><h2 class="doc-block__title">Main content &amp; actions</h2><p>Open activity records for detail, update outcomes, and assign work directly from this page context.</p></section>
+    <section class="doc-block doc-block--features" id="complete-features">
+  <h2 class="doc-block__title">Complete feature list</h2>
+  <p class="lux-features-intro">Every control, panel, and workflow on this screen.</p>
+  <ul class="lux-feature-list lux-feature-list--dense"><li class="lux-feature-item"><span class="lux-feature-item__icon">✓</span><div><strong>Luxury UI shell</strong><span>Emerald-themed glass cards, sticky gradient header, module sidebar, and responsive layout.</span></div></li><li class="lux-feature-item"><span class="lux-feature-item__icon">✓</span><div><strong>Documentation search</strong><span>Header search indexes all guide pages (docs site).</span></div></li><li class="lux-feature-item"><span class="lux-feature-item__icon">✓</span><div><strong>Collapsible summary strip</strong><span>KPI row and chart gallery above the register; expand/collapse persists in browser storage.</span></div></li><li class="lux-feature-item"><span class="lux-feature-item__icon">✓</span><div><strong>Activity register</strong><span>Detailed work item list with rich filters.</span></div></li><li class="lux-feature-item"><span class="lux-feature-item__icon">✓</span><div><strong>Five activity charts</strong><span>Status, priority, checklist, type, outcome.</span></div></li><li class="lux-feature-item"><span class="lux-feature-item__icon">✓</span><div><strong>CREATE activity</strong><span>New work item with checklist support.</span></div></li><li class="lux-feature-item"><span class="lux-feature-item__icon">✓</span><div><strong>Bulk update</strong><span>Multi-select status/assignee changes.</span></div></li></ul>
+</section>
+    <div class="doc-enrichment"><section class="doc-block doc-block--callouts" id="page-callouts"><h2 class="doc-block__title">Before you start</h2><div class="callout-stack callout-stack--dense"><div class="callout callout--info"><div class="callout__icon">ℹ️</div><div class="callout__body"><strong class="callout__title">Status report source</strong><div class="callout__text">Screenshot five charts after setting project filter for steering deck.</div></div></div><div class="callout callout--tip"><div class="callout__icon">💡</div><div class="callout__body"><strong class="callout__title">Outcome hygiene</strong><div class="callout__text">Set outcome when moving to Done — feeds quarterly retros.</div></div></div></div></section><div class="doc-enrich-grid"><section class="doc-block" id="who-uses-this"><h2 class="doc-block__title">Who uses this screen</h2><p class="audience-text">PMs and team leads who need rich filters and five analytics charts on the activity register — checklist progress, priority mix, and outcomes.</p><div class="callout callout--info"><div class="callout__icon">ℹ️</div><div class="callout__body"><strong class="callout__title">Analytics activity register</strong><div class="callout__text">Choose task-activity over taskboard when preparing status reports — five chart types summarize portfolio health.</div></div></div></section><section class="doc-block" id="key-concepts"><h2 class="doc-block__title">Key concepts</h2><div class="concept-grid"><article class="concept-card"><h3 class="concept-card__title">Activity register</h3><p class="concept-card__desc">Dense table of work items with priority, checklist %, outcome, type.</p></article><article class="concept-card"><h3 class="concept-card__title">Five activity charts</h3><p class="concept-card__desc">Status, priority, checklist progress, activity type, outcome donuts/bars.</p></article><article class="concept-card"><h3 class="concept-card__title">CREATE activity</h3><p class="concept-card__desc">Same modal as work-items with checklist template support.</p></article><article class="concept-card"><h3 class="concept-card__title">Bulk update</h3><p class="concept-card__desc">Multi-select status and assignee.</p></article><article class="concept-card"><h3 class="concept-card__title">Outcome tracking</h3><p class="concept-card__desc">Success / partial / blocked for retrospective analytics.</p></article></div></section><section class="doc-block" id="permissions"><h2 class="doc-block__title">Permissions</h2><div class="table-wrap"><table class="table table--permissions"><thead><tr><th>Role</th><th>Access on this screen</th></tr></thead><tbody><tr><td><strong>Project manager</strong></td><td>Full create/bulk on scoped activities.</td></tr><tr><td><strong>Delivery lead</strong></td><td>Bulk and analytics across team.</td></tr><tr><td><strong>Individual contributor</strong></td><td>Edit assigned rows; limited bulk.</td></tr><tr><td><strong>Viewer</strong></td><td>Read-only with chart access.</td></tr></tbody></table></div><div class="callout callout--note"><div class="callout__icon">📝</div><div class="callout__body"><strong class="callout__title">Administrator override</strong><div class="callout__text">Org administrators and service accounts configured in the Admin console may bypass row-level scopes shown above. When in doubt, confirm access with your Tracopus administrator.</div></div></div></section><section class="doc-block" id="controls-reference"><h2 class="doc-block__title">Controls reference</h2><div class="table-wrap"><table class="table table--controls"><thead><tr><th>Control</th><th>Description</th><th>Notes</th></tr></thead><tbody><tr><td><strong>CREATE activity</strong></td><td>New item with checklist.</td><td>Link deliverable.</td></tr><tr><td><strong>Filters</strong></td><td>Status, priority, project, assignee.</td><td>Lux header.</td></tr><tr><td><strong>Bulk select</strong></td><td>Checkbox column.</td><td>—</td></tr><tr><td><strong>Bulk update bar</strong></td><td>Status/assignee apply.</td><td>PM role.</td></tr><tr><td><strong>Summary charts</strong></td><td>Five panel gallery.</td><td>Filter-scoped.</td></tr><tr><td><strong>Row detail</strong></td><td>Full activity editor.</td><td>—</td></tr><tr><td><strong>Export</strong></td><td>CSV for reports.</td><td>—</td></tr></tbody></table></div></section></div><div class="doc-enrich-grid doc-enrich-grid--2"><section class="doc-block" id="common-mistakes"><h2 class="doc-block__title">Common mistakes</h2><div class="callout-stack callout-stack--dense"><div class="callout callout--warning"><div class="callout__icon">⚠️</div><div class="callout__body"><strong class="callout__title">Outcome never set</strong><div class="callout__text">Outcome donut useless — set on complete for retrospectives.</div></div></div><div class="callout callout--warning"><div class="callout__icon">⚠️</div><div class="callout__body"><strong class="callout__title">Checklist 0%</strong><div class="callout__text">Break down tasks — large activities hide slip until due date.</div></div></div><div class="callout callout--warning"><div class="callout__icon">⚠️</div><div class="callout__body"><strong class="callout__title">Export without filter</strong><div class="callout__text">Huge CSV — set project and date filters first.</div></div></div></div></section><section class="doc-block" id="faq"><h2 class="doc-block__title">FAQ</h2><div class="faq-list"><article class="faq-item"><h3 class="faq-item__q">Work items vs task-activity?</h3><div class="faq-item__a">Same data — task-activity adds outcome field emphasis and five charts.</div></article><article class="faq-item"><h3 class="faq-item__q">Checklist progress calculation?</h3><div class="faq-item__a">Done items / total items on activity.</div></article><article class="faq-item"><h3 class="faq-item__q">Blocked outcome?</h3><div class="faq-item__a">Use when external dependency — appears in outcome donut.</div></article><article class="faq-item"><h3 class="faq-item__q">Can charts drill to rows?</h3><div class="faq-item__a">Click segments where enabled to filter register.</div></article></div></section></div><section class="doc-block doc-block--related" id="related-pages"><h2 class="doc-block__title">Related pages</h2><div class="related-links"><a class="related-link" href="taskboard.html"><span class="related-link__label">Taskboard</span><span class="related-link__desc">Kanban for daily moves.</span></a><a class="related-link" href="work-items.html"><span class="related-link__label">Work Items</span><span class="related-link__desc">Simpler register without outcome chart.</span></a><a class="related-link" href="reports.html"><span class="related-link__label">Reports</span><span class="related-link__desc">Est vs Actual export.</span></a><a class="related-link" href="team-capacity.html"><span class="related-link__label">Team Capacity</span><span class="related-link__desc">Who is overloaded.</span></a></div></section></div>
+    <section class="doc-block doc-block--pair">
+      <div class="doc-split">
+        <div id="workflows"><h2 class="doc-block__title">Workflows</h2><ol><li>Select month and date scope.</li><li>Review pending activities.</li><li>Use assign panel for ownership updates.</li><li>Track outcome and checklist completion.</li></ol></div>
+        <div class="doc-block--tips" id="tips"><h2 class="doc-block__title">Tips &amp; best practices</h2><div class="note"><strong>Tip:</strong> Monitor checklist and outcome panels together to spot blocked tasks before due dates slip.</div><div class="callout-stack"><h3 class="subheading">More guidance</h3><div class="callout callout--tip"><div class="callout__icon">💡</div><div class="callout__body"><strong class="callout__title">Remember</strong><div class="callout__text">Dense table of work items with priority, checklist %, outcome, type.</div></div></div><div class="callout callout--info"><div class="callout__icon">ℹ️</div><div class="callout__body"><strong class="callout__title">Work items vs task-activity?</strong><div class="callout__text">Same data — task-activity adds outcome field emphasis and five charts.</div></div></div></div></div>
+      </div>
+    </section>
+  </div>
+</div>
+<nav class="page-nav">
+  <a class="page-nav__prev" href="taskboard.html">← Task Board</a>
+  <a class="page-nav__next" href="team-capacity.html">Team Capacity →</a>
+</nav>
+
+</main>
+
+<footer>
+  <div class="container">
+    <p>&copy; 2026 <span data-brand>Tracopus</span>. All rights reserved.</p>
+    <p style="margin-top:0.75rem;">
+      <a href="../index.html">Documentation</a>
+      <a href="../user-guide/index.html">Scenario Guide</a>
+      <a href="../getting-started.html">Getting Started</a>
+      <a href="../charts.html">Charts</a>
+    </p>
+    <p class="footer-muted">For support, contact your workspace administrator.</p>
+  </div>
+</footer>
+
+<script src="../js/palette.js?v=20260619e"></script>
+<script src="../js/brand.js?v=20260619e"></script>
+<script src="../js/docs-utility-config.js?v=20260720b"></script>
+<script src="../js/nav-config.js?v=20260619e"></script>
+<script src="../js/navigation.js?v=20260619e"></script>
+<script src="../js/site-enhancements.js?v=20260718d"></script>
+<script src="../js/search.js?v=20260619e"></script>
+</body>
+</html>

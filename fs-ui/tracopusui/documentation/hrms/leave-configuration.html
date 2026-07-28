@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en" data-lux-theme="luxury" data-lux-palette="emerald">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leave Configuration — Tracopus User Guide</title>
+  <meta name="description" content="Administrator guide: enable leave, publish policies, map holidays and working weeks, assign employee balances and jurisdictions, then prove apply → approve end ">
+  <meta name="keywords" content="tracopus, documentation, user guide, hrms, leave, configuration">
+  <link rel="canonical" href="https://tracopus.com/documentation/hrms/leave-configuration.html">
+  <meta name="robots" content="index, follow">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Tracopus">
+  <meta property="og:title" content="Leave Configuration — Tracopus User Guide">
+  <meta property="og:description" content="Administrator guide: enable leave, publish policies, map holidays and working weeks, assign employee balances and jurisdictions, then prove apply → approve end ">
+  <meta property="og:url" content="https://tracopus.com/documentation/hrms/leave-configuration.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Leave Configuration — Tracopus User Guide">
+  <meta name="twitter:description" content="Administrator guide: enable leave, publish policies, map holidays and working weeks, assign employee balances and jurisdictions, then prove apply → approve end ">
+  <script src="../js/docs-analytics.js?v=20260719a" defer></script>
+  <link rel="stylesheet" href="../css/styles.css?v=20260718g">
+  <link rel="stylesheet" href="../css/data-flow-bridge.css?v=20260724d">
+  <script src="../js/brand-config.js?v=20260619e"></script>
+</head>
+<body data-docs-depth="1">
+
+<header aria-label="Site header"></header>
+
+<main>
+  <div class="breadcrumb"><a href="../index.html">Home</a> → HRMS → Leave Configuration</div>
+
+  <div class="doc-canvas">
+    <header class="doc-mast">
+      <div class="doc-mast__top">
+        <span class="doc-mast__eyebrow">HRMS · Leave Configuration</span>
+        <div class="page-meta page-meta--inline">
+          <span class="page-meta__item"><strong>Hub</strong> <code>/admin/leave/global-policy-center</code></span>
+          <span class="page-meta__item"><strong>Org flag</strong> <code>leaveManagementEnabled</code></span>
+          <span class="page-meta__item"><strong>Role</strong> <code>globalLeavePoliciesEnabled</code></span>
+        </div>
+      </div>
+      <h1 class="doc-mast__title">Leave Configuration</h1>
+      <p class="doc-mast__lead">Administrator guide: enable leave, publish policies, map holidays and working weeks, assign employee balances and jurisdictions, then prove apply → approve end to end.</p>
+      <p class="doc-mast__purpose">Scroll to <a href="#flowcharts">Flowcharts</a> for animated step-by-step diagrams. Runtime leave UI: <a href="leaves.html">Leave Management</a>.</p>
+    </header>
+
+    <div class="doc-flow">
+      <section class="doc-block doc-block--data-flow-bridge" id="one-stop-guide-link" aria-label="Leave Management One-Stop Guide">
+        <h2 class="doc-block__title">One-stop leave guide</h2>
+        <p class="df-bridge-lead">End-to-end configure → dry-run balances → schedulers → apply/approve, plus a Data Flow &amp; Technical Debug tab — single HTML for HR and support.</p>
+        <div class="df-bridge-actions">
+          <a class="df-bridge-cta df-bridge-cta--primary" href="leave-management-one-stop.html"><span>Start here</span><strong>Open Leave One-Stop Guide →</strong></a>
+          <a class="df-bridge-cta" href="leave-policies-guide.html"><span>Policies catalogue</span><strong>Leave Policies User Guide →</strong></a>
+          <a class="df-bridge-cta" href="leave-policies-guide.html#tab-configure"><span>Configure</span><strong>How to configure policies →</strong></a>
+          <a class="df-bridge-link" href="leaves.html">Leave Management (runtime)</a>
+        </div>
+      </section>
+
+      <section class="doc-block doc-block--data-flow-bridge" id="interactive-data-flow">
+        <h2 class="doc-block__title">Interactive data flow</h2>
+        <p class="df-bridge-lead">Trace GLP publish, balance ledger, accrual schedulers, and working-day resolver chain used before employees apply leave.</p>
+        <div class="df-bridge-actions">
+          <a class="df-bridge-cta df-bridge-cta--primary" href="../data-flow/leave-policy-flags-data-flow.html"><span>Primary simulator</span><strong>Leave policy &amp; accrual →</strong></a>
+          <a class="df-bridge-cta" href="../data-flow/working-day-flags-data-flow.html"><span>Working days</span><strong>Shift + holidays WDR →</strong></a>
+          <a class="df-bridge-link" href="../data-flow/index.html">All simulators</a>
+        </div>
+      </section>
+
+      <section class="doc-block" id="flowcharts">
+        <h2 class="doc-block__title">Flowcharts</h2>
+        <p>Each diagram auto-plays steps when it scrolls into view. Use <strong>Play / Pause</strong>, or click a step. Matching nodes highlight as the narration advances.</p>
+
+        <article class="diagram-card" data-diagram-autoplay="true">
+          <header class="diagram-card__head">
+            <div class="diagram-card__titles">
+              <h3>1 — Configure then use (big picture)</h3>
+              <p class="diagram-card__desc">Admin setup first, then everyday apply/approve. Share this view with HR before go-live.</p>
+            </div>
+            <div class="diagram-card__controls">
+              <button type="button" data-diagram-prev aria-label="Previous step"><i class="fe fe-chevron-left" aria-hidden="true"></i></button>
+              <button type="button" data-diagram-play aria-pressed="false"><i class="fe fe-play" aria-hidden="true"></i><span>Play</span></button>
+              <button type="button" data-diagram-next aria-label="Next step"><i class="fe fe-chevron-right" aria-hidden="true"></i></button>
+            </div>
+          </header>
+          <div class="diagram-card__chart"><pre class="mermaid">
+flowchart TD
+  A[Enable flags] --> B[Publish policy]
+  B --> C[Holidays and working days]
+  C --> D[Balances / jurisdiction]
+  D --> E[Employee applies]
+  E --> F[Manager approves]
+  F --> G[Attendance and timesheet]
+          </pre></div>
+          <ol class="diagram-steps">
+            <li class="diagram-step is-active"><span class="diagram-step__index">1</span><div class="diagram-step__body"><strong>Enable flags</strong><span>Turn on leaveManagementEnabled (and Global Leave role modules) in Application Config.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">2</span><div class="diagram-step__body"><strong>Publish policy</strong><span>Jurisdiction → template → draft → simulate → publish in Global Policy Center.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">3</span><div class="diagram-step__body"><strong>Holidays and working days</strong><span>Assign holiday calendar keys and weekly-off rules (team / country / employee).</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">4</span><div class="diagram-step__body"><strong>Balances / jurisdiction</strong><span>Employee leave config: OB template → dry-run import or Adjust balance; assign jurisdictions when needed.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">5</span><div class="diagram-step__body"><strong>Employee applies</strong><span>Leave Management apply drawer with resolved day count.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">6</span><div class="diagram-step__body"><strong>Manager approves</strong><span>Pending panel or Approvals inbox.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">7</span><div class="diagram-step__body"><strong>Attendance and timesheet</strong><span>Promotion + optional leave→attendance sync.</span></div></li>
+          </ol>
+          <p class="diagram-card__progress" data-diagram-progress></p>
+        </article>
+
+        <article class="diagram-card" data-diagram-autoplay="true">
+          <header class="diagram-card__head">
+            <div class="diagram-card__titles">
+              <h3>2 — How to configure leave (admin path)</h3>
+              <p class="diagram-card__desc">Ordered go-live checklist as a flowchart — complete each step before the next.</p>
+            </div>
+            <div class="diagram-card__controls">
+              <button type="button" data-diagram-prev aria-label="Previous step"><i class="fe fe-chevron-left" aria-hidden="true"></i></button>
+              <button type="button" data-diagram-play aria-pressed="false"><i class="fe fe-play" aria-hidden="true"></i><span>Play</span></button>
+              <button type="button" data-diagram-next aria-label="Next step"><i class="fe fe-chevron-right" aria-hidden="true"></i></button>
+            </div>
+          </header>
+          <div class="diagram-card__chart"><pre class="mermaid">
+flowchart TD
+  F1[1. App Config flags] --> F2[2. Create jurisdiction]
+  F2 --> F3[3. Template to draft policy]
+  F3 --> F4[4. Simulate / Policy Test Lab]
+  F4 --> F5[5. Publish version]
+  F5 --> F6[6. People holidays + calendar key]
+  F6 --> F7[7. Working-day rules]
+  F7 --> F8[8. Opening balances or accrual]
+  F8 --> F9[9. Prove apply and approve]
+          </pre></div>
+          <ol class="diagram-steps">
+            <li class="diagram-step is-active"><span class="diagram-step__index">1</span><div class="diagram-step__body"><strong>App Config flags</strong><span>Org leaveAdditional + role leave/admin modules.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">2</span><div class="diagram-step__body"><strong>Create jurisdiction</strong><span>e.g. IN, IN-KA, AE — used for resolve and calendars.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">3</span><div class="diagram-step__body"><strong>Template → draft</strong><span>Apply country baseline; edit entitlements/accrual.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">4</span><div class="diagram-step__body"><strong>Simulate / Test Lab</strong><span>Dry-run for a sample employee; pass publish gates.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">5</span><div class="diagram-step__body"><strong>Publish version</strong><span>Activates accrual and eligibility.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">6</span><div class="diagram-step__body"><strong>Holidays + key</strong><span>People holidays with location keys assigned to jurisdictions.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">7</span><div class="diagram-step__body"><strong>Working-day rules</strong><span>Team default and/or country patterns; employee assigns.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">8</span><div class="diagram-step__body"><strong>Balances</strong><span>Admin → Employee leave config: Download OB template → fill → dry-run → live, or Adjust balance per employee.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">9</span><div class="diagram-step__body"><strong>Prove</strong><span>Apply leave spanning holiday/weekly off → approve → check timesheet.</span></div></li>
+          </ol>
+          <p class="diagram-card__progress" data-diagram-progress></p>
+        </article>
+
+        <article class="diagram-card" data-diagram-autoplay="true">
+          <header class="diagram-card__head">
+            <div class="diagram-card__titles">
+              <h3>3 — Global Policy Center publish</h3>
+              <p class="diagram-card__desc">How a policy version becomes live for accrual and eligibility.</p>
+            </div>
+            <div class="diagram-card__controls">
+              <button type="button" data-diagram-prev aria-label="Previous step"><i class="fe fe-chevron-left" aria-hidden="true"></i></button>
+              <button type="button" data-diagram-play aria-pressed="false"><i class="fe fe-play" aria-hidden="true"></i><span>Play</span></button>
+              <button type="button" data-diagram-next aria-label="Next step"><i class="fe fe-chevron-right" aria-hidden="true"></i></button>
+            </div>
+          </header>
+          <div class="diagram-card__chart"><pre class="mermaid">
+flowchart TD
+  J[Jurisdiction] --> T[Template]
+  T --> D[Draft version]
+  D --> S[Simulate]
+  S --> P[Publish]
+  P --> R[Accrual and eligibility]
+          </pre></div>
+          <ol class="diagram-steps">
+            <li class="diagram-step is-active"><span class="diagram-step__index">1</span><div class="diagram-step__body"><strong>Jurisdiction</strong><span>Country/region dimension for the policy.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">2</span><div class="diagram-step__body"><strong>Template</strong><span>Seed draft from a national/regional baseline.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">3</span><div class="diagram-step__body"><strong>Draft version</strong><span>Edit types, accrual, carry-forward while unpublished.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">4</span><div class="diagram-step__body"><strong>Simulate</strong><span>Preview resolve for an employee before publish.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">5</span><div class="diagram-step__body"><strong>Publish</strong><span>Locks the version for runtime use.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">6</span><div class="diagram-step__body"><strong>Accrual and eligibility</strong><span>Jobs and leave apply use the published rules.</span></div></li>
+          </ol>
+          <p class="diagram-card__progress" data-diagram-progress></p>
+        </article>
+
+        <article class="diagram-card" data-diagram-autoplay="true">
+          <header class="diagram-card__head">
+            <div class="diagram-card__titles">
+              <h3>4 — Working-day resolution priority</h3>
+              <p class="diagram-card__desc">Highest match wins: employee override, then jurisdiction/country, then team, then schedule/shift/Mon–Fri.</p>
+            </div>
+            <div class="diagram-card__controls">
+              <button type="button" data-diagram-prev aria-label="Previous step"><i class="fe fe-chevron-left" aria-hidden="true"></i></button>
+              <button type="button" data-diagram-play aria-pressed="false"><i class="fe fe-play" aria-hidden="true"></i><span>Play</span></button>
+              <button type="button" data-diagram-next aria-label="Next step"><i class="fe fe-chevron-right" aria-hidden="true"></i></button>
+            </div>
+          </header>
+          <div class="diagram-card__chart"><pre class="mermaid">
+flowchart TD
+  L[Leave create or submit] --> R[LeaveWorkingDayResolver]
+  R --> O{Employee WDR override?}
+  O -->|Yes| P[Resolved workdays]
+  O -->|No| J{Employee jurisdiction?}
+  J -->|Yes| JW[Jurisdiction / country WDR]
+  JW --> P
+  J -->|No| TW[Team-default WDR]
+  TW -->|Hit| P
+  TW -->|Miss| FB[Work schedule / shift / Mon-Fri]
+  FB --> P
+          </pre></div>
+          <ol class="diagram-steps">
+            <li class="diagram-step is-active"><span class="diagram-step__index">1</span><div class="diagram-step__body"><strong>Leave create/submit</strong><span>Day count always re-resolved with employeeId.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">2</span><div class="diagram-step__body"><strong>Resolver</strong><span>Shared service for leave UI, validate, promote.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">3</span><div class="diagram-step__body"><strong>Employee override?</strong><span>Personal WDR assignment — highest priority.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">4</span><div class="diagram-step__body"><strong>Resolved workdays</strong><span>Final ISO weekday set used for counting.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">5</span><div class="diagram-step__body"><strong>Employee jurisdiction?</strong><span>Assigned leave jurisdiction (country/region).</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">6</span><div class="diagram-step__body"><strong>Jurisdiction WDR</strong><span>e.g. AE Sun–Thu or IN Mon–Fri.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">7</span><div class="diagram-step__body"><strong>Team-default WDR</strong><span>Rule with no jurisdiction_id.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">8</span><div class="diagram-step__body"><strong>Hit</strong><span>Use team rule workdays.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">9</span><div class="diagram-step__body"><strong>Fallback</strong><span>Work schedule → shift → Mon–Fri default.</span></div></li>
+          </ol>
+          <p class="diagram-card__progress" data-diagram-progress></p>
+        </article>
+
+        <article class="diagram-card" data-diagram-autoplay="true">
+          <header class="diagram-card__head">
+            <div class="diagram-card__titles">
+              <h3>5 — How balances get onto employees</h3>
+              <p class="diagram-card__desc">Two paths: scheduled accrual from a published policy, or HR manual adjust/import.</p>
+            </div>
+            <div class="diagram-card__controls">
+              <button type="button" data-diagram-prev aria-label="Previous step"><i class="fe fe-chevron-left" aria-hidden="true"></i></button>
+              <button type="button" data-diagram-play aria-pressed="false"><i class="fe fe-play" aria-hidden="true"></i><span>Play</span></button>
+              <button type="button" data-diagram-next aria-label="Next step"><i class="fe fe-chevron-right" aria-hidden="true"></i></button>
+            </div>
+          </header>
+          <div class="diagram-card__chart"><pre class="mermaid">
+flowchart TD
+  AP[Published policy] --> AJ[Accrual job]
+  AJ --> BL1[Balance ledger credit]
+  HR[HR adjust / import] --> BL2[Balance ledger]
+  BL1 --> UI[Visible on Leave Management]
+  BL2 --> UI
+          </pre></div>
+          <ol class="diagram-steps">
+            <li class="diagram-step is-active"><span class="diagram-step__index">1</span><div class="diagram-step__body"><strong>Published policy</strong><span>Entitlements/accrual rules must be live.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">2</span><div class="diagram-step__body"><strong>Accrual job</strong><span>Scheduler credits by period (idempotent).</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">3</span><div class="diagram-step__body"><strong>Ledger credit</strong><span>Available balance increases.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">4</span><div class="diagram-step__body"><strong>HR adjust / import</strong><span>Employee leave config: single Adjust balance, or CSV template + dry-run import API.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">5</span><div class="diagram-step__body"><strong>Balance ledger</strong><span>Same ledger used by apply/approve.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">6</span><div class="diagram-step__body"><strong>Visible on Leave Management</strong><span>Balance cards refresh for the employee.</span></div></li>
+          </ol>
+          <p class="diagram-card__progress" data-diagram-progress></p>
+        </article>
+
+        <article class="diagram-card" data-diagram-autoplay="true">
+          <header class="diagram-card__head">
+            <div class="diagram-card__titles">
+              <h3>6 — Runtime after config</h3>
+              <p class="diagram-card__desc">What happens once configuration is done — apply through approve.</p>
+            </div>
+            <div class="diagram-card__controls">
+              <button type="button" data-diagram-prev aria-label="Previous step"><i class="fe fe-chevron-left" aria-hidden="true"></i></button>
+              <button type="button" data-diagram-play aria-pressed="false"><i class="fe fe-play" aria-hidden="true"></i><span>Play</span></button>
+              <button type="button" data-diagram-next aria-label="Next step"><i class="fe fe-chevron-right" aria-hidden="true"></i></button>
+            </div>
+          </header>
+          <div class="diagram-card__chart"><pre class="mermaid">
+flowchart TD
+  A[Apply] --> V[Overlap + working days]
+  V --> S[Submit / reserve]
+  S --> D{Approve or Reject?}
+  D -->|Approve| B[Debit balance]
+  B --> P[Promote TaskActivity]
+  P --> T[Attendance sync if flagged]
+  D -->|Reject| Rel[Release pending + comment]
+          </pre></div>
+          <ol class="diagram-steps">
+            <li class="diagram-step is-active"><span class="diagram-step__index">1</span><div class="diagram-step__body"><strong>Apply</strong><span>Employee creates the leave request.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">2</span><div class="diagram-step__body"><strong>Validate</strong><span>Overlap + working-day rules + day count.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">3</span><div class="diagram-step__body"><strong>Submit / reserve</strong><span>Pending balance held.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">4</span><div class="diagram-step__body"><strong>Decision</strong><span>Approve or reject.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">5</span><div class="diagram-step__body"><strong>Debit</strong><span>Used balance increases on approve.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">6</span><div class="diagram-step__body"><strong>Promote</strong><span>Timesheet leave activities.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">7</span><div class="diagram-step__body"><strong>Attendance sync</strong><span>Optional LEAVE / HALF_DAY marks.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">8</span><div class="diagram-step__body"><strong>Reject path</strong><span>Comment required; pending released.</span></div></li>
+          </ol>
+          <p class="diagram-card__progress" data-diagram-progress></p>
+        </article>
+      </section>
+
+      <section class="doc-block" id="overview">
+        <h2 class="doc-block__title">Overview</h2>
+        <p>Leave has two halves: <strong>configure once</strong> (this page) and <strong>use every day</strong> (<a href="leaves.html">Leave Management</a>). Complete the configuration layers below before asking employees to apply.</p>
+        <ol>
+          <li><strong>Org &amp; role flags</strong> — turn the module on in Application Config.</li>
+          <li><strong>Global Policy Center</strong> (preferred) — jurisdictions, templates, versioned policies, publish, simulate.</li>
+          <li><strong>Classic leave policies</strong> (fallback) — type catalog and simple entitlements when Global Leave is off.</li>
+          <li><strong>Holidays &amp; legal calendars</strong> — People holidays + calendar key assignments.</li>
+          <li><strong>Working days</strong> — team / country / employee weekly-off patterns (not hard-coded Sat/Sun).</li>
+          <li><strong>Employee leave config</strong> — opening balances / adjustments, OB template download, dry-run bulk import; optional employee jurisdiction assign.</li>
+        </ol>
+      </section>
+
+      <section class="doc-block" id="admin-map">
+        <h2 class="doc-block__title">Admin screen map</h2>
+        <div class="table-wrap">
+          <table class="table">
+            <thead><tr><th>Screen</th><th>Route</th><th>When to use</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Leave Policies User Guide</strong></td><td><a href="leave-policies-guide.html"><code>leave-policies-guide.html</code></a></td><td><strong>Start here for policy detail</strong> — supported types, India packs, configure steps, scenarios (tabs).</td></tr>
+              <tr><td><strong>Global Policy Center</strong></td><td><code>/admin/leave/global-policy-center</code></td><td>Jurisdictions, templates, publish versions, resolve/simulate, holiday calendar assignment, OT/comp-off, compliance.</td></tr>
+              <tr><td><strong>Leave policies (classic)</strong></td><td><code>/admin/leave-policies</code></td><td>Leave type catalog and fallback entitlements when Global Leave is off.</td></tr>
+              <tr><td><strong>Employee leave config</strong></td><td><code>/admin/employee-leave-config</code></td><td>Balance cards, <strong>Download OB template</strong>, <strong>Adjust balance</strong>, dry-run bulk import cutover.</td></tr>
+              <tr><td><strong>Legal calendars</strong></td><td><code>/admin/leave/legal-calendars</code></td><td>Draft/publish official holiday versions that sync into People → Holidays.</td></tr>
+              <tr><td><strong>Working days</strong></td><td><code>/admin/leave/working-day-rules</code></td><td>Team-default or jurisdiction working weeks; employee jurisdiction assign; employee working-day override; resolve preview.</td></tr>
+              <tr><td><strong>Policy test lab</strong></td><td><code>/admin/leave/policy-test-lab</code></td><td>Scenario runs and publish gates before promoting a policy version. Guide: <a href="leave-policy-test-lab.html">Policy Test Lab</a>.</td></tr>
+              <tr><td><strong>Absence cases</strong></td><td><code>/admin/leave/absence-cases</code></td><td>Extended absence + return-to-work. Guide: <a href="leave-absence-cases.html">Absence Cases</a>.</td></tr>
+              <tr><td><strong>Agreements</strong></td><td><code>/admin/leave/agreements</code></td><td>Contract overrides. Guide: <a href="leave-agreements.html">Leave Agreements</a>.</td></tr>
+              <tr><td><strong>Integrations</strong></td><td><code>/admin/leave/integrations</code></td><td>Connectors, runs, errors. Guide: <a href="leave-integrations.html">Leave Integrations</a>.</td></tr>
+              <tr><td><strong>Documents</strong></td><td><code>/admin/leave/document-rules</code></td><td>Evidence rules, review, retention. Guide: <a href="leave-documents.html">Leave Documents</a>.</td></tr>
+              <tr><td><strong>Anomaly &amp; fairness</strong></td><td><code>/admin/leave/anomaly-rules</code></td><td>Detection and fairness analytics. Guide: <a href="leave-anomaly.html">Leave Anomaly</a>.</td></tr>
+              <tr><td><strong>Workforce planning</strong></td><td><code>/admin/leave/bidding</code></td><td>Bidding, roster, coverage. Guide: <a href="leave-workforce-planning.html">Workforce Planning</a>.</td></tr>
+              <tr><td><strong>Localization</strong></td><td><code>/admin/leave/localization</code></td><td>Locale packs for leave UI. Guide: <a href="leave-localization.html">Leave Localization</a>.</td></tr>
+              <tr><td><strong>Shift policies</strong></td><td><code>/admin/shift-policies</code></td><td>Org work-week calendars. Guide: <a href="shift-policies.html">Shift Policies</a>.</td></tr>
+              <tr><td><strong>People → Holidays</strong></td><td><code>/people/holidays</code></td><td>Canonical holiday ledger with location keys. Guide: <a href="holidays.html">Holidays</a>.</td></tr>
+              <tr><td><strong>Delegation</strong></td><td><code>/admin/delegation</code></td><td>Leave approval coverage when the primary approver is away.</td></tr>
+              <tr><td><strong>Application Config</strong></td><td><code>/admin/application-config</code></td><td>Org leave flags and role leave modules.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="doc-block" id="flags">
+        <h2 class="doc-block__title">Required org &amp; role flags</h2>
+        <h3>Org (<code>org.json</code> → HRMS)</h3>
+        <ul>
+          <li><code>leaveAdditional.leaveManagementEnabled</code> — master switch for native leave.</li>
+          <li><code>leaveAdditional.globalLeavePoliciesEnabled</code> — Global Policy Center runtime.</li>
+          <li><code>leaveAdditional.leaveEnhancementsEnabled</code> — enhancements (overlap, coverage, analytics).</li>
+          <li><code>leaveAdditional.leaveBlockNonWorkingDayLeave</code> — reject leave ranges with no working days.</li>
+          <li><code>leaveAdditional.leaveAutoSyncToAttendance</code> — approved leave → attendance LEAVE / HALF_DAY.</li>
+          <li><code>approvalDelegation.approvalDelegationEnabled</code> — leave in delegation scopes.</li>
+        </ul>
+        <h3>Role (<code>role.json</code>)</h3>
+        <ul>
+          <li><code>hrmsModules.leavesEnabled</code>, <code>attendanceEnabled</code>, <code>timesheetEnabled</code>, <code>holidaysEnabled</code></li>
+          <li><code>adminModules.leavePoliciesEnabled</code>, <code>globalLeavePoliciesEnabled</code>, <code>delegationEnabled</code></li>
+          <li>CRUD: <code>leaves.*</code>, <code>leavePolicies.*</code>, <code>holidays.*</code></li>
+        </ul>
+      </section>
+
+      <section class="doc-block" id="global-policy-center">
+        <h2 class="doc-block__title">Global Policy Center</h2>
+        <p>Primary console: <strong>Admin → Leave admin → Global Policy Center</strong>. See flowchart 3 above.</p>
+        <ol>
+          <li><strong>Jurisdictions</strong> — country/region dimensions used in resolve and holiday/working-day scope.</li>
+          <li><strong>Templates</strong> — apply a country baseline into a draft team policy.</li>
+          <li><strong>Policies / versions</strong> — type entitlements, accrual, carry-forward.</li>
+          <li><strong>Simulate / employee preview</strong> — dry-run before publish.</li>
+          <li><strong>Publish</strong> — activates for accrual and eligibility.</li>
+          <li><strong>Holiday calendars</strong> — assign location keys (e.g. <code>IN</code>, <code>IN-KA</code>) per jurisdiction.</li>
+        </ol>
+      </section>
+
+      <section class="doc-block" id="holidays">
+        <h2 class="doc-block__title">Holidays &amp; legal calendars</h2>
+        <p>Source of truth: People → Holidays, filtered by active holiday calendar assignments.</p>
+        <ol>
+          <li>Create holidays with a Location key (e.g. <code>["IN-KA"]</code>).</li>
+          <li>Assign that key to a jurisdiction in Global Policy Center → Holiday calendars.</li>
+          <li>Optionally publish Legal Calendars to sync blocking holidays into People holidays.</li>
+        </ol>
+      </section>
+
+      <section class="doc-block" id="working-days">
+        <h2 class="doc-block__title">Working days (team / country / employee)</h2>
+        <p>Weekly offs are not hard-coded to Saturday/Sunday. Configure under <code>/admin/leave/working-day-rules</code>. See flowchart 4 above.</p>
+        <ul>
+          <li><strong>Team default</strong> — rule with no jurisdiction.</li>
+          <li><strong>Country / region</strong> — rule linked to a jurisdiction; assign the employee to that jurisdiction.</li>
+          <li><strong>Employee override</strong> — assign an existing rule to one employee (highest priority).</li>
+        </ul>
+        <div class="callout callout--info"><div class="callout__icon">ℹ️</div><div class="callout__body"><strong class="callout__title">Country means leave jurisdiction</strong><div class="callout__text">“Works from this country” is the employee’s assigned leave jurisdiction — not free-text location on the employee profile.</div></div></div>
+      </section>
+
+      <section class="doc-block" id="employee-balances">
+        <h2 class="doc-block__title">Employee leave config &amp; accrual</h2>
+        <p>Canonical admin page: <strong>Admin → Employee leave config</strong> (<code>/admin/employee-leave-config</code>). This is the only UI surface for opening-balance cutover and per-employee adjustments. Accrual / carry-forward / comp-off expire jobs credit from the <strong>published</strong> Global Leave policy after go-live. See flowchart 5 above.</p>
+
+        <h3>Page user flow (matches the live UI)</h3>
+        <ol>
+          <li>Confirm <code>leaveManagementEnabled</code> and leave admin role access; select the <strong>team</strong> in the header filter so employees load.</li>
+          <li>Read the KPI / insight strip (low balance, pending days) for the selected employee.</li>
+          <li><strong>Bulk cutover</strong> — open the <em>Opening balance template</em> panel (or header <strong>Download OB template</strong>). Template rows are one per employee × PL/CL/SL (by location). <code>entitlementAmount</code> and <code>amount</code> are blank — fill from ZingHR / HR export only (do not invent balances).</li>
+          <li>Validate with <code>POST /api/v2/admin/data-import/leave-balance?userTeamId={team}&amp;actorId={you}&amp;dryRun=true</code> (body may also include <code>"dryRun": true</code>). Fix <code>reportCsv</code> failures, then re-POST with <code>dryRun=false</code>.</li>
+          <li><strong>Single employee</strong> — select the person, review balance cards, use <strong>Adjust balance</strong> (opening entitlement and/or +/− available days) with a reason. Adjustments of <strong>5+ days</strong> require a second confirmer employee id.</li>
+          <li>Prove end-to-end on <a href="leaves.html">Leave Management</a> / People → Leaves: apply → Approvals approve.</li>
+        </ol>
+
+        <div class="callout callout--info"><div class="callout__icon">ℹ️</div><div class="callout__body"><strong class="callout__title">Cutover rule</strong><div class="callout__text">Tracopus ships tooling only for opening balances. Empty ledgers after policy publish are expected until HR imports a real export. Dry-run never writes balances.</div></div></div>
+
+        <h3>Scenario guides</h3>
+        <ul>
+          <li><a href="../user-guide/admin/admin-employee-leave-config.html">Set employee leave opening balances</a> — page walkthrough.</li>
+          <li><a href="../user-guide/admin/admin-leave-ob-bulk-import.html">Bulk import leave opening balances (dry-run then live)</a> — cutover path.</li>
+        </ul>
+      </section>
+
+      <section class="doc-block" id="day-counting">
+        <h2 class="doc-block__title">How leave days are calculated</h2>
+        <ul>
+          <li><strong>Working week</strong> — employee override → jurisdiction → team → schedule/shift → Mon–Fri.</li>
+          <li><strong>Holidays</strong> — People holidays matching assigned calendar keys.</li>
+          <li><strong>Half-day</strong> — 0.5 when the single day is a working day.</li>
+          <li><strong>Server trust</strong> — create/submit recalculate <code>numberOfDays</code>.</li>
+        </ul>
+      </section>
+
+      <section class="doc-block" id="use-cases-config">
+        <h2 class="doc-block__title">Configuration use cases</h2>
+        <div class="table-wrap">
+          <table class="table">
+            <thead><tr><th>Use case</th><th>What admin does</th><th>Outcome</th></tr></thead>
+            <tbody>
+              <tr><td>First go-live</td><td>Flags → jurisdiction → publish → holidays → Mon–Fri rule → OB template dry-run → live import</td><td>Employees can apply</td></tr>
+              <tr><td>ZingHR cutover</td><td>Download OB template → fill → dry-run → live import on Employee leave config</td><td>Balances match HR source of truth</td></tr>
+              <tr><td>One-off correction</td><td>Select employee → Adjust balance (+ reason; confirmer if ≥5 days)</td><td>Ledger updated; audit when enabled</td></tr>
+              <tr><td>Add UAE</td><td>AE jurisdiction → Sun–Thu rule → assign employees</td><td>Fri–Sat off for those employees</td></tr>
+              <tr><td>Six-day week</td><td>Mon–Sat working-day rule</td><td>Saturday counts as leave</td></tr>
+              <tr><td>One employee exception</td><td>Employee working-day override</td><td>Overrides country/team</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="doc-block doc-block--features" id="checklist">
+        <h2 class="doc-block__title">Go-live checklist</h2>
+        <ul class="lux-feature-list lux-feature-list--dense">
+          <li class="lux-feature-item"><span class="lux-feature-item__icon">1</span><div><strong>Flags</strong><span>Org leave + role modules enabled.</span></div></li>
+          <li class="lux-feature-item"><span class="lux-feature-item__icon">2</span><div><strong>Jurisdiction + publish</strong><span>Template → simulate → publish.</span></div></li>
+          <li class="lux-feature-item"><span class="lux-feature-item__icon">3</span><div><strong>Holidays + working days</strong><span>Calendar keys and weekly-off rules.</span></div></li>
+          <li class="lux-feature-item"><span class="lux-feature-item__icon">4</span><div><strong>Balances</strong><span>OB template dry-run → live import, or Adjust balance / wait for accrual.</span></div></li>
+          <li class="lux-feature-item"><span class="lux-feature-item__icon">5</span><div><strong>Prove</strong><span>Apply spanning holiday/weekly off → approve → check timesheet.</span></div></li>
+        </ul>
+      </section>
+
+      <section class="doc-block doc-block--related" id="related-pages">
+        <h2 class="doc-block__title">Related pages</h2>
+        <div class="related-links">
+          <a class="related-link" href="leave-policies-guide.html"><span class="related-link__label">Leave Policies User Guide</span><span class="related-link__desc">Supported policies, configure steps, scenarios, CFA map — tabbed.</span></a>
+          <a class="related-link" href="leaves.html"><span class="related-link__label">Leave Management</span><span class="related-link__desc">Employee apply &amp; manager approve (+ runtime flowcharts).</span></a>
+          <a class="related-link" href="attendance.html"><span class="related-link__label">Attendance</span><span class="related-link__desc">Matrix, regularization, leave sync (+ flowcharts).</span></a>
+          <a class="related-link" href="leave-legal-calendars.html"><span class="related-link__label">Legal Calendars</span><span class="related-link__desc">Working days, holiday imports, impact preview.</span></a>
+          <a class="related-link" href="shift-policies.html"><span class="related-link__label">Shift Policies</span><span class="related-link__desc">Org work-week calendars.</span></a>
+          <a class="related-link" href="leave-policy-test-lab.html"><span class="related-link__label">Policy Test Lab</span><span class="related-link__desc">Dry-run before publish.</span></a>
+          <a class="related-link" href="application-config.html"><span class="related-link__label">Application Configuration</span><span class="related-link__desc">leaveAdditional and role modules.</span></a>
+          <a class="related-link" href="../user-guide/admin/admin-configure-global-leave.html"><span class="related-link__label">Scenario: Configure Global Leave</span><span class="related-link__desc">Admin publish path.</span></a>
+          <a class="related-link" href="../user-guide/admin/admin-employee-leave-config.html"><span class="related-link__label">Scenario: Employee leave config</span><span class="related-link__desc">Opening balances &amp; Adjust balance.</span></a>
+          <a class="related-link" href="../user-guide/admin/admin-leave-ob-bulk-import.html"><span class="related-link__label">Scenario: OB bulk import</span><span class="related-link__desc">Template → dry-run → live cutover.</span></a>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <nav class="page-nav">
+    <a class="page-nav__prev" href="leaves.html">← Leave Management</a>
+    <a class="page-nav__next" href="leave-policies-guide.html">Leave Policies Guide →</a>
+  </nav>
+</main>
+
+<footer>
+  <div class="container">
+    <p>&copy; 2026 <span data-brand>Tracopus</span>. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="../js/palette.js?v=20260619e"></script>
+<script src="../js/brand.js?v=20260619e"></script>
+<script src="../js/docs-utility-config.js?v=20260720b"></script>
+<script src="../js/nav-config.js?v=20260619e"></script>
+<script src="../js/navigation.js?v=20260619e"></script>
+<script src="../js/site-enhancements.js?v=20260718d"></script>
+<script src="../js/search.js?v=20260619e"></script>
+<script type="module">
+  import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+  mermaid.initialize({
+    startOnLoad: true,
+    theme: "base",
+    securityLevel: "loose",
+    flowchart: { curve: "basis", htmlLabels: true },
+    themeVariables: {
+      primaryColor: "#d8f3dc",
+      primaryTextColor: "#1b4332",
+      primaryBorderColor: "#40916c",
+      lineColor: "#52796f",
+      secondaryColor: "#f1faee",
+      tertiaryColor: "#ffffff",
+      fontFamily: "Inter, system-ui, sans-serif",
+    },
+  });
+  setTimeout(() => {
+    if (window.TracopusDocsDiagrams) window.TracopusDocsDiagrams.boot();
+  }, 600);
+</script>
+<script src="../js/docs-diagrams.js?v=20260718e"></script>
+</body>
+</html>

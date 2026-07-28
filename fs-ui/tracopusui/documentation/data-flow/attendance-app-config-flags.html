@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en" data-lux-theme="luxury" data-lux-palette="emerald">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="../js/docs-analytics.js?v=20260719a" defer></script>
+  <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css?v=20260718g">
+  <link rel="stylesheet" href="css/data-flow-doc-shell.css?v=20260724e">
+  <title>Attendance App Config Flags — Redirect</title>
+  <meta http-equiv="refresh" content="0; url=./attendance-flags-data-flow.html" />
+  <style>
+    :root {
+      --ink: #1a2e28; --muted: #5a6e66; --bg: #f4f1eb; --paper: #fffdf9; --line: #d8d0c4;
+      --accent: #2f6f5e; --accent-soft: #e8f1ee; --warn: #8a5a2b; --warn-soft: #f5ebe0;
+      --danger: #9b2c2c; --danger-soft: #fde8e8; --ok: #1f6b4a; --ok-soft: #e4f3ec;
+      --off: #6b7280; --off-soft: #eef0f2; --flash: #fff3cd;
+      --font: "IBM Plex Sans", system-ui, sans-serif;
+      --mono: "IBM Plex Mono", ui-monospace, monospace;
+      --switch-w: 48px;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: var(--font); color: var(--ink); background: radial-gradient(ellipse 70% 40% at 0% 0%, #e8f1ee, transparent 55%), var(--bg); line-height: 1.5; }
+    a { color: var(--accent); }
+    code { font-family: var(--mono); font-size: 0.86em; background: #efeae2; padding: 0.08em 0.35em; border-radius: 4px; }
+    .wrap { max-width: 1320px; margin: 0 auto; padding: 1.25rem 1rem 3rem; }
+    .hero { margin-bottom: 1rem; padding-bottom: 0.85rem; border-bottom: 1px solid var(--line); }
+    .hero__eyebrow { font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); font-weight: 650; }
+    .hero h1 { margin: 0.3rem 0 0.35rem; font-size: clamp(1.35rem, 2.5vw, 1.85rem); }
+    .hero p { margin: 0; color: var(--muted); max-width: 54rem; font-size: 0.92rem; }
+    .layout { display: grid; gap: 1rem; }
+    @media (min-width: 1100px) {
+      .layout { grid-template-columns: 340px 1fr; align-items: start; }
+      .panel-flags { position: sticky; top: 0.6rem; max-height: calc(100vh - 1.2rem); overflow: auto; }
+      .panel-behavior { max-height: calc(100vh - 1.2rem); overflow: auto; }
+    }
+    .panel { background: var(--paper); border: 1px solid var(--line); border-radius: 12px; padding: 0.95rem 1rem 1.1rem; }
+    .panel h2 { margin: 0 0 0.45rem; font-size: 0.95rem; }
+    .panel__hint { font-size: 0.8rem; color: var(--muted); margin: 0 0 0.7rem; }
+    .presets { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 0.75rem; }
+    .presets button { font: inherit; font-size: 0.7rem; font-weight: 600; padding: 0.3rem 0.5rem; border-radius: 999px; border: 1px solid var(--line); background: #faf8f4; cursor: pointer; }
+    .presets button.is-active { background: var(--accent-soft); border-color: var(--accent); color: var(--accent); }
+    .group-label { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.07em; color: var(--muted); font-weight: 700; margin: 0.85rem 0 0.4rem; padding-top: 0.55rem; border-top: 1px dashed var(--line); }
+    .group-label:first-of-type { margin-top: 0; padding-top: 0; border-top: 0; }
+    .flag { display: grid; grid-template-columns: minmax(0, 1fr) var(--switch-w); column-gap: 0.75rem; align-items: center; min-height: 52px; padding: 0.4rem 0.55rem; border-radius: 8px; margin-bottom: 0.28rem; border: 1px solid transparent; }
+    .flag.is-flash { background: var(--flash); border-color: #e0c86a; }
+    .flag.is-selected { outline: 1px solid var(--accent); background: #f7fbf9; }
+    .flag__name { all: unset; cursor: pointer; font-weight: 650; font-size: 0.84rem; display: block; }
+    .flag__key { font-family: var(--mono); font-size: 0.62rem; color: var(--muted); display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .flag__scope { display: inline-block; font-size: 0.56rem; font-weight: 700; text-transform: uppercase; padding: 0.08rem 0.3rem; border-radius: 4px; margin-top: 0.12rem; }
+    .scope-org { background: var(--accent-soft); color: var(--accent); }
+    .scope-role { background: #e8eef5; color: #3d5a7a; }
+    .switch { position: relative; width: var(--switch-w); height: 26px; }
+    .switch input { opacity: 0; width: 0; height: 0; position: absolute; }
+    .switch .track { position: absolute; inset: 0; background: #c5cdc8; border-radius: 999px; cursor: pointer; }
+    .switch .track::after { content: ""; position: absolute; width: 20px; height: 20px; left: 3px; top: 3px; background: #fff; border-radius: 50%; transition: transform 0.2s; box-shadow: 0 1px 3px rgba(0,0,0,0.2); }
+    .switch input:checked + .track { background: var(--accent); }
+    .switch input:checked + .track::after { transform: translateX(22px); }
+    .flag-detail { margin-top: 0.65rem; padding: 0.7rem; border: 1px solid var(--line); border-radius: 8px; background: #fff; font-size: 0.84rem; }
+    .when-pair { display: grid; gap: 0.4rem; margin-top: 0.4rem; }
+    @media (min-width: 500px) { .when-pair { grid-template-columns: 1fr 1fr; } }
+    .when { border-radius: 6px; padding: 0.45rem; font-size: 0.78rem; }
+    .when--on { background: var(--ok-soft); }
+    .when--off { background: var(--off-soft); }
+    .when strong { display: block; font-size: 0.66rem; text-transform: uppercase; margin-bottom: 0.15rem; }
+    .change-banner { display: none; background: var(--flash); border: 1px solid #e0c86a; border-radius: 8px; padding: 0.55rem 0.75rem; margin-bottom: 0.85rem; font-size: 0.86rem; }
+    .change-banner.is-visible { display: block; }
+    .mode-pill { display: inline-flex; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; padding: 0.3rem 0.65rem; border-radius: 999px; margin-bottom: 0.75rem; }
+    .mode-pill--pending { background: var(--warn-soft); color: var(--warn); }
+    .mode-pill--auto { background: #e8eef5; color: #3d5a7a; }
+    .mode-pill--off { background: var(--danger-soft); color: var(--danger); }
+    .summary { font-size: 0.95rem; margin: 0 0 1rem; }
+    .flow { display: flex; flex-wrap: wrap; gap: 0.4rem; align-items: center; margin-bottom: 1rem; }
+    .flow-step { font-size: 0.78rem; font-weight: 650; padding: 0.4rem 0.65rem; border-radius: 6px; border: 1px solid var(--line); background: #faf8f4; color: var(--muted); }
+    .flow-step.is-on { background: var(--ok-soft); border-color: #a8d4c0; color: var(--ok); }
+    .flow-step.is-auto { background: #e8eef5; border-color: #b8c8dc; color: #3d5a7a; }
+    .flow-step.is-off { background: var(--off-soft); text-decoration: line-through; opacity: 0.75; }
+    .flow-arrow { color: var(--muted); font-size: 0.85rem; }
+    .section-title { font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); margin: 1rem 0 0.5rem; padding-top: 0.65rem; border-top: 1px dashed var(--line); }
+    .section-title:first-of-type { border-top: 0; padding-top: 0; margin-top: 0; }
+    .cards { display: grid; gap: 0.65rem; }
+    @media (min-width: 700px) { .cards { grid-template-columns: 1fr 1fr; } }
+    .card { border: 1px solid var(--line); border-radius: 8px; padding: 0.7rem 0.8rem; background: #faf8f4; }
+    .card.is-flash { background: var(--flash); border-color: #e0c86a; }
+    .card__title { font-size: 0.78rem; font-weight: 700; text-transform: uppercase; color: var(--muted); margin: 0 0 0.35rem; }
+    .card__body { font-size: 0.88rem; margin: 0; }
+    .card__body .on { color: var(--ok); font-weight: 650; }
+    .card__body .off { color: var(--danger); font-weight: 650; }
+    .card__body .partial { color: var(--warn); font-weight: 650; }
+    .table-path { margin-top: 0.75rem; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+    .table-path__head { background: #efeae2; padding: 0.55rem 0.75rem; font-size: 0.78rem; font-weight: 700; text-transform: uppercase; color: var(--muted); }
+    .table-path__body { padding: 0.75rem; font-size: 0.88rem; }
+    .path-box { display: flex; flex-wrap: wrap; gap: 0.4rem; align-items: center; margin-top: 0.5rem; }
+    .path-node { font-family: var(--mono); font-size: 0.72rem; padding: 0.35rem 0.55rem; border-radius: 6px; border: 1px solid var(--line); background: #fff; }
+    .path-node.is-active { background: var(--accent-soft); border-color: #a8d4c0; }
+    .path-node.is-skip { opacity: 0.45; text-decoration: line-through; }
+    .path-node.is-bridge { background: #f3eee6; border-color: #e0d4b8; }
+    .matrix { width: 100%; border-collapse: collapse; font-size: 0.8rem; margin-top: 1rem; }
+    .matrix th, .matrix td { border: 1px solid var(--line); padding: 0.4rem 0.5rem; text-align: left; vertical-align: top; }
+    .matrix th { background: #efeae2; }
+    .matrix td.yes { background: var(--ok-soft); color: var(--ok); font-weight: 650; }
+    .matrix td.no { background: var(--danger-soft); color: var(--danger); font-weight: 650; }
+    .matrix tr.is-flash td { outline: 2px solid #e0c86a; outline-offset: -2px; }
+    .diff-list { margin: 0.75rem 0 0; padding: 0; list-style: none; }
+    .diff-list li { font-size: 0.86rem; padding: 0.45rem 0.6rem; border-left: 3px solid var(--accent); background: var(--accent-soft); border-radius: 0 6px 6px 0; margin-bottom: 0.35rem; }
+    .diff-list li.neg { border-left-color: var(--danger); background: var(--danger-soft); }
+    .diff-list li.neu { border-left-color: var(--warn); background: var(--warn-soft); }
+    .example-table { width: 100%; border-collapse: collapse; font-size: 0.78rem; margin-top: 0.5rem; }
+    .example-table th, .example-table td { border: 1px solid var(--line); padding: 0.35rem 0.5rem; }
+    .example-table th { background: #efeae2; }
+    .example-table .hl { background: #fff3cd; font-weight: 600; }
+    footer.note { margin-top: 0.75rem; font-size: 0.78rem; color: var(--muted); }
+  </style>
+  <script src="../js/brand-config.js?v=20260619e"></script>
+</head>
+<body data-docs-depth="1" class="data-flow-doc-site">
+<header aria-label="Site header"></header>
+<div class="data-flow-doc-breadcrumb"><a href="../index.html">Documentation</a> → <a href="index.html">Data flow</a></div>
+<main class="data-flow-doc-main">
+  <div class="wrap">
+    <header class="hero">
+      <div class="hero__eyebrow">Learning · Ref Doc · Attendance</div>
+      <h1>Attendance flags — mark, approve, regularization</h1>
+      <p>
+        This page is superseded by the full interactive guide with <strong>Table data flow</strong> and
+        <strong>Flag behavior</strong> tabs.
+        <a href="./attendance-flags-data-flow.html"><strong>Open attendance-flags-data-flow.html →</strong></a>
+      </p>
+    </header>
+    <div class="layout">
+      <aside class="panel panel-flags">
+        <h2>Flag simulator</h2>
+        <p class="panel__hint">Toggle to update attendance + regularization behavior.</p>
+        <div class="presets" id="presets">
+          <button type="button" data-preset="production">Production (manager review)</button>
+          <button type="button" data-preset="autoOwn">Auto-approve own</button>
+          <button type="button" data-preset="regOff">Regularization off</button>
+          <button type="button" data-preset="menuOff">Attendance menu off</button>
+        </div>
+        <div id="flagList"></div>
+        <div class="flag-detail" id="flagDetail"></div>
+      </aside>
+      <main class="panel panel-behavior" id="behaviorPanel">
+        <h2>Live behavior</h2>
+        <div class="change-banner" id="changeBanner"></div>
+        <div id="modePill" class="mode-pill mode-pill--pending">Mode</div>
+        <p class="summary" id="summary"></p>
+        <div class="flow" id="flowMark" aria-label="Mark attendance flow"></div>
+        <div class="section-title">Regularization flow</div>
+        <div class="flow" id="flowReg" aria-label="Regularization flow"></div>
+        <div class="cards" id="cards"></div>
+        <div class="table-path">
+          <div class="table-path__head">Data path — Mark (PUT /api/v2/employees/attendance/{employeeId})</div>
+          <div class="table-path__body">
+            <div id="pathMarkDesc"></div>
+            <div class="path-box" id="pathMarkNodes"></div>
+          </div>
+        </div>
+        <div class="table-path">
+          <div class="table-path__head">Data path — Regularization approve (bridge)</div>
+          <div class="table-path__body">
+            <div id="pathRegDesc"></div>
+            <div class="path-box" id="pathRegNodes"></div>
+          </div>
+        </div>
+        <p style="font-size:0.82rem;margin:0.75rem 0 0.35rem"><strong>Example row after mark (own, pending path)</strong></p>
+        <table class="example-table" id="exampleMarkTable"></table>
+        <p style="font-size:0.82rem;margin:0.75rem 0 0.35rem"><strong>Example row after regularization approve</strong></p>
+        <table class="example-table" id="exampleRegTable"></table>
+        <table class="matrix">
+          <thead><tr><th>Capability</th><th>Now</th><th>Why</th></tr></thead>
+          <tbody id="matrixBody"></tbody>
+        </table>
+        <ul class="diff-list" id="diffList"></ul>
+      </main>
+    </div>
+    <footer class="note">Redirect → <a href="./attendance-flags-data-flow.html">attendance data flow</a> · <a href="index.html">hub</a></footer>
+  </div>
+  <script>
+    const FLAG_DEFS = [
+      { id: "attendanceEnabled", scope: "role", group: "Menu / module", name: "Attendance menu", key: "attendanceEnabled / peopleModules",
+        description: "Shows Attendance page at /people/attendance.", whenOn: "Matrix + mark UI visible.", whenOff: "Attendance hidden; regularization unusable." },
+      { id: "markOwnAttendanceEnabled", scope: "role", group: "Role · mark", name: "Mark own attendance", key: "attendanceAdditional.markOwnAttendanceEnabled",
+        description: "Employee can mark own day cells.", whenOn: "Own mark allowed.", whenOff: "Own mark blocked." },
+      { id: "markOthersAttendanceEnabled", scope: "role", group: "Role · mark", name: "Mark others attendance", key: "attendanceAdditional.markOthersAttendanceEnabled",
+        description: "Manager can mark team cells.", whenOn: "Mark for reports allowed.", whenOff: "Others mark blocked." },
+      { id: "autoApproveOwnAttendanceEnabled", scope: "role", group: "Role · auto-approve", name: "Auto-approve own", key: "attendanceAdditional.autoApproveOwnAttendanceEnabled",
+        description: "Own marks skip PENDING_APPROVAL.", whenOn: "Own mark → APPROVED immediately.", whenOff: "Own mark → PENDING_APPROVAL + notify manager." },
+      { id: "autoApproveOthersAttendanceEnabled", scope: "role", group: "Role · auto-approve", name: "Auto-approve others", key: "attendanceAdditional.autoApproveOthersAttendanceEnabled",
+        description: "Marks for others skip pending.", whenOn: "Others mark → APPROVED.", whenOff: "Others mark → pending queue." },
+      { id: "approveTeamEnabled", scope: "role", group: "Role · approve", name: "Approve team attendance", key: "attendanceAdditional.approveTeamEnabled",
+        description: "Role can approve/reject team pending marks + regularization.", whenOn: "Approve/Reject UI for team.", whenOff: "Cannot approve (unless edit/auto-others)." },
+      { id: "removeOwnAttendanceEnabled", scope: "role", group: "Role · removal", name: "Request own removal", key: "attendanceAdditional.removeOwnAttendanceEnabled",
+        description: "Employee can request removal of approved mark.", whenOn: "REQUEST_REMOVAL → PENDING_REMOVAL.", whenOff: "Removal request blocked." },
+      { id: "attendanceRegularizationEnabled", scope: "org", group: "Org · attendanceAdditional", name: "Regularization", key: "attendanceAdditional.attendanceRegularizationEnabled",
+        description: "Org switch for missed-punch / correction workflow.", whenOn: "Regularization UI + APIs active.", whenOff: "APIs 403; FE fail-closed." },
+      { id: "approvalDelegationEnabled", scope: "org", group: "Org · delegation", name: "Approval delegation", key: "approvalDelegation.approvalDelegationEnabled",
+        description: "Delegates can approve attendance pending.", whenOn: "Delegate + manager canAct.", whenOff: "Manager only." },
+      { id: "approvalReminderEnabled", scope: "org", group: "Org · delegation", name: "Approval reminders", key: "approvalDelegation.approvalReminderEnabled",
+        description: "SLA emails for pending attendance.", whenOn: "Reminder scheduler active.", whenOff: "No auto reminders." },
+      { id: "leaveAutoSyncToAttendance", scope: "org", group: "Org · leave", name: "Leave → attendance sync", key: "leaveAdditional.leaveAutoSyncToAttendance",
+        description: "Approved leave writes LEAVE/HALF_DAY rows.", whenOn: "Leave days block manual mark/reg.", whenOff: "No auto attendance from leave." },
+      { id: "universalApprovalInboxEnabled", scope: "org", group: "Org · workspace", name: "Universal inbox", key: "tracopusWorkspaceAdditional.universalApprovalInboxEnabled",
+        description: "Workspace Approvals shows ATTENDANCE domain.", whenOn: "Inbox can aggregate attendance.", whenOff: "Domain attendance UI only." }
+    ];
+    const PRESETS = {
+      production: { attendanceEnabled: true, markOwnAttendanceEnabled: true, markOthersAttendanceEnabled: true, autoApproveOwnAttendanceEnabled: false, autoApproveOthersAttendanceEnabled: false, approveTeamEnabled: true, removeOwnAttendanceEnabled: true, attendanceRegularizationEnabled: true, approvalDelegationEnabled: true, approvalReminderEnabled: true, leaveAutoSyncToAttendance: true, universalApprovalInboxEnabled: true },
+      autoOwn: { attendanceEnabled: true, markOwnAttendanceEnabled: true, markOthersAttendanceEnabled: true, autoApproveOwnAttendanceEnabled: true, autoApproveOthersAttendanceEnabled: false, approveTeamEnabled: true, removeOwnAttendanceEnabled: true, attendanceRegularizationEnabled: true, approvalDelegationEnabled: false, approvalReminderEnabled: false, leaveAutoSyncToAttendance: true, universalApprovalInboxEnabled: false },
+      regOff: { attendanceEnabled: true, markOwnAttendanceEnabled: true, markOthersAttendanceEnabled: true, autoApproveOwnAttendanceEnabled: false, autoApproveOthersAttendanceEnabled: false, approveTeamEnabled: true, removeOwnAttendanceEnabled: true, attendanceRegularizationEnabled: false, approvalDelegationEnabled: true, approvalReminderEnabled: true, leaveAutoSyncToAttendance: true, universalApprovalInboxEnabled: true },
+      menuOff: { attendanceEnabled: false, markOwnAttendanceEnabled: true, markOthersAttendanceEnabled: true, autoApproveOwnAttendanceEnabled: false, autoApproveOthersAttendanceEnabled: false, approveTeamEnabled: true, removeOwnAttendanceEnabled: true, attendanceRegularizationEnabled: true, approvalDelegationEnabled: true, approvalReminderEnabled: true, leaveAutoSyncToAttendance: true, universalApprovalInboxEnabled: true }
+    };
+    let state = { ...PRESETS.production };
+    let prevState = { ...state };
+    let lastChanged = null;
+    let selectedFlagId = "attendanceRegularizationEnabled";
+
+    function compute(f) {
+      const menu = !!f.attendanceEnabled;
+      const reg = !!f.attendanceRegularizationEnabled;
+      const delegation = !!f.approvalDelegationEnabled;
+      const reminders = !!f.approvalReminderEnabled;
+      const leaveSync = !!f.leaveAutoSyncToAttendance;
+      const inbox = !!f.universalApprovalInboxEnabled;
+      const markOwn = !!f.markOwnAttendanceEnabled;
+      const markOthers = !!f.markOthersAttendanceEnabled;
+      const autoOwn = !!f.autoApproveOwnAttendanceEnabled;
+      const autoOthers = !!f.autoApproveOthersAttendanceEnabled;
+      const approveTeam = !!f.approveTeamEnabled;
+      const removeOwn = !!f.removeOwnAttendanceEnabled;
+
+      const canMarkOwn = menu && markOwn;
+      const canMarkOthers = menu && markOthers;
+      const canApprove = menu && approveTeam;
+      const canRegSubmit = menu && reg && markOwn;
+      const canRegApprove = menu && reg && approveTeam;
+      const canRemove = menu && removeOwn;
+      const delegateActs = menu && delegation && approveTeam;
+      const showInbox = menu && inbox;
+
+      let mode = "off";
+      if (!menu) mode = "off";
+      else if (autoOwn || autoOthers) mode = "auto";
+      else mode = "pending";
+
+      let summary;
+      if (!menu) summary = "Attendance module off — no matrix, no mark, no regularization.";
+      else if (autoOwn && !approveTeam) summary = "Own marks auto-approve to APPROVED in fs_user_attendance_model. This role cannot approve others.";
+      else if (autoOwn) summary = "Own mark → APPROVED immediately (no PENDING). Manager path still available for others when markOthers + pending.";
+      else summary = "Mark → PENDING_APPROVAL in fs_user_attendance_model → manager/delegate Approve/Reject. Regularization uses ts_attendance_regularization_model then bridges on approve.";
+
+      const markSteps = [
+        { label: "Mark attendance", state: canMarkOwn || canMarkOthers ? "on" : "off" },
+        { label: autoOwn ? "Auto APPROVED" : "PENDING", state: canMarkOwn ? (autoOwn ? "auto" : "on") : "off" },
+        { label: "Manager approve", state: canApprove && !autoOwn ? "on" : autoOwn ? "off" : canApprove ? "on" : "off" },
+        { label: "Reject", state: canApprove && !autoOwn ? "on" : "off" },
+        { label: "Request removal", state: canRemove ? "on" : "off" }
+      ];
+      const regSteps = [
+        { label: "Submit regularization", state: canRegSubmit ? "on" : "off" },
+        { label: "Pending SUBMITTED", state: canRegSubmit && !autoOwn ? "on" : canRegSubmit ? "auto" : "off" },
+        { label: "Approve reg", state: canRegApprove ? "on" : "off" },
+        { label: "Bridge → attendance", state: canRegApprove ? "on" : "off" }
+      ];
+
+      const pathMark = canMarkOwn || canMarkOthers
+        ? { desc: "EmployeeService.processMarkAttendance → upsert fs_user_attendance_model for the day.",
+            nodes: [
+              { label: "PUT /attendance/{id}", active: true },
+              { label: "fs_user_attendance_model", active: true },
+              { label: autoOwn ? "status=APPROVED" : "status=PENDING", active: true },
+              { label: "ts_regularization", active: false, skip: true }
+            ] }
+        : { desc: "Mark blocked — need attendance menu + mark permission.", nodes: [{ label: "Mark API", active: false, skip: true }] };
+
+      const pathReg = reg && canRegSubmit
+        ? { desc: "POST regularization → ts_attendance_regularization_model SUBMITTED; PATCH approve → AttendanceRegularizationApprovalBridge writes fs_user_attendance_model APPROVED.",
+            nodes: [
+              { label: "POST /regularizations", active: true },
+              { label: "ts_attendance_regularization", active: true },
+              { label: "PATCH …/approve", active: canRegApprove },
+              { label: "fs_user_attendance (bridge)", active: canRegApprove, bridge: true }
+            ] }
+        : { desc: reg ? "Regularization blocked for this role (need menu + mark own)." : "Org attendanceRegularizationEnabled OFF — APIs fail closed.",
+            nodes: [{ label: "ts_attendance_regularization", active: false, skip: true }, { label: "Bridge", active: false, skip: true }] };
+
+      const cards = [
+        { title: "Mark own", html: canMarkOwn ? (autoOwn ? `<span class="on">Auto APPROVED</span>` : `<span class="on">→ PENDING</span>`) : `<span class="off">Blocked</span>` },
+        { title: "Mark others", html: canMarkOthers ? (autoOthers ? `<span class="on">Auto APPROVED</span>` : `<span class="on">→ PENDING</span>`) : `<span class="off">Blocked</span>` },
+        { title: "Approve / reject marks", html: canApprove ? `<span class="on">Enabled</span>` : `<span class="off">This role cannot approve</span>` },
+        { title: "Regularization", html: canRegSubmit ? `<span class="on">Submit enabled</span>` : reg ? `<span class="off">Blocked for role</span>` : `<span class="off">Org flag off</span>` },
+        { title: "Removal request", html: canRemove ? `<span class="on">PENDING_REMOVAL path</span>` : `<span class="off">Off</span>` },
+        { title: "Delegation / inbox / leave sync", html: [delegateActs ? `<span class="on">Delegate</span>` : `<span class="off">Delegate</span>`, showInbox ? `<span class="on">Inbox</span>` : `<span class="off">Inbox</span>`, leaveSync ? `<span class="on">Leave sync</span>` : `<span class="off">Leave sync</span>`, reminders ? `<span class="on">Reminders</span>` : `<span class="off">Reminders</span>`].join(" · ") }
+      ];
+
+      const matrix = [
+        { cap: "See Attendance page", ok: menu, why: menu ? "attendanceEnabled" : "menu off" },
+        { cap: "Mark own day", ok: canMarkOwn, why: canMarkOwn ? "markOwn on" : "menu or markOwn off" },
+        { cap: "Mark for team", ok: canMarkOthers, why: canMarkOthers ? "markOthers on" : "markOthers off" },
+        { cap: "Own mark → PENDING", ok: canMarkOwn && !autoOwn, why: autoOwn ? "auto-approve own on" : canMarkOwn ? "normal pending path" : "cannot mark" },
+        { cap: "Own mark → APPROVED (auto)", ok: canMarkOwn && autoOwn, why: autoOwn ? "autoApproveOwn on" : "auto off" },
+        { cap: "Manager approve mark", ok: canApprove, why: canApprove ? "approveTeamEnabled" : "approve off" },
+        { cap: "Submit regularization", ok: canRegSubmit, why: canRegSubmit ? "org reg + menu" : reg ? "role blocked" : "attendanceRegularizationEnabled off" },
+        { cap: "Approve regularization", ok: canRegApprove, why: canRegApprove ? "approveTeam + reg" : "missing approve or org reg" },
+        { cap: "Bridge to fs_user_attendance", ok: canRegApprove, why: "AttendanceRegularizationApprovalBridge on approve" },
+        { cap: "Delegate approves attendance", ok: delegateActs, why: delegateActs ? "delegation + approve" : "delegation or approve off" },
+        { cap: "Leave blocks manual mark", ok: leaveSync && menu, why: leaveSync ? "LEAVE/HALF_DAY rows from leave sync" : "leaveAutoSync off" },
+        { cap: "ATTENDANCE in Workspace inbox", ok: showInbox && menu, why: showInbox ? "universalApprovalInboxEnabled" : "inbox off" }
+      ];
+
+      const markStatus = !canMarkOwn ? "—" : autoOwn ? "APPROVED" : "PENDING_APPROVAL";
+      const regStatus = !canRegSubmit ? "—" : "SUBMITTED → APPROVED";
+
+      return { mode, summary, markSteps, regSteps, pathMark, pathReg, cards, matrix, markStatus, regStatus, autoOwn, canRegApprove, canMarkOwn };
+    }
+
+    function describeChange(prev, next, id) {
+      const a = compute(prev), b = compute(next);
+      const diffs = [];
+      const def = FLAG_DEFS.find((d) => d.id === id);
+      if (def) diffs.push({ type: next[id] ? "pos" : "neg", text: `${def.name} → ${next[id] ? "ON" : "OFF"}` });
+      a.matrix.forEach((row, i) => {
+        if (row.ok !== b.matrix[i].ok) diffs.push({ type: b.matrix[i].ok ? "pos" : "neg", text: `${row.cap}: ${row.ok ? "yes" : "no"} → ${b.matrix[i].ok ? "yes" : "no"}` });
+      });
+      if (id === "attendanceRegularizationEnabled") diffs.push({ type: "neu", text: next[id] ? "Regularization workflow + bridge enabled." : "Regularization APIs/UI fail closed." });
+      if (id === "autoApproveOwnAttendanceEnabled") diffs.push({ type: "neu", text: next[id] ? "Own marks skip manager pending queue." : "Own marks go PENDING_APPROVAL." });
+      return diffs;
+    }
+
+    function esc(s) { return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+
+    function renderFlags() {
+      const groups = [...new Set(FLAG_DEFS.map((f) => f.group))];
+      document.getElementById("flagList").innerHTML = groups.map((g) => {
+        const items = FLAG_DEFS.filter((f) => f.group === g).map((f) => `
+          <div class="flag ${lastChanged === f.id ? "is-flash" : ""} ${selectedFlagId === f.id ? "is-selected" : ""}">
+            <div><button type="button" class="flag__name" data-select="${f.id}">${esc(f.name)}</button>
+              <span class="flag__key">${esc(f.key)}</span>
+              <span class="flag__scope ${f.scope === "org" ? "scope-org" : "scope-role"}">${f.scope}</span></div>
+            <label class="switch"><input type="checkbox" data-toggle="${f.id}" ${state[f.id] ? "checked" : ""} /><span class="track"></span></label>
+          </div>`).join("");
+        return `<div class="group-label">${esc(g)}</div>${items}`;
+      }).join("");
+      const def = FLAG_DEFS.find((f) => f.id === selectedFlagId);
+      if (def) document.getElementById("flagDetail").innerHTML = `<h4>${esc(def.name)}</h4><p>${esc(def.description)}</p><p><strong>${state[def.id] ? "ON" : "OFF"}</strong></p><div class="when-pair"><div class="when when--on"><strong>When ON</strong>${esc(def.whenOn)}</div><div class="when when--off"><strong>When OFF</strong>${esc(def.whenOff)}</div></div>`;
+    }
+
+    function renderFlow(el, steps) {
+      document.getElementById(el).innerHTML = steps.map((s, i) => {
+        const arrow = i < steps.length - 1 ? `<span class="flow-arrow">→</span>` : "";
+        return `<span class="flow-step is-${s.state}">${esc(s.label)}</span>${arrow}`;
+      }).join("");
+    }
+
+    function renderPath(descId, nodesId, path) {
+      document.getElementById(descId).textContent = path.desc;
+      document.getElementById(nodesId).innerHTML = path.nodes.map((n, i) => {
+        const arrow = i < path.nodes.length - 1 ? `<span class="flow-arrow">→</span>` : "";
+        const cls = n.skip ? "is-skip" : n.bridge ? "is-bridge" : n.active ? "is-active" : "";
+        return `<span class="path-node ${cls}">${esc(n.label)}</span>${arrow}`;
+      }).join("");
+    }
+
+    function renderBehavior() {
+      const c = compute(state);
+      const pill = document.getElementById("modePill");
+      pill.className = "mode-pill mode-pill--" + (c.mode === "auto" ? "auto" : c.mode === "pending" ? "pending" : "off");
+      pill.textContent = c.mode === "auto" ? "Mode: Auto-approve path" : c.mode === "pending" ? "Mode: Manager review (PENDING)" : "Mode: Attendance off / blocked";
+      document.getElementById("summary").textContent = c.summary;
+      renderFlow("flowMark", c.markSteps);
+      renderFlow("flowReg", c.regSteps);
+      document.getElementById("cards").innerHTML = c.cards.map((card, idx) =>
+        `<div class="card ${lastChanged && idx < 2 ? "is-flash" : ""}"><div class="card__title">${esc(card.title)}</div><p class="card__body">${card.html}</p></div>`
+      ).join("");
+      renderPath("pathMarkDesc", "pathMarkNodes", c.pathMark);
+      renderPath("pathRegDesc", "pathRegNodes", c.pathReg);
+      document.getElementById("exampleMarkTable").innerHTML = `<thead><tr><th>id</th><th>employee_id</th><th>date</th><th>status</th><th>marked_by</th><th>approved_by</th></tr></thead><tbody>
+        <tr><td>900</td><td>200</td><td>2026-07-15</td><td class="hl">${esc(c.markStatus)}</td><td>200</td><td>${c.autoOwn ? "200" : "null"}</td></tr></tbody>`;
+      document.getElementById("exampleRegTable").innerHTML = `<thead><tr><th>reg id</th><th>status</th><th>exception</th><th>→ attendance status</th></tr></thead><tbody>
+        <tr><td>501</td><td class="hl">${esc(c.regStatus)}</td><td>MISSING_PUNCH</td><td class="hl">${c.canRegApprove ? "APPROVED (bridge)" : "—"}</td></tr></tbody>`;
+      document.getElementById("matrixBody").innerHTML = c.matrix.map((row) => {
+        const flash = lastChanged && describeChange(prevState, state, lastChanged).some((d) => d.text.startsWith(row.cap)) ? "is-flash" : "";
+        return `<tr class="${flash}"><td>${esc(row.cap)}</td><td class="${row.ok ? "yes" : "no"}">${row.ok ? "YES" : "NO"}</td><td>${esc(row.why)}</td></tr>`;
+      }).join("");
+      const banner = document.getElementById("changeBanner");
+      const diffList = document.getElementById("diffList");
+      if (lastChanged) {
+        banner.className = "change-banner is-visible";
+        banner.innerHTML = `<strong>What changed</strong> — <code>${esc(lastChanged)}</code>`;
+        diffList.innerHTML = describeChange(prevState, state, lastChanged).map((d) =>
+          `<li class="${d.type === "neg" ? "neg" : d.type === "neu" ? "neu" : ""}">${esc(d.text)}</li>`
+        ).join("");
+      } else { banner.className = "change-banner"; banner.innerHTML = ""; diffList.innerHTML = ""; }
+    }
+
+    function refresh() { renderFlags(); renderBehavior(); }
+
+    document.getElementById("flagList").addEventListener("change", (e) => {
+      const id = e.target.getAttribute("data-toggle");
+      if (!id) return;
+      prevState = { ...state }; state[id] = e.target.checked; lastChanged = id;
+      document.querySelectorAll("#presets button").forEach((b) => b.classList.remove("is-active"));
+      refresh();
+    });
+    document.getElementById("flagList").addEventListener("click", (e) => {
+      const id = e.target.getAttribute("data-select");
+      if (!id) return;
+      selectedFlagId = id; renderFlags();
+    });
+    document.getElementById("presets").addEventListener("click", (e) => {
+      const name = e.target.getAttribute("data-preset");
+      if (!name || !PRESETS[name]) return;
+      prevState = { ...state }; state = { ...PRESETS[name] };
+      lastChanged = name === "regOff" ? "attendanceRegularizationEnabled" : name === "autoOwn" ? "autoApproveOwnAttendanceEnabled" : name === "menuOff" ? "attendanceEnabled" : null;
+      document.querySelectorAll("#presets button").forEach((b) => b.classList.toggle("is-active", b.dataset.preset === name));
+      refresh();
+    });
+
+    document.querySelector('#presets button[data-preset="production"]').classList.add("is-active");
+    refresh();
+  </script>
+</main>
+<footer class="data-flow-doc-chrome">
+  <div class="container">
+    <p>
+      <a href="index.html">Data flow hub</a>
+      <a href="../index.html">Documentation home</a>
+      <a href="../user-guide/index.html">Scenario Guide</a>
+      <a href="../hrms/application-config.html">Application config</a>
+    </p>
+  </div>
+</footer>
+<script src="../js/palette.js?v=20260619e"></script>
+<script src="../js/brand.js?v=20260619e"></script>
+<script src="../js/docs-utility-config.js?v=20260720b"></script>
+<script src="../js/nav-config.js?v=20260724b"></script>
+<script src="../js/navigation.js?v=20260619e"></script>
+<script src="../js/site-enhancements.js?v=20260718d"></script>
+</body>
+</html>

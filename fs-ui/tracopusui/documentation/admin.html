@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en" data-lux-theme="luxury" data-lux-palette="emerald">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin &amp; Access — Tracopus User Guide</title>
+  <meta name="description" content="Admin &amp;amp; Access — Tracopus user guide for enterprise work intelligence.">
+  <meta name="keywords" content="tracopus, documentation, user guide, admin, &amp;amp;, access">
+  <link rel="canonical" href="https://tracopus.com/documentation/admin.html">
+  <meta name="robots" content="index, follow">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Tracopus">
+  <meta property="og:title" content="Admin &amp;amp; Access — Tracopus User Guide">
+  <meta property="og:description" content="Admin &amp;amp; Access — Tracopus user guide for enterprise work intelligence.">
+  <meta property="og:url" content="https://tracopus.com/documentation/admin.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Admin &amp;amp; Access — Tracopus User Guide">
+  <meta name="twitter:description" content="Admin &amp;amp; Access — Tracopus user guide for enterprise work intelligence.">
+  <script src="js/docs-analytics.js?v=20260719a" defer></script>
+  <link rel="apple-touch-icon" href="images/tracopus-logo.png">
+  <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css?v=20260718g">
+  <link rel="stylesheet" href="css/data-flow-bridge.css?v=20260724g">
+  <script src="js/brand-config.js?v=20260619e"></script>
+</head>
+<body data-docs-depth="0">
+
+<header aria-label="Site header"></header>
+
+
+
+<main>
+    <div class="breadcrumb"><a href="index.html">Home</a> → Admin &amp; Access</div>
+  <section class="section">
+    <div class="page-hero">
+      <div class="eyebrow">Chapter 9 · For admins &amp; power users</div>
+      <h2>Admin &amp; Access</h2>
+      <p>How permissions shape what you see in the Luxury UI — module menus, project scoping, timesheet date policies, and application configuration. Scenario pages document the same flags with step-by-step workflows in the <a href="user-guide/index.html">Scenario User Guide</a>.</p>
+    </div>
+  </section>
+
+  <section class="section" id="overview">
+    <h2>Access overview</h2>
+    <p><span data-brand>Tracopus</span> uses role-based access control enforced on both client and server. The UI hides menus and actions you cannot use rather than showing disabled controls. Access is evaluated at multiple levels:</p>
+    <ol>
+      <li><strong>Module level</strong> — can you see HRMS, Sales, or Project directories at all?</li>
+      <li><strong>Page level</strong> — which routes within a module appear in the sidebar?</li>
+      <li><strong>Persona level</strong> — which persona views you may switch into, and which pages each persona can open (org map + kill switches)</li>
+      <li><strong>Action level</strong> — create, edit, delete, assign, mark attendance, etc.</li>
+      <li><strong>Record level</strong> — project membership, team scope, shared vs private visibility</li>
+      <li><strong>Field level</strong> — timesheet date windows, report type availability</li>
+    </ol>
+    <p>Mobile receives an encrypted access control payload on login; web evaluates permissions from the authenticated user session.</p>
+  </section>
+
+  <section class="section" id="persona-access">
+    <h2>Persona access &amp; navigation</h2>
+    <p>Tracopus separates <strong>who may use a persona</strong> (role) from <strong>org-wide page mapping and kill switches</strong> (organization).</p>
+    <div class="table-wrap">
+      <table class="table">
+        <thead><tr><th>Surface</th><th>Route</th><th>Stores in</th><th>What you configure</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>Roles &amp; permissions</td>
+            <td><code>/admin/roles</code></td>
+            <td><code>role.json</code> → HRMS → <code>personaModules</code></td>
+            <td>Allowed personas, default persona, switcher; page preview writes the shared org page map. Screen guide: <a href="hrms/roles-permissions.html">Roles &amp; permissions</a>. Simulator: <a href="data-flow/admin-roles-flags-data-flow.html">Roles data flow</a>.</td>
+          </tr>
+          <tr>
+            <td>Persona navigation</td>
+            <td><code>/admin/persona-navigation</code></td>
+            <td><code>org.json</code> → HRMS → <code>personaNavigationAdditional</code></td>
+            <td><strong>Turn off</strong> personas/modules/pages; <strong>Page access</strong> — one page at a time, Product default vs Custom. Screen guide: <a href="hrms/persona-navigation.html">Persona Navigation</a>. Scenario: <a href="user-guide/admin/admin-persona-navigation.html">Turn off org access</a>.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <h3>Defaults</h3>
+    <ul>
+      <li><strong>Org seed:</strong> empty <code>pagePersonaMap</code> and empty disable lists — catalog sidebar <code>personas[]</code> apply until you customize a page.</li>
+      <li><strong>Site Admin role seed:</strong> all personas allowed, <code>defaultPersona: ADMIN</code>, switcher on.</li>
+    </ul>
+    <h3>Evaluation order</h3>
+    <ol>
+      <li>Role module / menu flags</li>
+      <li>Role <code>personaModules</code> (or Automatic heuristic if never saved)</li>
+      <li>Org <code>pagePersonaMap</code> override when present</li>
+      <li>Org <code>disabledPersonas</code> / <code>disabledPaths</code> / <code>disabledModules</code> — always win</li>
+    </ol>
+    <p>Permission matrix on Roles stays under <strong>Advanced</strong>. Full key reference: <a href="hrms/application-config.html#cfg-personaNavigationAdditional">personaNavigationAdditional</a> and <a href="hrms/application-config.html#access-personaModules">personaModules</a>. Interactive: <a href="data-flow/admin-roles-flags-data-flow.html">Roles simulator</a> · <a href="data-flow/persona-navigation-flags-data-flow.html">Persona navigation simulator</a>.</p>
+  </section>
+
+  <section class="doc-block doc-block--data-flow-bridge" id="interactive-data-flow" style="margin:1.5rem 0">
+    <h2 class="doc-block__title">Interactive data flow</h2>
+    <p class="df-bridge-lead">Trace personaModules (role layer) and personaNavigationAdditional (org layer) with live flag toggles.</p>
+    <div class="df-bridge-actions">
+      <a class="df-bridge-cta df-bridge-cta--primary" href="data-flow/admin-roles-flags-data-flow.html"><span>Role layer</span><strong>Roles simulator →</strong></a>
+      <a class="df-bridge-cta" href="data-flow/persona-navigation-flags-data-flow.html"><span>Org layer</span><strong>Persona nav →</strong></a>
+      <a class="df-bridge-link" href="data-flow/index.html">All simulators</a>
+    </div>
+  </section>
+
+  <section class="section" id="modules">
+    <h2>Module access</h2>
+    <p>The left sidebar shows HRMS, Sales, and Project directories only when <code>menuAccessControl</code> flags them active for your user:</p>
+    <div class="table-wrap">
+      <table class="table">
+        <thead><tr><th>Module</th><th>Flag</th><th>Typical roles</th></tr></thead>
+        <tbody>
+          <tr><td>HRMS</td><td><code>hrmsModules.active</code></td><td>All employees; HR admins see full directory</td></tr>
+          <tr><td>Sales</td><td><code>salesModules.active</code></td><td>Sales, account managers, leadership</td></tr>
+          <tr><td>Project</td><td><code>projectModules.active</code></td><td>Delivery, PMs, contributors</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <h3>Access-controlled routes</h3>
+    <p>These pages require additional permission flags beyond module access:</p>
+    <ul>
+      <li>File manager (<code>/project/filemanager</code>)</li>
+      <li>Chat (<code>/project/chat</code>)</li>
+      <li>Calendar (<code>/project/calendar</code>)</li>
+      <li>Search (<code>/project/search</code>)</li>
+      <li>Settings (<code>/hrms/settings</code>)</li>
+      <li>Application config (<code>/hrms/appconfig</code>)</li>
+    </ul>
+    <p>Icon rail entries for these features hide when access is denied.</p>
+  </section>
+
+  <section class="section" id="project">
+    <h2>Project access</h2>
+    <h3>Team scope</h3>
+    <p>Team selection filters on list pages limit data to projects and records associated with selected teams. Your default team appears in the sidebar company chip.</p>
+    <h3>Project membership</h3>
+    <p>Project details enforce membership and team rules:</p>
+    <ul>
+      <li>Non-members may see read-only or denied views depending on shared visibility settings</li>
+      <li>Cross-team access without membership renders read-only project details</li>
+      <li>Members tab manages invitations, roles, and access chips</li>
+    </ul>
+    <h3>Shared vs private projects</h3>
+    <p>Project list "Shared visibility" donut reflects how many projects are shared across teams vs restricted. Private projects appear only to members and elevated roles.</p>
+    <h3>Create permissions</h3>
+    <p>Create buttons on lists (projects, bids, POs, employees) and planner assign actions require explicit create permissions. Executive planner view is read-only when create is disabled.</p>
+  </section>
+
+  <section class="section" id="timesheet">
+    <h2>Timesheet access rules</h2>
+    <p>Timesheet permissions (<code>timeSheet</code> branch of access control) govern web and mobile equally.</p>
+    <div class="table-wrap">
+      <table class="table">
+        <thead><tr><th>Rule</th><th>Effect</th></tr></thead>
+        <tbody>
+          <tr><td><code>enableTimeSheetEntry</code> false</td><td>No days allow entry — entire week disabled</td></tr>
+          <tr><td>Project work item windows</td><td>Billable entry only within min/max create dates derived from working-day offsets</td></tr>
+          <tr><td>Non-project work item windows</td><td>Separate date range for non-billable entries</td></tr>
+          <tr><td>Leave/holiday rules</td><td><code>allowLeaveAndHolidayForFuture</code> / <code>ForPast</code> control leave booking direction</td></tr>
+          <tr><td>Hour thresholds</td><td>Rules like disable create before Y working days after X hours logged</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>On mobile, disabled days show grey titles in the week list and blocked add buttons on the Record screen with snackbar message: "Time entry is not allowed for this date."</p>
+    <p>Managers with multi-employee timesheet permission can switch employees on the web Timesheet page header.</p>
+  </section>
+
+  <section class="section" id="appconfig">
+    <h2>Application configuration</h2>
+    <p><code>/hrms/appconfig</code> — hierarchical configuration tree per team (admin access required).</p>
+    <h3>What admins configure</h3>
+    <ul>
+      <li><strong>Application configuration (org.json)</strong> — dropdown lists, service line trees, notification emails, feature toggles, <code>personaNavigationAdditional</code></li>
+      <li><strong>Access control (role.json)</strong> — module visibility, CRUD permissions, timesheet windows, report access, <code>personaModules</code></li>
+      <li>Team-scoped overrides inherited from parent org nodes with lock/hide/inherit controls</li>
+      <li>Role bar for assigning role templates to org units during editing</li>
+      <li>Dedicated UIs: <strong>Admin → Roles</strong> (persona-first) and <strong>Admin → Persona navigation</strong> (simplified Turn off / Page access)</li>
+    </ul>
+    <p><a href="hrms/application-config.html" class="quick-link">Open full Application Configuration reference →</a> — every key from <code>org.json</code> and <code>role.json</code> with descriptions, sample values, and UI workflow notes.</p>
+  </section>
+
+  <section class="section" id="settings">
+    <h2>Organization settings</h2>
+    <p><code>/hrms/settings</code> — Lux settings sections:</p>
+    <div class="feature-grid">
+      <div class="feature-card"><h4>Mobile devices</h4><p>Register and manage employee mobile device connections.</p></div>
+      <div class="feature-card"><h4>Schedulers</h4><p>Cron job configuration for automated tasks.</p></div>
+      <div class="feature-card"><h4>Service health</h4><p>Monitor integrated service status.</p></div>
+      <div class="feature-card"><h4>Company</h4><p>Organization profile and branding metadata.</p></div>
+      <div class="feature-card"><h4>Localization</h4><p>Locale and regional preferences.</p></div>
+      <div class="feature-card"><h4>Notifications</h4><p>Org-wide notification defaults.</p></div>
+    </div>
+    <p>Personal UI preferences (palette, font) live in the Settings right sidebar and localStorage — not org-wide.</p>
+  </section>
+
+  <section class="section" id="reports-feedback">
+    <h2>Reports &amp; feedback permissions</h2>
+    <p>Report types in the REPORT dropdown are filtered by permission — users only see reports they can run. Feedback template configuration and campaign launch similarly require elevated project permissions.</p>
+    <p>External feedback and invoice document routes (<code>/document/…</code>) use tokenized links that bypass full app auth for respondents while keeping responses scoped.</p>
+    <p><a href="index.html" class="quick-link">← Back to Home</a></p>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <p>&copy; 2026 <span data-brand>Tracopus</span>. All rights reserved.</p>
+    <p style="margin-top:0.75rem;">
+      <a href="index.html">Documentation</a>
+      <a href="user-guide/index.html">Scenario Guide</a>
+      <a href="getting-started.html">Getting Started</a>
+      <a href="charts.html">Charts</a>
+    </p>
+    <p class="footer-muted">For support, contact your workspace administrator.</p>
+  </div>
+</footer>
+
+<script src="js/palette.js?v=20260619e"></script>
+<script src="js/brand.js?v=20260619e"></script>
+<script src="js/docs-utility-config.js?v=20260720b"></script>
+<script src="js/nav-config.js?v=20260619e"></script>
+<script src="js/navigation.js?v=20260619e"></script>
+<script src="js/site-enhancements.js?v=20260718d"></script>
+<script src="js/search.js?v=20260619e"></script>
+</body>
+</html>

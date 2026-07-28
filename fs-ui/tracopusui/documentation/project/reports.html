@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en" data-lux-theme="luxury" data-lux-palette="emerald">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reports — Tracopus User Guide</title>
+  <meta name="description" content="Run permission-scoped reports with date/team filters and export result tables.">
+  <meta name="keywords" content="tracopus, documentation, user guide, project, reports">
+  <link rel="canonical" href="https://tracopus.com/documentation/project/reports.html">
+  <meta name="robots" content="index, follow">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Tracopus">
+  <meta property="og:title" content="Reports — Tracopus User Guide">
+  <meta property="og:description" content="Run permission-scoped reports with date/team filters and export result tables.">
+  <meta property="og:url" content="https://tracopus.com/documentation/project/reports.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Reports — Tracopus User Guide">
+  <meta name="twitter:description" content="Run permission-scoped reports with date/team filters and export result tables.">
+  <script src="../js/docs-analytics.js?v=20260719a" defer></script>
+  <link rel="apple-touch-icon" href="../images/tracopus-logo.png">
+  <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css?v=20260718g">
+  <script src="../js/brand-config.js?v=20260619e"></script>
+</head>
+<body data-docs-depth="1">
+
+<header aria-label="Site header"></header>
+
+
+
+<main>
+    <div class="breadcrumb"><a href="../index.html">Home</a> → Project → Reports</div>
+  
+<div class="doc-canvas">
+  <header class="doc-mast">
+    <div class="doc-mast__top">
+      <span class="doc-mast__eyebrow">Project · Reporting</span>
+      <div class="page-meta page-meta--inline">
+        <span class="page-meta__item"><strong>Route</strong> <code>/project/reports</code></span>
+        <span class="page-meta__item"><strong>Menu</strong> Project → Reports</span>
+      </div>
+    </div>
+    <h1 class="doc-mast__title">Reports</h1>
+    <p class="doc-mast__lead">Run permission-scoped reports with date/team filters and export result tables.</p>
+    <p class="doc-mast__purpose">Tabular reporting workspace for utilization, delivery, and operational exports.</p>
+  </header>
+
+  <div class="doc-flow">
+    <section class="doc-block" id="overview"><h2 class="doc-block__title">Overview</h2><p>Reports complements dashboard visuals by returning row-level data for audit, export, and analysis workflows.</p></section>
+    <section class="doc-block doc-block--pair">
+      <div class="doc-split">
+        <div id="layout"><h2 class="doc-block__title">Screen layout</h2><p><strong>Header:</strong> REPORT selector, date range, team scope, text filter, run/export actions.<br><strong>Body:</strong> Result table with pagination where applicable.</p></div>
+        <div id="header-filters"><h2 class="doc-block__title">Header &amp; filters</h2><p><strong>Filters:</strong> Report type · Date range · Team selection · Filter list text</p></div>
+      </div>
+    </section>
+    <section class="doc-block doc-block--summary lux-summary-section" id="summary-section"><h2 class="doc-block__title">Summary &amp; charts</h2><div class="lux-summary-block"><p class="lux-summary-intro">The <strong>Lux summary strip</strong> at the top of this screen is collapsible. Expand it to reveal KPI tiles and chart panels; collapse it for a wider register. All charts respect your active filters (SHOW preset, team scope, date range, text search).</p><p class="lux-summary-detail">Reports use date/team scope — not Apex charts but operational outputs.</p><div class="lux-summary-note"><span class="lux-summary-note__icon">◆</span> Emerald Luxury UI theme · chart data refreshes when filters change</div><h3 class="lux-summary-heading">Available reports</h3><div class="lux-chart-grid"><article class="lux-chart-card lux-chart-card--report">
+  <div class="lux-chart-card__head">
+    <h4 class="lux-chart-card__title">Data Dump</h4>
+    <span class="badge badge-line">Report</span>
+  </div>
+  <dl class="lux-chart-card__meta">
+    <dt>Purpose</dt><dd>Raw export of operational records for the date/team scope</dd>
+    <dt>Typical audience</dt><dd>Analysts, integrations</dd>
+  </dl>
+</article><article class="lux-chart-card lux-chart-card--report">
+  <div class="lux-chart-card__head">
+    <h4 class="lux-chart-card__title">Employee Utilization</h4>
+    <span class="badge badge-line">Report</span>
+  </div>
+  <dl class="lux-chart-card__meta">
+    <dt>Purpose</dt><dd>Billable vs available hours by employee</dd>
+    <dt>Typical audience</dt><dd>Resource managers</dd>
+  </dl>
+</article><article class="lux-chart-card lux-chart-card--report">
+  <div class="lux-chart-card__head">
+    <h4 class="lux-chart-card__title">My Utilization</h4>
+    <span class="badge badge-line">Report</span>
+  </div>
+  <dl class="lux-chart-card__meta">
+    <dt>Purpose</dt><dd>Personal utilization summary</dd>
+    <dt>Typical audience</dt><dd>Individual contributors</dd>
+  </dl>
+</article><article class="lux-chart-card lux-chart-card--report">
+  <div class="lux-chart-card__head">
+    <h4 class="lux-chart-card__title">My Timesheet Data</h4>
+    <span class="badge badge-line">Report</span>
+  </div>
+  <dl class="lux-chart-card__meta">
+    <dt>Purpose</dt><dd>Your logged hours detail</dd>
+    <dt>Typical audience</dt><dd>Individual contributors</dd>
+  </dl>
+</article><article class="lux-chart-card lux-chart-card--report">
+  <div class="lux-chart-card__head">
+    <h4 class="lux-chart-card__title">15% Report</h4>
+    <span class="badge badge-line">Report</span>
+  </div>
+  <dl class="lux-chart-card__meta">
+    <dt>Purpose</dt><dd>Compliance/reporting template (org-specific)</dd>
+    <dt>Typical audience</dt><dd>Finance, compliance</dd>
+  </dl>
+</article><article class="lux-chart-card lux-chart-card--report">
+  <div class="lux-chart-card__head">
+    <h4 class="lux-chart-card__title">Est vs Actual (Deliverables)</h4>
+    <span class="badge badge-line">Report</span>
+  </div>
+  <dl class="lux-chart-card__meta">
+    <dt>Purpose</dt><dd>Planned vs logged effort at deliverable level</dd>
+    <dt>Typical audience</dt><dd>Project managers</dd>
+  </dl>
+</article><article class="lux-chart-card lux-chart-card--report">
+  <div class="lux-chart-card__head">
+    <h4 class="lux-chart-card__title">Est vs Actual (Activities)</h4>
+    <span class="badge badge-line">Report</span>
+  </div>
+  <dl class="lux-chart-card__meta">
+    <dt>Purpose</dt><dd>Planned vs logged at work item / activity level</dd>
+    <dt>Typical audience</dt><dd>Delivery leads</dd>
+  </dl>
+</article><article class="lux-chart-card lux-chart-card--report">
+  <div class="lux-chart-card__head">
+    <h4 class="lux-chart-card__title">Site Activity</h4>
+    <span class="badge badge-line">Report</span>
+  </div>
+  <dl class="lux-chart-card__meta">
+    <dt>Purpose</dt><dd>Activity at site/location granularity</dd>
+    <dt>Typical audience</dt><dd>Field operations</dd>
+  </dl>
+</article><article class="lux-chart-card lux-chart-card--report">
+  <div class="lux-chart-card__head">
+    <h4 class="lux-chart-card__title">Weekwise Utilization</h4>
+    <span class="badge badge-line">Report</span>
+  </div>
+  <dl class="lux-chart-card__meta">
+    <dt>Purpose</dt><dd>Utilization broken down by week</dd>
+    <dt>Typical audience</dt><dd>Capacity planning</dd>
+  </dl>
+</article><article class="lux-chart-card lux-chart-card--report">
+  <div class="lux-chart-card__head">
+    <h4 class="lux-chart-card__title">Weekly PO Estimation</h4>
+    <span class="badge badge-line">Report</span>
+  </div>
+  <dl class="lux-chart-card__meta">
+    <dt>Purpose</dt><dd>Purchase order estimate tracking by week</dd>
+    <dt>Typical audience</dt><dd>Sales / delivery bridge</dd>
+  </dl>
+</article><article class="lux-chart-card lux-chart-card--report">
+  <div class="lux-chart-card__head">
+    <h4 class="lux-chart-card__title">Resource Allocation</h4>
+    <span class="badge badge-line">Report</span>
+  </div>
+  <dl class="lux-chart-card__meta">
+    <dt>Purpose</dt><dd>Who is assigned where across projects</dd>
+    <dt>Typical audience</dt><dd>Resource managers</dd>
+  </dl>
+</article><article class="lux-chart-card lux-chart-card--report">
+  <div class="lux-chart-card__head">
+    <h4 class="lux-chart-card__title">Project Completion</h4>
+    <span class="badge badge-line">Report</span>
+  </div>
+  <dl class="lux-chart-card__meta">
+    <dt>Purpose</dt><dd>Completion metrics and status progression</dd>
+    <dt>Typical audience</dt><dd>Portfolio managers</dd>
+  </dl>
+</article></div></div></section>
+    <section class="doc-block" id="main"><h2 class="doc-block__title">Main content &amp; actions</h2><p>Use the Create Report Config panel to save frequently used combinations for weekly or monthly routines.</p></section>
+    <section class="doc-block doc-block--features" id="complete-features">
+  <h2 class="doc-block__title">Complete feature list</h2>
+  <p class="lux-features-intro">Every control, panel, and workflow on this screen.</p>
+  <ul class="lux-feature-list lux-feature-list--dense"><li class="lux-feature-item"><span class="lux-feature-item__icon">✓</span><div><strong>Luxury UI shell</strong><span>Emerald-themed glass cards, sticky gradient header, module sidebar, and responsive layout.</span></div></li><li class="lux-feature-item"><span class="lux-feature-item__icon">✓</span><div><strong>Documentation search</strong><span>Header search indexes all guide pages (docs site).</span></div></li><li class="lux-feature-item"><span class="lux-feature-item__icon">✓</span><div><strong>Report catalog</strong><span>Twelve operational and compliance reports.</span></div></li><li class="lux-feature-item"><span class="lux-feature-item__icon">✓</span><div><strong>Date range picker</strong><span>Scope all reports by period.</span></div></li><li class="lux-feature-item"><span class="lux-feature-item__icon">✓</span><div><strong>Team filter</strong><span>Limit report to org units.</span></div></li><li class="lux-feature-item"><span class="lux-feature-item__icon">✓</span><div><strong>Export formats</strong><span>CSV/Excel download per report type.</span></div></li><li class="lux-feature-item"><span class="lux-feature-item__icon">✓</span><div><strong>Est vs actual reports</strong><span>Deliverable and activity variance analysis.</span></div></li><li class="lux-feature-item"><span class="lux-feature-item__icon">✓</span><div><strong>Utilization reports</strong><span>Employee, my, and weekwise variants.</span></div></li></ul>
+</section>
+    <div class="doc-enrichment"><section class="doc-block doc-block--callouts" id="page-callouts"><h2 class="doc-block__title">Before you start</h2><div class="callout-stack callout-stack--dense"><div class="callout callout--note"><div class="callout__icon">📝</div><div class="callout__body"><strong class="callout__title">Data Dump sensitivity</strong><div class="callout__text">Contains operational PII — follow secure transfer policy.</div></div></div><div class="callout callout--tip"><div class="callout__icon">💡</div><div class="callout__body"><strong class="callout__title">Month close</strong><div class="callout__text">Run Est vs Actual (Deliverables) + Employee Utilization same date range.</div></div></div></div></section><div class="doc-enrich-grid"><section class="doc-block" id="who-uses-this"><h2 class="doc-block__title">Who uses this screen</h2><p class="audience-text">Analysts, PMs, and finance exporting operational data — twelve report types including utilization, est vs actual, and resource allocation.</p><div class="callout callout--info"><div class="callout__icon">ℹ️</div><div class="callout__body"><strong class="callout__title">Export and compliance hub</strong><div class="callout__text">Set date range and team filter once — applies to all report runs on this page.</div></div></div></section><section class="doc-block" id="key-concepts"><h2 class="doc-block__title">Key concepts</h2><div class="concept-grid"><article class="concept-card"><h3 class="concept-card__title">Report catalog</h3><p class="concept-card__desc">Twelve cards: Data Dump, Utilization variants, Est vs Actual, PO estimation, etc.</p></article><article class="concept-card"><h3 class="concept-card__title">Date range picker</h3><p class="concept-card__desc">Scopes all report outputs to period.</p></article><article class="concept-card"><h3 class="concept-card__title">Team filter</h3><p class="concept-card__desc">Limit to org units for manager views.</p></article><article class="concept-card"><h3 class="concept-card__title">Export formats</h3><p class="concept-card__desc">CSV/Excel per report — large extracts async on some deployments.</p></article><article class="concept-card"><h3 class="concept-card__title">Est vs actual pair</h3><p class="concept-card__desc">Deliverable-level and activity-level variance reports.</p></article></div></section><section class="doc-block" id="permissions"><h2 class="doc-block__title">Permissions</h2><div class="table-wrap"><table class="table table--permissions"><thead><tr><th>Role</th><th>Access on this screen</th></tr></thead><tbody><tr><td><strong>Resource manager</strong></td><td>Utilization and allocation reports.</td></tr><tr><td><strong>Project manager</strong></td><td>Est vs Actual, Project Completion.</td></tr><tr><td><strong>Individual contributor</strong></td><td>My Utilization, My Timesheet Data only.</td></tr><tr><td><strong>Finance / compliance</strong></td><td>15% Report, Data Dump, Weekly PO Estimation.</td></tr></tbody></table></div><div class="callout callout--note"><div class="callout__icon">📝</div><div class="callout__body"><strong class="callout__title">Administrator override</strong><div class="callout__text">Org administrators and service accounts configured in the Admin console may bypass row-level scopes shown above. When in doubt, confirm access with your Tracopus administrator.</div></div></div></section><section class="doc-block" id="controls-reference"><h2 class="doc-block__title">Controls reference</h2><div class="table-wrap"><table class="table table--controls"><thead><tr><th>Control</th><th>Description</th><th>Notes</th></tr></thead><tbody><tr><td><strong>Report catalog grid</strong></td><td>Select report type.</td><td>See embedded catalog table in guide.</td></tr><tr><td><strong>Date range</strong></td><td>Start/end for extract.</td><td>Required before run.</td></tr><tr><td><strong>Team filter</strong></td><td>Org scope.</td><td>Optional for personal reports.</td></tr><tr><td><strong>Run / Generate</strong></td><td>Execute report.</td><td>May take seconds on large data.</td></tr><tr><td><strong>Download CSV/Excel</strong></td><td>Save output.</td><td>Filename includes date stamp.</td></tr><tr><td><strong>Report description</strong></td><td>Purpose and audience per card.</td><td>Hover or expand.</td></tr><tr><td><strong>Schedule (if enabled)</strong></td><td>Recurring email.</td><td>Admin configured.</td></tr></tbody></table></div></section></div><div class="doc-enrich-grid doc-enrich-grid--2"><section class="doc-block" id="common-mistakes"><h2 class="doc-block__title">Common mistakes</h2><div class="callout-stack callout-stack--dense"><div class="callout callout--warning"><div class="callout__icon">⚠️</div><div class="callout__body"><strong class="callout__title">Full company Data Dump casually</strong><div class="callout__text">PII and performance exposure — scope team and date minimally.</div></div></div><div class="callout callout--warning"><div class="callout__icon">⚠️</div><div class="callout__body"><strong class="callout__title">Est vs Actual before estimates exist</strong><div class="callout__text">Meaningless 100% variance — fix deliverables first.</div></div></div><div class="callout callout--warning"><div class="callout__icon">⚠️</div><div class="callout__body"><strong class="callout__title">Wrong week boundary on utilization</strong><div class="callout__text">Align date picker with payroll week — check timezone in Settings.</div></div></div></div></section><section class="doc-block" id="faq"><h2 class="doc-block__title">FAQ</h2><div class="faq-list"><article class="faq-item"><h3 class="faq-item__q">Which report for billing?</h3><div class="faq-item__a">My Timesheet Data or Data Dump with finance mapping — not Utilization alone.</div></article><article class="faq-item"><h3 class="faq-item__q">15% Report?</h3><div class="faq-item__a">Org-specific compliance template — see finance for definition.</div></article><article class="faq-item"><h3 class="faq-item__q">Can I automate exports?</h3><div class="faq-item__a">Scheduled reports if licensed — else manual download.</div></article><article class="faq-item"><h3 class="faq-item__q">Report data lag?</h3><div class="faq-item__a">Timesheet lock may delay final numbers until HR closes week.</div></article></div></section></div><section class="doc-block doc-block--related" id="related-pages"><h2 class="doc-block__title">Related pages</h2><div class="related-links"><a class="related-link" href="team-capacity.html"><span class="related-link__label">Team Capacity</span><span class="related-link__desc">Visual planning before export.</span></a><a class="related-link" href="deliverables.html"><span class="related-link__label">Deliverables</span><span class="related-link__desc">Fix estimates before Est vs Actual.</span></a><a class="related-link" href="../hrms/timesheet.html"><span class="related-link__label">Timesheet</span><span class="related-link__desc">Source hours for utilization.</span></a><a class="related-link" href="../charts.html"><span class="related-link__label">Charts guide</span><span class="related-link__desc">On-screen charts vs exported reports.</span></a></div></section></div>
+    <section class="doc-block doc-block--pair">
+      <div class="doc-split">
+        <div id="workflows"><h2 class="doc-block__title">Workflows</h2><ol><li>Select report type.</li><li>Set date and team scope.</li><li>Run/View report.</li><li>Download export file.</li></ol></div>
+        <div class="doc-block--tips" id="tips"><h2 class="doc-block__title">Tips &amp; best practices</h2><div class="info"><strong>Tip:</strong> Reports unavailable to your role are intentionally hidden from the dropdown.</div><div class="callout-stack"><h3 class="subheading">More guidance</h3><div class="callout callout--tip"><div class="callout__icon">💡</div><div class="callout__body"><strong class="callout__title">Remember</strong><div class="callout__text">Twelve cards: Data Dump, Utilization variants, Est vs Actual, PO estimation, etc.</div></div></div><div class="callout callout--info"><div class="callout__icon">ℹ️</div><div class="callout__body"><strong class="callout__title">Which report for billing?</strong><div class="callout__text">My Timesheet Data or Data Dump with finance mapping — not Utilization alone.</div></div></div></div></div>
+      </div>
+    </section>
+  </div>
+</div>
+<nav class="page-nav">
+  <a class="page-nav__prev" href="team-capacity.html">← Team Capacity</a>
+  <a class="page-nav__next" href="feedback.html">Feedback →</a>
+</nav>
+
+</main>
+
+<footer>
+  <div class="container">
+    <p>&copy; 2026 <span data-brand>Tracopus</span>. All rights reserved.</p>
+    <p style="margin-top:0.75rem;">
+      <a href="../index.html">Documentation</a>
+      <a href="../user-guide/index.html">Scenario Guide</a>
+      <a href="../getting-started.html">Getting Started</a>
+      <a href="../charts.html">Charts</a>
+    </p>
+    <p class="footer-muted">For support, contact your workspace administrator.</p>
+  </div>
+</footer>
+
+<script src="../js/palette.js?v=20260619e"></script>
+<script src="../js/brand.js?v=20260619e"></script>
+<script src="../js/docs-utility-config.js?v=20260720b"></script>
+<script src="../js/nav-config.js?v=20260619e"></script>
+<script src="../js/navigation.js?v=20260619e"></script>
+<script src="../js/site-enhancements.js?v=20260718d"></script>
+<script src="../js/search.js?v=20260619e"></script>
+</body>
+</html>

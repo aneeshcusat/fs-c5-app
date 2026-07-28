@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en" data-lux-theme="luxury" data-lux-palette="emerald">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Luxury Interface — Tracopus User Guide</title>
+  <meta name="description" content="Luxury Interface — Tracopus user guide for enterprise work intelligence.">
+  <meta name="keywords" content="tracopus, documentation, user guide, interface, luxury">
+  <link rel="canonical" href="https://tracopus.com/documentation/interface.html">
+  <meta name="robots" content="index, follow">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Tracopus">
+  <meta property="og:title" content="Luxury Interface — Tracopus User Guide">
+  <meta property="og:description" content="Luxury Interface — Tracopus user guide for enterprise work intelligence.">
+  <meta property="og:url" content="https://tracopus.com/documentation/interface.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Luxury Interface — Tracopus User Guide">
+  <meta name="twitter:description" content="Luxury Interface — Tracopus user guide for enterprise work intelligence.">
+  <script src="js/docs-analytics.js?v=20260719a" defer></script>
+  <link rel="apple-touch-icon" href="images/tracopus-logo.png">
+  <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css?v=20260718g">
+  <script src="js/brand-config.js?v=20260619e"></script>
+</head>
+<body data-docs-depth="0">
+
+<header aria-label="Site header"></header>
+
+
+
+<main>
+    <div class="breadcrumb"><a href="index.html">Home</a> → Luxury Interface</div>
+  <section class="section">
+    <div class="page-hero">
+      <div class="eyebrow">Chapter 2</div>
+      <h2>Luxury Interface</h2>
+      <p>How to navigate the updated shell — glass surfaces, collapsible analytics, icon rail shortcuts, and personalization that carries across web and mobile.</p>
+    </div>
+  </section>
+
+  <section class="section" id="layout">
+    <h2>Shell layout</h2>
+    <p>The Luxury UI uses a three-column mental model on desktop:</p>
+    <ul>
+      <li><strong>Icon rail</strong> (narrow, leftmost) — persistent quick actions and personalization.</li>
+      <li><strong>Module sidebar</strong> — directory navigation for HRMS, Sales, or Project pages you have access to.</li>
+      <li><strong>Main canvas</strong> — page header, optional summary analytics strip, filters, and content (table, grid, kanban, or dashboard).</li>
+    </ul>
+    <p>On mobile, the module sidebar collapses; the header exposes grid/list/create shortcuts where applicable.</p>
+  </section>
+
+  <section class="section" id="header">
+    <h2>Page header</h2>
+    <p>Every main page shows:</p>
+    <ul>
+      <li><strong>Workspace kicker</strong> — HRMS, Sales, or Project label above the page title.</li>
+      <li><strong>Page title</strong> — e.g. "Project List", "Time Sheet", "Bid Requests".</li>
+      <li><strong>Global search field</strong> — type and press Enter to open <code>/project/search</code> with results across entities.</li>
+      <li><strong>Dropdown panels</strong> — Tasks, Chat, Notifications (quick previews with links to full pages).</li>
+      <li><strong>Account menu</strong> — Profile, Settings, Sign out (or Microsoft logout when using SSO).</li>
+    </ul>
+    <div class="tip"><strong>Tip:</strong> Use header search for fast jumps to projects, tasks, or people instead of drilling through menus.</div>
+  </section>
+
+  <section class="section" id="sidebar">
+    <h2>Module sidebar</h2>
+    <p>Under <strong>Directories</strong>, expand HRMS, Sales, or Project to see permitted menu items. Items you cannot access are hidden entirely — not grayed out.</p>
+    <p>The company chip below the logo shows your default team name, helping you confirm organizational context.</p>
+    <h3>Typical Project menu items</h3>
+    <p>Dashboard, Project List, Team capacity, Accounts, Notes, Taskboard, Task Activity, Reports, Feedback.</p>
+    <h3>Typical HRMS menu items</h3>
+    <p>Dashboard, Employees, Attendance, Time Sheet, Invoice.</p>
+    <h3>Typical Sales menu items</h3>
+    <p>Bid Requests, Purchase Orders.</p>
+  </section>
+
+  <section class="section" id="rail">
+    <h2>Icon rail</h2>
+    <p>The narrow rail on the far left provides cross-module shortcuts:</p>
+    <div class="table-wrap">
+      <table class="table">
+        <thead><tr><th>Icon</th><th>Action</th></tr></thead>
+        <tbody>
+          <tr><td>Search</td><td>Opens global search page</td></tr>
+          <tr><td>Taskboard</td><td>Jump to kanban view</td></tr>
+          <tr><td>Calendar</td><td>Personal work calendar (access-controlled)</td></tr>
+          <tr><td>Notes</td><td>Quick notes overlay / Notes page</td></tr>
+          <tr><td>Chat</td><td>Messaging (access-controlled)</td></tr>
+          <tr><td>Files</td><td>File manager (access-controlled)</td></tr>
+          <tr><td>Palette droplet</td><td>Color theme picker</td></tr>
+          <tr><td>App config</td><td>Application configuration tree (admin)</td></tr>
+          <tr><td>Settings</td><td>Right sidebar with layout &amp; font options</td></tr>
+          <tr><td>Today</td><td>Today activity sidebar</td></tr>
+          <tr><td>Avatar</td><td>User menu duplicate of header account</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="section" id="search">
+    <h2>Global search</h2>
+    <ol>
+      <li>Type your query in the header search field.</li>
+      <li>Press <strong>Enter</strong> to navigate to the search results page.</li>
+      <li>Results are grouped by entity type; click a row to open the detail view.</li>
+    </ol>
+    <p>Search respects your access permissions — you only see records your role allows.</p>
+  </section>
+
+  <section class="section" id="themes">
+    <h2>Themes &amp; color palettes</h2>
+    <p>Twelve curated palettes change primary, accent, and soft background tokens across the entire app. <strong>Emerald</strong> is the default theme for this documentation site. Your choice is saved in browser storage (<code>docs-lux-palette</code> for this guide; the live app stores your palette preference separately and syncs to mobile).</p>
+    <div class="palette-section">
+      <h4>Preview palettes</h4>
+      <p class="field-description">Click a swatch to preview — saved locally in this documentation site and synced with the live app key.</p>
+      <div id="palette-grid" class="palette-grid"></div>
+    </div>
+    <h3>Available palettes</h3>
+    <p>Indigo (default), Sapphire, Emerald, Rose, Midnight, Amber, Violet, Ocean, Sunset, Graphite, Crimson, Forest. Midnight and Graphite apply a darker shell treatment.</p>
+    <p>Change palette via: icon rail droplet, Settings right sidebar link, or the preview grid above (syncs with the live app).</p>
+  </section>
+
+  <section class="section" id="typography">
+    <h2>Typography &amp; layout settings</h2>
+    <p>Open <strong>Settings</strong> from the icon rail to adjust:</p>
+    <ul>
+      <li><strong>Font family</strong> — Inter (default), Source Sans 3, IBM Plex Sans, Plus Jakarta Sans, DM Sans, Roboto, Open Sans, Lato, Manrope, Montserrat, and more.</li>
+      <li><strong>Layout toggles</strong> — compact sidebar and related display preferences.</li>
+    </ul>
+    <p>Font choice is stored in the app UI settings (browser local storage) and applied via <code>data-lux-font</code> on the document root.</p>
+  </section>
+
+  <section class="section" id="summaries">
+    <h2>Summary panels</h2>
+    <p>List and dashboard pages open with a collapsible <strong>Lux summary</strong> section containing:</p>
+    <ul>
+      <li>KPI strip (counts, totals, percentages)</li>
+      <li>Highlight / insight cards with stacked bar segments</li>
+      <li>Stage flow or funnel diagrams (horizontal pipelines)</li>
+      <li>Chart gallery (donut, bar, area, line panels — see <a href="charts.html">Charts reference</a>)</li>
+    </ul>
+    <p>Collapse state is remembered per page in localStorage so your preference persists between visits.</p>
+  </section>
+
+  <section class="section" id="lists">
+    <h2>List page controls</h2>
+    <p>Most register pages (projects, employees, bids, etc.) share a filter bar:</p>
+    <ul>
+      <li><strong>Team selection</strong> — multi-select checkbox menu to scope data</li>
+      <li><strong>Filter list…</strong> — free-text search within the current result set</li>
+      <li><strong>SHOW</strong> — status preset (Active, Archived, My projects, etc.)</li>
+      <li><strong>SORT</strong> — field and direction</li>
+      <li><strong>Date range</strong> — where applicable (projects, reports)</li>
+      <li><strong>Quick filter chips</strong> — one-click presets below the summary</li>
+      <li><strong>Grid / List toggle</strong> — switch table vs card grid</li>
+      <li><strong>Create</strong> — opens sidebar wizard or form (permission-gated)</li>
+    </ul>
+  </section>
+
+  <section class="section" id="wizards">
+    <h2>Create wizards vs forms</h2>
+    <p>Major create flows offer <strong>Wizard</strong> and <strong>Form</strong> modes via a toggle at the top of the sidebar:</p>
+    <ul>
+      <li><strong>Project</strong> — 6+ steps: setup, client &amp; study, service scope, fieldwork, compliance, team &amp; estimates</li>
+      <li><strong>Purchase order</strong> — contract core, client, delivery scope, references</li>
+      <li><strong>Bid request</strong> — study basics, setup, screening, additional, quota</li>
+      <li><strong>Employee</strong> — profile, access, sign-in, organization, skills</li>
+    </ul>
+    <p>Use Wizard for guided first-time creation; switch to Form for quick edits by experts.</p>
+    <p><a href="project/index.html" class="quick-link">Next: Projects →</a></p>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <p>&copy; 2026 <span data-brand>Tracopus</span>. All rights reserved.</p>
+    <p style="margin-top:0.75rem;">
+      <a href="index.html">Documentation</a>
+      <a href="user-guide/index.html">Scenario Guide</a>
+      <a href="getting-started.html">Getting Started</a>
+      <a href="charts.html">Charts</a>
+    </p>
+    <p class="footer-muted">For support, contact your workspace administrator.</p>
+  </div>
+</footer>
+
+<script src="js/palette.js?v=20260619e"></script>
+<script src="js/brand.js?v=20260619e"></script>
+<script src="js/docs-utility-config.js?v=20260720b"></script>
+<script src="js/nav-config.js?v=20260619e"></script>
+<script src="js/navigation.js?v=20260619e"></script>
+<script src="js/site-enhancements.js?v=20260718d"></script>
+<script src="js/search.js?v=20260619e"></script>
+</body>
+</html>

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en" data-lux-theme="luxury" data-lux-palette="emerald">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Timesheet — Tracopus User Guide</title>
+  <meta name="description" content="Monday–Sunday grid for billable, non-billable, and leave hours — with week navigation, validation, and optional approval.">
+  <meta name="keywords" content="tracopus, documentation, user guide, hrms, timesheet">
+  <link rel="canonical" href="https://tracopus.com/documentation/hrms/timesheet.html">
+  <meta name="robots" content="index, follow">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Tracopus">
+  <meta property="og:title" content="Timesheet — Tracopus User Guide">
+  <meta property="og:description" content="Monday–Sunday grid for billable, non-billable, and leave hours — with week navigation, validation, and optional approval.">
+  <meta property="og:url" content="https://tracopus.com/documentation/hrms/timesheet.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Timesheet — Tracopus User Guide">
+  <meta name="twitter:description" content="Monday–Sunday grid for billable, non-billable, and leave hours — with week navigation, validation, and optional approval.">
+  <script src="../js/docs-analytics.js?v=20260719a" defer></script>
+  <link rel="stylesheet" href="../css/styles.css?v=20260718g">
+  <link rel="stylesheet" href="../css/data-flow-bridge.css?v=20260724d">
+  <script src="../js/brand-config.js?v=20260619e"></script>
+</head>
+<body data-docs-depth="1">
+
+<header aria-label="Site header"></header>
+
+<main>
+  <div class="breadcrumb"><a href="../index.html">Home</a> → HRMS → Timesheet</div>
+
+  <div class="doc-canvas">
+    <header class="doc-mast">
+      <div class="doc-mast__top">
+        <span class="doc-mast__eyebrow">HRMS · Timesheet</span>
+        <div class="page-meta page-meta--inline">
+          <span class="page-meta__item"><strong>Route</strong> <code>/hrms/timesheet</code> · <code>/people/timesheet</code></span>
+          
+        </div>
+      </div>
+      <h1 class="doc-mast__title">Timesheet</h1>
+      <p class="doc-mast__lead">Monday–Sunday grid for billable, non-billable, and leave hours — with week navigation, validation, and optional approval.</p>
+      <p class="doc-mast__purpose">Scroll to <a href="#flowcharts">Flowcharts</a>. Approval workflow: <a href="timesheet-approval.html">Timesheet Approval</a>.</p>
+    </header>
+
+    <div class="doc-flow">
+      <section class="doc-block doc-block--data-flow-bridge" id="interactive-data-flow">
+        <h2 class="doc-block__title">Interactive data flow</h2>
+        <p class="df-bridge-lead">Toggle timesheet approval flags — full-week vs partial-week (<code>partialWeekSubmissionEnabled</code>), submit, manager approve, reopen, and TaskActivity promotion.</p>
+        <div class="df-bridge-actions">
+          <a class="df-bridge-cta df-bridge-cta--primary" href="../data-flow/timesheet-flags-data-flow.html"><span>Primary simulator</span><strong>Timesheet flags &amp; approval →</strong></a>
+          <a class="df-bridge-link" href="../data-flow/index.html">All simulators</a>
+        </div>
+      </section>
+
+      <section class="doc-block" id="flowcharts">
+        <h2 class="doc-block__title">Flowcharts</h2>
+        <p>Each diagram auto-plays steps when it scrolls into view. Use <strong>Play / Pause</strong>, or click a step to jump.</p>
+
+        <article class="diagram-card" data-diagram-autoplay="true">
+          <header class="diagram-card__head">
+            <div class="diagram-card__titles">
+              <h3>1 — Weekly entry loop</h3>
+              <p class="diagram-card__desc">Navigate week, add entries, validate, submit when approval is on.</p>
+            </div>
+            <div class="diagram-card__controls">
+              <button type="button" data-diagram-prev aria-label="Previous step"><i class="fe fe-chevron-left" aria-hidden="true"></i></button>
+              <button type="button" data-diagram-play aria-pressed="false"><i class="fe fe-play" aria-hidden="true"></i><span>Play</span></button>
+              <button type="button" data-diagram-next aria-label="Next step"><i class="fe fe-chevron-right" aria-hidden="true"></i></button>
+            </div>
+          </header>
+          <div class="diagram-card__chart">
+            <pre class="mermaid">
+flowchart TD
+  W[Select week] --> E[Add / edit entries]
+  E --> V[Validation summary]
+  V --> S{Approval on?}
+  S -->|No| Done[Week saved]
+  S -->|Yes| Sub[Submit for approval]
+            </pre>
+          </div>
+          <ol class="diagram-steps">
+            <li class="diagram-step is-active"><span class="diagram-step__index">1</span><div class="diagram-step__body"><strong>Select week</strong><span>Header arrows move Monday–Sunday weeks.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">2</span><div class="diagram-step__body"><strong>Add / edit entries</strong><span>Billable, non-billable, or leave hours.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">3</span><div class="diagram-step__body"><strong>Validation summary</strong><span>Totals, billable ratio, policy hints.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">4</span><div class="diagram-step__body"><strong>Approval on?</strong><span>Org timesheet approval workflow.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">5</span><div class="diagram-step__body"><strong>Week saved</strong><span>Open weeks editable until lock.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">6</span><div class="diagram-step__body"><strong>Submit for approval</strong><span>Manager queue — see Timesheet Approval guide.</span></div></li>
+          </ol>
+          <p class="diagram-card__progress" data-diagram-progress></p>
+        </article>
+
+        <article class="diagram-card" data-diagram-autoplay="true">
+          <header class="diagram-card__head">
+            <div class="diagram-card__titles">
+              <h3>2 — Billable entry path</h3>
+              <p class="diagram-card__desc">Link hours to project/deliverable for utilization and invoices.</p>
+            </div>
+            <div class="diagram-card__controls">
+              <button type="button" data-diagram-prev aria-label="Previous step"><i class="fe fe-chevron-left" aria-hidden="true"></i></button>
+              <button type="button" data-diagram-play aria-pressed="false"><i class="fe fe-play" aria-hidden="true"></i><span>Play</span></button>
+              <button type="button" data-diagram-next aria-label="Next step"><i class="fe fe-chevron-right" aria-hidden="true"></i></button>
+            </div>
+          </header>
+          <div class="diagram-card__chart">
+            <pre class="mermaid">
+flowchart TD
+  Add[Add entry] --> Type{Type}
+  Type -->|Billable| Proj[Pick project / deliverable]
+  Type -->|Non-billable| NB[Internal code]
+  Type -->|Leave| Lv[Leave / holiday]
+  Proj --> Hrs[Enter hours]
+  NB --> Hrs
+  Lv --> Hrs
+  Hrs --> Save[Save cell]
+            </pre>
+          </div>
+          <ol class="diagram-steps">
+            <li class="diagram-step is-active"><span class="diagram-step__index">1</span><div class="diagram-step__body"><strong>Add entry</strong><span>Header Add entry or day cell click.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">2</span><div class="diagram-step__body"><strong>Type</strong><span>Billable, non-billable, or leave.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">3</span><div class="diagram-step__body"><strong>Pick project / deliverable</strong><span>Required for billable client work.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">4</span><div class="diagram-step__body"><strong>Internal code</strong><span>Training, admin, etc.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">5</span><div class="diagram-step__body"><strong>Leave / holiday</strong><span>May sync from approved leave.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">6</span><div class="diagram-step__body"><strong>Enter hours</strong><span>H or H.MM per org config.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">7</span><div class="diagram-step__body"><strong>Save cell</strong><span>Row refreshes totals.</span></div></li>
+          </ol>
+          <p class="diagram-card__progress" data-diagram-progress></p>
+        </article>
+      </section>
+
+      <section class="doc-block" id="overview">
+        <h2 class="doc-block__title">Overview</h2>
+        <p><strong>HRMS → Time Sheet</strong> is the weekly hour grid. When timesheet approval is enabled, submit and manager review apply — see the Approval guide. With <code>partialWeekSubmissionEnabled</code> on, you can submit selected days as separate batches while leftover draft days stay editable; with the flag off (default), submit covers the whole week. Sync external leaves when integrations allow.</p>
+      </section>
+
+      <section class="doc-block" id="how-to">
+        <h2 class="doc-block__title">How to use</h2>
+        <div class="steps">
+          <div class="step"><strong>1. Open the current week</strong><div class="step-detail">Confirm week range in the header.</div></div>
+          <div class="step"><strong>2. Log hours daily</strong><div class="step-detail">Prefer daily entry over Friday catch-up.</div></div>
+          <div class="step"><strong>3. Link billable work</strong><div class="step-detail">Select the correct project/deliverable.</div></div>
+          <div class="step"><strong>4. Submit if required</strong><div class="step-detail">Full week when partial is off; use day chips to submit batches when partial is on. See Timesheet Approval.</div></div>
+        </div>
+      </section>
+
+      <section class="doc-block doc-block--related" id="related-pages">
+        <h2 class="doc-block__title">Related pages</h2>
+        <div class="related-links">
+          <a class="related-link" href="timesheet-approval.html"><span class="related-link__label">Timesheet Approval</span><span class="related-link__desc">Submit, approve, lock.</span></a>
+          <a class="related-link" href="leaves.html"><span class="related-link__label">Leave Management</span><span class="related-link__desc">Leave rows on the grid.</span></a>
+          <a class="related-link" href="dashboard.html"><span class="related-link__label">Employee Dashboard</span><span class="related-link__desc">Utilization charts.</span></a>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <nav class="page-nav">
+    <a class="page-nav__prev" href="index.html">← HRMS Overview</a>
+    <a class="page-nav__next" href="leave-configuration.html">Leave Configuration →</a>
+  </nav>
+</main>
+
+<footer>
+  <div class="container">
+    <p>&copy; 2026 <span data-brand>Tracopus</span>. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="../js/palette.js?v=20260619e"></script>
+<script src="../js/brand.js?v=20260619e"></script>
+<script src="../js/docs-utility-config.js?v=20260720b"></script>
+<script src="../js/nav-config.js?v=20260619e"></script>
+<script src="../js/navigation.js?v=20260619e"></script>
+<script src="../js/site-enhancements.js?v=20260718d"></script>
+<script src="../js/search.js?v=20260619e"></script>
+<script type="module">
+  import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+  mermaid.initialize({
+    startOnLoad: true,
+    theme: "base",
+    securityLevel: "loose",
+    flowchart: { curve: "basis", htmlLabels: true },
+    themeVariables: {
+      primaryColor: "#d8f3dc",
+      primaryTextColor: "#1b4332",
+      primaryBorderColor: "#40916c",
+      lineColor: "#52796f",
+      secondaryColor: "#f1faee",
+      tertiaryColor: "#ffffff",
+      fontFamily: "Inter, system-ui, sans-serif",
+    },
+  });
+  setTimeout(() => {
+    if (window.TracopusDocsDiagrams) window.TracopusDocsDiagrams.boot();
+  }, 600);
+</script>
+<script src="../js/docs-diagrams.js?v=20260718e"></script>
+</body>
+</html>

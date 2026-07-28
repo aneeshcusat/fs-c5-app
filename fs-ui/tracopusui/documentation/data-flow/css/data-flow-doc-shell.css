@@ -1,0 +1,156 @@
+/**
+ * Tracopus documentation chrome for interactive data-flow simulators.
+ * Does not override simulator panel logic — only page shell + header spacing.
+ */
+body.data-flow-doc-site {
+  background: var(--bg-light) !important;
+  color: var(--text-dark);
+  font-family: var(--font-sans);
+  min-height: 100vh;
+}
+
+body.data-flow-doc-site .data-flow-doc-main {
+  display: block;
+  max-width: none;
+  padding: 0;
+  margin: 0;
+}
+
+body.data-flow-doc-site .data-flow-doc-main > .wrap {
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 0.5rem var(--page-gutter) 2.5rem;
+}
+
+body.data-flow-doc-site .data-flow-doc-main .wrap .hero {
+  margin-top: 0;
+}
+
+@media (min-width: 1100px) {
+  body.data-flow-doc-site .panel-flags {
+    top: calc(var(--header-height) + 0.6rem) !important;
+    max-height: calc(100vh - var(--header-height) - 1.2rem) !important;
+    overflow: auto !important;
+  }
+}
+
+/* Right column — full-height page flow; no inner scroll box or panel chrome */
+body.data-flow-doc-site main.panel.doc-scroll,
+body.data-flow-doc-site main.panel.panel-behavior {
+  max-height: none !important;
+  height: auto !important;
+  overflow: visible !important;
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
+body.data-flow-doc-site main.panel.doc-scroll .right-tabs,
+body.data-flow-doc-site main.panel.panel-behavior .right-tabs {
+  position: sticky;
+  top: calc(var(--header-height) + 0.35rem);
+  z-index: 2;
+  background: var(--bg-light);
+  padding-top: 0.15rem;
+  margin-bottom: 1rem;
+}
+
+body.data-flow-doc-site .data-flow-doc-breadcrumb {
+  max-width: var(--shell-max);
+  margin: 0 auto;
+  padding: 0.75rem var(--page-gutter) 0.35rem;
+  font-size: var(--text-xs);
+  color: var(--text-light);
+}
+
+body.data-flow-doc-site .data-flow-doc-breadcrumb a {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+body.data-flow-doc-site footer.note {
+  border-top: 1px solid var(--border-color);
+  padding-top: 0.75rem;
+  margin-top: 1rem;
+  color: var(--text-light);
+}
+
+body.data-flow-doc-site footer.data-flow-doc-chrome {
+  border-top: 1px solid var(--border-color);
+  background: var(--bg-white);
+  padding: 1.25rem 0;
+  margin-top: 0;
+}
+
+body.data-flow-doc-site footer.data-flow-doc-chrome .container {
+  max-width: var(--shell-max);
+  margin: 0 auto;
+  padding: 0 var(--page-gutter);
+}
+
+body.data-flow-doc-site footer.data-flow-doc-chrome a {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 600;
+  margin-right: 1rem;
+}
+
+body.data-flow-doc-site footer.data-flow-doc-chrome p {
+  margin: 0;
+  font-size: var(--text-sm);
+  color: var(--text-light);
+}
+
+/*
+ * styles.css numbers .step via ::before { counter }. Data-flow simulators use
+ * an explicit .step__num badge instead — kill the global counter so they don't overlap.
+ * Keep ::before only for .is-blocked (page CSS sets the BLOCKED ribbon).
+ */
+body.data-flow-doc-site .step {
+  counter-increment: none;
+}
+
+body.data-flow-doc-site .step:not(.is-blocked)::before {
+  content: none !important;
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+  background: none !important;
+}
+
+body.data-flow-doc-site .step.is-blocked::before {
+  display: block;
+  left: auto;
+}
+
+body.data-flow-doc-site .step__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem 0.65rem;
+}
+
+body.data-flow-doc-site .step__num {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  position: relative;
+  z-index: 1;
+}
+
+body.data-flow-doc-site .link-box {
+  border: 1px solid var(--border-color);
+  background: rgba(var(--lux-primary-rgb), 0.05);
+  border-radius: 8px;
+  padding: 0.75rem;
+  margin: 0.75rem 0;
+  font-size: 0.88rem;
+}

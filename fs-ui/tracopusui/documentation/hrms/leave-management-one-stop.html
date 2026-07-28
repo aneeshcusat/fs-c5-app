@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="en" data-lux-theme="luxury" data-lux-palette="emerald">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leave Management — One-Stop Guide — Tracopus</title>
+  <meta name="description" content="End-to-end leave management: open the leave page, configure policies, dry-run balances, assign entitlements, schedulers, apply/approve, plus a data-flow debug tab.">
+  <meta name="keywords" content="tracopus, leave management, global policy center, accrual, dry-run, approval, data flow">
+  <link rel="canonical" href="https://tracopus.com/documentation/hrms/leave-management-one-stop.html">
+  <meta name="robots" content="index, follow">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Tracopus">
+  <meta property="og:title" content="Leave Management — One-Stop Guide">
+  <meta property="og:description" content="Configure, assign, schedule, apply, and approve leave — one document for HR and technical debugging.">
+  <meta property="og:url" content="https://tracopus.com/documentation/hrms/leave-management-one-stop.html">
+  <script src="../js/docs-analytics.js?v=20260719a" defer></script>
+  <link rel="stylesheet" href="../css/styles.css?v=20260718g">
+  <link rel="stylesheet" href="../css/data-flow-bridge.css?v=20260724d">
+  <script src="../js/brand-config.js?v=20260619e"></script>
+  <style>
+    .ost-primary-tabs {
+      display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0 0 1.25rem; padding: 0.7rem;
+      border: 1px solid #c5d9cc; border-radius: 14px;
+      background: linear-gradient(180deg, #f4faf6 0%, #e8f5ee 100%);
+      position: sticky; top: 0.4rem; z-index: 20;
+    }
+    .ost-primary-tabs__btn {
+      font: inherit; font-size: 0.92rem; font-weight: 700; padding: 0.55rem 1.1rem;
+      border-radius: 999px; border: 1px solid #b7d0c2; background: #fff; color: #3d5a4c; cursor: pointer;
+    }
+    .ost-primary-tabs__btn:hover { border-color: #40916c; color: #1b4332; }
+    .ost-primary-tabs__btn.is-active {
+      background: #1b4332; border-color: #1b4332; color: #fff;
+      box-shadow: 0 4px 14px rgba(27, 67, 50, 0.22);
+    }
+    .ost-panel { display: none; }
+    .ost-panel.is-active { display: block; }
+    .ost-subnav {
+      display: flex; flex-wrap: wrap; gap: 0.35rem; margin: 0 0 1.25rem; padding: 0.55rem;
+      border: 1px solid #d8e2dc; border-radius: 12px; background: #fff;
+      position: sticky; top: 3.6rem; z-index: 15;
+    }
+    .ost-subnav a {
+      font-size: 0.78rem; font-weight: 650; padding: 0.35rem 0.7rem; border-radius: 999px;
+      border: 1px solid #d8e2dc; color: #3d5a4c; text-decoration: none; background: #f8fbf9;
+    }
+    .ost-subnav a:hover, .ost-subnav a:focus { border-color: #40916c; color: #1b4332; background: #d8f3dc; }
+    .ost-steps { counter-reset: ost; list-style: none; padding: 0; margin: 0.75rem 0 0; }
+    .ost-steps > li {
+      position: relative; padding: 0.85rem 0.9rem 0.85rem 3.1rem; margin-bottom: 0.55rem;
+      border: 1px solid #d8e2dc; border-radius: 10px; background: #fff;
+    }
+    .ost-steps > li::before {
+      counter-increment: ost; content: counter(ost);
+      position: absolute; left: 0.75rem; top: 0.85rem;
+      width: 1.6rem; height: 1.6rem; border-radius: 50%;
+      background: #d8f3dc; color: #1b4332; font-weight: 700; font-size: 0.8rem;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .ost-steps strong { color: #1b4332; }
+    .ost-mini { font-size: 0.85rem; color: #52796f; margin: 0.3rem 0 0; line-height: 1.45; }
+    .ost-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 0.75rem; margin: 1rem 0; }
+    .ost-card {
+      border: 1px solid #d8e2dc; border-radius: 12px; padding: 0.9rem 1rem; background: #fff;
+    }
+    .ost-card h4 { margin: 0 0 0.35rem; font-size: 0.95rem; color: #1b4332; }
+    .ost-card p { margin: 0; font-size: 0.85rem; color: #52796f; line-height: 1.45; }
+    .ost-card code { font-size: 0.78rem; }
+    .ost-chip {
+      display: inline-flex; align-items: center; gap: 0.3rem; padding: 0.2rem 0.6rem;
+      border-radius: 999px; font-size: 0.72rem; font-weight: 700; border: 1px solid #c5d9cc; background: #fff; color: #1b4332;
+    }
+    .ost-chip--ok { background: #dcfce7; border-color: #86efac; color: #166534; }
+    .ost-chip--warn { background: #fef3c7; border-color: #fcd34d; color: #92400e; }
+    .ost-chip--stub { background: #e0f2fe; border-color: #7dd3fc; color: #075985; }
+    .ost-status {
+      display: inline-block; min-width: 4.4rem; text-align: center; font-size: 0.72rem; font-weight: 700;
+      padding: 0.12rem 0.4rem; border-radius: 6px;
+    }
+    .ost-status--ok { background: #dcfce7; color: #166534; }
+    .ost-status--warn { background: #fef3c7; color: #92400e; }
+    .ost-status--stub { background: #e0f2fe; color: #075985; }
+    .ost-diagram {
+      border: 1px solid #d8e2dc; border-radius: 12px; padding: 1rem; background: #f8fbf9; margin: 1rem 0;
+      overflow-x: auto;
+    }
+    .ost-diagram pre.mermaid { margin: 0; }
+    .ost-kbd {
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.78rem;
+      background: #edf2ef; border: 1px solid #c5d9cc; border-radius: 6px; padding: 0.1rem 0.4rem;
+    }
+    .ost-checklist label {
+      display: flex; gap: 0.65rem; align-items: flex-start; padding: 0.55rem 0.7rem;
+      border: 1px solid #d8e2dc; border-radius: 8px; margin-bottom: 0.4rem; background: #fff; cursor: pointer;
+    }
+    .ost-checklist label:has(input:checked) { background: #d8f3dc; border-color: #40916c; }
+    .ost-toc-note { font-size: 0.82rem; color: #52796f; margin: 0 0 0.75rem; }
+    .ost-api { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.78rem; word-break: break-all; }
+    @media (max-width: 720px) {
+      .ost-primary-tabs, .ost-subnav { position: static; }
+      .ost-primary-tabs__btn { font-size: 0.82rem; }
+    }
+    @media print {
+      .ost-primary-tabs, .ost-subnav, header, footer, .page-nav { display: none !important; }
+      .ost-panel { display: block !important; }
+      .ost-panel + .ost-panel { page-break-before: always; }
+    }
+  </style>
+</head>
+<body data-docs-depth="1">
+
+<header aria-label="Site header"></header>
+
+<main>
+  <div class="breadcrumb"><a href="../index.html">Home</a> → HRMS → Leave Management One-Stop Guide</div>
+
+  <div class="doc-canvas">
+    <header class="doc-mast">
+      <div class="doc-mast__top">
+        <span class="doc-mast__eyebrow">HRMS · One-stop leave guide</span>
+        <div class="page-meta page-meta--inline">
+          <span class="page-meta__item"><strong>Apply</strong> <code>/people/leaves</code></span>
+          <span class="page-meta__item"><strong>Policy</strong> <code>/admin/leave/global-policy-center</code></span>
+          <span class="page-meta__item"><strong>Balances</strong> <code>/admin/employee-leave-config</code></span>
+        </div>
+      </div>
+      <h1 class="doc-mast__title">Leave Management — One-Stop Guide</h1>
+      <p class="doc-mast__lead">Everything needed to configure, assign, schedule, apply, and approve leave — plus a technical data-flow tab for debugging. Built from the live Tracopus leave engine (Global Policy Center, balance ledger, accrual jobs, ApprovalAuthority).</p>
+      <p class="doc-mast__purpose">
+        Audience: HR admins, managers, and support engineers.
+        Related deep-dives: <a href="leave-configuration.html">Leave Configuration</a> ·
+        <a href="leave-policies-guide.html">Policies Guide</a> ·
+        <a href="leaves.html">Runtime Leave Management</a> ·
+        <a href="../data-flow/leave-policy-flags-data-flow.html">Interactive policy simulator</a>
+      </p>
+    </header>
+
+    <div class="doc-flow">
+      <div class="ost-primary-tabs" role="tablist" aria-label="Leave one-stop primary sections">
+        <button type="button" class="ost-primary-tabs__btn is-active" role="tab" aria-selected="true" data-ost="guide" id="ostBtn-guide">User Guide — Configure &amp; Use</button>
+        <button type="button" class="ost-primary-tabs__btn" role="tab" aria-selected="false" data-ost="debug" id="ostBtn-debug">Data Flow &amp; Technical Debug</button>
+      </div>
+
+      <!-- ===================== USER GUIDE ===================== -->
+      <div class="ost-panel is-active" id="ost-guide" role="tabpanel" aria-labelledby="ostBtn-guide">
+        <nav class="ost-subnav" aria-label="User guide sections">
+          <a href="#g-start">1. Open leave</a>
+          <a href="#g-picture">2. Big picture</a>
+          <a href="#g-flags">3. Flags</a>
+          <a href="#g-configure">4. Configure policy</a>
+          <a href="#g-create">5. New policy</a>
+          <a href="#g-types">6. Leave types</a>
+          <a href="#g-packs">7. India packs</a>
+          <a href="#g-calendar">8. Holidays &amp; days</a>
+          <a href="#g-balances">9. Balances &amp; dry-run</a>
+          <a href="#g-assign">10. Assign to all</a>
+          <a href="#g-schedulers">11. Schedulers</a>
+          <a href="#g-apply">12. Apply leave</a>
+          <a href="#g-approve">13. Approval</a>
+          <a href="#g-checklist">14. Checklist</a>
+          <a href="#g-faq">15. FAQ</a>
+        </nav>
+        <p class="ost-toc-note">Tip: use the chips above to jump. Printing this page includes both tabs.</p>
+
+        <!-- 1 -->
+        <section class="doc-block" id="g-start">
+          <h2 class="doc-block__title">1. How to open leave for the first time</h2>
+          <div class="callout callout--info"><div class="callout__icon">ℹ️</div><div class="callout__body"><strong class="callout__title">Two doors</strong><div class="callout__text"><strong>Employees / managers</strong> use <span class="ost-kbd">People → Leave management</span> (<code>/people/leaves</code>). <strong>HR admins</strong> configure first under <span class="ost-kbd">Admin → Leave admin</span> and <span class="ost-kbd">Admin → Employee leave config</span>. If the menu is missing, flags or role modules are off (see §3).</div></div></div>
+
+          <h3>Employee / manager path</h3>
+          <ol class="ost-steps">
+            <li><strong>Sign in</strong><p class="ost-mini">Use an account on a team where leave is enabled.</p></li>
+            <li><strong>Open People → Leave management</strong><p class="ost-mini">Direct URL: <code>/people/leaves</code> (legacy <code>/hrms/leaves</code> redirects here).</p></li>
+            <li><strong>Confirm balances appear</strong><p class="ost-mini">Balance cards show PL/CL/SL (and specials). Empty cards usually mean opening balances were never imported and accrual has not run yet — not a UI bug.</p></li>
+            <li><strong>Apply</strong><p class="ost-mini">Use <strong>Apply leave</strong> / create drawer: pick type, dates, half-day if needed, notes/docs, then submit.</p></li>
+          </ol>
+
+          <h3>Admin first-time path (before anyone applies)</h3>
+          <ol class="ost-steps">
+            <li><strong>Application Config</strong> — turn on org + role leave flags (§3).</li>
+            <li><strong>Global Policy Center</strong> — publish a policy (§4–5).</li>
+            <li><strong>Holidays + working-day rules</strong> (§8).</li>
+            <li><strong>Employee leave config</strong> — dry-run OB import, then live (§9–10).</li>
+            <li><strong>Enable schedulers</strong> ACCRUAL / CF / COMP_OFF_EXPIRE (§11).</li>
+            <li><strong>Prove</strong> apply → approve on a test employee (§12–13).</li>
+          </ol>
+        </section>
+
+        <!-- 2 -->
+        <section class="doc-block" id="g-picture">
+          <h2 class="doc-block__title">2. Big picture — configure then use</h2>
+          <div class="ost-diagram">
+            <pre class="mermaid">
+flowchart LR
+  A[App Config flags] --> B[Publish policy]
+  B --> C[Holidays + working days]
+  C --> D[Opening balances / accrual]
+  D --> E[Employee applies]
+  E --> F[Manager / delegate approves]
+  F --> G[Balance debit + timesheet + attendance]
+            </pre>
+          </div>
+          <div class="callout callout--tip"><div class="callout__icon">💡</div><div class="callout__body"><strong class="callout__title">Publishing ≠ balances</strong><div class="callout__text">Publishing a policy activates eligibility and accrual rules. Tracopus does <em>not</em> invent opening balances. HR must import (or Adjust) balances, or wait for the monthly accrual job after go-live.</div></div></div>
+        </section>
+
+        <!-- 3 -->
+        <section class="doc-block" id="g-flags">
+          <h2 class="doc-block__title">3. What must be configured (flags)</h2>
+          <p>Path: <strong>Admin → Application configuration</strong> → select the org unit / team → HRMS / Modules / role templates.</p>
+
+          <h3>Org flags (<code>leaveAdditional</code>)</h3>
+          <div class="table-wrap">
+            <table class="table">
+              <thead><tr><th>Flag</th><th>Purpose</th><th>Typical go-live</th></tr></thead>
+              <tbody>
+                <tr><td><code>leaveManagementEnabled</code></td><td>Master switch — APIs and jobs fail closed when off</td><td><span class="ost-chip ost-chip--ok">Required</span></td></tr>
+                <tr><td><code>globalLeavePoliciesEnabled</code></td><td>Global Policy Center runtime</td><td><span class="ost-chip ost-chip--ok">Required (preferred)</span></td></tr>
+                <tr><td><code>leaveEnhancementsEnabled</code></td><td>Extended leave UX (impact drawer, etc.)</td><td>Optional</td></tr>
+                <tr><td><code>leaveAutoSyncToAttendance</code></td><td>Approved leave → attendance LEAVE / HALF_DAY</td><td>Usually on</td></tr>
+                <tr><td><code>leaveBlockNonWorkingDayLeave</code></td><td>Reject ranges with no working days</td><td>Usually on</td></tr>
+                <tr><td><code>leaveBlockOverlapRegardlessOfType</code></td><td>Reject overlapping leave dates</td><td>Usually on</td></tr>
+                <tr><td><code>leaveAllowNegativeBalance</code></td><td>Allow submit below available balance</td><td>Usually off</td></tr>
+                <tr><td><code>approvalDelegation.approvalDelegationEnabled</code></td><td>Delegates can approve leave</td><td>As needed</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>Role modules</h3>
+          <ul>
+            <li><code>peopleModules.leavesEnabled</code> — shows <strong>People → Leave management</strong></li>
+            <li><code>peopleModules.holidaysEnabled</code> — People → Holidays</li>
+            <li><code>adminModules.leavePoliciesEnabled</code> — classic policies + <strong>Employee leave config</strong></li>
+            <li><code>adminModules.globalLeavePoliciesEnabled</code> — Global Policy Center, Test Lab, legal calendars, working-day rules</li>
+            <li>Manager: <code>approveTeamEnabled</code> — required for approve actions</li>
+            <li>Optional: <code>universalApprovalInboxEnabled</code> — leave in <code>/workspace/approvals</code></li>
+          </ul>
+          <p class="ost-mini"><strong>Menu rule:</strong> UI needs org <code>leaveManagementEnabled</code> <em>and</em> role <code>peopleModules.leavesEnabled</code>. APIs gate on the org flag only.</p>
+        </section>
+
+        <!-- 4 -->
+        <section class="doc-block" id="g-configure">
+          <h2 class="doc-block__title">4. What to update — admin screen map</h2>
+          <div class="table-wrap">
+            <table class="table">
+              <thead><tr><th>What you update</th><th>Where</th><th>Route</th></tr></thead>
+              <tbody>
+                <tr><td>Type entitlements, accrual, CF, specials</td><td>Global Policy Center → policy version</td><td><code>/admin/leave/global-policy-center</code></td></tr>
+                <tr><td>Leave type catalog (classic fallback)</td><td>Leave policies</td><td><code>/admin/leave-policies</code></td></tr>
+                <tr><td>Per-employee balances / OB import</td><td>Employee leave config</td><td><code>/admin/employee-leave-config</code></td></tr>
+                <tr><td>Official holidays</td><td>Legal calendars + People holidays</td><td><code>/admin/leave/legal-calendars</code>, <code>/people/holidays</code></td></tr>
+                <tr><td>Weekly offs</td><td>Working day rules</td><td><code>/admin/leave/working-day-rules</code></td></tr>
+                <tr><td>Pre-publish dry-run scenarios</td><td>Policy Test Lab / Simulator</td><td><code>/admin/leave/policy-test-lab</code></td></tr>
+                <tr><td>Approval coverage when manager away</td><td>Delegation</td><td><code>/admin/delegation</code></td></tr>
+                <tr><td>Org / role flags</td><td>Application Config</td><td><code>/admin/application-config</code></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- 5 -->
+        <section class="doc-block" id="g-create">
+          <h2 class="doc-block__title">5. How to create / publish a new leave policy</h2>
+          <p>Primary console: <strong>Admin → Leave admin → Global Policy Center</strong>.</p>
+          <ol class="ost-steps">
+            <li>
+              <strong>Create or select a jurisdiction</strong>
+              <p class="ost-mini">Examples: <code>IN</code>, <code>IN-KA</code>, <code>IN-MH</code>, <code>AE</code>. Used for resolve, holiday calendars, and working-day scope.</p>
+            </li>
+            <li>
+              <strong>Apply a country / CFA template into a draft</strong>
+              <p class="ost-mini">Choose <code>CFA-IN-KA</code>, <code>CFA-IN-MH</code>, <code>CFA-IN-HR</code>, <code>CFA-IN-TN-CBE</code>, or a blank draft. Edit entitlements, accrual, carry-forward, and special-leave JSON while unpublished.</p>
+            </li>
+            <li>
+              <strong>Simulate / Policy Test Lab</strong>
+              <p class="ost-mini">Dry-run resolve for a sample employee. Lab scenarios may gate publish. Open <code>/admin/leave/policy-test-lab</code>.</p>
+            </li>
+            <li>
+              <strong>Assign holiday calendar key</strong>
+              <p class="ost-mini">Key must match People → Holidays location keys (e.g. <code>IN-KA</code>).</p>
+            </li>
+            <li>
+              <strong>Configure working-day rules</strong>
+              <p class="ost-mini">Team default, jurisdiction pattern (e.g. Mon–Fri or Sun–Thu), or employee override.</p>
+            </li>
+            <li>
+              <strong>Publish the version</strong>
+              <p class="ost-mini">Published versions are <strong>immutable</strong>. To change rules later, clone a new draft and publish again. Publish activates accrual eligibility — it does not create balances.</p>
+            </li>
+          </ol>
+          <div class="ost-diagram">
+            <pre class="mermaid">
+flowchart TD
+  J[Jurisdiction] --> T[Apply template]
+  T --> D[Edit draft version]
+  D --> S[Simulate / Test Lab]
+  S --> H[Holiday key + WDR]
+  H --> P[Publish]
+  P --> R[Accrual + eligibility live]
+            </pre>
+          </div>
+          <p class="ost-mini">APIs (for automation / support): jurisdictions <code>POST /api/v2/leave/global/jurisdictions</code> · apply template <code>POST /api/v2/leave/global/templates/{id}/apply</code> · simulate <code>POST /api/v2/leave/global/simulate</code> · publish <code>POST /api/v2/leave/global/versions/{versionId}/publish</code>.</p>
+        </section>
+
+        <!-- 6 -->
+        <section class="doc-block" id="g-types">
+          <h2 class="doc-block__title">6. Supported leave policies — how each is configured</h2>
+          <p><code>PL</code> means <strong>Privilege Leave</strong> (earned) — not paternity. Paternity is <code>PATERNITY</code>.</p>
+          <div class="table-wrap">
+            <table class="table">
+              <thead>
+                <tr><th>Code</th><th>Name</th><th>How to configure</th><th>Key runtime rules</th><th>Status</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>PL</code></td><td>Privilege Leave</td>
+                  <td>GLP version entitlements + monthly accrual; CF max in rules</td>
+                  <td>Fiscal Apr–Mar; CF max <strong>45</strong>; excess <code>LAPSE</code> (or <code>ENCASH</code> if re-published)</td>
+                  <td><span class="ost-status ost-status--ok">Shipped</span></td>
+                </tr>
+                <tr>
+                  <td><code>CL</code></td><td>Casual Leave</td>
+                  <td>Location pack entitlements (MH/HR/TN); no CF</td>
+                  <td>Lapses at fiscal year end; not in KA pack</td>
+                  <td><span class="ost-status ost-status--ok">Shipped</span></td>
+                </tr>
+                <tr>
+                  <td><code>SL</code></td><td>Sick Leave</td>
+                  <td>Location pack (KA/HR/TN); document rules for medical proof</td>
+                  <td>Medical certificate when ≥3 days; no CF</td>
+                  <td><span class="ost-status ost-status--ok">Shipped</span></td>
+                </tr>
+                <tr>
+                  <td><code>MATERNITY</code></td><td>Maternity</td>
+                  <td><code>specialLeave[]</code> in published GLP; FE child # maps days</td>
+                  <td>Female; min 80 service days; 182/182/84/84; proof; auto end from start</td>
+                  <td><span class="ost-status ost-status--ok">Shipped</span></td>
+                </tr>
+                <tr>
+                  <td><code>PATERNITY</code></td><td>Paternity</td>
+                  <td>Special leave rules in GLP</td>
+                  <td>Male; 5 consecutive days; window 7 days before or 45 after event</td>
+                  <td><span class="ost-status ost-status--ok">Shipped</span></td>
+                </tr>
+                <tr>
+                  <td><code>MSL</code></td><td>Milestone Leave</td>
+                  <td>Tenure grant rules in GLP</td>
+                  <td>Grant at 5/10/15/20y; 5-day block; partial use forfeits remainder</td>
+                  <td><span class="ost-status ost-status--ok">Shipped</span></td>
+                </tr>
+                <tr>
+                  <td><code>WWL</code></td><td>Wellness Leave</td>
+                  <td>KA female special in CFA-IN-KA</td>
+                  <td>1 day/month; ±3 day apply window; lapses last working day of month</td>
+                  <td><span class="ost-status ost-status--ok">Shipped</span></td>
+                </tr>
+                <tr>
+                  <td><code>COMPOFF</code></td><td>Compensatory Off</td>
+                  <td>Comp-off policy + attendance credit coupling</td>
+                  <td>Weekend/statutory ≥6h or weekday &gt;15h; expire <strong>90 days</strong></td>
+                  <td><span class="ost-status ost-status--ok">Shipped</span></td>
+                </tr>
+                <tr>
+                  <td><code>FLOATING</code></td><td>Floating Holiday</td>
+                  <td>Floating catalogue + calendar-year budget</td>
+                  <td>Employee picks published option; Jan renew credits entitlement</td>
+                  <td><span class="ost-status ost-status--ok">Shipped</span></td>
+                </tr>
+                <tr>
+                  <td><code>UNPAID</code> / <code>UL</code></td><td>Unpaid / LOP</td>
+                  <td>Catalog type; LOP coupling where enabled</td>
+                  <td>No entitlement balance required in typical setups</td>
+                  <td><span class="ost-status ost-status--ok">Shipped</span></td>
+                </tr>
+                <tr>
+                  <td><code>ADOPTION</code> / <code>MISCARRIAGE</code></td><td>Special stubs</td>
+                  <td>Catalog only until HR confirms days</td>
+                  <td>Entitlement days TBD</td>
+                  <td><span class="ost-status ost-status--stub">Stub</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="ost-grid">
+            <div class="ost-card"><h4>Always needs approval</h4><p>Leave requests always go through approval — even when attendance auto-approves for some bands.</p></div>
+            <div class="ost-card"><h4>Two leave years</h4><p>Earned leave uses fiscal <strong>Apr–Mar</strong>. Floating holiday budget uses calendar <strong>Jan–Dec</strong>.</p></div>
+            <div class="ost-card"><h4>Server trusts day count</h4><p>Create/submit recalculate <code>numberOfDays</code> from working week + holidays. Half-day = 0.5.</p></div>
+            <div class="ost-card"><h4>Classic fallback</h4><p>If Global Leave is off, use <code>/admin/leave-policies</code> type catalog; accrual falls back to classic policy.</p></div>
+          </div>
+        </section>
+
+        <!-- 7 -->
+        <section class="doc-block" id="g-packs">
+          <h2 class="doc-block__title">7. CFA India location packs (defaults)</h2>
+          <p>Production prefill: migration <code>09-cfa-leave-india-production-prefill.sql</code>. Resolve uses employee work location / jurisdiction.</p>
+          <div class="table-wrap">
+            <table class="table">
+              <thead><tr><th>Pack</th><th>Location</th><th>PL</th><th>CL</th><th>SL</th><th>Notes</th></tr></thead>
+              <tbody>
+                <tr><td><code>CFA-IN-KA</code></td><td>Karnataka (Bengaluru)</td><td>18</td><td>—</td><td>12</td><td>WWL (female KA); +1 mandatory PH vs other states</td></tr>
+                <tr><td><code>CFA-IN-MH</code></td><td>Maharashtra (Mumbai)</td><td>18</td><td>7</td><td>—</td><td>Specials + COMPOFF + FLOATING</td></tr>
+                <tr><td><code>CFA-IN-HR</code></td><td>Haryana (Gurugram)</td><td>18</td><td>8</td><td>8</td><td>Specials + COMPOFF + FLOATING</td></tr>
+                <tr><td><code>CFA-IN-TN-CBE</code></td><td>Tamil Nadu (Coimbatore)</td><td>12</td><td>12</td><td>12</td><td>Lower PL vs other India packs</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="ost-mini">Shared: MATERNITY / PATERNITY / MSL / COMPOFF / FLOATING; PL CF max 45 with excess <code>LAPSE</code> by default.</p>
+        </section>
+
+        <!-- 8 -->
+        <section class="doc-block" id="g-calendar">
+          <h2 class="doc-block__title">8. Holidays &amp; working days</h2>
+          <h3>Holidays</h3>
+          <ol class="ost-steps">
+            <li><strong>Create holidays</strong> in People → Holidays with a Location key (e.g. <code>["IN-KA"]</code>).</li>
+            <li><strong>Assign that key</strong> to the jurisdiction in Global Policy Center → Holiday calendars.</li>
+            <li><strong>Optional:</strong> publish Legal Calendars so official holidays sync into People holidays.</li>
+          </ol>
+          <h3>Working-day resolution (priority)</h3>
+          <div class="ost-diagram">
+            <pre class="mermaid">
+flowchart TD
+  L[Leave create / submit] --> R[LeaveWorkingDayResolver]
+  R --> O{Employee WDR override?}
+  O -->|Yes| P[Resolved workdays]
+  O -->|No| J{Employee jurisdiction?}
+  J -->|Yes| JW[Jurisdiction WDR]
+  JW --> P
+  J -->|No| TW[Team-default WDR]
+  TW -->|Hit| P
+  TW -->|Miss| FB[Work schedule / shift / Mon-Fri]
+  FB --> P
+            </pre>
+          </div>
+          <div class="callout callout--info"><div class="callout__icon">ℹ️</div><div class="callout__body"><strong class="callout__title">“Country” means leave jurisdiction</strong><div class="callout__text">Assign the employee to a leave jurisdiction — do not rely on free-text location alone for day counting.</div></div></div>
+        </section>
+
+        <!-- 9 -->
+        <section class="doc-block" id="g-balances">
+          <h2 class="doc-block__title">9. Opening balances, Adjust, and dry-run</h2>
+          <p>Canonical page: <strong>Admin → Employee leave config</strong> (<code>/admin/employee-leave-config</code>).</p>
+          <ol class="ost-steps">
+            <li><strong>Select the team</strong> in the header filter so employees load.</li>
+            <li><strong>Download OB template</strong> (Opening balance template panel / header button). Rows are employee × leave type (PL/CL/SL by location). <code>entitlementAmount</code> and <code>amount</code> start blank — fill from ZingHR / HR export only.</li>
+            <li>
+              <strong>Dry-run import (never skips this)</strong>
+              <p class="ost-mini ost-api">POST /api/v2/admin/data-import/leave-balance?userTeamId={team}&amp;actorId={you}&amp;dryRun=true</p>
+              <p class="ost-mini">Body may also include <code>"dryRun": true</code> (query wins). Dry-run validates only — <strong>no writes</strong>. Fix failures from <code>reportCsv</code> / <code>results[]</code>.</p>
+            </li>
+            <li><strong>Live import</strong> — same endpoint with <code>dryRun=false</code> only after dry-run is clean.</li>
+            <li><strong>Single employee correction</strong> — select person → <strong>Adjust balance</strong> (opening entitlement and/or +/− available days) with a reason. Adjustments of <strong>5+ days</strong> require a second confirmer employee id.</li>
+            <li><strong>Spot-check</strong> balance cards, then prove apply on People → Leaves.</li>
+          </ol>
+
+          <h3>CSV columns (template)</h3>
+          <p class="ost-api">userTeamId, employeeId, empCode, location, suggestedPack, leaveTypeCode, leaveTypeId, entitlementAmount, amount, comment</p>
+          <p class="ost-mini">Aliases accepted: <code>PAT</code>→<code>PATERNITY</code>, <code>MAT</code>→<code>MATERNITY</code>, <code>COFF</code>→<code>COMPOFF</code>.</p>
+
+          <div class="ost-diagram">
+            <pre class="mermaid">
+flowchart TD
+  AP[Published policy] --> AJ[LEAVE_ACCRUAL job]
+  AJ --> BL1[Ledger credit ACCRUAL]
+  HR[OB import / Adjust] --> BL2[Ledger ADJUST_HR]
+  BL1 --> UI[Visible on Leave Management]
+  BL2 --> UI
+            </pre>
+          </div>
+        </section>
+
+        <!-- 10 -->
+        <section class="doc-block" id="g-assign">
+          <h2 class="doc-block__title">10. Make sure leaves are assigned to every employee</h2>
+          <p>“Assigned” means each active employee has: (1) a resolved published policy / jurisdiction, (2) leave type balances on the ledger, (3) correct holiday + working-day resolution.</p>
+          <ol class="ost-steps">
+            <li><strong>Confirm published policy</strong> for the team / jurisdictions covering all work locations.</li>
+            <li><strong>Assign jurisdictions</strong> (and WDR overrides if needed) for employees whose location differs from team default.</li>
+            <li><strong>Bulk OB import</strong> for cutover so every employee × PL/CL/SL row exists — do not invent amounts.</li>
+            <li><strong>For new joiners after cutover</strong> — either Adjust on hire, include them in a follow-up import, or rely on monthly <code>LEAVE_ACCRUAL</code> once entitlement rules apply.</li>
+            <li><strong>Verify coverage</strong> — on Employee leave config, sample employees across locations; KPI strip shows low-balance / pending signals.</li>
+            <li><strong>Smoke apply</strong> as 2–3 employees from different packs (e.g. KA vs MH) before broad rollout.</li>
+          </ol>
+          <div class="callout callout--warn"><div class="callout__icon">⚠️</div><div class="callout__body"><strong class="callout__title">Empty ledger after publish is expected</strong><div class="callout__text">Until HR imports opening balances or accrual runs, employees correctly see zero available days and cannot submit (unless <code>leaveAllowNegativeBalance</code> is on).</div></div></div>
+        </section>
+
+        <!-- 11 -->
+        <section class="doc-block" id="g-schedulers">
+          <h2 class="doc-block__title">11. How schedulers pick and execute policies</h2>
+          <p>Jobs live in <code>fs_schedule_model</code>. Enable via production migration <code>11-cfa-leave-schedules-enable.sql</code>. Manual run (ops): <code>POST /api/v2/admin/jobs/{scheduleType}/run?userTeamId=</code>.</p>
+          <div class="table-wrap">
+            <table class="table">
+              <thead><tr><th>Schedule</th><th>When</th><th>What it does</th><th>How policy is picked</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td><code>LEAVE_ACCRUAL</code></td>
+                  <td>1st of month 06:00<br><code>0 0 6 1 * ?</code></td>
+                  <td>Credits entitlements; idempotent ledger rows with <code>periodKey=yyyy-MM</code> (MSL uses tenure keys)</td>
+                  <td>Per employee: resolved published GLP → team published → classic <code>ts_leave_policy_model</code></td>
+                </tr>
+                <tr>
+                  <td><code>LEAVE_CARRY_FORWARD</code></td>
+                  <td>Daily 05:30<br><code>0 30 5 * * ?</code></td>
+                  <td>CF caps, fiscal/calendar/LWD lapse from <code>rules_json</code>; optional ENCASH staging; also alerts missed accrual (days 1–3)</td>
+                  <td>Published GLP carryForward / lapseOn / excessAction</td>
+                </tr>
+                <tr>
+                  <td><code>COMP_OFF_EXPIRE</code></td>
+                  <td>Daily 07:00<br><code>0 0 7 * * ?</code></td>
+                  <td>Expire unused compensatory off (90-day rule) → encash staging</td>
+                  <td>Comp-off policies / ledger; also piggybacked from ACCRUAL when dedicated row missing</td>
+                </tr>
+                <tr>
+                  <td><code>LEAVE_PROMOTION_RETRY</code></td>
+                  <td>Every 15 min (often off until needed)</td>
+                  <td>Retry failed TaskActivity promotion after approve</td>
+                  <td>Approved leaves with failed <code>promotionStatus</code></td>
+                </tr>
+                <tr>
+                  <td><code>APPROVAL_SLA_REMINDER</code></td>
+                  <td>Daily 09:00</td>
+                  <td>Remind pending leave (and other domains)</td>
+                  <td>SUBMITTED leave in scope</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="ost-mini">If <code>leaveManagementEnabled</code> is false, jobs exit as <code>SKIPPED</code>. Check last run status on the schedule row and the accrual-source banner in Global Policy Center.</p>
+        </section>
+
+        <!-- 12 -->
+        <section class="doc-block" id="g-apply">
+          <h2 class="doc-block__title">12. How employees apply for leave</h2>
+          <ol class="ost-steps">
+            <li>Open <strong>People → Leave management</strong>.</li>
+            <li>Review balance cards for the leave type you need.</li>
+            <li>Click <strong>Apply leave</strong>. Choose type (PL/CL/SL/special/floating), start/end, half-day if allowed, reason, and required documents.</li>
+            <li>Confirm day count (server recalculates — holidays and weekly offs are excluded).</li>
+            <li>Submit. System validates overlap, working days, special rules, documents, and balance; then places a <strong>pending hold</strong> on the balance and notifies the approver.</li>
+            <li>Track status on the same page (CREATED → SUBMITTED → APPROVED / REJECTED). Withdraw is allowed for draft/submitted only.</li>
+          </ol>
+          <p class="ost-mini">Floating: you must pick a published catalogue option. Maternity: child number maps duration. Comp-off: uses credited bank entries with expiry.</p>
+        </section>
+
+        <!-- 13 -->
+        <section class="doc-block" id="g-approve">
+          <h2 class="doc-block__title">13. Leave request approval process</h2>
+          <div class="ost-diagram">
+            <pre class="mermaid">
+flowchart TD
+  C[CREATE draft] --> S[SUBMIT]
+  S --> H[Reserve PENDING_HOLD]
+  H --> N[Notify approver]
+  N --> D{Approve or Reject?}
+  D -->|Approve| A[Debit DEBIT_APPROVE]
+  A --> P[Promote TaskActivity LEAVE]
+  P --> T[Optional attendance sync]
+  D -->|Reject| R[Release hold + comment]
+            </pre>
+          </div>
+
+          <h3>Who can approve</h3>
+          <ul>
+            <li><strong>Reporting manager</strong> with <code>approveTeamEnabled</code> — via <code>ApprovalAuthorityService.canAct(..., LEAVE)</code>.</li>
+            <li><strong>Delegate</strong> when approval delegation is enabled and scope includes <code>LEAVE</code>.</li>
+            <li><strong>HR / admin</strong> where role policy allows acting in scope (see Approvals inbox / leave pending panel).</li>
+          </ul>
+
+          <h3>Where to approve</h3>
+          <ol class="ost-steps">
+            <li><strong>People → Leave management</strong> — Pending approvals panel for requests in your scope.</li>
+            <li><strong>Workspace → Approvals</strong> (<code>/workspace/approvals</code>) when universal inbox is enabled.</li>
+            <li>Approve or reject. Reject requires a comment; pending balance is released.</li>
+            <li>On approve: ledger debit, promote leave days to timesheet TaskActivities, optional attendance LEAVE / HALF_DAY marks.</li>
+          </ol>
+
+          <h3>After approval — cancel / promotion failures</h3>
+          <ul>
+            <li><strong>Cancel</strong> (after approve) credits balance back and reverses promotion where supported.</li>
+            <li>If timesheet rows are missing, check <code>promotionStatus</code>, <code>GET /api/v2/leaves/.../promotion-failures</code>, and schedule <code>LEAVE_PROMOTION_RETRY</code>. Manual: <code>POST /api/v2/leaves/{id}/promote</code>.</li>
+          </ul>
+        </section>
+
+        <!-- 14 -->
+        <section class="doc-block" id="g-checklist">
+          <h2 class="doc-block__title">14. Go-live checklist</h2>
+          <p class="ost-mini">Check items locally in the browser (saved only on this device).</p>
+          <div class="ost-checklist" id="ost-checklist">
+            <label><input type="checkbox"> Org <code>leaveManagementEnabled</code> + role <code>leavesEnabled</code> / Global Leave admin modules</label>
+            <label><input type="checkbox"> Jurisdiction created; CFA template applied; simulate / Test Lab passed</label>
+            <label><input type="checkbox"> Policy version published (immutable)</label>
+            <label><input type="checkbox"> Holiday calendar keys assigned; People holidays present</label>
+            <label><input type="checkbox"> Working-day rules (team / jurisdiction / overrides) verified</label>
+            <label><input type="checkbox"> Schedules enabled: ACCRUAL / CARRY_FORWARD / COMP_OFF_EXPIRE</label>
+            <label><input type="checkbox"> OB template filled from real HR export</label>
+            <label><input type="checkbox"> Dry-run import clean (<code>reportCsv</code> saved)</label>
+            <label><input type="checkbox"> Live import done; spot-check balance cards across locations</label>
+            <label><input type="checkbox"> Prove PL apply spanning a holiday — day count correct</label>
+            <label><input type="checkbox"> Prove special (MAT / FLOATING) on a test user</label>
+            <label><input type="checkbox"> Manager / delegate approve → timesheet TaskActivity + attendance sync</label>
+          </div>
+        </section>
+
+        <!-- 15 -->
+        <section class="doc-block" id="g-faq">
+          <h2 class="doc-block__title">15. FAQ &amp; common mistakes</h2>
+          <div class="table-wrap">
+            <table class="table">
+              <thead><tr><th>Symptom</th><th>Likely cause</th><th>Fix</th></tr></thead>
+              <tbody>
+                <tr><td>Leave menu missing</td><td>Role <code>peopleModules.leavesEnabled</code> off</td><td>Enable role module; refresh session</td></tr>
+                <tr><td>403 on leave APIs</td><td><code>leaveManagementEnabled</code> false</td><td>App Config org flag</td></tr>
+                <tr><td>Zero balances after publish</td><td>Publish does not invent OB</td><td>Import / Adjust / wait for ACCRUAL</td></tr>
+                <tr><td>Day count includes holiday</td><td>Calendar key mismatch / WDR missing</td><td>Align holiday keys + working-day rules</td></tr>
+                <tr><td>Cannot approve</td><td>Not manager/delegate or <code>approveTeamEnabled</code> off</td><td>Check ApprovalAuthority + delegation scope LEAVE</td></tr>
+                <tr><td>Approved but missing on timesheet</td><td>Promotion failed</td><td>promotion-failures + LEAVE_PROMOTION_RETRY</td></tr>
+                <tr><td>Attendance not updated</td><td><code>leaveAutoSyncToAttendance</code> false</td><td>Enable org flag</td></tr>
+                <tr><td>Wrong type for paternity</td><td>Using <code>PL</code></td><td>Use <code>PATERNITY</code></td></tr>
+                <tr><td>Import dry-run fails</td><td>Bad emp / leave type codes</td><td>Fix from <code>reportCsv</code></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="doc-block doc-block--related">
+          <h2 class="doc-block__title">Related guides</h2>
+          <div class="related-links">
+            <a class="related-link" href="leave-configuration.html"><span class="related-link__label">Leave Configuration</span><span class="related-link__desc">Screen map + animated flowcharts</span></a>
+            <a class="related-link" href="leave-policies-guide.html"><span class="related-link__label">Leave Policies Guide</span><span class="related-link__desc">Catalogue, packs, CFA map</span></a>
+            <a class="related-link" href="leaves.html"><span class="related-link__label">Leave Management runtime</span><span class="related-link__desc">Apply / approve UX</span></a>
+            <a class="related-link" href="../user-guide/admin/admin-leave-ob-bulk-import.html"><span class="related-link__label">OB bulk import scenario</span><span class="related-link__desc">Dry-run then live</span></a>
+            <a class="related-link" href="../user-guide/hrms/hrms-approve-leave.html"><span class="related-link__label">Approve leave scenario</span><span class="related-link__desc">Manager path</span></a>
+          </div>
+        </section>
+      </div>
+
+      <!-- ===================== DATA FLOW / DEBUG ===================== -->
+      <div class="ost-panel" id="ost-debug" role="tabpanel" aria-labelledby="ostBtn-debug" hidden>
+        <nav class="ost-subnav" aria-label="Data flow sections">
+          <a href="#d-arch">Architecture</a>
+          <a href="#d-request">Request lifecycle</a>
+          <a href="#d-accrual">Accrual path</a>
+          <a href="#d-tables">Tables</a>
+          <a href="#d-apis">API map</a>
+          <a href="#d-debug">Debug playbook</a>
+          <a href="#d-sims">Simulators</a>
+        </nav>
+
+        <section class="doc-block" id="d-arch">
+          <h2 class="doc-block__title">Architecture — sources of truth</h2>
+          <p>Leave is not an independent business store. It sources Employee, leave types, published policy versions, holidays, working-day rules, and promotes into TaskActivity (timesheet). Balances are written only through <code>LeaveBalanceEngine</code>.</p>
+          <div class="ost-diagram">
+            <pre class="mermaid">
+flowchart TB
+  subgraph Config
+    AC[App Config flags]
+    GLP[ts_leave_policy_version rules_json]
+    HOL[People holidays]
+    WDR[Working day rules]
+  end
+  subgraph Runtime
+    REQ[fs_emp_leave_master_model]
+    BAL[ts_employee_leave_balance_model]
+    LED[ts_leave_balance_ledger_model]
+  end
+  subgraph Downstream
+    TA[TaskActivity LEAVE]
+    ATT[Attendance LEAVE / HALF_DAY]
+  end
+  AC --> REQ
+  GLP --> REQ
+  HOL --> REQ
+  WDR --> REQ
+  REQ --> LED
+  LED --> BAL
+  REQ -->|approve| TA
+  REQ -->|sync| ATT
+  JOBS[LEAVE_ACCRUAL / CF / COMP_OFF] --> LED
+            </pre>
+          </div>
+        </section>
+
+        <section class="doc-block" id="d-request">
+          <h2 class="doc-block__title">Leave request data flow (apply → approve)</h2>
+          <div class="ost-diagram">
+            <pre class="mermaid">
+sequenceDiagram
+  participant Emp as Employee UI
+  participant API as Leave APIs
+  participant Eng as LeaveBalanceEngine
+  participant Auth as ApprovalAuthority
+  participant Prom as LeavePromotionService
+  Emp->>API: POST /leaves (CREATE)
+  Emp->>API: PATCH /leaves/{id}/submit
+  API->>API: overlap + WDR + specials + docs
+  API->>Eng: reserveOnSubmit (PENDING_HOLD)
+  API-->>Emp: SUBMITTED + notify
+  Note over Auth: Manager / delegate
+  Auth->>API: PATCH /approve or /reject
+  alt Approve
+    API->>Eng: DEBIT_APPROVE
+    API->>Prom: promote TaskActivity
+    Prom-->>API: optional attendance sync
+  else Reject
+    API->>Eng: PENDING_RELEASE
+  end
+            </pre>
+          </div>
+          <div class="table-wrap">
+            <table class="table">
+              <thead><tr><th>Step</th><th>API</th><th>Ledger / side effect</th></tr></thead>
+              <tbody>
+                <tr><td>Create</td><td><code>POST /api/v2/leaves</code></td><td>Draft row in <code>fs_emp_leave_master_model</code></td></tr>
+                <tr><td>Submit</td><td><code>PATCH .../submit</code></td><td><code>PENDING_HOLD</code>; notify <code>LEAVE_PENDING_APPROVAL</code></td></tr>
+                <tr><td>Approve</td><td><code>PATCH .../approve?approverId=</code></td><td><code>DEBIT_APPROVE</code>; promote; attendance sync if flagged</td></tr>
+                <tr><td>Reject</td><td><code>PATCH .../reject</code></td><td><code>PENDING_RELEASE</code>; comment required</td></tr>
+                <tr><td>Cancel</td><td>cancel path</td><td><code>CREDIT_CANCEL</code> + reverse promote</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="doc-block" id="d-accrual">
+          <h2 class="doc-block__title">Accrual / CF / comp-off data flow</h2>
+          <div class="ost-diagram">
+            <pre class="mermaid">
+flowchart TD
+  CRON[fs_schedule_model tick] --> GATE{leaveManagementEnabled?}
+  GATE -->|No| SKIP[SKIPPED]
+  GATE -->|Yes| TYPE{Schedule type}
+  TYPE -->|LEAVE_ACCRUAL| RES[Resolve published GLP per employee]
+  RES --> CRED[Ledger ACCRUAL periodKey=yyyy-MM]
+  TYPE -->|LEAVE_CARRY_FORWARD| CF[Apply CF / lapse / ENCASH from rules_json]
+  TYPE -->|COMP_OFF_EXPIRE| CO[Expire unused COMPOFF bank]
+  CRED --> BAL[ts_employee_leave_balance_model]
+  CF --> BAL
+  CO --> BAL
+            </pre>
+          </div>
+          <ul>
+            <li><strong>Policy pick order (accrual):</strong> employee resolved published GLP → team published → classic <code>ts_leave_policy_model</code>.</li>
+            <li><strong>Idempotency:</strong> re-running ACCRUAL for the same <code>periodKey</code> does not double-credit.</li>
+            <li><strong>Missed accrual alert:</strong> CF job (days 1–3) can raise <code>LEAVE_ACCRUAL_MISSED</code> when the 1st-of-month job did not run.</li>
+            <li><strong>Inspect source:</strong> <code>GET /api/v2/leave/global/accrual-source?userTeamId=</code> and <code>GET .../resolve?userTeamId=&amp;employeeId=</code>.</li>
+          </ul>
+        </section>
+
+        <section class="doc-block" id="d-tables">
+          <h2 class="doc-block__title">Key tables</h2>
+          <h3>Request &amp; ops</h3>
+          <div class="table-wrap">
+            <table class="table">
+              <thead><tr><th>Table</th><th>Role</th></tr></thead>
+              <tbody>
+                <tr><td><code>fs_emp_leave_master_model</code></td><td>Leave request / workflow states</td></tr>
+                <tr><td><code>fs_schedule_model</code></td><td>LEAVE_ACCRUAL, LEAVE_CARRY_FORWARD, COMP_OFF_EXPIRE, …</td></tr>
+                <tr><td><code>fs_app_config_model</code></td><td>Org App Config including leaveAdditional</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <h3>Balances</h3>
+          <div class="table-wrap">
+            <table class="table">
+              <thead><tr><th>Table</th><th>Role</th></tr></thead>
+              <tbody>
+                <tr><td><code>ts_leave_type_model</code></td><td>Leave type catalog</td></tr>
+                <tr><td><code>ts_leave_policy_model</code></td><td>Classic accrual fallback</td></tr>
+                <tr><td><code>ts_employee_leave_balance_model</code></td><td>Current balances</td></tr>
+                <tr><td><code>ts_leave_balance_ledger_model</code></td><td>ACCRUAL, PENDING_HOLD, DEBIT_APPROVE, ADJUST_HR, …</td></tr>
+                <tr><td><code>ts_leave_audit_event_model</code></td><td>Leave audit events</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <h3>Global Leave Policy</h3>
+          <p class="ost-mini">Includes <code>ts_leave_jurisdiction</code>, <code>ts_leave_policy_template</code>, <code>ts_leave_global_policy</code>, <code>ts_leave_policy_version</code> (rules_json), holiday calendar assignment, work schedule policy, employee overrides, policy resolution, simulation / test-lab / audit tables.</p>
+        </section>
+
+        <section class="doc-block" id="d-apis">
+          <h2 class="doc-block__title">API map (quick reference)</h2>
+          <div class="table-wrap">
+            <table class="table">
+              <thead><tr><th>Concern</th><th>Endpoint</th></tr></thead>
+              <tbody>
+                <tr><td>Publish policy version</td><td><code>POST /api/v2/leave/global/versions/{versionId}/publish</code></td></tr>
+                <tr><td>Simulate resolve</td><td><code>POST /api/v2/leave/global/simulate</code></td></tr>
+                <tr><td>Resolve employee policy</td><td><code>GET /api/v2/leave/global/resolve?userTeamId=&amp;employeeId=</code></td></tr>
+                <tr><td>Accrual source banner</td><td><code>GET /api/v2/leave/global/accrual-source?userTeamId=</code></td></tr>
+                <tr><td>OB import (dry-run/live)</td><td><code>POST /api/v2/admin/data-import/leave-balance</code></td></tr>
+                <tr><td>Adjust balance</td><td><code>POST /api/v2/leaves/balances/adjust</code></td></tr>
+                <tr><td>Balances / ledger</td><td><code>GET /api/v2/leaves/balances</code>, <code>.../ledger</code></td></tr>
+                <tr><td>Create / submit / decide</td><td><code>POST /api/v2/leaves</code>, <code>.../submit</code>, <code>.../approve|reject</code></td></tr>
+                <tr><td>Run job now</td><td><code>POST /api/v2/admin/jobs/{scheduleType}/run?userTeamId=</code></td></tr>
+                <tr><td>Promotion retry</td><td><code>POST /api/v2/leaves/{id}/promote</code></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="doc-block" id="d-debug">
+          <h2 class="doc-block__title">Technical debugging playbook</h2>
+          <ol class="ost-steps">
+            <li><strong>Confirm flags</strong> — org <code>leaveAdditional</code> + role modules for the exact team under test.</li>
+            <li><strong>Confirm policy source</strong> — accrual-source + resolve for a sample employee; ensure published version, not only draft.</li>
+            <li><strong>Confirm balances</strong> — balance cards + ledger rows; if empty, check import dry-run report or last ACCRUAL run.</li>
+            <li><strong>Confirm day count</strong> — holiday key assignment + WDR resolve preview; apply a range that spans a known holiday.</li>
+            <li><strong>Confirm approval path</strong> — actor must pass <code>ApprovalAuthorityService.canAct</code> for LEAVE; check delegation scopes.</li>
+            <li><strong>Confirm side effects</strong> — after approve, TaskActivity promotion status and attendance sync flag.</li>
+            <li><strong>Confirm schedulers</strong> — <code>fs_schedule_model</code> enabled + last_run; manually run ACCRUAL for a test team if safe.</li>
+          </ol>
+          <div class="callout callout--tip"><div class="callout__icon">💡</div><div class="callout__body"><strong class="callout__title">Ledger is the audit trail</strong><div class="callout__text">Prefer reading <code>ts_leave_balance_ledger_model</code> over guessing from UI cards when balances look wrong. Every HR adjust, hold, debit, accrual, and cancel should leave a typed ledger event.</div></div></div>
+        </section>
+
+        <section class="doc-block" id="d-sims">
+          <h2 class="doc-block__title">Interactive simulators</h2>
+          <div class="df-bridge-actions">
+            <a class="df-bridge-cta df-bridge-cta--primary" href="../data-flow/leave-policy-flags-data-flow.html"><span>Policy platform</span><strong>Leave policy &amp; accrual →</strong></a>
+            <a class="df-bridge-cta" href="../data-flow/leave-flags-data-flow.html"><span>Runtime</span><strong>Leave request &amp; approve →</strong></a>
+            <a class="df-bridge-cta" href="../data-flow/working-day-flags-data-flow.html"><span>Day count</span><strong>Working-day resolver →</strong></a>
+            <a class="df-bridge-link" href="../data-flow/index.html">All data-flow simulators</a>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <nav class="page-nav">
+    <a class="page-nav__prev" href="leave-configuration.html">← Leave Configuration</a>
+    <a class="page-nav__next" href="leave-policies-guide.html">Leave Policies Guide →</a>
+  </nav>
+</main>
+
+<footer>
+  <div class="container">
+    <p>&copy; 2026 <span data-brand>Tracopus</span>. Leave Management One-Stop Guide.</p>
+  </div>
+</footer>
+
+<script src="../js/palette.js?v=20260619e"></script>
+<script src="../js/brand.js?v=20260619e"></script>
+<script src="../js/docs-utility-config.js?v=20260720b"></script>
+<script src="../js/nav-config.js?v=20260724b"></script>
+<script src="../js/navigation.js?v=20260619e"></script>
+<script src="../js/site-enhancements.js?v=20260718d"></script>
+<script src="../js/search.js?v=20260724b"></script>
+<script type="module">
+  import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+  mermaid.initialize({
+    startOnLoad: false,
+    theme: "base",
+    securityLevel: "loose",
+    flowchart: { curve: "basis", htmlLabels: true },
+    themeVariables: {
+      primaryColor: "#d8f3dc",
+      primaryTextColor: "#1b4332",
+      primaryBorderColor: "#40916c",
+      lineColor: "#52796f",
+      secondaryColor: "#f1faee",
+      tertiaryColor: "#ffffff",
+      fontFamily: "Inter, system-ui, sans-serif",
+    },
+  });
+  async function renderMermaidIn(root) {
+    if (!root) return;
+    const nodes = root.querySelectorAll("pre.mermaid:not([data-processed])");
+    if (!nodes.length) return;
+    await mermaid.run({ nodes: Array.from(nodes) });
+  }
+  window.__ostRenderMermaid = renderMermaidIn;
+  renderMermaidIn(document.getElementById("ost-guide"));
+</script>
+<script>
+(function () {
+  function activate(which, pushHash) {
+    document.querySelectorAll(".ost-primary-tabs__btn").forEach(function (btn) {
+      var on = btn.getAttribute("data-ost") === which;
+      btn.classList.toggle("is-active", on);
+      btn.setAttribute("aria-selected", on ? "true" : "false");
+    });
+    var guideEl = document.getElementById("ost-guide");
+    var debugEl = document.getElementById("ost-debug");
+    if (which === "debug") {
+      guideEl.classList.remove("is-active");
+      guideEl.setAttribute("hidden", "");
+      debugEl.classList.add("is-active");
+      debugEl.removeAttribute("hidden");
+      if (window.__ostRenderMermaid) window.__ostRenderMermaid(debugEl);
+    } else {
+      debugEl.classList.remove("is-active");
+      debugEl.setAttribute("hidden", "");
+      guideEl.classList.add("is-active");
+      guideEl.removeAttribute("hidden");
+      if (window.__ostRenderMermaid) window.__ostRenderMermaid(guideEl);
+    }
+    if (pushHash) {
+      var url = new URL(window.location.href);
+      url.hash = which === "debug" ? "tab-debug" : "tab-guide";
+      history.replaceState(null, "", url.pathname + url.search + url.hash);
+    }
+  }
+
+  document.querySelector(".ost-primary-tabs").addEventListener("click", function (e) {
+    var btn = e.target.closest(".ost-primary-tabs__btn");
+    if (!btn) return;
+    activate(btn.getAttribute("data-ost"), true);
+  });
+
+  // Persist checklist locally
+  var box = document.getElementById("ost-checklist");
+  if (box) {
+    var key = "tracopus-leave-one-stop-checklist-v1";
+    var saved = {};
+    try { saved = JSON.parse(localStorage.getItem(key) || "{}"); } catch (e) {}
+    box.querySelectorAll("input[type=checkbox]").forEach(function (cb, i) {
+      cb.checked = !!saved[i];
+      cb.addEventListener("change", function () {
+        var next = {};
+        box.querySelectorAll("input[type=checkbox]").forEach(function (c, j) { next[j] = c.checked; });
+        try { localStorage.setItem(key, JSON.stringify(next)); } catch (e) {}
+      });
+    });
+  }
+
+  function fromHash() {
+    var h = (window.location.hash || "").replace(/^#/, "");
+    if (h === "tab-debug" || h.indexOf("d-") === 0) activate("debug", false);
+    else activate("guide", false);
+    if (h && document.getElementById(h)) {
+      setTimeout(function () {
+        var el = document.getElementById(h);
+        if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 50);
+    }
+  }
+  window.addEventListener("hashchange", fromHash);
+  fromHash();
+})();
+</script>
+</body>
+</html>

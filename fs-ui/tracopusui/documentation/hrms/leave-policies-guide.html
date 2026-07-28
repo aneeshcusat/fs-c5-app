@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en" data-lux-theme="luxury" data-lux-palette="emerald">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leave Policies User Guide — Tracopus Documentation</title>
+  <meta name="description" content="Detailed single-page guide: supported leave policies, India location packs, how to configure Global Policy Center, scenarios, CFA requirements vs shipped features, flags and cutover.">
+  <meta name="keywords" content="tracopus, leave policies, global policy center, PL, CL, SL, maternity, floating, comp-off, CFA, configure leave">
+  <link rel="canonical" href="https://tracopus.com/documentation/hrms/leave-policies-guide.html">
+  <meta name="robots" content="index, follow">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Tracopus">
+  <meta property="og:title" content="Leave Policies User Guide — Tracopus Documentation">
+  <meta property="og:description" content="Supported leave policies, how to configure them, scenarios, and CFA requirements vs shipped features — one page with tabs.">
+  <meta property="og:url" content="https://tracopus.com/documentation/hrms/leave-policies-guide.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Leave Policies User Guide — Tracopus Documentation">
+  <meta name="twitter:description" content="Supported leave policies, how to configure them, scenarios, and CFA requirements vs shipped features.">
+  <script src="../js/docs-analytics.js?v=20260719a" defer></script>
+  <link rel="stylesheet" href="../css/styles.css?v=20260718g">
+  <script src="../js/brand-config.js?v=20260619e"></script>
+  <style>
+    .policy-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin: 0 0 1.25rem;
+      padding: 0.65rem;
+      border: 1px solid var(--lux-border, #d8e2dc);
+      border-radius: 12px;
+      background: linear-gradient(180deg, #f4faf6 0%, #eef6f1 100%);
+      position: sticky;
+      top: 0.5rem;
+      z-index: 5;
+    }
+    .policy-tabs__btn {
+      font: inherit;
+      font-size: 0.82rem;
+      font-weight: 650;
+      padding: 0.45rem 0.85rem;
+      border-radius: 999px;
+      border: 1px solid #c5d9cc;
+      background: #fff;
+      color: #3d5a4c;
+      cursor: pointer;
+      line-height: 1.2;
+    }
+    .policy-tabs__btn:hover { border-color: #40916c; color: #1b4332; }
+    .policy-tabs__btn.is-active {
+      background: #d8f3dc;
+      border-color: #40916c;
+      color: #1b4332;
+      box-shadow: 0 0 0 1px rgba(64, 145, 108, 0.25);
+    }
+    .policy-tabs__panel { display: none; }
+    .policy-tabs__panel.is-active { display: block; }
+    .policy-chip-row { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0.75rem 0 1rem; }
+    .policy-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.25rem 0.65rem;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 650;
+      border: 1px solid #c5d9cc;
+      background: #fff;
+      color: #1b4332;
+    }
+    .policy-chip--shipped { background: #dcfce7; border-color: #86efac; color: #166534; }
+    .policy-chip--partial { background: #fef3c7; border-color: #fcd34d; color: #92400e; }
+    .policy-chip--planned { background: #e0f2fe; border-color: #7dd3fc; color: #075985; }
+    .policy-status {
+      display: inline-block;
+      min-width: 4.5rem;
+      text-align: center;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      padding: 0.15rem 0.45rem;
+      border-radius: 6px;
+    }
+    .policy-status--shipped { background: #dcfce7; color: #166534; }
+    .policy-status--partial { background: #fef3c7; color: #92400e; }
+    .policy-status--stub { background: #e0f2fe; color: #075985; }
+    .policy-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 0.75rem;
+      margin: 1rem 0;
+    }
+    .policy-card {
+      border: 1px solid #d8e2dc;
+      border-radius: 12px;
+      padding: 0.9rem 1rem;
+      background: #fff;
+    }
+    .policy-card h4 {
+      margin: 0 0 0.35rem;
+      font-size: 0.95rem;
+      color: #1b4332;
+    }
+    .policy-card p {
+      margin: 0;
+      font-size: 0.85rem;
+      color: #52796f;
+      line-height: 1.45;
+    }
+    .policy-card code { font-size: 0.78rem; }
+    .policy-steps { counter-reset: pstep; list-style: none; padding: 0; margin: 0.75rem 0 0; }
+    .policy-steps > li {
+      position: relative;
+      padding: 0.75rem 0.85rem 0.75rem 3rem;
+      margin-bottom: 0.55rem;
+      border: 1px solid #d8e2dc;
+      border-radius: 10px;
+      background: #fff;
+    }
+    .policy-steps > li::before {
+      counter-increment: pstep;
+      content: counter(pstep);
+      position: absolute;
+      left: 0.75rem;
+      top: 0.75rem;
+      width: 1.55rem;
+      height: 1.55rem;
+      border-radius: 50%;
+      background: #d8f3dc;
+      color: #1b4332;
+      font-weight: 700;
+      font-size: 0.8rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .policy-steps strong { color: #1b4332; }
+    .policy-mini { font-size: 0.85rem; color: #52796f; margin: 0.25rem 0 0; }
+    @media (max-width: 720px) {
+      .policy-tabs { position: static; }
+      .policy-tabs__btn { font-size: 0.78rem; padding: 0.4rem 0.7rem; }
+    }
+  </style>
+</head>
+<body data-docs-depth="1">
+
+<header aria-label="Site header"></header>
+
+<main>
+  <div class="breadcrumb"><a href="../index.html">Home</a> → HRMS → Leave Policies Guide</div>
+
+  <div class="doc-canvas">
+    <header class="doc-mast">
+      <div class="doc-mast__top">
+        <span class="doc-mast__eyebrow">HRMS · Leave Policies</span>
+        <div class="page-meta page-meta--inline">
+          <span class="page-meta__item"><strong>Hub</strong> <code>/admin/leave/global-policy-center</code></span>
+          <span class="page-meta__item"><strong>Balances</strong> <code>/admin/employee-leave-config</code></span>
+          <span class="page-meta__item"><strong>Apply</strong> <code>/people/leaves</code></span>
+        </div>
+      </div>
+      <h1 class="doc-mast__title">Leave Policies User Guide</h1>
+      <p class="doc-mast__lead">One place for supported leave policies, how to configure them in Global Policy Center, go-live scenarios, and how new CFA requirements map to shipped Tracopus features.</p>
+      <p class="doc-mast__purpose">
+        Screen setup checklist: <a href="leave-configuration.html">Leave Configuration</a> ·
+        Runtime apply/approve: <a href="leaves.html">Leave Management</a> ·
+        Scenarios: <a href="../user-guide/admin/admin-configure-global-leave.html">Configure Global Leave</a>
+      </p>
+    </header>
+
+    <div class="doc-flow">
+      <div class="policy-tabs" role="tablist" aria-label="Leave policies guide sections">
+        <button type="button" class="policy-tabs__btn is-active" role="tab" aria-selected="true" data-tab="overview" id="tabBtn-overview">Overview</button>
+        <button type="button" class="policy-tabs__btn" role="tab" aria-selected="false" data-tab="supported" id="tabBtn-supported">Supported policies</button>
+        <button type="button" class="policy-tabs__btn" role="tab" aria-selected="false" data-tab="packs" id="tabBtn-packs">India packs</button>
+        <button type="button" class="policy-tabs__btn" role="tab" aria-selected="false" data-tab="configure" id="tabBtn-configure">How to configure</button>
+        <button type="button" class="policy-tabs__btn" role="tab" aria-selected="false" data-tab="scenarios" id="tabBtn-scenarios">Scenarios</button>
+        <button type="button" class="policy-tabs__btn" role="tab" aria-selected="false" data-tab="requirements" id="tabBtn-requirements">New vs existing</button>
+        <button type="button" class="policy-tabs__btn" role="tab" aria-selected="false" data-tab="screens" id="tabBtn-screens">Admin screens</button>
+        <button type="button" class="policy-tabs__btn" role="tab" aria-selected="false" data-tab="checklist" id="tabBtn-checklist">Checklist</button>
+      </div>
+
+      <!-- ========== OVERVIEW ========== -->
+      <div class="policy-tabs__panel is-active" id="tab-overview" role="tabpanel" aria-labelledby="tabBtn-overview">
+        <section class="doc-block">
+          <h2 class="doc-block__title">What this guide covers</h2>
+          <p>Tracopus leave has two layers:</p>
+          <ol>
+            <li><strong>Policy configuration</strong> — jurisdictions, country templates, versioned team policies, holidays, working days, publish (this guide + <a href="leave-configuration.html">Leave Configuration</a>).</li>
+            <li><strong>Day-to-day runtime</strong> — employees apply on <a href="leaves.html">People → Leave management</a>; managers approve there or in Workspace → Approvals.</li>
+          </ol>
+          <div class="policy-chip-row">
+            <span class="policy-chip policy-chip--shipped">Shipped — India CFA packs</span>
+            <span class="policy-chip policy-chip--shipped">Shipped — apply / approve / accrual / CF</span>
+            <span class="policy-chip policy-chip--partial">Partial — AE / SA / US stubs</span>
+            <span class="policy-chip policy-chip--planned">Planned — adoption days TBD</span>
+          </div>
+          <div class="callout callout--info"><div class="callout__icon">ℹ️</div><div class="callout__body"><strong class="callout__title">Publishing ≠ balances</strong><div class="callout__text">Publishing a policy activates eligibility and accrual rules. Opening balances still come from <a href="leave-configuration.html#employee-balances">Employee leave config</a> (OB template → dry-run → live) or the accrual schedule — Tracopus does not invent balances.</div></div></div>
+        </section>
+
+        <section class="doc-block">
+          <h2 class="doc-block__title">Domain principles</h2>
+          <ul>
+            <li><strong>Location-driven policy</strong> — entitlements differ by work location / jurisdiction (KA, MH, HR, TN-CBE, …).</li>
+            <li><strong>Two leave years</strong> — earned leave uses <strong>fiscal Apr–Mar</strong>; floating holiday budget uses <strong>calendar Jan–Dec</strong>.</li>
+            <li><strong>Leave always needs approval</strong> — even when attendance auto-approves for some bands.</li>
+            <li><strong>Configurable, not hardcoded</strong> — rules live in Global Leave templates / published versions (not hard-coded Sat/Sun).</li>
+            <li><strong>Canonical sources only</strong> — Employee, leave types, balance ledger, holidays, TaskActivity promotion; no shadow leave tables.</li>
+          </ul>
+        </section>
+
+        <section class="doc-block">
+          <h2 class="doc-block__title">Quick path (first go-live)</h2>
+          <ol class="policy-steps">
+            <li><strong>Flags</strong> — enable <code>leaveManagementEnabled</code> (+ Global Leave role modules) in Application Config.</li>
+            <li><strong>Publish policy</strong> — Global Policy Center: jurisdiction → apply CFA India template → simulate → publish (or use production prefill SQL for defaults).</li>
+            <li><strong>Holidays + working days</strong> — calendar keys + weekly-off rules.</li>
+            <li><strong>Balances</strong> — Employee leave config OB template / Adjust balance.</li>
+            <li><strong>Prove</strong> — apply spanning holiday → Approvals approve → check timesheet / attendance sync.</li>
+          </ol>
+        </section>
+      </div>
+
+      <!-- ========== SUPPORTED ========== -->
+      <div class="policy-tabs__panel" id="tab-supported" role="tabpanel" aria-labelledby="tabBtn-supported" hidden>
+        <section class="doc-block">
+          <h2 class="doc-block__title">Supported leave type catalogue</h2>
+          <p>Codes below are the production leave type codes used by CFA India packs and classic catalog. <code>PL</code> means <strong>Privilege Leave</strong> (earned) — not paternity.</p>
+          <div class="table-wrap">
+            <table class="table">
+              <thead>
+                <tr><th>Code</th><th>Name</th><th>Category</th><th>Key rules</th><th>Status</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>PL</code></td><td>Privilege Leave</td><td>Earned</td>
+                  <td>Fiscal year; monthly accrual; carry-forward max <strong>45</strong>; excess <code>LAPSE</code> (or <code>ENCASH</code> if HR re-publishes).</td>
+                  <td><span class="policy-status policy-status--shipped">Shipped</span></td>
+                </tr>
+                <tr>
+                  <td><code>CL</code></td><td>Casual Leave</td><td>Casual</td>
+                  <td>Location packs (MH / HR / TN); no carry-forward; lapses at fiscal year end. Not in KA pack.</td>
+                  <td><span class="policy-status policy-status--shipped">Shipped</span></td>
+                </tr>
+                <tr>
+                  <td><code>SL</code></td><td>Sick Leave</td><td>Sick</td>
+                  <td>Location packs (KA / HR / TN); medical certificate when ≥3 days; no CF.</td>
+                  <td><span class="policy-status policy-status--shipped">Shipped</span></td>
+                </tr>
+                <tr>
+                  <td><code>MATERNITY</code></td><td>Maternity Leave</td><td>Special</td>
+                  <td>Female; min 80 service days; 182 / 182 / 84 / 84 by child #; max start 8 weeks before event; auto end from start; proof required.</td>
+                  <td><span class="policy-status policy-status--shipped">Shipped</span></td>
+                </tr>
+                <tr>
+                  <td><code>PATERNITY</code></td><td>Paternity Leave</td><td>Special</td>
+                  <td>Male; 5 consecutive days; window 7 days before or 45 days after event.</td>
+                  <td><span class="policy-status policy-status--shipped">Shipped</span></td>
+                </tr>
+                <tr>
+                  <td><code>MSL</code></td><td>Milestone Leave</td><td>Special</td>
+                  <td>Tenure grant at 5/10/15/20y (+ catch-up); 5-day block; partial use forfeits remainder.</td>
+                  <td><span class="policy-status policy-status--shipped">Shipped</span></td>
+                </tr>
+                <tr>
+                  <td><code>WWL</code></td><td>Wellness Leave</td><td>Special</td>
+                  <td>KA female; 1 day/month; ±3 day apply window; lapses last working day of month.</td>
+                  <td><span class="policy-status policy-status--shipped">Shipped</span></td>
+                </tr>
+                <tr>
+                  <td><code>COMPOFF</code></td><td>Compensatory Off</td><td>Comp-off</td>
+                  <td>Credit from eligible weekend/statutory (≥6h) or weekday (&gt;15h); expire <strong>90 days</strong> from work day; encash path staged.</td>
+                  <td><span class="policy-status policy-status--shipped">Shipped</span></td>
+                </tr>
+                <tr>
+                  <td><code>FLOATING</code></td><td>Floating Holiday</td><td>Holiday</td>
+                  <td>Calendar-year budget from PH catalogue; employee picks from published options; Jan renew credits entitlement.</td>
+                  <td><span class="policy-status policy-status--shipped">Shipped</span></td>
+                </tr>
+                <tr>
+                  <td><code>UL</code></td><td>Unpaid / LOP</td><td>Unpaid</td>
+                  <td>Catalog type for unpaid absence / LOP coupling where enabled.</td>
+                  <td><span class="policy-status policy-status--shipped">Shipped</span></td>
+                </tr>
+                <tr>
+                  <td><code>ADOPTION</code> / <code>MISCARRIAGE</code></td><td>Special (catalog)</td><td>Special</td>
+                  <td>Catalog stubs present; entitlement days still <strong>TBD with HR</strong>.</td>
+                  <td><span class="policy-status policy-status--stub">Stub</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="doc-block">
+          <h2 class="doc-block__title">Platform capabilities (policy engine)</h2>
+          <div class="policy-grid">
+            <div class="policy-card">
+              <h4>Jurisdictions &amp; templates</h4>
+              <p>Country / region dimensions; apply CFA baseline template into a draft team policy.</p>
+            </div>
+            <div class="policy-card">
+              <h4>Versioned publish</h4>
+              <p>Draft → simulate / Policy Test Lab → publish. Published versions are immutable.</p>
+            </div>
+            <div class="policy-card">
+              <h4>Accrual &amp; carry-forward</h4>
+              <p>Schedules <code>LEAVE_ACCRUAL</code>, <code>LEAVE_CARRY_FORWARD</code>, <code>COMP_OFF_EXPIRE</code>.</p>
+            </div>
+            <div class="policy-card">
+              <h4>Working days &amp; holidays</h4>
+              <p>Weekly-off rules + People holidays filtered by calendar key assignment.</p>
+            </div>
+            <div class="policy-card">
+              <h4>Half-day &amp; day count</h4>
+              <p>Server recalculates <code>numberOfDays</code>; excludes weekly offs and matched holidays.</p>
+            </div>
+            <div class="policy-card">
+              <h4>Documents &amp; privacy</h4>
+              <p>Medical / maternity proof rules; MAT/PAT/WWL privacy masking on sensitive fields.</p>
+            </div>
+            <div class="policy-card">
+              <h4>Classic fallback</h4>
+              <p><code>/admin/leave-policies</code> type catalog when Global Leave is off.</p>
+            </div>
+            <div class="policy-card">
+              <h4>Multi-country stubs</h4>
+              <p>AE / SA / US packs are scaffolded — entitlements still HR-confirm.</p>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- ========== PACKS ========== -->
+      <div class="policy-tabs__panel" id="tab-packs" role="tabpanel" aria-labelledby="tabBtn-packs" hidden>
+        <section class="doc-block">
+          <h2 class="doc-block__title">CFA India location packs (production defaults)</h2>
+          <p>Prefill templates (<code>CFA-IN-*</code>) ship with production-migration <code>09-cfa-leave-india-production-prefill.sql</code>. Resolve uses employee work location / region.</p>
+          <div class="table-wrap">
+            <table class="table">
+              <thead>
+                <tr><th>Pack</th><th>Location</th><th>PL</th><th>CL</th><th>SL</th><th>Special / notes</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>CFA-IN-KA</code></td><td>Karnataka (Bengaluru)</td>
+                  <td>18</td><td>—</td><td>12</td>
+                  <td>WWL (female KA); +1 mandatory PH vs other states</td>
+                </tr>
+                <tr>
+                  <td><code>CFA-IN-MH</code></td><td>Maharashtra (Mumbai)</td>
+                  <td>18</td><td>7</td><td>—</td>
+                  <td>Specials + COMPOFF + FLOATING</td>
+                </tr>
+                <tr>
+                  <td><code>CFA-IN-HR</code></td><td>Haryana (Gurugram)</td>
+                  <td>18</td><td>8</td><td>8</td>
+                  <td>Specials + COMPOFF + FLOATING</td>
+                </tr>
+                <tr>
+                  <td><code>CFA-IN-TN-CBE</code></td><td>Tamil Nadu (Coimbatore)</td>
+                  <td>12</td><td>12</td><td>12</td>
+                  <td>Lower PL vs other India packs</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="policy-mini">Shared across packs: MATERNITY / PATERNITY / MSL / COMPOFF / FLOATING; fiscal Apr–Mar for earned leave; PL CF max 45 with excess <code>LAPSE</code> by default; PH budget 11 calendar-year floating remainder.</p>
+        </section>
+
+        <section class="doc-block">
+          <h2 class="doc-block__title">Shared special / holiday rules</h2>
+          <ul>
+            <li><strong>Maternity</strong> — 182 days (1st/2nd child), 84 days (3rd+); start ≤8 weeks before expected delivery; FE maps child # to days.</li>
+            <li><strong>Paternity</strong> — exactly 5 consecutive days inside apply window.</li>
+            <li><strong>Comp-off</strong> — weekend/statutory ≥6h or weekday &gt;15h; 90-day use-or-expire from work day.</li>
+            <li><strong>Floating</strong> — pick from published catalogue; reject if catalogue / budget missing.</li>
+            <li><strong>MSL</strong> — tenure months 60 / 120 / 180 / 240; catch-up window supported.</li>
+          </ul>
+        </section>
+      </div>
+
+      <!-- ========== CONFIGURE ========== -->
+      <div class="policy-tabs__panel" id="tab-configure" role="tabpanel" aria-labelledby="tabBtn-configure" hidden>
+        <section class="doc-block">
+          <h2 class="doc-block__title">How to configure leave policies</h2>
+          <p>Primary console: <strong>Admin → Leave admin → Global Policy Center</strong> (<code>/admin/leave/global-policy-center</code>). Requires <code>leaveAdditional.globalLeavePoliciesEnabled</code> and <code>adminModules.globalLeavePoliciesEnabled</code>.</p>
+          <ol class="policy-steps">
+            <li>
+              <strong>Enable flags</strong>
+              <p class="policy-mini">Application Config → org <code>leaveAdditional.leaveManagementEnabled</code> (+ Global Leave / leavePolicies role modules). Minimal flag flips only — do not invent full App Config for NULL-config teams.</p>
+            </li>
+            <li>
+              <strong>Create or select a jurisdiction</strong>
+              <p class="policy-mini">e.g. <code>IN</code>, <code>IN-KA</code>, <code>IN-MH</code>. Used for resolve, holiday calendars, and working-day scope.</p>
+            </li>
+            <li>
+              <strong>Apply a country / CFA template into a draft</strong>
+              <p class="policy-mini">Choose <code>CFA-IN-KA</code> (etc.) or blank draft. Edit type entitlements, accrual, carry-forward, special leave JSON as needed.</p>
+            </li>
+            <li>
+              <strong>Simulate / Policy Test Lab</strong>
+              <p class="policy-mini">Dry-run a sample employee. Lab may gate publish. Guide: <a href="leave-policy-test-lab.html">Policy Test Lab</a>.</p>
+            </li>
+            <li>
+              <strong>Assign holiday calendar key</strong>
+              <p class="policy-mini">Key must match People → Holidays locations (e.g. <code>IN-KA</code>). Optionally publish Legal Calendars first.</p>
+            </li>
+            <li>
+              <strong>Working-day rules</strong>
+              <p class="policy-mini"><code>/admin/leave/working-day-rules</code> — team default, jurisdiction pattern, or employee override. “Country” means leave jurisdiction assignment.</p>
+            </li>
+            <li>
+              <strong>Publish version</strong>
+              <p class="policy-mini">Activates accrual / eligibility. Published versions are immutable — clone a new draft to change.</p>
+            </li>
+            <li>
+              <strong>Opening balances</strong>
+              <p class="policy-mini"><a href="../user-guide/admin/admin-employee-leave-config.html">Employee leave config</a>: Download OB template → fill from ZingHR → dry-run import → live; or Adjust balance per employee.</p>
+            </li>
+            <li>
+              <strong>Prove apply → approve</strong>
+              <p class="policy-mini">People → Leaves apply; Workspace → Approvals or pending panel approve; confirm day count, balance debit, timesheet promotion.</p>
+            </li>
+          </ol>
+        </section>
+
+        <section class="doc-block">
+          <h2 class="doc-block__title">What you configure where</h2>
+          <div class="table-wrap">
+            <table class="table">
+              <thead><tr><th>Concern</th><th>Where</th><th>Notes</th></tr></thead>
+              <tbody>
+                <tr><td>Type entitlements / accrual / CF</td><td>Global Policy Center policy version</td><td>Prefer templates; edit draft before publish</td></tr>
+                <tr><td>Leave type catalog (classic)</td><td><code>/admin/leave-policies</code></td><td>Fallback when Global Leave off</td></tr>
+                <tr><td>Per-employee balances</td><td><code>/admin/employee-leave-config</code></td><td>OB template + Adjust balance</td></tr>
+                <tr><td>Holidays</td><td>People → Holidays + Legal calendars</td><td>Location keys must match assignment</td></tr>
+                <tr><td>Weekly offs</td><td>Working day rules</td><td>Not hard-coded Sat/Sun</td></tr>
+                <tr><td>Floating catalogue</td><td>Policy / floating admin + apply drawer picker</td><td>Expanded by production SQL 10</td></tr>
+                <tr><td>Schedules</td><td>Scheduler jobs ACCRUAL / CF / COMP_OFF_EXPIRE</td><td>Enabled via production SQL 11</td></tr>
+                <tr><td>Delegation</td><td><code>/admin/delegation</code></td><td>Leave in approval scopes</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="doc-block">
+          <h2 class="doc-block__title">Production cutover (ops)</h2>
+          <p>When defaults are locked by SQL prefill, HR still must:</p>
+          <ol>
+            <li>Confirm <code>leaveManagementEnabled</code> for real teams.</li>
+            <li>Import opening balances (never invent rows).</li>
+            <li>Smoke apply → approve on a flagged team.</li>
+          </ol>
+          <p class="policy-mini">Runbooks: opening-balance import · cutover publish (internal <code>fui/docs/leave/pending/</code>).</p>
+        </section>
+      </div>
+
+      <!-- ========== SCENARIOS ========== -->
+      <div class="policy-tabs__panel" id="tab-scenarios" role="tabpanel" aria-labelledby="tabBtn-scenarios" hidden>
+        <section class="doc-block">
+          <h2 class="doc-block__title">Configuration &amp; runtime scenarios</h2>
+          <div class="table-wrap">
+            <table class="table">
+              <thead><tr><th>Scenario</th><th>Actor</th><th>Steps (summary)</th><th>Guide</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td>Configure Global Leave</td><td>HR admin</td>
+                  <td>Jurisdiction → template → simulate → holidays → publish</td>
+                  <td><a href="../user-guide/admin/admin-configure-global-leave.html">Scenario</a></td>
+                </tr>
+                <tr>
+                  <td>Set opening balances</td><td>HR admin</td>
+                  <td>Employee leave config → Adjust balance or OB template</td>
+                  <td><a href="../user-guide/admin/admin-employee-leave-config.html">Scenario</a></td>
+                </tr>
+                <tr>
+                  <td>Bulk OB import (dry-run)</td><td>HR admin</td>
+                  <td>Download template → fill → <code>dryRun=true</code> → live</td>
+                  <td><a href="../user-guide/admin/admin-leave-ob-bulk-import.html">Scenario</a></td>
+                </tr>
+                <tr>
+                  <td>Publish legal holidays</td><td>HR admin</td>
+                  <td>Legal calendars draft → publish → People holidays</td>
+                  <td><a href="../user-guide/admin/admin-publish-legal-holiday-calendar.html">Scenario</a></td>
+                </tr>
+                <tr>
+                  <td>Apply leave (PL/CL/SL)</td><td>Employee</td>
+                  <td>People → Leaves → type + dates → submit</td>
+                  <td><a href="../user-guide/hrms/hrms-apply-leave.html">Scenario</a></td>
+                </tr>
+                <tr>
+                  <td>Apply maternity / floating</td><td>Employee</td>
+                  <td>Child # maps days; floating catalogue picker required</td>
+                  <td><a href="leaves.html">Leave Management</a></td>
+                </tr>
+                <tr>
+                  <td>Approve / reject</td><td>Manager / delegate</td>
+                  <td>Pending panel or Workspace → Approvals</td>
+                  <td><a href="../user-guide/hrms/hrms-approve-leave.html">Scenario</a></td>
+                </tr>
+                <tr>
+                  <td>Half-day / holiday span</td><td>Employee</td>
+                  <td>Day count excludes holiday / weekly off; half-day = 0.5</td>
+                  <td><a href="leave-approval-scenarios.html">Approval coverage map</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="doc-block">
+          <h2 class="doc-block__title">Example: Bengaluru employee fiscal PL</h2>
+          <ol class="policy-steps">
+            <li>Employee jurisdiction resolves to <code>CFA-IN-KA</code> (PL 18 / SL 12 + WWL).</li>
+            <li>Opening PL balance imported or accrued after April front-load / monthly job.</li>
+            <li>Employee applies 3 working days spanning a People holiday — <code>numberOfDays</code> = 2.</li>
+            <li>Manager approves → balance debited → leave TaskActivities promoted → optional attendance LEAVE marks.</li>
+          </ol>
+        </section>
+
+        <section class="doc-block">
+          <h2 class="doc-block__title">Example: Floating holiday pick</h2>
+          <ol class="policy-steps">
+            <li>HR published floating catalogue for the calendar year.</li>
+            <li>Employee selects FLOATING + catalogue option in apply drawer.</li>
+            <li>Without published catalogue / budget, apply is rejected with a clear message.</li>
+            <li>January renew job credits FLOATING entitlement (idempotent).</li>
+          </ol>
+        </section>
+      </div>
+
+      <!-- ========== REQUIREMENTS ========== -->
+      <div class="policy-tabs__panel" id="tab-requirements" role="tabpanel" aria-labelledby="tabBtn-requirements" hidden>
+        <section class="doc-block">
+          <h2 class="doc-block__title">New CFA requirements vs existing features</h2>
+          <p>Mapped from CFA leave operating model (ZingHR reference) to Tracopus Global Leave. Status reflects shipped code + production prefill — not invented balances.</p>
+          <div class="table-wrap">
+            <table class="table">
+              <thead><tr><th>Requirement</th><th>Existing / shipped</th><th>New / cutover work</th><th>Status</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td>Location-wise PL/CL/SL</td>
+                  <td>Global Leave templates + resolve</td>
+                  <td>CFA-IN-* packs prefilled; confirm flags per team</td>
+                  <td><span class="policy-status policy-status--shipped">Shipped</span></td>
+                </tr>
+                <tr>
+                  <td>Fiscal year Apr–Mar + CF 45</td>
+                  <td>Leave year + carry-forward engine</td>
+                  <td>Default excess <code>LAPSE</code>; switch to ENCASH via re-publish if HR chooses</td>
+                  <td><span class="policy-status policy-status--shipped">Shipped</span></td>
+                </tr>
+                <tr>
+                  <td>Maternity / paternity rules</td>
+                  <td>Special leave + FE child map / windows</td>
+                  <td>Ops: enable flags; train apply UX</td>
+                  <td><span class="policy-status policy-status--shipped">Shipped</span></td>
+                </tr>
+                <tr>
+                  <td>Comp-off credit + 90-day expire</td>
+                  <td>COMPOFF type + expire schedule + attendance coupling</td>
+                  <td>Band/designation filters still HR-confirm</td>
+                  <td><span class="policy-status policy-status--partial">Partial</span></td>
+                </tr>
+                <tr>
+                  <td>Floating PH catalogue</td>
+                  <td>FLOATING type + catalogue picker</td>
+                  <td>Client-specific rows may still be appended by HR</td>
+                  <td><span class="policy-status policy-status--shipped">Shipped</span></td>
+                </tr>
+                <tr>
+                  <td>WWL Karnataka female</td>
+                  <td>WWL special + LWD lapse</td>
+                  <td>Expand regions later if HR requests</td>
+                  <td><span class="policy-status policy-status--shipped">Shipped</span></td>
+                </tr>
+                <tr>
+                  <td>Milestone leave tenure</td>
+                  <td>MSL TENURE_GRANT + catch-up</td>
+                  <td>—</td>
+                  <td><span class="policy-status policy-status--shipped">Shipped</span></td>
+                </tr>
+                <tr>
+                  <td>Opening balances from ZingHR</td>
+                  <td>LeaveBalanceEngine + import API</td>
+                  <td>HR must supply CSV; dry-run then live (tooling only)</td>
+                  <td><span class="policy-status policy-status--shipped">Shipped</span></td>
+                </tr>
+                <tr>
+                  <td>Adoption / miscarriage</td>
+                  <td>Catalog stubs</td>
+                  <td>Days TBD with HR</td>
+                  <td><span class="policy-status policy-status--stub">Stub</span></td>
+                </tr>
+                <tr>
+                  <td>AE / SA / US entitlements</td>
+                  <td>Multi-country stubs</td>
+                  <td>Entitlement packs TBD</td>
+                  <td><span class="policy-status policy-status--stub">Stub</span></td>
+                </tr>
+                <tr>
+                  <td>Biometric feed → leave/attendance</td>
+                  <td>API stub returns 501 pending contract</td>
+                  <td>Real ingest contract</td>
+                  <td><span class="policy-status policy-status--stub">Stub</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="callout callout--tip"><div class="callout__icon">💡</div><div class="callout__body"><strong class="callout__title">Honest go-live read</strong><div class="callout__text">India policy engine is largely complete in code/prefill. Live E2E still depends on org flags + real opening-balance import + smoke apply/approve on each team.</div></div></div>
+        </section>
+
+        <section class="doc-block">
+          <h2 class="doc-block__title">Existing platform features (always available)</h2>
+          <ul>
+            <li>Overlap prevention, withdraw / cancel paths, delegation acting-for audit.</li>
+            <li>Half-day leave, server-trusted day counting, holiday exclusion.</li>
+            <li>Approve → TaskActivity promotion; optional leave → attendance sync.</li>
+            <li>Policy Test Lab, Legal Calendars, Absence cases, Agreements, Documents, Anomaly / fairness, Workforce bidding (phase-2 admin surfaces).</li>
+            <li>Classic leave policies page when Global Leave is disabled.</li>
+          </ul>
+        </section>
+      </div>
+
+      <!-- ========== SCREENS ========== -->
+      <div class="policy-tabs__panel" id="tab-screens" role="tabpanel" aria-labelledby="tabBtn-screens" hidden>
+        <section class="doc-block">
+          <h2 class="doc-block__title">Admin &amp; runtime screen map</h2>
+          <div class="table-wrap">
+            <table class="table">
+              <thead><tr><th>Screen</th><th>Route</th><th>Use for</th><th>Doc</th></tr></thead>
+              <tbody>
+                <tr><td>Global Policy Center</td><td><code>/admin/leave/global-policy-center</code></td><td>Templates, publish, simulate</td><td><a href="leave-configuration.html#global-policy-center">Config guide</a></td></tr>
+                <tr><td>Leave policies (classic)</td><td><code>/admin/leave-policies</code></td><td>Fallback type catalog</td><td><a href="leave-configuration.html#admin-map">Config guide</a></td></tr>
+                <tr><td>Employee leave config</td><td><code>/admin/employee-leave-config</code></td><td>OB template, Adjust balance</td><td><a href="leave-configuration.html#employee-balances">Balances</a></td></tr>
+                <tr><td>Legal calendars</td><td><code>/admin/leave/legal-calendars</code></td><td>Publish holidays</td><td><a href="leave-legal-calendars.html">Legal Calendars</a></td></tr>
+                <tr><td>Working day rules</td><td><code>/admin/leave/working-day-rules</code></td><td>Weekly offs</td><td><a href="leave-configuration.html#working-days">Working days</a></td></tr>
+                <tr><td>Policy Test Lab</td><td><code>/admin/leave/policy-test-lab</code></td><td>Pre-publish scenarios</td><td><a href="leave-policy-test-lab.html">Test Lab</a></td></tr>
+                <tr><td>Leave management</td><td><code>/people/leaves</code></td><td>Apply / approve</td><td><a href="leaves.html">Leave Management</a></td></tr>
+                <tr><td>Approvals inbox</td><td><code>/workspace/approvals</code></td><td>Manager decisions</td><td><a href="../workspace/approvals.html">Approvals</a></td></tr>
+                <tr><td>Application Config</td><td><code>/admin/application-config</code></td><td>leaveAdditional flags</td><td><a href="application-config.html">App Config</a></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="doc-block">
+          <h2 class="doc-block__title">Required flags (reference)</h2>
+          <ul>
+            <li>Org: <code>leaveAdditional.leaveManagementEnabled</code>, <code>globalLeavePoliciesEnabled</code>, optional <code>leaveEnhancementsEnabled</code>, <code>leaveAutoSyncToAttendance</code>, <code>leaveBlockNonWorkingDayLeave</code>.</li>
+            <li>Role: <code>peopleModules.leavesEnabled</code>, <code>adminModules.leavePoliciesEnabled</code>, <code>adminModules.globalLeavePoliciesEnabled</code>.</li>
+          </ul>
+          <p class="policy-mini">Data-flow detail: <a href="../data-flow/leave-policy-flags-data-flow.html">Leave policy flags</a> · <a href="../data-flow/leave-flags-data-flow.html">Leave flags</a>.</p>
+        </section>
+
+        <section class="doc-block doc-block--related">
+          <h2 class="doc-block__title">Related documentation</h2>
+          <div class="related-links">
+            <a class="related-link" href="leave-configuration.html"><span class="related-link__label">Leave Configuration (screen guide)</span><span class="related-link__desc">Flowcharts, flags, admin map, go-live checklist.</span></a>
+            <a class="related-link" href="leaves.html"><span class="related-link__label">Leave Management</span><span class="related-link__desc">Apply / approve runtime.</span></a>
+            <a class="related-link" href="leave-approval-scenarios.html"><span class="related-link__label">Approval scenarios map</span><span class="related-link__desc">Coverage of edge cases.</span></a>
+            <a class="related-link" href="../user-guide/admin/admin-configure-global-leave.html"><span class="related-link__label">Scenario: Global Leave</span><span class="related-link__desc">Step-by-step publish.</span></a>
+            <a class="related-link" href="../user-guide/admin/admin-leave-ob-bulk-import.html"><span class="related-link__label">Scenario: OB bulk import</span><span class="related-link__desc">Dry-run cutover.</span></a>
+            <a class="related-link" href="../faq/index.html"><span class="related-link__label">FAQ · Leave</span><span class="related-link__desc">Opening balances, holidays, approve.</span></a>
+          </div>
+        </section>
+      </div>
+
+      <!-- ========== CHECKLIST ========== -->
+      <div class="policy-tabs__panel" id="tab-checklist" role="tabpanel" aria-labelledby="tabBtn-checklist" hidden>
+        <section class="doc-block">
+          <h2 class="doc-block__title">Go-live checklist</h2>
+          <ul class="lux-feature-list lux-feature-list--dense">
+            <li class="lux-feature-item"><span class="lux-feature-item__icon">1</span><div><strong>Flags</strong><span>Org leave + role modules enabled for the target team.</span></div></li>
+            <li class="lux-feature-item"><span class="lux-feature-item__icon">2</span><div><strong>Published policy</strong><span>Correct CFA-IN-* pack (or custom) published for jurisdiction.</span></div></li>
+            <li class="lux-feature-item"><span class="lux-feature-item__icon">3</span><div><strong>Holidays + working days</strong><span>Calendar key assigned; weekly-off rule resolved.</span></div></li>
+            <li class="lux-feature-item"><span class="lux-feature-item__icon">4</span><div><strong>Schedules</strong><span>ACCRUAL / CARRY_FORWARD / COMP_OFF_EXPIRE enabled.</span></div></li>
+            <li class="lux-feature-item"><span class="lux-feature-item__icon">5</span><div><strong>Balances</strong><span>OB dry-run clean → live import; spot-check cards.</span></div></li>
+            <li class="lux-feature-item"><span class="lux-feature-item__icon">6</span><div><strong>Prove PL apply</strong><span>Working-day count correct across a holiday.</span></div></li>
+            <li class="lux-feature-item"><span class="lux-feature-item__icon">7</span><div><strong>Prove special</strong><span>MAT child map or FLOATING catalogue on a test user.</span></div></li>
+            <li class="lux-feature-item"><span class="lux-feature-item__icon">8</span><div><strong>Approve path</strong><span>Manager / delegate approve; timesheet / attendance side effects.</span></div></li>
+          </ul>
+        </section>
+
+        <section class="doc-block">
+          <h2 class="doc-block__title">Common mistakes</h2>
+          <ul>
+            <li>Expecting balances after publish alone — import or wait for accrual.</li>
+            <li>Inventing OB CSV amounts without ZingHR / HR export.</li>
+            <li>Holiday calendar key mismatch → days still counted.</li>
+            <li>Using <code>PL</code> for paternity (ZingHR historical remap) — paternity is <code>PATERNITY</code>.</li>
+            <li>Skipping dry-run on bulk import.</li>
+            <li>Global Leave flag off while editing classic policies only — resolve path differs.</li>
+          </ul>
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <nav class="page-nav">
+    <a class="page-nav__prev" href="leave-configuration.html">← Leave Configuration</a>
+    <a class="page-nav__next" href="leaves.html">Leave Management →</a>
+  </nav>
+</main>
+
+<footer>
+  <div class="container">
+    <p>&copy; 2026 <span data-brand>Tracopus</span>. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="../js/palette.js?v=20260619e"></script>
+<script src="../js/brand.js?v=20260619e"></script>
+<script src="../js/docs-utility-config.js?v=20260720b"></script>
+<script src="../js/nav-config.js?v=20260724b"></script>
+<script src="../js/navigation.js?v=20260619e"></script>
+<script src="../js/site-enhancements.js?v=20260718d"></script>
+<script src="../js/search.js?v=20260724b"></script>
+<script>
+(function () {
+  var TAB_IDS = ['overview', 'supported', 'packs', 'configure', 'scenarios', 'requirements', 'screens', 'checklist'];
+
+  function activate(tabId, pushHash) {
+    if (TAB_IDS.indexOf(tabId) === -1) tabId = 'overview';
+    document.querySelectorAll('.policy-tabs__btn').forEach(function (btn) {
+      var on = btn.getAttribute('data-tab') === tabId;
+      btn.classList.toggle('is-active', on);
+      btn.setAttribute('aria-selected', on ? 'true' : 'false');
+    });
+    document.querySelectorAll('.policy-tabs__panel').forEach(function (panel) {
+      var on = panel.id === 'tab-' + tabId;
+      panel.classList.toggle('is-active', on);
+      if (on) panel.removeAttribute('hidden');
+      else panel.setAttribute('hidden', '');
+    });
+    if (pushHash) {
+      var url = new URL(window.location.href);
+      url.hash = 'tab-' + tabId;
+      history.replaceState(null, '', url.pathname + url.search + url.hash);
+    }
+  }
+
+  document.querySelector('.policy-tabs').addEventListener('click', function (e) {
+    var btn = e.target.closest('.policy-tabs__btn');
+    if (!btn) return;
+    activate(btn.getAttribute('data-tab'), true);
+  });
+
+  function fromHash() {
+    var h = (window.location.hash || '').replace(/^#/, '');
+    if (h.indexOf('tab-') === 0) activate(h.slice(4), false);
+    else activate('overview', false);
+  }
+
+  window.addEventListener('hashchange', fromHash);
+  fromHash();
+})();
+</script>
+</body>
+</html>

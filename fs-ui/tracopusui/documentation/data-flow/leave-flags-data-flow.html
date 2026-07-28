@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en" data-lux-theme="luxury" data-lux-palette="emerald">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="../js/docs-analytics.js?v=20260719a" defer></script>
+  <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css?v=20260718g">
+  <link rel="stylesheet" href="css/data-flow-doc-shell.css?v=20260724e">
+  <title>Leave Flags + Data Flow (Interactive Learning)</title>
+  <script type="module">
+    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+    mermaid.initialize({
+      startOnLoad: false, theme: "base",
+      themeVariables: { primaryColor: "#f5ebe0", primaryTextColor: "#1a2e28", primaryBorderColor: "#8a5a2b", lineColor: "#6b5a2e", secondaryColor: "#f3eee6", fontFamily: "IBM Plex Sans, system-ui, sans-serif" },
+      flowchart: { curve: "basis", htmlLabels: true }, securityLevel: "loose"
+    });
+    window.__mermaid = mermaid;
+    window.dispatchEvent(new Event("mermaid-ready"));
+  </script>
+  <style>
+    :root {
+      --ink: #1a2e28; --muted: #5a6e66; --bg: #f4f1eb; --paper: #fffdf9; --line: #d8d0c4;
+      --accent: #8a5a2b; --accent-soft: #f5ebe0; --warn: #8a5a2b; --warn-soft: #f5ebe0;
+      --danger: #9b2c2c; --danger-soft: #fde8e8; --danger-border: #e8a0a0;
+      --ok: #1f6b4a; --ok-soft: #e4f3ec; --off: #6b7280; --off-soft: #eef0f2; --flash: #fff3cd;
+      --pending: #6b5a2e; --approved: #2f6f5e; --rejected: #8b3a3a;
+      --font: "IBM Plex Sans", system-ui, sans-serif; --mono: "IBM Plex Mono", ui-monospace, monospace;
+      --switch-w: 48px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; font-family: var(--font); color: var(--ink); background: radial-gradient(ellipse 70% 40% at 50% 0%, #f5ebe0, transparent 55%), var(--bg); line-height: 1.5; }
+    a { color: var(--accent); }
+    code { font-family: var(--mono); font-size: 0.86em; background: #efeae2; padding: 0.08em 0.35em; border-radius: 4px; }
+    .wrap { max-width: 1360px; margin: 0 auto; padding: 1.25rem 1rem 3rem; }
+    .hero { margin-bottom: 1rem; padding-bottom: 0.85rem; border-bottom: 1px solid var(--line); }
+    .hero__eyebrow { font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); font-weight: 650; }
+    .hero h1 { margin: 0.3rem 0 0.35rem; font-size: clamp(1.35rem, 2.5vw, 1.85rem); }
+    .hero p { margin: 0; color: var(--muted); max-width: 54rem; font-size: 0.92rem; }
+    .layout { display: grid; gap: 1rem; }
+    @media (min-width: 1100px) {
+      .layout { grid-template-columns: 340px 1fr; align-items: start; }
+      .panel-flags { position: sticky; top: 0.6rem; max-height: calc(100vh - 1.2rem); overflow: auto; }
+      .doc-scroll { max-height: calc(100vh - 1.2rem); overflow: auto; }
+    }
+    .panel { background: var(--paper); border: 1px solid var(--line); border-radius: 12px; padding: 0.95rem 1rem 1.1rem; }
+    .panel h2 { margin: 0 0 0.45rem; font-size: 0.95rem; }
+    .panel__hint { font-size: 0.8rem; color: var(--muted); margin: 0 0 0.7rem; }
+    .presets { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 0.75rem; }
+    .presets button { font: inherit; font-size: 0.7rem; font-weight: 600; padding: 0.3rem 0.5rem; border-radius: 999px; border: 1px solid var(--line); background: #faf8f4; cursor: pointer; }
+    .presets button.is-active { background: var(--accent-soft); border-color: var(--accent); color: var(--accent); }
+    .group-label { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.07em; color: var(--muted); font-weight: 700; margin: 0.85rem 0 0.4rem; padding-top: 0.55rem; border-top: 1px dashed var(--line); }
+    .group-label:first-of-type { margin-top: 0; padding-top: 0; border-top: 0; }
+    .flag { display: grid; grid-template-columns: minmax(0, 1fr) var(--switch-w); column-gap: 0.75rem; align-items: center; min-height: 52px; padding: 0.4rem 0.55rem; border-radius: 8px; margin-bottom: 0.28rem; border: 1px solid transparent; }
+    .flag.is-flash { background: var(--flash); border-color: #e0c86a; }
+    .flag.is-selected { outline: 1px solid var(--accent); background: #fffaf5; }
+    .flag__name { all: unset; cursor: pointer; font-weight: 650; font-size: 0.84rem; display: block; }
+    .flag__key { font-family: var(--mono); font-size: 0.62rem; color: var(--muted); display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .flag__scope { display: inline-block; font-size: 0.56rem; font-weight: 700; text-transform: uppercase; padding: 0.08rem 0.3rem; border-radius: 4px; margin-top: 0.12rem; }
+    .scope-org { background: var(--accent-soft); color: var(--accent); }
+    .scope-role { background: #e8eef5; color: #3d5a7a; }
+    .scope-sim { background: #e8f1ee; color: #2f6f5e; }
+    .switch { position: relative; width: var(--switch-w); height: 26px; }
+    .switch input { opacity: 0; width: 0; height: 0; position: absolute; }
+    .switch .track { position: absolute; inset: 0; background: #c5cdc8; border-radius: 999px; cursor: pointer; }
+    .switch .track::after { content: ""; position: absolute; width: 20px; height: 20px; left: 3px; top: 3px; background: #fff; border-radius: 50%; transition: transform 0.2s; box-shadow: 0 1px 3px rgba(0,0,0,0.22); }
+    .switch input:checked + .track { background: var(--accent); }
+    .switch input:checked + .track::after { transform: translateX(22px); }
+    .flag-detail { margin-top: 0.65rem; padding: 0.7rem; border: 1px solid var(--line); border-radius: 8px; background: #fff; font-size: 0.84rem; }
+    .when-pair { display: grid; gap: 0.4rem; margin-top: 0.4rem; }
+    @media (min-width: 360px) { .when-pair { grid-template-columns: 1fr 1fr; } }
+    .when { border-radius: 6px; padding: 0.45rem; font-size: 0.78rem; }
+    .when--on { background: var(--ok-soft); }
+    .when--off { background: var(--off-soft); }
+    .when strong { display: block; font-size: 0.66rem; text-transform: uppercase; margin-bottom: 0.15rem; }
+    .right-tabs { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 0.85rem; padding-bottom: 0.65rem; border-bottom: 1px solid var(--line); }
+    .right-tabs__btn { font: inherit; font-size: 0.82rem; font-weight: 650; padding: 0.45rem 0.85rem; border-radius: 999px; border: 1px solid var(--line); background: #faf8f4; color: var(--muted); cursor: pointer; }
+    .right-tabs__btn.is-active { background: var(--accent-soft); border-color: var(--accent); color: var(--accent); }
+    .right-tabs__panel { display: none; }
+    .right-tabs__panel.is-active { display: block; }
+    .change-banner { display: none; border-radius: 10px; border: 2px solid #e0c86a; background: linear-gradient(180deg, #fff8dc, #fff3cd); padding: 0.75rem 0.9rem; margin-bottom: 0.9rem; font-size: 0.86rem; }
+    .change-banner.is-visible { display: block; }
+    .change-banner__title { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.35rem; }
+    .impact-grid { display: grid; gap: 0.5rem; }
+    @media (min-width: 640px) { .impact-grid { grid-template-columns: 1fr 1fr; } }
+    .impact-col { border-radius: 8px; padding: 0.5rem 0.65rem; font-size: 0.82rem; }
+    .impact-col--gained { background: var(--ok-soft); border: 1px solid #a8d4c0; }
+    .impact-col--lost { background: var(--danger-soft); border: 1px solid var(--danger-border); }
+    .impact-col h5 { margin: 0 0 0.35rem; font-size: 0.68rem; text-transform: uppercase; }
+    .impact-col ul { margin: 0; padding-left: 1.1rem; }
+    .impact-empty { color: var(--muted); font-style: italic; list-style: none; margin-left: -1.1rem; }
+    .mode-pill { display: inline-flex; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; padding: 0.3rem 0.65rem; border-radius: 999px; margin-bottom: 0.75rem; }
+    .mode-pill--pending { background: var(--warn-soft); color: var(--warn); }
+    .mode-pill--off { background: var(--danger-soft); color: var(--danger); }
+    .pipeline { background: #fff; border: 1px solid var(--line); border-radius: 10px; padding: 0.75rem; margin-bottom: 1rem; }
+    .pipeline__label { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; color: var(--muted); margin-bottom: 0.55rem; }
+    .pipeline__track { display: flex; flex-wrap: wrap; gap: 0.35rem; align-items: stretch; }
+    .pipe-node { flex: 1 1 72px; min-width: 68px; max-width: 105px; border-radius: 8px; border: 2px solid var(--line); padding: 0.4rem; text-align: center; background: #faf8f4; font-size: 0.65rem; font-weight: 700; }
+    .pipe-node__sub { font-weight: 400; color: var(--muted); font-size: 0.58rem; display: block; margin-top: 0.15rem; }
+    .pipe-node.is-active { background: var(--ok-soft); border-color: #6fb897; color: var(--ok); }
+    .pipe-node.is-blocked { background: var(--danger-soft); border-color: var(--danger); border-style: dashed; color: var(--danger); text-decoration: line-through; }
+    .pipe-arrow { display: flex; align-items: center; color: var(--muted); font-weight: 700; }
+    .toc, .step, .badge, .step__desc, .block-reason, .callout, .diagram, .api, .sql, ul.steps-list, table.data, .delta, .table-map, .pill, .flow-cards, .flow-card, .scenario-box, .badge-acting, .bh-summary, .bh-flow, .flow-arrow, .bh-flow-step, .bh-cards, .bh-card, .bh-matrix, .bh-diff-list, footer.note { /* shared */ }
+    .toc { background: #faf8f4; border: 1px solid var(--line); border-radius: 8px; padding: 0.7rem; margin-bottom: 1rem; }
+    .toc h3 { margin: 0 0 0.4rem; font-size: 0.82rem; }
+    .toc ol { margin: 0; padding-left: 1.15rem; font-size: 0.84rem; columns: 1; }
+    @media (min-width: 700px) { .toc ol { columns: 2; } }
+    .toc li { margin: 0.2rem 0; break-inside: avoid; }
+    .toc a { text-decoration: none; }
+    .toc .blocked-link { color: var(--danger); font-weight: 650; }
+    .step { background: #faf8f4; border: 1px solid var(--line); border-radius: 10px; padding: 1rem; margin-bottom: 1rem; scroll-margin-top: 0.5rem; position: relative; overflow: hidden; }
+    .step.is-blocked { background: #fff5f5; border: 2px dashed var(--danger); }
+    .step.is-blocked::before { content: "BLOCKED · NOT IN FLOW"; position: absolute; top: 0; right: 0; background: var(--danger); color: #fff; font-size: 0.62rem; font-weight: 800; padding: 0.35rem 0.65rem; border-bottom-left-radius: 8px; }
+    .step.is-blocked .step__body { opacity: 0.55; filter: grayscale(0.35); pointer-events: none; }
+    .step.is-flash { background: var(--flash); border-color: #e0c86a; }
+    .step__head { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem; margin-bottom: 0.55rem; padding-right: 9rem; }
+    .step__num { display: inline-flex; align-items: center; justify-content: center; min-width: 1.75rem; height: 1.75rem; border-radius: 999px; background: var(--accent); color: #fff; font-weight: 700; font-size: 0.78rem; }
+    .step.is-blocked .step__num { background: var(--danger); }
+    .step h3 { margin: 0; font-size: 1.05rem; flex: 1; }
+    .step.is-blocked h3 { color: var(--danger); text-decoration: line-through; }
+    .badge { display: inline-block; font-size: 0.65rem; font-weight: 650; text-transform: uppercase; padding: 0.2rem 0.5rem; border-radius: 999px; border: 1px solid transparent; }
+    .badge--pending { background: #f5f0e4; color: var(--pending); border-color: #e0d4b8; }
+    .badge--approved { background: var(--ok-soft); color: var(--approved); border-color: #b8d4c8; }
+    .badge--rejected { background: var(--danger-soft); color: var(--rejected); border-color: #e0bcbc; }
+    .badge--off { background: var(--danger-soft); color: var(--danger); border-color: var(--danger-border); }
+    .badge--active { background: var(--ok-soft); color: var(--ok); border-color: #a8d4c0; }
+    .step__desc { color: var(--muted); margin: 0 0 0.75rem; font-size: 0.9rem; }
+    .block-reason { display: none; background: var(--danger-soft); border: 1px solid var(--danger-border); border-radius: 8px; padding: 0.65rem; margin-bottom: 0.85rem; color: var(--danger); font-weight: 650; font-size: 0.88rem; }
+    .step.is-blocked .block-reason { display: block; }
+    .callout { border-left: 3px solid var(--accent); background: var(--accent-soft); padding: 0.6rem 0.85rem; border-radius: 0 8px 8px 0; margin: 0 0 0.85rem; font-size: 0.88rem; }
+    .diagram { background: #fff; border: 1px solid var(--line); border-radius: 8px; padding: 0.85rem; margin: 0.75rem 0; overflow-x: auto; }
+    .diagram.is-dimmed { opacity: 0.5; border-style: dashed; border-color: var(--danger-border); }
+    .diagram__label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); font-weight: 600; margin-bottom: 0.4rem; }
+    .api { font-family: var(--mono); font-size: 0.75rem; background: #1a2e28; color: #e8f1ee; padding: 0.45rem 0.65rem; border-radius: 6px; margin: 0.4rem 0 0.75rem; overflow-x: auto; white-space: nowrap; }
+    .api span { color: #9fd4c0; }
+    .api.is-blocked { background: #5c2a2a; text-decoration: line-through; opacity: 0.75; }
+    .sql { font-family: var(--mono); font-size: 0.72rem; background: #2a3340; color: #dce4ef; padding: 0.65rem; border-radius: 6px; margin: 0.5rem 0 0.75rem; overflow-x: auto; white-space: pre-wrap; line-height: 1.45; }
+    ul.steps-list { margin: 0.4rem 0 0.85rem; padding-left: 1.15rem; font-size: 0.88rem; }
+    table.data { width: 100%; border-collapse: collapse; font-size: 0.78rem; margin: 0.35rem 0 0.85rem; }
+    table.data th, table.data td { border: 1px solid var(--line); padding: 0.35rem 0.5rem; text-align: left; vertical-align: top; }
+    table.data th { background: #efeae2; font-weight: 650; }
+    table.data tr.changed td { background: #fff8e8; }
+    table.data .hl { background: #fff3cd; font-weight: 600; }
+    .delta { font-size: 0.82rem; margin: 0.2rem 0 0.35rem; }
+    .table-map { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0.5rem 0 0.75rem; }
+    .pill { font-family: var(--mono); font-size: 0.7rem; padding: 0.28rem 0.5rem; border-radius: 6px; background: #efeae2; border: 1px solid var(--line); }
+    .pill--core { background: #e8f1ee; border-color: #b8d4c8; }
+    .pill--balance { background: var(--accent-soft); border-color: #e0c8a8; }
+    .flow-cards { display: grid; gap: 0.45rem; margin: 0.75rem 0; }
+    @media (min-width: 720px) { .flow-cards { grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); } }
+    .flow-card { border: 2px solid var(--line); border-radius: 8px; padding: 0.55rem; background: #fff; text-align: center; font-size: 0.72rem; }
+    .flow-card.is-write { border-color: #6fb897; background: var(--ok-soft); }
+    .flow-card.is-read { border-color: #c4a882; background: var(--accent-soft); }
+    .flow-card.is-none { border-color: var(--danger); border-style: dashed; background: var(--danger-soft); text-decoration: line-through; color: var(--danger); }
+    .scenario-box { border: 1px dashed var(--line); border-radius: 8px; padding: 0.7rem; background: #fff; margin-bottom: 0.85rem; }
+    .badge-acting { display: inline-block; font-size: 0.72rem; font-weight: 700; background: #e8eef5; color: #3d5a7a; padding: 0.2rem 0.5rem; border-radius: 999px; border: 1px solid #8aa4c4; }
+    .bh-summary { font-size: 0.95rem; margin: 0 0 1rem; }
+    .bh-flow { display: flex; flex-wrap: wrap; gap: 0.4rem; align-items: center; margin-bottom: 1rem; }
+    .flow-arrow { color: var(--muted); font-size: 0.85rem; }
+    .bh-flow-step { font-size: 0.78rem; font-weight: 650; padding: 0.4rem 0.65rem; border-radius: 6px; border: 1px solid var(--line); background: #faf8f4; color: var(--muted); }
+    .bh-flow-step.is-on { background: var(--ok-soft); border-color: #a8d4c0; color: var(--ok); }
+    .bh-flow-step.is-off { background: var(--off-soft); text-decoration: line-through; opacity: 0.75; }
+    .bh-cards { display: grid; gap: 0.65rem; }
+    @media (min-width: 700px) { .bh-cards { grid-template-columns: 1fr 1fr; } }
+    .bh-card { border: 1px solid var(--line); border-radius: 8px; padding: 0.7rem; background: #faf8f4; }
+    .bh-card__title { font-size: 0.78rem; font-weight: 700; text-transform: uppercase; color: var(--muted); margin: 0 0 0.35rem; }
+    .bh-card__body { font-size: 0.88rem; margin: 0; }
+    .bh-card__body .on { color: var(--ok); font-weight: 650; }
+    .bh-card__body .off { color: var(--danger); font-weight: 650; }
+    .bh-matrix { width: 100%; border-collapse: collapse; font-size: 0.8rem; margin-top: 1rem; }
+    .bh-matrix th, .bh-matrix td { border: 1px solid var(--line); padding: 0.4rem 0.5rem; }
+    .bh-matrix th { background: #efeae2; }
+    .bh-matrix td.yes { background: var(--ok-soft); color: var(--ok); font-weight: 650; }
+    .bh-matrix td.no { background: var(--danger-soft); color: var(--danger); font-weight: 650; }
+    .bh-diff-list { margin: 0.75rem 0 0; padding: 0; list-style: none; }
+    .bh-diff-list li { font-size: 0.86rem; padding: 0.45rem 0.6rem; border-left: 3px solid var(--accent); background: var(--accent-soft); border-radius: 0 6px 6px 0; margin-bottom: 0.35rem; }
+    .bh-diff-list li.neg { border-left-color: var(--danger); background: var(--danger-soft); }
+    footer.note { margin-top: 0.75rem; font-size: 0.78rem; color: var(--muted); }
+  </style>
+  <script src="../js/brand-config.js?v=20260619e"></script>
+</head>
+<body data-docs-depth="1" class="data-flow-doc-site">
+<header aria-label="Site header"></header>
+<div class="data-flow-doc-breadcrumb"><a href="../index.html">Documentation</a> → <a href="index.html">Data flow</a></div>
+<main class="data-flow-doc-main">
+  <div class="wrap">
+    <header class="hero">
+      <div class="hero__eyebrow">Learning · Ref Doc · Leave Management</div>
+      <h1>Leave — request, submit, approve, promote &amp; sync</h1>
+      <p>
+        Left: toggle org/role flags. Right: <strong>Table data flow</strong> or <strong>Flag behavior</strong>.
+        Canonical leave row: <code>fs_emp_leave_master_model</code> (<code>workflow_status</code>).
+        Pending approval = <code>SUBMITTED</code>. Example: Rahul Kapoor (200), manager Meera Shah (300), delegate Anil Rao (501).
+        Policy setup, accrual &amp; balances: <a href="./leave-policy-flags-data-flow.html">leave policy data flow</a>.
+      </p>
+    </header>
+    <div class="layout">
+      <aside class="panel panel-flags">
+        <h2>Flag simulator</h2>
+        <p class="panel__hint">Toggle → both tabs update live.</p>
+        <div class="presets" id="presets">
+          <button type="button" data-preset="production">Production</button>
+          <button type="button" data-preset="leaveOff">Leave module off</button>
+          <button type="button" data-preset="menuOff">Menu off</button>
+          <button type="button" data-preset="strictPolicy">Strict policy</button>
+          <button type="button" data-preset="noSync">No attendance sync</button>
+        </div>
+        <div id="flagList"></div>
+        <div class="flag-detail" id="flagDetail"></div>
+      </aside>
+      <main class="panel doc-scroll">
+        <nav class="right-tabs" role="tablist">
+          <button type="button" class="right-tabs__btn is-active" data-tab="dataflow">Table data flow</button>
+          <button type="button" class="right-tabs__btn" data-tab="behavior">Flag behavior</button>
+        </nav>
+        <div class="right-tabs__panel is-active" id="tabDataflow"><div id="docPanel"></div></div>
+        <div class="right-tabs__panel" id="tabBehavior" hidden>
+          <h2 class="tab-panel-title" style="margin:0 0 0.65rem;font-size:0.95rem">Live flag behavior</h2>
+          <div class="change-banner" id="bhChangeBanner"></div>
+          <div id="bhModePill" class="mode-pill mode-pill--pending"></div>
+          <p class="bh-summary" id="bhSummary"></p>
+          <p style="font-size:0.78rem;font-weight:700;text-transform:uppercase;color:var(--muted);margin:0 0 0.4rem">Leave request path</p>
+          <div class="bh-flow" id="bhFlowRequest"></div>
+          <p style="font-size:0.78rem;font-weight:700;text-transform:uppercase;color:var(--muted);margin:0.75rem 0 0.4rem">Approval path</p>
+          <div class="bh-flow" id="bhFlowApprove"></div>
+          <div class="bh-cards" id="bhCards"></div>
+          <table class="bh-matrix"><thead><tr><th>Capability</th><th>Now</th><th>Why</th></tr></thead><tbody id="bhMatrixBody"></tbody></table>
+          <ul class="bh-diff-list" id="bhDiffList"></ul>
+        </div>
+      </main>
+    </div>
+    <footer class="note">Path: <code>documentation/data-flow/leave-flags-data-flow.html</code> · <a href="./leave-policy-flags-data-flow.html">leave policy &amp; accrual</a> · <a href="./timesheet-flags-data-flow.html">timesheet</a> · <a href="./attendance-flags-data-flow.html">attendance</a> · <a href="./delegation-flags-data-flow.html">delegation</a> · <a href="index.html">hub</a></footer>
+  </div>
+  <script src="leave-flags-data-flow.js" defer></script>
+</main>
+<footer class="data-flow-doc-chrome">
+  <div class="container">
+    <p>
+      <a href="index.html">Data flow hub</a>
+      <a href="../index.html">Documentation home</a>
+      <a href="../user-guide/index.html">Scenario Guide</a>
+      <a href="../hrms/application-config.html">Application config</a>
+    </p>
+  </div>
+</footer>
+<script src="../js/palette.js?v=20260619e"></script>
+<script src="../js/brand.js?v=20260619e"></script>
+<script src="../js/docs-utility-config.js?v=20260720b"></script>
+<script src="../js/nav-config.js?v=20260724b"></script>
+<script src="../js/navigation.js?v=20260619e"></script>
+<script src="../js/site-enhancements.js?v=20260718d"></script>
+</body>
+</html>

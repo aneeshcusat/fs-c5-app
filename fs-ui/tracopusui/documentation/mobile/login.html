@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" data-lux-theme="luxury" data-lux-palette="emerald">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login & Registration — Tracopus User Guide</title>
+  <meta name="description" content="Three login modes plus first-time registration flow with mandatory PIN setup and optional biometrics.">
+  <meta name="keywords" content="tracopus, documentation, user guide, mobile, login, &amp;, registration">
+  <link rel="canonical" href="https://tracopus.com/documentation/mobile/login.html">
+  <meta name="robots" content="index, follow">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Tracopus">
+  <meta property="og:title" content="Login &amp; Registration — Tracopus User Guide">
+  <meta property="og:description" content="Three login modes plus first-time registration flow with mandatory PIN setup and optional biometrics.">
+  <meta property="og:url" content="https://tracopus.com/documentation/mobile/login.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Login &amp; Registration — Tracopus User Guide">
+  <meta name="twitter:description" content="Three login modes plus first-time registration flow with mandatory PIN setup and optional biometrics.">
+  <script src="../js/docs-analytics.js?v=20260719a" defer></script>
+  <link rel="apple-touch-icon" href="../images/tracopus-logo.png">
+  <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css?v=20260718g">
+  <script src="../js/brand-config.js?v=20260619e"></script>
+</head>
+<body data-docs-depth="1">
+
+<header aria-label="Site header"></header>
+
+
+
+<main>
+    <div class="breadcrumb"><a href="../index.html">Home</a> → Mobile → Login & Registration</div>
+  
+<div class="doc-canvas">
+  <header class="doc-mast">
+    <div class="doc-mast__top">
+      <span class="doc-mast__eyebrow">Mobile · Authentication</span>
+      <div class="page-meta page-meta--inline">
+        <span class="page-meta__item"><strong>Route</strong> <code>/mobile/login</code></span>
+        <span class="page-meta__item"><strong>Menu</strong> Mobile → Login & Registration</span>
+      </div>
+    </div>
+    <h1 class="doc-mast__title">Login & Registration</h1>
+    <p class="doc-mast__lead">Three login modes plus first-time registration flow with mandatory PIN setup and optional biometrics.</p>
+    <p class="doc-mast__purpose">Credential, PIN, biometric, and QR registration flows for secure mobile access.</p>
+  </header>
+
+  <div class="doc-flow">
+    <section class="doc-block" id="overview"><h2 class="doc-block__title">Overview</h2><p>Login hub includes User Login, 4 Digit PIN, and Biometric tabs depending on registration state.</p></section>
+    <section class="doc-block doc-block--pair">
+      <div class="doc-split">
+        <div id="layout"><h2 class="doc-block__title">Screen layout</h2><p><strong>Flow:</strong> Splash → Login hub → first auth → PIN setup → biometric optional → Tasks hub.</p></div>
+        <div id="header-filters"><h2 class="doc-block__title">Header &amp; filters</h2><p><strong>Tabs:</strong> User Login (always), PIN (after setup), Biometric (device support + PIN setup).<br><strong>QR scanner:</strong> Reads device registration payload from web-generated QR.</p></div>
+      </div>
+    </section>
+    <section class="doc-block doc-block--summary lux-summary-section" id="summary-section"><h2 class="doc-block__title">Summary &amp; charts</h2><p>No chart strip; this page is process-focused around authentication and registration states.</p></section>
+    <section class="doc-block" id="main"><h2 class="doc-block__title">Main content &amp; actions</h2><p>Logout clears session token but preserves device registration and PIN state.</p></section>
+    <section class="doc-block doc-block--features" id="complete-features">
+  <h2 class="doc-block__title">Complete feature list</h2>
+  <p class="lux-features-intro">Every control, panel, and workflow on this screen.</p>
+  <ul class="lux-feature-list lux-feature-list--dense"><li class="lux-feature-item"><span class="lux-feature-item__icon">✓</span><div><strong>Luxury UI shell</strong><span>Emerald-themed glass cards, sticky gradient header, module sidebar, and responsive layout.</span></div></li><li class="lux-feature-item"><span class="lux-feature-item__icon">✓</span><div><strong>Documentation search</strong><span>Header search indexes all guide pages (docs site).</span></div></li><li class="lux-feature-item"><span class="lux-feature-item__icon">✓</span><div><strong>Email/password login</strong><span>Standard credential sign-in.</span></div></li><li class="lux-feature-item"><span class="lux-feature-item__icon">✓</span><div><strong>SSO / OAuth</strong><span>Enterprise single sign-on where configured.</span></div></li><li class="lux-feature-item"><span class="lux-feature-item__icon">✓</span><div><strong>Registration</strong><span>Self-signup or invite flow.</span></div></li><li class="lux-feature-item"><span class="lux-feature-item__icon">✓</span><div><strong>Biometric unlock</strong><span>Face ID / fingerprint after first login.</span></div></li><li class="lux-feature-item"><span class="lux-feature-item__icon">✓</span><div><strong>Forgot password</strong><span>Reset via email link.</span></div></li></ul>
+</section>
+    <div class="doc-enrichment"><section class="doc-block doc-block--callouts" id="page-callouts"><h2 class="doc-block__title">Before you start</h2><div class="callout-stack callout-stack--dense"><div class="callout callout--info"><div class="callout__icon">ℹ️</div><div class="callout__body"><strong class="callout__title">SSO users</strong><div class="callout__text">Use corporate SSO button — local password field disabled.</div></div></div><div class="callout callout--warning"><div class="callout__icon">⚠️</div><div class="callout__body"><strong class="callout__title">Account lock</strong><div class="callout__text">Repeated failures lock account — reset via web or IT.</div></div></div></div></section><div class="doc-enrich-grid"><section class="doc-block" id="who-uses-this"><h2 class="doc-block__title">Who uses this screen</h2><p class="audience-text">All mobile users on first launch or after logout — email/password, SSO, registration, biometric setup, and password recovery.</p><div class="callout callout--info"><div class="callout__icon">ℹ️</div><div class="callout__body"><strong class="callout__title">Mobile authentication</strong><div class="callout__text">Complete first login on trusted network — SSO and MFA may require corporate connectivity.</div></div></div></section><section class="doc-block" id="key-concepts"><h2 class="doc-block__title">Key concepts</h2><div class="concept-grid"><article class="concept-card"><h3 class="concept-card__title">Email/password login</h3><p class="concept-card__desc">Standard credential form matching web Tracopus accounts.</p></article><article class="concept-card"><h3 class="concept-card__title">SSO / OAuth</h3><p class="concept-card__desc">Enterprise single sign-on button when org enables IdP.</p></article><article class="concept-card"><h3 class="concept-card__title">Registration</h3><p class="concept-card__desc">Self-signup or invite-token flow per org policy.</p></article><article class="concept-card"><h3 class="concept-card__title">Biometric unlock</h3><p class="concept-card__desc">Enable after first successful password login.</p></article><article class="concept-card"><h3 class="concept-card__title">Forgot password</h3><p class="concept-card__desc">Email reset link — same backend as web Profile security.</p></article></div></section><section class="doc-block" id="permissions"><h2 class="doc-block__title">Permissions</h2><div class="table-wrap"><table class="table table--permissions"><thead><tr><th>Role</th><th>Access on this screen</th></tr></thead><tbody><tr><td><strong>All employees</strong></td><td>Login and biometric on issued accounts.</td></tr><tr><td><strong>Contractor</strong></td><td>Invite-only registration if self-signup disabled.</td></tr><tr><td><strong>SSO-only org</strong></td><td>Password form hidden — SSO button only.</td></tr><tr><td><strong>No public access</strong></td><td>Registration requires invite or corp email domain.</td></tr></tbody></table></div><div class="callout callout--note"><div class="callout__icon">📝</div><div class="callout__body"><strong class="callout__title">Administrator override</strong><div class="callout__text">Org administrators and service accounts configured in the Admin console may bypass row-level scopes shown above. When in doubt, confirm access with your Tracopus administrator.</div></div></div></section><section class="doc-block" id="controls-reference"><h2 class="doc-block__title">Controls reference</h2><div class="table-wrap"><table class="table table--controls"><thead><tr><th>Control</th><th>Description</th><th>Notes</th></tr></thead><tbody><tr><td><strong>Email field</strong></td><td>Corporate email.</td><td>Autocomplete supported.</td></tr><tr><td><strong>Password field</strong></td><td>Show/hide toggle.</td><td>Keychain save iOS.</td></tr><tr><td><strong>SSO button</strong></td><td>Redirect to IdP.</td><td>Returns token to app.</td></tr><tr><td><strong>Register link</strong></td><td>Invite flow.</td><td>May be hidden.</td></tr><tr><td><strong>Forgot password</strong></td><td>Trigger reset email.</td><td>Open mail app.</td></tr><tr><td><strong>Enable biometric</strong></td><td>Post-login prompt.</td><td>Skippable once.</td></tr><tr><td><strong>Error messages</strong></td><td>Invalid creds, locked account.</td><td>Contact IT.</td></tr></tbody></table></div></section></div><div class="doc-enrich-grid doc-enrich-grid--2"><section class="doc-block" id="common-mistakes"><h2 class="doc-block__title">Common mistakes</h2><div class="callout-stack callout-stack--dense"><div class="callout callout--warning"><div class="callout__icon">⚠️</div><div class="callout__body"><strong class="callout__title">Saving password on jailbroken device</strong><div class="callout__text">Corporate policy may forbid — use biometric only on managed devices.</div></div></div><div class="callout callout--warning"><div class="callout__icon">⚠️</div><div class="callout__body"><strong class="callout__title">SSO on guest WiFi</strong><div class="callout__text">VPN may be required — failure looks like bad password.</div></div></div><div class="callout callout--warning"><div class="callout__icon">⚠️</div><div class="callout__body"><strong class="callout__title">Skipping biometric on personal phone</strong><div class="callout__text">Convenience vs shoulder-surfing — enable if policy allows.</div></div></div></div></section><section class="doc-block" id="faq"><h2 class="doc-block__title">FAQ</h2><div class="faq-list"><article class="faq-item"><h3 class="faq-item__q">MFA on mobile?</h3><div class="faq-item__a">Supported when web MFA enabled — prompt after password or via SSO.</div></article><article class="faq-item"><h3 class="faq-item__q">Session duration?</h3><div class="faq-item__a">Refresh token — re-login when expired or forced logout from web.</div></article><article class="faq-item"><h3 class="faq-item__q">Multiple accounts?</h3><div class="faq-item__a">One account per install — logout to switch.</div></article><article class="faq-item"><h3 class="faq-item__q">Biometric without password?</h3><div class="faq-item__a">Must login password periodically per OS security.</div></article></div></section></div><section class="doc-block doc-block--related" id="related-pages"><h2 class="doc-block__title">Related pages</h2><div class="related-links"><a class="related-link" href="../hrms/profile.html"><span class="related-link__label">Employee Profile</span><span class="related-link__desc">Password and MFA settings.</span></a><a class="related-link" href="timesheet.html"><span class="related-link__label">Mobile Timesheet</span><span class="related-link__desc">Post-login landing often here.</span></a><a class="related-link" href="index.html"><span class="related-link__label">Mobile Overview</span><span class="related-link__desc">Module map.</span></a><a class="related-link" href="../getting-started.html"><span class="related-link__label">Getting Started</span><span class="related-link__desc">Web onboarding complement.</span></a></div></section></div>
+    <section class="doc-block doc-block--pair">
+      <div class="doc-split">
+        <div id="workflows"><h2 class="doc-block__title">Workflows</h2><ol><li>Login with credentials or QR registration.</li><li>Set mandatory 4-digit PIN.</li><li>Enable biometrics (optional).</li><li>Land on Tasks hub.</li></ol></div>
+        <div class="doc-block--tips" id="tips"><h2 class="doc-block__title">Tips &amp; best practices</h2><div class="warning"><strong>Tip:</strong> On biometric failure, users can always fall back to PIN login.</div><div class="callout-stack"><h3 class="subheading">More guidance</h3><div class="callout callout--tip"><div class="callout__icon">💡</div><div class="callout__body"><strong class="callout__title">Remember</strong><div class="callout__text">Standard credential form matching web Tracopus accounts.</div></div></div><div class="callout callout--info"><div class="callout__icon">ℹ️</div><div class="callout__body"><strong class="callout__title">MFA on mobile?</strong><div class="callout__text">Supported when web MFA enabled — prompt after password or via SSO.</div></div></div></div></div>
+      </div>
+    </section>
+  </div>
+</div>
+<nav class="page-nav">
+  <a class="page-nav__prev" href="index.html">← Mobile Overview</a>
+  <a class="page-nav__next" href="tasks.html">Tasks Hub →</a>
+</nav>
+
+</main>
+
+<footer>
+  <div class="container">
+    <p>&copy; 2026 <span data-brand>Tracopus</span>. All rights reserved.</p>
+    <p style="margin-top:0.75rem;">
+      <a href="../index.html">Documentation</a>
+      <a href="../user-guide/index.html">Scenario Guide</a>
+      <a href="../getting-started.html">Getting Started</a>
+      <a href="../charts.html">Charts</a>
+    </p>
+    <p class="footer-muted">For support, contact your workspace administrator.</p>
+  </div>
+</footer>
+
+<script src="../js/palette.js?v=20260619e"></script>
+<script src="../js/brand.js?v=20260619e"></script>
+<script src="../js/docs-utility-config.js?v=20260720b"></script>
+<script src="../js/nav-config.js?v=20260619e"></script>
+<script src="../js/navigation.js?v=20260619e"></script>
+<script src="../js/site-enhancements.js?v=20260718d"></script>
+<script src="../js/search.js?v=20260619e"></script>
+</body>
+</html>

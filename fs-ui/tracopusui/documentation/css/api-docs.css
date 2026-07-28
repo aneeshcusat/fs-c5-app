@@ -1,0 +1,206 @@
+/* API Documentation index */
+
+.api-docs-site .api-docs-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.25rem;
+  margin-top: 1rem;
+  font-size: 0.875rem;
+  color: var(--text-mid);
+}
+
+.api-docs-site .api-docs-stats strong {
+  color: var(--text-dark);
+}
+
+.api-docs-site .api-docs-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin: 1.25rem 0 1.5rem;
+}
+
+.api-docs-site .api-docs-toolbar input[type="search"],
+.api-docs-site .api-docs-toolbar select {
+  min-height: 2.5rem;
+  padding: 0.5rem 0.85rem;
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  background: #fff;
+  font-size: 0.875rem;
+}
+
+.api-docs-site .api-docs-toolbar input[type="search"] {
+  flex: 1 1 220px;
+}
+
+.api-docs-site .api-docs-toolbar select {
+  flex: 0 1 200px;
+}
+
+.api-docs-site .api-docs-module {
+  margin-bottom: 2rem;
+}
+
+.api-docs-site .api-docs-module h2 {
+  font-size: 1.15rem;
+  margin: 0 0 0.85rem;
+}
+
+.api-docs-site .api-docs-module h2 span {
+  color: var(--text-light);
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.api-docs-site .api-docs-card {
+  margin-bottom: 1rem;
+  padding: 1rem 1.15rem;
+  border: 1px solid rgba(15, 118, 110, 0.2);
+  border-radius: 14px;
+  background: linear-gradient(180deg, rgba(15, 118, 110, 0.05), #fff);
+}
+
+.api-docs-site .api-docs-card.is-hidden {
+  display: none;
+}
+
+.api-docs-site .api-docs-card__head {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.api-docs-site .api-docs-card h3 {
+  margin: 0 0 0.25rem;
+  font-size: 1.05rem;
+}
+
+.api-docs-site .api-docs-route {
+  font-size: 0.78rem;
+  color: var(--text-light);
+}
+
+.api-docs-site .api-docs-module-badge {
+  flex-shrink: 0;
+  padding: 0.25rem 0.55rem;
+  border-radius: 999px;
+  background: rgba(15, 118, 110, 0.1);
+  color: #0f766e;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.api-docs-site .api-docs-overview,
+.api-docs-site .api-docs-meta {
+  margin: 0.65rem 0;
+  font-size: 0.875rem;
+  color: var(--text-mid);
+  line-height: 1.5;
+}
+
+.api-docs-site .api-docs-card h4 {
+  margin: 0.85rem 0 0.4rem;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: #0f766e;
+}
+
+.api-docs-site .api-docs-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8125rem;
+}
+
+.api-docs-site .api-docs-table th,
+.api-docs-site .api-docs-table td {
+  text-align: left;
+  padding: 0.4rem 0.5rem;
+  border-bottom: 1px solid var(--border-color);
+  vertical-align: top;
+}
+
+.api-docs-site .api-method--get { color: #0369a1; }
+.api-docs-site .api-method--post { color: #15803d; }
+.api-docs-site .api-method--put,
+.api-docs-site .api-method--patch { color: #a16207; }
+.api-docs-site .api-method--delete { color: #b91c1c; }
+
+.api-docs-site .api-docs-curl {
+  margin: 0;
+  padding: 0.75rem 0.9rem;
+  border-radius: 10px;
+  background: #0b1220;
+  color: #e2e8f0;
+  overflow-x: auto;
+  font-size: 0.72rem;
+  line-height: 1.5;
+}
+
+.api-docs-site .api-docs-curl code {
+  color: inherit;
+  background: transparent;
+  white-space: pre;
+}
+
+.api-docs-site .api-docs-steps,
+.api-docs-site .api-docs-related {
+  margin: 0;
+  padding-left: 1.2rem;
+  font-size: 0.8125rem;
+  color: var(--text-mid);
+}
+
+.api-docs-site .api-docs-steps li,
+.api-docs-site .api-docs-related li {
+  margin-bottom: 0.3rem;
+  line-height: 1.5;
+}
+
+.api-docs-site .api-docs-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-top: 0.85rem;
+}
+
+.api-docs-site .api-docs-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.3rem 0.65rem;
+  border-radius: 999px;
+  border: 1px solid rgba(15, 118, 110, 0.28);
+  background: #fff;
+  color: #0f766e;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.api-docs-site .api-docs-chip--primary {
+  background: #0f766e;
+  border-color: #0f766e;
+  color: #fff;
+}
+
+.api-docs-site .api-docs-chip:hover {
+  background: rgba(15, 118, 110, 0.1);
+}
+
+.api-docs-site .api-docs-chip--primary:hover {
+  background: #0d9488;
+}
+
+.api-docs-site .api-docs-empty {
+  text-align: center;
+  padding: 2rem;
+  color: var(--text-light);
+  border: 1px dashed var(--border-color);
+  border-radius: 12px;
+}
+
+.api-docs-site .api-docs-empty.is-hidden {
+  display: none;
+}

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en" data-lux-theme="luxury" data-lux-palette="emerald">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Charts &amp; Analytics — Tracopus User Guide</title>
+  <meta name="description" content="Charts &amp;amp; Analytics — Tracopus user guide for enterprise work intelligence.">
+  <meta name="keywords" content="tracopus, documentation, user guide, charts, &amp;amp;, analytics">
+  <link rel="canonical" href="https://tracopus.com/documentation/charts.html">
+  <meta name="robots" content="index, follow">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Tracopus">
+  <meta property="og:title" content="Charts &amp;amp; Analytics — Tracopus User Guide">
+  <meta property="og:description" content="Charts &amp;amp; Analytics — Tracopus user guide for enterprise work intelligence.">
+  <meta property="og:url" content="https://tracopus.com/documentation/charts.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Charts &amp;amp; Analytics — Tracopus User Guide">
+  <meta name="twitter:description" content="Charts &amp;amp; Analytics — Tracopus user guide for enterprise work intelligence.">
+  <script src="js/docs-analytics.js?v=20260719a" defer></script>
+  <link rel="apple-touch-icon" href="images/tracopus-logo.png">
+  <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css?v=20260718g">
+  <script src="js/brand-config.js?v=20260619e"></script>
+</head>
+<body data-docs-depth="0">
+
+<header aria-label="Site header"></header>
+
+
+
+<main>
+    <div class="breadcrumb"><a href="index.html">Home</a> → Charts &amp; Analytics</div>
+  <section class="section">
+    <div class="page-hero">
+      <div class="eyebrow">Reference</div>
+      <h2>Charts &amp; Analytics</h2>
+      <p>Complete reference for every chart and visualization in the Luxury UI — what type it is, what data it uses, and how to interpret it for decisions.</p>
+    </div>
+  </section>
+
+  <section class="section" id="types">
+    <h2>Visual types explained</h2>
+    <p>Web charts render via ApexCharts unless noted. Mobile Insights uses fl_chart with matching Lux card styling.</p>
+    <div class="table-wrap">
+      <table class="table">
+        <thead><tr><th>Type</th><th>Best for</th><th>How to read</th><th>Where used</th></tr></thead>
+        <tbody>
+          <tr><td><span class="badge badge-donut">Donut</span></td><td>Part-to-whole ratios</td><td>Each slice = category share; center label often shows total or primary metric</td><td>Status mix, billing split, portfolio outcomes</td></tr>
+          <tr><td><span class="badge badge-bar">Bar (H/V)</span></td><td>Ranking categories</td><td>Longer bar = higher count; horizontal for long labels</td><td>Top accounts, teams, priorities, skills</td></tr>
+          <tr><td><span class="badge badge-area">Area</span></td><td>Trends over time</td><td>Filled line shows volume; slope = growth/decline</td><td>Creation trends, daily load, joins/exits</td></tr>
+          <tr><td><span class="badge badge-line">Line</span></td><td>Precise time series</td><td>Focus on rate of change between points</td><td>Headcount trend, velocity, billable trend (mobile)</td></tr>
+          <tr><td><span class="badge badge-funnel">Funnel</span></td><td>Stage progression</td><td>Width at each stage = volume; narrowing = drop-off</td><td>Bid, PO, project, taskboard pipelines</td></tr>
+          <tr><td><span class="badge badge-heatmap">Heatmap</span></td><td>Two-dimensional intensity</td><td>Darker cell = higher value</td><td>Deadline heatmap, roster heatmap</td></tr>
+          <tr><td><span class="badge badge-radar">Radar</span></td><td>Multi-axis comparison</td><td>Shape shows strengths/weaknesses across dimensions</td><td>Personal performance radar</td></tr>
+          <tr><td><span class="badge badge-treemap">Treemap</span></td><td>Hierarchical share</td><td>Rectangle area = proportion</td><td>Grade/band, portfolio effort map</td></tr>
+          <tr><td>Bubble / Scatter</td><td>Correlation + size</td><td>Position = X/Y metrics; bubble size = third dimension</td><td>Risk scatter, estimate vs completion</td></tr>
+          <tr><td>Radial bar</td><td>Progress toward max</td><td>Arc fill = % of capacity or completion</td><td>Status radial, mobile progress ring</td></tr>
+          <tr><td>Stacked bar</td><td>Composition over time</td><td>Segment height = sub-category within total</td><td>Hours by type, mobile daily hours</td></tr>
+          <tr><td>Dual line</td><td>Two series comparison</td><td>Gap between lines = variance</td><td>Planned vs logged hours (mobile)</td></tr>
+          <tr><td>Gauge / Dual gauge</td><td>Single KPI %</td><td>Fill arc to target threshold</td><td>Mobile utilization &amp; billable target</td></tr>
+          <tr><td>CSS segment bar</td><td>Simple status mix</td><td>Colored segments without chart library</td><td>Invoice status bar</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="tip"><strong>Filters affect all charts:</strong> Summary charts always reflect the current list filters (teams, SHOW preset, date range, text filter). Change filters to see charts recalculate for that slice.</div>
+  </section>
+
+  <section class="section" id="projects">
+    <h2>Project list charts</h2>
+    <p>Full panel list on <a href="project/project-list.html#analytics">Project List guide</a>. Quick reference:</p>
+    <ul>
+      <li><strong>Donut panels (10):</strong> By status, Portfolio mix, Timeline health, Billing mix, PO linkage, Completed share, Open pipeline load, Automation, Shared visibility, Capex/Opex, Hours estimated</li>
+      <li><strong>Bar panels (5):</strong> Project types (H), Top accounts (H), By team (H), Priority (V), Complexity (V)</li>
+      <li><strong>Area panels (1):</strong> Creation trend (6 months)</li>
+      <li><strong>Diagrams:</strong> Delivery funnel, stage flow, estimate gaps list</li>
+    </ul>
+  </section>
+
+  <section class="section" id="accounts">
+    <h2>Accounts directory charts</h2>
+    <div class="table-wrap">
+      <table class="table">
+        <thead><tr><th>Panel</th><th>Type</th><th>Data source</th></tr></thead>
+        <tbody>
+          <tr><td>Data health</td><td><span class="badge badge-donut">Donut</span></td><td>Complete records vs needs attention (missing fields)</td></tr>
+          <tr><td>Issue breakdown</td><td><span class="badge badge-bar">H-bar distributed</span></td><td>Counts per quality issue type</td></tr>
+          <tr><td>Record types</td><td><span class="badge badge-donut">Donut</span></td><td>Account vs team vs client nodes</td></tr>
+          <tr><td>Hierarchy coverage</td><td><span class="badge badge-bar">H-bar %</span></td><td>% accounts with teams, teams with clients, clients with email</td></tr>
+          <tr><td>Data source</td><td><span class="badge badge-donut">Donut</span></td><td>Salesforce-sourced vs manually created</td></tr>
+          <tr><td>Billing type</td><td><span class="badge badge-donut">Donut</span></td><td>Billable classification split</td></tr>
+          <tr><td>Top by clients</td><td><span class="badge badge-bar">H-bar</span></td><td>Largest directory nodes by client count</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="section" id="sales">
+    <h2>Sales charts</h2>
+    <p>Bid requests: 12 chart panels + vertical funnel — see <a href="sales/bid-requests.html#analytics">Bid Requests guide</a>.</p>
+    <p>Purchase orders: 11 chart panels + delivery funnel — see <a href="sales/purchase-orders.html#analytics">Purchase Orders guide</a>.</p>
+    <p>PO detail page adds contract-level statistics donuts/bars in the Purchase Order Detail Statistics component.</p>
+  </section>
+
+  <section class="section" id="hrms">
+    <h2>HRMS &amp; employee charts</h2>
+    <h3>Employee directory (9 panels)</h3>
+    <p>Treemap, line, stacked area, 2× donut, 2× column, 2× horizontal bar — detailed in <a href="hrms/employees.html#analytics">Employees guide</a>.</p>
+    <h3>Personal dashboard (4 chart panels + lists)</h3>
+    <p>Attendance strip, 6-week stacked hours, utilization donut, task queue donut.</p>
+    <h3>Team manager analytics</h3>
+    <p>Headcount line, join/exit area, gender/location/department bars, skills distribution.</p>
+    <h3>Invoices (CSS visuals)</h3>
+    <p>Status segment bar, monthly amount bars, outstanding summary — not Apex but same summary strip location.</p>
+  </section>
+
+  <section class="section" id="tasks">
+    <h2>Tasks &amp; planner charts</h2>
+    <h3>Task board (5 panels)</h3>
+    <p>Funnel diagram, workflow donut, billable scope donut, flow bar, top categories bar.</p>
+    <h3>Task activity register (5 panels)</h3>
+    <p>Status, priority, checklist, type, outcome — donuts and bars.</p>
+    <h3>Team capacity overview (4 panels)</h3>
+    <p>Utilization bar, assignment donut, daily load dual area, free capacity bar.</p>
+    <h3>Assign-work insight (compact)</h3>
+    <p>Status donut, billable/leave donut, daily area, project horizontal bars, hourly bar.</p>
+    <h3>Work item activity detail popover</h3>
+    <p>Hourly logged vs planned bar for a single activity day.</p>
+  </section>
+
+  <section class="section" id="dashboard">
+    <h2>Executive project dashboard charts</h2>
+    <p>Most diverse chart set — types include area, radar, donut, bar, radialBar, treemap, bubble, polarArea, line, heatmap.</p>
+    <h3>Manager delivery lens highlights</h3>
+    <div class="chart-panel">
+      <div class="chart-panel-head"><h4>Risk scatter (bubble)</h4><span class="badge">Bubble</span></div>
+      <p>X/Y position maps risk dimensions; bubble size = project effort or exposure. Outliers in the "high risk" quadrant need executive attention.</p>
+    </div>
+    <div class="chart-panel">
+      <div class="chart-panel-head"><h4>Deadline heatmap</h4><span class="badge badge-heatmap">Heatmap</span></div>
+      <p>Rows = teams or owners; columns = time buckets; color intensity = count of deadlines due. Dark clusters indicate scheduling crunch periods.</p>
+    </div>
+    <div class="chart-panel">
+      <div class="chart-panel-head"><h4>Velocity line</h4><span class="badge badge-line">Line</span></div>
+      <p>Completed deliverables or projects over time — trend line slope reflects delivery throughput.</p>
+    </div>
+  </section>
+
+  <section class="section" id="mobile">
+    <h2>Mobile Insights charts</h2>
+    <p>The mobile app mirrors web analytics in four sections. Chart widgets: LuxDonutChart, LuxDualGaugeRow, LuxStackedDailyHoursChart, LuxTrendLineChart, LuxDualLineChart, LuxTrendBarChart, LuxHorizontalBarChart.</p>
+    <div class="table-wrap">
+      <table class="table">
+        <thead><tr><th>Section</th><th>Charts</th><th>Data</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Time &amp; utilisation</strong></td><td>Dual gauges, hours mix donut, stacked daily hours, billable by project bars, time by account bars, billable trend line</td><td>Timesheet week data</td></tr>
+          <tr><td><strong>Selected day</strong></td><td>Progress ring, stat tiles, status donut, priority bars, category bars</td><td>Task activities for picked day</td></tr>
+          <tr><td><strong>Week trends</strong></td><td>Dual line (planned vs logged), task volume bars, completion bars, task type donut, effort by project bars, week status donut</td><td>Week task activities</td></tr>
+          <tr><td><strong>Portfolio</strong></td><td>Summary tiles, portfolio donut, project status donut, projects by account bars, deliverables by project bars</td><td>Projects in week range</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>See <a href="mobile/insights.html">Mobile Insights</a> for interaction details (week bar, day strip, pull-to-refresh).</p>
+    <p><a href="project/notes.html" class="quick-link">Next: Collaboration →</a></p>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <p>&copy; 2026 <span data-brand>Tracopus</span>. All rights reserved.</p>
+    <p style="margin-top:0.75rem;">
+      <a href="index.html">Documentation</a>
+      <a href="user-guide/index.html">Scenario Guide</a>
+      <a href="getting-started.html">Getting Started</a>
+      <a href="charts.html">Charts</a>
+    </p>
+    <p class="footer-muted">For support, contact your workspace administrator.</p>
+  </div>
+</footer>
+
+<script src="js/palette.js?v=20260619e"></script>
+<script src="js/brand.js?v=20260619e"></script>
+<script src="js/docs-utility-config.js?v=20260720b"></script>
+<script src="js/nav-config.js?v=20260619e"></script>
+<script src="js/navigation.js?v=20260619e"></script>
+<script src="js/site-enhancements.js?v=20260718d"></script>
+<script src="js/search.js?v=20260619e"></script>
+</body>
+</html>

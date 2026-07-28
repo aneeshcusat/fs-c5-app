@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Leave Approval Scenarios — Coverage Map</title>
+  <meta name="description" content="Standalone coverage map of Tracopus leave approval scenarios: create, submit, approve, reject, withdraw, cancel, overlap, half-day, delegation, and side effects." />
+  <style>
+    :root {
+      --bg: #f6f4ef;
+      --surface: #fffcf7;
+      --ink: #1c1917;
+      --muted: #57534e;
+      --line: #e7e5e0;
+      --accent: #0f766e;
+      --accent-soft: #ccfbf1;
+      --pass: #166534;
+      --pass-bg: #dcfce7;
+      --watch: #a16207;
+      --watch-bg: #fef3c7;
+      --missing: #9f1239;
+      --missing-bg: #ffe4e6;
+      --info: #1e3a5f;
+      --info-bg: #e0f2fe;
+      --card-shadow: 0 1px 0 rgba(28, 25, 23, 0.06);
+      --radius: 12px;
+      --font: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+      --sans: "Avenir Next", "Segoe UI", system-ui, -apple-system, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(ellipse 80% 50% at 10% -10%, #d8f3ef 0%, transparent 55%),
+        radial-gradient(ellipse 60% 40% at 100% 0%, #f5e6d3 0%, transparent 50%),
+        var(--bg);
+      font-family: var(--sans);
+      font-size: 15px;
+      line-height: 1.55;
+    }
+
+    .wrap {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 2.5rem 1.25rem 4rem;
+    }
+
+    .brand {
+      font-family: var(--font);
+      font-size: clamp(2.4rem, 5vw, 3.4rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin: 0 0 0.35rem;
+      color: var(--ink);
+    }
+    .eyebrow {
+      font-size: 0.75rem;
+      font-weight: 650;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin: 0 0 0.75rem;
+    }
+    .lead {
+      max-width: 44rem;
+      color: var(--muted);
+      margin: 0 0 1.75rem;
+      font-size: 1.05rem;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 0.75rem;
+      margin-bottom: 1.75rem;
+    }
+    @media (max-width: 720px) {
+      .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    .stat {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 1rem 1.1rem;
+      box-shadow: var(--card-shadow);
+    }
+    .stat strong {
+      display: block;
+      font-family: var(--font);
+      font-size: 1.85rem;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+    .stat span {
+      color: var(--muted);
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+    .stat.pass strong { color: var(--pass); }
+    .stat.watch strong { color: var(--watch); }
+    .stat.accent strong { color: var(--accent); }
+
+    .banner {
+      background: var(--accent-soft);
+      border: 1px solid #99f6e4;
+      border-radius: var(--radius);
+      padding: 1rem 1.15rem;
+      margin-bottom: 2rem;
+    }
+    .banner strong { color: var(--accent); }
+
+    h2 {
+      font-family: var(--font);
+      font-size: 1.55rem;
+      letter-spacing: -0.02em;
+      margin: 2.25rem 0 0.85rem;
+    }
+    h3 {
+      font-family: var(--font);
+      font-size: 1.15rem;
+      margin: 0 0 0.35rem;
+    }
+
+    .toc {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .toc a {
+      text-decoration: none;
+      color: var(--ink);
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 0.35rem 0.75rem;
+      font-size: 0.8rem;
+      font-weight: 650;
+    }
+    .toc a:hover { border-color: var(--accent); color: var(--accent); }
+
+    .flow {
+      display: grid;
+      gap: 0.55rem;
+      margin: 1rem 0 1.5rem;
+    }
+    .flow-step {
+      display: grid;
+      grid-template-columns: 3.2rem 1fr;
+      gap: 0.85rem;
+      align-items: start;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 0.85rem 1rem;
+    }
+    .flow-num {
+      width: 2.4rem;
+      height: 2.4rem;
+      border-radius: 50%;
+      background: var(--accent);
+      color: #fff;
+      display: grid;
+      place-items: center;
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+    .flow-step p { margin: 0.15rem 0 0; color: var(--muted); font-size: 0.9rem; }
+
+    .scenario {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 1.15rem 1.2rem 1.25rem;
+      margin-bottom: 0.85rem;
+      box-shadow: var(--card-shadow);
+    }
+    .scenario-head {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.5rem 0.75rem;
+      margin-bottom: 0.65rem;
+    }
+    .id {
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 0.78rem;
+      font-weight: 700;
+      background: var(--info-bg);
+      color: var(--info);
+      padding: 0.2rem 0.5rem;
+      border-radius: 6px;
+    }
+    .pill {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      padding: 0.22rem 0.55rem;
+      border-radius: 999px;
+    }
+    .pill.pass { background: var(--pass-bg); color: var(--pass); }
+    .pill.watch { background: var(--watch-bg); color: var(--watch); }
+    .pill.missing { background: var(--missing-bg); color: var(--missing); }
+
+    .meta {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.65rem 1rem;
+      margin-top: 0.75rem;
+    }
+    @media (max-width: 640px) {
+      .meta { grid-template-columns: 1fr; }
+    }
+    .meta dt {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 0 0 0.15rem;
+    }
+    .meta dd { margin: 0; font-size: 0.92rem; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin: 0.75rem 0 1.25rem;
+      font-size: 0.9rem;
+    }
+    th, td {
+      text-align: left;
+      padding: 0.7rem 0.85rem;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+    }
+    th {
+      background: #f0ebe3;
+      font-size: 0.72rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    tr:last-child td { border-bottom: none; }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.85rem;
+    }
+    @media (max-width: 720px) {
+      .grid-2 { grid-template-columns: 1fr; }
+    }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 1rem 1.1rem;
+    }
+    .card p { margin: 0.35rem 0 0; color: var(--muted); font-size: 0.9rem; }
+
+    footer {
+      margin-top: 2.5rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+    footer code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 0.8em;
+      background: #efeae2;
+      padding: 0.1rem 0.35rem;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <p class="eyebrow">Tracopus · HRMS · Leave · CFA-LEAVE-WA0</p>
+    <h1 class="brand">Leave approval scenarios</h1>
+    <p class="lead">
+      Coverage map for the native leave lifecycle behind <code>leaveManagementEnabled</code>:
+      create → submit → approve / reject / withdraw / cancel, plus overlap, half-day,
+      delegation, on-behalf, and ZingHR SYNCED coexistence. Side effects include balance
+      ledger, Approvals inbox, attendance sync, and TaskActivity LEAVE promotion.
+    </p>
+
+    <div class="stats">
+      <div class="stat accent"><strong>22</strong><span>core LS scenarios</span></div>
+      <div class="stat pass"><strong>20</strong><span>unit Pass (WA1+WA2)</span></div>
+      <div class="stat watch"><strong>0</strong><span>Watch (P5 FE harness Pass; data optional)</span></div>
+      <div class="stat"><strong>0</strong><span>WA2 residual core</span></div>
+    </div>
+
+    <div class="banner">
+      <strong>WA0–WA2:</strong> Lifecycle + cancel family + delegation / on-behalf / Zing SYNCED
+      cancel restore are unit-gated. Product CFA waves (fiscal, MAT/PAT, comp-off, floating PH)
+      stay Missing until W0–W4. Canonical plan:
+      <code>fui/docs/leave/pending/CFA_LEAVE_GAP_PLAN.md</code>.
+    </div>
+
+    <nav class="toc" aria-label="On this page">
+      <a href="#lifecycle">Lifecycle</a>
+      <a href="#core">Core LS1–LS12</a>
+      <a href="#cancel-family">Cancel family</a>
+      <a href="#delegation">Delegation / OB / Zing</a>
+      <a href="#side-effects">Side effects</a>
+      <a href="#illegal">Illegal transitions</a>
+      <a href="#product">Product LS (later waves)</a>
+      <a href="#evidence">Evidence</a>
+    </nav>
+
+    <h2 id="lifecycle">Happy path (status → side effects)</h2>
+    <div class="flow">
+      <div class="flow-step">
+        <div class="flow-num">1</div>
+        <div>
+          <h3>Create draft</h3>
+          <p>CREATED. Holiday-aware day count; optional half-day on single calendar day. No pending hold.</p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">2</div>
+        <div>
+          <h3>Submit</h3>
+          <p>SUBMITTED; reserve pending balance; notify manager / delegates. Appears on Leave pending + Approvals inbox.</p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">3a</div>
+        <div>
+          <h3>Approve</h3>
+          <p>APPROVED; debit (releases hold); promote TaskActivity LEAVE; attendance LEAVE / HALF_DAY when sync on.</p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">3b</div>
+        <div>
+          <h3>Reject</h3>
+          <p>REJECTED; release hold; no TaskActivity / attendance write. Comment required.</p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">4</div>
+        <div>
+          <h3>Withdraw (owner)</h3>
+          <p>CREATED or SUBMITTED → WITHDRAWN; release hold if submitted. Blocked on APPROVED / SYNCED.</p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">5</div>
+        <div>
+          <h3>Cancel (owner)</h3>
+          <p>SUBMITTED / APPROVED / SYNCED → CANCELLED; release hold or creditOnCancelAfterApprove; demote TaskActivity; reverse attendance.</p>
+        </div>
+      </div>
+    </div>
+
+    <h2 id="core">Core scenarios (LS1–LS12)</h2>
+
+    <article class="scenario" id="ls1">
+      <div class="scenario-head">
+        <span class="id">LS1</span>
+        <h3>Create → Submit → Approve</h3>
+        <span class="pill pass">Pass</span>
+      </div>
+      <p>Happy path: balance debit, promote, pending cleared.</p>
+      <dl class="meta">
+        <div><dt>Actors</dt><dd>Employee → Manager</dd></div>
+        <div><dt>Assert</dt><dd>APPROVED; debitOnApprove; promote; audit APPROVE</dd></div>
+        <div><dt>JUnit</dt><dd><code>ls1_approve_promotesAndDebitsBalance</code></dd></div>
+        <div><dt>Watch</dt><dd>Approvals inbox + attendance LEAVE cell (Playwright)</dd></div>
+      </dl>
+    </article>
+
+    <article class="scenario" id="ls2">
+      <div class="scenario-head">
+        <span class="id">LS2</span>
+        <h3>Create → Submit → Reject</h3>
+        <span class="pill pass">Pass</span>
+      </div>
+      <p>Reject releases pending; no promote / debit.</p>
+      <dl class="meta">
+        <div><dt>Actors</dt><dd>Employee → Manager</dd></div>
+        <div><dt>JUnit</dt><dd><code>ls2_reject_releasesPendingBalance</code></dd></div>
+      </dl>
+    </article>
+
+    <article class="scenario" id="ls3">
+      <div class="scenario-head">
+        <span class="id">LS3</span>
+        <h3>Create → Withdraw</h3>
+        <span class="pill pass">Pass</span>
+      </div>
+      <p>Owner withdraws draft; never pending.</p>
+      <dl class="meta">
+        <div><dt>JUnit</dt><dd><code>ls3_withdraw_draft_setsWithdrawn</code></dd></div>
+      </dl>
+    </article>
+
+    <article class="scenario" id="ls4">
+      <div class="scenario-head">
+        <span class="id">LS4</span>
+        <h3>Submit → Withdraw</h3>
+        <span class="pill pass">Pass</span>
+      </div>
+      <p>Owner withdraws submitted; hold released.</p>
+      <dl class="meta">
+        <div><dt>JUnit</dt><dd><code>ls4_withdraw_submitted_releasesHold</code></dd></div>
+      </dl>
+    </article>
+
+    <article class="scenario" id="ls5">
+      <div class="scenario-head">
+        <span class="id">LS5</span>
+        <h3>Submit → Cancel</h3>
+        <span class="pill pass">Pass</span>
+      </div>
+      <p>Owner cancels submitted; hold released; no approve-debit reverse.</p>
+      <dl class="meta">
+        <div><dt>JUnit</dt><dd><code>ls5_cancel_submitted_releasesHold</code></dd></div>
+      </dl>
+    </article>
+
+    <article class="scenario" id="ls6">
+      <div class="scenario-head">
+        <span class="id">LS6</span>
+        <h3>Approve → Cancel</h3>
+        <span class="pill pass">Pass</span>
+      </div>
+      <p>Owner cancel after approve credits debit and re-runs promote (demote path).</p>
+      <dl class="meta">
+        <div><dt>JUnit</dt><dd><code>ls6_cancel_afterApprove_creditsDebit</code></dd></div>
+      </dl>
+    </article>
+
+    <article class="scenario" id="ls7">
+      <div class="scenario-head">
+        <span class="id">LS7</span>
+        <h3>Re-apply after terminal</h3>
+        <span class="pill pass">Pass</span>
+      </div>
+      <p>Overlap ignores REJECTED / WITHDRAWN / CANCELLED; second leave can approve.</p>
+      <dl class="meta">
+        <div><dt>Code</dt><dd><code>LeaveOverlapService</code> terminal filter</dd></div>
+        <div><dt>JUnit</dt><dd><code>ls7_overlap_ignoresTerminalStatuses</code></dd></div>
+      </dl>
+    </article>
+
+    <article class="scenario" id="ls8">
+      <div class="scenario-head">
+        <span class="id">LS8</span>
+        <h3>Overlap block</h3>
+        <span class="pill pass">Pass</span>
+      </div>
+      <p>Second active overlap blocked; first untouched.</p>
+      <dl class="meta">
+        <div><dt>JUnit</dt><dd><code>ls8_submit_blockedWhenOverlap</code></dd></div>
+      </dl>
+    </article>
+
+    <article class="scenario" id="ls9">
+      <div class="scenario-head">
+        <span class="id">LS9</span>
+        <h3>Holiday / weekly-off day count</h3>
+        <span class="pill pass">Pass</span>
+      </div>
+      <p>Create/submit resolve day count via holiday validation; non-working-only range blocked.</p>
+      <dl class="meta">
+        <div><dt>JUnit</dt><dd><code>ls9_submit_blockedWhenOnlyNonWorkingDays</code> + day-count resolve on create/submit</dd></div>
+      </dl>
+    </article>
+
+    <article class="scenario" id="ls9b">
+      <div class="scenario-head">
+        <span class="id">LS9b</span>
+        <h3>Half-day leave apply → approve</h3>
+        <span class="pill pass">Pass</span>
+      </div>
+      <p>Half-day flag persisted on single-day create; multi-day request clears half-day.</p>
+      <dl class="meta">
+        <div><dt>JUnit</dt><dd><code>ls9b_create_halfDay_persistsOnSingleDay</code></dd></div>
+        <div><dt>Watch</dt><dd>Attendance HALF_DAY cell when sync on (integration)</dd></div>
+      </dl>
+    </article>
+
+    <article class="scenario" id="ls10">
+      <div class="scenario-head">
+        <span class="id">LS10</span>
+        <h3>Insufficient balance</h3>
+        <span class="pill pass">Pass</span>
+      </div>
+      <p>Submit blocked; no orphan reserve.</p>
+      <dl class="meta">
+        <div><dt>JUnit</dt><dd><code>ls10_submit_blockedWhenInsufficientBalance</code></dd></div>
+      </dl>
+    </article>
+
+    <article class="scenario" id="ls11">
+      <div class="scenario-head">
+        <span class="id">LS11</span>
+        <h3>Illegal transitions</h3>
+        <span class="pill pass">Pass</span>
+      </div>
+      <p>4xx; status unchanged — withdraw on APPROVED, cancel on CREATED, approve without authority.</p>
+      <dl class="meta">
+        <div><dt>JUnit</dt><dd><code>ls11_*</code> family</dd></div>
+      </dl>
+    </article>
+
+    <article class="scenario" id="ls12">
+      <div class="scenario-head">
+        <span class="id">LS12</span>
+        <h3>Stale expectedStatus</h3>
+        <span class="pill pass">Pass</span>
+      </div>
+      <p>Concurrent safe conflict on approve.</p>
+      <dl class="meta">
+        <div><dt>JUnit</dt><dd><code>ls12_approve_staleExpectedStatusReturnsConflict</code></dd></div>
+      </dl>
+    </article>
+
+    <h2 id="cancel-family">Cancel family (LS6b–d)</h2>
+
+    <article class="scenario" id="ls6b">
+      <div class="scenario-head">
+        <span class="id">LS6b</span>
+        <h3>SYNCED → Cancel</h3>
+        <span class="pill pass">Pass</span>
+      </div>
+      <p>Same reverse as approved (credit + promote demote).</p>
+      <dl class="meta">
+        <div><dt>JUnit</dt><dd><code>ls6b_cancel_synced_creditsDebit</code></dd></div>
+      </dl>
+    </article>
+
+    <article class="scenario" id="ls6c">
+      <div class="scenario-head">
+        <span class="id">LS6c</span>
+        <h3>Cancel vs Withdraw rules</h3>
+        <span class="pill pass">Pass</span>
+      </div>
+      <p>Withdraw blocked on APPROVED/SYNCED; cancel blocked on CREATED/REJECTED/WITHDRAWN/CANCELLED.</p>
+      <dl class="meta">
+        <div><dt>JUnit</dt><dd><code>ls6c_*</code></dd></div>
+      </dl>
+    </article>
+
+    <article class="scenario" id="ls6d">
+      <div class="scenario-head">
+        <span class="id">LS6d</span>
+        <h3>Non-owner cancel / withdraw</h3>
+        <span class="pill pass">Pass</span>
+      </div>
+      <p>Manager/delegate forbidden; manager uses reject.</p>
+      <dl class="meta">
+        <div><dt>JUnit</dt><dd><code>ls6d_nonOwner_cancelAndWithdrawForbidden</code></dd></div>
+      </dl>
+    </article>
+
+    <h2 id="delegation">Delegation / on-behalf / Zing</h2>
+
+    <article class="scenario" id="ls-del-1">
+      <div class="scenario-head">
+        <span class="id">LS-DEL-1</span>
+        <h3>Delegate approves</h3>
+        <span class="pill pass">Pass</span>
+      </div>
+      <p>LEAVE delegation → delegate approves; <code>DELEGATE</code> + <code>actedOnBehalfOf</code> audit.</p>
+      <dl class="meta">
+        <div><dt>JUnit</dt><dd><code>lsDel1_approve_allowedForDelegate</code></dd></div>
+        <div><dt>Wave</dt><dd>WA2</dd></div>
+      </dl>
+    </article>
+
+    <article class="scenario" id="ls-del-2">
+      <div class="scenario-head">
+        <span class="id">LS-DEL-2</span>
+        <h3>Expired / revoked mid-pending</h3>
+        <span class="pill pass">Pass</span>
+      </div>
+      <p>Delegate blocked; owner manager can still approve.</p>
+      <dl class="meta">
+        <div><dt>JUnit</dt><dd><code>lsDel2_*</code> + <code>ApprovalAuthorityServiceTest.lsDel2_*</code></dd></div>
+      </dl>
+    </article>
+
+    <article class="scenario" id="ls-del-3">
+      <div class="scenario-head">
+        <span class="id">LS-DEL-3</span>
+        <h3>Attendance auto ≠ leave auto</h3>
+        <span class="pill pass">Pass</span>
+      </div>
+      <p>ATTENDANCE-only delegation / persona cannot leave-approve; no debit/promote.</p>
+      <dl class="meta">
+        <div><dt>JUnit</dt><dd><code>lsDel3_*</code> + authority ATTENDANCE-only vs LEAVE</dd></div>
+      </dl>
+    </article>
+
+    <article class="scenario" id="ls-ob">
+      <div class="scenario-head">
+        <span class="id">LS-OB-1..2</span>
+        <h3>On-behalf apply / sibling isolation</h3>
+        <span class="pill pass">Pass</span>
+      </div>
+      <p>Manager create/submit for member (member balance); approve A leaves B SUBMITTED.</p>
+      <dl class="meta">
+        <div><dt>JUnit</dt><dd><code>lsOb1_*</code>, <code>lsOb2_*</code></dd></div>
+        <div><dt>FE</dt><dd><code>buildLeaveCreatePayload(..., actorId)</code> current user as actor</dd></div>
+      </dl>
+    </article>
+
+    <article class="scenario" id="ls-zing">
+      <div class="scenario-head">
+        <span class="id">LS-ZING-1</span>
+        <h3>ZingHR SYNCED coexistence</h3>
+        <span class="pill pass">Pass</span>
+      </div>
+      <p>Native leave with <code>zinghrTransactionId</code> + SYNCED; cancel credits balance + promote demote.</p>
+      <dl class="meta">
+        <div><dt>JUnit</dt><dd><code>lsZing1_syncedLinkedLeave_cancelCreditsBalance</code></dd></div>
+      </dl>
+    </article>
+
+    <h2 id="side-effects">Side-effect checklist</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Effect</th>
+          <th>Approve</th>
+          <th>Reject / Withdraw (pre-approve)</th>
+          <th>Cancel (post-approve / SYNCED)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Status</td>
+          <td>APPROVED</td>
+          <td>REJECTED / WITHDRAWN</td>
+          <td>CANCELLED</td>
+        </tr>
+        <tr>
+          <td>Balance</td>
+          <td>Debit</td>
+          <td>Release hold / no debit</td>
+          <td>Credit back</td>
+        </tr>
+        <tr>
+          <td>Pending + Approvals inbox</td>
+          <td>Cleared</td>
+          <td>Cleared</td>
+          <td>N/A</td>
+        </tr>
+        <tr>
+          <td>Attendance (sync on)</td>
+          <td>LEAVE / HALF_DAY</td>
+          <td>Unchanged</td>
+          <td>Reversed</td>
+        </tr>
+        <tr>
+          <td>TaskActivity</td>
+          <td>Upsert LEAVE</td>
+          <td>None</td>
+          <td>Demoted (deleted)</td>
+        </tr>
+        <tr>
+          <td>Audit</td>
+          <td>Actor + authority</td>
+          <td>Actor</td>
+          <td>CANCEL</td>
+        </tr>
+        <tr>
+          <td>Siblings</td>
+          <td>Untouched</td>
+          <td>Untouched</td>
+          <td>Untouched</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="grid-2">
+      <div class="card">
+        <h3>On approve — promote</h3>
+        <p>
+          <code>LeavePromotionService.promote</code> upserts TaskActivity
+          <code>TaskType.LEAVE</code>, then <code>LeaveAttendanceSyncService.syncAfterPromotion</code>.
+        </p>
+      </div>
+      <div class="card">
+        <h3>On cancel — demote via promote</h3>
+        <p>
+          Cancel sets CANCELLED then calls <code>promote</code>; cancelled path soft-deletes
+          existing LEAVE activities and syncs attendance reverse.
+        </p>
+      </div>
+    </div>
+
+    <h2 id="illegal">Illegal transitions</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>From</th>
+          <th>Blocked ops</th>
+          <th>Allowed owner ops</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>CREATED</td>
+          <td>Approve, Reject, Cancel</td>
+          <td>Submit, Withdraw</td>
+        </tr>
+        <tr>
+          <td>SUBMITTED</td>
+          <td>Withdraw by non-owner; Approve without authority</td>
+          <td>Withdraw, Cancel (owner); Approve/Reject (authority)</td>
+        </tr>
+        <tr>
+          <td>APPROVED / SYNCED</td>
+          <td>Withdraw, Approve, Reject</td>
+          <td>Cancel (owner)</td>
+        </tr>
+        <tr>
+          <td>REJECTED / WITHDRAWN / CANCELLED</td>
+          <td>Approve, Reject, Cancel, Withdraw</td>
+          <td>—</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2 id="product">Product / CFA scenarios (later waves)</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Wave</th>
+          <th>Baseline</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>LS-LOC-*</td><td>W1</td><td><span class="pill pass">Pass</span> — <code>CfaIndiaLeaveEntitlementMatrixTest</code></td></tr>
+        <tr><td>LS-FY-1</td><td>W1</td><td><span class="pill pass">Pass</span> — fiscal Apr 1 CF/lapse + PL45</td></tr>
+        <tr><td>LS-MAT / PAT / MSL / WWL</td><td>W2</td><td><span class="pill pass">Pass</span> — <code>SpecialLeavePolicySupportTest</code> + workflow/doc privacy</td></tr>
+        <tr><td>LS-CO-1..4</td><td>W3</td><td><span class="pill pass">Pass</span> — <code>CompOffCreditSupportTest</code> + GlobalLeavePolicy / workflow</td></tr>
+        <tr><td>LS-PH-1..2</td><td>W4</td><td><span class="pill pass">Pass</span> — <code>FloatingHolidayPolicySupportTest</code> + legal calendar budget/cycle</td></tr>
+      </tbody>
+    </table>
+
+    <h2 id="evidence">Evidence</h2>
+    <table>
+      <thead>
+        <tr><th>Document</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><code>docs/enhancement-evidence/CFA-LEAVE-WA0.md</code></td></tr>
+        <tr><td><code>docs/enhancement-evidence/CFA-LEAVE-WA1.md</code></td></tr>
+        <tr><td><code>docs/enhancement-evidence/CFA-LEAVE-WA2.md</code></td></tr>
+        <tr><td><code>docs/enhancement-evidence/CFA-LEAVE-W0.md</code></td></tr>
+        <tr><td><code>docs/enhancement-evidence/CFA-LEAVE-W1.md</code></td></tr>
+        <tr><td><code>docs/enhancement-evidence/CFA-LEAVE-W2.md</code></td></tr>
+        <tr><td><code>docs/enhancement-evidence/CFA-LEAVE-W3.md</code></td></tr>
+        <tr><td><code>docs/enhancement-evidence/CFA-LEAVE-W4.md</code></td></tr>
+        <tr><td><code>fui/docs/leave/pending/CFA_LEAVE_GAP_PLAN.md</code></td></tr>
+        <tr><td><code>fui/docs/leave/pending/CFA_LEAVE_TRACKER.md</code></td></tr>
+        <tr><td><code>LeaveWorkflowServiceTest</code> (LS-named methods)</td></tr>
+        <tr><td><code>fui/tests/e2e/05-attendance-leave-timesheet/leave-approval-scenarios.spec.js</code></td></tr>
+      </tbody>
+    </table>
+
+    <footer>
+      <p>
+        Standalone coverage page · Tracopus leave approval · CFA pending pack · July 2026.
+        Open this file directly in a browser — no build step required.
+        Path: <code>fui/public/documentation/hrms/leave-approval-scenarios.html</code>
+      </p>
+    </footer>
+  </div>
+</body>
+</html>

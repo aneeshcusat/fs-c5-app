@@ -1,0 +1,264 @@
+/* ========== shared/luxury-invoice-summary-monthly.css ========== */
+/* Invoice summary — monthly billing panel (right column) */
+
+.lux-inv-summary__panels {
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    gap: 0.55rem;
+    align-items: stretch;
+}
+
+.lux-inv-summary__panels-main {
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+    min-width: 0;
+}
+
+.lux-inv-summary__panel--monthly {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    padding: 0.75rem;
+    border: 1px solid rgba(16, 185, 129, 0.16);
+    background:
+        radial-gradient(circle at 100% 0%, rgba(16, 185, 129, 0.1), transparent 52%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(240, 253, 250, 0.92));
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.85);
+}
+
+.lux-inv-summary__panel-head--monthly {
+    align-items: flex-start;
+    margin-bottom: 0.6rem;
+}
+
+.lux-inv-summary__panel-title-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 0.12rem;
+    min-width: 0;
+}
+
+.lux-inv-summary__monthly-badge {
+    flex-shrink: 0;
+    padding: 0.18rem 0.5rem;
+    border-radius: 9911px;
+    background: rgba(16, 185, 129, 0.12);
+    border: 1px solid rgba(16, 185, 129, 0.22);
+    font-size: 0.625rem;
+    font-weight: 800;
+    color: #047857;
+    white-space: nowrap;
+}
+
+.lux-inv-summary__monthly-body {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 0.55rem;
+    min-height: 0;
+}
+
+.lux-inv-summary__monthly-kpis {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.35rem;
+}
+
+.lux-inv-summary__monthly-kpi {
+    padding: 0.42rem 0.48rem;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.82);
+    border: 1px solid rgba(226, 232, 240, 0.95);
+}
+
+.lux-inv-summary__monthly-kpi-label {
+    display: block;
+    font-size: 0.625rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #94a3b8;
+}
+
+.lux-inv-summary__monthly-kpi-value {
+    display: block;
+    margin-top: 0.12rem;
+    font-size: 0.8125rem;
+    font-weight: 900;
+    color: #0f172a;
+    line-height: 1.2;
+}
+
+.lux-inv-summary__monthly-grid {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 0.28rem;
+    align-items: end;
+    min-height: 7.5rem;
+    padding: 0.45rem 0.35rem 0.25rem;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.72);
+    border: 1px solid rgba(226, 232, 240, 0.9);
+}
+
+.lux-inv-summary__monthly-cell {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.22rem;
+    min-width: 0;
+}
+
+.lux-inv-summary__monthly-cell-bar {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    width: 100%;
+    height: 4.5rem;
+    border-radius: 8px 8px 4px 4px;
+    background: linear-gradient(180deg, rgba(241, 245, 249, 0.9), rgba(226, 232, 240, 0.55));
+    overflow: hidden;
+}
+
+.lux-inv-summary__monthly-cell-bar span {
+    display: block;
+    width: 72%;
+    min-height: 2px;
+    border-radius: 6px 6px 2px 2px;
+    background: linear-gradient(180deg, rgba(148, 163, 184, 0.45), rgba(148, 163, 184, 0.2));
+    transition: height 0.25s ease;
+}
+
+.lux-inv-summary__monthly-cell.is-active .lux-inv-summary__monthly-cell-bar span {
+    background: linear-gradient(180deg, #6ee7b7, #059669);
+}
+
+.lux-inv-summary__monthly-cell.is-peak .lux-inv-summary__monthly-cell-bar span {
+    background: linear-gradient(180deg, #34d399, #047857);
+    box-shadow: 0 0 0 1px rgba(5, 150, 105, 0.25);
+}
+
+.lux-inv-summary__monthly-cell.is-recent .lux-inv-summary__monthly-cell-month {
+    color: #047857;
+}
+
+.lux-inv-summary__monthly-cell-month {
+    font-size: 0.5625rem;
+    font-weight: 800;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: #64748b;
+    line-height: 1;
+}
+
+.lux-inv-summary__monthly-cell-count {
+    font-size: 0.625rem;
+    font-weight: 900;
+    color: #0f172a;
+    line-height: 1;
+}
+
+.lux-inv-summary__monthly-cell:not(.is-active) .lux-inv-summary__monthly-cell-count {
+    color: #cbd5e1;
+}
+
+.lux-inv-summary__monthly-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem 0.75rem;
+}
+
+.lux-inv-summary__monthly-legend-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.28rem;
+    font-size: 0.625rem;
+    font-weight: 700;
+    color: #64748b;
+}
+
+.lux-inv-summary__monthly-legend-item.is-recent i {
+    color: #059669;
+}
+
+.lux-inv-summary__monthly-legend-item.is-peak i {
+    color: #047857;
+}
+
+.lux-inv-summary__monthly-detail {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.28rem;
+}
+
+.lux-inv-summary__monthly-detail li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.45rem;
+    padding: 0.34rem 0.42rem;
+    border-radius: 9px;
+    background: rgba(255, 255, 255, 0.78);
+    border: 1px solid rgba(226, 232, 240, 0.85);
+}
+
+.lux-inv-summary__monthly-detail-label {
+    font-size: 0.6875rem;
+    font-weight: 800;
+    color: #334155;
+}
+
+.lux-inv-summary__monthly-detail-meta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+}
+
+.lux-inv-summary__monthly-detail-meta strong {
+    min-width: 1rem;
+    font-size: 0.6875rem;
+    font-weight: 900;
+    color: #0f172a;
+    text-align: right;
+}
+
+.lux-inv-summary__monthly-detail-meta em {
+    min-width: 3.25rem;
+    font-style: normal;
+    font-size: 0.6875rem;
+    font-weight: 800;
+    color: #047857;
+    text-align: right;
+}
+
+.lux-inv-summary__monthly-empty {
+    margin: 0;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #94a3b8;
+}
+
+@media (max-width: 1100px) {
+    .lux-inv-summary__panel--monthly {
+        order: -1;
+    }
+}
+
+@media (max-width: 640px) {
+    .lux-inv-summary__monthly-grid {
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+        min-height: 6.5rem;
+    }
+
+    .lux-inv-summary__monthly-cell-bar {
+        height: 3.5rem;
+    }
+
+    .lux-inv-summary__monthly-kpis {
+        grid-template-columns: 1fr;
+    }
+}
