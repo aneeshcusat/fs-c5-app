@@ -437,18 +437,16 @@ body.lux-connection-error-open {
         radial-gradient(ellipse 60% 50% at 85% 20%, rgba(20, 184, 166, 0.12), transparent 50%);
 }
 
-.lux-connection-error__brand {
-    position: relative;
-    z-index: 2;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: clamp(1.25rem, 3vw, 2rem) 1.5rem 0;
+/* Reuse auth-login brand wordmark (logo + tagline) — same as sign-in card */
+.lux-connection-error__card-brand {
+    width: 100%;
+    margin: 0 0 1.15rem;
+    padding: 0 0 1rem;
+    border-bottom: 1px solid rgba(148, 163, 184, 0.18);
 }
 
-.lux-connection-error__brand .auth-screen__brand-name,
-.lux-connection-error__brand .brand-name {
-    color: #f8fafc;
+.lux-connection-error__card-brand .auth-login__brand {
+    margin-top: 0;
 }
 
 .lux-connection-error {
@@ -600,7 +598,7 @@ body.lux-connection-error-open {
     font-weight: 800;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: #be123c;
+    color: rgb(var(--lux-primary-rgb, 91, 95, 244));
 }
 
 .lux-connection-error__title {
@@ -747,14 +745,23 @@ body.lux-shell-dark .lux-connection-error__icon {
     color: #fda4af;
 }
 
+body.lux-shell-dark .lux-connection-error__card-brand {
+    border-bottom-color: rgba(71, 85, 105, 0.45);
+}
+
+body.lux-shell-dark .lux-connection-error__eyebrow {
+    color: rgba(var(--lux-accent-rgb, 20, 184, 166), 0.92);
+}
+
 @media screen and (max-width: 767px) {
     .lux-connection-error__card {
         border-radius: 18px;
         padding: 1.25rem;
     }
 
-    .lux-connection-error__brand {
-        padding-top: 1rem;
+    .lux-connection-error__card-brand {
+        margin-bottom: 1rem;
+        padding-bottom: 0.85rem;
     }
 }
 

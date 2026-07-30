@@ -4996,6 +4996,129 @@
   padding: 0.1rem 0.15rem 0.35rem;
 }
 
+.lux-rbac-role-tree__branch,
+.lux-rbac-role-tree__group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.lux-rbac-role-tree__children {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  margin-left: calc(0.85rem + (var(--rbac-role-depth, 0) * 1.1rem));
+  padding-left: 0.85rem;
+  border-left: 2px solid rgba(var(--lux-primary-rgb, 91, 95, 244), 0.14);
+}
+
+.lux-rbac-role-tree__item {
+  position: relative;
+}
+
+.lux-rbac-role-card-wrap {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: stretch;
+  gap: 0.35rem;
+}
+
+.lux-rbac-role-card-wrap.is-selected .lux-rbac-role-card {
+  border-color: rgba(var(--lux-primary-rgb, 91, 95, 244), 0.42);
+  background:
+    linear-gradient(145deg, rgba(var(--lux-primary-rgb, 91, 95, 244), 0.1), rgba(255, 255, 255, 0.96));
+  box-shadow:
+    0 0 0 1px rgba(var(--lux-primary-rgb, 91, 95, 244), 0.08),
+    0 14px 28px rgba(var(--lux-primary-rgb, 91, 95, 244), 0.14);
+}
+
+.lux-rbac-role-card-wrap.is-inactive {
+  opacity: 0.78;
+}
+
+.lux-rbac-role-card__branch-toggle,
+.lux-rbac-role-card__branch-spacer {
+  width: 1.65rem;
+  height: 1.65rem;
+  margin-top: 0.55rem;
+  flex-shrink: 0;
+}
+
+.lux-rbac-role-card__branch-toggle {
+  display: inline-grid;
+  place-items: center;
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  border-radius: 8px;
+  background: rgba(248, 250, 252, 0.96);
+  color: #64748b;
+  cursor: pointer;
+  transition: transform 0.12s ease, border-color 0.12s ease, background 0.12s ease;
+}
+
+.lux-rbac-role-card__branch-toggle:hover {
+  border-color: rgba(var(--lux-primary-rgb, 91, 95, 244), 0.28);
+  color: var(--lux-primary-dark, #3730a3);
+}
+
+.lux-rbac-role-card__branch-toggle.is-open i {
+  transform: rotate(90deg);
+}
+
+.lux-rbac-role-card__branch-toggle i {
+  transition: transform 0.12s ease;
+  font-size: 0.72rem;
+}
+
+.lux-rbac-role-card__branch-count {
+  padding: 0.08rem 0.42rem;
+  border-radius: 999px;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  background: rgba(var(--lux-primary-rgb, 91, 95, 244), 0.1);
+  color: var(--lux-primary-dark, #3730a3);
+}
+
+.lux-rbac-role-tree__group-header {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  width: 100%;
+  padding: 0.55rem 0.65rem;
+  border: 1px dashed rgba(148, 163, 184, 0.28);
+  border-radius: 12px;
+  background: rgba(248, 250, 252, 0.88);
+  color: #334155;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.lux-rbac-role-tree__group-header i {
+  transition: transform 0.12s ease;
+}
+
+.lux-rbac-role-tree__group-header.is-open i {
+  transform: rotate(90deg);
+}
+
+.lux-rbac-role-tree__group-header em {
+  margin-left: auto;
+  font-style: normal;
+  font-size: 0.68rem;
+  color: #64748b;
+}
+
+.lux-rbac-role-tree__group-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  padding-left: 0.35rem;
+}
+
 .lux-rbac-role-card {
   width: 100%;
   display: grid;

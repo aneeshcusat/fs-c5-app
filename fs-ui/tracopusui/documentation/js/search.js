@@ -2772,10 +2772,21 @@
     return results.slice(0, 10);
   }
 
+  function escapeHtml(text) {
+    if (text == null) return "";
+    return String(text)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#39;");
+  }
+
   function highlightText(text, query) {
-    if (!query) return text;
+    var safeText = escapeHtml(text);
+    if (!query) return safeText;
     var regex = new RegExp('(' + query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'gi');
-    return text.replace(regex, '<mark>$1</mark>');
+    return safeText.replace(regex, '<mark>$1</mark>');
   }
 
   function displaySearchResults(results, query) {
