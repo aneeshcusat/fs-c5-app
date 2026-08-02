@@ -1,9 +1,0 @@
-<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
-  <rect width="400" height="300" fill="#f1f5f9"/>
-  <rect x="50" y="50" width="300" height="200" fill="#e2e8f0" stroke="#94a3b8" stroke-width="2" rx="8"/>
-  <circle cx="200" cy="120" r="40" fill="#cbd5e1" stroke="#94a3b8" stroke-width="2"/>
-  <path d="M 200 100 L 210 130 L 240 130 L 215 145 L 220 175 L 200 160 L 180 175 L 185 145 L 160 130 L 190 130 Z" fill="#94a3b8"/>
-  <text x="200" y="200" font-family="Arial, sans-serif" font-size="14" fill="#64748b" text-anchor="middle">Award Photo</text>
-  <text x="200" y="220" font-family="Arial, sans-serif" font-size="12" fill="#94a3b8" text-anchor="middle">Replace with actual image</text>
-</svg>
-
