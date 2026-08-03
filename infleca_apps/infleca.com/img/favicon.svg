@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Infleca">
+  <!-- Professional mark: brand teal field + wordmark open-A -->
+  <rect width="32" height="32" rx="7.5" fill="#00A8B0"/>
+  <path
+    d="M16 7 L24.75 24.5 M16 7 L7.25 24.5"
+    stroke="#FFFFFF"
+    stroke-width="2.6"
+    stroke-linecap="round"
+    fill="none"/>
+</svg>

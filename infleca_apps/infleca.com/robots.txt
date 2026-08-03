@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Crawl guidance
+Disallow: /lib/
+Disallow: /scripts/
+
+Sitemap: https://infleca.com/sitemap.xml

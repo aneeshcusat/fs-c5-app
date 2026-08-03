@@ -1,0 +1,17 @@
+<svg width="128" height="128" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Innovation">
+  <defs>
+    <linearGradient id="bg" x1="20" y1="12" x2="108" y2="116" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#059669"/>
+      <stop offset="0.55" stop-color="#0D9488"/>
+      <stop offset="1" stop-color="#C4A962"/>
+    </linearGradient>
+    <filter id="s" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#061210" flood-opacity="0.28"/>
+    </filter>
+  </defs>
+  <rect x="8" y="8" width="112" height="112" rx="26" fill="url(#bg)" filter="url(#s)"/>
+  <rect x="8" y="8" width="112" height="112" rx="26" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1.5"/>
+  <path d="M64 34c-8.8 0-16 7.2-16 16 0 5.8 3.1 10.9 7.7 13.7L52 78h24l-3.7-14.3c4.6-2.8 7.7-7.9 7.7-13.7 0-8.8-7.2-16-16-16z" fill="rgba(255,255,255,0.95)"/>
+  <path d="M58 82h12v8c0 2.2-1.8 4-4 4h-4c-2.2 0-4-1.8-4-4v-8z" fill="rgba(255,255,255,0.85)"/>
+  <path d="M64 28v4M64 92v4M36 64h-4M96 64h-4M44 44l-2.8-2.8M86.8 86.8L84 84M84 44l2.8-2.8M41.2 86.8L44 84" stroke="#FFF8E7" stroke-width="2.5" stroke-linecap="round" opacity="0.9"/>
+</svg>

@@ -1,0 +1,6 @@
+<svg width="120" height="120" xmlns="http://www.w3.org/2000/svg">
+  <rect width="120" height="120" fill="#dceee6" rx="8" stroke="#5ec4a0" stroke-width="2"/>
+  <circle cx="60" cy="50" r="15" fill="#94a3b8" opacity="0.5"/>
+  <text x="60" y="85" font-family="Arial, sans-serif" font-size="12" fill="#5a7a6e" text-anchor="middle">Logo</text>
+</svg>
+

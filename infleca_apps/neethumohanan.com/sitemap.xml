@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>/</loc><changefreq>monthly</changefreq><priority>1.0</priority></url>
+  <url><loc>/tcsj/index.html</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>/tcsj/bio.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>/tcsj/philosophy.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>/tcsj/equity.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>/tcsj/coursework.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>/tcsj/phase-1.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>/tcsj/phase-2.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>/tcsj/phase-3.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>/tcsj/phase-4.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>/tcsj/phase-5.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>/tcsj/reflections.html</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>/tcsj/acronym-dictionary.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>/tcsj/reading-resources.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>/tcsj/ed-tech-tools.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>/tcsj/classroom-culture.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>/tcsj/english-learners.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+</urlset>

@@ -1,0 +1,19 @@
+<svg width="128" height="128" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Partnership">
+  <defs>
+    <linearGradient id="bg" x1="12" y1="16" x2="116" y2="112" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#059669"/>
+      <stop offset="0.6" stop-color="#14B8A6"/>
+      <stop offset="1" stop-color="#B8954A"/>
+    </linearGradient>
+    <filter id="s" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#061210" flood-opacity="0.28"/>
+    </filter>
+  </defs>
+  <rect x="8" y="8" width="112" height="112" rx="26" fill="url(#bg)" filter="url(#s)"/>
+  <rect x="8" y="8" width="112" height="112" rx="26" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1.5"/>
+  <path d="M42 58c0-8.3 6.7-15 15-15s15 6.7 15 15v6H42v-6z" fill="rgba(255,255,255,0.9)"/>
+  <path d="M56 64v18c0 4.4 3.6 8 8 8h0c4.4 0 8-3.6 8-8V64" stroke="rgba(255,255,255,0.95)" stroke-width="7" stroke-linecap="round"/>
+  <path d="M72 58c0-8.3 6.7-15 15-15s15 6.7 15 15v6H72v-6z" fill="rgba(255,255,255,0.75)"/>
+  <path d="M86 64v14c0 4.4 3.6 8 8 8" stroke="rgba(255,255,255,0.75)" stroke-width="6" stroke-linecap="round"/>
+  <path d="M38 78h52" stroke="rgba(255,248,231,0.85)" stroke-width="3" stroke-linecap="round"/>
+</svg>

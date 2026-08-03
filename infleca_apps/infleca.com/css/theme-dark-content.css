@@ -1,0 +1,355 @@
+/*--------------------------------------------------------------
+# Dark theme — site content overrides
+# Covers hardcoded light colors in style.css and shared layout.
+--------------------------------------------------------------*/
+
+body.theme-dark {
+  background: var(--color-surface);
+  color: var(--color-body);
+}
+
+body.theme-dark #main {
+  color: var(--color-body);
+}
+
+body.theme-dark .section-bg {
+  background: var(--color-surface-muted) !important;
+}
+
+/* —— Typography (style.css uses !important) —— */
+body.theme-dark .about-content-modern p,
+body.theme-dark .product-description-modern,
+body.theme-dark .box-modern .description,
+body.theme-dark .box .description,
+body.theme-dark .founder-profile .description,
+body.theme-dark .team-copy,
+body.theme-dark .intro-text {
+  color: var(--color-body) !important;
+}
+
+body.theme-dark .about-content-modern h2,
+body.theme-dark .product-title-modern,
+body.theme-dark .box-modern .title,
+body.theme-dark .box .title,
+body.theme-dark .service-card .title a,
+body.theme-dark .founder-profile__name {
+  color: var(--color-heading) !important;
+}
+
+body.theme-dark #main .section-header h3,
+body.theme-dark #footer .section-header h3,
+body.theme-dark .about-lead-title,
+body.theme-dark .about-grid-title,
+body.theme-dark #why-us .features h4,
+body.theme-dark #intro .intro-heading {
+  color: var(--color-heading) !important;
+}
+
+body.theme-dark #main .section-header p,
+body.theme-dark .about-story-label,
+body.theme-dark .about-story-label span,
+body.theme-dark .team-stat-label,
+body.theme-dark #intro .intro-v2__since,
+body.theme-dark #intro .intro-v2__meta {
+  color: var(--color-soft) !important;
+}
+
+body.theme-dark #intro .intro-v2__subline {
+  color: var(--color-heading) !important;
+}
+
+/* —— Cards & surfaces —— */
+body.theme-dark .product-description-modern,
+body.theme-dark .product-features-modern li {
+  color: var(--color-body) !important;
+}
+
+body.theme-dark .product-features-modern li i,
+body.theme-dark .product-link-modern {
+  color: var(--color-accent) !important;
+}
+
+body.theme-dark .product-link-modern:hover {
+  color: var(--color-accent-hover) !important;
+}
+
+body.theme-dark #services .box,
+body.theme-dark .box-modern {
+  background: var(--color-surface) !important;
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm) !important;
+}
+
+body.theme-dark .icon-modern {
+  background: var(--color-accent-soft) !important;
+}
+
+body.theme-dark .icon-modern i {
+  color: var(--color-accent) !important;
+}
+
+body.theme-dark .about-stat-card,
+body.theme-dark .team-v3__stat,
+body.theme-dark .team-v3__block,
+body.theme-dark .site-layout-v2 #at-a-glance .strip-v2__list li,
+body.theme-dark .site-layout-v2 #faq-v2 .faq-v2-list > li {
+  background: var(--color-surface) !important;
+  border-color: var(--color-border) !important;
+  box-shadow: var(--shadow-sm) !important;
+}
+
+body.theme-dark .about-stat-label {
+  color: var(--color-soft) !important;
+}
+
+body.theme-dark .about-stat-value {
+  color: var(--color-heading);
+}
+
+body.theme-dark .founder-profile__inner {
+  background: var(--color-surface) !important;
+  border-color: var(--color-border) !important;
+}
+
+body.theme-dark .founder-profile__social a {
+  background: var(--color-accent-soft) !important;
+  color: var(--color-accent) !important;
+  border: 1px solid rgba(52, 211, 153, 0.16);
+}
+
+body.theme-dark .founder-profile__social a:hover {
+  background: rgba(52, 211, 153, 0.18) !important;
+  color: var(--color-accent-light) !important;
+}
+
+/* —— FAQ —— */
+body.theme-dark .site-layout-v2 #faq-v2 .faq-v2-list a {
+  color: var(--color-heading) !important;
+  background: transparent;
+}
+
+body.theme-dark .site-layout-v2 #faq-v2 .faq-v2-list a:hover {
+  background: rgba(52, 211, 153, 0.08) !important;
+  color: var(--color-accent) !important;
+}
+
+body.theme-dark .site-layout-v2 #faq-v2 .faq-v2-list .collapse p {
+  color: var(--color-body) !important;
+}
+
+body.theme-dark .site-layout-v2 #faq-v2 .faq-v2-list a i {
+  color: var(--color-accent);
+}
+
+/* —— Trust strip —— */
+body.theme-dark.site-layout-v2 #at-a-glance {
+  background: linear-gradient(
+    90deg,
+    rgba(52, 211, 153, 0.07) 0%,
+    rgba(17, 28, 25, 0.98) 50%,
+    rgba(52, 211, 153, 0.07) 100%
+  ) !important;
+  border-color: var(--color-border) !important;
+}
+
+body.theme-dark .site-layout-v2 #at-a-glance .strip-v2__value {
+  color: var(--color-heading) !important;
+}
+
+body.theme-dark .site-layout-v2 #at-a-glance .strip-v2__desc {
+  color: var(--color-soft) !important;
+}
+
+/* —— Why us feature cards —— */
+body.theme-dark #main #why-us .features {
+  background: var(--color-surface) !important;
+  border-color: var(--color-border) !important;
+}
+
+body.theme-dark #main #why-us .features p {
+  color: var(--color-body) !important;
+}
+
+body.theme-dark #main #why-us .features h4 {
+  color: var(--color-heading) !important;
+}
+
+/* —— Blog insight cards —— */
+body.theme-dark #main .insight-card {
+  background: var(--color-surface) !important;
+  border-color: var(--color-border) !important;
+}
+
+body.theme-dark #main .insight-card .title a {
+  color: var(--color-heading) !important;
+}
+
+body.theme-dark #main .insight-card .description {
+  color: var(--color-body) !important;
+}
+
+/* —— Testimonials & clients —— */
+body.theme-dark #testimonials {
+  background: var(--color-surface-muted);
+}
+
+body.theme-dark #testimonials .testimonial-item h3 {
+  color: var(--color-heading) !important;
+}
+
+body.theme-dark #testimonials .testimonial-item h4 {
+  color: var(--color-soft) !important;
+}
+
+body.theme-dark #testimonials .testimonial-item p {
+  color: var(--color-body) !important;
+}
+
+body.theme-dark #testimonials .testimonial-item .testimonial-img {
+  border-color: var(--color-border);
+}
+
+body.theme-dark #clients {
+  background: var(--color-surface);
+}
+
+body.theme-dark #clients img {
+  filter: brightness(0) invert(1);
+  opacity: 0.55;
+}
+
+body.theme-dark #clients img:hover {
+  opacity: 0.9;
+}
+
+/* —— Section badges —— */
+body.theme-dark #main .section-badge {
+  color: var(--color-accent);
+  background: var(--color-gold-soft);
+  border-color: rgba(212, 188, 122, 0.28);
+}
+
+/* —— Product category badge —— */
+body.theme-dark .product-category-badge {
+  background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-hover) 100%) !important;
+}
+
+/* —— Back to top —— */
+body.theme-dark .back-to-top {
+  background: var(--color-accent) !important;
+  color: #fff !important;
+}
+
+body.theme-dark .back-to-top:hover {
+  background: var(--color-accent-hover) !important;
+}
+
+/* —— Contact modal (full content) —— */
+body.theme-dark .contact-modal__title,
+body.theme-dark .contact-modal__form-wrap h4 {
+  color: var(--color-heading) !important;
+}
+
+body.theme-dark .contact-modal__lead,
+body.theme-dark .contact-modal__highlights li,
+body.theme-dark .contact-modal__form-wrap > p {
+  color: var(--color-body) !important;
+}
+
+body.theme-dark .contact-modal__meta-item dd {
+  color: var(--color-heading) !important;
+}
+
+body.theme-dark .contact-modal__meta-item dt,
+body.theme-dark .contact-modal__highlights i,
+body.theme-dark .contact-modal__meta-item a {
+  color: var(--color-accent) !important;
+}
+
+body.theme-dark .contact-modal__info {
+  background: rgba(17, 28, 25, 0.55) !important;
+  border-color: rgba(52, 211, 153, 0.12) !important;
+}
+
+body.theme-dark .contact-modal__form-wrap {
+  background: transparent;
+}
+
+body.theme-dark .contact-modal__badge {
+  color: var(--color-accent-light) !important;
+  background: var(--color-gold-soft) !important;
+  border-color: rgba(212, 188, 122, 0.28) !important;
+}
+
+body.theme-dark .contact-modal__tag {
+  background: rgba(52, 211, 153, 0.12) !important;
+  color: var(--color-accent-light) !important;
+  border-color: rgba(52, 211, 153, 0.2) !important;
+}
+
+body.theme-dark .contact-modal__form .form-control::placeholder {
+  color: var(--color-soft);
+  opacity: 0.75;
+}
+
+body.theme-dark .contact-modal__form button[type="submit"] {
+  background: var(--color-accent) !important;
+  color: #fff !important;
+}
+
+body.theme-dark .contact-modal__form button[type="submit"]:hover {
+  background: var(--color-accent-hover) !important;
+}
+
+body.theme-dark .contact-modal__social a {
+  background: var(--color-accent-soft) !important;
+  color: var(--color-accent) !important;
+  border-color: rgba(52, 211, 153, 0.16) !important;
+}
+
+/* —— Owl carousel dots —— */
+body.theme-dark #testimonials .owl-dot,
+body.theme-dark #clients .owl-dot {
+  background: var(--color-border) !important;
+}
+
+body.theme-dark #testimonials .owl-dot.active,
+body.theme-dark #clients .owl-dot.active {
+  background: var(--color-accent) !important;
+}
+
+/* —— Header scrolled (ensure dark bar) —— */
+body.theme-dark #header.header-scrolled,
+body.theme-dark #header {
+  background: rgba(10, 18, 16, 0.96);
+  border-bottom-color: rgba(52, 211, 153, 0.12);
+}
+
+body.theme-dark #header .nav-pill {
+  background: rgba(17, 28, 25, 0.85);
+  border-color: rgba(52, 211, 153, 0.14);
+}
+
+body.theme-dark #header.header-scrolled .nav-pill > ul > li > a {
+  color: var(--color-heading);
+}
+
+body.theme-dark #header .header-icon-link {
+  background: var(--color-accent-soft);
+  border-color: rgba(52, 211, 153, 0.14);
+  color: var(--color-soft);
+}
+
+body.theme-dark #header .theme-switcher {
+  background: var(--color-accent-soft);
+  border-color: rgba(52, 211, 153, 0.14);
+}
+
+body.theme-dark #header .theme-switcher__btn {
+  color: var(--color-soft);
+}
+
+body.theme-dark #header .theme-switcher__btn:hover {
+  color: var(--color-heading);
+  background: rgba(52, 211, 153, 0.12);
+}

@@ -1,0 +1,19 @@
+<svg width="128" height="128" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Solutions">
+  <defs>
+    <linearGradient id="bg" x1="18" y1="14" x2="110" y2="114" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#047857"/>
+      <stop offset="0.5" stop-color="#059669"/>
+      <stop offset="1" stop-color="#D4BC7A"/>
+    </linearGradient>
+    <filter id="s" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#061210" flood-opacity="0.28"/>
+    </filter>
+  </defs>
+  <rect x="8" y="8" width="112" height="112" rx="26" fill="url(#bg)" filter="url(#s)"/>
+  <rect x="8" y="8" width="112" height="112" rx="26" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1.5"/>
+  <rect x="36" y="36" width="28" height="28" rx="8" fill="rgba(255,255,255,0.95)"/>
+  <rect x="64" y="36" width="28" height="28" rx="8" fill="rgba(255,255,255,0.75)"/>
+  <rect x="36" y="64" width="28" height="28" rx="8" fill="rgba(255,255,255,0.75)"/>
+  <rect x="64" y="64" width="28" height="28" rx="8" fill="rgba(255,255,255,0.95)"/>
+  <circle cx="64" cy="64" r="6" fill="#FFF8E7"/>
+</svg>

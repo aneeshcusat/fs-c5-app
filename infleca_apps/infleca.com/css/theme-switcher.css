@@ -1,0 +1,163 @@
+/* Theme switcher control */
+
+.theme-switcher {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px;
+  border-radius: 999px;
+  background: var(--color-accent-soft, rgba(5, 150, 105, 0.08));
+  border: 1px solid var(--color-border, rgba(5, 150, 105, 0.14));
+  gap: 2px;
+}
+
+.theme-switcher__btn {
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--color-soft, #5c726b);
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.theme-switcher__btn:hover {
+  color: var(--color-heading, #0c1815);
+  background: rgba(255, 255, 255, 0.65);
+}
+
+.theme-switcher__btn.is-active {
+  color: #fff;
+  background: var(--color-accent, #059669);
+  box-shadow: 0 4px 12px rgba(5, 150, 105, 0.28);
+}
+
+body.theme-white .theme-switcher__btn.is-active {
+  background: var(--color-accent, #1d4ed8);
+  box-shadow: 0 4px 12px rgba(29, 78, 216, 0.28);
+}
+
+body.theme-dark .theme-switcher__btn.is-active {
+  background: var(--color-accent, #34d399);
+  box-shadow: 0 4px 12px rgba(52, 211, 153, 0.24);
+}
+
+body.theme-emerald-luxury #header.header-v2:not(.header-scrolled) .theme-switcher,
+body.theme-white #header.header-v2:not(.header-scrolled) .theme-switcher,
+body.theme-dark #header.header-v2:not(.header-scrolled) .theme-switcher {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.22);
+}
+
+body.theme-emerald-luxury #header.header-v2:not(.header-scrolled) .theme-switcher__btn,
+body.theme-white #header.header-v2:not(.header-scrolled) .theme-switcher__btn,
+body.theme-dark #header.header-v2:not(.header-scrolled) .theme-switcher__btn {
+  color: rgba(255, 255, 255, 0.88);
+}
+
+body.theme-emerald-luxury #header.header-v2:not(.header-scrolled) .theme-switcher__btn:hover,
+body.theme-white #header.header-v2:not(.header-scrolled) .theme-switcher__btn:hover,
+body.theme-dark #header.header-v2:not(.header-scrolled) .theme-switcher__btn:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.mobile-nav__themes {
+  padding: 0.75rem 1.25rem 0.25rem;
+}
+
+.mobile-nav__themes .theme-switcher {
+  width: 100%;
+  justify-content: center;
+}
+
+.mobile-nav__themes-label {
+  display: block;
+  margin-bottom: 0.55rem;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-soft, #5c726b);
+}
+
+/* Contact modal — theme variants */
+body.theme-dark .contact-modal__overlay {
+  background: rgba(0, 0, 0, 0.72);
+}
+
+body.theme-dark .contact-modal__dialog {
+  border-color: rgba(52, 211, 153, 0.22);
+  background: linear-gradient(145deg, #111c19 0%, #0a1210 100%);
+  box-shadow: 0 32px 80px rgba(0, 0, 0, 0.55);
+}
+
+body.theme-dark .contact-modal__close {
+  background: rgba(17, 28, 25, 0.92);
+  color: #f0fdf9;
+  border-color: rgba(52, 211, 153, 0.22);
+}
+
+body.theme-dark .contact-modal__info,
+body.theme-dark .contact-modal__form-wrap {
+  color: var(--color-body, #a8bdb5);
+}
+
+body.theme-dark .contact-modal__form .form-control {
+  background: rgba(17, 28, 25, 0.85);
+  border-color: rgba(52, 211, 153, 0.18);
+  color: #f0fdf9;
+}
+
+body.theme-white .contact-modal__dialog {
+  border-color: rgba(29, 78, 216, 0.18);
+  background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+}
+
+body.theme-dark .mobile-nav.header-v2-drawer {
+  background: linear-gradient(180deg, #111c19 0%, #0a1210 100%);
+  border-left-color: rgba(52, 211, 153, 0.14);
+}
+
+body.theme-white .mobile-nav.header-v2-drawer {
+  background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+  border-left-color: rgba(29, 78, 216, 0.12);
+}
+
+/* Footer — dark theme */
+body.theme-dark #footer {
+  background: var(--color-surface, #0a1210);
+  color: var(--color-body, #a8bdb5);
+}
+
+body.theme-dark #footer .footer-top {
+  background: var(--color-surface-muted, #111c19);
+}
+
+body.theme-dark #footer .footer-top .footer-info h3,
+body.theme-dark #footer .footer-top h4 {
+  color: var(--color-heading, #f0fdf9);
+}
+
+body.theme-dark #footer .footer-top .footer-info p,
+body.theme-dark #footer .footer-top .footer-links ul a,
+body.theme-dark #footer .footer-top .footer-contact p {
+  color: var(--color-body, #a8bdb5);
+}
+
+body.theme-dark #footer .copyright {
+  background: #060d0b;
+  color: var(--color-soft, #7a948b);
+}
+
+body.theme-dark .mobile-nav.header-v2-drawer a {
+  color: var(--color-heading, #f0fdf9);
+}
+
+body.theme-dark .mobile-nav.header-v2-drawer .mobile-nav__head {
+  border-bottom-color: rgba(52, 211, 153, 0.12);
+}
