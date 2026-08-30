@@ -1,0 +1,17 @@
+---
+description: Luxury rich compact UI — layout and theme consistency for every component
+globs: "**/*.{js,jsx,ts,tsx,css,scss,html,vue}"
+alwaysApply: false
+---
+
+# Luxury · rich · compact
+
+Every UI component must stay visually consistent: dense, refined, token-driven. Prefer existing project design tokens/CSS; if none, use a luxury-rich-compact language (tight spacing, soft surfaces, restrained accent, shared type scale).
+
+## Rules
+- Reuse existing layout shells, headers, tables, drawers, and controls — do not invent parallel design systems.
+- No one-off hex palettes when theme tokens/variables exist.
+- Compact density: short headers, tight padding, no sparse empty card chrome.
+- Match nearest existing screen pattern for new components.
+- Avoid generic AI defaults (purple gradients, oversized hero cards, pill/stat clutter) unless already brand-standard here.
+

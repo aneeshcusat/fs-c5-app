@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en" data-lux-theme="luxury" data-lux-palette="ocean">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>External project create API — Tracopus Documentation</title>
+  <link rel="canonical" href="https://tracopus.com/documentation/external-project-create.html">
+  <script src="js/docs-analytics.js?v=20260719a" defer></script>
+  <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="css/styles.css?v=20260718g">
+  <script src="js/brand-config.js?v=20260619e"></script>
+  <style>
+    :root {
+      --bg: #0b1220;
+      --surface: #121a2b;
+      --surface-2: #182235;
+      --line: rgba(148, 163, 184, 0.22);
+      --text: #e8eef7;
+      --muted: #94a3b8;
+      --primary: #0d9488;
+      --primary-rgb: 13, 148, 136;
+      --accent: #34d399;
+      --warn: #fbbf24;
+      --danger: #fb7185;
+      --pad: 1rem;
+      --radius: 12px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      --sans: "Avenir Next", "Segoe UI", ui-sans-serif, system-ui, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at 0% 0%, rgba(var(--primary-rgb), 0.16), transparent 36%),
+        radial-gradient(circle at 100% 0%, rgba(52, 211, 153, 0.08), transparent 28%),
+        var(--bg);
+      color: var(--text);
+      font: 14px/1.45 var(--sans);
+    }
+    .shell { max-width: 1120px; margin: 0 auto; padding: 1.25rem 1rem 3rem; }
+    header.mast {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 1rem;
+      align-items: end;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 1rem;
+    }
+    .kicker {
+      font-size: 0.6875rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 0 0 0.25rem;
+    }
+    h1 { margin: 0; font-size: 1.65rem; letter-spacing: -0.04em; line-height: 1.15; }
+    h1 span { color: var(--accent); }
+    .lede { margin: 0.45rem 0 0; color: var(--muted); max-width: 46rem; }
+    .pills { display: flex; flex-wrap: wrap; gap: 0.4rem; justify-content: flex-end; }
+    .pill {
+      border: 1px solid var(--line);
+      background: rgba(var(--primary-rgb), 0.12);
+      color: var(--accent);
+      border-radius: 999px;
+      padding: 0.22rem 0.6rem;
+      font-size: 0.6875rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    nav.toc {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin: 0 0 1.1rem;
+    }
+    nav.toc a {
+      color: var(--text);
+      text-decoration: none;
+      border: 1px solid var(--line);
+      background: var(--surface);
+      border-radius: 999px;
+      padding: 0.28rem 0.7rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+    nav.toc a:hover { border-color: rgba(var(--primary-rgb), 0.55); }
+    .grid { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 0.85rem; }
+    .card {
+      background: linear-gradient(180deg, var(--surface) 0%, var(--surface-2) 100%);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 0.9rem 1rem;
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
+    }
+    .card h2, section h2 {
+      margin: 0 0 0.55rem;
+      font-size: 0.95rem;
+      letter-spacing: -0.02em;
+    }
+    .card p, section p { margin: 0 0 0.55rem; color: var(--muted); }
+    ol.steps { margin: 0; padding-left: 1.15rem; }
+    ol.steps li { margin: 0 0 0.45rem; }
+    code, kbd {
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      background: rgba(15, 23, 42, 0.55);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 0.05rem 0.32rem;
+      color: var(--accent);
+    }
+    pre {
+      margin: 0;
+      overflow: auto;
+      background: #0a101b;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 0.8rem 0.85rem;
+      font: 12px/1.5 var(--mono);
+      color: #dbeafe;
+      white-space: pre-wrap;
+    }
+    .codehead {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+      margin: 0.65rem 0 0.35rem;
+    }
+    .codehead span { font-size: 0.6875rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+    button.copy, button.gen {
+      border: 0;
+      cursor: pointer;
+      background: rgba(var(--primary-rgb), 0.18);
+      color: var(--accent);
+      border-radius: 8px;
+      padding: 0.28rem 0.55rem;
+      font-weight: 800;
+      font-size: 0.6875rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    button.copy:hover, button.gen:hover { background: rgba(var(--primary-rgb), 0.32); }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.8125rem;
+    }
+    th, td {
+      text-align: left;
+      padding: 0.42rem 0.45rem;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+    }
+    th { color: var(--muted); font-size: 0.6875rem; letter-spacing: 0.08em; text-transform: uppercase; }
+    .req { color: var(--warn); font-weight: 800; }
+    .opt { color: var(--muted); }
+    .ok { color: var(--accent); }
+    .bad { color: var(--danger); }
+    section { margin: 1.1rem 0; }
+    .callout {
+      border-left: 3px solid var(--primary);
+      padding: 0.55rem 0.75rem;
+      background: rgba(var(--primary-rgb), 0.08);
+      border-radius: 0 10px 10px 0;
+      color: var(--text);
+      margin: 0.6rem 0;
+    }
+    .warnbox {
+      border-left: 3px solid var(--warn);
+      background: rgba(251, 191, 36, 0.08);
+    }
+    .form {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.55rem;
+    }
+    label { display: grid; gap: 0.22rem; font-size: 0.6875rem; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+    input, select {
+      width: 100%;
+      border-radius: 9px;
+      border: 1px solid var(--line);
+      background: #0a101b;
+      color: var(--text);
+      padding: 0.5rem 0.6rem;
+      font: 13px var(--mono);
+    }
+    footer {
+      margin-top: 1.5rem;
+      padding-top: 0.8rem;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.75rem;
+    }
+    @media (max-width: 860px) {
+      header.mast, .grid, .form { grid-template-columns: 1fr; }
+      .pills { justify-content: flex-start; }
+    }
+  </style>
+</head>
+<body class="int-api-console" data-docs-depth="0">
+  <header aria-label="Site header"></header>
+  <div class="shell">
+    <header class="mast">
+      <div>
+        <p class="kicker">Tracopus · Integration API</p>
+        <h1>Connect an external service to <span>create projects</span></h1>
+        <p class="lede">Issue a scoped integration token, then <code>POST /api/v2/projects</code> with that token. Sandbox vs production only changes the key prefix — scopes are the same live catalog.</p>
+      </div>
+      <div class="pills">
+        <span class="pill">v2 API</span>
+        <span class="pill">Bearer tk_live_ / tk_test_</span>
+        <span class="pill">projects.write</span>
+      </div>
+    </header>
+
+    <nav class="toc">
+      <a href="index.html">Documentation</a>
+      <a href="api-docs.html">API Docs</a>
+      <a href="integration-api-console.html">Full API console</a>
+      <a href="#flow">Flow</a>
+      <a href="#prereq">Prerequisites</a>
+      <a href="#issue">Issue API key</a>
+      <a href="#create">Create project</a>
+      <a href="#params">Request params</a>
+      <a href="#scopes">Scopes</a>
+      <a href="#errors">Errors</a>
+      <a href="#builder">Curl builder</a>
+    </nav>
+
+    <div class="grid" id="flow">
+      <article class="card">
+        <h2>How it works</h2>
+        <ol class="steps">
+          <li>An admin issues an integration token in Tracopus (UI or admin JWT curl). The secret is shown <strong>once</strong>.</li>
+          <li>The external service stores <code>tk_live_…</code> or <code>tk_test_…</code> as a secret. Do not put it in source control.</li>
+          <li>The service calls <code>POST /api/v2/projects</code> with <code>Authorization: Bearer {secret}</code>.</li>
+          <li>Tracopus binds the write to the key’s team. <code>userTeamId</code> in the body must match that team (or omit it and the server fills it).</li>
+          <li><code>createdBy</code> is overwritten with the key’s service employee for audit.</li>
+        </ol>
+        <div class="callout">Integration keys cannot call <code>/api/v2/developer-portal/*</code>. Key issue/revoke stays on an admin session.</div>
+      </article>
+      <article class="card">
+        <h2>Canonical chain</h2>
+        <p>Projects are not independent. Create against an existing purchase order in the same team:</p>
+        <pre>PurchaseOrder → Project → Task → TaskActivity</pre>
+        <p style="margin-top:0.7rem">Minimum body for a working create:</p>
+        <pre>{
+  "name": "ERP project",
+  "userTeamId": 101,
+  "purchaseOrderId": 9001,
+  "createdBy": 12
+}</pre>
+      </article>
+    </div>
+
+    <section id="prereq" class="card">
+      <h2>Prerequisites</h2>
+      <table>
+        <thead><tr><th>Item</th><th>Why</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>Server flag <code>FS_INTEGRATION_API_KEY_AUTH_ENABLED</code> (default <code>true</code>)</td>
+            <td>Maps to <code>fs.integration.api-key-auth.enabled</code>. If false, <code>tk_*</code> tokens do not authenticate (401).</td>
+          </tr>
+          <tr>
+            <td>Admin with Integrations → API access</td>
+            <td>UI path <code>/integrations/api-access</code> (or Admin → API keys). Developer portal + integration center must be enabled for the org.</td>
+          </tr>
+          <tr>
+            <td>Team id, purchase order id, service employee id</td>
+            <td>The PO must already exist on that team. The employee on the key is used as <code>createdBy</code>.</td>
+          </tr>
+          <tr>
+            <td>Scope <code>projects.write</code></td>
+            <td><code>projects.read</code> cannot create. Extra sandbox scopes do not exist — only the catalog below.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="issue" class="card">
+      <h2>1 · Issue the API key</h2>
+      <p><strong>Preferred:</strong> Tracopus → Integrations → API access → Create token. Choose Production (<code>tk_live_</code>) or Sandbox (<code>tk_test_</code>), grant <code>projects.write</code>, copy the secret immediately.</p>
+      <p>Or create with an <em>admin JWT</em> (not an integration key):</p>
+      <div class="codehead"><span>POST /api/v2/developer-portal/api-keys</span><button class="copy" data-copy="curl-key">Copy</button></div>
+      <pre id="curl-key">curl -sS -X POST "$BASE/api/v2/developer-portal/api-keys?userTeamId=TEAM_ID" \
+  -H "Authorization: Bearer ADMIN_JWT" \
+  -H "Content-Type: application/json" \
+  -H "Uid: EMPLOYEE_ID" \
+  -H "Current-User-Team-Id: TEAM_ID" \
+  -d '{
+    "name": "ERP project sync",
+    "appName": "External ERP",
+    "environment": "production",
+    "scopes": ["projects.write"],
+    "serviceEmployeeId": EMPLOYEE_ID,
+    "createdByEmployeeId": EMPLOYEE_ID
+  }'</pre>
+      <table>
+        <thead><tr><th>Field</th><th>Required</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td><code>userTeamId</code> query</td><td class="req">Yes</td><td>Team that owns the key. Project creates must use this same team.</td></tr>
+          <tr><td><code>name</code></td><td class="req">Yes</td><td>Audit label, e.g. <code>ERP project sync</code>.</td></tr>
+          <tr><td><code>appName</code></td><td class="opt">No</td><td>Defaults to <code>Custom integration</code>.</td></tr>
+          <tr><td><code>environment</code></td><td class="opt">No</td><td><code>production</code> → <code>tk_live_</code>. <code>sandbox</code> → <code>tk_test_</code>. Same scopes either way.</td></tr>
+          <tr><td><code>scopes</code></td><td class="req">Yes</td><td>Must include <code>projects.write</code> to create projects. Non-catalog values are dropped.</td></tr>
+          <tr><td><code>serviceEmployeeId</code></td><td class="req">Yes for writes</td><td>Employee stamped onto <code>createdBy</code> when the key creates a project.</td></tr>
+        </tbody>
+      </table>
+      <p>Success envelope (secret only on create):</p>
+      <pre>{
+  "payload": {
+    "key": { "id": "key-…", "prefix": "tk_live_8f2a", "scopes": ["projects.write"], "status": "active" },
+    "secretOnce": "tk_live_8f2a_&lt;uuid&gt;_&lt;tail&gt;"
+  }
+}</pre>
+      <div class="callout warnbox">Store <code>secretOnce</code> in your secret manager. Tracopus will not show it again. Use the full string as the Bearer token — not the prefix alone.</div>
+    </section>
+
+    <section id="create" class="card">
+      <h2>2 · Create a project</h2>
+      <p>Base URL is your Tracopus API host (example: <code>https://c5i.tracopus.com</code>). No SPA <code>api-key</code> query param is required for integration tokens.</p>
+      <div class="codehead"><span>POST /api/v2/projects</span><button class="copy" data-copy="curl-project">Copy</button></div>
+      <pre id="curl-project">curl -sS -X POST "$BASE/api/v2/projects" \
+  -H "Authorization: Bearer tk_live_SUFFIX_UUID_TAIL" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "ERP project",
+    "userTeamId": 101,
+    "purchaseOrderId": 9001,
+    "createdBy": 12,
+    "summary": "Created from ERP sync",
+    "status": "NEW",
+    "type": "BILLABLE"
+  }'</pre>
+      <p>Typical 200 envelope:</p>
+      <pre>{
+  "payload": {
+    "id": 44102,
+    "name": "ERP project",
+    "userTeamId": 101,
+    "purchaseOrderId": 9001,
+    "status": "NEW",
+    "createdBy": 12
+  }
+}</pre>
+    </section>
+
+    <section id="params" class="card">
+      <h2>Project request body</h2>
+      <p>JSON object mapped from <code>ProjectRequest</code> / <code>ProjectInfo</code>. Dates are ISO-8601 date-times.</p>
+      <table>
+        <thead><tr><th>Field</th><th></th><th>Type</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td><code>name</code></td><td class="req">required</td><td>string</td><td>Project display name.</td></tr>
+          <tr><td><code>purchaseOrderId</code></td><td class="req">required</td><td>number</td><td>Existing PO on the same team. Projects hang off this contract.</td></tr>
+          <tr><td><code>userTeamId</code></td><td class="req">required*</td><td>number</td><td>Must equal the key’s team. Omit to let the server inject it. Mismatch → 403.</td></tr>
+          <tr><td><code>createdBy</code></td><td class="opt">sent</td><td>number</td><td>Overwritten with the key’s <code>serviceEmployeeId</code>.</td></tr>
+          <tr><td><code>summary</code></td><td class="opt">optional</td><td>string</td><td>Short description.</td></tr>
+          <tr><td><code>status</code></td><td class="opt">optional</td><td>string</td><td><code>NEW</code>, <code>CREATED</code>, <code>ASSIGNED</code>, <code>INPROGRESS</code>, <code>COMPLETED</code>, <code>CLOSED</code>.</td></tr>
+          <tr><td><code>type</code> / <code>projectType</code></td><td class="opt">optional</td><td>string</td><td>Delivery classification used by your org (e.g. billable vs internal).</td></tr>
+          <tr><td><code>code</code></td><td class="opt">optional</td><td>string</td><td>External/project code if you maintain one.</td></tr>
+          <tr><td><code>owner</code></td><td class="opt">optional</td><td>number</td><td>Employee id of the delivery owner.</td></tr>
+          <tr><td><code>estStartTime</code></td><td class="opt">optional</td><td>datetime</td><td>e.g. <code>2026-09-01T00:00:00</code>.</td></tr>
+          <tr><td><code>estCompletionTime</code></td><td class="opt">optional</td><td>datetime</td><td>Planned end.</td></tr>
+          <tr><td><code>estHours</code></td><td class="opt">optional</td><td>number</td><td>Estimated hours.</td></tr>
+          <tr><td><code>currency</code></td><td class="opt">optional</td><td>string</td><td>ISO currency if set on the project.</td></tr>
+          <tr><td><code>location</code></td><td class="opt">optional</td><td>string</td><td>Project location.</td></tr>
+          <tr><td><code>clientNames</code></td><td class="opt">optional</td><td>string[]</td><td>Client labels.</td></tr>
+          <tr><td><code>watchers</code></td><td class="opt">optional</td><td>string[]</td><td>Watcher identifiers as stored by Tracopus.</td></tr>
+          <tr><td><code>accountName</code></td><td class="opt">optional</td><td>string</td><td>Account label.</td></tr>
+          <tr><td><code>priority</code> / <code>complexity</code></td><td class="opt">optional</td><td>string</td><td>Org-defined values.</td></tr>
+        </tbody>
+      </table>
+      <div class="callout">Do not send a different <code>userTeamId</code> than the key’s team. Query <code>?userTeamId=</code> on other endpoints is also locked to the key team.</div>
+    </section>
+
+    <section id="scopes" class="card">
+      <h2>Scope catalog</h2>
+      <p>Production and sandbox keys share this catalog. There is no <code>sandbox.read</code> / <code>sandbox.write</code>.</p>
+      <table>
+        <thead><tr><th>Scope</th><th>Allows</th></tr></thead>
+        <tbody>
+          <tr><td><code>projects.read</code></td><td>GET <code>/api/v2/projects*</code></td></tr>
+          <tr><td><code>projects.write</code></td><td>POST / PUT / PATCH / DELETE <code>/api/v2/projects*</code> — <strong>required to create</strong></td></tr>
+          <tr><td><code>purchaseorders.read</code></td><td>GET <code>/api/v2/purchaseorder*</code></td></tr>
+          <tr><td><code>purchaseorders.write</code></td><td>Write purchase orders</td></tr>
+          <tr><td><code>tasks.read</code> / <code>tasks.write</code></td><td><code>/api/v2/task*</code></td></tr>
+          <tr><td><code>employees.read</code></td><td>GET <code>/api/v2/employees*</code></td></tr>
+          <tr><td><code>integrations.read</code></td><td>GET <code>/api/v2/integrations/center*</code></td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="errors" class="card">
+      <h2>Auth, headers, errors</h2>
+      <table>
+        <thead><tr><th>Header</th><th>Create key (admin)</th><th>Create project (integration)</th></tr></thead>
+        <tbody>
+          <tr><td><code>Authorization</code></td><td>Bearer admin JWT</td><td>Bearer <code>tk_live_…</code> or <code>tk_test_…</code></td></tr>
+          <tr><td><code>Content-Type</code></td><td>application/json</td><td>application/json</td></tr>
+          <tr><td><code>Uid</code></td><td>Admin employee id</td><td>Not required</td></tr>
+          <tr><td><code>Current-User-Team-Id</code></td><td>Admin team</td><td>Not required</td></tr>
+        </tbody>
+      </table>
+      <table>
+        <thead><tr><th>Status</th><th>Meaning</th></tr></thead>
+        <tbody>
+          <tr><td class="ok">200</td><td>Created. Project is under <code>payload</code>.</td></tr>
+          <tr><td class="bad">401 / empty auth</td><td>Missing Bearer, invalid secret, or API-key auth disabled on the server.</td></tr>
+          <tr><td class="bad">403</td><td>Missing <code>projects.write</code>, team mismatch, or developer-portal path called with an integration key. Body: <code>{"error":[{"message":"Integration API key scope or team access denied"}]}</code> or <code>userTeamId must match integration key team</code>.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="builder" class="card">
+      <h2>Curl builder</h2>
+      <p>Fill your values, generate, copy. Nothing is sent from this page.</p>
+      <div class="form">
+        <label>API base<input id="f-base" value="https://YOUR_TENANT.tracopus.com" /></label>
+        <label>Integration secret<input id="f-secret" value="tk_live_SUFFIX_UUID_TAIL" /></label>
+        <label>Team id<input id="f-team" value="101" /></label>
+        <label>Purchase order id<input id="f-po" value="9001" /></label>
+        <label>Created by (employee id)<input id="f-emp" value="12" /></label>
+        <label>Project name<input id="f-name" value="ERP project" /></label>
+      </div>
+      <div class="codehead" style="margin-top:0.75rem">
+        <span>Generated curl</span>
+        <span>
+          <button class="gen" type="button" id="btn-gen">Generate</button>
+          <button class="copy" data-copy="curl-out">Copy</button>
+        </span>
+      </div>
+      <pre id="curl-out"></pre>
+    </section>
+
+    <footer>
+      Tracopus integration API · project create. Token format <code>tk_{live|test}_{suffix}_{uuid}_{tail}</code>.
+      Flag <code>FS_INTEGRATION_API_KEY_AUTH_ENABLED</code>. Open this file locally — no backend required.
+    </footer>
+  </div>
+  <script>
+    function buildCurl() {
+      const base = document.getElementById("f-base").value.replace(/\/$/, "");
+      const secret = document.getElementById("f-secret").value.trim();
+      const team = document.getElementById("f-team").value.trim();
+      const po = document.getElementById("f-po").value.trim();
+      const emp = document.getElementById("f-emp").value.trim();
+      const name = document.getElementById("f-name").value.trim();
+      const body = JSON.stringify({
+        name: name,
+        userTeamId: Number(team),
+        purchaseOrderId: Number(po),
+        createdBy: Number(emp)
+      }, null, 2);
+      return `curl -sS -X POST "${base}/api/v2/projects" \\\n  -H "Authorization: Bearer ${secret}" \\\n  -H "Content-Type: application/json" \\\n  -d '${body}'`;
+    }
+    document.getElementById("btn-gen").addEventListener("click", () => {
+      document.getElementById("curl-out").textContent = buildCurl();
+    });
+    document.getElementById("curl-out").textContent = buildCurl();
+    document.querySelectorAll("button.copy").forEach((btn) => {
+      btn.addEventListener("click", async () => {
+        const el = document.getElementById(btn.getAttribute("data-copy"));
+        await navigator.clipboard.writeText(el.textContent);
+        btn.textContent = "Copied";
+        setTimeout(() => { btn.textContent = "Copy"; }, 1200);
+      });
+    });
+  </script>
+  <script src="js/palette.js?v=20260711a"></script>
+  <script src="js/brand.js?v=20260711a"></script>
+  <script src="js/docs-utility-config.js?v=20260720b"></script>
+  <script src="js/nav-config.js?v=20260720c"></script>
+  <script src="js/navigation.js?v=20260720b"></script>
+  <script src="js/site-enhancements.js?v=20260718d"></script>
+  <script src="js/search.js?v=20260711a"></script>
+</body>
+</html>

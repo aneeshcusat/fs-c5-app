@@ -71,6 +71,8 @@
           { label: 'Scenario Guide home', href: 'user-guide/index.html', desc: 'Module scenario indexes', icon: 'dashboard' },
           { label: 'Use Case Catalog', href: 'tracopus-use-case-catalog.html', desc: '718 business use cases', icon: 'doc' },
           { label: 'API Docs', href: 'api-docs.html', desc: 'Endpoints, sample curl, related APIs', icon: 'config' },
+          { label: 'Integration API console', href: 'integration-api-console.html', desc: 'Token-driven interactive v2 explorer', icon: 'config' },
+          { label: 'External project create', href: 'external-project-create.html', desc: 'Create projects with tk_* tokens', icon: 'doc' },
           { label: 'Persona navigation flow', href: 'user-guide/admin/admin-persona-navigation.html', desc: 'Scenario · Screen: Persona Navigation', icon: 'people' },
           { label: 'Create employee flow', href: 'user-guide/hrms/hrms-create-employee.html', desc: 'Scenario · Screen: Employees', icon: 'people' },
           { label: 'Timesheet flow', href: 'user-guide/hrms/hrms-log-timesheet.html', desc: 'Scenario · Screen: Timesheet', icon: 'time' },
@@ -202,6 +204,8 @@
       { label: 'User flows', href: 'user-flows/index.html' },
       { label: 'Use Case Catalog', href: 'tracopus-use-case-catalog.html' },
       { label: 'API Docs', href: 'api-docs.html' },
+      { label: 'Integration API console', href: 'integration-api-console.html' },
+      { label: 'External project create', href: 'external-project-create.html' },
       { label: 'Test Plan', href: 'tracopus-test-plan.html' },
       { label: 'Scenario Guide', href: 'user-guide/index.html' },
       { label: 'Getting Started', href: 'getting-started.html' },
@@ -232,6 +236,8 @@
         { label: meta.label + ' overview', href: base, desc: meta.tagline, icon: 'overview' },
         { label: 'Use Case Catalog', href: 'tracopus-use-case-catalog.html', desc: '718 entries incl. gap UCs', icon: 'doc' },
         { label: 'API Docs', href: 'api-docs.html', desc: 'Endpoints, curl & related APIs', icon: 'config' },
+        { label: 'Integration API console', href: 'integration-api-console.html', desc: 'Token-driven interactive v2 explorer', icon: 'config' },
+        { label: 'External project create', href: 'external-project-create.html', desc: 'Create projects with tk_* tokens', icon: 'doc' },
         { label: 'Test Plan', href: 'tracopus-test-plan.html', desc: '10k+ QA + GD tests', icon: 'list' }
       ]
     };
@@ -254,6 +260,14 @@
   Object.keys(guideModulesMeta).forEach(function (key) {
     nav.modules[key] = scenarioGuideModule(guideModulesMeta[key]);
   });
+  nav.modules.integrations.pages.splice(2, 0,
+    { label: 'Integration API console', href: 'integration-api-console.html', desc: 'Token-driven interactive v2 explorer', icon: 'config' },
+    { label: 'External project create', href: 'external-project-create.html', desc: 'Create projects with tk_* tokens', icon: 'doc' }
+  );
+  nav.modules.integrations.featured = [
+    'integration-api-console.html',
+    'external-project-create.html'
+  ].concat(nav.modules.integrations.featured || []);
 
   /* Page-context brand overrides (same utility bar, different menubar label) */
   if (typeof document !== 'undefined' && document.location) {
@@ -264,6 +278,20 @@
         brandEmphasis: 'Use Case Catalog',
         subtitle: 'Pages + 549 gap-discovery use cases',
         homeHref: '__docs__/tracopus-use-case-catalog.html'
+      });
+    } else if (path.indexOf('integration-api-console') >= 0) {
+      nav.header = mergeHeader({
+        eyebrow: 'Integration API',
+        brandEmphasis: 'API Console',
+        subtitle: 'Token-driven v2 explorer',
+        homeHref: '__docs__/integration-api-console.html'
+      });
+    } else if (path.indexOf('external-project-create') >= 0) {
+      nav.header = mergeHeader({
+        eyebrow: 'Integration API',
+        brandEmphasis: 'Project create',
+        subtitle: 'External project create with tk_* tokens',
+        homeHref: '__docs__/external-project-create.html'
       });
     } else if (path.indexOf('api-docs') >= 0) {
       nav.header = mergeHeader({

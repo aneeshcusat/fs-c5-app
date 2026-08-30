@@ -1,0 +1,11 @@
+---
+description: Minimal token usage — smallest context that solves the task
+alwaysApply: true
+---
+
+# Token discipline
+
+- Open only the files/slices needed; stop expanding once the owning module is known.
+- Prefer codebase-memory MCP over repo-wide greps and reading large docs/CSS.
+- Never scan `node_modules/`, `target/`, `.next/`, `dist/`, build caches, logs, or binaries for behavior.
+- Keep rules and replies short; no restating the task or dumping whole trackers into context.

@@ -22,7 +22,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=20260718g">
+  <link rel="stylesheet" href="css/styles.css?v=20260830a">
   <link rel="stylesheet" href="css/api-docs.css?v=20260720a">
   <script src="js/brand-config.js?v=20260620b"></script>
 </head>
@@ -42,14 +42,20 @@
       <div class="eyebrow">Official Documentation · Luxury UI</div>
       <h1>API Documentation</h1>
       <p class="lead">HTTP endpoints with sample <code>curl</code>, how-to-call steps, and related APIs. Each entry links to its <a href="tracopus-use-case-catalog.html">Use Case</a> and <a href="user-guide/index.html">Scenario Guide</a> pages (to-and-fro).</p>
+      <p class="lead"><a href="integration-api-console.html"><strong>Open the Integration API console →</strong></a> Paste a developer-portal token, pick any scoped v2 API, and generate or send the request.</p>
       <div class="api-docs-stats" id="api-docs-stats" aria-live="polite"></div>
+    </div>
+
+    <div class="page-index-grid" style="margin-bottom:1.25rem">
+      <a class="page-index-card" href="integration-api-console.html"><strong>Integration API console</strong><span>Interactive explorer — token, dropdown of every supported API, request/response/errors, curl + live send</span></a>
+      <a class="page-index-card" href="external-project-create.html"><strong>External project create</strong><span>Issue a tk_* token and POST /api/v2/projects</span></a>
     </div>
 
     <div class="callout callout--info">
       <div class="callout__icon">ℹ️</div>
       <div class="callout__body">
         <strong class="callout__title">How to use</strong>
-        <div class="callout__text">Search by path, method, or page name. Open a card for sample curl. Use the Use Case / Scenario links to walk the UI after calling the API. Set <code>API_BASE</code> to your tenant API host.</div>
+        <div class="callout__text">Search by path, method, or page name. Open a card for sample curl. For a live integration-token explorer (dropdown of every scoped API, request/response/errors, curl + send), use the <a href="integration-api-console.html">Integration API console</a>. Project-only walkthrough: <a href="external-project-create.html">External project create</a>.</div>
       </div>
     </div>
 
@@ -72,6 +78,7 @@
       <a href="index.html">Documentation</a>
       <a href="tracopus-use-case-catalog.html">Use Case Catalog</a>
       <a href="user-guide/index.html">Scenario Guide</a>
+      <a href="integration-api-console.html">Integration API console</a>
       <a href="getting-started.html">Getting Started</a>
     </p>
   </div>
@@ -81,8 +88,8 @@
 <script src="js/brand.js?v=20260711a"></script>
 <script src="js/api-docs-bridge.js?v=20260720a"></script>
 <script src="js/docs-utility-config.js?v=20260720b"></script>
-<script src="js/nav-config.js?v=20260720b"></script>
-<script src="js/navigation.js?v=20260720b"></script>
+<script src="js/nav-config.js?v=20260720c"></script>
+  <script src="js/navigation.js?v=20260830a"></script>
 <script src="js/site-enhancements.js?v=20260718d"></script>
 <script src="js/search.js?v=20260711a"></script>
 <script src="js/api-docs-page.js?v=20260720a"></script>

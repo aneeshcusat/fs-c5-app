@@ -49,7 +49,7 @@
   --header-height: 128px;
   --nav-height: 0px;
   --sidebar-width: 0px;
-  --content-max: 1080px;
+  --content-max: 1280px;
   --shell-max: 1280px;
   --page-gutter: 1.5rem;
   --radius-lg: 10px;
@@ -2849,7 +2849,7 @@ body.layout-full main {
   z-index: 1000;
   width: 100%;
   max-width: 100%;
-  overflow-x: clip;
+  overflow: visible;
   background:
     radial-gradient(ellipse 80% 120% at 0% 0%, rgba(255, 255, 255, 0.14), transparent 55%),
     radial-gradient(ellipse 60% 100% at 100% 0%, rgba(16, 185, 129, 0.22), transparent 50%),
@@ -3222,7 +3222,7 @@ body.layout-full main {
   background: rgba(0, 0, 0, 0.16);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  overflow-x: clip;
+  overflow: visible;
   max-width: 100%;
   min-width: 0;
 }
@@ -3252,16 +3252,8 @@ body.layout-full main {
 }
 
 .docs-shell-nav--modules .lux-nav__item--mega {
-  position: relative;
+  position: static;
   flex-shrink: 0;
-}
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  padding: 0.35rem 0.5rem 0.35rem 0.35rem;
-  white-space: nowrap;
-  max-width: 100%;
-  min-width: 0;
 }
 
 .docs-shell-nav--modules .lux-nav__item--link .lux-nav__link-icon {
@@ -3381,6 +3373,58 @@ body.layout-full main {
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
   }
+
+  .docs-shell-header.is-header-compact .docs-shell-nav--modules .lux-nav__list {
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 0.28rem;
+  }
+
+  .docs-shell-header.is-header-compact .lux-nav__item--link {
+    flex: 0 0 auto;
+    min-width: auto;
+  }
+
+  .docs-shell-header.is-header-compact .lux-nav__item--link .lux-nav__link {
+    height: 2.15rem;
+    padding: 0 0.55rem 0 0.28rem;
+    gap: 0.35rem;
+    max-width: none;
+  }
+
+  .docs-shell-header.is-header-compact .lux-nav__item--link .lux-nav__link-icon {
+    width: 1.7rem;
+    height: 1.7rem;
+  }
+
+  .docs-shell-header.is-header-compact .lux-nav__item--link .lux-nav__label {
+    display: inline;
+    line-height: 1;
+  }
+
+  .docs-shell-header.is-header-compact .lux-nav__item--link + .lux-nav__item--mega {
+    margin-left: 0.4rem;
+    padding-left: 0.55rem;
+    border-left: 1px solid rgba(255, 255, 255, 0.22);
+  }
+
+  .docs-shell-header.is-header-compact .lux-nav__link.active::after,
+  .docs-shell-header.is-header-compact .lux-nav__trigger.active::after {
+    display: none;
+  }
+}
+
+@media (min-width: 961px) and (max-width: 1180px) {
+  .docs-shell-header.is-header-compact .lux-nav__item--link .lux-nav__label {
+    display: none;
+  }
+
+  .docs-shell-header.is-header-compact .lux-nav__item--link .lux-nav__link {
+    width: 2.15rem;
+    padding: 0;
+    justify-content: center;
+  }
 }
 
 @media (max-width: 960px) {
@@ -3438,7 +3482,7 @@ body.layout-full main {
 }
 
 .docs-shell-nav .lux-nav__item--mega {
-  position: relative;
+  position: static;
 }
 
 .docs-shell-nav .lux-nav__link,
@@ -3551,7 +3595,7 @@ body.layout-full main {
   .docs-shell-header__inner,
   .docs-menubar,
   .docs-nav-row--modules {
-    overflow-x: clip;
+    overflow: visible;
   }
 }
 
@@ -3580,15 +3624,16 @@ body.layout-full main {
   opacity: 0.9;
 }
 
-/* Rich mega-menu panels — anchor below trigger icon */
+/* Rich mega-menu panels — left-align to the nav so they stay in view */
 .docs-shell-nav .lux-nav__panel--rich {
   position: absolute;
   top: calc(100% + 0.45rem);
-  left: 50%;
-  transform: translateX(-50%) translateY(6px);
-  width: min(720px, calc(100vw - 24px));
+  left: 0;
+  right: auto;
+  transform: translateY(6px);
+  width: min(720px, 100%);
   min-width: 0;
-  max-width: min(720px, calc(100vw - 24px));
+  max-width: min(720px, 100%);
   background: rgba(255, 255, 255, 0.98);
   border: 1px solid rgba(var(--lux-primary-rgb), 0.14);
   border-radius: 18px;
@@ -3598,7 +3643,7 @@ body.layout-full main {
   pointer-events: none;
   transition: opacity 0.22s ease, transform 0.22s ease, visibility 0.22s;
   z-index: 1200;
-  overflow: hidden;
+  overflow: visible;
   box-shadow:
     0 8px 16px rgba(15, 23, 42, 0.05),
     0 28px 64px rgba(15, 23, 42, 0.16),
@@ -3607,58 +3652,72 @@ body.layout-full main {
 }
 
 @media (min-width: 961px) {
-  .docs-shell-nav .lux-nav__item--mega:not(:hover):not(.is-open) .lux-nav__panel--rich {
+  .docs-shell-nav .lux-nav__item--mega:not(.is-open) .lux-nav__panel--rich {
     display: none;
   }
 
-  .docs-shell-nav .lux-nav__item--mega.is-open .lux-nav__panel--rich,
-  .docs-shell-nav .lux-nav__item--mega:hover .lux-nav__panel--rich {
+  .docs-shell-nav .lux-nav__item--mega.is-open .lux-nav__panel--rich {
     display: block;
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
-    transform: translateX(-50%) translateY(0);
+    transform: translateY(0);
   }
 }
 
 @media (max-width: 960px) {
+  .docs-shell-header {
+    overflow-x: clip;
+  }
+
   .docs-shell-nav .lux-nav__item--mega.is-open .lux-nav__panel--rich,
   .docs-shell-nav .lux-nav__item--mega:hover .lux-nav__panel--rich {
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
-    transform: translateX(-50%) translateY(0);
+    transform: none;
   }
 }
 
-/* Right-edge mega menus — align panel inward so it is not clipped */
+/* Right-edge mega menus — pin to the nav’s right edge */
 .docs-shell-nav .lux-nav__item--panel-end .lux-nav__panel--rich {
   left: auto;
   right: 0;
-  transform: translateX(0) translateY(6px);
+  transform: translateY(6px);
 }
 
 .docs-shell-nav .lux-nav__item--panel-end.is-open .lux-nav__panel--rich,
 .docs-shell-nav .lux-nav__item--panel-end:hover .lux-nav__panel--rich {
-  transform: translateX(0) translateY(0);
+  transform: translateY(0);
 }
 
-/* Left-edge mega menus — keep panel inside viewport */
+/* Left-edge mega menus — pin to the nav’s left edge */
 .docs-shell-nav .lux-nav__item--panel-start .lux-nav__panel--rich {
   left: 0;
   right: auto;
-  transform: translateX(0) translateY(6px);
+  transform: translateY(6px);
 }
 
 .docs-shell-nav .lux-nav__item--panel-start.is-open .lux-nav__panel--rich,
 .docs-shell-nav .lux-nav__item--panel-start:hover .lux-nav__panel--rich {
-  transform: translateX(0) translateY(0);
+  transform: translateY(0);
+}
+
+.docs-shell-nav .lux-nav__panel--rich::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 100%;
+  height: 16px;
 }
 
 .docs-shell-nav .lux-nav__panel-layout {
   display: grid;
   grid-template-columns: 220px minmax(0, 1fr);
   min-height: 280px;
+  overflow: hidden;
+  border-radius: 18px;
 }
 
 .docs-shell-nav .lux-nav__panel-hero {

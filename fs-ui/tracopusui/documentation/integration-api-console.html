@@ -1,0 +1,1547 @@
+<!DOCTYPE html>
+<html lang="en" data-lux-theme="luxury" data-lux-palette="emerald">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Integration API console — Tracopus Documentation</title>
+  <meta name="description" content="Interactive integration API console — paste a developer-portal token and explore every scoped Tracopus v2 endpoint.">
+  <link rel="canonical" href="https://tracopus.com/documentation/integration-api-console.html">
+  <script src="js/docs-analytics.js?v=20260719a" defer></script>
+  <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css?v=20260830a">
+  <script src="js/brand-config.js?v=20260619e"></script>
+  <style>
+    body.int-api-console {
+      --c-bg: var(--bg-light);
+      --c-surface: var(--bg-canvas);
+      --c-surface-2: var(--bg-white);
+      --c-line: var(--border-color);
+      --c-text: var(--text-dark);
+      --c-muted: var(--text-light);
+      --c-primary: var(--lux-primary);
+      --c-primary-rgb: var(--lux-primary-rgb);
+      --c-accent: var(--lux-accent);
+      --c-warn: var(--warning-color);
+      --c-danger: var(--danger-color);
+      --c-indigo: var(--lux-primary-dark);
+      --c-cyan: var(--lux-primary);
+      --c-radius: var(--radius-lg);
+      --c-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      --c-sans: var(--font-sans);
+      --c-input-bg: var(--bg-white);
+      --c-code-bg: rgba(var(--lux-primary-rgb), 0.06);
+      --c-code-fg: var(--text-dark);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body.int-api-console {
+      color: var(--c-text);
+      font-family: var(--c-sans);
+    }
+    body.int-api-console .shell {
+      color: var(--c-text);
+    }
+    .shell { max-width: var(--shell-max, 1280px); margin: 0 auto; padding: 1.15rem var(--page-gutter, 1.5rem) 3rem; }
+    header.mast {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 1rem;
+      align-items: end;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--c-line);
+      margin-bottom: 0.9rem;
+    }
+    .kicker {
+      font-size: 0.6875rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--c-muted);
+      margin: 0 0 0.25rem;
+    }
+    h1 { margin: 0; font-size: 1.65rem; letter-spacing: -0.04em; line-height: 1.15; }
+    h1 span { color: var(--c-accent); }
+    .lede { margin: 0.45rem 0 0; color: var(--c-muted); max-width: 48rem; }
+    .pills { display: flex; flex-wrap: wrap; gap: 0.4rem; justify-content: flex-end; }
+    .pill {
+      border: 1px solid var(--c-line);
+      background: rgba(var(--c-primary-rgb), 0.12);
+      color: var(--c-accent);
+      border-radius: 999px;
+      padding: 0.22rem 0.6rem;
+      font-size: 0.6875rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    nav.toc { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0 0 1rem; }
+    nav.toc a {
+      color: var(--c-text);
+      text-decoration: none;
+      border: 1px solid var(--c-line);
+      background: var(--c-surface);
+      border-radius: 999px;
+      padding: 0.28rem 0.7rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+    nav.toc a:hover { border-color: rgba(var(--c-primary-rgb), 0.55); }
+    .card {
+      background: linear-gradient(180deg, var(--c-surface) 0%, var(--c-surface-2) 100%);
+      border: 1px solid var(--c-line);
+      border-radius: var(--c-radius);
+      padding: 0.9rem 1rem;
+      box-shadow: var(--shadow);
+    }
+    .card h2, .panel h2 {
+      margin: 0 0 0.5rem;
+      font-size: 0.95rem;
+      letter-spacing: -0.02em;
+    }
+    .card p { margin: 0 0 0.5rem; color: var(--c-muted); }
+    .cred {
+      display: grid;
+      grid-template-columns: 1.4fr 1.6fr 0.7fr 0.7fr auto;
+      gap: 0.55rem;
+      align-items: end;
+      margin-bottom: 0.9rem;
+    }
+    label {
+      display: grid;
+      gap: 0.22rem;
+      font-size: 0.6875rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--c-muted);
+    }
+    input, select, textarea {
+      width: 100%;
+      border-radius: 9px;
+      border: 1px solid var(--c-line);
+      background: var(--c-input-bg);
+      color: var(--c-text);
+      padding: 0.5rem 0.6rem;
+      font: 13px var(--c-mono);
+    }
+    textarea { min-height: 160px; resize: vertical; }
+    input:focus, select:focus, textarea:focus {
+      outline: 0;
+      border-color: rgba(var(--c-primary-rgb), 0.7);
+      box-shadow: 0 0 0 3px rgba(var(--c-primary-rgb), 0.16);
+    }
+    .btn {
+      border: 0;
+      cursor: pointer;
+      border-radius: 8px;
+      padding: 0.5rem 0.75rem;
+      font-weight: 800;
+      font-size: 0.72rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .btn-primary { background: var(--c-primary); color: #fff; }
+    .btn-ghost { background: var(--lux-primary-soft); color: var(--lux-primary-dark); }
+    .btn:hover { filter: brightness(1.12); }
+    .layout {
+      display: grid;
+      grid-template-columns: 360px 1fr;
+      gap: 0.85rem;
+      align-items: start;
+    }
+    .picker {
+      position: sticky;
+      top: 0.75rem;
+      padding: 0;
+      overflow: hidden;
+    }
+    .picker-head {
+      padding: 0.9rem 1rem 0.55rem;
+      background: linear-gradient(135deg, var(--lux-primary-soft), rgba(var(--lux-accent-rgb), 0.08));
+      border-bottom: 1px solid var(--c-line);
+    }
+    .picker-head h2 { margin: 0 0 0.2rem; font-size: 1.05rem; color: var(--c-text); }
+    .picker-head p { margin: 0; color: var(--c-muted); font-size: 0.75rem; }
+    .picker-tools { padding: 0.65rem 0.75rem 0.4rem; display: grid; gap: 0.45rem; }
+    .group-chips { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+    .group-chips button {
+      border: 1px solid var(--c-line);
+      background: var(--c-input-bg);
+      color: var(--c-muted);
+      border-radius: 999px;
+      padding: 0.2rem 0.5rem;
+      font-size: 0.62rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+    .group-chips button.is-on {
+      color: var(--c-accent);
+      border-color: rgba(var(--c-primary-rgb), 0.55);
+      background: rgba(var(--c-primary-rgb), 0.16);
+    }
+    .api-list {
+      max-height: min(68vh, 640px);
+      overflow: auto;
+      padding: 0.35rem 0.5rem 0.7rem;
+    }
+    .api-group-label {
+      position: sticky;
+      top: 0;
+      z-index: 1;
+      margin: 0.45rem 0.25rem 0.25rem;
+      padding: 0.28rem 0.4rem;
+      font-size: 0.62rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--c-indigo);
+      background: color-mix(in srgb, var(--c-surface) 92%, transparent);
+      backdrop-filter: blur(8px);
+    }
+    .api-item {
+      display: grid;
+      grid-template-columns: 3.4rem 1fr;
+      gap: 0.15rem 0.55rem;
+      width: 100%;
+      text-align: left;
+      margin: 0 0 0.32rem;
+      padding: 0.5rem 0.55rem;
+      border-radius: 10px;
+      border: 1px solid transparent;
+      background: var(--c-surface-2);
+      color: var(--c-text);
+      cursor: pointer;
+    }
+    .api-item:hover { border-color: rgba(var(--c-primary-rgb), 0.35); background: rgba(var(--c-primary-rgb), 0.08); }
+    .api-item.is-on {
+      border-color: rgba(var(--c-primary-rgb), 0.55);
+      background: linear-gradient(180deg, var(--lux-primary-soft), var(--c-surface-2));
+      box-shadow: 0 0 0 1px rgba(var(--c-primary-rgb), 0.18);
+    }
+    .api-item .verb {
+      font: 700 0.62rem var(--c-mono);
+      letter-spacing: 0.04em;
+      padding-top: 0.12rem;
+    }
+    .api-item .nm { font-size: 0.8rem; font-weight: 750; line-height: 1.25; }
+    .api-item .rt { grid-column: 2; font: 11px/1.35 var(--c-mono); color: var(--c-muted); word-break: break-all; }
+    .api-item .sc { grid-column: 2; font-size: 0.62rem; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; color: var(--c-indigo); }
+    .panel { color: var(--c-text); }
+    .tab-panel {
+      min-height: 10rem;
+      color: var(--c-text);
+    }
+    .tab-panel h2 { color: var(--c-text); margin-top: 0.85rem; }
+    .tab-panel p { color: var(--c-muted); }
+    body.int-api-console .shell table { color: var(--c-text); background: transparent; }
+    body.int-api-console .shell table th { background: var(--lux-primary-soft); color: var(--lux-primary-dark); }
+    .layout { grid-template-columns: 360px 1fr; }
+    .meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin: 0.35rem 0 0.7rem;
+    }
+    .chip {
+      border-radius: 999px;
+      padding: 0.16rem 0.5rem;
+      font-size: 0.65rem;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      border: 1px solid var(--c-line);
+    }
+    .m-GET { color: var(--c-cyan); }
+    .m-POST { color: var(--c-accent); }
+    .m-PUT, .m-PATCH { color: var(--c-warn); }
+    .m-DELETE { color: var(--c-danger); }
+    .tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem;
+      margin: 0 0 0.75rem;
+    }
+    .tabs button {
+      border: 1px solid var(--c-line);
+      background: transparent;
+      color: var(--c-muted);
+      border-radius: 8px;
+      padding: 0.32rem 0.6rem;
+      font-weight: 800;
+      font-size: 0.7rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+    .tabs button.is-on {
+      color: var(--c-text);
+      background: rgba(var(--c-primary-rgb), 0.16);
+      border-color: rgba(var(--c-primary-rgb), 0.45);
+    }
+    table { width: 100%; border-collapse: collapse; font-size: 0.8125rem; }
+    th, td { text-align: left; padding: 0.42rem 0.45rem; border-bottom: 1px solid var(--c-line); vertical-align: top; }
+    th { color: var(--c-muted); font-size: 0.6875rem; letter-spacing: 0.08em; text-transform: uppercase; }
+    .req { color: var(--c-warn); font-weight: 800; }
+    .opt { color: var(--c-muted); }
+    .ok { color: var(--c-accent); }
+    .bad { color: var(--c-danger); }
+    code, kbd {
+      font-family: var(--c-mono);
+      font-size: 0.78rem;
+      background: var(--c-code-bg);
+      border: 1px solid var(--c-line);
+      border-radius: 6px;
+      padding: 0.05rem 0.32rem;
+      color: var(--c-accent);
+    }
+    pre {
+      margin: 0;
+      overflow: auto;
+      background: var(--c-code-bg);
+      border: 1px solid var(--c-line);
+      border-radius: 10px;
+      padding: 0.8rem 0.85rem;
+      font: 12px/1.5 var(--c-mono);
+      color: var(--c-code-fg);
+      white-space: pre-wrap;
+      max-height: 320px;
+    }
+    .codehead {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+      margin: 0.65rem 0 0.35rem;
+    }
+    .codehead span { font-size: 0.6875rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--c-muted); }
+    .callout {
+      border-left: 3px solid var(--c-primary);
+      padding: 0.55rem 0.75rem;
+      background: rgba(var(--c-primary-rgb), 0.08);
+      border-radius: 0 10px 10px 0;
+      margin: 0.55rem 0;
+    }
+    .warnbox { border-left-color: var(--c-warn); background: rgba(251, 191, 36, 0.08); }
+    .form-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.5rem; }
+    .span-2 { grid-column: 1 / -1; }
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.75rem;
+      font-weight: 800;
+    }
+    footer {
+      margin-top: 1.4rem;
+      padding-top: 0.8rem;
+      border-top: 1px solid var(--c-line);
+      color: var(--c-muted);
+      font-size: 0.75rem;
+    }
+    .hidden { display: none !important; }
+    @media (max-width: 980px) {
+      header.mast, .layout, .cred, .form-grid { grid-template-columns: 1fr; }
+      .picker { position: static; }
+      .pills { justify-content: flex-start; }
+    }
+  </style>
+</head>
+<body class="int-api-console" data-docs-depth="0">
+  <header aria-label="Site header"></header>
+  <div class="shell">
+    <header class="mast">
+      <div>
+        <p class="kicker">Tracopus · Integration API</p>
+        <h1>Interactive console for <span>every scoped token API</span></h1>
+        <p class="lede">Paste the one-time secret from Integrations → API access. Pick an endpoint, inspect request/response/errors, generate curl, and optionally send a live call. Integration keys cannot call <code>/developer-portal/*</code>.</p>
+      </div>
+      <div class="pills">
+        <span class="pill">Bearer tk_live_ / tk_test_</span>
+        <span class="pill">Catalog scopes</span>
+        <span class="pill">v2 envelope</span>
+      </div>
+    </header>
+
+    <nav class="toc">
+      <a href="index.html">Documentation</a>
+      <a href="api-docs.html">API Docs</a>
+      <a href="external-project-create.html">Project create guide</a>
+      <a href="#console">API console</a>
+      <a href="#scopes">Scopes</a>
+      <a href="#errors">Shared errors</a>
+    </nav>
+
+    <section class="card cred" id="console">
+      <label>API base<input id="f-base" placeholder="https://YOUR_TENANT.tracopus.com" /></label>
+      <label>Integration secret (from Create token)<input id="f-secret" type="password" placeholder="tk_live_… or tk_test_…" autocomplete="off" /></label>
+      <label>Team id<input id="f-team" placeholder="101" /></label>
+      <label>Employee id<input id="f-emp" placeholder="12" /></label>
+      <button class="btn btn-primary" type="button" id="btn-save">Remember session</button>
+    </section>
+
+    <div class="layout">
+      <aside class="card picker" id="api-picker">
+        <div class="picker-head">
+          <h2>API catalog</h2>
+          <p id="api-count">Browse every scoped integration endpoint</p>
+        </div>
+        <div class="picker-tools">
+          <input class="search" id="f-filter" placeholder="Search name, path, method, or scope…" autocomplete="off" />
+          <div class="group-chips" id="group-chips"></div>
+        </div>
+        <div class="api-list" id="f-api" role="listbox" aria-label="Supported APIs"></div>
+      </aside>
+
+      <section class="card panel" id="api-detail">
+        <div class="kicker" id="api-group">Choose an API</div>
+        <h2 id="api-title">Select an endpoint from the catalog</h2>
+        <p id="api-desc">Request, response, errors, and a live try-it console fill in as soon as you pick one.</p>
+        <div class="meta-row" id="api-meta"></div>
+        <div class="tabs" id="tabs">
+          <button type="button" data-tab="request" class="is-on">Request</button>
+          <button type="button" data-tab="response">Response</button>
+          <button type="button" data-tab="errors">Errors</button>
+          <button type="button" data-tab="try">Try it</button>
+        </div>
+        <div class="tab-panel" id="tab-request"></div>
+        <div class="tab-panel hidden" id="tab-response"></div>
+        <div class="tab-panel hidden" id="tab-errors"></div>
+        <div class="tab-panel hidden" id="tab-try"></div>
+      </section>
+    </div>
+
+    <section id="scopes" class="card" style="margin-top:0.9rem">
+      <h2>Scope catalog</h2>
+      <p>Issued in the developer portal. Empty scopes become <code>*</code> (any <code>/api/</code> path except developer-portal). <code>userTeamId</code> in query or body must match the key team.</p>
+      <table>
+        <thead><tr><th>Scope</th><th>Allows</th></tr></thead>
+        <tbody>
+          <tr><td><code>projects.read</code> / <code>projects.write</code></td><td><code>/api/v2/projects*</code></td></tr>
+          <tr><td><code>purchaseorders.read</code> / <code>purchaseorders.write</code></td><td><code>/api/v2/purchaseorder*</code></td></tr>
+          <tr><td><code>tasks.read</code> / <code>tasks.write</code></td><td><code>/api/v2/task*</code> including activities, notes, timesheet</td></tr>
+          <tr><td><code>employees.read</code></td><td>GET <code>/api/v2/employees*</code> only</td></tr>
+          <tr><td><code>integrations.read</code></td><td><code>/api/v2/integrations/center*</code></td></tr>
+          <tr><td><code>*</code></td><td>Any authenticated <code>/api/</code> path except developer-portal admin</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="errors" class="card" style="margin-top:0.9rem">
+      <h2>Shared envelope and errors</h2>
+      <p>Success: <code>{ "payload": … }</code>. Failure: <code>{ "error": [{ "message": "…", "code": "…" }] }</code>.</p>
+      <table>
+        <thead><tr><th>Status</th><th>Meaning</th></tr></thead>
+        <tbody>
+          <tr><td class="ok">200</td><td>Success. Entity or list is under <code>payload</code>.</td></tr>
+          <tr><td class="bad">401</td><td>Missing Bearer, invalid <code>tk_*</code> secret, or <code>FS_INTEGRATION_API_KEY_AUTH_ENABLED=false</code>.</td></tr>
+          <tr><td class="bad">403</td><td>Missing scope, team mismatch, or developer-portal path with an integration key.</td></tr>
+          <tr><td class="bad">404</td><td>Unknown id, or a verb/path the server does not map.</td></tr>
+          <tr><td class="bad">500</td><td>Unhandled server error. Client message is generic.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <footer>
+      Token from Tracopus → Integrations → API access. Format <code>tk_{live|test}_{suffix}_{uuid}_{tail}</code>.
+      This page stores credentials in <code>sessionStorage</code> only. Live send uses the browser — host CORS must allow this origin.
+    </footer>
+  </div>
+  <script>
+    const SHARED_ERRORS = [
+      { status: "200", kind: "ok", meaning: "Success. Body uses { payload }." },
+      { status: "401", kind: "bad", meaning: "Missing/invalid integration secret, or API-key auth disabled." },
+      { status: "403", kind: "bad", meaning: "Scope missing, userTeamId ≠ key team, or blocked path." },
+      { status: "404", kind: "bad", meaning: "Resource id not found." },
+      { status: "500", kind: "bad", meaning: "Unhandled server error." }
+    ];
+    const F = {
+      team: { name: "userTeamId", req: true, type: "number", notes: "Must match the key team. Injected if omitted on some writes." },
+      teams: { name: "userTeamIds", req: true, type: "number[]", notes: "Repeatable query. Empty list returns []. Must stay on the key team." },
+      emp: { name: "employeeId", req: true, type: "number", notes: "Employee on the key team." },
+      emps: { name: "employeeIds", req: true, type: "number[]", notes: "Repeatable. Used to scope list reads." },
+      start: { name: "startDate", req: true, type: "datetime", notes: "ISO-8601, e.g. 2026-08-01T00:00:00" },
+      end: { name: "endDate", req: true, type: "datetime", notes: "ISO-8601, e.g. 2026-08-31T23:59:59" },
+      onlyTeams: { name: "isOnlyUserTeams", req: false, type: "boolean", notes: "When true, restrict to the supplied teams." },
+      name: { name: "name", req: true, type: "string", notes: "Display name." },
+      createdBy: { name: "createdBy", req: false, type: "number", notes: "Overwritten with the key service employee on writes." },
+      po: { name: "purchaseOrderId", req: true, type: "number", notes: "Existing PO on the same team." },
+      projectId: { name: "projectId", req: true, type: "number", notes: "Existing project id." },
+      taskId: { name: "taskId", req: true, type: "number", notes: "Existing deliverable (task) id." },
+      activityId: { name: "taskActivityId", req: true, type: "number", notes: "Existing work item (task activity) id." },
+      status: { name: "status", req: true, type: "string", notes: "Domain status string." },
+      isDelete: { name: "isDelete", req: true, type: "boolean", notes: "true = hard delete flag as implemented by the endpoint." },
+      isArchive: { name: "isArchive", req: true, type: "boolean", notes: "Archive / unarchive." },
+      isActive: { name: "isActive", req: true, type: "boolean", notes: "Activate / deactivate." },
+      search: { name: "searchText", req: false, type: "string", notes: "Free-text filter inside ProjectSearchRequest." },
+      viewer: { name: "viewerUserId", req: true, type: "number", notes: "Employee id of the caller for audit ACL." },
+      page: { name: "page", req: false, type: "number", notes: "0-based page." },
+      pageSize: { name: "pageSize", req: false, type: "number", notes: "Page size." }
+    };
+
+    const AUDIT = { name: "createdDate", req: false, type: "datetime", notes: "Create timestamp returned by the server." };
+    const MOD = { name: "lastModifiedDate", req: false, type: "datetime", notes: "Last update timestamp." };
+    const DEL = { name: "deleted", req: false, type: "boolean", notes: "Soft-delete flag. False on live records." };
+    const ID = { name: "id", req: true, type: "number", notes: "Server-assigned record id." };
+
+    const PROJECT_BODY = [
+      { name: "id", req: false, type: "number", notes: "Project id. Omit on create; required on update." },
+      F.name, F.po, F.team,
+      { name: "purchaseOrderNumber", req: false, type: "string", notes: "PO number copied from the parent purchase order when resolved." },
+      { name: "summary", req: false, type: "string", notes: "Project description (maps to description on the table)." },
+      { name: "status", req: false, type: "string", notes: "NEW, CREATED, ASSIGNED, INPROGRESS, COMPLETED, CLOSED." },
+      { name: "type", req: false, type: "string", notes: "BILLABLE, NON_BILLABLE, BILLABLE_DA, NON_BILLABLE_PRODUCTIVE." },
+      { name: "projectType", req: false, type: "string", notes: "Internal project classification string." },
+      { name: "code", req: false, type: "string", notes: "External / client project code." },
+      { name: "owner", req: false, type: "number", notes: "Owner employee id." },
+      { name: "category", req: false, type: "string", notes: "Project category label." },
+      { name: "priority", req: false, type: "string", notes: "URGENT, HIGH, MEDIUM, LOW." },
+      { name: "complexity", req: false, type: "string", notes: "BASIC, MEDIUM, COMPLEX." },
+      { name: "parentId", req: false, type: "string", notes: "Parent project id when this is a child / sub-project." },
+      { name: "clonedFromId", req: false, type: "number", notes: "Source project id if this row was cloned." },
+      { name: "estStartTime", req: false, type: "datetime", notes: "Planned start (ISO-8601)." },
+      { name: "estCompletionTime", req: false, type: "datetime", notes: "Planned end (ISO-8601)." },
+      { name: "estHours", req: false, type: "number", notes: "Estimated delivery hours." },
+      { name: "estToolHours", req: false, type: "number", notes: "Estimated tool hours." },
+      { name: "estCost", req: false, type: "number", notes: "Estimated cost." },
+      { name: "estHourlyRate", req: false, type: "number", notes: "Estimated hourly rate." },
+      { name: "revisedAdditionalHrs", req: false, type: "number", notes: "Revised additional hours." },
+      { name: "revisedAdditionalCost", req: false, type: "number", notes: "Revised additional cost." },
+      { name: "revisedEstEnabled", req: false, type: "boolean", notes: "Allow revised estimates." },
+      { name: "isOrderChanged", req: false, type: "boolean", notes: "True when the commercial order changed after create." },
+      { name: "accountName", req: false, type: "string", notes: "Client account name." },
+      { name: "teamName", req: false, type: "string", notes: "Delivery team label." },
+      { name: "clientNames", req: false, type: "string | string[]", notes: "Client contact names. Write as comma-separated string or JSON array." },
+      { name: "clientEmails", req: false, type: "string | string[]", notes: "Client emails. Write as comma-separated string or JSON array." },
+      { name: "clientPartner", req: false, type: "string", notes: "Client partner label." },
+      { name: "proposalNumber", req: false, type: "string", notes: "Linked proposal / quote number." },
+      { name: "loi", req: false, type: "string", notes: "Letter of intent / LOI reference." },
+      { name: "location", req: false, type: "string", notes: "Project location (projectLocation)." },
+      { name: "orderBookRef", req: false, type: "string", notes: "Order-book reference number." },
+      { name: "toolNames", req: false, type: "string", notes: "Tools used on the project." },
+      { name: "capexOpex", req: false, type: "string", notes: "CAPEX or OPEX classification." },
+      { name: "productName", req: false, type: "string", notes: "Product line name." },
+      { name: "tagEmployees", req: false, type: "string | string[]", notes: "Tagged employee ids." },
+      { name: "watchers", req: false, type: "string | string[]", notes: "Watcher employee ids." },
+      { name: "financeTeamWatchers", req: false, type: "string[]", notes: "Finance watcher labels (transient, not persisted as a column)." },
+      { name: "serviceLineEstimate", req: false, type: "object", notes: "Map of service-line name → estimate dimensions. Keys become getServiceLines()." },
+      { name: "projectEstimate", req: false, type: "object", notes: "Nested estimate tree: teamEstimate[teamId].estimates[year][SKILL|GRADE|RESOURCE|GENERAL|DESIGNATION|PRACTICE][name][bucket]=hours." },
+      { name: "hoursUserSkillMonthlySplitJson", req: false, type: "string", notes: "JSON blob of hours split by user, skill, and month." },
+      { name: "restrictedByUserTeamIds", req: false, type: "string | number[]", notes: "Teams allowed to see this project." },
+      { name: "restrictedByEmployeeIds", req: false, type: "string | number[]", notes: "Employees allowed to see this project." },
+      { name: "restrictedByEmployeeSkills", req: false, type: "string | string[]", notes: "Skills that grant visibility." },
+      { name: "automationEnabled", req: false, type: "boolean", notes: "Enable project automation hooks." },
+      { name: "hasPPI", req: false, type: "boolean", notes: "Project has PPI tracking." },
+      { name: "archived", req: false, type: "boolean", notes: "Archive flag." },
+      { name: "completedBy", req: false, type: "number", notes: "Employee id who completed the project." },
+      { name: "closedBy", req: false, type: "number", notes: "Employee id who closed the project." },
+      { name: "checklistStatus", req: false, type: "string", notes: "PENDING, INPROGRESS, COMPLETED." },
+      { name: "checklistData", req: false, type: "object", notes: "Checklist payload: { metaData, questionDataList }." },
+      { name: "checklistTemplateForChild", req: false, type: "number", notes: "Checklist template id applied to child items." },
+      F.createdBy,
+      { name: "createdDate", req: false, type: "datetime", notes: "Create time. Server-owned; send only if you must preserve a value." },
+      { name: "modifiedBy", req: false, type: "number", notes: "Last editor employee id." },
+      { name: "lastModifiedDate", req: false, type: "datetime", notes: "Last update time. Server-owned on write." },
+      { name: "deleted", req: false, type: "boolean", notes: "Soft-delete flag. Leave false on create." },
+      { name: "serviceCategory", req: false, type: "string", notes: "PO-inherited service category (present on ProjectInfo reads / some writes)." },
+      { name: "phoneNumber", req: false, type: "string", notes: "PO-inherited client phone." },
+      { name: "contractType", req: false, type: "string", notes: "PO-inherited contract type." },
+      { name: "surveyType", req: false, type: "string", notes: "PO-inherited survey type." },
+      { name: "sample", req: false, type: "string", notes: "PO-inherited sample size / description." },
+      { name: "currency", req: false, type: "string", notes: "PO-inherited ISO currency." },
+      { name: "targetAudience", req: false, type: "string", notes: "PO-inherited audience." },
+      { name: "sampleTargeting", req: false, type: "string", notes: "PO-inherited targeting." },
+      { name: "estimatedIR", req: false, type: "string", notes: "PO-inherited estimated incidence rate." },
+      { name: "timezone", req: false, type: "string", notes: "PO-inherited timezone." }
+    ];
+    const PROJECT_RESP = PROJECT_BODY.concat([
+      { name: "billableMins", req: false, type: "number", notes: "Rolled-up billable minutes (list / summary reads)." },
+      { name: "nonBillableMins", req: false, type: "number", notes: "Rolled-up non-billable minutes." },
+      { name: "actualHours", req: false, type: "number", notes: "Actual hours booked." },
+      { name: "actualDurationInMins", req: false, type: "number", notes: "Actual duration in minutes." },
+      { name: "shared", req: false, type: "boolean", notes: "Whether the project is shared with the viewer." },
+      { name: "favorite", req: false, type: "boolean", notes: "Whether the viewer favorited the project." },
+      { name: "completedTaskCount", req: false, type: "number", notes: "Completed deliverable count." },
+      { name: "taskTotalCount", req: false, type: "number", notes: "Total deliverable count." },
+      { name: "taskIds", req: false, type: "string[]", notes: "Deliverable ids on the project." },
+      { name: "taskServiceLines", req: false, type: "string[]", notes: "Service lines from child tasks." },
+      { name: "taskInfoList", req: false, type: "object[]", notes: "Embedded TaskInfo rows on summary reads." },
+      { name: "contributors", req: false, type: "number[]", notes: "Contributor employee ids." },
+      { name: "serviceLines", req: false, type: "string[]", notes: "Derived from serviceLineEstimate keys (read-only)." }
+    ]);
+    const PO_BODY = [
+      F.name, F.team, F.createdBy,
+      { name: "code", req: false, type: "string", notes: "PO / contract code." },
+      { name: "clientProjectId", req: false, type: "string", notes: "Client-side project identifier." },
+      { name: "clientCompanyName", req: false, type: "string", notes: "Client company display name." },
+      { name: "salesForceId", req: false, type: "string", notes: "Salesforce opportunity / contract id." },
+      { name: "source", req: false, type: "string", notes: "Origin system, e.g. SALESFORCE or MANUAL." },
+      { name: "bidId", req: false, type: "string", notes: "Bid or quote id." },
+      { name: "contractType", req: false, type: "string", notes: "Contract type." },
+      { name: "serviceCategory", req: false, type: "string", notes: "Service category." },
+      { name: "startDate", req: false, type: "datetime", notes: "Contract start." },
+      { name: "endDate", req: false, type: "datetime", notes: "Contract end." },
+      { name: "amount", req: false, type: "number", notes: "Contract value." },
+      { name: "currency", req: false, type: "string", notes: "ISO currency, e.g. USD." },
+      { name: "status", req: false, type: "string", notes: "PO status." },
+      { name: "timezone", req: false, type: "string", notes: "Contract timezone." },
+      { name: "phoneNumber", req: false, type: "string", notes: "Client phone." },
+      { name: "targetAudience", req: false, type: "string", notes: "Audience description." },
+      { name: "includedUserTeamIds", req: false, type: "string", notes: "Teams allowed on this PO (comma-separated ids)." }
+    ];
+    const PO_RESP = [
+      ID, F.name, F.team,
+      { name: "code", req: false, type: "string", notes: "PO / contract code." },
+      { name: "status", req: true, type: "string", notes: "Current PO status." },
+      { name: "clientCompanyName", req: false, type: "string", notes: "Client company." },
+      { name: "clientProjectId", req: false, type: "string", notes: "Client project id." },
+      { name: "salesForceId", req: false, type: "string", notes: "Salesforce id." },
+      { name: "source", req: false, type: "string", notes: "Origin system." },
+      { name: "bidId", req: false, type: "string", notes: "Bid id." },
+      { name: "currency", req: false, type: "string", notes: "ISO currency." },
+      { name: "amount", req: false, type: "number", notes: "Contract value." },
+      { name: "startDate", req: false, type: "datetime", notes: "Contract start." },
+      { name: "endDate", req: false, type: "datetime", notes: "Contract end." },
+      { name: "createdBy", req: true, type: "number", notes: "Creator employee id." },
+      AUDIT, MOD, DEL
+    ];
+    const TASK_BODY = [
+      { name: "name", req: true, type: "string", notes: "Deliverable (task) name." },
+      F.projectId, F.team, F.createdBy,
+      { name: "description", req: false, type: "string", notes: "Deliverable details." },
+      { name: "taskOwner", req: false, type: "number", notes: "Owner employee id." },
+      { name: "assignee", req: false, type: "number", notes: "Assignee employee id (alias used by some clients)." },
+      { name: "priority", req: false, type: "string", notes: "Task priority." },
+      { name: "taskType", req: false, type: "string", notes: "Task type enum." },
+      { name: "status", req: false, type: "string", notes: "Task status." },
+      { name: "active", req: false, type: "boolean", notes: "Whether the deliverable is active." },
+      { name: "serviceLine", req: false, type: "string", notes: "Service line." },
+      { name: "taskCategory", req: false, type: "string", notes: "Task category." },
+      { name: "estStartTime", req: false, type: "datetime", notes: "Planned start." },
+      { name: "estCompletionTime", req: false, type: "datetime", notes: "Planned end." },
+      { name: "estDurationMins", req: false, type: "number", notes: "Estimated duration in minutes." },
+      { name: "estHours", req: false, type: "number", notes: "Estimated hours (convenience)." },
+      { name: "sprintBucket", req: false, type: "string", notes: "Sprint / bucket label." }
+    ];
+    const TASK_RESP = [
+      ID, { name: "name", req: true, type: "string", notes: "Deliverable name." },
+      { name: "projectId", req: true, type: "number", notes: "Parent project id." },
+      F.team,
+      { name: "description", req: false, type: "string", notes: "Details." },
+      { name: "taskOwner", req: false, type: "number", notes: "Owner employee id." },
+      { name: "status", req: true, type: "string", notes: "Task status." },
+      { name: "priority", req: false, type: "string", notes: "Priority." },
+      { name: "taskType", req: false, type: "string", notes: "Type." },
+      { name: "active", req: false, type: "boolean", notes: "Active flag." },
+      { name: "serviceLine", req: false, type: "string", notes: "Service line." },
+      { name: "taskCategory", req: false, type: "string", notes: "Category." },
+      { name: "estStartTime", req: false, type: "datetime", notes: "Planned start." },
+      { name: "estCompletionTime", req: false, type: "datetime", notes: "Planned end." },
+      { name: "estDurationMins", req: false, type: "number", notes: "Estimate in minutes." },
+      { name: "createdBy", req: true, type: "number", notes: "Creator employee id." },
+      AUDIT, MOD, DEL
+    ];
+    const ACT_BODY = [
+      { name: "name", req: true, type: "string", notes: "Work item (task activity) name." },
+      F.taskId, F.projectId, F.team, F.createdBy,
+      { name: "employeeId", req: false, type: "number", notes: "Assignee employee id." },
+      { name: "description", req: false, type: "string", notes: "Work item details." },
+      { name: "status", req: false, type: "string", notes: "Activity status." },
+      { name: "taskType", req: false, type: "string", notes: "Task type." },
+      { name: "taskActivityType", req: false, type: "string", notes: "Activity type." },
+      { name: "estDurationInMins", req: false, type: "number", notes: "Estimated minutes." },
+      { name: "estStartTime", req: false, type: "datetime", notes: "Planned start." },
+      { name: "skill", req: false, type: "string", notes: "Required skill." },
+      { name: "canComplete", req: false, type: "boolean", notes: "Whether the assignee may complete it." },
+      { name: "assignedBy", req: false, type: "number", notes: "Assigner employee id." }
+    ];
+    const ACT_RESP = [
+      ID, { name: "name", req: true, type: "string", notes: "Work item name." },
+      { name: "taskId", req: true, type: "number", notes: "Parent deliverable id." },
+      { name: "projectId", req: false, type: "number", notes: "Parent project id when present." },
+      F.team,
+      { name: "employeeId", req: false, type: "number", notes: "Assignee." },
+      { name: "status", req: true, type: "string", notes: "Activity status." },
+      { name: "description", req: false, type: "string", notes: "Details." },
+      { name: "estDurationInMins", req: false, type: "number", notes: "Estimate in minutes." },
+      { name: "durationInMins", req: false, type: "number", notes: "Actual recorded minutes." },
+      { name: "skill", req: false, type: "string", notes: "Skill." },
+      { name: "approvalStatus", req: false, type: "string", notes: "Timesheet / approval status when booked." },
+      { name: "createdBy", req: true, type: "number", notes: "Creator employee id." },
+      AUDIT, MOD, DEL
+    ];
+    const EMP_RESP = [
+      ID,
+      { name: "firstName", req: true, type: "string", notes: "Given name. Persona-masked for some callers." },
+      { name: "lastName", req: false, type: "string", notes: "Family name. May be masked." },
+      { name: "email", req: false, type: "string", notes: "Work email. May be masked." },
+      F.team,
+      { name: "employeeCode", req: false, type: "string", notes: "HR employee code." },
+      { name: "designation", req: false, type: "string", notes: "Job title." },
+      { name: "reportingManager", req: false, type: "number", notes: "Manager employee id." },
+      { name: "isActive", req: false, type: "boolean", notes: "Active employment flag." },
+      AUDIT, DEL
+    ];
+    const NOTE_RESP = [
+      ID,
+      { name: "note", req: true, type: "string", notes: "Note body." },
+      { name: "employeeId", req: true, type: "number", notes: "Owner employee id." },
+      { name: "status", req: false, type: "string", notes: "Note status." },
+      F.team, AUDIT
+    ];
+    const TS_RESP = [
+      { name: "employeeId", req: true, type: "number", notes: "Timesheet owner." },
+      F.team,
+      { name: "startDate", req: true, type: "datetime", notes: "Period start." },
+      { name: "endDate", req: true, type: "datetime", notes: "Period end." },
+      { name: "entries", req: false, type: "array", notes: "Day / activity time entries." },
+      { name: "status", req: false, type: "string", notes: "Timesheet approval status." }
+    ];
+    const ATT_RESP = [
+      ID,
+      { name: "employeeId", req: true, type: "number", notes: "Employee id." },
+      { name: "attendanceDate", req: true, type: "datetime", notes: "Attendance day." },
+      { name: "status", req: true, type: "string", notes: "Attendance status." },
+      { name: "inTime", req: false, type: "datetime", notes: "Check-in time." },
+      { name: "outTime", req: false, type: "datetime", notes: "Check-out time." },
+      F.team
+    ];
+    const LIST_RESP = [{ name: "payload", req: true, type: "array", notes: "Array of matching records inside the success envelope." }];
+    const FLAG_RESP = [
+      { name: "payload", req: true, type: "object", notes: "Write acknowledgement." },
+      { name: "payload.success", req: false, type: "boolean", notes: "True when the mutation applied." },
+      { name: "payload.id", req: false, type: "number", notes: "Affected record id when returned." }
+    ];
+    const AUDIT_RESP = [
+      { name: "events", req: true, type: "array", notes: "Secured audit timeline page." },
+      { name: "events[].action", req: false, type: "string", notes: "Audit action name." },
+      { name: "events[].actorUserId", req: false, type: "number", notes: "Actor employee id." },
+      { name: "events[].at", req: false, type: "datetime", notes: "Event time." },
+      { name: "page", req: false, type: "number", notes: "Current page (0-based)." },
+      { name: "pageSize", req: false, type: "number", notes: "Page size." },
+      { name: "total", req: false, type: "number", notes: "Total events when provided." }
+    ];
+    const CENTER_OBJ = [
+      { name: "id", req: true, type: "string", notes: "Connector, adapter, mapping, or job id." },
+      { name: "name", req: true, type: "string", notes: "Display name." },
+      { name: "status", req: false, type: "string", notes: "Connector / job status." },
+      { name: "type", req: false, type: "string", notes: "Connector or adapter type." },
+      { name: "lastSyncAt", req: false, type: "datetime", notes: "Last successful sync." }
+    ];
+    const HEADER_FIELDS = [
+      { name: "Authorization", req: true, type: "string", notes: "Bearer {integration secret} from Integrations → API access. Format tk_live_… or tk_test_…." },
+      { name: "Content-Type", req: false, type: "string", notes: "application/json on POST, PUT, and PATCH bodies. Omit on GET." }
+    ];
+    const ENVELOPE_FIELDS = [
+      { name: "payload", req: true, type: "object | array", notes: "Success body. Entity, list, or write acknowledgement." },
+      { name: "error", req: false, type: "array", notes: "Present on failure: [{ message, code }]." }
+    ];
+
+    function api(spec) {
+      const route = spec.route || (typeof spec.path === "string" ? spec.path : "");
+      const pathParams = spec.pathParams || (Array.isArray(spec.path) ? spec.path : []);
+      return Object.assign({
+        query: [], body: [],
+        response: LIST_RESP,
+        errors: SHARED_ERRORS
+      }, spec, { route: route, path: pathParams });
+    }
+
+    const APIS = [
+      api({ id: "proj-create", group: "Projects", name: "Create project", method: "POST", route: "/api/v2/projects", scope: "projects.write",
+        desc: "Create a project under an existing purchase order on the key team.",
+        body: PROJECT_BODY, response: PROJECT_RESP,
+        sample: { name: "ERP project", userTeamId: 101, purchaseOrderId: 9001, createdBy: 12 } }),
+      api({ id: "proj-update", group: "Projects", name: "Update project", method: "PUT", route: "/api/v2/projects", scope: "projects.write",
+        desc: "Update an existing project. Send id plus changed fields.",
+        body: [{ name: "id", req: true, type: "number", notes: "Project id." }].concat(PROJECT_BODY), response: PROJECT_RESP,
+        sample: { id: 44102, name: "ERP project", userTeamId: 101, purchaseOrderId: 9001 } }),
+      api({ id: "proj-list", group: "Projects", name: "List projects", method: "GET", route: "/api/v2/projects", scope: "projects.read",
+        desc: "List projects in a date window for employees on the key team.",
+        query: [F.teams, F.emps, F.start, F.end, F.onlyTeams] }),
+      api({ id: "proj-by-po", group: "Projects", name: "List by purchase order", method: "GET", route: "/api/v2/projects/purchaseorders", scope: "projects.read",
+        desc: "Projects hanging off a PO number.",
+        query: [{ name: "purchaseOrderNumber", req: true, type: "number", notes: "PO number." }, F.teams] }),
+      api({ id: "proj-timesheet", group: "Projects", name: "List for timesheet", method: "GET", route: "/api/v2/projects/timesheet", scope: "projects.read",
+        desc: "Projects an employee can book time against.",
+        query: [F.emp, F.team, F.start, F.end, F.onlyTeams] }),
+      api({ id: "proj-search", group: "Projects", name: "Search projects", method: "POST", route: "/api/v2/projects/search", scope: "projects.write",
+        desc: "Search. Empty userTeamIds returns [].",
+        query: [F.emp, F.teams, F.onlyTeams],
+        body: [F.search, { name: "status", req: false, type: "string", notes: "Optional status filter." }],
+        sample: { searchText: "ERP" } }),
+      api({ id: "proj-get", group: "Projects", name: "Get project", method: "GET", route: "/api/v2/projects/{projectId}", scope: "projects.read",
+        desc: "Single project. Id may be numeric.",
+        path: [F.projectId], response: PROJECT_RESP }),
+      api({ id: "proj-audit", group: "Projects", name: "Project audit", method: "GET", route: "/api/v2/projects/{projectId}/audit", scope: "projects.read",
+        desc: "Secured audit timeline.",
+        path: [F.projectId], query: [F.viewer, F.page, F.pageSize], response: AUDIT_RESP }),
+      api({ id: "proj-details", group: "Projects", name: "Project details", method: "GET", route: "/api/v2/projects/details/{projectId}", scope: "projects.read",
+        desc: "Expanded project details payload.",
+        path: [F.projectId], response: PROJECT_RESP }),
+      api({ id: "proj-agg", group: "Projects", name: "Project aggregate", method: "GET", route: "/api/v2/projects/{projectId}/aggregate", scope: "projects.read",
+        desc: "Roll-up / commercial aggregate for the project.",
+        path: [F.projectId], response: [{ name: "payload", type: "object", notes: "Aggregate metrics and references." }] }),
+      api({ id: "proj-closure-get", group: "Projects", name: "Get closure", method: "GET", route: "/api/v2/projects/{projectId}/closure", scope: "projects.read",
+        desc: "Closure packet if present.",
+        path: [F.projectId], response: [{ name: "payload", type: "object", notes: "Closure state." }] }),
+      api({ id: "proj-closure-post", group: "Projects", name: "Submit closure", method: "POST", route: "/api/v2/projects/{projectId}/closure", scope: "projects.write",
+        desc: "Submit project closure.",
+        path: [F.projectId],
+        body: [{ name: "notes", req: false, type: "string", notes: "Closure notes." }],
+        sample: { notes: "Delivery complete" }, response: FLAG_RESP }),
+      api({ id: "proj-signoff", group: "Projects", name: "Closure sign-off", method: "POST", route: "/api/v2/projects/{projectId}/closure/sign-off", scope: "projects.write",
+        desc: "Sign off closure.",
+        path: [F.projectId],
+        body: [{ name: "approved", req: true, type: "boolean", notes: "Sign-off decision." }],
+        sample: { approved: true }, response: FLAG_RESP }),
+      api({ id: "proj-del-flag", group: "Projects", name: "Delete project (flag)", method: "DELETE", route: "/api/v2/projects/{projectId}/{isDelete}", scope: "projects.write",
+        desc: "Soft/hard delete using the isDelete flag.",
+        path: [F.projectId, F.isDelete], response: FLAG_RESP }),
+      api({ id: "proj-status", group: "Projects", name: "Update project status", method: "PUT", route: "/api/v2/projects/status/{projectId}/{status}", scope: "projects.write",
+        desc: "Set project status.",
+        path: [F.projectId, F.status], response: FLAG_RESP }),
+      api({ id: "proj-archive", group: "Projects", name: "Archive project", method: "PUT", route: "/api/v2/projects/{projectId}/{isArchive}", scope: "projects.write",
+        desc: "Archive or restore.",
+        path: [F.projectId, F.isArchive], response: FLAG_RESP }),
+      api({ id: "proj-fav", group: "Projects", name: "Favorite project", method: "PUT", route: "/api/v2/projects/favorite/{projectId}/{employeeId}/{isFavorite}", scope: "projects.write",
+        desc: "Toggle favorite for an employee.",
+        path: [F.projectId, F.emp, { name: "isFavorite", req: true, type: "boolean", notes: "Favorite flag." }], response: FLAG_RESP }),
+      api({ id: "proj-del", group: "Projects", name: "Delete project", method: "DELETE", route: "/api/v2/projects/{projectId}", scope: "projects.write",
+        desc: "Delete project by id.",
+        path: [F.projectId], response: FLAG_RESP }),
+      api({ id: "proj-est", group: "Projects", name: "Update estimate", method: "PUT", route: "/api/v2/projects/estimate/{projectId}", scope: "projects.write",
+        desc: "Update estimate dimensions.",
+        path: [F.projectId],
+        body: [{ name: "estHours", req: false, type: "number", notes: "Hours." }, { name: "dimensions", req: false, type: "object", notes: "Estimate dimension map." }],
+        sample: { estHours: 120 }, response: FLAG_RESP }),
+      api({ id: "proj-est-dim", group: "Projects", name: "Estimate dimensions", method: "GET", route: "/api/v2/projects/estimate/dimensions", scope: "projects.read",
+        desc: "Catalog of estimate dimensions.",
+        response: [{ name: "payload", type: "array", notes: "Dimension definitions." }] }),
+
+      api({ id: "po-create", group: "Purchase orders", name: "Create purchase order", method: "POST", route: "/api/v2/purchaseorder", scope: "purchaseorders.write",
+        desc: "Create the purchase contract that projects hang off.",
+        body: PO_BODY, response: PO_RESP,
+        sample: { name: "ACME FY26", userTeamId: 101, createdBy: 12, code: "PO-9001" } }),
+      api({ id: "po-update", group: "Purchase orders", name: "Update purchase order", method: "PUT", route: "/api/v2/purchaseorder", scope: "purchaseorders.write",
+        desc: "Update an existing PO.",
+        body: [{ name: "id", req: true, type: "number", notes: "PO id." }].concat(PO_BODY), response: PO_RESP,
+        sample: { id: 9001, name: "ACME FY26", userTeamId: 101 } }),
+      api({ id: "po-list", group: "Purchase orders", name: "List purchase orders", method: "GET", route: "/api/v2/purchaseorder", scope: "purchaseorders.read",
+        desc: "Empty userTeamIds returns [].",
+        query: [F.teams, { ...F.start, req: false }, { ...F.end, req: false }] }),
+      api({ id: "po-sf", group: "Purchase orders", name: "List Salesforce POs", method: "GET", route: "/api/v2/purchaseorder/salesforce", scope: "purchaseorders.read",
+        desc: "Salesforce-origin purchase orders for the team.",
+        query: [F.teams, { ...F.start, req: false }, { ...F.end, req: false }] }),
+      api({ id: "po-search", group: "Purchase orders", name: "Search purchase orders", method: "POST", route: "/api/v2/purchaseorder/search", scope: "purchaseorders.write",
+        desc: "Search POs. Empty teams returns [].",
+        query: [F.teams, F.onlyTeams],
+        body: [F.search], sample: { searchText: "ACME" } }),
+      api({ id: "po-get", group: "Purchase orders", name: "Get purchase order", method: "GET", route: "/api/v2/purchaseorder/{purchaseOrderId}", scope: "purchaseorders.read",
+        desc: "Single PO.",
+        path: [F.po], response: PO_RESP }),
+      api({ id: "po-audit", group: "Purchase orders", name: "PO audit", method: "GET", route: "/api/v2/purchaseorder/{purchaseOrderId}/audit", scope: "purchaseorders.read",
+        desc: "Secured PO audit timeline.",
+        path: [F.po], query: [F.viewer, F.page, F.pageSize], response: AUDIT_RESP }),
+      api({ id: "po-del-flag", group: "Purchase orders", name: "Delete PO (flag)", method: "DELETE", route: "/api/v2/purchaseorder/{purchaseOrderId}/{isDelete}", scope: "purchaseorders.write",
+        desc: "Delete with isDelete flag.",
+        path: [F.po, F.isDelete], response: FLAG_RESP }),
+      api({ id: "po-status", group: "Purchase orders", name: "Update PO status", method: "PUT", route: "/api/v2/purchaseorder/status/{purchaseOrderId}/{status}", scope: "purchaseorders.write",
+        desc: "Set PO status.",
+        path: [F.po, F.status], response: FLAG_RESP }),
+      api({ id: "po-archive", group: "Purchase orders", name: "Archive PO", method: "PUT", route: "/api/v2/purchaseorder/{purchaseOrderId}/{isArchive}", scope: "purchaseorders.write",
+        desc: "Archive or restore a PO.",
+        path: [F.po, F.isArchive], response: FLAG_RESP }),
+      api({ id: "po-del", group: "Purchase orders", name: "Delete PO", method: "DELETE", route: "/api/v2/purchaseorder/{purchaseOrderId}", scope: "purchaseorders.write",
+        desc: "Delete PO by id.",
+        path: [F.po], response: FLAG_RESP }),
+
+      api({ id: "task-list", group: "Tasks", name: "List tasks for project", method: "GET", route: "/api/v2/task/{projectId}", scope: "tasks.read",
+        desc: "Deliverables on a project.",
+        path: [F.projectId], query: [{ ...F.teams, req: false }, { ...F.emps, req: false }] }),
+      api({ id: "task-recurring", group: "Tasks", name: "Recurring tasks", method: "GET", route: "/api/v2/task/recurring/{projectId}", scope: "tasks.read",
+        desc: "Recurrable tasks on a project.",
+        path: [F.projectId] }),
+      api({ id: "task-get", group: "Tasks", name: "Get task", method: "GET", route: "/api/v2/task/info/{taskId}", scope: "tasks.read",
+        desc: "Single deliverable.",
+        path: [F.taskId], response: TASK_RESP }),
+      api({ id: "task-create", group: "Tasks", name: "Create task", method: "POST", route: "/api/v2/task", scope: "tasks.write",
+        desc: "Create a deliverable on an existing project.",
+        body: TASK_BODY, response: TASK_RESP,
+        sample: { name: "Build API sync", projectId: 44102, userTeamId: 101, createdBy: 12 } }),
+      api({ id: "task-update", group: "Tasks", name: "Update task", method: "PUT", route: "/api/v2/task", scope: "tasks.write",
+        desc: "Update a deliverable.",
+        body: [{ name: "id", req: true, type: "number", notes: "Task id." }].concat(TASK_BODY), response: TASK_RESP,
+        sample: { id: 8801, name: "Build API sync", projectId: 44102 } }),
+      api({ id: "task-remove", group: "Tasks", name: "Remove task", method: "DELETE", route: "/api/v2/task/{taskId}", scope: "tasks.write",
+        desc: "Remove task.",
+        path: [F.taskId], response: FLAG_RESP }),
+      api({ id: "task-active", group: "Tasks", name: "Activate task", method: "PUT", route: "/api/v2/task/{taskId}/{isActive}", scope: "tasks.write",
+        desc: "Activate or deactivate.",
+        path: [F.taskId, F.isActive], response: FLAG_RESP }),
+      api({ id: "task-del-flag", group: "Tasks", name: "Delete task (flag)", method: "DELETE", route: "/api/v2/task/{taskId}/{isDelete}", scope: "tasks.write",
+        desc: "Delete with isDelete flag.",
+        path: [F.taskId, F.isDelete], response: FLAG_RESP }),
+      api({ id: "task-status", group: "Tasks", name: "Update task status", method: "PUT", route: "/api/v2/task/status/{taskId}/{status}", scope: "tasks.write",
+        desc: "Set task status.",
+        path: [F.taskId, F.status], response: FLAG_RESP }),
+      api({ id: "act-list", group: "Work items", name: "List activities for task", method: "GET", route: "/api/v2/task/activity/list/{taskId}", scope: "tasks.read",
+        desc: "Work items under a deliverable.",
+        path: [F.taskId], query: [{ ...F.teams, req: false }, { ...F.emps, req: false }] }),
+      api({ id: "act-get", group: "Work items", name: "Get activity", method: "GET", route: "/api/v2/task/activity/{taskActivityId}", scope: "tasks.read",
+        desc: "Single work item.",
+        path: [F.activityId], response: ACT_RESP }),
+      api({ id: "act-trace", group: "Work items", name: "Activity trace", method: "GET", route: "/api/v2/task/activity/{taskActivityId}/trace", scope: "tasks.read",
+        desc: "Trace / lineage for a work item.",
+        path: [F.activityId], response: [{ name: "payload", type: "object", notes: "Trace graph." }] }),
+      api({ id: "act-cloned", group: "Work items", name: "Cloned-by activity", method: "GET", route: "/api/v2/task/activity/clonedby/{taskActivityId}", scope: "tasks.read",
+        desc: "Activities cloned from this work item.",
+        path: [F.activityId] }),
+      api({ id: "act-create", group: "Work items", name: "Create activity", method: "POST", route: "/api/v2/task/activity", scope: "tasks.write",
+        desc: "Create a work item under an existing task.",
+        body: ACT_BODY, response: ACT_RESP,
+        sample: { name: "Implement mapper", taskId: 8801, projectId: 44102, userTeamId: 101 } }),
+      api({ id: "act-update", group: "Work items", name: "Update activity", method: "PUT", route: "/api/v2/task/activity", scope: "tasks.write",
+        desc: "Update a work item.",
+        body: [{ name: "id", req: true, type: "number", notes: "Activity id." }].concat(ACT_BODY), response: ACT_RESP,
+        sample: { id: 9901, name: "Implement mapper", taskId: 8801 } }),
+      api({ id: "act-del", group: "Work items", name: "Delete activity", method: "DELETE", route: "/api/v2/task/activity/{taskActivityId}", scope: "tasks.write",
+        desc: "Delete work item.",
+        path: [F.activityId], response: FLAG_RESP }),
+      api({ id: "act-del-flag", group: "Work items", name: "Delete activity (flag)", method: "DELETE", route: "/api/v2/task/activity/{taskActivityId}/{isDelete}", scope: "tasks.write",
+        desc: "Delete with isDelete flag.",
+        path: [F.activityId, F.isDelete], response: FLAG_RESP }),
+      api({ id: "act-status-body", group: "Work items", name: "Update activity status (body)", method: "PUT", route: "/api/v2/task/activity/status", scope: "tasks.write",
+        desc: "Status update via body.",
+        body: [F.activityId, F.status], sample: { taskActivityId: 9901, status: "INPROGRESS" }, response: FLAG_RESP }),
+      api({ id: "act-status", group: "Work items", name: "Update activity status", method: "PUT", route: "/api/v2/task/activity/status/{taskActivityId}/{status}", scope: "tasks.write",
+        desc: "Status update via path.",
+        path: [F.activityId, F.status], response: FLAG_RESP }),
+      api({ id: "act-pause", group: "Work items", name: "Pause activity", method: "PUT", route: "/api/v2/task/activity/pause", scope: "tasks.write",
+        desc: "Pause the running work item timer.",
+        body: [F.activityId], sample: { taskActivityId: 9901 }, response: FLAG_RESP }),
+      api({ id: "act-play", group: "Work items", name: "Play activity", method: "PUT", route: "/api/v2/task/activity/play/{savePrevious}", scope: "tasks.write",
+        desc: "Start / resume a work item.",
+        path: [{ name: "savePrevious", req: true, type: "boolean", notes: "Persist previous timer slice." }],
+        body: [F.activityId], sample: { taskActivityId: 9901 }, response: FLAG_RESP }),
+      api({ id: "act-proj", group: "Work items", name: "Activities by project", method: "GET", route: "/api/v2/task/activity/project/list/{projectId}", scope: "tasks.read",
+        desc: "All work items on a project.",
+        path: [F.projectId] }),
+      api({ id: "act-board", group: "Work items", name: "Activity board list", method: "GET", route: "/api/v2/task/activity/board/list", scope: "tasks.read",
+        desc: "Board-oriented activity list. Query params follow the live board contract.",
+        query: [{ ...F.teams, req: false }, { ...F.emps, req: false }] }),
+      api({ id: "act-pending", group: "Work items", name: "Pending activities", method: "GET", route: "/api/v2/task/activity/list/pending", scope: "tasks.read",
+        desc: "Pending work items.",
+        query: [{ ...F.teams, req: false }, { ...F.emps, req: false }] }),
+      api({ id: "act-done", group: "Work items", name: "Completed activities", method: "GET", route: "/api/v2/task/activity/list/completed", scope: "tasks.read",
+        desc: "Completed work items.",
+        query: [{ ...F.teams, req: false }, { ...F.emps, req: false }] }),
+      api({ id: "act-all-alias", group: "Work items", name: "Activities list", method: "GET", route: "/api/v2/task/activities/list", scope: "tasks.read",
+        desc: "Alias list of activities.",
+        query: [{ ...F.teams, req: false }, { ...F.emps, req: false }] }),
+      api({ id: "act-all", group: "Work items", name: "All activities", method: "GET", route: "/api/v2/task/activity/all/list", scope: "tasks.read",
+        desc: "Unfiltered activity list for the scoped team.",
+        query: [{ ...F.teams, req: false }] }),
+      api({ id: "ts-get", group: "Timesheet", name: "Get timesheet", method: "GET", route: "/api/v2/task/timesheet", scope: "tasks.read",
+        desc: "Timesheet rows for an employee/window. Protected production flow — use existing field contract.",
+        query: [F.emp, F.team, F.start, F.end] }),
+      api({ id: "ts-put", group: "Timesheet", name: "Update timesheet", method: "PUT", route: "/api/v2/task/timesheet", scope: "tasks.write",
+        desc: "Write timesheet hours. Does not change approval engine behavior.",
+        body: [
+          F.emp, F.team,
+          { name: "entries", req: true, type: "array", notes: "TimeSheetRequest entries (date, hours, activity)." }
+        ],
+        sample: { employeeId: 12, userTeamId: 101, entries: [] }, response: FLAG_RESP }),
+      api({ id: "note-create", group: "Notes", name: "Create note", method: "POST", route: "/api/v2/task/notes", scope: "tasks.write",
+        desc: "Create a personal / task note.",
+        body: [
+          { name: "note", req: true, type: "string", notes: "Note body." },
+          F.emp, { name: "taskActivityId", req: false, type: "number", notes: "Optional work item." }
+        ],
+        sample: { note: "Blocked on PO", employeeId: 12 }, response: FLAG_RESP }),
+      api({ id: "note-update", group: "Notes", name: "Update note", method: "PUT", route: "/api/v2/task/notes", scope: "tasks.write",
+        desc: "Update a note.",
+        body: [{ name: "id", req: true, type: "number", notes: "Note id." }, { name: "note", req: true, type: "string", notes: "Note body." }],
+        sample: { id: 1, note: "Updated" }, response: FLAG_RESP }),
+      api({ id: "note-list", group: "Notes", name: "List notes", method: "GET", route: "/api/v2/task/notes/{employeeId}", scope: "tasks.read",
+        desc: "Notes for an employee.",
+        path: [F.emp] }),
+      api({ id: "note-status", group: "Notes", name: "Update note status", method: "PUT", route: "/api/v2/task/notes/{noteId}/{status}", scope: "tasks.write",
+        desc: "Set note status.",
+        path: [{ name: "noteId", req: true, type: "number", notes: "Note id." }, F.status], response: FLAG_RESP }),
+      api({ id: "note-del", group: "Notes", name: "Delete note", method: "DELETE", route: "/api/v2/task/notes/{noteId}", scope: "tasks.write",
+        desc: "Delete a note.",
+        path: [{ name: "noteId", req: true, type: "number", notes: "Note id." }], response: FLAG_RESP }),
+
+      api({ id: "emp-list", group: "Employees", name: "List employees", method: "GET", route: "/api/v2/employees", scope: "employees.read",
+        desc: "Employees on the given teams. Empty userTeamIds returns []. Writes need *.",
+        query: [F.teams], response: EMP_RESP }),
+      api({ id: "emp-all", group: "Employees", name: "List all by active", method: "GET", route: "/api/v2/employees/all/{isActive}", scope: "employees.read",
+        desc: "All employees filtered by active flag.",
+        path: [F.isActive], response: EMP_RESP }),
+      api({ id: "emp-get", group: "Employees", name: "Get employee", method: "GET", route: "/api/v2/employees/{employeeId}", scope: "employees.read",
+        desc: "Single employee. Team ACL applies.",
+        path: [F.emp], response: EMP_RESP }),
+      api({ id: "emp-360", group: "Employees", name: "Employee 360", method: "GET", route: "/api/v2/employees/{employeeId}/360", scope: "employees.read",
+        desc: "360 aggregate. Sensitive fields are persona-masked.",
+        path: [F.emp], response: [{ name: "payload", type: "object", notes: "Masked 360 aggregate." }] }),
+      api({ id: "emp-audit", group: "Employees", name: "Employee audit", method: "GET", route: "/api/v2/employees/{employeeId}/audit", scope: "employees.read",
+        desc: "Employee audit timeline.",
+        path: [F.emp], query: [F.viewer, F.page, F.pageSize], response: AUDIT_RESP }),
+      api({ id: "att-list", group: "Employees", name: "List attendance", method: "GET", route: "/api/v2/employees/attendance", scope: "employees.read",
+        desc: "Attendance matrix / list for the scoped team.",
+        query: [{ ...F.teams, req: false }, { ...F.start, req: false }, { ...F.end, req: false }] }),
+      api({ id: "att-pending", group: "Employees", name: "Pending attendance", method: "GET", route: "/api/v2/employees/attendance/pending", scope: "employees.read",
+        desc: "Pending attendance approvals.",
+        query: [{ ...F.teams, req: false }] }),
+      api({ id: "att-emp", group: "Employees", name: "Attendance by employee", method: "GET", route: "/api/v2/employees/attendance/{employeeId}", scope: "employees.read",
+        desc: "Attendance rows for one employee.",
+        path: [F.emp] }),
+      api({ id: "att-audit", group: "Employees", name: "Attendance audit", method: "GET", route: "/api/v2/employees/attendance/{attendanceId}/audit", scope: "employees.read",
+        desc: "Audit for one attendance row.",
+        path: [{ name: "attendanceId", req: true, type: "number", notes: "Attendance id." }],
+        query: [F.viewer, F.page, F.pageSize], response: AUDIT_RESP }),
+      api({ id: "emp-leaves", group: "Employees", name: "Integration leaves", method: "GET", route: "/api/v2/employees/integration/leaves", scope: "employees.read",
+        desc: "Leave rows exposed for integration consumers.",
+        query: [{ ...F.teams, req: false }, { ...F.emp, req: false }] }),
+
+      api({ id: "int-hub", group: "Integration center", name: "Hub overview", method: "GET", route: "/api/v2/integrations/center/hub/overview", scope: "integrations.read",
+        desc: "Integration hub snapshot for the team.",
+        query: [F.team], response: CENTER_OBJ }),
+      api({ id: "int-conn-list", group: "Integration center", name: "List connectors", method: "GET", route: "/api/v2/integrations/center/connectors", scope: "integrations.read",
+        desc: "Connectors for the team.",
+        query: [F.team, { name: "status", req: false, type: "string", notes: "Optional status filter." }] }),
+      api({ id: "int-conn-get", group: "Integration center", name: "Get connector", method: "GET", route: "/api/v2/integrations/center/connectors/{connectorId}", scope: "integrations.read",
+        desc: "Single connector.",
+        path: [{ name: "connectorId", req: true, type: "string", notes: "Connector id." }], query: [F.team], response: CENTER_OBJ }),
+      api({ id: "int-conn-create", group: "Integration center", name: "Create connector", method: "POST", route: "/api/v2/integrations/center/connectors", scope: "integrations.read",
+        desc: "Create a connector. Center writes still require integrations.read on scoped keys.",
+        query: [F.team],
+        body: [F.name, { name: "kind", req: false, type: "string", notes: "Connector kind." }, { name: "status", req: false, type: "string", notes: "Initial status." }],
+        sample: { name: "ERP connector", kind: "rest" }, response: CENTER_OBJ }),
+      api({ id: "int-map-save", group: "Integration center", name: "Save field mapping", method: "POST", route: "/api/v2/integrations/center/mappings", scope: "integrations.read",
+        desc: "Upsert a field mapping.",
+        query: [F.team],
+        body: [{ name: "connectorId", req: true, type: "string", notes: "Connector id." }, { name: "mappings", req: true, type: "array", notes: "Field map rows." }],
+        sample: { connectorId: "erp-1", mappings: [] }, response: CENTER_OBJ }),
+      api({ id: "int-jobs", group: "Integration center", name: "List sync jobs", method: "GET", route: "/api/v2/integrations/center/jobs", scope: "integrations.read",
+        desc: "Sync jobs.",
+        query: [F.team, { name: "connectorId", req: false, type: "string", notes: "Optional connector filter." }] }),
+      api({ id: "int-retry", group: "Integration center", name: "Retry sync job", method: "POST", route: "/api/v2/integrations/center/jobs/{jobId}/retry", scope: "integrations.read",
+        desc: "Retry a failed job.",
+        path: [{ name: "jobId", req: true, type: "string", notes: "Job id." }], query: [F.team],
+        body: [], sample: {}, response: FLAG_RESP }),
+      api({ id: "int-maps", group: "Integration center", name: "List mappings", method: "GET", route: "/api/v2/integrations/center/mappings", scope: "integrations.read",
+        desc: "Field mappings.",
+        query: [F.team, { name: "connectorId", req: false, type: "string", notes: "Optional connector filter." }] }),
+      api({ id: "int-logs", group: "Integration center", name: "List logs", method: "GET", route: "/api/v2/integrations/center/logs", scope: "integrations.read",
+        desc: "Integration logs.",
+        query: [F.team, { name: "connectorId", req: false, type: "string", notes: "Filter." }, { name: "level", req: false, type: "string", notes: "INFO / WARN / ERROR." }] }),
+      api({ id: "int-health", group: "Integration center", name: "Sync health", method: "GET", route: "/api/v2/integrations/center/sync-health/overview", scope: "integrations.read",
+        desc: "Sync health overview.",
+        query: [F.team], response: CENTER_OBJ }),
+      api({ id: "int-adp-list", group: "Integration center", name: "List adapters", method: "GET", route: "/api/v2/integrations/center/adapters", scope: "integrations.read",
+        desc: "Adapters.",
+        query: [F.team, { name: "transport", req: false, type: "string", notes: "Transport filter." }, { name: "kind", req: false, type: "string", notes: "Kind filter." }] }),
+      api({ id: "int-adp-get", group: "Integration center", name: "Get adapter", method: "GET", route: "/api/v2/integrations/center/adapters/{adapterId}", scope: "integrations.read",
+        desc: "Single adapter.",
+        path: [{ name: "adapterId", req: true, type: "string", notes: "Adapter id." }], query: [F.team], response: CENTER_OBJ }),
+      api({ id: "int-adp-test", group: "Integration center", name: "Test adapter", method: "POST", route: "/api/v2/integrations/center/adapters/{adapterId}/test", scope: "integrations.read",
+        desc: "Test adapter connectivity.",
+        path: [{ name: "adapterId", req: true, type: "string", notes: "Adapter id." }], query: [F.team], response: FLAG_RESP }),
+      api({ id: "int-adp-sync", group: "Integration center", name: "Trigger adapter sync", method: "POST", route: "/api/v2/integrations/center/adapters/{adapterId}/sync", scope: "integrations.read",
+        desc: "Kick a sync.",
+        path: [{ name: "adapterId", req: true, type: "string", notes: "Adapter id." }], query: [F.team], response: FLAG_RESP }),
+      api({ id: "int-recon", group: "Integration center", name: "Reconcile connector", method: "POST", route: "/api/v2/integrations/center/connectors/{connectorId}/reconcile", scope: "integrations.read",
+        desc: "Reconcile connector records.",
+        path: [{ name: "connectorId", req: true, type: "string", notes: "Connector id." }], query: [F.team], response: FLAG_RESP }),
+      api({ id: "int-legacy", group: "Integration center", name: "List legacy connections", method: "GET", route: "/api/v2/integrations/center/connections", scope: "integrations.read",
+        desc: "Legacy connection records.",
+        query: [F.team] }),
+      api({ id: "int-legacy-patch", group: "Integration center", name: "Update legacy connection", method: "PATCH", route: "/api/v2/integrations/center/connections/{legacyKey}", scope: "integrations.read",
+        desc: "Patch a legacy connection.",
+        path: [{ name: "legacyKey", req: true, type: "string", notes: "Legacy connection key." }], query: [F.team],
+        body: [{ name: "enabled", req: false, type: "boolean", notes: "Enable flag." }],
+        sample: { enabled: true }, response: FLAG_RESP }),
+      api({ id: "int-jobs-all", group: "Integration center", name: "Combined jobs", method: "GET", route: "/api/v2/integrations/center/jobs/combined", scope: "integrations.read",
+        desc: "Combined job list.",
+        query: [F.team, { name: "connectorId", req: false, type: "string", notes: "Optional filter." }] })
+    ];
+
+    const store = {
+      get(k, d) { try { return sessionStorage.getItem(k) || d; } catch (e) { return d; } },
+      set(k, v) { try { sessionStorage.setItem(k, v); } catch (e) {} }
+    };
+
+    function byId(id) { return document.getElementById(id); }
+    let selectedId = "";
+    let selectedGroup = "";
+    let activeTab = "request";
+    function creds() {
+      return {
+        base: byId("f-base").value.replace(/\/$/, ""),
+        secret: byId("f-secret").value.trim(),
+        team: byId("f-team").value.trim() || "101",
+        emp: byId("f-emp").value.trim() || "12"
+      };
+    }
+    function saveCreds() {
+      const c = creds();
+      store.set("intApiBase", c.base);
+      store.set("intApiSecret", c.secret);
+      store.set("intApiTeam", c.team);
+      store.set("intApiEmp", c.emp);
+    }
+    function loadCreds() {
+      byId("f-base").value = store.get("intApiBase", "https://YOUR_TENANT.tracopus.com");
+      byId("f-secret").value = store.get("intApiSecret", "");
+      byId("f-team").value = store.get("intApiTeam", "101");
+      byId("f-emp").value = store.get("intApiEmp", "12");
+    }
+    function haystack(a) {
+      return [a.group, a.name, a.route, a.method, a.scope, a.desc].join(" ").toLowerCase();
+    }
+    function filteredApis() {
+      const q = (byId("f-filter").value || "").trim().toLowerCase();
+      return APIS.filter((a) => {
+        if (selectedGroup && a.group !== selectedGroup) return false;
+        return !q || haystack(a).includes(q);
+      });
+    }
+    function fillChips() {
+      const box = byId("group-chips");
+      const groups = [];
+      APIS.forEach((a) => { if (groups.indexOf(a.group) < 0) groups.push(a.group); });
+      box.innerHTML = "";
+      const all = document.createElement("button");
+      all.type = "button";
+      all.textContent = "All";
+      all.className = selectedGroup ? "" : "is-on";
+      all.addEventListener("click", () => { selectedGroup = ""; fillCatalog(); });
+      box.appendChild(all);
+      groups.forEach((g) => {
+        const b = document.createElement("button");
+        b.type = "button";
+        b.textContent = g;
+        b.className = selectedGroup === g ? "is-on" : "";
+        b.addEventListener("click", () => { selectedGroup = g; fillCatalog(); });
+        box.appendChild(b);
+      });
+    }
+    function fillCatalog() {
+      const list = filteredApis();
+      const box = byId("f-api");
+      box.innerHTML = "";
+      if (!list.some((a) => a.id === selectedId) && list[0]) selectedId = list[0].id;
+      let last = "";
+      list.forEach((a) => {
+        if (a.group !== last) {
+          const lab = document.createElement("div");
+          lab.className = "api-group-label";
+          lab.textContent = a.group;
+          box.appendChild(lab);
+          last = a.group;
+        }
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "api-item" + (a.id === selectedId ? " is-on" : "");
+        btn.setAttribute("role", "option");
+        btn.setAttribute("aria-selected", a.id === selectedId ? "true" : "false");
+        btn.innerHTML =
+          "<span class=\"verb m-" + a.method + "\">" + a.method + "</span>" +
+          "<span class=\"nm\">" + a.name + "</span>" +
+          "<span class=\"rt\">" + (a.route || "") + "</span>" +
+          "<span class=\"sc\">" + a.scope + "</span>";
+        btn.addEventListener("click", () => {
+          selectedId = a.id;
+          box.querySelectorAll(".api-item").forEach((el) => {
+            el.classList.toggle("is-on", el === btn);
+            el.setAttribute("aria-selected", el === btn ? "true" : "false");
+          });
+          renderApi();
+        });
+        box.appendChild(btn);
+      });
+      byId("api-count").textContent = list.length + " of " + APIS.length + " APIs";
+      renderApi();
+    }
+    function currentApi() {
+      return APIS.find((a) => a.id === selectedId) || filteredApis()[0] || APIS[0];
+    }
+    function fieldTable(rows) {
+      if (!rows || !rows.length) {
+        return "<p>None for this call.</p>";
+      }
+      const body = rows.map((r) => {
+        const mandatory = r.req === true;
+        return "<tr><td><code>" + r.name + "</code></td>" +
+          "<td class=\"" + (mandatory ? "req" : "opt") + "\">" + (mandatory ? "mandatory" : "optional") + "</td>" +
+          "<td>" + (r.type || "string") + "</td>" +
+          "<td>" + (r.notes || "") + "</td></tr>";
+      }).join("");
+      return "<table><thead><tr><th>Property</th><th>Required</th><th>Type</th><th>Description</th></tr></thead><tbody>" +
+        body + "</tbody></table>";
+    }
+    function sampleDefaults() {
+      const c = creds();
+      return {
+        userTeamId: Number(c.team), userTeamIds: [Number(c.team)], employeeId: Number(c.emp),
+        employeeIds: [Number(c.emp)], createdBy: Number(c.emp), viewerUserId: Number(c.emp),
+        modifiedBy: Number(c.emp), reportingManager: Number(c.emp), owner: Number(c.emp),
+        taskOwner: Number(c.emp), assignee: Number(c.emp), assignedBy: Number(c.emp),
+        projectId: 44102, purchaseOrderId: 9001, purchaseOrderNumber: 9001, taskId: 8801,
+        taskActivityId: 9901, id: 44102, noteId: 1, attendanceId: 1,
+        startDate: "2026-08-01T00:00:00", endDate: "2026-08-31T23:59:59",
+        estStartTime: "2026-08-04T09:00:00", estCompletionTime: "2026-09-30T18:00:00",
+        createdDate: "2026-08-04T09:12:00", lastModifiedDate: "2026-08-29T14:05:00",
+        attendanceDate: "2026-08-29T00:00:00", inTime: "2026-08-29T09:00:00",
+        outTime: "2026-08-29T18:00:00", lastSyncAt: "2026-08-29T13:40:00",
+        isDelete: false, isArchive: false, isActive: true, isFavorite: true, active: true,
+        isOnlyUserTeams: false, deleted: false, archived: false, automationEnabled: false,
+        hasPPI: false, revisedEstEnabled: false, canComplete: true, savePrevious: true,
+        status: "NEW", name: "ERP project", summary: "Integration cutover for ERP",
+        description: "Deliver the ERP workstream", note: "Follow up with finance",
+        searchText: "ERP", code: "ERP-44102", type: "BILLABLE", projectType: "DELIVERY",
+        category: "Implementation", priority: "HIGH", complexity: "MEDIUM",
+        accountName: "Northwind", teamName: "Delivery", clientNames: "Pat Lee",
+        clientEmails: "pat.lee@example.com", clientCompanyName: "Northwind",
+        clientProjectId: "NW-88", salesForceId: "006XX00000ABC", source: "MANUAL",
+        bidId: "BID-19", currency: "USD", amount: 125000, timezone: "America/Los_Angeles",
+        contractType: "T&M", serviceCategory: "Implementation", phoneNumber: "+1-555-0100",
+        location: "Remote", orderBookRef: "OB-9001", toolNames: "Tracopus",
+        capexOpex: "OPEX", productName: "Core ERP", proposalNumber: "PR-104",
+        clientPartner: "Alex Kim", tagEmployees: String(c.emp), watchers: String(c.emp),
+        estHours: 120, estToolHours: 16, estCost: 24000, estHourlyRate: 200,
+        estDurationMins: 480, estDurationInMins: 120, durationInMins: 90,
+        serviceLine: "Implementation", taskCategory: "Build", sprintBucket: "Sprint 12",
+        taskType: "FEATURE", taskActivityType: "DEVELOPMENT", skill: "Java",
+        firstName: "Ada", lastName: "Khan", email: "ada.khan@example.com",
+        employeeCode: "E-1012", designation: "Engineer",
+        connectorId: "erp-1", adapterId: "adapter-1", jobId: "job-1",
+        legacyKey: "legacy-erp", approved: true, notes: "Delivery complete",
+        page: 0, pageSize: 20, total: 1, success: true,
+        parentId: "", clonedFromId: 0, completedBy: 0, closedBy: 0,
+        loi: "", revisedAdditionalHrs: 0, revisedAdditionalCost: 0, isOrderChanged: false,
+        hoursUserSkillMonthlySplitJson: "{}",
+        restrictedByUserTeamIds: "", restrictedByEmployeeIds: "", restrictedByEmployeeSkills: "",
+        financeTeamWatchers: [],
+        serviceLineEstimate: { Implementation: { hours: 80 } },
+        projectEstimate: { teamEstimate: {} },
+        checklistStatus: "PENDING",
+        checklistData: { metaData: { complete: false, active: true, createdBy: Number(c.emp) }, questionDataList: [] },
+        checklistTemplateForChild: 0,
+        surveyType: "", sample: "", estimatedIR: "", sampleTargeting: "",
+        billableMins: 0, nonBillableMins: 0, actualHours: 0, actualDurationInMins: 0,
+        shared: false, favorite: false, completedTaskCount: 0, taskTotalCount: 0,
+        taskIds: [], taskServiceLines: [], taskInfoList: [], contributors: [], serviceLines: ["Implementation"]
+      };
+    }
+    function coerceSample(type, value) {
+      if (value == null || value === "") {
+        if (type === "number") return 0;
+        if (type === "boolean") return false;
+        if (type === "number[]") return [];
+        if (type === "array") return [];
+        if (type === "object" || type === "object | array") return {};
+        return "";
+      }
+      if (type === "number") return Number(value);
+      if (type === "boolean") return value === true || value === "true" || value === 1 || value === "1";
+      if (type === "number[]") {
+        if (Array.isArray(value)) return value.map(Number);
+        return String(value).split(",").map((s) => Number(s.trim()));
+      }
+      if (type === "array") return Array.isArray(value) ? value : [value];
+      if (type === "object" && typeof value !== "object") return {};
+      return value;
+    }
+    function sampleValue(field) {
+      if (field.sample != null) return field.sample;
+      const defaults = sampleDefaults();
+      const leaf = String(field.name || "").split(".").pop();
+      if (defaults[field.name] != null) return coerceSample(field.type, defaults[field.name]);
+      if (defaults[leaf] != null) return coerceSample(field.type, defaults[leaf]);
+      return coerceSample(field.type, "");
+    }
+    function fieldsToObject(fields) {
+      const out = {};
+      (fields || []).forEach((f) => {
+        if (!f || !f.name || String(f.name).indexOf(".") >= 0) return;
+        out[f.name] = sampleValue(f);
+      });
+      return out;
+    }
+    function applyDefaults(fields) {
+      const out = {};
+      (fields || []).forEach((f) => { out[f.name] = sampleValue(f); });
+      return out;
+    }
+    function inferItems(a) {
+      if (a.items) return a.items;
+      if (a.response === AUDIT_RESP) return AUDIT_RESP;
+      if (a.response === FLAG_RESP) return FLAG_RESP;
+      if (a.response && a.response !== LIST_RESP) return a.response;
+      if (a.group === "Projects") return PROJECT_RESP;
+      if (a.group === "Purchase orders") return PO_RESP;
+      if (a.group === "Tasks") return TASK_RESP;
+      if (a.group === "Work items") return ACT_RESP;
+      if (a.group === "Employees") {
+        if ((a.id || "").indexOf("att-") === 0) return ATT_RESP;
+        return EMP_RESP;
+      }
+      if (a.group === "Notes") return NOTE_RESP;
+      if (a.group === "Timesheet") return TS_RESP;
+      if (a.group === "Integration center") return CENTER_OBJ;
+      return a.response || [];
+    }
+    function sampleEntity(a) {
+      return Object.assign({ id: 44102, status: "NEW" }, fieldsToObject(inferItems(a)));
+    }
+    function sampleRequestJson(a) {
+      const path = fieldsToObject(a.path);
+      const query = fieldsToObject(a.query);
+      const body = (a.body && a.body.length) ? Object.assign(fieldsToObject(a.body), a.sample || {}) : (a.sample || null);
+      const req = {
+        method: a.method,
+        url: a.route,
+        headers: {
+          Authorization: "Bearer " + (creds().secret || "tk_live_YOUR_SECRET")
+        }
+      };
+      if (a.method !== "GET" && body) req.headers["Content-Type"] = "application/json";
+      if (Object.keys(path).length) req.path = path;
+      if (Object.keys(query).length) req.query = query;
+      if (body) req.body = body;
+      return req;
+    }
+    function sampleResponseJson(a) {
+      const entity = sampleEntity(a);
+      if (a.response === FLAG_RESP) return { payload: { success: true, id: entity.id || 44102 } };
+      if (a.response === AUDIT_RESP) {
+        return { payload: { events: [{ action: "UPDATED", actorUserId: Number(creds().emp), at: "2026-08-29T14:05:00" }], page: 0, pageSize: 20, total: 1 } };
+      }
+      if (a.response === LIST_RESP) return { payload: [entity] };
+      return { payload: entity };
+    }
+    function formFields(prefix, fields) {
+      if (!fields.length) return "";
+      const vals = applyDefaults(fields);
+      return "<div class=\"form-grid\">" + fields.map((f) => {
+        const wide = f.type === "array" || f.type === "object" || f.type === "string" && f.name === "note";
+        return "<label class=\"" + (wide ? "span-2" : "") + "\">" + f.name +
+          "<input data-field=\"" + prefix + "\" data-name=\"" + f.name + "\" data-type=\"" + f.type + "\" value=\"" +
+          String(vals[f.name]).replace(/\"/g, "&quot;") + "\" /></label>";
+      }).join("") + "</div>";
+    }
+    function collect(prefix) {
+      const out = {};
+      document.querySelectorAll("input[data-field=\"" + prefix + "\"]").forEach((el) => {
+        let v = el.value;
+        const t = el.getAttribute("data-type");
+        if (t === "number" && v !== "") v = Number(v);
+        else if (t === "boolean") v = v === true || v === "true" || v === "1";
+        else if ((t === "number[]") && v !== "") v = String(v).split(",").map((s) => Number(s.trim()));
+        out[el.getAttribute("data-name")] = v;
+      });
+      return out;
+    }
+    function interpolate(route, pathVals) {
+      return String(route || "").replace(/\{(\w+)\}/g, (_, k) => encodeURIComponent(pathVals[k] != null ? pathVals[k] : k));
+    }
+    function queryString(queryVals, fields) {
+      const parts = [];
+      (fields || []).forEach((f) => {
+        const v = queryVals[f.name];
+        if (v === "" || v == null) return;
+        if (Array.isArray(v)) v.forEach((item) => parts.push(encodeURIComponent(f.name) + "=" + encodeURIComponent(item)));
+        else parts.push(encodeURIComponent(f.name) + "=" + encodeURIComponent(v));
+      });
+      return parts.length ? "?" + parts.join("&") : "";
+    }
+    function buildUrl(a, live) {
+      const c = creds();
+      const pathVals = live ? Object.assign(fieldsToObject(a.path), collect("path")) : fieldsToObject(a.path);
+      const queryVals = live ? Object.assign(fieldsToObject(a.query), collect("query")) : fieldsToObject(a.query);
+      return c.base + interpolate(a.route, pathVals) + queryString(queryVals, a.query);
+    }
+    function buildBody(a, live) {
+      if (a.method === "GET") return null;
+      const sampled = (a.body && a.body.length) ? Object.assign(fieldsToObject(a.body), a.sample || {}) : (a.sample || null);
+      if (!sampled && !(a.body && a.body.length)) return null;
+      if (live && byId("f-body")) {
+        try { return JSON.parse(byId("f-body").value || "null"); } catch (e) { return sampled; }
+      }
+      return sampled;
+    }
+    function buildCurl(a, live) {
+      const c = creds();
+      const url = buildUrl(a, live);
+      const body = buildBody(a, live);
+      let cmd = "curl -sS -X " + a.method + " '" + url + "' \\\n  -H 'Authorization: Bearer " + (c.secret || "tk_live_YOUR_SECRET") + "'";
+      if (body != null) {
+        cmd += " \\\n  -H 'Content-Type: application/json' \\\n  -d '" + JSON.stringify(body) + "'";
+      }
+      return cmd;
+    }
+    function showTab(name) {
+      activeTab = name;
+      document.querySelectorAll("#tabs button").forEach((b) => {
+        b.classList.toggle("is-on", b.getAttribute("data-tab") === name);
+      });
+      ["request", "response", "errors", "try"].forEach((t) => {
+        const el = byId("tab-" + t);
+        if (el) el.classList.toggle("hidden", t !== name);
+      });
+    }
+    function renderApi() {
+      const a = currentApi();
+      if (!a) return;
+      try {
+      selectedId = a.id;
+      byId("api-group").textContent = a.group;
+      byId("api-title").textContent = a.name;
+      byId("api-desc").textContent = a.desc || "";
+      byId("api-meta").innerHTML =
+        "<span class=\"chip m-" + a.method + "\">" + a.method + "</span>" +
+        "<span class=\"chip\">" + (a.route || "") + "</span>" +
+        "<span class=\"chip\">" + a.scope + "</span>";
+      const pathFields = Array.isArray(a.path) ? a.path : [];
+      const queryFields = Array.isArray(a.query) ? a.query : [];
+      const bodyFields = Array.isArray(a.body) ? a.body : [];
+      const itemFields = inferItems(a);
+      const reqJson = sampleRequestJson(a);
+      const resJson = sampleResponseJson(a);
+      const curl = buildCurl(a, false);
+      const headerRows = HEADER_FIELDS.map((h) => {
+        if (h.name === "Content-Type") return Object.assign({}, h, { req: a.method !== "GET" && !!(bodyFields.length || a.sample) });
+        return h;
+      });
+      byId("tab-request").innerHTML =
+        "<h2>Headers</h2>" + fieldTable(headerRows) +
+        "<h2>Path attributes</h2>" + fieldTable(pathFields) +
+        "<h2>Query attributes</h2>" + fieldTable(queryFields) +
+        "<h2>Request body</h2>" + fieldTable(bodyFields) +
+        "<div class=\"codehead\"><span>Sample request JSON</span></div>" +
+        "<pre>" + JSON.stringify(reqJson, null, 2) + "</pre>" +
+        "<div class=\"codehead\"><span>Complete curl</span>" +
+        "<button class=\"btn btn-ghost\" type=\"button\" id=\"btn-copy-req\">Copy curl</button></div>" +
+        "<pre id=\"curl-doc\">" + curl.replace(/</g, "&lt;") + "</pre>";
+      byId("tab-response").innerHTML =
+        "<h2>Envelope</h2>" + fieldTable(ENVELOPE_FIELDS) +
+        "<h2>Response attributes</h2>" + fieldTable(itemFields) +
+        "<div class=\"codehead\"><span>Sample response JSON</span></div>" +
+        "<pre>" + JSON.stringify(resJson, null, 2) + "</pre>";
+      byId("tab-errors").innerHTML =
+        "<table><thead><tr><th>Status</th><th>Meaning</th></tr></thead><tbody>" +
+        (a.errors || []).map((e) => "<tr><td class=\"" + e.kind + "\">" + e.status + "</td><td>" + e.meaning + "</td></tr>").join("") +
+        "</tbody></table>" +
+        "<div class=\"callout warnbox\">Integration keys calling <code>/api/v2/developer-portal/*</code> are always denied.</div>";
+      const hasBody = a.method !== "GET" && (bodyFields.length || a.sample);
+      byId("tab-try").innerHTML =
+        (pathFields.length ? "<h2>Path values</h2>" + formFields("path", pathFields) : "") +
+        (queryFields.length ? "<h2>Query values</h2>" + formFields("query", queryFields) : "") +
+        (hasBody ? "<h2>JSON body</h2><textarea id=\"f-body\">" +
+          JSON.stringify(Object.assign(fieldsToObject(bodyFields), a.sample || {}), null, 2) + "</textarea>" : "") +
+        "<div class=\"codehead\"><span>Generated curl</span><span>" +
+        "<button class=\"btn btn-ghost\" type=\"button\" id=\"btn-gen\">Generate</button>" +
+        "<button class=\"btn btn-ghost\" type=\"button\" id=\"btn-copy\">Copy</button>" +
+        "<button class=\"btn btn-primary\" type=\"button\" id=\"btn-send\">Send live</button></span></div>" +
+        "<pre id=\"curl-out\"></pre>" +
+        "<div class=\"codehead\"><span>Live response</span><span class=\"status\" id=\"live-status\"></span></div>" +
+        "<pre id=\"live-out\">Send uses this browser. If CORS blocks the host, copy curl instead.</pre>";
+      const docCurl = byId("curl-doc");
+      if (docCurl) docCurl.textContent = curl;
+      const copyReq = byId("btn-copy-req");
+      if (copyReq) copyReq.onclick = async () => {
+        try { await navigator.clipboard.writeText(curl); } catch (e) {}
+        copyReq.textContent = "Copied";
+        setTimeout(() => { copyReq.textContent = "Copy curl"; }, 1200);
+      };
+      const gen = () => {
+        const out = byId("curl-out");
+        if (out) out.textContent = buildCurl(a, true);
+      };
+      const genBtn = byId("btn-gen");
+      const copyBtn = byId("btn-copy");
+      const sendBtn = byId("btn-send");
+      if (genBtn) genBtn.onclick = gen;
+      if (copyBtn) copyBtn.onclick = async () => {
+        gen();
+        const text = byId("curl-out") ? byId("curl-out").textContent : "";
+        try { await navigator.clipboard.writeText(text); } catch (e) {}
+        copyBtn.textContent = "Copied";
+        setTimeout(() => { copyBtn.textContent = "Copy"; }, 1200);
+      };
+      if (sendBtn) sendBtn.onclick = () => sendLive(a);
+      try { gen(); } catch (err) {
+        const out = byId("curl-out");
+        if (out) out.textContent = String(err);
+      }
+      showTab(activeTab);
+      try { history.replaceState(null, "", "#api=" + a.id); } catch (e) {}
+      } catch (err) {
+        const req = byId("tab-request");
+        if (req) req.innerHTML = "<p class=\"bad\">Could not render this API: " + String(err) + "</p>";
+      }
+    }
+    async function sendLive(a) {
+      const c = creds();
+      const status = byId("live-status");
+      const out = byId("live-out");
+      if (!c.secret) {
+        status.textContent = "Missing token";
+        out.textContent = "Paste the secretOnce value from Integrations → API access.";
+        return;
+      }
+      status.textContent = "Sending…";
+      const headers = { Authorization: "Bearer " + c.secret };
+      const init = { method: a.method, headers: headers };
+      if (a.method !== "GET" && (a.body.length || a.sample)) {
+        headers["Content-Type"] = "application/json";
+        init.body = JSON.stringify(buildBody(a, true));
+      }
+      try {
+        const res = await fetch(buildUrl(a, true), init);
+        const text = await res.text();
+        status.innerHTML = "<span class=\"" + (res.ok ? "ok" : "bad") + "\">" + res.status + " " + res.statusText + "</span>";
+        try { out.textContent = JSON.stringify(JSON.parse(text), null, 2); }
+        catch (e) { out.textContent = text || "(empty body)"; }
+      } catch (err) {
+        status.innerHTML = "<span class=\"bad\">Network / CORS</span>";
+        out.textContent = String(err) + "\n\nOpen this page from the same Tracopus host, or run the generated curl.";
+      }
+    }
+
+    byId("f-filter").addEventListener("input", fillCatalog);
+    byId("btn-save").addEventListener("click", () => {
+      saveCreds();
+      byId("btn-save").textContent = "Saved";
+      setTimeout(() => { byId("btn-save").textContent = "Remember session"; }, 1200);
+    });
+    ["f-base", "f-secret", "f-team", "f-emp"].forEach((id) => {
+      byId(id).addEventListener("change", saveCreds);
+    });
+    byId("tabs").addEventListener("click", (e) => {
+      const btn = e.target.closest("button[data-tab]");
+      if (!btn) return;
+      showTab(btn.getAttribute("data-tab"));
+    });
+    loadCreds();
+    const hash = (location.hash || "").replace("#api=", "");
+    if (hash && APIS.some((a) => a.id === hash)) selectedId = hash;
+    fillChips();
+    fillCatalog();
+  </script>
+  <script src="js/palette.js?v=20260711a"></script>
+  <script src="js/brand.js?v=20260711a"></script>
+  <script src="js/docs-utility-config.js?v=20260720b"></script>
+  <script src="js/nav-config.js?v=20260720c"></script>
+  <script src="js/navigation.js?v=20260830a"></script>
+  <script src="js/site-enhancements.js?v=20260718d"></script>
+  <script src="js/search.js?v=20260711a"></script>
+</body>
+</html>

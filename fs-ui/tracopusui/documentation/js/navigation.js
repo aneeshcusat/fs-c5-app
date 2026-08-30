@@ -351,12 +351,50 @@
   }
 
   function bindMegaItem(li, trigger) {
+    var hideTimer = null;
+    var panel = li.querySelector('.lux-nav__panel--rich');
+
+    function isDesktop() {
+      return window.innerWidth > 960;
+    }
+
+    function openMega() {
+      if (hideTimer) {
+        clearTimeout(hideTimer);
+        hideTimer = null;
+      }
+      document.querySelectorAll('.lux-nav__item--mega.is-open').forEach(function (other) {
+        if (other !== li) other.classList.remove('is-open');
+      });
+      li.classList.add('is-open');
+    }
+
+    function scheduleClose() {
+      if (hideTimer) clearTimeout(hideTimer);
+      hideTimer = setTimeout(function () {
+        li.classList.remove('is-open');
+        hideTimer = null;
+      }, 220);
+    }
+
     li.addEventListener('mouseenter', function () {
-      if (window.innerWidth > 960) li.classList.add('is-open');
+      if (isDesktop()) openMega();
     });
-    li.addEventListener('mouseleave', function () {
-      li.classList.remove('is-open');
+    li.addEventListener('mouseleave', function (e) {
+      if (!isDesktop()) return;
+      if (panel && e.relatedTarget && panel.contains(e.relatedTarget)) return;
+      scheduleClose();
     });
+    if (panel) {
+      panel.addEventListener('mouseenter', function () {
+        if (isDesktop()) openMega();
+      });
+      panel.addEventListener('mouseleave', function (e) {
+        if (!isDesktop()) return;
+        if (e.relatedTarget && li.contains(e.relatedTarget)) return;
+        scheduleClose();
+      });
+    }
     trigger.addEventListener('click', function (e) {
       if (window.innerWidth <= 960) {
         e.preventDefault();
@@ -364,7 +402,7 @@
       }
     });
     trigger.addEventListener('focus', function () {
-      if (window.innerWidth > 960) li.classList.add('is-open');
+      if (isDesktop()) openMega();
     });
     li.addEventListener('focusout', function (e) {
       if (!li.contains(e.relatedTarget)) li.classList.remove('is-open');

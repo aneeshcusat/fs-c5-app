@@ -1,0 +1,8 @@
+---
+description: Codebase memory — prefer graph MCP before broad scans
+alwaysApply: true
+---
+
+# Graph MCP
+
+`project` = `fs-c5-app`. Prefer `search_graph` / `trace_path` / `get_architecture` / `search_code` before grep or bulk file reads. Re-index (`index_repository`) after large structural changes.
