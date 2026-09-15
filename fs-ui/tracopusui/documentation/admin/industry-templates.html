@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en" data-lux-theme="luxury" data-lux-palette="emerald">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Industry Templates — Tracopus User Guide</title>
+  <meta name="description" content="Apply a packaged industry template to seed Application Config lists, flags, and related setup — review the diff before apply.">
+  <meta name="keywords" content="tracopus, documentation, user guide, admin, industry templates">
+  <link rel="canonical" href="https://tracopus.com/documentation/admin/industry-templates.html">
+  <meta name="robots" content="index, follow">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Tracopus">
+  <meta property="og:title" content="Industry Templates — Tracopus User Guide">
+  <meta property="og:description" content="Apply a packaged industry template to seed Application Config lists, flags, and related setup — review the diff before apply.">
+  <meta property="og:url" content="https://tracopus.com/documentation/admin/industry-templates.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Industry Templates — Tracopus User Guide">
+  <meta name="twitter:description" content="Apply a packaged industry template to seed Application Config lists, flags, and related setup — review the diff before apply.">
+  <script src="../js/docs-analytics.js?v=20260719a" defer></script>
+  <link rel="stylesheet" href="../css/styles.css?v=20260912g">
+  <script src="../js/brand-config.js?v=20260619e"></script>
+</head>
+<body data-docs-depth="1">
+
+<header aria-label="Site header"></header>
+
+<main>
+  <div class="breadcrumb"><a href="../index.html">Home</a> → Admin → Industry Templates</div>
+
+  <div class="doc-canvas">
+    <header class="doc-mast">
+      <div class="doc-mast__top">
+        <span class="doc-mast__eyebrow">Admin · Setup</span>
+        <div class="page-meta page-meta--inline">
+          <span class="page-meta__item"><strong>Route</strong> <code>/admin/industry-templates</code></span>
+          <span class="page-meta__item"><strong>Flag</strong> <code>appconfigEnabled</code></span>
+        </div>
+      </div>
+      <h1 class="doc-mast__title">Industry Templates</h1>
+      <p class="doc-mast__lead">Apply a packaged industry template to seed Application Config lists, flags, and related setup — review the diff before apply.</p>
+      <p class="doc-mast__purpose">Scroll to <a href="#flowcharts">Flowcharts</a>. Scenario: <a href="../user-guide/admin/admin-industry-templates.html">Apply an industry template</a>.</p>
+    </header>
+
+    <section class="doc-briefing" id="at-a-glance" aria-labelledby="briefing-title">
+      <div class="doc-briefing__intro">
+        <p class="doc-briefing__kicker"><i class="fe fe-package" aria-hidden="true"></i> Packaged seed</p>
+        <h2 class="doc-briefing__title" id="briefing-title">A diff you review before it touches config</h2>
+        <p class="doc-briefing__lead">Industry templates seed Application Config lists, flags, and related setup from a packaged industry. Apply is a reviewed diff, not an invisible overwrite.</p>
+        <div class="doc-briefing__signals" aria-label="Access and placement">
+          <span class="doc-briefing__signal">Admin → Industry templates</span>
+          <span class="doc-briefing__signal">Route <code>/admin/industry-templates</code></span>
+          <span class="doc-briefing__signal">Org flag <code>appconfigEnabled</code></span>
+          <span class="doc-briefing__signal">Org Admin</span>
+        </div>
+      </div>
+      <div class="doc-briefing__grid">
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-zap"></i></span>
+          <div>
+            <h3>The job of this console</h3>
+            <p>Pick a template, read the diff against current org config, apply only what you intend, then verify lists and flags in Application Config and Feature flags. Never apply blindly on a production org that already has local lists.</p>
+          </div>
+        </article>
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-users"></i></span>
+          <div>
+            <h3>Seat at the table</h3>
+            <p>Org administrators. HR admins may be asked to review the diff; they should not treat this as a daily console.</p>
+          </div>
+        </article>
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-play-circle"></i></span>
+          <div>
+            <h3>The working rhythm</h3>
+            <p>Open templates, choose an industry, review added and replaced keys, apply, then spot-check Application Config and a test persona menu.</p>
+          </div>
+        </article>
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-clock"></i></span>
+          <div>
+            <h3>Moments that bring you here</h3>
+            <p>Greenfield tenant. A new line of business that matches a pack. After a sandbox reset. Not for a one-field list edit — that belongs in Application Config.</p>
+          </div>
+        </article>
+      </div>
+      <div class="doc-briefing__note">
+        <div class="callout callout--note callout--interactive">
+          <div class="callout__icon">ⓘ</div>
+          <div class="callout__body">
+            <strong class="callout__title">Templates seed Application Config</strong>
+            <div class="callout__text">The template is not a lasting source of truth. After apply, org.json / Application Config owns the values. Review the diff every time.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <div class="doc-flow">
+      <section class="doc-block" id="flowcharts">
+        <h2 class="doc-block__title">Flowcharts</h2>
+
+        <article class="diagram-card" data-diagram-autoplay="true">
+          <header class="diagram-card__head">
+            <div class="diagram-card__titles">
+              <h3>1 — Apply a template</h3>
+              <p class="diagram-card__desc">Pick a pack, review what it writes, then apply.</p>
+            </div>
+            <div class="diagram-card__controls">
+              <button type="button" data-diagram-prev aria-label="Previous step"><i class="fe fe-chevron-left" aria-hidden="true"></i></button>
+              <button type="button" data-diagram-play aria-pressed="false"><i class="fe fe-play" aria-hidden="true"></i><span>Play</span></button>
+              <button type="button" data-diagram-next aria-label="Next step"><i class="fe fe-chevron-right" aria-hidden="true"></i></button>
+            </div>
+          </header>
+          <div class="diagram-card__chart">
+            <pre class="mermaid">
+flowchart TD
+  A[Open Industry templates] --> B[Select a pack]
+  B --> C[Review detail]
+  C --> D[Apply preview]
+  D --> E{Accept writes?}
+  E -->|No| C
+  E -->|Yes| F[Apply]
+  F --> G[Verify App Config]
+            </pre>
+          </div>
+          <ol class="diagram-steps">
+            <li class="diagram-step is-active"><span class="diagram-step__index">1</span><div class="diagram-step__body"><strong>Browse packs</strong><span>Admin → Industry templates.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">2</span><div class="diagram-step__body"><strong>Open detail</strong><span>See which config keys and lists the pack touches.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">3</span><div class="diagram-step__body"><strong>Apply flow</strong><span>Confirm the write target, then apply.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">4</span><div class="diagram-step__body"><strong>Verify</strong><span>Open Application Config and spot-check lists/flags.</span></div></li>
+          </ol>
+          <p class="diagram-card__progress" data-diagram-progress></p>
+        </article>
+      </section>
+
+      <section class="doc-block" id="overview">
+        <h2 class="doc-block__title">Overview</h2>
+        <p>Templates write into Application Config and related source entities. They are not an independent industry database.</p>
+      </section>
+
+      <section class="doc-block" id="how-to">
+        <h2 class="doc-block__title">How to use</h2>
+        <div class="steps">
+          <div class="step"><strong>1. Read the diff</strong><div class="step-detail">Never apply blind on a production org.</div></div>
+          <div class="step"><strong>2. One pack at a time</strong><div class="step-detail">Overlapping packs can clobber lists.</div></div>
+          <div class="step"><strong>3. Checklist first</strong><div class="step-detail">Finish day-one checklist items that templates assume exist.</div></div>
+        </div>
+      </section>
+
+      <section class="doc-block doc-block--related" id="related-pages">
+        <h2 class="doc-block__title">Related pages</h2>
+        <div class="related-links">
+          <a class="related-link" href="setup-checklist.html"><span class="related-link__label">Setup checklist</span><span class="related-link__desc">Manual day-one items.</span></a>
+          <a class="related-link" href="../hrms/application-config.html"><span class="related-link__label">Application Config</span><span class="related-link__desc">Where packs write.</span></a>
+          <a class="related-link" href="feature-flags.html"><span class="related-link__label">Feature flags</span><span class="related-link__desc">Flags templates may enable.</span></a>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <nav class="page-nav">
+    <a class="page-nav__prev" href="setup-checklist.html">← Setup checklist</a>
+    <a class="page-nav__next" href="../hrms/application-config.html">Application Config →</a>
+  </nav>
+</main>
+
+<footer>
+  <div class="container">
+    <p>&copy; 2026 <span data-brand>Tracopus</span>. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="../js/palette.js?v=20260619e"></script>
+<script src="../js/brand.js?v=20260619e"></script>
+<script src="../js/docs-utility-config.js?v=20260720b"></script>
+<script src="../js/nav-config.js?v=20260906a"></script>
+<script src="../js/navigation.js?v=20260912f"></script>
+<script src="../js/site-enhancements.js?v=20260906a"></script>
+<script src="../js/search.js?v=20260619e"></script>
+<script type="module">
+  import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+  mermaid.initialize({
+    startOnLoad: true,
+    theme: "base",
+    securityLevel: "loose",
+    flowchart: { curve: "basis", htmlLabels: true },
+    themeVariables: {
+      primaryColor: "#d8f3dc",
+      primaryTextColor: "#1b4332",
+      primaryBorderColor: "#40916c",
+      lineColor: "#52796f",
+      secondaryColor: "#f1faee",
+      tertiaryColor: "#ffffff",
+      fontFamily: "Inter, system-ui, sans-serif",
+    },
+  });
+  setTimeout(() => {
+    if (window.TracopusDocsDiagrams) window.TracopusDocsDiagrams.boot();
+  }, 600);
+</script>
+<script src="../js/docs-diagrams.js?v=20260718e"></script>
+</body>
+</html>

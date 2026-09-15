@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en" data-lux-theme="luxury" data-lux-palette="emerald">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Learning Assignments — Tracopus User Guide</title>
+  <meta name="description" content="Who must take which course — assignments onto Employee, not a mailing list beside the LMS.">
+  <meta name="keywords" content="tracopus, documentation, user guide, learning, learning assignments">
+  <link rel="canonical" href="https://tracopus.com/documentation/learning/assignments.html">
+  <meta name="robots" content="index, follow">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Tracopus">
+  <meta property="og:title" content="Learning Assignments — Tracopus User Guide">
+  <meta property="og:description" content="Who must take which course — assignments onto Employee, not a mailing list beside the LMS.">
+  <meta property="og:url" content="https://tracopus.com/documentation/learning/assignments.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Learning Assignments — Tracopus User Guide">
+  <meta name="twitter:description" content="Who must take which course — assignments onto Employee, not a mailing list beside the LMS.">
+  <script src="../js/docs-analytics.js?v=20260719a" defer></script>
+  <link rel="stylesheet" href="../css/styles.css?v=20260912g">
+  <script src="../js/brand-config.js?v=20260619e"></script>
+</head>
+<body data-docs-depth="1">
+
+<header aria-label="Site header"></header>
+
+<main>
+  <div class="breadcrumb"><a href="../index.html">Home</a> → People → Learning assignments</div>
+
+  <div class="doc-canvas">
+    <header class="doc-mast">
+      <div class="doc-mast__top">
+        <span class="doc-mast__eyebrow">Learning</span>
+        <div class="page-meta page-meta--inline">
+          <span class="page-meta__item"><strong>Route</strong> <code>/learning/assignments</code></span>
+          <span class="page-meta__item"><strong>Flag</strong> <code>learningEnabled</code></span>
+        </div>
+      </div>
+      <h1 class="doc-mast__title">Learning Assignments</h1>
+      <p class="doc-mast__lead">Who must take which course — assignments onto Employee, not a mailing list beside the LMS.</p>
+      <p class="doc-mast__purpose">Scroll to <a href="#flowcharts">Flowcharts</a>. Scenario: <a href="../user-guide/people/learning-assignments.html">Assign a course to a population</a>.</p>
+    </header>
+
+    <section class="doc-briefing" id="at-a-glance" aria-labelledby="briefing-title">
+      <div class="doc-briefing__intro">
+        <p class="doc-briefing__kicker"><i class="fe fe-send" aria-hidden="true"></i> Who must take it</p>
+        <h2 class="doc-briefing__title" id="briefing-title">Assignments onto real employees</h2>
+        <p class="doc-briefing__lead">Learning assignments send catalog courses to Employee rows. That is what My learning and compliance read.</p>
+        <div class="doc-briefing__signals" aria-label="Access and placement">
+          <span class="doc-briefing__signal">People → Learning assignments</span>
+          <span class="doc-briefing__signal">Route <code>/learning/assignments</code></span>
+          <span class="doc-briefing__signal">Org flag <code>learningEnabled</code></span>
+          <span class="doc-briefing__signal">HR Admin · Admin</span>
+        </div>
+      </div>
+      <div class="doc-briefing__grid">
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-zap"></i></span>
+          <div>
+            <h3>The job of this console</h3>
+            <p>Pick a published course, select people, set a due date, save. Chase overdue on compliance, not in a spreadsheet.</p>
+          </div>
+        </article>
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-users"></i></span>
+          <div>
+            <h3>Seat at the table</h3>
+            <p>HR Admin and Admin. Managers may see team compliance; they do not always author assignments.</p>
+          </div>
+        </article>
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-play-circle"></i></span>
+          <div>
+            <h3>The working rhythm</h3>
+            <p>Assign, confirm a test user sees My learning, watch compliance.</p>
+          </div>
+        </article>
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-clock"></i></span>
+          <div>
+            <h3>Moments that bring you here</h3>
+            <p>Annual compliance blast. New joiner path. A role change that needs extra training.</p>
+          </div>
+        </article>
+      </div>
+      <div class="doc-briefing__note">
+        <div class="callout callout--note callout--interactive">
+          <div class="callout__icon">ⓘ</div>
+          <div class="callout__body">
+            <strong class="callout__title">Employee is the learner</strong>
+            <div class="callout__text">Do not assign to a project or a candidate id. Completions hang on these assignment rows.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="doc-flow">
+      <section class="doc-block" id="flowcharts">
+        <h2 class="doc-block__title">Flowcharts</h2>
+
+        <article class="diagram-card" data-diagram-autoplay="true">
+          <header class="diagram-card__head">
+            <div class="diagram-card__titles">
+              <h3>1 — Assign a course</h3>
+              <p class="diagram-card__desc">Pick course and people, set due date.</p>
+            </div>
+            <div class="diagram-card__controls">
+              <button type="button" data-diagram-prev aria-label="Previous step"><i class="fe fe-chevron-left" aria-hidden="true"></i></button>
+              <button type="button" data-diagram-play aria-pressed="false"><i class="fe fe-play" aria-hidden="true"></i><span>Play</span></button>
+              <button type="button" data-diagram-next aria-label="Next step"><i class="fe fe-chevron-right" aria-hidden="true"></i></button>
+            </div>
+          </header>
+          <div class="diagram-card__chart">
+            <pre class="mermaid">
+flowchart TD
+  A[Open Assignments] --> B[Pick course]
+  B --> C[Select employees]
+  C --> D[Due date]
+  D --> E[My learning shows it]
+  E --> F[Compliance tracks]
+            </pre>
+          </div>
+          <ol class="diagram-steps">
+            <li class="diagram-step is-active"><span class="diagram-step__index">1</span><div class="diagram-step__body"><strong>Open</strong><span>People → Learning assignments.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">2</span><div class="diagram-step__body"><strong>Course</strong><span>Published catalog item.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">3</span><div class="diagram-step__body"><strong>People</strong><span>Employee ids.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">4</span><div class="diagram-step__body"><strong>Due</strong><span>Compliance uses this.</span></div></li>
+          </ol>
+          <p class="diagram-card__progress" data-diagram-progress></p>
+        </article>
+      </section>
+
+      <section class="doc-block" id="overview">
+        <h2 class="doc-block__title">Overview</h2>
+        <p>Assignments bind courses to Employee. Groups should resolve to people, not to a shadow roster.</p>
+      </section>
+
+      <section class="doc-block" id="how-to">
+        <h2 class="doc-block__title">How to use</h2>
+        <div class="steps">
+          <div class="step"><strong>1. Employees only</strong><div class="step-detail">Candidates and vendors are not learners here.</div></div>
+          <div class="step"><strong>2. Due dates matter</strong><div class="step-detail">Compliance is overdue against this.</div></div>
+          <div class="step"><strong>3. Revoke carefully</strong><div class="step-detail">Removing an assignment may hide history — follow product rules.</div></div>
+        </div>
+      </section>
+
+      <section class="doc-block doc-block--related" id="related-pages">
+        <h2 class="doc-block__title">Related pages</h2>
+        <div class="related-links">
+          <a class="related-link" href="courses.html"><span class="related-link__label">Courses</span><span class="related-link__desc">What you assign.</span></a>
+          <a class="related-link" href="my-learning.html"><span class="related-link__label">My learning</span><span class="related-link__desc">Learner view.</span></a>
+          <a class="related-link" href="reports.html"><span class="related-link__label">Learning reports</span><span class="related-link__desc">Exports.</span></a>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <nav class="page-nav">
+    <a class="page-nav__prev" href="my-learning.html">← My learning</a>
+    <a class="page-nav__next" href="compliance.html">Learning compliance →</a>
+  </nav>
+</main>
+
+<footer>
+  <div class="container">
+    <p>&copy; 2026 <span data-brand>Tracopus</span>. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="../js/palette.js?v=20260619e"></script>
+<script src="../js/brand.js?v=20260619e"></script>
+<script src="../js/docs-utility-config.js?v=20260720b"></script>
+<script src="../js/nav-config.js?v=20260912c"></script>
+<script src="../js/navigation.js?v=20260912f"></script>
+<script src="../js/site-enhancements.js?v=20260906a"></script>
+<script src="../js/search.js?v=20260619e"></script>
+<script type="module">
+  import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+  mermaid.initialize({
+    startOnLoad: true,
+    theme: "base",
+    securityLevel: "loose",
+    flowchart: { curve: "basis", htmlLabels: true },
+    themeVariables: {
+      primaryColor: "#d8f3dc",
+      primaryTextColor: "#1b4332",
+      primaryBorderColor: "#40916c",
+      lineColor: "#52796f",
+      secondaryColor: "#f1faee",
+      tertiaryColor: "#ffffff",
+      fontFamily: "Inter, system-ui, sans-serif",
+    },
+  });
+  setTimeout(() => {
+    if (window.TracopusDocsDiagrams) window.TracopusDocsDiagrams.boot();
+  }, 600);
+</script>
+<script src="../js/docs-diagrams.js?v=20260718e"></script>
+</body>
+</html>

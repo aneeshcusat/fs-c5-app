@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en" data-lux-theme="luxury" data-lux-palette="emerald">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data Retention — Tracopus User Guide</title>
+  <meta name="description" content="Retention schedules, purge windows, and compliance holds for operational records.">
+  <meta name="keywords" content="tracopus, documentation, user guide, admin, data retention">
+  <link rel="canonical" href="https://tracopus.com/documentation/admin/data-retention.html">
+  <meta name="robots" content="index, follow">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Tracopus">
+  <meta property="og:title" content="Data Retention — Tracopus User Guide">
+  <meta property="og:description" content="Retention schedules, purge windows, and compliance holds for operational records.">
+  <meta property="og:url" content="https://tracopus.com/documentation/admin/data-retention.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Data Retention — Tracopus User Guide">
+  <meta name="twitter:description" content="Retention schedules, purge windows, and compliance holds for operational records.">
+  <script src="../js/docs-analytics.js?v=20260719a" defer></script>
+  <link rel="stylesheet" href="../css/styles.css?v=20260912g">
+  <script src="../js/brand-config.js?v=20260619e"></script>
+</head>
+<body data-docs-depth="1">
+
+<header aria-label="Site header"></header>
+
+<main>
+  <div class="breadcrumb"><a href="../index.html">Home</a> → Admin → Data Retention</div>
+
+  <div class="doc-canvas">
+    <header class="doc-mast">
+      <div class="doc-mast__top">
+        <span class="doc-mast__eyebrow">Admin · Compliance</span>
+        <div class="page-meta page-meta--inline">
+          <span class="page-meta__item"><strong>Route</strong> <code>/admin/data-retention</code></span>
+          <span class="page-meta__item"><strong>Flag</strong> <code>dataRetentionEnabled</code></span>
+        </div>
+      </div>
+      <h1 class="doc-mast__title">Data Retention</h1>
+      <p class="doc-mast__lead">Retention schedules, purge windows, and compliance holds for operational records.</p>
+      <p class="doc-mast__purpose">Scroll to <a href="#flowcharts">Flowcharts</a>. Scenario: <a href="../user-guide/admin/admin-data-retention.html">Set a retention schedule</a>.</p>
+    </header>
+
+    <section class="doc-briefing" id="at-a-glance" aria-labelledby="briefing-title">
+      <div class="doc-briefing__intro">
+        <p class="doc-briefing__kicker"><i class="fe fe-clock" aria-hidden="true"></i> Keep, hold, purge</p>
+        <h2 class="doc-briefing__title" id="briefing-title">Schedules and legal holds on operational records</h2>
+        <p class="doc-briefing__lead">Data retention is the schedule of keep windows, purge eligibility, and compliance holds for operational records. A hold freezes purge; it does not freeze the live business record from legitimate edits.</p>
+        <div class="doc-briefing__signals" aria-label="Access and placement">
+          <span class="doc-briefing__signal">Admin → Data retention</span>
+          <span class="doc-briefing__signal">Route <code>/admin/data-retention</code></span>
+          <span class="doc-briefing__signal">Org flag <code>dataRetentionEnabled</code></span>
+          <span class="doc-briefing__signal">HR Admin · Org Admin</span>
+        </div>
+      </div>
+      <div class="doc-briefing__grid">
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-zap"></i></span>
+          <div>
+            <h3>The job of this console</h3>
+            <p>Publish retention for each family, place a hold when legal asks, and understand what purge will touch before it runs. Coordinate with jobs that actually execute purge.</p>
+          </div>
+        </article>
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-users"></i></span>
+          <div>
+            <h3>Seat at the table</h3>
+            <p>Administrators with compliance duty. Employees never set their own retention. Developers do not add ad-hoc deletes that bypass these windows.</p>
+          </div>
+        </article>
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-play-circle"></i></span>
+          <div>
+            <h3>The working rhythm</h3>
+            <p>Open a family, set the window, save, place or lift a hold, then confirm scheduled jobs. Spot-check audit after a purge window elapses.</p>
+          </div>
+        </article>
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-clock"></i></span>
+          <div>
+            <h3>Moments that bring you here</h3>
+            <p>A litigation hold. GDPR-style deletion request that still must respect a hold. After a new module starts writing records with no schedule. Year-end policy review.</p>
+          </div>
+        </article>
+      </div>
+      <div class="doc-briefing__note">
+        <div class="callout callout--note callout--interactive">
+          <div class="callout__icon">ⓘ</div>
+          <div class="callout__body">
+            <strong class="callout__title">Holds beat purge</strong>
+            <div class="callout__text">A compliance hold keeps records even when the calendar says they are eligible. Jobs honor this console; do not script around it.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <div class="doc-flow">
+      <section class="doc-block" id="flowcharts">
+        <h2 class="doc-block__title">Flowcharts</h2>
+
+        <article class="diagram-card" data-diagram-autoplay="true">
+          <header class="diagram-card__head">
+            <div class="diagram-card__titles">
+              <h3>1 — Update a retention schedule</h3>
+              <p class="diagram-card__desc">Pick an entity family, set the window, then save.</p>
+            </div>
+            <div class="diagram-card__controls">
+              <button type="button" data-diagram-prev aria-label="Previous step"><i class="fe fe-chevron-left" aria-hidden="true"></i></button>
+              <button type="button" data-diagram-play aria-pressed="false"><i class="fe fe-play" aria-hidden="true"></i><span>Play</span></button>
+              <button type="button" data-diagram-next aria-label="Next step"><i class="fe fe-chevron-right" aria-hidden="true"></i></button>
+            </div>
+          </header>
+          <div class="diagram-card__chart">
+            <pre class="mermaid">
+flowchart TD
+  A[Open Data retention] --> B[Select a schedule]
+  B --> C[Set window / hold]
+  C --> D[Save]
+  D --> E[Jobs honor schedule]
+  E --> F[Audit the change]
+            </pre>
+          </div>
+          <ol class="diagram-steps">
+            <li class="diagram-step is-active"><span class="diagram-step__index">1</span><div class="diagram-step__body"><strong>Open Data retention</strong><span>Admin → Data retention.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">2</span><div class="diagram-step__body"><strong>Select a family</strong><span>Timesheet, audit, documents, and related records.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">3</span><div class="diagram-step__body"><strong>Set window</strong><span>Retention days plus optional legal hold.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">4</span><div class="diagram-step__body"><strong>Confirm jobs</strong><span>Scheduled jobs execute purge — do not delete by hand.</span></div></li>
+          </ol>
+          <p class="diagram-card__progress" data-diagram-progress></p>
+        </article>
+      </section>
+
+      <section class="doc-block" id="overview">
+        <h2 class="doc-block__title">Overview</h2>
+        <p>Retention is policy over existing source tables. It does not introduce a parallel archive of business truth.</p>
+      </section>
+
+      <section class="doc-block" id="how-to">
+        <h2 class="doc-block__title">How to use</h2>
+        <div class="steps">
+          <div class="step"><strong>1. Legal holds first</strong><div class="step-detail">Holds block purge even when the window elapsed.</div></div>
+          <div class="step"><strong>2. Pair with compliance export</strong><div class="step-detail">Export evidence before shortening a window.</div></div>
+          <div class="step"><strong>3. Do not purge production blindly</strong><div class="step-detail">Preview job impact on Scheduled jobs.</div></div>
+        </div>
+      </section>
+
+      <section class="doc-block doc-block--related" id="related-pages">
+        <h2 class="doc-block__title">Related pages</h2>
+        <div class="related-links">
+          <a class="related-link" href="compliance-export.html"><span class="related-link__label">Compliance export</span><span class="related-link__desc">Evidence packs before purge.</span></a>
+          <a class="related-link" href="jobs.html"><span class="related-link__label">Scheduled jobs</span><span class="related-link__desc">Purge runners.</span></a>
+          <a class="related-link" href="security.html"><span class="related-link__label">Masking policy</span><span class="related-link__desc">Access while records still exist.</span></a>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <nav class="page-nav">
+    <a class="page-nav__prev" href="security.html">← Masking policy</a>
+    <a class="page-nav__next" href="compliance-export.html">Compliance export →</a>
+  </nav>
+</main>
+
+<footer>
+  <div class="container">
+    <p>&copy; 2026 <span data-brand>Tracopus</span>. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="../js/palette.js?v=20260619e"></script>
+<script src="../js/brand.js?v=20260619e"></script>
+<script src="../js/docs-utility-config.js?v=20260720b"></script>
+<script src="../js/nav-config.js?v=20260906a"></script>
+<script src="../js/navigation.js?v=20260912f"></script>
+<script src="../js/site-enhancements.js?v=20260906a"></script>
+<script src="../js/search.js?v=20260619e"></script>
+<script type="module">
+  import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+  mermaid.initialize({
+    startOnLoad: true,
+    theme: "base",
+    securityLevel: "loose",
+    flowchart: { curve: "basis", htmlLabels: true },
+    themeVariables: {
+      primaryColor: "#d8f3dc",
+      primaryTextColor: "#1b4332",
+      primaryBorderColor: "#40916c",
+      lineColor: "#52796f",
+      secondaryColor: "#f1faee",
+      tertiaryColor: "#ffffff",
+      fontFamily: "Inter, system-ui, sans-serif",
+    },
+  });
+  setTimeout(() => {
+    if (window.TracopusDocsDiagrams) window.TracopusDocsDiagrams.boot();
+  }, 600);
+</script>
+<script src="../js/docs-diagrams.js?v=20260718e"></script>
+</body>
+</html>

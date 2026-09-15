@@ -22,7 +22,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/styles.css?v=20260718g">
+  <link rel="stylesheet" href="../css/styles.css?v=20260912g">
   <script src="../js/brand-config.js?v=20260619e"></script>
 </head>
 <body data-docs-depth="1">
@@ -47,6 +47,59 @@
     <p class="doc-mast__lead">Lux settings hub for admins: device registration, cron schedulers, service health, company info, localization, notifications.</p>
     <p class="doc-mast__purpose">Access-controlled workspace settings — mobile devices, schedulers, health, company info, localization, notifications.</p>
   </header>
+
+    <section class="doc-briefing" id="at-a-glance" aria-labelledby="briefing-title">
+      <div class="doc-briefing__intro">
+        <p class="doc-briefing__kicker"><i class="fe fe-settings" aria-hidden="true"></i> Ops settings hub</p>
+        <h2 class="doc-briefing__title" id="briefing-title">Devices, jobs, health, and company chrome</h2>
+        <p class="doc-briefing__lead">Settings is the lux ops hub: device registration, cron schedulers, service health, company info, localization, and notifications at the organization layer — adjacent to Admin, not a second Application Config.</p>
+        <div class="doc-briefing__signals" aria-label="Access and placement">
+          <span class="doc-briefing__signal">People → Settings (ops)</span>
+          <span class="doc-briefing__signal">Route <code>/hrms/settings</code></span>
+          <span class="doc-briefing__signal">HR Admin · Admin</span>
+        </div>
+      </div>
+      <div class="doc-briefing__grid">
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-zap"></i></span>
+          <div>
+            <h3>The job of this console</h3>
+            <p>Register devices, check service health, adjust company chrome and localization, and understand which schedulers are running. Deep org lists still belong in Application Config; flags still belong on Feature flags.</p>
+          </div>
+        </article>
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-users"></i></span>
+          <div>
+            <h3>Seat at the table</h3>
+            <p>HR and org administrators. Employees use profile notification preferences, not this hub.</p>
+          </div>
+        </article>
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-play-circle"></i></span>
+          <div>
+            <h3>The working rhythm</h3>
+            <p>Open the hub, pick the pane you need, save, then verify in the product (login language, notification receipt, job last-run).</p>
+          </div>
+        </article>
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-clock"></i></span>
+          <div>
+            <h3>Moments that bring you here</h3>
+            <p>A new office device. Localization for a country. Health check during an incident. Company legal name change.</p>
+          </div>
+        </article>
+      </div>
+      <div class="doc-briefing__note">
+        <div class="callout callout--note callout--interactive">
+          <div class="callout__icon">ⓘ</div>
+          <div class="callout__body">
+            <strong class="callout__title">Not a replacement for Application Config</strong>
+            <div class="callout__text">Master lists, feature keys, and role flags stay in Application Config and roles. This hub is operational chrome and health.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
 
   <div class="doc-flow">
     
@@ -87,7 +140,7 @@ flowchart TD
     <section class="doc-block doc-block--pair">
       <div class="doc-split">
         <div id="layout"><h2 class="doc-block__title">Screen layout</h2><p><strong>Layout:</strong> Lux section cards in vertical stack.<br><strong>Sections:</strong> Mobile device registration · Schedulers · Service health · Company information · Localization · Notification preferences.</p></div>
-        <div id="header-filters"><h2 class="doc-block__title">Header &amp; filters</h2><p>No list filters. Each section is a self-contained form panel. Access requires admin/settings permission.</p></div>
+        <div id="header-filters"><h2 class="doc-block__title">Header &amp; filters</h2><p>No list filters. Each section is a self-contained form panel. Access requires admin/settings permission. When an integration or server is down, the header live-dot turns red — click it to see which services failed, then open <strong>Service health</strong>. Server status rows can be deleted with a second click to confirm.</p></div>
       </div>
     </section>
     <section class="doc-block doc-block--summary lux-summary-section" id="summary-section"><h2 class="doc-block__title">Summary &amp; charts</h2><p>Service health may show status indicators; schedulers list cron jobs with enable/disable toggles.</p></section>
@@ -129,9 +182,9 @@ flowchart TD
 <script src="../js/palette.js?v=20260619e"></script>
 <script src="../js/brand.js?v=20260619e"></script>
 <script src="../js/docs-utility-config.js?v=20260720b"></script>
-<script src="../js/nav-config.js?v=20260619e"></script>
-<script src="../js/navigation.js?v=20260619e"></script>
-<script src="../js/site-enhancements.js?v=20260718d"></script>
+<script src="../js/nav-config.js?v=20260906a"></script>
+<script src="../js/navigation.js?v=20260912f"></script>
+<script src="../js/site-enhancements.js?v=20260906a"></script>
 <script src="../js/search.js?v=20260619e"></script>
 <script type="module">
   import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";

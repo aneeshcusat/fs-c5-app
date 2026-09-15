@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en" data-lux-theme="luxury" data-lux-palette="emerald">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feature Flags — Tracopus User Guide</title>
+  <meta name="description" content="Stage pilots, track adoption, and govern high-risk toggles — including the Work-Time Governance catalog on the same console.">
+  <meta name="keywords" content="tracopus, documentation, user guide, admin, feature flags">
+  <link rel="canonical" href="https://tracopus.com/documentation/admin/feature-flags.html">
+  <meta name="robots" content="index, follow">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Tracopus">
+  <meta property="og:title" content="Feature Flags — Tracopus User Guide">
+  <meta property="og:description" content="Stage pilots, track adoption, and govern high-risk toggles — including the Work-Time Governance catalog on the same console.">
+  <meta property="og:url" content="https://tracopus.com/documentation/admin/feature-flags.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Feature Flags — Tracopus User Guide">
+  <meta name="twitter:description" content="Stage pilots, track adoption, and govern high-risk toggles — including the Work-Time Governance catalog on the same console.">
+  <script src="../js/docs-analytics.js?v=20260719a" defer></script>
+  <link rel="stylesheet" href="../css/styles.css?v=20260912g">
+  <script src="../js/brand-config.js?v=20260619e"></script>
+</head>
+<body data-docs-depth="1">
+
+<header aria-label="Site header"></header>
+
+<main>
+  <div class="breadcrumb"><a href="../index.html">Home</a> → Admin → Feature Flags</div>
+
+  <div class="doc-canvas">
+    <header class="doc-mast">
+      <div class="doc-mast__top">
+        <span class="doc-mast__eyebrow">Admin · Access</span>
+        <div class="page-meta page-meta--inline">
+          <span class="page-meta__item"><strong>Route</strong> <code>/admin/feature-flags</code></span>
+          <span class="page-meta__item"><strong>Flag</strong> <code>featureFlagsEnabled</code></span>
+        </div>
+      </div>
+      <h1 class="doc-mast__title">Feature Flags</h1>
+      <p class="doc-mast__lead">Stage pilots, track adoption, and govern high-risk toggles — including the Work-Time Governance catalog on the same console.</p>
+      <p class="doc-mast__purpose">Scroll to <a href="#flowcharts">Flowcharts</a>. Scenario: <a href="../user-guide/admin/admin-feature-flags.html">Toggle feature flags for pilot rollout</a>. Also: <a href="../user-guide/admin/admin-work-time-governance.html">Enable work-time catalog features</a>.</p>
+    </header>
+
+    <section class="doc-briefing" id="at-a-glance" aria-labelledby="briefing-title">
+      <div class="doc-briefing__intro">
+        <p class="doc-briefing__kicker"><i class="fe fe-toggle-right" aria-hidden="true"></i> Pilot and catalog control</p>
+        <h2 class="doc-briefing__title" id="briefing-title">Turn surfaces on without shipping a build</h2>
+        <p class="doc-briefing__lead">Feature flags are the live catalog of org toggles, including Work-Time Governance families on the same console. A flag change is how a pilot sees a menu tomorrow without a deploy — and how you take it back just as fast.</p>
+        <div class="doc-briefing__signals" aria-label="Access and placement">
+          <span class="doc-briefing__signal">Admin → Feature flags</span>
+          <span class="doc-briefing__signal">Route <code>/admin/feature-flags</code></span>
+          <span class="doc-briefing__signal">Org flag <code>featureFlagsEnabled</code></span>
+          <span class="doc-briefing__signal">HR Admin · Org Admin</span>
+        </div>
+      </div>
+      <div class="doc-briefing__grid">
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-zap"></i></span>
+          <div>
+            <h3>The job of this console</h3>
+            <p>Stage a pilot, watch adoption, and govern high-risk toggles. Enable for an org unit before global on. Read dependents so a child never appears while its parent is off. Use the Work-Time Governance panel for timesheet, approval, and attendance catalog families — not a separate route.</p>
+          </div>
+        </article>
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-users"></i></span>
+          <div>
+            <h3>Seat at the table</h3>
+            <p>Only administrators who can open Admin and whose org has featureFlagsEnabled. Contributors never see this register. Persona navigation still decides who sees a page after the flag is on.</p>
+          </div>
+        </article>
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-play-circle"></i></span>
+          <div>
+            <h3>The working rhythm</h3>
+            <p>Filter by module and status, open a flag, enable for a pilot, save, then log in as a test persona and confirm menus. Rollback by disabling. Coordinate Application Config keys and role permissions when a flag alone is not enough.</p>
+          </div>
+        </article>
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-clock"></i></span>
+          <div>
+            <h3>Moments that bring you here</h3>
+            <p>A new module is ready for one country. Work-time rules must go live before payroll lock. A flag caused a bad menu and needs an immediate off. Before go-live, to confirm dependents are unblocked.</p>
+          </div>
+        </article>
+      </div>
+      <div class="doc-briefing__note">
+        <div class="callout callout--note callout--interactive">
+          <div class="callout__icon">ⓘ</div>
+          <div class="callout__body">
+            <strong class="callout__title">Flags gate menus; they are not Application Config</strong>
+            <div class="callout__text">Lists, calendars, and master values still live in Application Config. Roles still decide who may open a gated page. Turn the flag on, then finish config and persona access.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <div class="doc-flow">
+      <section class="doc-block" id="flowcharts">
+        <h2 class="doc-block__title">Flowcharts</h2>
+
+        <article class="diagram-card" data-diagram-autoplay="true">
+          <header class="diagram-card__head">
+            <div class="diagram-card__titles">
+              <h3>1 — Toggle a flag for a pilot</h3>
+              <p class="diagram-card__desc">Find a flag, change its state, then verify menus for a test persona.</p>
+            </div>
+            <div class="diagram-card__controls">
+              <button type="button" data-diagram-prev aria-label="Previous step"><i class="fe fe-chevron-left" aria-hidden="true"></i></button>
+              <button type="button" data-diagram-play aria-pressed="false"><i class="fe fe-play" aria-hidden="true"></i><span>Play</span></button>
+              <button type="button" data-diagram-next aria-label="Next step"><i class="fe fe-chevron-right" aria-hidden="true"></i></button>
+            </div>
+          </header>
+          <div class="diagram-card__chart">
+            <pre class="mermaid">
+flowchart TD
+  A[Open Feature flags] --> B[Filter by module/status]
+  B --> C[Select a flag]
+  C --> D[Enable for pilot / org]
+  D --> E[Save]
+  E --> F[Verify test persona menus]
+  F --> G{Issues?}
+  G -->|Yes| H[Disable / rollback]
+  G -->|No| I[Monitor adoption]
+            </pre>
+          </div>
+          <ol class="diagram-steps">
+            <li class="diagram-step is-active"><span class="diagram-step__index">1</span><div class="diagram-step__body"><strong>Open Feature flags</strong><span>Admin → Feature flags.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">2</span><div class="diagram-step__body"><strong>Filter</strong><span>Module and status chips narrow the register.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">3</span><div class="diagram-step__body"><strong>Change state</strong><span>Enable for a pilot org unit or globally.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">4</span><div class="diagram-step__body"><strong>Verify</strong><span>Log in as a test persona and confirm menus appear.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">5</span><div class="diagram-step__body"><strong>Rollback if needed</strong><span>Disable the flag without a deploy.</span></div></li>
+          </ol>
+          <p class="diagram-card__progress" data-diagram-progress></p>
+        </article>
+      </section>
+
+      <section class="doc-block" id="overview">
+        <h2 class="doc-block__title">Overview</h2>
+        <p>This console is the live catalog of org feature flags. The Work-Time Governance panel on the same page turns catalog families on or off in Application Config — it is not a separate route.</p>
+      </section>
+
+      <section class="doc-block" id="how-to">
+        <h2 class="doc-block__title">How to use</h2>
+        <div class="steps">
+          <div class="step"><strong>1. Prefer pilots before global on</strong><div class="step-detail">High-risk flags should ship to a pilot org unit first.</div></div>
+          <div class="step"><strong>2. Read dependents</strong><div class="step-detail">Blocked children stay off until the parent flag is enabled.</div></div>
+          <div class="step"><strong>3. Coordinate with config</strong><div class="step-detail">Some flags still need Application Config keys or role permissions.</div></div>
+          <div class="step"><strong>4. Use Work-Time Governance for time rules</strong><div class="step-detail">Approval chain, timesheet validation, and attendance catalog live in the WTG panel below the register.</div></div>
+        </div>
+      </section>
+
+      <section class="doc-block doc-block--related" id="related-pages">
+        <h2 class="doc-block__title">Related pages</h2>
+        <div class="related-links">
+          <a class="related-link" href="../hrms/roles-permissions.html"><span class="related-link__label">Roles &amp; permissions</span><span class="related-link__desc">Menu access for flag admin.</span></a>
+          <a class="related-link" href="../hrms/application-config.html"><span class="related-link__label">Application Config</span><span class="related-link__desc">Org overrides that flags often gate.</span></a>
+          <a class="related-link" href="../hrms/work-time-governance.html"><span class="related-link__label">Work-Time Governance</span><span class="related-link__desc">Catalog families managed from this page.</span></a>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <nav class="page-nav">
+    <a class="page-nav__prev" href="dashboard.html">← Admin dashboard</a>
+    <a class="page-nav__next" href="../hrms/roles-permissions.html">Roles &amp; permissions →</a>
+  </nav>
+</main>
+
+<footer>
+  <div class="container">
+    <p>&copy; 2026 <span data-brand>Tracopus</span>. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="../js/palette.js?v=20260619e"></script>
+<script src="../js/brand.js?v=20260619e"></script>
+<script src="../js/docs-utility-config.js?v=20260720b"></script>
+<script src="../js/nav-config.js?v=20260906a"></script>
+<script src="../js/navigation.js?v=20260912f"></script>
+<script src="../js/site-enhancements.js?v=20260906a"></script>
+<script src="../js/search.js?v=20260619e"></script>
+<script type="module">
+  import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+  mermaid.initialize({
+    startOnLoad: true,
+    theme: "base",
+    securityLevel: "loose",
+    flowchart: { curve: "basis", htmlLabels: true },
+    themeVariables: {
+      primaryColor: "#d8f3dc",
+      primaryTextColor: "#1b4332",
+      primaryBorderColor: "#40916c",
+      lineColor: "#52796f",
+      secondaryColor: "#f1faee",
+      tertiaryColor: "#ffffff",
+      fontFamily: "Inter, system-ui, sans-serif",
+    },
+  });
+  setTimeout(() => {
+    if (window.TracopusDocsDiagrams) window.TracopusDocsDiagrams.boot();
+  }, 600);
+</script>
+<script src="../js/docs-diagrams.js?v=20260718e"></script>
+</body>
+</html>

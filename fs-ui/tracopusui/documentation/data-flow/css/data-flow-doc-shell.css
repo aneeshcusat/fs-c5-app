@@ -3,6 +3,29 @@
  * Does not override simulator panel logic — only page shell + header spacing.
  */
 body.data-flow-doc-site {
+  --ink: var(--text-dark);
+  --muted: var(--text-light);
+  --bg: var(--bg-light);
+  --paper: var(--bg-white);
+  --line: var(--border-color);
+  --accent: var(--lux-primary);
+  --accent-soft: var(--lux-primary-soft);
+  --warn: var(--warning-color);
+  --warn-soft: rgba(245, 158, 11, 0.12);
+  --danger: var(--danger-color);
+  --danger-soft: rgba(239, 68, 68, 0.1);
+  --danger-border: rgba(239, 68, 68, 0.35);
+  --ok: var(--success-color);
+  --ok-soft: rgba(16, 185, 129, 0.12);
+  --off: var(--text-light);
+  --off-soft: var(--lux-primary-soft);
+  --flash: rgba(245, 158, 11, 0.16);
+  --draft: var(--text-light);
+  --pending: var(--warning-color);
+  --approved: var(--lux-primary);
+  --rejected: var(--danger-color);
+  --reopened: var(--lux-primary-dark);
+  --font: var(--font-sans);
   background: var(--bg-light) !important;
   color: var(--text-dark);
   font-family: var(--font-sans);

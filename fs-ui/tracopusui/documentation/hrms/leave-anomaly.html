@@ -17,7 +17,7 @@
   <meta name="twitter:title" content="Leave Anomaly &amp; Fairness — Tracopus User Guide">
   <meta name="twitter:description" content="Register view for anomaly rules, flagged reviews, and fairness snapshots — no self-serve write UI; seed via API. Flags never auto-reject leave.">
   <script src="../js/docs-analytics.js?v=20260719a" defer></script>
-  <link rel="stylesheet" href="../css/styles.css?v=20260718g">
+  <link rel="stylesheet" href="../css/styles.css?v=20260912g">
   <script src="../js/brand-config.js?v=20260619e"></script>
 </head>
 <body data-docs-depth="1">
@@ -40,6 +40,59 @@
       <p class="doc-mast__lead">Register view for anomaly rules, flagged reviews, and fairness snapshots — no self-serve write UI; seed via API. Flags never auto-reject leave.</p>
       <p class="doc-mast__purpose">Register view — seed via API. Flowcharts: rule → detect → review.</p>
     </header>
+
+    <section class="doc-briefing" id="at-a-glance" aria-labelledby="briefing-title">
+      <div class="doc-briefing__intro">
+        <p class="doc-briefing__kicker"><i class="fe fe-alert-triangle" aria-hidden="true"></i> Fairness signals</p>
+        <h2 class="doc-briefing__title" id="briefing-title">Flags for review — they never auto-reject leave</h2>
+        <p class="doc-briefing__lead">Leave anomaly intelligence is rules, flagged reviews, and fairness snapshots. There is no self-serve write UI; seed via API. Flags never auto-reject leave.</p>
+        <div class="doc-briefing__signals" aria-label="Access and placement">
+          <span class="doc-briefing__signal">Admin → Leave anomaly intelligence</span>
+          <span class="doc-briefing__signal">Route <code>/admin/leave/anomaly-rules</code></span>
+          <span class="doc-briefing__signal">HR Admin · Org Admin</span>
+        </div>
+      </div>
+      <div class="doc-briefing__grid">
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-zap"></i></span>
+          <div>
+            <h3>The job of this console</h3>
+            <p>Read flagged patterns, open the underlying leave, and decide with a human. Tune rules via API/seed, not by deleting leave rows.</p>
+          </div>
+        </article>
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-users"></i></span>
+          <div>
+            <h3>Seat at the table</h3>
+            <p>HR administrators. Employees are not scored in a public leaderboard here.</p>
+          </div>
+        </article>
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-play-circle"></i></span>
+          <div>
+            <h3>The working rhythm</h3>
+            <p>Open the review list, inspect a flag, open the leave, act on the request using normal approval. Adjust rules only with care.</p>
+          </div>
+        </article>
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-clock"></i></span>
+          <div>
+            <h3>Moments that bring you here</h3>
+            <p>A cluster of Friday-only leave. A fairness snapshot before peak season. After a policy change that looked like gaming. When someone asks why a flag appeared.</p>
+          </div>
+        </article>
+      </div>
+      <div class="doc-briefing__note">
+        <div class="callout callout--note callout--interactive">
+          <div class="callout__icon">ⓘ</div>
+          <div class="callout__body">
+            <strong class="callout__title">Signals, not a veto</strong>
+            <div class="callout__text">Anomaly never auto-rejects. ApprovalAuthority and managers still decide.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
 
     <div class="doc-flow">
       <section class="doc-block" id="flowcharts">
@@ -151,9 +204,9 @@ flowchart TD
 <script src="../js/palette.js?v=20260619e"></script>
 <script src="../js/brand.js?v=20260619e"></script>
 <script src="../js/docs-utility-config.js?v=20260720b"></script>
-<script src="../js/nav-config.js?v=20260619e"></script>
-<script src="../js/navigation.js?v=20260619e"></script>
-<script src="../js/site-enhancements.js?v=20260718d"></script>
+<script src="../js/nav-config.js?v=20260906a"></script>
+<script src="../js/navigation.js?v=20260912f"></script>
+<script src="../js/site-enhancements.js?v=20260906a"></script>
 <script src="../js/search.js?v=20260619e"></script>
 <script type="module">
   import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";

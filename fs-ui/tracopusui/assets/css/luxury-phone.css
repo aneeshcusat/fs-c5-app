@@ -1,0 +1,591 @@
+/* Phone contract for fui luxury shell. Tokens only — no new palette.
+   Loaded after luxury.css. Scope most rules to body.lux-phone (≤767px). */
+
+:root {
+    --lux-phone-rail-height: 58px;
+    --lux-phone-drawer-width: min(calc(100vw - 1rem), 20rem);
+}
+
+html {
+    -webkit-text-size-adjust: 100%;
+}
+
+body.lux-shell {
+    overflow-x: clip;
+}
+
+body.lux-phone {
+    overflow-x: clip;
+}
+
+html:has(body.lux-phone) {
+    overflow-x: clip;
+}
+
+body.lux-phone .lux-register-page,
+body.lux-phone .lux-register-shell,
+body.lux-phone .lux-page-canvas > * {
+    max-width: 100%;
+    min-width: 0;
+}
+
+/* —— Nav scrim (phone + tablet overlay) —— */
+.lux-nav-scrim {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 1032;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: rgba(15, 23, 42, 0.42);
+    cursor: pointer;
+}
+
+@media (max-width: 1200px) {
+    body.offcanvas-active .lux-nav-scrim {
+        display: block;
+    }
+}
+
+/* ========== Phone chrome ========== */
+body.lux-phone #header_top.lux-rail {
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-left: env(safe-area-inset-left, 0px);
+    padding-right: env(safe-area-inset-right, 0px);
+    min-height: calc(var(--lux-phone-rail-height) + env(safe-area-inset-top, 0px));
+    height: auto;
+}
+
+body.lux-phone #header_top.lux-rail > .container {
+    justify-content: flex-start;
+    align-items: center;
+    min-height: var(--lux-phone-rail-height);
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
+}
+
+body.lux-phone #header_top.lux-rail .hleft {
+    align-items: center;
+    gap: 0.65rem;
+}
+
+body.lux-phone #header_top.lux-rail .hright {
+    display: none;
+}
+
+body.lux-phone #header_top.lux-rail .header-brand {
+    flex-direction: row;
+    align-items: center;
+    gap: 0.65rem;
+    margin: 0;
+    padding: 0;
+}
+
+body.lux-phone #header_top.lux-rail .header-brand .lux-rail-brand-mark {
+    width: 34px;
+    flex-shrink: 0;
+    display: block;
+}
+
+body.lux-phone #header_top.lux-rail .lux-rail-brand-lockup,
+body.lux-phone #header_top.lux-rail .lux-rail-brand-wordmark {
+    display: block !important;
+    min-width: 0;
+    line-height: 0;
+}
+
+body.lux-phone #header_top.lux-rail .lux-rail-brand-wordmark .app-brand-block,
+body.lux-phone #header_top.lux-rail .lux-rail-brand-wordmark .app-brand-wordmark__mark,
+body.lux-phone #header_top.lux-rail .lux-rail-brand-wordmark .app-brand-wordmark__logo-col {
+    align-items: flex-start;
+    gap: 0;
+}
+
+body.lux-phone #header_top.lux-rail .lux-rail-brand-wordmark .app-brand-logo--rail {
+    max-height: 1.55rem;
+    max-width: min(10rem, 48vw);
+    width: auto;
+}
+
+body.lux-phone #header_top.lux-rail .lux-rail-brand-wordmark .brand-logo-wrapper--logo-only {
+    margin: 0;
+    padding: 0;
+    line-height: 0;
+}
+
+body.lux-phone #header_top.lux-rail .lux-rail-brand-wordmark .app-brand-wordmark__footer {
+    margin-top: 0.12rem;
+    gap: 0;
+}
+
+body.lux-phone #header_top.lux-rail .lux-rail-brand-wordmark .app-brand-wordmark__rule {
+    margin-bottom: 0.1rem;
+}
+
+body.lux-phone #header_top.lux-rail .lux-rail-brand-wordmark .app-brand-tagline-shell {
+    min-height: 0;
+    line-height: 1;
+}
+
+body.lux-phone #header_top.lux-rail .lux-rail-brand-wordmark .app-brand-tagline--rail {
+    letter-spacing: 0.09em;
+    line-height: 1.15;
+}
+
+body.lux-phone #header_top.lux-rail .lux-rail-brand-name {
+    display: inline-block !important;
+    font-family: var(--lux-brand-font);
+    font-size: 0.9375rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--lux-text);
+    line-height: 1.1;
+    white-space: nowrap;
+}
+
+body.lux-phone .page {
+    padding-top: calc(var(--lux-phone-rail-height) + env(safe-area-inset-top, 0px));
+    left: 0 !important;
+    width: 100% !important;
+}
+
+body.lux-phone #header_top.lux-rail .lux-rail__nav,
+body.lux-phone #header_top.lux-rail .lux-rail__tools .lux-rail__icon-btn,
+body.lux-phone #header_top.lux-rail .lux-rail__avatar-btn,
+body.lux-phone #header_top.lux-rail .lux-rail__menu-toggle {
+    display: none !important;
+}
+
+body.lux-phone #page_top.lux-header-bar .lux-header__menu-btn {
+    display: inline-flex !important;
+}
+
+body.lux-phone #page_top.lux-header-bar .lux-header__kicker,
+body.lux-phone #page_top.lux-header-bar .lux-header__persona-switcher,
+body.lux-phone #page_top.lux-header-bar .lux-header__scope-badge,
+body.lux-phone #page_top.lux-header-bar .lux-header__live-dot,
+body.lux-phone #page_top.lux-header-bar .lux-header__live-pulse,
+body.lux-phone #page_top.lux-header-bar .fullscreen_btn,
+body.lux-phone #page_top.lux-header-bar .input-icon.xs-hide {
+    display: none !important;
+}
+
+body.lux-phone #page_top.lux-header-bar .lux-header__live-pulse.is-down {
+    display: inline-flex !important;
+}
+
+body.lux-phone #page_top.lux-header-bar .lux-header__live-pulse.is-down .lux-header__live-dot {
+    display: inline-block !important;
+}
+
+body.lux-phone #page_top.lux-header-bar .lux-header__kicker-row {
+    display: none;
+}
+
+body.lux-phone #page_top.lux-header-bar .page-header {
+    padding: 0.4rem 0;
+    gap: 0.4rem;
+    align-items: center;
+}
+
+body.lux-phone #page_top.lux-header-bar .page-title {
+    font-size: 1rem;
+    line-height: 1.2;
+}
+
+body.lux-phone #page_top.lux-header-bar .lux-header__icon-btn,
+body.lux-phone #page_top.lux-header-bar .lux-header__menu-btn {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    min-height: 40px;
+}
+
+body.lux-phone.offcanvas-active #left-sidebar.lux-sidebar {
+    left: 0 !important;
+    top: calc(var(--lux-phone-rail-height) + env(safe-area-inset-top, 0px));
+    width: var(--lux-phone-drawer-width) !important;
+    height: calc(100dvh - var(--lux-phone-rail-height) - env(safe-area-inset-top, 0px));
+    max-height: calc(100dvh - var(--lux-phone-rail-height) - env(safe-area-inset-top, 0px));
+    position: fixed;
+    z-index: 1036;
+}
+
+body.lux-phone.offcanvas-active .page {
+    left: 0 !important;
+    width: 100% !important;
+}
+
+body.lux-phone #main_content > .lux-page-alert {
+    left: 0;
+    width: 100%;
+}
+
+/* ========== Shared primitives ========== */
+/* Full Application Config hero may stack; module heroes stay one compact row */
+body.lux-phone .lux-appconfig-hero:not(.lux-module-hero) .lux-appconfig-hero__top {
+    flex-direction: column;
+    align-items: stretch;
+}
+
+/* Compact module heroes — brand left, How to / actions right on every page */
+body.lux-phone .lux-module-hero.lux-appconfig-hero {
+    margin-bottom: 0.25rem;
+}
+
+body.lux-phone .lux-module-hero .lux-appconfig-hero__top {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.35rem;
+    padding: 0.35rem 0.5rem;
+}
+
+body.lux-phone .lux-module-hero .lux-appconfig-hero__brand {
+    min-width: 0;
+    flex: 1 1 auto;
+    gap: 0.35rem;
+    align-items: flex-start;
+}
+
+body.lux-phone .lux-module-hero .lux-appconfig-hero__icon {
+    width: 26px;
+    height: 26px;
+    border-radius: 7px;
+    font-size: 0.75rem;
+}
+
+body.lux-phone .lux-module-hero .lux-appconfig-hero__kicker {
+    margin: 0;
+    font-size: 7px;
+    letter-spacing: 0.08em;
+}
+
+body.lux-phone .lux-module-hero .lux-appconfig-hero__title {
+    font-size: 0.875rem;
+    line-height: 1.2;
+}
+
+body.lux-phone .lux-module-hero .lux-appconfig-hero__subtitle {
+    margin: 0.05rem 0 0;
+    font-size: 0.6875rem;
+    line-height: 1.3;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+body.lux-phone .lux-module-hero__aside:not(.lux-module-hero__aside--toolbar) {
+    width: auto;
+    flex: 0 0 auto;
+    align-self: flex-start;
+    align-items: flex-end;
+    gap: 0.25rem;
+}
+
+body.lux-phone .lux-module-hero__actions {
+    justify-content: flex-end;
+    flex-wrap: nowrap;
+    gap: 0.25rem;
+}
+
+body.lux-phone .lux-module-hero__actions .lux-howto-link,
+body.lux-phone .lux-module-hero__actions .lux-module-hero__refresh.lux-page-header__refresh-btn {
+    width: 2rem;
+    height: 2rem;
+    margin-left: 0;
+}
+
+body.lux-phone .lux-module-hero__nav-row {
+    padding: 0 0.5rem 0.3rem;
+}
+
+body.lux-phone .lux-module-hero.has-toolbar .lux-appconfig-hero__top {
+    flex-wrap: wrap;
+}
+
+body.lux-phone .lux-module-hero__aside--toolbar {
+    width: 100%;
+    flex: 1 1 100%;
+    align-items: stretch;
+}
+
+body.lux-phone .lux-hrms-dash__panel-head,
+body.lux-phone .lux-hrms-dash__panel-actions,
+body.lux-phone .lux-page-header__toolbar,
+body.lux-phone .lux-page-header__group--actions,
+body.lux-phone .lux-project-requests .lux-page-header__group--actions,
+body.lux-phone .lux-appr-toolbar__row,
+body.lux-phone .lux-fflag-panel__filters {
+    flex-wrap: wrap;
+    min-width: 0;
+}
+
+body.lux-phone .lux-hrms-dash__kpi-strip,
+body.lux-phone .lux-gov-kpi-strip,
+body.lux-phone .lux-admin-kpi-strip,
+body.lux-phone .lux-gov-lux__kpi-strip {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+body.lux-phone .lux-hrms-dash__filter-chip,
+body.lux-phone .lux-appr-toolbar__search-input,
+body.lux-phone button.lux-action,
+body.lux-phone .lux-register-page button {
+    min-height: 40px;
+}
+
+body.lux-phone .lux-bid-list,
+body.lux-phone .lux-bid-list__head,
+body.lux-phone .lux-bid-list__item,
+body.lux-phone .lux-po-requests .lux-bid-list,
+body.lux-phone .lux-project-requests .lux-bid-list,
+body.lux-phone .lux-file-list-shell .lux-bid-list__head,
+body.lux-phone .lux-file-list-shell .lux-bid-list__item,
+body.lux-phone .lux-workitem-list-shell .lux-bid-list__head,
+body.lux-phone .lux-workitem-list-shell .lux-bid-list__item {
+    min-width: 0 !important;
+}
+
+body.lux-phone .lux-bid-list__head {
+    display: none;
+}
+
+body.lux-phone .lux-bid-list__item {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.4rem;
+    min-width: 0;
+}
+
+body.lux-phone .lux-bid-list__col--actions {
+    align-self: flex-end;
+}
+
+body.lux-phone .lux-bid-list__body,
+body.lux-phone .lux-register-list-section,
+body.lux-phone table.lux-appr-register,
+body.lux-phone .lux-fflag-register-wrap,
+body.lux-phone .lux-leave-register-wrap {
+    max-width: 100%;
+}
+
+body.lux-phone .lux-onb-drawer,
+body.lux-phone .lux-appr-drawer.lux-onb-drawer,
+body.lux-phone .lux-payroll-drawer,
+body.lux-phone .lux-onb-drawer.lux-payroll-drawer,
+body.lux-phone .right_sidebar {
+    width: 100% !important;
+    max-width: 100vw !important;
+    height: 100dvh;
+    max-height: 100dvh;
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* Closed shell panels must stay fully off-canvas when width is forced to 100vw */
+body.lux-phone .right_sidebar.lux-settings-panel:not(.lux-shell-panel--open),
+body.lux-phone .right_sidebar.lux-today-panel:not(.open),
+body.lux-phone .theme_div.lux-theme-panel:not(.lux-shell-panel--open) {
+    right: -100vw !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+}
+
+body.lux-phone .right_sidebar.lux-settings-panel.lux-shell-panel--open,
+body.lux-phone .right_sidebar.lux-today-panel.open,
+body.lux-phone .theme_div.lux-theme-panel.lux-shell-panel--open {
+    right: 0 !important;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+/* ========== Timesheet day-stack ========== */
+body.lux-phone .lux-ts-board[data-phone-day] {
+    --lux-ts-grid-columns: minmax(0, 1.05fr) minmax(0, 1.4fr) 2.6rem;
+}
+
+body.lux-phone .lux-ts-board[data-phone-day] .lux-ts-board__grid-row {
+    min-width: 0 !important;
+}
+
+body.lux-phone .lux-ts-board[data-phone-day] .lux-ts-board__week-rail.lux-ts-board__grid-row {
+    display: flex;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    gap: 0.3rem;
+    padding: 0.35rem 0.45rem;
+    min-width: 0 !important;
+}
+
+body.lux-phone .lux-ts-board[data-phone-day] .lux-ts-board__week-rail .lux-ts-board__col-meta,
+body.lux-phone .lux-ts-board[data-phone-day] .lux-ts-board__week-rail .lux-ts-board__col-tools {
+    display: none;
+}
+
+body.lux-phone .lux-ts-board[data-phone-day] .lux-ts-board__week-day {
+    flex: 0 0 auto;
+    min-width: 2.85rem;
+    grid-column: auto !important;
+}
+
+body.lux-phone .lux-ts-board[data-phone-day] .lux-ts-board__entry [class*="lux-ts-board__col-day-"],
+body.lux-phone .lux-ts-board[data-phone-day] .lux-ts-board__footer-totals [class*="lux-ts-board__col-day-"],
+body.lux-phone .lux-ts-board[data-phone-day] .lux-ts-board__meta-columns [class*="lux-ts-board__col-day-"],
+body.lux-phone .lux-ts-board[data-phone-day] .lux-ts-board__skeleton-entry [class*="lux-ts-board__col-day-"] {
+    display: none;
+}
+
+body.lux-phone .lux-ts-board[data-phone-day] .lux-ts-board__entry .lux-ts-board__col-meta,
+body.lux-phone .lux-ts-board[data-phone-day] .lux-ts-board__footer-totals .lux-ts-board__col-meta,
+body.lux-phone .lux-ts-board[data-phone-day] .lux-ts-board__meta-columns .lux-ts-board__col-meta {
+    grid-column: 1;
+}
+
+body.lux-phone .lux-ts-board[data-phone-day] .lux-ts-board__entry .lux-ts-board__col-tools,
+body.lux-phone .lux-ts-board[data-phone-day] .lux-ts-board__footer-totals .lux-ts-board__col-tools,
+body.lux-phone .lux-ts-board[data-phone-day] .lux-ts-board__meta-columns .lux-ts-board__col-tools {
+    grid-column: 3;
+}
+
+body.lux-phone .lux-ts-board[data-phone-day="0"] .lux-ts-board__entry .lux-ts-board__col-day-0,
+body.lux-phone .lux-ts-board[data-phone-day="0"] .lux-ts-board__footer-totals .lux-ts-board__col-day-0,
+body.lux-phone .lux-ts-board[data-phone-day="0"] .lux-ts-board__meta-columns .lux-ts-board__col-day-0,
+body.lux-phone .lux-ts-board[data-phone-day="1"] .lux-ts-board__entry .lux-ts-board__col-day-1,
+body.lux-phone .lux-ts-board[data-phone-day="1"] .lux-ts-board__footer-totals .lux-ts-board__col-day-1,
+body.lux-phone .lux-ts-board[data-phone-day="1"] .lux-ts-board__meta-columns .lux-ts-board__col-day-1,
+body.lux-phone .lux-ts-board[data-phone-day="2"] .lux-ts-board__entry .lux-ts-board__col-day-2,
+body.lux-phone .lux-ts-board[data-phone-day="2"] .lux-ts-board__footer-totals .lux-ts-board__col-day-2,
+body.lux-phone .lux-ts-board[data-phone-day="2"] .lux-ts-board__meta-columns .lux-ts-board__col-day-2,
+body.lux-phone .lux-ts-board[data-phone-day="3"] .lux-ts-board__entry .lux-ts-board__col-day-3,
+body.lux-phone .lux-ts-board[data-phone-day="3"] .lux-ts-board__footer-totals .lux-ts-board__col-day-3,
+body.lux-phone .lux-ts-board[data-phone-day="3"] .lux-ts-board__meta-columns .lux-ts-board__col-day-3,
+body.lux-phone .lux-ts-board[data-phone-day="4"] .lux-ts-board__entry .lux-ts-board__col-day-4,
+body.lux-phone .lux-ts-board[data-phone-day="4"] .lux-ts-board__footer-totals .lux-ts-board__col-day-4,
+body.lux-phone .lux-ts-board[data-phone-day="4"] .lux-ts-board__meta-columns .lux-ts-board__col-day-4,
+body.lux-phone .lux-ts-board[data-phone-day="5"] .lux-ts-board__entry .lux-ts-board__col-day-5,
+body.lux-phone .lux-ts-board[data-phone-day="5"] .lux-ts-board__footer-totals .lux-ts-board__col-day-5,
+body.lux-phone .lux-ts-board[data-phone-day="5"] .lux-ts-board__meta-columns .lux-ts-board__col-day-5,
+body.lux-phone .lux-ts-board[data-phone-day="6"] .lux-ts-board__entry .lux-ts-board__col-day-6,
+body.lux-phone .lux-ts-board[data-phone-day="6"] .lux-ts-board__footer-totals .lux-ts-board__col-day-6,
+body.lux-phone .lux-ts-board[data-phone-day="6"] .lux-ts-board__meta-columns .lux-ts-board__col-day-6 {
+    display: block;
+    grid-column: 2;
+}
+
+body.lux-phone .lux-ts-board[data-phone-day="0"] .lux-ts-board__week-day.lux-ts-board__col-day-0,
+body.lux-phone .lux-ts-board[data-phone-day="1"] .lux-ts-board__week-day.lux-ts-board__col-day-1,
+body.lux-phone .lux-ts-board[data-phone-day="2"] .lux-ts-board__week-day.lux-ts-board__col-day-2,
+body.lux-phone .lux-ts-board[data-phone-day="3"] .lux-ts-board__week-day.lux-ts-board__col-day-3,
+body.lux-phone .lux-ts-board[data-phone-day="4"] .lux-ts-board__week-day.lux-ts-board__col-day-4,
+body.lux-phone .lux-ts-board[data-phone-day="5"] .lux-ts-board__week-day.lux-ts-board__col-day-5,
+body.lux-phone .lux-ts-board[data-phone-day="6"] .lux-ts-board__week-day.lux-ts-board__col-day-6,
+body.lux-phone .lux-ts-board__week-day.is-phone-focus {
+    outline: 2px solid rgba(var(--lux-primary-rgb, 91, 95, 244), 0.45);
+    outline-offset: 1px;
+}
+
+/* ========== Attendance / leave ========== */
+body.lux-phone .lux-att-matrix,
+body.lux-phone .lux-att-matrix__scroll {
+    max-width: 100%;
+    width: 100%;
+}
+
+body.lux-phone .lux-att-matrix {
+    overflow: visible;
+}
+
+body.lux-phone .lux-att-matrix__scroll {
+    overflow-x: auto;
+    overflow-y: auto;
+    max-height: calc(100dvh - 16rem);
+    -webkit-overflow-scrolling: touch;
+}
+
+body.lux-phone .lux-att-matrix__th-employee,
+body.lux-phone .lux-att-row__employee {
+    min-width: 7.25rem;
+    max-width: 9rem;
+}
+
+body.lux-phone .lux-att-cal__cell,
+body.lux-phone .lux-leave-cal__cell {
+    min-height: 3.1rem;
+    padding: 0.28rem 0.2rem;
+    gap: 0.15rem;
+}
+
+body.lux-phone .lux-att-cal__avatars,
+body.lux-phone .lux-leave-cal__avatars,
+body.lux-phone .lux-leave-cal__day-chip em,
+body.lux-phone .lux-att-cal__day-chip {
+    font-size: 0.6rem;
+}
+
+body.lux-phone .lux-leave-register thead,
+body.lux-phone .lux-appr-register thead {
+    display: none;
+}
+
+body.lux-phone .lux-leave-register,
+body.lux-phone .lux-leave-register tbody,
+body.lux-phone .lux-leave-register tr,
+body.lux-phone .lux-leave-register td,
+body.lux-phone .lux-appr-register,
+body.lux-phone .lux-appr-register tbody,
+body.lux-phone .lux-appr-register tr,
+body.lux-phone .lux-appr-register td {
+    display: block;
+    width: 100%;
+}
+
+body.lux-phone .lux-leave-register__row,
+body.lux-phone .lux-appr-register__row {
+    margin: 0 0 0.55rem;
+    padding: 0.7rem 0.8rem;
+    border: 1px solid rgba(148, 163, 184, 0.22);
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.97);
+}
+
+body.lux-phone .lux-appr-register.has-selection,
+body.lux-phone .lux-appr-register {
+    min-width: 0 !important;
+}
+
+body.lux-phone .lux-appr-register-wrap {
+    overflow-x: visible;
+}
+
+body.lux-phone .lux-employee-360 .profile-nav.pd-nav,
+body.lux-phone .lux-employee-360__tabs.pd-nav {
+    display: flex;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    flex-wrap: nowrap;
+    width: 100%;
+    max-width: 100%;
+}
+
+/* ========== Admin split ========== */
+body.lux-phone .lux-appconfig__layout,
+body.lux-phone .lux-fflag-panel__grid {
+    grid-template-columns: 1fr;
+}
+
+body.lux-phone .lux-ac-nav {
+    min-height: 0;
+    max-height: 16rem;
+}
+
+body.lux-phone .lux-appconfig__main {
+    overflow: auto;
+}
+
+body.lux-phone .lux-fflag-detail {
+    position: static;
+}

@@ -22,7 +22,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/styles.css?v=20260718g">
+  <link rel="stylesheet" href="../css/styles.css?v=20260912g">
   <script src="../js/brand-config.js?v=20260619e"></script>
 </head>
 <body data-docs-depth="1">
@@ -47,6 +47,59 @@
     <p class="doc-mast__lead">Deep view of one invoice — line items, totals, linked employees, status transitions, PDF via document layout.</p>
     <p class="doc-mast__purpose">Single invoice view with line items, linked employees, and document export.</p>
   </header>
+
+    <section class="doc-briefing" id="at-a-glance" aria-labelledby="briefing-title">
+      <div class="doc-briefing__intro">
+        <p class="doc-briefing__kicker"><i class="fe fe-file-text" aria-hidden="true"></i> One invoice</p>
+        <h2 class="doc-briefing__title" id="briefing-title">Lines, people, status, PDF</h2>
+        <p class="doc-briefing__lead">Invoice details is the deep view of one invoice — line items, totals, linked employees, status transitions, and PDF via document layout.</p>
+        <div class="doc-briefing__signals" aria-label="Access and placement">
+          <span class="doc-briefing__signal">Finance → Platform invoices → details</span>
+          <span class="doc-briefing__signal">Route <code>/hrms/invoice/details/:invoiceId</code></span>
+          <span class="doc-briefing__signal">Finance Manager · Admin</span>
+        </div>
+      </div>
+      <div class="doc-briefing__grid">
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-zap"></i></span>
+          <div>
+            <h3>The job of this console</h3>
+            <p>Confirm lines and links, move status along the allowed path, and produce the PDF the customer sees. Do not edit Employee masters from here.</p>
+          </div>
+        </article>
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-users"></i></span>
+          <div>
+            <h3>Seat at the table</h3>
+            <p>The same finance operators who own the list. Recipients get the PDF, not this screen.</p>
+          </div>
+        </article>
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-play-circle"></i></span>
+          <div>
+            <h3>The working rhythm</h3>
+            <p>Open from the list, review lines, adjust what the engine allows, transition status, generate PDF, return.</p>
+          </div>
+        </article>
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-clock"></i></span>
+          <div>
+            <h3>Moments that bring you here</h3>
+            <p>A disputed line. A missing employee link. Customer asking for the PDF. Before recognition or credit-note flows.</p>
+          </div>
+        </article>
+      </div>
+      <div class="doc-briefing__note">
+        <div class="callout callout--note callout--interactive">
+          <div class="callout__icon">ⓘ</div>
+          <div class="callout__body">
+            <strong class="callout__title">Detail of the list entity</strong>
+            <div class="callout__text">This is not a separate invoice store. Status still follows the platform invoice workflow.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
 
   <div class="doc-flow">
     <section class="doc-block" id="overview"><h2 class="doc-block__title">Overview</h2><p>Opened from Invoices list or direct URL <code>/hrms/invoice/details/:invoiceId</code>. Also available under document layout <code>/document/invoice/details/:invoiceId</code> for PDF-focused view.</p></section>
@@ -95,9 +148,9 @@
 <script src="../js/palette.js?v=20260619e"></script>
 <script src="../js/brand.js?v=20260619e"></script>
 <script src="../js/docs-utility-config.js?v=20260720b"></script>
-<script src="../js/nav-config.js?v=20260619e"></script>
-<script src="../js/navigation.js?v=20260619e"></script>
-<script src="../js/site-enhancements.js?v=20260718d"></script>
+<script src="../js/nav-config.js?v=20260906a"></script>
+<script src="../js/navigation.js?v=20260912f"></script>
+<script src="../js/site-enhancements.js?v=20260906a"></script>
 <script src="../js/search.js?v=20260619e"></script>
 </body>
 </html>

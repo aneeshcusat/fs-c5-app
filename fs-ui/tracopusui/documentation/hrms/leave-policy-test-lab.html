@@ -17,7 +17,7 @@
   <meta name="twitter:title" content="Leave Policy Test Lab — Tracopus User Guide">
   <meta name="twitter:description" content="Register view for policy scenarios, batch runs, and regression compares — create/run via forms when available, or API.">
   <script src="../js/docs-analytics.js?v=20260719a" defer></script>
-  <link rel="stylesheet" href="../css/styles.css?v=20260718g">
+  <link rel="stylesheet" href="../css/styles.css?v=20260912g">
   <script src="../js/brand-config.js?v=20260619e"></script>
 </head>
 <body data-docs-depth="1">
@@ -40,6 +40,59 @@
       <p class="doc-mast__lead">Register view for policy scenarios, batch runs, and regression compares — create/run via forms when available, or API.</p>
       <p class="doc-mast__purpose">Register view — create/update via forms when available, or API. Flowcharts: scenario → simulate → compare.</p>
     </header>
+
+    <section class="doc-briefing" id="at-a-glance" aria-labelledby="briefing-title">
+      <div class="doc-briefing__intro">
+        <p class="doc-briefing__kicker"><i class="fe fe-play" aria-hidden="true"></i> Dry run</p>
+        <h2 class="doc-briefing__title" id="briefing-title">Scenarios, batch runs, and regression compares</h2>
+        <p class="doc-briefing__lead">Policy Test Lab is the register for policy scenarios, batch runs, and regression compares. Create and run via forms when available, or API. It never writes a real leave request.</p>
+        <div class="doc-briefing__signals" aria-label="Access and placement">
+          <span class="doc-briefing__signal">Admin → Policy test lab</span>
+          <span class="doc-briefing__signal">Route <code>/admin/leave/policy-test-lab</code></span>
+          <span class="doc-briefing__signal">HR Admin · Org Admin</span>
+        </div>
+      </div>
+      <div class="doc-briefing__grid">
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-zap"></i></span>
+          <div>
+            <h3>The job of this console</h3>
+            <p>Prove a policy change before employees feel it. Build a scenario, run a batch, compare with last time, then publish in Policy Center only if the lab is green.</p>
+          </div>
+        </article>
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-users"></i></span>
+          <div>
+            <h3>Seat at the table</h3>
+            <p>HR administrators and implementation partners. Employees never see the lab.</p>
+          </div>
+        </article>
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-play-circle"></i></span>
+          <div>
+            <h3>The working rhythm</h3>
+            <p>Pick or create a scenario, run, read diffs, adjust policy, run again. Keep fixtures, do not point the lab at production employees as a side effect.</p>
+          </div>
+        </article>
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-clock"></i></span>
+          <div>
+            <h3>Moments that bring you here</h3>
+            <p>Before publishing a statutory change. After a CFA mapping. A regression after upgrade. When a proof apply in runtime is too risky.</p>
+          </div>
+        </article>
+      </div>
+      <div class="doc-briefing__note">
+        <div class="callout callout--note callout--interactive">
+          <div class="callout__icon">ⓘ</div>
+          <div class="callout__body">
+            <strong class="callout__title">Simulation only</strong>
+            <div class="callout__text">Lab runs are not leave records. Publish still happens in Global Policy Center.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
 
     <div class="doc-flow">
       <section class="doc-block" id="flowcharts">
@@ -152,9 +205,9 @@ flowchart TD
 <script src="../js/palette.js?v=20260619e"></script>
 <script src="../js/brand.js?v=20260619e"></script>
 <script src="../js/docs-utility-config.js?v=20260720b"></script>
-<script src="../js/nav-config.js?v=20260619e"></script>
-<script src="../js/navigation.js?v=20260619e"></script>
-<script src="../js/site-enhancements.js?v=20260718d"></script>
+<script src="../js/nav-config.js?v=20260906a"></script>
+<script src="../js/navigation.js?v=20260912f"></script>
+<script src="../js/site-enhancements.js?v=20260906a"></script>
 <script src="../js/search.js?v=20260619e"></script>
 <script type="module">
   import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";

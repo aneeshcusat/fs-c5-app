@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en" data-lux-theme="luxury" data-lux-palette="emerald">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scheduled Jobs — Tracopus User Guide</title>
+  <meta name="description" content="ScheduleType inventory with last-run status and manual Run now / Run scan.">
+  <meta name="keywords" content="tracopus, documentation, user guide, admin, scheduled jobs">
+  <link rel="canonical" href="https://tracopus.com/documentation/admin/jobs.html">
+  <meta name="robots" content="index, follow">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Tracopus">
+  <meta property="og:title" content="Scheduled Jobs — Tracopus User Guide">
+  <meta property="og:description" content="ScheduleType inventory with last-run status and manual Run now / Run scan.">
+  <meta property="og:url" content="https://tracopus.com/documentation/admin/jobs.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Scheduled Jobs — Tracopus User Guide">
+  <meta name="twitter:description" content="ScheduleType inventory with last-run status and manual Run now / Run scan.">
+  <script src="../js/docs-analytics.js?v=20260719a" defer></script>
+  <link rel="stylesheet" href="../css/styles.css?v=20260912g">
+  <script src="../js/brand-config.js?v=20260619e"></script>
+</head>
+<body data-docs-depth="1">
+
+<header aria-label="Site header"></header>
+
+<main>
+  <div class="breadcrumb"><a href="../index.html">Home</a> → Admin → Scheduled Jobs</div>
+
+  <div class="doc-canvas">
+    <header class="doc-mast">
+      <div class="doc-mast__top">
+        <span class="doc-mast__eyebrow">Admin · Operations</span>
+        <div class="page-meta page-meta--inline">
+          <span class="page-meta__item"><strong>Route</strong> <code>/admin/jobs</code></span>
+          <span class="page-meta__item"><strong>Flag</strong> <code>—</code></span>
+        </div>
+      </div>
+      <h1 class="doc-mast__title">Scheduled Jobs</h1>
+      <p class="doc-mast__lead">ScheduleType inventory with last-run status and manual Run now / Run scan.</p>
+      <p class="doc-mast__purpose">Scroll to <a href="#flowcharts">Flowcharts</a>. Scenario: <a href="../user-guide/admin/admin-jobs.html">Run a scheduled job on demand</a>.</p>
+    </header>
+
+    <section class="doc-briefing" id="at-a-glance" aria-labelledby="briefing-title">
+      <div class="doc-briefing__intro">
+        <p class="doc-briefing__kicker"><i class="fe fe-cpu" aria-hidden="true"></i> Scheduled work</p>
+        <h2 class="doc-briefing__title" id="briefing-title">Last run, next run, and a careful Run now</h2>
+        <p class="doc-briefing__lead">Scheduled jobs are the ScheduleType inventory with last-run status and manual Run now / Run scan. Accruals, reminders, and scans live here; they are not started from a hidden cron UI.</p>
+        <div class="doc-briefing__signals" aria-label="Access and placement">
+          <span class="doc-briefing__signal">Admin → Scheduled jobs (deep link)</span>
+          <span class="doc-briefing__signal">Route <code>/admin/jobs</code></span>
+          <span class="doc-briefing__signal">HR Admin · Org Admin</span>
+        </div>
+      </div>
+      <div class="doc-briefing__grid">
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-zap"></i></span>
+          <div>
+            <h3>The job of this console</h3>
+            <p>See what is failing, trigger a safe manual run when operations need it, and leave timing to the schedule. Do not hammer Run now on payroll-adjacent jobs without knowing the window.</p>
+          </div>
+        </article>
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-users"></i></span>
+          <div>
+            <h3>Seat at the table</h3>
+            <p>Administrators and support engineers. Employees never run jobs. Developers still own job code; this is operations, not a code editor.</p>
+          </div>
+        </article>
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-play-circle"></i></span>
+          <div>
+            <h3>The working rhythm</h3>
+            <p>Scan last-run status, open a failing type, read the error, fix source data or config, then Run now if the job is idempotent enough. Export only for incident notes.</p>
+          </div>
+        </article>
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-clock"></i></span>
+          <div>
+            <h3>Moments that bring you here</h3>
+            <p>Leave accrual did not fire. A reminder storm. After a flag change that a job gates. Overnight failure in the admin dashboard job card.</p>
+          </div>
+        </article>
+      </div>
+      <div class="doc-briefing__note">
+        <div class="callout callout--note callout--interactive">
+          <div class="callout__icon">ⓘ</div>
+          <div class="callout__body">
+            <strong class="callout__title">Jobs mutate source records on purpose</strong>
+            <div class="callout__text">A run writes to the domain it serves (balances, notifications, scans). Treat Run now as a production action, not a refresh button.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <div class="doc-flow">
+      <section class="doc-block" id="flowcharts">
+        <h2 class="doc-block__title">Flowcharts</h2>
+
+        <article class="diagram-card" data-diagram-autoplay="true">
+          <header class="diagram-card__head">
+            <div class="diagram-card__titles">
+              <h3>1 — Run a job now</h3>
+              <p class="diagram-card__desc">Find a ScheduleType, inspect last run, then trigger Run now.</p>
+            </div>
+            <div class="diagram-card__controls">
+              <button type="button" data-diagram-prev aria-label="Previous step"><i class="fe fe-chevron-left" aria-hidden="true"></i></button>
+              <button type="button" data-diagram-play aria-pressed="false"><i class="fe fe-play" aria-hidden="true"></i><span>Play</span></button>
+              <button type="button" data-diagram-next aria-label="Next step"><i class="fe fe-chevron-right" aria-hidden="true"></i></button>
+            </div>
+          </header>
+          <div class="diagram-card__chart">
+            <pre class="mermaid">
+flowchart TD
+  A[Open Scheduled jobs] --> B[Review last-run]
+  B --> C[Select a type]
+  C --> D[Run now]
+  D --> E[Watch status]
+  E --> F[Inspect errors if failed]
+            </pre>
+          </div>
+          <ol class="diagram-steps">
+            <li class="diagram-step is-active"><span class="diagram-step__index">1</span><div class="diagram-step__body"><strong>Open jobs</strong><span>Admin → Scheduled jobs (deep link).</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">2</span><div class="diagram-step__body"><strong>Inspect last run</strong><span>Status and timestamp per ScheduleType.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">3</span><div class="diagram-step__body"><strong>Run now</strong><span>Use for recovery, not as a replacement for cron.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">4</span><div class="diagram-step__body"><strong>Confirm effect</strong><span>Check the domain screen the job feeds.</span></div></li>
+          </ol>
+          <p class="diagram-card__progress" data-diagram-progress></p>
+        </article>
+      </section>
+
+      <section class="doc-block" id="overview">
+        <h2 class="doc-block__title">Overview</h2>
+        <p>Jobs operate on existing domain tables (timesheet lock, leave accrual, retention purge). This page is an operations console, not a new scheduler database.</p>
+      </section>
+
+      <section class="doc-block" id="how-to">
+        <h2 class="doc-block__title">How to use</h2>
+        <div class="steps">
+          <div class="step"><strong>1. Do not hammer Run now</strong><div class="step-detail">Overlapping runs can lock rows.</div></div>
+          <div class="step"><strong>2. Read the type name</strong><div class="step-detail">ScheduleType maps to a known backend job.</div></div>
+          <div class="step"><strong>3. Failed runs</strong><div class="step-detail">Fix data or flags before retrying.</div></div>
+        </div>
+      </section>
+
+      <section class="doc-block doc-block--related" id="related-pages">
+        <h2 class="doc-block__title">Related pages</h2>
+        <div class="related-links">
+          <a class="related-link" href="data-retention.html"><span class="related-link__label">Data retention</span><span class="related-link__desc">Purge jobs.</span></a>
+          <a class="related-link" href="dashboard.html"><span class="related-link__label">Admin dashboard</span><span class="related-link__desc">Ops health.</span></a>
+          <a class="related-link" href="../hrms/leave-configuration.html"><span class="related-link__label">Leave configuration</span><span class="related-link__desc">Accrual jobs.</span></a>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <nav class="page-nav">
+    <a class="page-nav__prev" href="dashboard.html">← Admin dashboard</a>
+    <a class="page-nav__next" href="vendors.html">Vendors →</a>
+  </nav>
+</main>
+
+<footer>
+  <div class="container">
+    <p>&copy; 2026 <span data-brand>Tracopus</span>. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="../js/palette.js?v=20260619e"></script>
+<script src="../js/brand.js?v=20260619e"></script>
+<script src="../js/docs-utility-config.js?v=20260720b"></script>
+<script src="../js/nav-config.js?v=20260906a"></script>
+<script src="../js/navigation.js?v=20260912f"></script>
+<script src="../js/site-enhancements.js?v=20260906a"></script>
+<script src="../js/search.js?v=20260619e"></script>
+<script type="module">
+  import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+  mermaid.initialize({
+    startOnLoad: true,
+    theme: "base",
+    securityLevel: "loose",
+    flowchart: { curve: "basis", htmlLabels: true },
+    themeVariables: {
+      primaryColor: "#d8f3dc",
+      primaryTextColor: "#1b4332",
+      primaryBorderColor: "#40916c",
+      lineColor: "#52796f",
+      secondaryColor: "#f1faee",
+      tertiaryColor: "#ffffff",
+      fontFamily: "Inter, system-ui, sans-serif",
+    },
+  });
+  setTimeout(() => {
+    if (window.TracopusDocsDiagrams) window.TracopusDocsDiagrams.boot();
+  }, 600);
+</script>
+<script src="../js/docs-diagrams.js?v=20260718e"></script>
+</body>
+</html>

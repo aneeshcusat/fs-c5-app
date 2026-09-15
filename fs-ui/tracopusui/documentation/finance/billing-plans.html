@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en" data-lux-theme="luxury" data-lux-palette="emerald">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Billing Plans — Tracopus User Guide</title>
+  <meta name="description" content="How a contract will be billed over time — plans on PurchaseOrder / project, not the invoice register itself.">
+  <meta name="keywords" content="tracopus, documentation, user guide, finance, billing plans">
+  <link rel="canonical" href="https://tracopus.com/documentation/finance/billing-plans.html">
+  <meta name="robots" content="index, follow">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Tracopus">
+  <meta property="og:title" content="Billing Plans — Tracopus User Guide">
+  <meta property="og:description" content="How a contract will be billed over time — plans on PurchaseOrder / project, not the invoice register itself.">
+  <meta property="og:url" content="https://tracopus.com/documentation/finance/billing-plans.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Billing Plans — Tracopus User Guide">
+  <meta name="twitter:description" content="How a contract will be billed over time — plans on PurchaseOrder / project, not the invoice register itself.">
+  <script src="../js/docs-analytics.js?v=20260719a" defer></script>
+  <link rel="stylesheet" href="../css/styles.css?v=20260912g">
+  <script src="../js/brand-config.js?v=20260619e"></script>
+</head>
+<body data-docs-depth="1">
+
+<header aria-label="Site header"></header>
+
+<main>
+  <div class="breadcrumb"><a href="../index.html">Home</a> → Finance → Billing plans</div>
+
+  <div class="doc-canvas">
+    <header class="doc-mast">
+      <div class="doc-mast__top">
+        <span class="doc-mast__eyebrow">Finance · Billing</span>
+        <div class="page-meta page-meta--inline">
+          <span class="page-meta__item"><strong>Route</strong> <code>/finance/billing-plans</code></span>
+          <span class="page-meta__item"><strong>Flag</strong> <code>billingPlansEnabled</code></span>
+        </div>
+      </div>
+      <h1 class="doc-mast__title">Billing Plans</h1>
+      <p class="doc-mast__lead">How a contract will be billed over time — plans on PurchaseOrder / project, not the invoice register itself.</p>
+      <p class="doc-mast__purpose">Scroll to <a href="#flowcharts">Flowcharts</a>. Scenario: <a href="../user-guide/finance/finance-billing-plans.html">Attach a billing plan to a contract</a>.</p>
+    </header>
+
+    <section class="doc-briefing" id="at-a-glance" aria-labelledby="briefing-title">
+      <div class="doc-briefing__intro">
+        <p class="doc-briefing__kicker"><i class="fe fe-calendar" aria-hidden="true"></i> Bill schedule</p>
+        <h2 class="doc-briefing__title" id="briefing-title">When the contract turns into invoices</h2>
+        <p class="doc-briefing__lead">Billing plans schedule invoices against a PO or project. The invoice list remains the bill register.</p>
+        <div class="doc-briefing__signals" aria-label="Access and placement">
+          <span class="doc-briefing__signal">Finance → Billing plans</span>
+          <span class="doc-briefing__signal">Route <code>/finance/billing-plans</code></span>
+          <span class="doc-briefing__signal">Org flag <code>billingPlansEnabled</code></span>
+          <span class="doc-briefing__signal">Finance Manager · Admin</span>
+        </div>
+      </div>
+      <div class="doc-briefing__grid">
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-zap"></i></span>
+          <div>
+            <h3>The job of this console</h3>
+            <p>Attach a plan, keep it aligned with the contract, and let invoices flow — do not type the same amount twice.</p>
+          </div>
+        </article>
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-users"></i></span>
+          <div>
+            <h3>Seat at the table</h3>
+            <p>Finance managers and admins. Delivery PMs see project financials, not always this editor.</p>
+          </div>
+        </article>
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-play-circle"></i></span>
+          <div>
+            <h3>The working rhythm</h3>
+            <p>Open plan, attach PO/project, set dates, confirm invoice drafts.</p>
+          </div>
+        </article>
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-clock"></i></span>
+          <div>
+            <h3>Moments that bring you here</h3>
+            <p>Milestone billing. Monthly retainers. A contract change. Before first invoice.</p>
+          </div>
+        </article>
+      </div>
+      <div class="doc-briefing__note">
+        <div class="callout callout--note callout--interactive">
+          <div class="callout__icon">ⓘ</div>
+          <div class="callout__body">
+            <strong class="callout__title">Schedule, not the bill</strong>
+            <div class="callout__text">Invoice is the document. Credit notes adjust bills. Recognition is a sibling.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="doc-flow">
+      <section class="doc-block" id="flowcharts">
+        <h2 class="doc-block__title">Flowcharts</h2>
+
+        <article class="diagram-card" data-diagram-autoplay="true">
+          <header class="diagram-card__head">
+            <div class="diagram-card__titles">
+              <h3>1 — Plan then invoice</h3>
+              <p class="diagram-card__desc">Set the schedule, let invoices be created from it.</p>
+            </div>
+            <div class="diagram-card__controls">
+              <button type="button" data-diagram-prev aria-label="Previous step"><i class="fe fe-chevron-left" aria-hidden="true"></i></button>
+              <button type="button" data-diagram-play aria-pressed="false"><i class="fe fe-play" aria-hidden="true"></i><span>Play</span></button>
+              <button type="button" data-diagram-next aria-label="Next step"><i class="fe fe-chevron-right" aria-hidden="true"></i></button>
+            </div>
+          </header>
+          <div class="diagram-card__chart">
+            <pre class="mermaid">
+flowchart TD
+  A[Open Billing plans] --> B[Select PO / project]
+  B --> C[Set schedule]
+  C --> D[Invoices generate / match]
+  D --> E[Do not double-key]
+            </pre>
+          </div>
+          <ol class="diagram-steps">
+            <li class="diagram-step is-active"><span class="diagram-step__index">1</span><div class="diagram-step__body"><strong>Open</strong><span>Finance → Billing plans.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">2</span><div class="diagram-step__body"><strong>Attach</strong><span>PO or project.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">3</span><div class="diagram-step__body"><strong>Schedule</strong><span>Milestones or cycle.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">4</span><div class="diagram-step__body"><strong>Bills</strong><span>Invoice register.</span></div></li>
+          </ol>
+          <p class="diagram-card__progress" data-diagram-progress></p>
+        </article>
+      </section>
+
+      <section class="doc-block" id="overview">
+        <h2 class="doc-block__title">Overview</h2>
+        <p>Billing plans describe when to bill. Invoices are the documents. Recognition may follow a related policy.</p>
+      </section>
+
+      <section class="doc-block" id="how-to">
+        <h2 class="doc-block__title">How to use</h2>
+        <div class="steps">
+          <div class="step"><strong>1. One plan per contract intent</strong><div class="step-detail">Do not fork silently.</div></div>
+          <div class="step"><strong>2. Invoices win as bills</strong><div class="step-detail">Plan is the schedule.</div></div>
+          <div class="step"><strong>3. Change control</strong><div class="step-detail">Altering a live plan mid-invoice needs care.</div></div>
+        </div>
+      </section>
+
+      <section class="doc-block doc-block--related" id="related-pages">
+        <h2 class="doc-block__title">Related pages</h2>
+        <div class="related-links">
+          <a class="related-link" href="../hrms/invoices.html"><span class="related-link__label">Platform invoices</span><span class="related-link__desc">Bills.</span></a>
+          <a class="related-link" href="../sales/purchase-orders.html"><span class="related-link__label">Purchase orders</span><span class="related-link__desc">Contract.</span></a>
+          <a class="related-link" href="revenue-recognition.html"><span class="related-link__label">Revenue recognition</span><span class="related-link__desc">Posting.</span></a>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <nav class="page-nav">
+    <a class="page-nav__prev" href="project-financials.html">← Project financials</a>
+    <a class="page-nav__next" href="revenue-forecast.html">Revenue forecast →</a>
+  </nav>
+</main>
+
+<footer>
+  <div class="container">
+    <p>&copy; 2026 <span data-brand>Tracopus</span>. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="../js/palette.js?v=20260619e"></script>
+<script src="../js/brand.js?v=20260619e"></script>
+<script src="../js/docs-utility-config.js?v=20260720b"></script>
+<script src="../js/nav-config.js?v=20260912c"></script>
+<script src="../js/navigation.js?v=20260912f"></script>
+<script src="../js/site-enhancements.js?v=20260906a"></script>
+<script src="../js/search.js?v=20260619e"></script>
+<script type="module">
+  import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+  mermaid.initialize({
+    startOnLoad: true,
+    theme: "base",
+    securityLevel: "loose",
+    flowchart: { curve: "basis", htmlLabels: true },
+    themeVariables: {
+      primaryColor: "#d8f3dc",
+      primaryTextColor: "#1b4332",
+      primaryBorderColor: "#40916c",
+      lineColor: "#52796f",
+      secondaryColor: "#f1faee",
+      tertiaryColor: "#ffffff",
+      fontFamily: "Inter, system-ui, sans-serif",
+    },
+  });
+  setTimeout(() => {
+    if (window.TracopusDocsDiagrams) window.TracopusDocsDiagrams.boot();
+  }, 600);
+</script>
+<script src="../js/docs-diagrams.js?v=20260718e"></script>
+</body>
+</html>

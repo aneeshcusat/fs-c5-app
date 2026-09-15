@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en" data-lux-theme="luxury" data-lux-palette="emerald">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Offboarding — Tracopus User Guide</title>
+  <meta name="description" content="Exit cases, asset return, and access wind-down on the same Employee row — not a deleted-people warehouse.">
+  <meta name="keywords" content="tracopus, documentation, user guide, people, offboarding">
+  <link rel="canonical" href="https://tracopus.com/documentation/people/offboarding.html">
+  <meta name="robots" content="index, follow">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Tracopus">
+  <meta property="og:title" content="Offboarding — Tracopus User Guide">
+  <meta property="og:description" content="Exit cases, asset return, and access wind-down on the same Employee row — not a deleted-people warehouse.">
+  <meta property="og:url" content="https://tracopus.com/documentation/people/offboarding.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Offboarding — Tracopus User Guide">
+  <meta name="twitter:description" content="Exit cases, asset return, and access wind-down on the same Employee row — not a deleted-people warehouse.">
+  <script src="../js/docs-analytics.js?v=20260719a" defer></script>
+  <link rel="stylesheet" href="../css/styles.css?v=20260912g">
+  <script src="../js/brand-config.js?v=20260619e"></script>
+</head>
+<body data-docs-depth="1">
+
+<header aria-label="Site header"></header>
+
+<main>
+  <div class="breadcrumb"><a href="../index.html">Home</a> → People → Offboarding</div>
+
+  <div class="doc-canvas">
+    <header class="doc-mast">
+      <div class="doc-mast__top">
+        <span class="doc-mast__eyebrow">People · Lifecycle</span>
+        <div class="page-meta page-meta--inline">
+          <span class="page-meta__item"><strong>Route</strong> <code>/people/offboarding</code></span>
+          <span class="page-meta__item"><strong>Flag</strong> <code>offboardingEnabled</code></span>
+        </div>
+      </div>
+      <h1 class="doc-mast__title">Offboarding</h1>
+      <p class="doc-mast__lead">Exit cases, asset return, and access wind-down on the same Employee row — not a deleted-people warehouse.</p>
+      <p class="doc-mast__purpose">Scroll to <a href="#flowcharts">Flowcharts</a>. Scenario: <a href="../user-guide/people/people-start-offboarding.html">Start offboarding for an employee</a>.</p>
+    </header>
+
+    <section class="doc-briefing" id="at-a-glance" aria-labelledby="briefing-title">
+      <div class="doc-briefing__intro">
+        <p class="doc-briefing__kicker"><i class="fe fe-user-x" aria-hidden="true"></i> Exit operations</p>
+        <h2 class="doc-briefing__title" id="briefing-title">Wind-down on the same person file</h2>
+        <p class="doc-briefing__lead">Offboarding tracks exit work on Employee. It does not invent a leavers database and it does not erase payroll or timesheet history.</p>
+        <div class="doc-briefing__signals" aria-label="Access and placement">
+          <span class="doc-briefing__signal">People → Offboarding</span>
+          <span class="doc-briefing__signal">Route <code>/people/offboarding</code></span>
+          <span class="doc-briefing__signal">Org flag <code>offboardingEnabled</code></span>
+          <span class="doc-briefing__signal">HR Admin · Admin</span>
+        </div>
+      </div>
+      <div class="doc-briefing__grid">
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-zap"></i></span>
+          <div>
+            <h3>The job of this console</h3>
+            <p>Open the case, chase asset return and access removal, deactivate when policy says so. Keep the Employee row for audit.</p>
+          </div>
+        </article>
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-users"></i></span>
+          <div>
+            <h3>Seat at the table</h3>
+            <p>HR Admin and Admin. The employee may see tasks if self-service exists; they do not run the operator register.</p>
+          </div>
+        </article>
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-play-circle"></i></span>
+          <div>
+            <h3>The working rhythm</h3>
+            <p>Select person, start case, work checklist, confirm assets and roles, then deactivate.</p>
+          </div>
+        </article>
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-clock"></i></span>
+          <div>
+            <h3>Moments that bring you here</h3>
+            <p>Resignation. Last working day. A laptop still out. After payroll asked if they are still active.</p>
+          </div>
+        </article>
+      </div>
+      <div class="doc-briefing__note">
+        <div class="callout callout--note callout--interactive">
+          <div class="callout__icon">ⓘ</div>
+          <div class="callout__body">
+            <strong class="callout__title">Do not drop the source row</strong>
+            <div class="callout__text">Employee remains canonical. Projects and timesheets keep history against that id.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="doc-flow">
+      <section class="doc-block" id="flowcharts">
+        <h2 class="doc-block__title">Flowcharts</h2>
+
+        <article class="diagram-card" data-diagram-autoplay="true">
+          <header class="diagram-card__head">
+            <div class="diagram-card__titles">
+              <h3>1 — Open an exit case</h3>
+              <p class="diagram-card__desc">Select the Employee, start offboarding, track return and access.</p>
+            </div>
+            <div class="diagram-card__controls">
+              <button type="button" data-diagram-prev aria-label="Previous step"><i class="fe fe-chevron-left" aria-hidden="true"></i></button>
+              <button type="button" data-diagram-play aria-pressed="false"><i class="fe fe-play" aria-hidden="true"></i><span>Play</span></button>
+              <button type="button" data-diagram-next aria-label="Next step"><i class="fe fe-chevron-right" aria-hidden="true"></i></button>
+            </div>
+          </header>
+          <div class="diagram-card__chart">
+            <pre class="mermaid">
+flowchart TD
+  A[Open Offboarding] --> B[Select Employee]
+  B --> C[Start exit case]
+  C --> D[Assets / access / knowledge]
+  D --> E[Deactivate when policy allows]
+  E --> F[Employee remains historical source]
+            </pre>
+          </div>
+          <ol class="diagram-steps">
+            <li class="diagram-step is-active"><span class="diagram-step__index">1</span><div class="diagram-step__body"><strong>Open</strong><span>People → Offboarding.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">2</span><div class="diagram-step__body"><strong>Select</strong><span>Existing Employee.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">3</span><div class="diagram-step__body"><strong>Track</strong><span>Assets, access, knowledge transfer.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">4</span><div class="diagram-step__body"><strong>Deactivate</strong><span>Per policy — do not drop the row from history.</span></div></li>
+          </ol>
+          <p class="diagram-card__progress" data-diagram-progress></p>
+        </article>
+      </section>
+
+      <section class="doc-block" id="overview">
+        <h2 class="doc-block__title">Overview</h2>
+        <p>Offboarding is a lifecycle workflow on Employee. Assets and access requests still use their registers. Payroll and timesheet lock rules still apply.</p>
+      </section>
+
+      <section class="doc-block" id="how-to">
+        <h2 class="doc-block__title">How to use</h2>
+        <div class="steps">
+          <div class="step"><strong>1. Do not delete to ‘clean’</strong><div class="step-detail">History, pay, and audit need the person.</div></div>
+          <div class="step"><strong>2. Assets on the asset register</strong><div class="step-detail">Return is not a chat message.</div></div>
+          <div class="step"><strong>3. Access</strong><div class="step-detail">Roles, flags, and access requests — this case only tracks.</div></div>
+        </div>
+      </section>
+
+      <section class="doc-block doc-block--related" id="related-pages">
+        <h2 class="doc-block__title">Related pages</h2>
+        <div class="related-links">
+          <a class="related-link" href="onboarding.html"><span class="related-link__label">Onboarding</span><span class="related-link__desc">Joiner sibling.</span></a>
+          <a class="related-link" href="assets.html"><span class="related-link__label">Assets</span><span class="related-link__desc">Return source.</span></a>
+          <a class="related-link" href="../admin/access-requests.html"><span class="related-link__label">Access requests</span><span class="related-link__desc">Grants to close.</span></a>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <nav class="page-nav">
+    <a class="page-nav__prev" href="onboarding.html">← Onboarding</a>
+    <a class="page-nav__next" href="documents.html">Documents →</a>
+  </nav>
+</main>
+
+<footer>
+  <div class="container">
+    <p>&copy; 2026 <span data-brand>Tracopus</span>. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="../js/palette.js?v=20260619e"></script>
+<script src="../js/brand.js?v=20260619e"></script>
+<script src="../js/docs-utility-config.js?v=20260720b"></script>
+<script src="../js/nav-config.js?v=20260912c"></script>
+<script src="../js/navigation.js?v=20260912f"></script>
+<script src="../js/site-enhancements.js?v=20260906a"></script>
+<script src="../js/search.js?v=20260619e"></script>
+<script type="module">
+  import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+  mermaid.initialize({
+    startOnLoad: true,
+    theme: "base",
+    securityLevel: "loose",
+    flowchart: { curve: "basis", htmlLabels: true },
+    themeVariables: {
+      primaryColor: "#d8f3dc",
+      primaryTextColor: "#1b4332",
+      primaryBorderColor: "#40916c",
+      lineColor: "#52796f",
+      secondaryColor: "#f1faee",
+      tertiaryColor: "#ffffff",
+      fontFamily: "Inter, system-ui, sans-serif",
+    },
+  });
+  setTimeout(() => {
+    if (window.TracopusDocsDiagrams) window.TracopusDocsDiagrams.boot();
+  }, 600);
+</script>
+<script src="../js/docs-diagrams.js?v=20260718e"></script>
+</body>
+</html>

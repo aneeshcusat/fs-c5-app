@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-lux-theme="luxury" data-lux-palette="ocean">
+<html lang="en" data-lux-theme="luxury" data-lux-palette="emerald">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -7,37 +7,36 @@
   <link rel="canonical" href="https://tracopus.com/documentation/external-project-create.html">
   <script src="js/docs-analytics.js?v=20260719a" defer></script>
   <link rel="icon" href="images/favicon.ico" type="image/x-icon">
-  <link rel="stylesheet" href="css/styles.css?v=20260718g">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css?v=20260912g">
   <script src="js/brand-config.js?v=20260619e"></script>
   <style>
-    :root {
-      --bg: #0b1220;
-      --surface: #121a2b;
-      --surface-2: #182235;
-      --line: rgba(148, 163, 184, 0.22);
-      --text: #e8eef7;
-      --muted: #94a3b8;
-      --primary: #0d9488;
-      --primary-rgb: 13, 148, 136;
-      --accent: #34d399;
-      --warn: #fbbf24;
-      --danger: #fb7185;
+    body.int-api-console {
+      --bg: var(--bg-light);
+      --surface: var(--bg-canvas);
+      --surface-2: var(--bg-white);
+      --line: var(--border-color);
+      --text: var(--text-dark);
+      --muted: var(--text-light);
+      --primary: var(--lux-primary);
+      --primary-rgb: var(--lux-primary-rgb);
+      --accent: var(--lux-accent);
+      --warn: var(--warning-color);
+      --danger: var(--danger-color);
       --pad: 1rem;
-      --radius: 12px;
+      --radius: var(--radius-lg);
       --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-      --sans: "Avenir Next", "Segoe UI", ui-sans-serif, system-ui, sans-serif;
+      --sans: var(--font-sans);
     }
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      background:
-        radial-gradient(circle at 0% 0%, rgba(var(--primary-rgb), 0.16), transparent 36%),
-        radial-gradient(circle at 100% 0%, rgba(52, 211, 153, 0.08), transparent 28%),
-        var(--bg);
+    body.int-api-console {
       color: var(--text);
       font: 14px/1.45 var(--sans);
     }
+    body.int-api-console .shell { color: var(--text); }
     .shell { max-width: 1120px; margin: 0 auto; padding: 1.25rem 1rem 3rem; }
     header.mast {
       display: grid;
@@ -94,7 +93,7 @@
       border: 1px solid var(--line);
       border-radius: var(--radius);
       padding: 0.9rem 1rem;
-      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
+      box-shadow: var(--shadow);
     }
     .card h2, section h2 {
       margin: 0 0 0.55rem;
@@ -107,21 +106,21 @@
     code, kbd {
       font-family: var(--mono);
       font-size: 0.78rem;
-      background: rgba(15, 23, 42, 0.55);
+      background: rgba(var(--primary-rgb), 0.08);
       border: 1px solid var(--line);
       border-radius: 6px;
       padding: 0.05rem 0.32rem;
-      color: var(--accent);
+      color: var(--lux-primary-dark);
     }
     pre {
       margin: 0;
       overflow: auto;
-      background: #0a101b;
+      background: var(--lux-primary-soft);
       border: 1px solid var(--line);
       border-radius: 10px;
       padding: 0.8rem 0.85rem;
       font: 12px/1.5 var(--mono);
-      color: #dbeafe;
+      color: var(--text);
       white-space: pre-wrap;
     }
     .codehead {
@@ -184,7 +183,7 @@
       width: 100%;
       border-radius: 9px;
       border: 1px solid var(--line);
-      background: #0a101b;
+      background: var(--bg-white);
       color: var(--text);
       padding: 0.5rem 0.6rem;
       font: 13px var(--mono);
@@ -324,7 +323,7 @@
 
     <section id="create" class="card">
       <h2>2 · Create a project</h2>
-      <p>Base URL is your Tracopus API host (example: <code>https://c5i.tracopus.com</code>). No SPA <code>api-key</code> query param is required for integration tokens.</p>
+      <p>Base URL is your Tracopus API host (example: <code>https://app.tracopus.com</code>). No SPA <code>api-key</code> query param is required for integration tokens.</p>
       <div class="codehead"><span>POST /api/v2/projects</span><button class="copy" data-copy="curl-project">Copy</button></div>
       <pre id="curl-project">curl -sS -X POST "$BASE/api/v2/projects" \
   -H "Authorization: Bearer tk_live_SUFFIX_UUID_TAIL" \
@@ -478,7 +477,7 @@
   <script src="js/docs-utility-config.js?v=20260720b"></script>
   <script src="js/nav-config.js?v=20260720c"></script>
   <script src="js/navigation.js?v=20260720b"></script>
-  <script src="js/site-enhancements.js?v=20260718d"></script>
+  <script src="js/site-enhancements.js?v=20260906a"></script>
   <script src="js/search.js?v=20260711a"></script>
 </body>
 </html>

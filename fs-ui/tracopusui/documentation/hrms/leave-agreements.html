@@ -17,7 +17,7 @@
   <meta name="twitter:title" content="Leave Agreements &amp; Contract Overrides — Tracopus User Guide">
   <meta name="twitter:description" content="Register view for leave agreements and contract overrides — create/update via forms when available, or API.">
   <script src="../js/docs-analytics.js?v=20260719a" defer></script>
-  <link rel="stylesheet" href="../css/styles.css?v=20260718g">
+  <link rel="stylesheet" href="../css/styles.css?v=20260912g">
   <script src="../js/brand-config.js?v=20260619e"></script>
 </head>
 <body data-docs-depth="1">
@@ -40,6 +40,59 @@
       <p class="doc-mast__lead">Register view for leave agreements and contract overrides — create/update via forms when available, or API.</p>
       <p class="doc-mast__purpose">Register view — create/update via forms when available, or API. Flowcharts: agreement → effective dates → precedence.</p>
     </header>
+
+    <section class="doc-briefing" id="at-a-glance" aria-labelledby="briefing-title">
+      <div class="doc-briefing__intro">
+        <p class="doc-briefing__kicker"><i class="fe fe-file-text" aria-hidden="true"></i> Contract overlays</p>
+        <h2 class="doc-briefing__title" id="briefing-title">Agreements and overrides on top of published policy</h2>
+        <p class="doc-briefing__lead">Leave agreements hold contract overrides — the exceptions a named assignment needs without forking the global policy. Create/update via forms when available, or API.</p>
+        <div class="doc-briefing__signals" aria-label="Access and placement">
+          <span class="doc-briefing__signal">Admin → Leave agreements</span>
+          <span class="doc-briefing__signal">Route <code>/admin/leave/agreements</code></span>
+          <span class="doc-briefing__signal">HR Admin · Org Admin</span>
+        </div>
+      </div>
+      <div class="doc-briefing__grid">
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-zap"></i></span>
+          <div>
+            <h3>The job of this console</h3>
+            <p>Record an overlay for a person or contract, keep the global policy clean, and retire the override when the assignment ends.</p>
+          </div>
+        </article>
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-users"></i></span>
+          <div>
+            <h3>Seat at the table</h3>
+            <p>HR administrators. Employees see the effect on balances and apply, not this register.</p>
+          </div>
+        </article>
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-play-circle"></i></span>
+          <div>
+            <h3>The working rhythm</h3>
+            <p>Find the agreement, edit override, save, prove with a sample apply or test lab. Remove when the contract ends.</p>
+          </div>
+        </article>
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-clock"></i></span>
+          <div>
+            <h3>Moments that bring you here</h3>
+            <p>An offer letter with extra privilege days. A union overlay. Someone moving off a contract. When global policy was cloned ten times instead of overridden.</p>
+          </div>
+        </article>
+      </div>
+      <div class="doc-briefing__note">
+        <div class="callout callout--note callout--interactive">
+          <div class="callout__icon">ⓘ</div>
+          <div class="callout__body">
+            <strong class="callout__title">Override, not a new policy family</strong>
+            <div class="callout__text">Published policy remains the base. Agreements are exceptions, not a second Global Policy Center.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
 
     <div class="doc-flow">
       <section class="doc-block" id="flowcharts">
@@ -150,9 +203,9 @@ flowchart TD
 <script src="../js/palette.js?v=20260619e"></script>
 <script src="../js/brand.js?v=20260619e"></script>
 <script src="../js/docs-utility-config.js?v=20260720b"></script>
-<script src="../js/nav-config.js?v=20260619e"></script>
-<script src="../js/navigation.js?v=20260619e"></script>
-<script src="../js/site-enhancements.js?v=20260718d"></script>
+<script src="../js/nav-config.js?v=20260906a"></script>
+<script src="../js/navigation.js?v=20260912f"></script>
+<script src="../js/site-enhancements.js?v=20260906a"></script>
 <script src="../js/search.js?v=20260619e"></script>
 <script type="module">
   import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";

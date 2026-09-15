@@ -3666,16 +3666,27 @@ body.layout-full main {
 }
 
 @media (max-width: 960px) {
+  /* Allow the absolute menubar to paint below the sticky header */
   .docs-shell-header {
-    overflow-x: clip;
+    overflow: visible;
   }
 
-  .docs-shell-nav .lux-nav__item--mega.is-open .lux-nav__panel--rich,
-  .docs-shell-nav .lux-nav__item--mega:hover .lux-nav__panel--rich {
+  .docs-shell-header.is-header-compact {
+    overflow: visible;
+  }
+
+  /* Mobile: only .is-open expands page lists — never sticky :hover */
+  .docs-shell-nav .lux-nav__item--mega.is-open .lux-nav__panel--rich {
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
     transform: none;
+  }
+
+  .docs-shell-nav .lux-nav__item--mega:not(.is-open) .lux-nav__panel--rich {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
   }
 }
 
@@ -4039,6 +4050,15 @@ body.layout-full > nav:not(.docs-shell-nav) {
   .docs-menubar.is-open { display: block; }
   .docs-shell-header__inner { position: relative; }
 
+  /* Override legacy `nav ul { max-height: 0 }` (≤768px) — that rule collapses this drawer */
+  .docs-menubar .lux-nav__list,
+  .docs-menubar.is-open .lux-nav__list,
+  .docs-shell-nav .lux-nav__list {
+    max-height: none !important;
+    overflow: visible !important;
+    height: auto !important;
+  }
+
   .docs-shell-nav__inner {
     overflow: visible;
     padding: 0.55rem 0;
@@ -4048,22 +4068,36 @@ body.layout-full > nav:not(.docs-shell-nav) {
     padding-bottom: 0.5rem;
   }
 
-  .docs-shell-nav .lux-nav__list {
+  /* Mobile drawer: stacked list (not desktop icon strip) */
+  .docs-shell-nav .lux-nav__list,
+  .docs-shell-nav--modules .lux-nav__list {
     flex-direction: column;
+    flex-wrap: nowrap;
     align-items: stretch;
     width: 100%;
-  }
-
-  .docs-shell-nav--modules .lux-nav__list {
-    flex-direction: row;
-    flex-wrap: wrap;
     justify-content: flex-start;
-    gap: 0.35rem;
+    gap: 0.15rem;
   }
 
   .docs-shell-nav--modules .lux-nav__item--mega .lux-nav__trigger {
-    width: 2.35rem;
-    justify-content: center;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .docs-shell-nav--modules .lux-nav__item--mega .lux-nav__label,
+  .docs-shell-nav--modules .lux-nav__item--link .lux-nav__label {
+    display: inline !important;
+  }
+
+  .docs-shell-nav--modules .lux-nav__item--mega .lux-nav__count,
+  .docs-shell-nav--modules .lux-nav__item--mega .lux-nav__chevron {
+    display: inline-flex;
+  }
+
+  /* Expanded module: full-width page list */
+  .docs-shell-nav--modules .lux-nav__item--mega.is-open {
+    flex: 1 1 100%;
+    width: 100%;
   }
 
   .lux-nav__sep { display: none; }
@@ -4157,8 +4191,7 @@ body.layout-full > nav:not(.docs-shell-nav) {
   }
 
   .docs-shell-nav .lux-nav__item--mega.is-open .lux-nav__panel--rich { display: block; }
-  .docs-shell-nav .lux-nav__item--mega:hover .lux-nav__panel--rich { display: none; }
-  .docs-shell-nav .lux-nav__item--mega.is-open:hover .lux-nav__panel--rich { display: block; }
+  .docs-shell-nav .lux-nav__item--mega:not(.is-open) .lux-nav__panel--rich { display: none; }
 
   .docs-shell-actions .search-container {
     max-width: 150px;
@@ -4576,6 +4609,16 @@ body > nav:not(.docs-shell-nav) {
   transform: translateY(0);
 }
 
+/* Master how-to index: tall grid never reaches reveal threshold — keep visible */
+.howto-index .reveal,
+.howto-index .doc-block,
+.howto-index .doc-mast,
+.howto-index .callout {
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
+}
+
 /* ── Richer content cards ── */
 .page-hero {
   background:
@@ -4774,4 +4817,259 @@ html[data-lux-theme="luxury"] .docs-shell-brand__tagline {
   background: linear-gradient(92deg, #cbd5e1 0%, #22d3ee 36%, #34d399 68%, #6ee7b7 100%);
   -webkit-background-clip: text;
   background-clip: text;
+}
+
+/* Compact luxury briefing — functional snapshot at the top of a how-to page */
+.doc-briefing {
+  position: relative;
+  overflow: hidden;
+  padding: 1.1rem 1.75rem 1.15rem;
+  background:
+    radial-gradient(900px 220px at 6% -30%, rgba(var(--lux-primary-rgb), 0.12), transparent 58%),
+    radial-gradient(700px 180px at 100% 0%, rgba(var(--lux-accent-rgb, 52, 211, 153), 0.08), transparent 50%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(var(--lux-primary-rgb), 0.035));
+  border-bottom: 1px solid rgba(var(--lux-primary-rgb), 0.12);
+}
+.doc-briefing::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto auto 0;
+  width: 3px;
+  height: 100%;
+  background: linear-gradient(180deg, var(--lux-primary), var(--lux-accent, #34d399));
+}
+.doc-briefing__intro {
+  max-width: 78ch;
+  margin: 0 0 0.85rem 0.15rem;
+}
+.doc-briefing__kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin: 0 0 0.35rem;
+  font-size: 0.68rem;
+  font-weight: 750;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--lux-primary-dark, var(--primary-color));
+}
+.doc-briefing__kicker i { font-size: 0.85rem; }
+.doc-briefing__title {
+  margin: 0 0 0.4rem;
+  font-family: var(--font-brand);
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--text-dark);
+  border: none;
+  padding: 0;
+}
+.doc-briefing__lead {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: var(--text-light);
+}
+.doc-briefing__signals {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0.7rem 0 0;
+}
+.doc-briefing__signal {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.18rem 0.5rem;
+  border-radius: 999px;
+  border: 1px solid rgba(var(--lux-primary-rgb), 0.16);
+  background: rgba(255, 255, 255, 0.78);
+  font-size: 0.68rem;
+  font-weight: 650;
+  color: var(--text-dark);
+  line-height: 1.3;
+}
+.doc-briefing__signal code {
+  font-size: 0.65rem;
+  padding: 0;
+  background: none;
+  border: none;
+}
+.doc-briefing__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.6rem;
+}
+.doc-briefing__card {
+  display: grid;
+  grid-template-columns: 2rem 1fr;
+  gap: 0.65rem;
+  align-items: start;
+  padding: 0.75rem 0.8rem 0.8rem;
+  border-radius: 12px;
+  border: 1px solid rgba(var(--lux-primary-rgb), 0.12);
+  background: rgba(255, 255, 255, 0.88);
+  box-shadow: 0 1px 8px rgba(var(--lux-primary-rgb), 0.05);
+}
+.doc-briefing__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 9px;
+  background: linear-gradient(135deg, var(--lux-primary-dark, var(--primary-color)), var(--lux-primary));
+  color: #fff;
+  font-size: 0.95rem;
+  box-shadow: 0 3px 10px rgba(var(--lux-primary-rgb), 0.22);
+}
+.doc-briefing__card h3 {
+  margin: 0 0 0.25rem;
+  font-size: 0.8rem;
+  font-weight: 750;
+  color: var(--text-dark);
+  letter-spacing: -0.01em;
+}
+.doc-briefing__card p {
+  margin: 0;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: var(--text-light);
+}
+.doc-briefing__note {
+  margin: 0.7rem 0 0;
+}
+@media (max-width: 760px) {
+  .doc-briefing { padding: 0.9rem 0.85rem; }
+  .doc-briefing__grid { grid-template-columns: 1fr; }
+}
+
+/* Master how-to index — searchable catalog */
+.howto-index-toolbar {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(9rem, 0.7fr) minmax(9rem, 0.7fr);
+  gap: 0.75rem;
+  margin: 0.75rem 0 0.5rem;
+  padding: 0.85rem 1rem;
+  border: 1px solid rgba(var(--lux-primary-rgb), 0.14);
+  border-radius: var(--radius-md, 10px);
+  background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(var(--lux-primary-rgb), 0.04));
+}
+.howto-index-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  min-width: 0;
+}
+.howto-index-field--grow { min-width: 0; }
+.howto-index-label {
+  font-size: 0.68rem;
+  font-weight: 750;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--lux-primary-dark, var(--primary-color));
+}
+.howto-index-field input,
+.howto-index-field select {
+  width: 100%;
+  min-height: 2.35rem;
+  padding: 0.45rem 0.7rem;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--text-dark);
+  font-size: 0.9rem;
+}
+.howto-index-field input:focus,
+.howto-index-field select:focus {
+  outline: 2px solid rgba(var(--lux-primary-rgb), 0.35);
+  outline-offset: 1px;
+  border-color: var(--lux-primary, var(--primary-color));
+}
+.howto-index-count {
+  margin: 0.35rem 0 0.75rem;
+  font-size: 0.85rem;
+  color: var(--text-light);
+}
+.howto-index-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 0.75rem;
+}
+.howto-index-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 0.9rem 1rem;
+  text-decoration: none;
+  color: inherit;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md, 10px);
+  background: var(--bg-light, #fff);
+  transition: border-color 0.12s, box-shadow 0.12s;
+}
+.howto-index-card:hover {
+  border-color: var(--lux-primary, var(--primary-color));
+  box-shadow: 0 6px 18px rgba(var(--lux-primary-rgb), 0.08);
+}
+.howto-index-card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+.howto-index-card__module,
+.howto-index-card__feature {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.12rem 0.45rem;
+  border-radius: 999px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+.howto-index-card__module {
+  background: rgba(var(--lux-primary-rgb), 0.1);
+  color: var(--lux-primary-dark, var(--primary-color));
+}
+.howto-index-card__feature {
+  background: rgba(15, 23, 42, 0.05);
+  color: var(--text-light);
+}
+.howto-index-card__title {
+  font-size: 0.95rem;
+  font-weight: 750;
+  color: var(--text-dark);
+  letter-spacing: -0.01em;
+}
+.howto-index-card__lead {
+  font-size: 0.8rem;
+  line-height: 1.45;
+  color: var(--text-light);
+}
+.howto-index-card__foot {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: auto;
+  padding-top: 0.25rem;
+}
+.howto-index-card__route {
+  font-size: 0.72rem;
+  padding: 0.1rem 0.35rem;
+  border-radius: 4px;
+  background: rgba(15, 23, 42, 0.04);
+}
+.howto-index-card__flag {
+  font-size: 0.7rem;
+  color: var(--text-light);
+}
+.howto-index-empty {
+  margin: 1rem 0 0;
+  color: var(--text-light);
+  font-size: 0.9rem;
+}
+@media (max-width: 820px) {
+  .howto-index-toolbar {
+    grid-template-columns: 1fr;
+  }
 }

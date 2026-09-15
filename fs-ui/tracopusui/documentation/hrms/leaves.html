@@ -17,7 +17,7 @@
   <meta name="twitter:title" content="Leave Management — Tracopus User Guide">
   <meta name="twitter:description" content="Apply for leave, track balances, submit for approval, and see manager decisions — with working-week and holiday aware day counts.">
   <script src="../js/docs-analytics.js?v=20260719a" defer></script>
-  <link rel="stylesheet" href="../css/styles.css?v=20260718g">
+  <link rel="stylesheet" href="../css/styles.css?v=20260912g">
   <link rel="stylesheet" href="../css/data-flow-bridge.css?v=20260724d">
   <script src="../js/brand-config.js?v=20260619e"></script>
 </head>
@@ -41,6 +41,60 @@
       <p class="doc-mast__lead">Apply for leave, track balances, submit for approval, and see manager decisions — with working-week and holiday aware day counts.</p>
       <p class="doc-mast__purpose">Scroll to <a href="#flowcharts">Flowcharts</a> for animated step-by-step diagrams. Admin setup: <a href="leave-configuration.html">Leave Configuration</a>.</p>
     </header>
+
+    <section class="doc-briefing" id="at-a-glance" aria-labelledby="briefing-title">
+      <div class="doc-briefing__intro">
+        <p class="doc-briefing__kicker"><i class="fe fe-sun" aria-hidden="true"></i> Apply and track</p>
+        <h2 class="doc-briefing__title" id="briefing-title">Balances, a request, and a manager decision</h2>
+        <p class="doc-briefing__lead">Leave management is where people apply, watch balances, submit for approval, and see decisions — with working-week and holiday aware day counts. Policy is authored elsewhere; this is runtime.</p>
+        <div class="doc-briefing__signals" aria-label="Access and placement">
+          <span class="doc-briefing__signal">People → Leave management</span>
+          <span class="doc-briefing__signal">Route <code>/hrms/leaves</code></span>
+          <span class="doc-briefing__signal">Org flag <code>leaveManagementEnabled</code></span>
+          <span class="doc-briefing__signal">Employee · Manager · HR Admin</span>
+        </div>
+      </div>
+      <div class="doc-briefing__grid">
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-zap"></i></span>
+          <div>
+            <h3>The job of this console</h3>
+            <p>Apply for leave, read the balance the policy assigned, submit, and respond if you are the manager. Do not edit policy math here. Documents and absence cases have their own admin registers when those flags are on.</p>
+          </div>
+        </article>
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-users"></i></span>
+          <div>
+            <h3>Seat at the table</h3>
+            <p>Every employee with leave enabled. Managers approve in this flow or in My Approvals. HR may apply on behalf when the product allows.</p>
+          </div>
+        </article>
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-play-circle"></i></span>
+          <div>
+            <h3>The working rhythm</h3>
+            <p>Open leave, check balance, choose type and dates, review the day count, submit, then watch status. Managers approve or reject with a comment. Cancel only while the engine still allows it.</p>
+          </div>
+        </article>
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-clock"></i></span>
+          <div>
+            <h3>Moments that bring you here</h3>
+            <p>A long weekend. Balance looks wrong after a policy publish. A rejection that needs a resubmit. Overlap with a holiday.</p>
+          </div>
+        </article>
+      </div>
+      <div class="doc-briefing__note">
+        <div class="callout callout--note callout--interactive">
+          <div class="callout__icon">ⓘ</div>
+          <div class="callout__body">
+            <strong class="callout__title">Runtime, not policy center</strong>
+            <div class="callout__text">Global Policy Center, employee leave config, and shift policies own the rules. This page only creates leave on that engine.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
 
     <div class="doc-flow">
       <section class="doc-block doc-block--data-flow-bridge" id="one-stop-guide-link" aria-label="Leave Management One-Stop Guide">
@@ -299,9 +353,9 @@ flowchart TD
 <script src="../js/palette.js?v=20260619e"></script>
 <script src="../js/brand.js?v=20260619e"></script>
 <script src="../js/docs-utility-config.js?v=20260720b"></script>
-<script src="../js/nav-config.js?v=20260619e"></script>
-<script src="../js/navigation.js?v=20260619e"></script>
-<script src="../js/site-enhancements.js?v=20260718d"></script>
+<script src="../js/nav-config.js?v=20260906a"></script>
+<script src="../js/navigation.js?v=20260912f"></script>
+<script src="../js/site-enhancements.js?v=20260906a"></script>
 <script src="../js/search.js?v=20260619e"></script>
 <script type="module">
   import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";

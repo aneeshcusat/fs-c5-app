@@ -22,7 +22,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/styles.css?v=20260718g">
+  <link rel="stylesheet" href="../css/styles.css?v=20260912g">
   <script src="../js/brand-config.js?v=20260619e"></script>
 </head>
 <body data-docs-depth="1">
@@ -47,6 +47,59 @@
     <p class="doc-mast__lead">Browse, filter, and create employees with nine summary chart panels covering demographics, tenure, skills, and org structure.</p>
     <p class="doc-mast__purpose">Full employee roster with workforce summary analytics and create wizard.</p>
   </header>
+
+    <section class="doc-briefing" id="at-a-glance" aria-labelledby="briefing-title">
+      <div class="doc-briefing__intro">
+        <p class="doc-briefing__kicker"><i class="fe fe-users" aria-hidden="true"></i> Workforce directory</p>
+        <h2 class="doc-briefing__title" id="briefing-title">The register every other people screen points at</h2>
+        <p class="doc-briefing__lead">Employees is the directory: browse, filter, and create people, with summary charts for demographics, tenure, skills, and org. New joiners start here; they are not invented on a project.</p>
+        <div class="doc-briefing__signals" aria-label="Access and placement">
+          <span class="doc-briefing__signal">People → Employees</span>
+          <span class="doc-briefing__signal">Route <code>/hrms/employees</code></span>
+          <span class="doc-briefing__signal">HR Admin · Manager (scoped) · Admin</span>
+        </div>
+      </div>
+      <div class="doc-briefing__grid">
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-zap"></i></span>
+          <div>
+            <h3>The job of this console</h3>
+            <p>Find someone, open their record, create a joiner, or deactivate with the lifecycle the org uses. Charts are filters into the same list, not a census you type into.</p>
+          </div>
+        </article>
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-users"></i></span>
+          <div>
+            <h3>Seat at the table</h3>
+            <p>HR administrators create and edit. Managers usually see their span. Employees do not browse salary fields they are not allowed to see — masking still applies.</p>
+          </div>
+        </article>
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-play-circle"></i></span>
+          <div>
+            <h3>The working rhythm</h3>
+            <p>Search or filter, open a row, edit the profile or start onboarding / offboarding from the paths the org enabled. Do not duplicate a person to fix a spelling — edit the existing Employee.</p>
+          </div>
+        </article>
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-clock"></i></span>
+          <div>
+            <h3>Moments that bring you here</h3>
+            <p>New hire day. A duplicate email. Org chart looking empty because the manager field is blank. Before payroll, to confirm active status.</p>
+          </div>
+        </article>
+      </div>
+      <div class="doc-briefing__note">
+        <div class="callout callout--note callout--interactive">
+          <div class="callout__icon">ⓘ</div>
+          <div class="callout__body">
+            <strong class="callout__title">Employee is the people source</strong>
+            <div class="callout__text">Projects, timesheets, and leave all hang off this register. Do not create shadow people lists in spreadsheets the product already stores.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
 
   <div class="doc-flow">
     
@@ -230,9 +283,9 @@ flowchart TD
 <script src="../js/palette.js?v=20260619e"></script>
 <script src="../js/brand.js?v=20260619e"></script>
 <script src="../js/docs-utility-config.js?v=20260720b"></script>
-<script src="../js/nav-config.js?v=20260619e"></script>
-<script src="../js/navigation.js?v=20260619e"></script>
-<script src="../js/site-enhancements.js?v=20260718d"></script>
+<script src="../js/nav-config.js?v=20260906a"></script>
+<script src="../js/navigation.js?v=20260912f"></script>
+<script src="../js/site-enhancements.js?v=20260906a"></script>
 <script src="../js/search.js?v=20260619e"></script>
 <script type="module">
   import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";

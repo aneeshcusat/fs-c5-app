@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en" data-lux-theme="luxury" data-lux-palette="emerald">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Work Graph Analytics — Tracopus User Guide</title>
+  <meta name="description" content="Analytics on Work Graph nodes and edges — masked summaries and source references, not a second copy of salary, bank, or reviews.">
+  <meta name="keywords" content="tracopus, documentation, user guide, analytics, work graph analytics">
+  <link rel="canonical" href="https://tracopus.com/documentation/analytics/work-graph.html">
+  <meta name="robots" content="index, follow">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Tracopus">
+  <meta property="og:title" content="Work Graph Analytics — Tracopus User Guide">
+  <meta property="og:description" content="Analytics on Work Graph nodes and edges — masked summaries and source references, not a second copy of salary, bank, or reviews.">
+  <meta property="og:url" content="https://tracopus.com/documentation/analytics/work-graph.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Work Graph Analytics — Tracopus User Guide">
+  <meta name="twitter:description" content="Analytics on Work Graph nodes and edges — masked summaries and source references, not a second copy of salary, bank, or reviews.">
+  <script src="../js/docs-analytics.js?v=20260719a" defer></script>
+  <link rel="stylesheet" href="../css/styles.css?v=20260912g">
+  <script src="../js/brand-config.js?v=20260619e"></script>
+</head>
+<body data-docs-depth="1">
+
+<header aria-label="Site header"></header>
+
+<main>
+  <div class="breadcrumb"><a href="../index.html">Home</a> → Analytics → Work graph analytics</div>
+
+  <div class="doc-canvas">
+    <header class="doc-mast">
+      <div class="doc-mast__top">
+        <span class="doc-mast__eyebrow">Analytics · Graph</span>
+        <div class="page-meta page-meta--inline">
+          <span class="page-meta__item"><strong>Route</strong> <code>/analytics/work-graph</code></span>
+          <span class="page-meta__item"><strong>Flag</strong> <code>workGraphEnabled</code></span>
+        </div>
+      </div>
+      <h1 class="doc-mast__title">Work Graph Analytics</h1>
+      <p class="doc-mast__lead">Analytics on Work Graph nodes and edges — masked summaries and source references, not a second copy of salary, bank, or reviews.</p>
+      <p class="doc-mast__purpose">Scroll to <a href="#flowcharts">Flowcharts</a>. Scenario: <a href="../user-guide/analytics/analytics-work-graph.html">Read work graph analytics then open a node’s source</a>.</p>
+    </header>
+
+    <section class="doc-briefing" id="at-a-glance" aria-labelledby="briefing-title">
+      <div class="doc-briefing__intro">
+        <p class="doc-briefing__kicker"><i class="fe fe-share-2" aria-hidden="true"></i> Graph grain</p>
+        <h2 class="doc-briefing__title" id="briefing-title">Stats on masked nodes, truth on the entity</h2>
+        <p class="doc-briefing__lead">Work graph analytics measures clusters and health. Every node still points at Employee, Project, Task, or another source — with a masked snippet only.</p>
+        <div class="doc-briefing__signals" aria-label="Access and placement">
+          <span class="doc-briefing__signal">Analytics → Work graph analytics</span>
+          <span class="doc-briefing__signal">Route <code>/analytics/work-graph</code></span>
+          <span class="doc-briefing__signal">Org flag <code>workGraphEnabled</code></span>
+          <span class="doc-briefing__signal">Authorized graph personas</span>
+        </div>
+      </div>
+      <div class="doc-briefing__grid">
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-zap"></i></span>
+          <div>
+            <h3>The job of this console</h3>
+            <p>Read graph health, open the explorer, follow the source id. Never treat a snippet as HR, pay, or review text.</p>
+          </div>
+        </article>
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-users"></i></span>
+          <div>
+            <h3>Seat at the table</h3>
+            <p>Personas allowed to see the graph. Others never get unmasked neighbors.</p>
+          </div>
+        </article>
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-play-circle"></i></span>
+          <div>
+            <h3>The working rhythm</h3>
+            <p>Scan stats, open a cluster in the explorer, open the source record.</p>
+          </div>
+        </article>
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-clock"></i></span>
+          <div>
+            <h3>Moments that bring you here</h3>
+            <p>After a re-index. A suspicious cluster. Before an AI briefing. When search quality looks off.</p>
+          </div>
+        </article>
+      </div>
+      <div class="doc-briefing__note">
+        <div class="callout callout--note callout--interactive">
+          <div class="callout__icon">ⓘ</div>
+          <div class="callout__body">
+            <strong class="callout__title">Masked metadata only</strong>
+            <div class="callout__text">Do not persist raw salary, bank, tax, medical, or performance values on nodes. Source registers remain canonical.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="doc-flow">
+      <section class="doc-block" id="flowcharts">
+        <h2 class="doc-block__title">Flowcharts</h2>
+
+        <article class="diagram-card" data-diagram-autoplay="true">
+          <header class="diagram-card__head">
+            <div class="diagram-card__titles">
+              <h3>1 — Cluster then the source id</h3>
+              <p class="diagram-card__desc">See graph stats, open the explorer, land on the entity.</p>
+            </div>
+            <div class="diagram-card__controls">
+              <button type="button" data-diagram-prev aria-label="Previous step"><i class="fe fe-chevron-left" aria-hidden="true"></i></button>
+              <button type="button" data-diagram-play aria-pressed="false"><i class="fe fe-play" aria-hidden="true"></i><span>Play</span></button>
+              <button type="button" data-diagram-next aria-label="Next step"><i class="fe fe-chevron-right" aria-hidden="true"></i></button>
+            </div>
+          </header>
+          <div class="diagram-card__chart">
+            <pre class="mermaid">
+flowchart TD
+  A[Open Work graph analytics] --> B[Read clusters]
+  B --> C[Work graph explorer]
+  C --> D[Source entity]
+  D --> E[Act on Employee / Project / Task]
+            </pre>
+          </div>
+          <ol class="diagram-steps">
+            <li class="diagram-step is-active"><span class="diagram-step__index">1</span><div class="diagram-step__body"><strong>Open</strong><span>Analytics → Work graph analytics.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">2</span><div class="diagram-step__body"><strong>Scan</strong><span>Clusters and health.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">3</span><div class="diagram-step__body"><strong>Explorer</strong><span>Workspace → Work graph.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">4</span><div class="diagram-step__body"><strong>Source</strong><span>Open the referenced entity.</span></div></li>
+          </ol>
+          <p class="diagram-card__progress" data-diagram-progress></p>
+        </article>
+      </section>
+
+      <section class="doc-block" id="overview">
+        <h2 class="doc-block__title">Overview</h2>
+        <p>Work graph analytics measures the graph. Nodes store masked summaries and source ids only. Raw salary, bank, tax, medical, and performance narrative must not live in graph metadata.</p>
+      </section>
+
+      <section class="doc-block" id="how-to">
+        <h2 class="doc-block__title">How to use</h2>
+        <div class="steps">
+          <div class="step"><strong>1. If a snippet looks raw</strong><div class="step-detail">That is a defect — do not copy it onward.</div></div>
+          <div class="step"><strong>2. Explorer searches</strong><div class="step-detail">This pack does not replace node search.</div></div>
+          <div class="step"><strong>3. AI uses the same masking</strong><div class="step-detail">Audit must not log unmasked prompts.</div></div>
+        </div>
+      </section>
+
+      <section class="doc-block doc-block--related" id="related-pages">
+        <h2 class="doc-block__title">Related pages</h2>
+        <div class="related-links">
+          <a class="related-link" href="../workspace/work-graph.html"><span class="related-link__label">Work graph</span><span class="related-link__desc">Explorer.</span></a>
+          <a class="related-link" href="ai-insights.html"><span class="related-link__label">AI insights</span><span class="related-link__desc">Cards on sources.</span></a>
+          <a class="related-link" href="../ai/audit.html"><span class="related-link__label">AI decision audit</span><span class="related-link__desc">Masked run log.</span></a>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <nav class="page-nav">
+    <a class="page-nav__prev" href="risk.html">← Risk intelligence</a>
+    <a class="page-nav__next" href="ai-insights.html">AI insights →</a>
+  </nav>
+</main>
+
+<footer>
+  <div class="container">
+    <p>&copy; 2026 <span data-brand>Tracopus</span>. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="../js/palette.js?v=20260619e"></script>
+<script src="../js/brand.js?v=20260619e"></script>
+<script src="../js/docs-utility-config.js?v=20260720b"></script>
+<script src="../js/nav-config.js?v=20260912c"></script>
+<script src="../js/navigation.js?v=20260912f"></script>
+<script src="../js/site-enhancements.js?v=20260906a"></script>
+<script src="../js/search.js?v=20260619e"></script>
+<script type="module">
+  import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+  mermaid.initialize({
+    startOnLoad: true,
+    theme: "base",
+    securityLevel: "loose",
+    flowchart: { curve: "basis", htmlLabels: true },
+    themeVariables: {
+      primaryColor: "#d8f3dc",
+      primaryTextColor: "#1b4332",
+      primaryBorderColor: "#40916c",
+      lineColor: "#52796f",
+      secondaryColor: "#f1faee",
+      tertiaryColor: "#ffffff",
+      fontFamily: "Inter, system-ui, sans-serif",
+    },
+  });
+  setTimeout(() => {
+    if (window.TracopusDocsDiagrams) window.TracopusDocsDiagrams.boot();
+  }, 600);
+</script>
+<script src="../js/docs-diagrams.js?v=20260718e"></script>
+</body>
+</html>

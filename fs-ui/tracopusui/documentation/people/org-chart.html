@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en" data-lux-theme="luxury" data-lux-palette="emerald">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Organization Chart — Tracopus User Guide</title>
+  <meta name="description" content="Read-only view of reporting lines sourced from Employee manager fields — the editable tree lives on Admin org structure.">
+  <meta name="keywords" content="tracopus, documentation, user guide, people, organization chart">
+  <link rel="canonical" href="https://tracopus.com/documentation/people/org-chart.html">
+  <meta name="robots" content="index, follow">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Tracopus">
+  <meta property="og:title" content="Organization Chart — Tracopus User Guide">
+  <meta property="og:description" content="Read-only view of reporting lines sourced from Employee manager fields — the editable tree lives on Admin org structure.">
+  <meta property="og:url" content="https://tracopus.com/documentation/people/org-chart.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Organization Chart — Tracopus User Guide">
+  <meta name="twitter:description" content="Read-only view of reporting lines sourced from Employee manager fields — the editable tree lives on Admin org structure.">
+  <script src="../js/docs-analytics.js?v=20260719a" defer></script>
+  <link rel="stylesheet" href="../css/styles.css?v=20260912g">
+  <script src="../js/brand-config.js?v=20260619e"></script>
+</head>
+<body data-docs-depth="1">
+
+<header aria-label="Site header"></header>
+
+<main>
+  <div class="breadcrumb"><a href="../index.html">Home</a> → People → Organization chart</div>
+
+  <div class="doc-canvas">
+    <header class="doc-mast">
+      <div class="doc-mast__top">
+        <span class="doc-mast__eyebrow">People · Org</span>
+        <div class="page-meta page-meta--inline">
+          <span class="page-meta__item"><strong>Route</strong> <code>/people/org-chart</code></span>
+          <span class="page-meta__item"><strong>Flag</strong> <code>orgChartEnabled</code></span>
+        </div>
+      </div>
+      <h1 class="doc-mast__title">Organization Chart</h1>
+      <p class="doc-mast__lead">Read-only view of reporting lines sourced from Employee manager fields — the editable tree lives on Admin org structure.</p>
+      <p class="doc-mast__purpose">Scroll to <a href="#flowcharts">Flowcharts</a>. Scenario: <a href="../user-guide/people/people-org-chart.html">Find someone on the organization chart</a>.</p>
+    </header>
+
+    <section class="doc-briefing" id="at-a-glance" aria-labelledby="briefing-title">
+      <div class="doc-briefing__intro">
+        <p class="doc-briefing__kicker"><i class="fe fe-git-branch" aria-hidden="true"></i> Read-only tree</p>
+        <h2 class="doc-briefing__title" id="briefing-title">The picture of reporting lines already stored</h2>
+        <p class="doc-briefing__lead">Organization chart draws Employee manager links. It does not store a second org. Reassign on Admin → Org structure.</p>
+        <div class="doc-briefing__signals" aria-label="Access and placement">
+          <span class="doc-briefing__signal">People → Organization chart</span>
+          <span class="doc-briefing__signal">Route <code>/people/org-chart</code></span>
+          <span class="doc-briefing__signal">Org flag <code>orgChartEnabled</code></span>
+          <span class="doc-briefing__signal">HR Admin · Manager · Executive · Admin</span>
+        </div>
+      </div>
+      <div class="doc-briefing__grid">
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-zap"></i></span>
+          <div>
+            <h3>The job of this console</h3>
+            <p>Find who reports where, then jump to the person or to org structure if a line is wrong.</p>
+          </div>
+        </article>
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-users"></i></span>
+          <div>
+            <h3>Seat at the table</h3>
+            <p>HR, managers, executives, admins with orgChartEnabled. Contributors may not get the full company tree.</p>
+          </div>
+        </article>
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-play-circle"></i></span>
+          <div>
+            <h3>The working rhythm</h3>
+            <p>Search, inspect, leave. If a box is missing, the manager field is empty — fix it on org structure.</p>
+          </div>
+        </article>
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-clock"></i></span>
+          <div>
+            <h3>Moments that bring you here</h3>
+            <p>Reorg communication. New manager. Approval chain looking wrong. Onboarding ‘who is my skip?’</p>
+          </div>
+        </article>
+      </div>
+      <div class="doc-briefing__note">
+        <div class="callout callout--note callout--interactive">
+          <div class="callout__icon">ⓘ</div>
+          <div class="callout__body">
+            <strong class="callout__title">View of Employee</strong>
+            <div class="callout__text">No shadow org table. Master lists still live in Application Config.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="doc-flow">
+      <section class="doc-block" id="flowcharts">
+        <h2 class="doc-block__title">Flowcharts</h2>
+
+        <article class="diagram-card" data-diagram-autoplay="true">
+          <header class="diagram-card__head">
+            <div class="diagram-card__titles">
+              <h3>1 — Read a reporting line</h3>
+              <p class="diagram-card__desc">Search, inspect, edit only on Org structure.</p>
+            </div>
+            <div class="diagram-card__controls">
+              <button type="button" data-diagram-prev aria-label="Previous step"><i class="fe fe-chevron-left" aria-hidden="true"></i></button>
+              <button type="button" data-diagram-play aria-pressed="false"><i class="fe fe-play" aria-hidden="true"></i><span>Play</span></button>
+              <button type="button" data-diagram-next aria-label="Next step"><i class="fe fe-chevron-right" aria-hidden="true"></i></button>
+            </div>
+          </header>
+          <div class="diagram-card__chart">
+            <pre class="mermaid">
+flowchart TD
+  A[Open Org chart] --> B[Search person]
+  B --> C[Read manager tree]
+  C --> D{Need to change?}
+  D -->|Yes| E[Admin Org structure]
+  D -->|No| F[Done]
+            </pre>
+          </div>
+          <ol class="diagram-steps">
+            <li class="diagram-step is-active"><span class="diagram-step__index">1</span><div class="diagram-step__body"><strong>Open</strong><span>People → Organization chart.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">2</span><div class="diagram-step__body"><strong>Search</strong><span>Employee names.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">3</span><div class="diagram-step__body"><strong>Read</strong><span>Manager field on Employee.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">4</span><div class="diagram-step__body"><strong>Edit elsewhere</strong><span>Admin → Org structure.</span></div></li>
+          </ol>
+          <p class="diagram-card__progress" data-diagram-progress></p>
+        </article>
+      </section>
+
+      <section class="doc-block" id="overview">
+        <h2 class="doc-block__title">Overview</h2>
+        <p>The chart is a view of Employee.manager. Admin org structure is the atelier that writes those fields and master lists.</p>
+      </section>
+
+      <section class="doc-block" id="how-to">
+        <h2 class="doc-block__title">How to use</h2>
+        <div class="steps">
+          <div class="step"><strong>1. Do not screenshot as the HRIS</strong><div class="step-detail">Fix orphans on org structure.</div></div>
+          <div class="step"><strong>2. Masking</strong><div class="step-detail">Compensation is not on this chart.</div></div>
+          <div class="step"><strong>3. Scope</strong><div class="step-detail">Managers may see their span only.</div></div>
+        </div>
+      </section>
+
+      <section class="doc-block doc-block--related" id="related-pages">
+        <h2 class="doc-block__title">Related pages</h2>
+        <div class="related-links">
+          <a class="related-link" href="../admin/org-structure.html"><span class="related-link__label">Org structure</span><span class="related-link__desc">Writes manager lines.</span></a>
+          <a class="related-link" href="../hrms/employees.html"><span class="related-link__label">Employees</span><span class="related-link__desc">Person source.</span></a>
+          <a class="related-link" href="../hrms/dashboard.html"><span class="related-link__label">HR dashboard</span><span class="related-link__desc">Team analytics.</span></a>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <nav class="page-nav">
+    <a class="page-nav__prev" href="assets.html">← Assets</a>
+    <a class="page-nav__next" href="policies.html">Policies →</a>
+  </nav>
+</main>
+
+<footer>
+  <div class="container">
+    <p>&copy; 2026 <span data-brand>Tracopus</span>. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="../js/palette.js?v=20260619e"></script>
+<script src="../js/brand.js?v=20260619e"></script>
+<script src="../js/docs-utility-config.js?v=20260720b"></script>
+<script src="../js/nav-config.js?v=20260912c"></script>
+<script src="../js/navigation.js?v=20260912f"></script>
+<script src="../js/site-enhancements.js?v=20260906a"></script>
+<script src="../js/search.js?v=20260619e"></script>
+<script type="module">
+  import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+  mermaid.initialize({
+    startOnLoad: true,
+    theme: "base",
+    securityLevel: "loose",
+    flowchart: { curve: "basis", htmlLabels: true },
+    themeVariables: {
+      primaryColor: "#d8f3dc",
+      primaryTextColor: "#1b4332",
+      primaryBorderColor: "#40916c",
+      lineColor: "#52796f",
+      secondaryColor: "#f1faee",
+      tertiaryColor: "#ffffff",
+      fontFamily: "Inter, system-ui, sans-serif",
+    },
+  });
+  setTimeout(() => {
+    if (window.TracopusDocsDiagrams) window.TracopusDocsDiagrams.boot();
+  }, 600);
+</script>
+<script src="../js/docs-diagrams.js?v=20260718e"></script>
+</body>
+</html>

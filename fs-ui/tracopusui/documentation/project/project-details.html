@@ -22,7 +22,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/styles.css?v=20260718g">
+  <link rel="stylesheet" href="../css/styles.css?v=20260912g">
   <script src="../js/brand-config.js?v=20260619e"></script>
 </head>
 <body data-docs-depth="1">
@@ -47,6 +47,59 @@
     <p class="doc-mast__lead">Deep-dive page for one project including metadata, team, activity, attachments, and delivery-linked tabs.</p>
     <p class="doc-mast__purpose">Single-project workspace with tabbed sections for overview, team, files, calendar, activity, and feedback.</p>
   </header>
+
+    <section class="doc-briefing" id="at-a-glance" aria-labelledby="briefing-title">
+      <div class="doc-briefing__intro">
+        <p class="doc-briefing__kicker"><i class="fe fe-folder" aria-hidden="true"></i> One project file</p>
+        <h2 class="doc-briefing__title" id="briefing-title">Metadata, team, activity, and the delivery tabs</h2>
+        <p class="doc-briefing__lead">Project details is the deep-dive for one project: metadata, team, activity, attachments, and delivery-linked tabs. It is the same Project row the list opened.</p>
+        <div class="doc-briefing__signals" aria-label="Access and placement">
+          <span class="doc-briefing__signal">Projects → Project list → details</span>
+          <span class="doc-briefing__signal">Route <code>/project/details/:projectId</code></span>
+          <span class="doc-briefing__signal">Project team · Project Manager</span>
+        </div>
+      </div>
+      <div class="doc-briefing__grid">
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-zap"></i></span>
+          <div>
+            <h3>The job of this console</h3>
+            <p>Keep the file true, open deliverables and work items from here, and collaborate without creating a side tracker. Attachments live on the project, not a personal drive as source.</p>
+          </div>
+        </article>
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-users"></i></span>
+          <div>
+            <h3>Seat at the table</h3>
+            <p>People on the project and managers. Finance may see commercial tabs when enabled.</p>
+          </div>
+        </article>
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-play-circle"></i></span>
+          <div>
+            <h3>The working rhythm</h3>
+            <p>Open from list or search, edit what you are allowed, move to deliverables or board, return to the file for team and attachments.</p>
+          </div>
+        </article>
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-clock"></i></span>
+          <div>
+            <h3>Moments that bring you here</h3>
+            <p>Kickoff. A team change. An auditor asking for the project file. Before a status review.</p>
+          </div>
+        </article>
+      </div>
+      <div class="doc-briefing__note">
+        <div class="callout callout--note callout--interactive">
+          <div class="callout__icon">ⓘ</div>
+          <div class="callout__body">
+            <strong class="callout__title">One Project row</strong>
+            <div class="callout__text">Tabs are views and children (Task, TaskActivity), not a second project.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
 
   <div class="doc-flow">
     <section class="doc-block" id="overview"><h2 class="doc-block__title">Overview</h2><p>Open from Project List at route <code>/project/details/:projectId</code>. This page is the command center for a specific project.</p></section>
@@ -95,9 +148,9 @@
 <script src="../js/palette.js?v=20260619e"></script>
 <script src="../js/brand.js?v=20260619e"></script>
 <script src="../js/docs-utility-config.js?v=20260720b"></script>
-<script src="../js/nav-config.js?v=20260619e"></script>
-<script src="../js/navigation.js?v=20260619e"></script>
-<script src="../js/site-enhancements.js?v=20260718d"></script>
+<script src="../js/nav-config.js?v=20260906a"></script>
+<script src="../js/navigation.js?v=20260912f"></script>
+<script src="../js/site-enhancements.js?v=20260906a"></script>
 <script src="../js/search.js?v=20260619e"></script>
 </body>
 </html>

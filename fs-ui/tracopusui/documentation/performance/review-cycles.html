@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en" data-lux-theme="luxury" data-lux-palette="emerald">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Review Cycles — Tracopus User Guide</title>
+  <meta name="description" content="Windows that open performance reviews — cycle admin, not the review write-up itself.">
+  <meta name="keywords" content="tracopus, documentation, user guide, performance, review cycles">
+  <link rel="canonical" href="https://tracopus.com/documentation/performance/review-cycles.html">
+  <meta name="robots" content="index, follow">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Tracopus">
+  <meta property="og:title" content="Review Cycles — Tracopus User Guide">
+  <meta property="og:description" content="Windows that open performance reviews — cycle admin, not the review write-up itself.">
+  <meta property="og:url" content="https://tracopus.com/documentation/performance/review-cycles.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Review Cycles — Tracopus User Guide">
+  <meta name="twitter:description" content="Windows that open performance reviews — cycle admin, not the review write-up itself.">
+  <script src="../js/docs-analytics.js?v=20260719a" defer></script>
+  <link rel="stylesheet" href="../css/styles.css?v=20260912g">
+  <script src="../js/brand-config.js?v=20260619e"></script>
+</head>
+<body data-docs-depth="1">
+
+<header aria-label="Site header"></header>
+
+<main>
+  <div class="breadcrumb"><a href="../index.html">Home</a> → Performance → Review cycles</div>
+
+  <div class="doc-canvas">
+    <header class="doc-mast">
+      <div class="doc-mast__top">
+        <span class="doc-mast__eyebrow">Talent · Cycles</span>
+        <div class="page-meta page-meta--inline">
+          <span class="page-meta__item"><strong>Route</strong> <code>/performance/review-cycles</code></span>
+          <span class="page-meta__item"><strong>Flag</strong> <code>reviewCyclesEnabled</code></span>
+        </div>
+      </div>
+      <h1 class="doc-mast__title">Review Cycles</h1>
+      <p class="doc-mast__lead">Windows that open performance reviews — cycle admin, not the review write-up itself.</p>
+      <p class="doc-mast__purpose">Scroll to <a href="#flowcharts">Flowcharts</a>. Scenario: <a href="../user-guide/performance/performance-review-cycles.html">Open a review cycle</a>.</p>
+    </header>
+
+    <section class="doc-briefing" id="at-a-glance" aria-labelledby="briefing-title">
+      <div class="doc-briefing__intro">
+        <p class="doc-briefing__kicker"><i class="fe fe-calendar" aria-hidden="true"></i> The window</p>
+        <h2 class="doc-briefing__title" id="briefing-title">When reviews are open</h2>
+        <p class="doc-briefing__lead">Review cycles define the window and population. The write-up lives on Performance reviews.</p>
+        <div class="doc-briefing__signals" aria-label="Access and placement">
+          <span class="doc-briefing__signal">Performance → Review cycles</span>
+          <span class="doc-briefing__signal">Route <code>/performance/review-cycles</code></span>
+          <span class="doc-briefing__signal">Org flag <code>reviewCyclesEnabled</code></span>
+          <span class="doc-briefing__signal">HR Admin · Admin</span>
+        </div>
+      </div>
+      <div class="doc-briefing__grid">
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-zap"></i></span>
+          <div>
+            <h3>The job of this console</h3>
+            <p>Create the cycle, set dates, launch, close when done. Do not type ratings into the cycle row.</p>
+          </div>
+        </article>
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-users"></i></span>
+          <div>
+            <h3>Seat at the table</h3>
+            <p>HR admins. Managers write on reviews. Employees participate when included.</p>
+          </div>
+        </article>
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-play-circle"></i></span>
+          <div>
+            <h3>The working rhythm</h3>
+            <p>Create, launch, monitor dashboard, close.</p>
+          </div>
+        </article>
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-clock"></i></span>
+          <div>
+            <h3>Moments that bring you here</h3>
+            <p>Annual kickoff. A delayed cycle. Population miss. After calibration.</p>
+          </div>
+        </article>
+      </div>
+      <div class="doc-briefing__note">
+        <div class="callout callout--note callout--interactive">
+          <div class="callout__icon">ⓘ</div>
+          <div class="callout__body">
+            <strong class="callout__title">Window, not the rating</strong>
+            <div class="callout__text">Reviews hold the content. Compensation is a later payroll step.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="doc-flow">
+      <section class="doc-block" id="flowcharts">
+        <h2 class="doc-block__title">Flowcharts</h2>
+
+        <article class="diagram-card" data-diagram-autoplay="true">
+          <header class="diagram-card__head">
+            <div class="diagram-card__titles">
+              <h3>1 — Open the window</h3>
+              <p class="diagram-card__desc">Define the cycle, then people write reviews.</p>
+            </div>
+            <div class="diagram-card__controls">
+              <button type="button" data-diagram-prev aria-label="Previous step"><i class="fe fe-chevron-left" aria-hidden="true"></i></button>
+              <button type="button" data-diagram-play aria-pressed="false"><i class="fe fe-play" aria-hidden="true"></i><span>Play</span></button>
+              <button type="button" data-diagram-next aria-label="Next step"><i class="fe fe-chevron-right" aria-hidden="true"></i></button>
+            </div>
+          </header>
+          <div class="diagram-card__chart">
+            <pre class="mermaid">
+flowchart TD
+  A[Open Review cycles] --> B[Create cycle]
+  B --> C[Dates / population]
+  C --> D[Reviews generate]
+  D --> E[Calibration / complete]
+            </pre>
+          </div>
+          <ol class="diagram-steps">
+            <li class="diagram-step is-active"><span class="diagram-step__index">1</span><div class="diagram-step__body"><strong>Open</strong><span>Performance → Review cycles.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">2</span><div class="diagram-step__body"><strong>Define</strong><span>Window and who.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">3</span><div class="diagram-step__body"><strong>Launch</strong><span>Review records.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">4</span><div class="diagram-step__body"><strong>Close</strong><span>After calibration/complete.</span></div></li>
+          </ol>
+          <p class="diagram-card__progress" data-diagram-progress></p>
+        </article>
+      </section>
+
+      <section class="doc-block" id="overview">
+        <h2 class="doc-block__title">Overview</h2>
+        <p>Cycles are the window. Reviews are the write-ups. Calibration is the fairness meeting.</p>
+      </section>
+
+      <section class="doc-block" id="how-to">
+        <h2 class="doc-block__title">How to use</h2>
+        <div class="steps">
+          <div class="step"><strong>1. Population is Employee</strong><div class="step-detail">Not candidates.</div></div>
+          <div class="step"><strong>2. Don’t edit ratings here</strong><div class="step-detail">Reviews screen.</div></div>
+          <div class="step"><strong>3. Close cleanly</strong><div class="step-detail">So dashboards don’t show a zombie cycle.</div></div>
+        </div>
+      </section>
+
+      <section class="doc-block doc-block--related" id="related-pages">
+        <h2 class="doc-block__title">Related pages</h2>
+        <div class="related-links">
+          <a class="related-link" href="reviews.html"><span class="related-link__label">Performance reviews</span><span class="related-link__desc">Write-ups.</span></a>
+          <a class="related-link" href="calibration.html"><span class="related-link__label">Calibration</span><span class="related-link__desc">Fairness.</span></a>
+          <a class="related-link" href="dashboard.html"><span class="related-link__label">Performance dashboard</span><span class="related-link__desc">Health.</span></a>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <nav class="page-nav">
+    <a class="page-nav__prev" href="goals.html">← Goals / OKRs</a>
+    <a class="page-nav__next" href="reviews.html">Performance reviews →</a>
+  </nav>
+</main>
+
+<footer>
+  <div class="container">
+    <p>&copy; 2026 <span data-brand>Tracopus</span>. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="../js/palette.js?v=20260619e"></script>
+<script src="../js/brand.js?v=20260619e"></script>
+<script src="../js/docs-utility-config.js?v=20260720b"></script>
+<script src="../js/nav-config.js?v=20260912c"></script>
+<script src="../js/navigation.js?v=20260912f"></script>
+<script src="../js/site-enhancements.js?v=20260906a"></script>
+<script src="../js/search.js?v=20260619e"></script>
+<script type="module">
+  import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+  mermaid.initialize({
+    startOnLoad: true,
+    theme: "base",
+    securityLevel: "loose",
+    flowchart: { curve: "basis", htmlLabels: true },
+    themeVariables: {
+      primaryColor: "#d8f3dc",
+      primaryTextColor: "#1b4332",
+      primaryBorderColor: "#40916c",
+      lineColor: "#52796f",
+      secondaryColor: "#f1faee",
+      tertiaryColor: "#ffffff",
+      fontFamily: "Inter, system-ui, sans-serif",
+    },
+  });
+  setTimeout(() => {
+    if (window.TracopusDocsDiagrams) window.TracopusDocsDiagrams.boot();
+  }, 600);
+</script>
+<script src="../js/docs-diagrams.js?v=20260718e"></script>
+</body>
+</html>

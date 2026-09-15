@@ -13,6 +13,7 @@ module.exports = {
     'faq-attendance',
     'faq-timesheet',
     'faq-approval',
+    'faq-governance',
     'faq-audit',
     'faq-people',
     'faq-project',
@@ -90,7 +91,7 @@ module.exports = {
       items: [
         {
           q: 'Where is the Scenario User Guide?',
-          a: '<code>/doucuments/user-guide/index.html</code> — 65 scenarios across 15 modules with step-by-step instructions.'
+          a: '<code>/documentation/user-guide/index.html</code> — 73 scenarios across 15 modules with step-by-step instructions, including Work-Time Governance.'
         },
         {
           q: 'How is a scenario page structured?',
@@ -323,6 +324,49 @@ module.exports = {
         {
           q: 'Approval notifications — where?',
           a: 'Approvers receive in-app and optional email alerts when team members submit. Configure distribution in App Config notification lists.'
+        }
+      ]
+    },
+    {
+      id: 'faq-governance',
+      icon: '⚖️',
+      title: 'Work-Time Governance',
+      items: [
+        {
+          q: 'What is Work-Time Governance?',
+          a: 'A default-off catalog of timesheet validation, approval-chain, reminder, import/export, estimate, and attendance-source features. Configure it from <strong>Admin → Feature flags</strong>. Screen guide: <a href="../hrms/work-time-governance.html">Work-Time Governance</a>.'
+        },
+        {
+          q: 'Where do I turn catalog features on?',
+          a: '<strong>Admin → Feature flags</strong> (requires <code>adminGovernanceEnabled</code> and <code>featureFlagsAdminEnabled</code>). Choices persist in Application Config. Scenario: <a href="../user-guide/admin/admin-work-time-governance.html">Enable work-time catalog features</a>.'
+        },
+        {
+          q: 'Does governance replace timesheet approval?',
+          a: 'No. The existing timesheet grid and manager approval stay the source of truth. When <code>approvalChainFallbackLegacy</code> is true, manager approval continues until a TIMESHEET chain policy is published.'
+        },
+        {
+          q: 'WARN vs BLOCK validation — what is the difference?',
+          a: '<strong>WARN</strong> shows hints and still allows submit. <strong>BLOCK</strong> disables submit. When <code>timesheet.late-workflow</code> is on and the deadline preview requires a reason, Submit shows a late-reason field (Other needs detail).'
+        },
+        {
+          q: 'How does deadline preview work?',
+          a: 'With <code>timesheet.reminders</code> or <code>timesheet.late-workflow</code> on, the timesheet page loads <code>GET …/timesheets/deadline-preview</code> for the selected week. The UI follows that server preview — it does not guess Friday 18:00 locally. If both features are off, preview is <code>DISABLED</code> and not late.'
+        },
+        {
+          q: 'Why did period lock not run?',
+          a: '<code>timesheet.period-lock</code> needs <code>lockAfterDays</code> greater than <code>0</code> (tenant seed often <code>7</code>) and job <code>TIMESHEET_PERIOD_LOCK</code>. While <code>lockAfterDays</code> is <code>0</code>, auto-lock is a no-op. The older month lock <code>disableLastMonthAfterXDays</code> still applies separately.'
+        },
+        {
+          q: 'Does attendance resolve update the attendance matrix?',
+          a: 'No. Swipe ingest can persist raw swipe rows when enabled. Source resolution is a composed <strong>read</strong> (leave → swipe → timesheet WFH → regularization). Matrix writes stay on <a href="../hrms/attendance.html">Attendance</a>. <code>attendance.period-lock</code> has no lock service yet.'
+        },
+        {
+          q: 'Is there a vendor project-tracking import?',
+          a: 'Generic project import and timesheet export adapters exist when those catalog features and role gates are on. A named vendor adapter, delivery receipt, and dead-letter queue are not bundled.'
+        },
+        {
+          q: 'Are Teams or WhatsApp timesheet updates included?',
+          a: 'No. Alternate chat channels are out of current product scope.'
         }
       ]
     },
@@ -582,7 +626,7 @@ module.exports = {
         },
         {
           q: 'How do I export timesheet data?',
-          a: 'HRMS reports or list export — CSV/Excel for payroll or external BI. Permissions required.'
+          a: 'HRMS reports or list export — CSV/Excel for payroll or external BI. Permissions required. When Work-Time Governance <code>integration.timesheet-export</code> is effective, a vendor-neutral adapter can also export scoped timesheet rows — see <a href="../hrms/work-time-governance.html">Work-Time Governance</a>.'
         },
         {
           q: 'Can invoices export to accounting software?',

@@ -1,0 +1,1305 @@
+<!DOCTYPE html>
+<html lang="en" data-lux-theme="luxury" data-lux-palette="emerald">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All screen how-tos — Tracopus User Guide</title>
+  <meta name="description" content="Searchable index of every Tracopus screen how-to. Filter by module or feature; find by page title, route, or flag.">
+  <meta name="keywords" content="tracopus, documentation, how-to, guide, index, filter, search">
+  <link rel="canonical" href="https://tracopus.com/documentation/how-to-index.html">
+  <meta name="robots" content="index, follow">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Tracopus">
+  <meta property="og:title" content="All screen how-tos — Tracopus User Guide">
+  <meta property="og:description" content="Searchable index of every Tracopus screen how-to mapped to the in-app Guide button.">
+  <meta property="og:url" content="https://tracopus.com/documentation/how-to-index.html">
+  <script src="js/docs-analytics.js?v=20260719a" defer></script>
+  <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="css/styles.css?v=20260912g">
+  <script src="js/brand-config.js?v=20260619e"></script>
+</head>
+<body data-docs-depth="0">
+<header aria-label="Site header"></header>
+<main>
+  <div class="breadcrumb"><a href="index.html">Home</a> → All screen how-tos</div>
+
+  <div class="doc-canvas howto-index">
+    <header class="doc-mast">
+      <div class="doc-mast__top">
+        <span class="doc-mast__eyebrow">Documentation · Index</span>
+        <div class="page-meta page-meta--inline">
+          <span class="page-meta__item"><strong>Guides</strong> 194</span>
+          <span class="page-meta__item"><strong>Updated</strong> 2026-09-12</span>
+        </div>
+      </div>
+      <h1 class="doc-mast__title">All screen how-tos</h1>
+      <p class="doc-mast__lead">Every Guide-mapped screen reference in one place. Filter by module or feature, or search by page title, app route, or org flag.</p>
+      <p class="doc-mast__purpose">In-app book icon opens the same pages. Step-by-step workflows: <a href="user-guide/scenarios.html">All scenarios</a>.</p>
+    </header>
+
+    <section class="doc-briefing" id="at-a-glance" aria-labelledby="briefing-title">
+      <div class="doc-briefing__intro">
+        <p class="doc-briefing__kicker"><i class="fe fe-book-open" aria-hidden="true"></i> Master map</p>
+        <h2 class="doc-briefing__title" id="briefing-title">Find the how-to before you open the console</h2>
+        <p class="doc-briefing__lead">This index lists unique screen guides — not scenarios and not live data. Use it when you know the menu name or route but not which docs folder owns the article.</p>
+        <div class="doc-briefing__signals" aria-label="Access and placement">
+          <span class="doc-briefing__signal">Docs · How-to index</span>
+          <span class="doc-briefing__signal">194 guides</span>
+          <span class="doc-briefing__signal">Mapped from Guide button registry</span>
+        </div>
+      </div>
+      <div class="doc-briefing__grid">
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-zap"></i></span>
+          <div>
+            <h3>The job of this console</h3>
+            <p>Search or filter to the screen guide that matches the menu you are about to use, then open that article — or use the in-app Guide button on the live page.</p>
+          </div>
+        </article>
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-users"></i></span>
+          <div>
+            <h3>Seat at the table</h3>
+            <p>Anyone reading documentation. Admins, PMs, and HR leads use it most when onboarding to a new menu.</p>
+          </div>
+        </article>
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-play-circle"></i></span>
+          <div>
+            <h3>The working rhythm</h3>
+            <p>Type a page or feature, narrow the module if needed, open the card, read the briefing, then work in the product.</p>
+          </div>
+        </article>
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-clock"></i></span>
+          <div>
+            <h3>Moments that bring you here</h3>
+            <p>First week with Tracopus. A route you saw in the URL. Looking for leave vs payroll vs analytics docs without browsing folders.</p>
+          </div>
+        </article>
+      </div>
+      <div class="doc-briefing__note">
+        <div class="callout callout--note callout--interactive">
+          <div class="callout__icon">ⓘ</div>
+          <div class="callout__body">
+            <strong class="callout__title">Index, not a source</strong>
+            <div class="callout__text">This page does not store business data. Each card opens a screen how-to; scenarios remain under the Scenario User Guide.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="doc-flow">
+      <section class="doc-block" id="browse">
+        <h2 class="doc-block__title">Browse how-tos</h2>
+        <div class="howto-index-toolbar" role="search">
+          <label class="howto-index-field howto-index-field--grow">
+            <span class="howto-index-label">Search page or feature</span>
+            <input id="howto-q" type="search" placeholder="e.g. leave, /payroll/runs, feature flags, staffing…" autocomplete="off" />
+          </label>
+          <label class="howto-index-field">
+            <span class="howto-index-label">Module</span>
+            <select id="howto-module"><option value="">All modules</option><option value="AI Intelligence">AI Intelligence</option><option value="Admin">Admin</option><option value="Analytics">Analytics</option><option value="Benefits">Benefits</option><option value="Dossiers">Dossiers</option><option value="Finance">Finance</option><option value="HRMS / People">HRMS / People</option><option value="Integrations">Integrations</option><option value="Learning">Learning</option><option value="Mobile">Mobile</option><option value="NPD">NPD</option><option value="Payroll">Payroll</option><option value="People Ops">People Ops</option><option value="Performance">Performance</option><option value="Projects">Projects</option><option value="Recruiting">Recruiting</option><option value="Resources">Resources</option><option value="Sales">Sales</option><option value="Workspace">Workspace</option></select>
+          </label>
+          <label class="howto-index-field">
+            <span class="howto-index-label">Feature</span>
+            <select id="howto-feature"><option value="">All features</option><option value="1:1">1:1</option><option value="AI">AI</option><option value="AP">AP</option><option value="API">API</option><option value="ATS">ATS</option><option value="Access">Access</option><option value="Access &amp; approvals">Access &amp; approvals</option><option value="Actions">Actions</option><option value="Activity Calendar">Activity Calendar</option><option value="Adapters">Adapters</option><option value="Adjustments">Adjustments</option><option value="Admin module">Admin module</option><option value="Analytics">Analytics</option><option value="Approval">Approval</option><option value="Approvals">Approvals</option><option value="Assets">Assets</option><option value="Attendance">Attendance</option><option value="Audit">Audit</option><option value="Authentication">Authentication</option><option value="Automation">Automation</option><option value="Bench">Bench</option><option value="Benefits">Benefits</option><option value="Bid Details">Bid Details</option><option value="Bid Requests">Bid Requests</option><option value="Billing">Billing</option><option value="Builder">Builder</option><option value="Calibration">Calibration</option><option value="Communication">Communication</option><option value="Communications">Communications</option><option value="Compensation">Compensation</option><option value="Compliance">Compliance</option><option value="Connections">Connections</option><option value="Console">Console</option><option value="Cycles">Cycles</option><option value="Dashboard">Dashboard</option><option value="Deductions">Deductions</option><option value="Delivery">Delivery</option><option value="Delivery $">Delivery $</option><option value="Delivery Unit">Delivery Unit</option><option value="Delivery Units">Delivery Units</option><option value="Details">Details</option><option value="Directory">Directory</option><option value="Discovery">Discovery</option><option value="Documents">Documents</option><option value="Dossiers">Dossiers</option><option value="Employee finance">Employee finance</option><option value="Employees">Employees</option><option value="Exec">Exec</option><option value="Execution">Execution</option><option value="Execution Board">Execution Board</option><option value="Executive">Executive</option><option value="Expenses">Expenses</option><option value="Extensibility">Extensibility</option><option value="Feedback">Feedback</option><option value="Finance">Finance</option><option value="Forecast">Forecast</option><option value="Goals">Goals</option><option value="Governance">Governance</option><option value="Graph">Graph</option><option value="Groups">Groups</option><option value="Growth">Growth</option><option value="HRMS / People">HRMS / People</option><option value="HRMS module">HRMS module</option><option value="Health">Health</option><option value="Holidays">Holidays</option><option value="Hub">Hub</option><option value="Invoice Details">Invoice Details</option><option value="Invoices">Invoices</option><option value="Jobs">Jobs</option><option value="Knowledge">Knowledge</option><option value="Leakage">Leakage</option><option value="Learning">Learning</option><option value="Leave">Leave</option><option value="Leave Configuration">Leave Configuration</option><option value="Leave Management">Leave Management</option><option value="Leave Policies">Leave Policies</option><option value="Lifecycle">Lifecycle</option><option value="Logs">Logs</option><option value="Mapping">Mapping</option><option value="Marketplace">Marketplace</option><option value="Mobile module">Mobile module</option><option value="My Work">My Work</option><option value="NPD">NPD</option><option value="Notifications">Notifications</option><option value="Onboarding">Onboarding</option><option value="One-stop leave guide">One-stop leave guide</option><option value="Operations">Operations</option><option value="Org">Org</option><option value="PO Details">PO Details</option><option value="Pay">Pay</option><option value="Paychecks">Paychecks</option><option value="Payroll">Payroll</option><option value="People">People</option><option value="Personal Productivity">Personal Productivity</option><option value="Policies">Policies</option><option value="Portfolio">Portfolio</option><option value="Procurement">Procurement</option><option value="Profile">Profile</option><option value="Project module">Project module</option><option value="Purchase Orders">Purchase Orders</option><option value="Recognition">Recognition</option><option value="Records">Records</option><option value="Reimbursements">Reimbursements</option><option value="Reporting">Reporting</option><option value="Reports">Reports</option><option value="Resource Planning">Resource Planning</option><option value="Resources">Resources</option><option value="Reviews">Reviews</option><option value="Risk">Risk</option><option value="Runs">Runs</option><option value="Sales module">Sales module</option><option value="Schedule">Schedule</option><option value="Scheduling">Scheduling</option><option value="Service">Service</option><option value="Settings">Settings</option><option value="Setup">Setup</option><option value="Shift">Shift</option><option value="Simulation">Simulation</option><option value="Skills">Skills</option><option value="Sprints">Sprints</option><option value="Staffing">Staffing</option><option value="Stakeholder Input">Stakeholder Input</option><option value="Structures">Structures</option><option value="Talent">Talent</option><option value="Time">Time</option><option value="Time Entry">Time Entry</option><option value="Timeline">Timeline</option><option value="Timesheet">Timesheet</option><option value="Tower">Tower</option><option value="Unified Audit">Unified Audit</option><option value="Utilization">Utilization</option><option value="Vendors">Vendors</option><option value="Workspace">Workspace</option><option value="readiness">readiness</option></select>
+          </label>
+        </div>
+        <p class="howto-index-count" id="howto-count" aria-live="polite">194 of 194 how-tos</p>
+        <div class="howto-index-grid" id="howto-grid">
+<a class="howto-index-card" href="admin/access-requests.html" data-module="Admin" data-feature="Access" data-keywords="access requests review and fulfill elevated access and asset requests from the universal approval inbox. /admin/access-requests accessrequestsenabled access admin admin access-requests.html /admin/access-requests">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Admin</span><span class="howto-index-card__feature">Access</span></div>
+  <strong class="howto-index-card__title">Access Requests</strong>
+  <span class="howto-index-card__lead">Review and fulfill elevated access and asset requests from the universal approval inbox.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/admin/access-requests</code><span class="howto-index-card__flag">accessRequestsEnabled</span></div>
+</a>
+<a class="howto-index-card" href="admin/index.html" data-module="Admin" data-feature="Admin module" data-keywords="admin consoles how-to guides for governance screens. each in-app guide button opens the matching page below. /admin/* admin module admin admin index.html /admin">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Admin</span><span class="howto-index-card__feature">Admin module</span></div>
+  <strong class="howto-index-card__title">Admin consoles</strong>
+  <span class="howto-index-card__lead">How-to guides for governance screens. Each in-app Guide button opens the matching page below.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/admin/*</code></div>
+</a>
+<a class="howto-index-card" href="admin/dashboard.html" data-module="Admin" data-feature="Operations" data-keywords="admin dashboard control-tower view of audit activity, access health, compliance readiness, and flag adoption for administrators. /admin/dashboard dashboardenabled operations admin admin dashboard.html /admin/dashboard /admin/insights">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Admin</span><span class="howto-index-card__feature">Operations</span></div>
+  <strong class="howto-index-card__title">Admin Dashboard</strong>
+  <span class="howto-index-card__lead">Control-tower view of audit activity, access health, compliance readiness, and flag adoption for administrators.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/admin/dashboard</code><span class="howto-index-card__flag">dashboardEnabled</span></div>
+</a>
+<a class="howto-index-card" href="admin/api-keys.html" data-module="Admin" data-feature="Extensibility" data-keywords="api keys issue, export metadata, and revoke integration keys. secret material is shown once. /admin/api-keys apikeysenabled extensibility admin admin api-keys.html /admin/api-keys">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Admin</span><span class="howto-index-card__feature">Extensibility</span></div>
+  <strong class="howto-index-card__title">API Keys</strong>
+  <span class="howto-index-card__lead">Issue, export metadata, and revoke integration keys. Secret material is shown once.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/admin/api-keys</code><span class="howto-index-card__flag">apiKeysEnabled</span></div>
+</a>
+<a class="howto-index-card" href="admin/approval-policies.html" data-module="Admin" data-feature="Access &amp; approvals" data-keywords="approval policies routing rules, sla hours, escalation, and simulation for leave, timesheet, attendance, and related domains. /admin/approval-policies approvalpoliciesenabled access &amp; approvals admin admin approval-policies.html /admin/approval-policies">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Admin</span><span class="howto-index-card__feature">Access &amp; approvals</span></div>
+  <strong class="howto-index-card__title">Approval Policies</strong>
+  <span class="howto-index-card__lead">Routing rules, SLA hours, escalation, and simulation for leave, timesheet, attendance, and related domains.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/admin/approval-policies</code><span class="howto-index-card__flag">approvalPoliciesEnabled</span></div>
+</a>
+<a class="howto-index-card" href="admin/audit.html" data-module="Admin" data-feature="Compliance" data-keywords="audit &amp; compliance organization-wide audit event register and timeline — who did what, when, on which record. /admin/audit auditenabled compliance admin admin audit.html /admin/audit-logs /admin/audit">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Admin</span><span class="howto-index-card__feature">Compliance</span></div>
+  <strong class="howto-index-card__title">Audit &amp; Compliance</strong>
+  <span class="howto-index-card__lead">Organization-wide audit event register and timeline — who did what, when, on which record.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/admin/audit</code><span class="howto-index-card__flag">auditEnabled</span></div>
+</a>
+<a class="howto-index-card" href="admin/automation-rules.html" data-module="Admin" data-feature="Automation" data-keywords="automation rules build trigger → condition → action graphs, save drafts, then publish from the studio. /admin/automation-rules automationrulesenabled automation admin admin automation-rules.html /admin/automation-rules">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Admin</span><span class="howto-index-card__feature">Automation</span></div>
+  <strong class="howto-index-card__title">Automation Rules</strong>
+  <span class="howto-index-card__lead">Build trigger → condition → action graphs, save drafts, then publish from the studio.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/admin/automation-rules</code><span class="howto-index-card__flag">automationRulesEnabled</span></div>
+</a>
+<a class="howto-index-card" href="admin/compliance-export.html" data-module="Admin" data-feature="Compliance" data-keywords="compliance export pack readiness and exportable evidence for audits — composed from live source entities. /admin/compliance-export complianceexportenabled compliance admin admin compliance-export.html /admin/compliance-export">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Admin</span><span class="howto-index-card__feature">Compliance</span></div>
+  <strong class="howto-index-card__title">Compliance Export</strong>
+  <span class="howto-index-card__lead">Pack readiness and exportable evidence for audits — composed from live source entities.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/admin/compliance-export</code><span class="howto-index-card__flag">complianceExportEnabled</span></div>
+</a>
+<a class="howto-index-card" href="admin/data-retention.html" data-module="Admin" data-feature="Compliance" data-keywords="data retention retention schedules, purge windows, and compliance holds for operational records. /admin/data-retention dataretentionenabled compliance admin admin data-retention.html /admin/data-retention">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Admin</span><span class="howto-index-card__feature">Compliance</span></div>
+  <strong class="howto-index-card__title">Data Retention</strong>
+  <span class="howto-index-card__lead">Retention schedules, purge windows, and compliance holds for operational records.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/admin/data-retention</code><span class="howto-index-card__flag">dataRetentionEnabled</span></div>
+</a>
+<a class="howto-index-card" href="admin/delegation.html" data-module="Admin" data-feature="Access &amp; approvals" data-keywords="delegation rules outgoing delegates and managers you are acting for — scoped to attendance, timesheet, and leave. /admin/delegation delegationenabled access &amp; approvals admin admin delegation.html /admin/delegation">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Admin</span><span class="howto-index-card__feature">Access &amp; approvals</span></div>
+  <strong class="howto-index-card__title">Delegation Rules</strong>
+  <span class="howto-index-card__lead">Outgoing delegates and managers you are acting for — scoped to attendance, timesheet, and leave.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/admin/delegation</code><span class="howto-index-card__flag">delegationEnabled</span></div>
+</a>
+<a class="howto-index-card" href="admin/developer.html" data-module="Admin" data-feature="Extensibility" data-keywords="developer portal register apps, review usage, then manage api keys and webhooks from the same hub. /admin/developer developerportaloverviewenabled extensibility admin admin developer.html /admin/developer">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Admin</span><span class="howto-index-card__feature">Extensibility</span></div>
+  <strong class="howto-index-card__title">Developer Portal</strong>
+  <span class="howto-index-card__lead">Register apps, review usage, then manage API keys and webhooks from the same hub.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/admin/developer</code><span class="howto-index-card__flag">developerPortalOverviewEnabled</span></div>
+</a>
+<a class="howto-index-card" href="admin/feature-flags.html" data-module="Admin" data-feature="Access" data-keywords="feature flags stage pilots, track adoption, and govern high-risk toggles — including the work-time governance catalog on the same console. /admin/feature-flags featureflagsenabled access admin admin feature-flags.html /admin/feature-flags">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Admin</span><span class="howto-index-card__feature">Access</span></div>
+  <strong class="howto-index-card__title">Feature Flags</strong>
+  <span class="howto-index-card__lead">Stage pilots, track adoption, and govern high-risk toggles — including the Work-Time Governance catalog on the same console.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/admin/feature-flags</code><span class="howto-index-card__flag">featureFlagsEnabled</span></div>
+</a>
+<a class="howto-index-card" href="admin/industry-templates.html" data-module="Admin" data-feature="Setup" data-keywords="industry templates apply a packaged industry template to seed application config lists, flags, and related setup — review the diff before apply. /admin/industry-templates appconfigenabled setup admin admin industry-templates.html /admin/industry-templates">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Admin</span><span class="howto-index-card__feature">Setup</span></div>
+  <strong class="howto-index-card__title">Industry Templates</strong>
+  <span class="howto-index-card__lead">Apply a packaged industry template to seed Application Config lists, flags, and related setup — review the diff before apply.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/admin/industry-templates</code><span class="howto-index-card__flag">appconfigEnabled</span></div>
+</a>
+<a class="howto-index-card" href="admin/security.html" data-module="Admin" data-feature="Compliance" data-keywords="masking policy persona-aware field masking and sensitive data posture for salary, bank, tax, and similar fields. /admin/security securityenabled compliance admin admin security.html /admin/security">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Admin</span><span class="howto-index-card__feature">Compliance</span></div>
+  <strong class="howto-index-card__title">Masking Policy</strong>
+  <span class="howto-index-card__lead">Persona-aware field masking and sensitive data posture for salary, bank, tax, and similar fields.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/admin/security</code><span class="howto-index-card__flag">securityEnabled</span></div>
+</a>
+<a class="howto-index-card" href="admin/notification-templates.html" data-module="Admin" data-feature="Communications" data-keywords="notification templates maintain subject lines, bodies, and channel settings for workspace notifications — with preview before publish. /admin/notification-templates notificationtemplatesenabled communications admin admin notification-templates.html /admin/notification-templates">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Admin</span><span class="howto-index-card__feature">Communications</span></div>
+  <strong class="howto-index-card__title">Notification Templates</strong>
+  <span class="howto-index-card__lead">Maintain subject lines, bodies, and channel settings for workspace notifications — with preview before publish.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/admin/notification-templates</code><span class="howto-index-card__flag">notificationTemplatesEnabled</span></div>
+</a>
+<a class="howto-index-card" href="admin/org-structure.html" data-module="Admin" data-feature="People" data-keywords="org structure reporting lines, hierarchy nodes, and hrms master lists sourced from employeemodel and application config. /admin/org-structure orgstructureenabled people admin admin org-structure.html /admin/org-structure">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Admin</span><span class="howto-index-card__feature">People</span></div>
+  <strong class="howto-index-card__title">Org Structure</strong>
+  <span class="howto-index-card__lead">Reporting lines, hierarchy nodes, and HRMS master lists sourced from EmployeeModel and Application Config.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/admin/org-structure</code><span class="howto-index-card__flag">orgStructureEnabled</span></div>
+</a>
+<a class="howto-index-card" href="admin/payroll-config.html" data-module="Admin" data-feature="readiness" data-keywords="payroll readiness validate mandatory gates, then jump into groups, structures, and publishing config. /admin/payroll-config payrollconfigenabled readiness admin admin payroll-config.html /admin/payroll-config">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Admin</span><span class="howto-index-card__feature">readiness</span></div>
+  <strong class="howto-index-card__title">Payroll Readiness</strong>
+  <span class="howto-index-card__lead">Validate mandatory gates, then jump into groups, structures, and publishing config.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/admin/payroll-config</code><span class="howto-index-card__flag">payrollConfigEnabled</span></div>
+</a>
+<a class="howto-index-card" href="admin/jobs.html" data-module="Admin" data-feature="Operations" data-keywords="scheduled jobs scheduletype inventory with last-run status and manual run now / run scan. /admin/jobs — operations admin admin jobs.html /admin/jobs">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Admin</span><span class="howto-index-card__feature">Operations</span></div>
+  <strong class="howto-index-card__title">Scheduled Jobs</strong>
+  <span class="howto-index-card__lead">ScheduleType inventory with last-run status and manual Run now / Run scan.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/admin/jobs</code></div>
+</a>
+<a class="howto-index-card" href="admin/setup-checklist.html" data-module="Admin" data-feature="Setup" data-keywords="setup checklist one-time day-one checklist with phased guidance, docs, console links, and an automation playbook. /admin/setup-checklist appconfigenabled setup admin admin setup-checklist.html /admin/setup-checklist">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Admin</span><span class="howto-index-card__feature">Setup</span></div>
+  <strong class="howto-index-card__title">Setup Checklist</strong>
+  <span class="howto-index-card__lead">One-time day-one checklist with phased guidance, docs, console links, and an automation playbook.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/admin/setup-checklist</code><span class="howto-index-card__flag">appconfigEnabled</span></div>
+</a>
+<a class="howto-index-card" href="admin/system-errors.html" data-module="Admin" data-feature="Operations" data-keywords="system errors ops inbox for salesforce, zinghr, credentials, schedulers, health, and leave integration failures — with clear cause and next steps. /admin/system-errors systemerrorsenabled operations admin admin system-errors.html /admin/system-errors">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Admin</span><span class="howto-index-card__feature">Operations</span></div>
+  <strong class="howto-index-card__title">System errors</strong>
+  <span class="howto-index-card__lead">Ops inbox for Salesforce, ZingHR, credentials, schedulers, health, and leave integration failures — with clear cause and next steps.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/admin/system-errors</code><span class="howto-index-card__flag">systemErrorsEnabled</span></div>
+</a>
+<a class="howto-index-card" href="admin/vendors.html" data-module="Admin" data-feature="Procurement" data-keywords="vendor register master vendors plus bidrequest and purchaseorder aggregates — not a shadow vendor ledger. /admin/vendors — procurement admin admin vendors.html /admin/vendors">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Admin</span><span class="howto-index-card__feature">Procurement</span></div>
+  <strong class="howto-index-card__title">Vendor Register</strong>
+  <span class="howto-index-card__lead">Master vendors plus BidRequest and PurchaseOrder aggregates — not a shadow vendor ledger.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/admin/vendors</code></div>
+</a>
+<a class="howto-index-card" href="admin/webhooks.html" data-module="Admin" data-feature="Extensibility" data-keywords="webhooks subscribe to domain events, inspect deliveries, and retry failures. /admin/webhooks webhooksenabled extensibility admin admin webhooks.html /admin/webhooks">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Admin</span><span class="howto-index-card__feature">Extensibility</span></div>
+  <strong class="howto-index-card__title">Webhooks</strong>
+  <span class="howto-index-card__lead">Subscribe to domain events, inspect deliveries, and retry failures.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/admin/webhooks</code><span class="howto-index-card__flag">webhooksEnabled</span></div>
+</a>
+<a class="howto-index-card" href="admin/workflows.html" data-module="Admin" data-feature="Automation" data-keywords="workflow automation publish, pause, and monitor enterprise workflow rules that fire on domain events. /admin/workflows workflowsenabled automation admin admin workflows.html /admin/workflows">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Admin</span><span class="howto-index-card__feature">Automation</span></div>
+  <strong class="howto-index-card__title">Workflow Automation</strong>
+  <span class="howto-index-card__lead">Publish, pause, and monitor enterprise workflow rules that fire on domain events.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/admin/workflows</code><span class="howto-index-card__flag">workflowsEnabled</span></div>
+</a>
+<a class="howto-index-card" href="ai/agents.html" data-module="AI Intelligence" data-feature="Console" data-keywords="agent console conversation with domain agents that cite employee, project, task, and related sources — never a second system of record. /ai/agents agentsenabled console ai intelligence ai agents.html /ai/agents">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">AI Intelligence</span><span class="howto-index-card__feature">Console</span></div>
+  <strong class="howto-index-card__title">Agent Console</strong>
+  <span class="howto-index-card__lead">Conversation with domain agents that cite Employee, Project, Task, and related sources — never a second system of record.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/ai/agents</code><span class="howto-index-card__flag">agentsEnabled</span></div>
+</a>
+<a class="howto-index-card" href="ai/audit.html" data-module="AI Intelligence" data-feature="Audit" data-keywords="ai decision audit masked run metadata for ai decisions — source references, not raw prompts, and not admin → audit. /ai/audit auditenabled audit ai intelligence ai audit.html /ai/audit">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">AI Intelligence</span><span class="howto-index-card__feature">Audit</span></div>
+  <strong class="howto-index-card__title">AI Decision Audit</strong>
+  <span class="howto-index-card__lead">Masked run metadata for AI decisions — source references, not raw prompts, and not Admin → Audit.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/ai/audit</code><span class="howto-index-card__flag">auditEnabled</span></div>
+</a>
+<a class="howto-index-card" href="ai/executive-briefing.html" data-module="AI Intelligence" data-feature="Exec" data-keywords="executive briefing narrative briefing over control-tower sources — still citations, still not a board pack you edit as truth. /ai/executive-briefing executivebriefingenabled exec ai intelligence ai executive-briefing.html /ai/executive-briefing">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">AI Intelligence</span><span class="howto-index-card__feature">Exec</span></div>
+  <strong class="howto-index-card__title">Executive Briefing</strong>
+  <span class="howto-index-card__lead">Narrative briefing over control-tower sources — still citations, still not a board pack you edit as truth.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/ai/executive-briefing</code><span class="howto-index-card__flag">executiveBriefingEnabled</span></div>
+</a>
+<a class="howto-index-card" href="ai/knowledge.html" data-module="AI Intelligence" data-feature="Knowledge" data-keywords="knowledge &amp; rca curated corpus and rca articles agents may cite — not the live project rca register and not unmasked hr files. /ai/knowledge knowledgeenabled knowledge ai intelligence ai knowledge.html /ai/knowledge">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">AI Intelligence</span><span class="howto-index-card__feature">Knowledge</span></div>
+  <strong class="howto-index-card__title">Knowledge &amp; RCA</strong>
+  <span class="howto-index-card__lead">Curated corpus and RCA articles agents may cite — not the live project RCA register and not unmasked HR files.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/ai/knowledge</code><span class="howto-index-card__flag">knowledgeEnabled</span></div>
+</a>
+<a class="howto-index-card" href="ai/payroll-readiness.html" data-module="AI Intelligence" data-feature="Payroll" data-keywords="payroll readiness agent gate and exception hints before a run — payroll still calculates and publishes on payroll consoles. /ai/payroll-readiness payrollreadinessenabled payroll ai intelligence ai payroll-readiness.html /ai/payroll-readiness">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">AI Intelligence</span><span class="howto-index-card__feature">Payroll</span></div>
+  <strong class="howto-index-card__title">Payroll Readiness Agent</strong>
+  <span class="howto-index-card__lead">Gate and exception hints before a run — payroll still calculates and publishes on payroll consoles.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/ai/payroll-readiness</code><span class="howto-index-card__flag">payrollReadinessEnabled</span></div>
+</a>
+<a class="howto-index-card" href="ai/recommendations.html" data-module="AI Intelligence" data-feature="Actions" data-keywords="recommendations suggested next actions with source ids — you complete them on the owning console, not by ticking a shadow to-do ledger. /ai/recommendations recommendationsenabled actions ai intelligence ai recommendations.html /ai/recommendations">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">AI Intelligence</span><span class="howto-index-card__feature">Actions</span></div>
+  <strong class="howto-index-card__title">Recommendations</strong>
+  <span class="howto-index-card__lead">Suggested next actions with source ids — you complete them on the owning console, not by ticking a shadow to-do ledger.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/ai/recommendations</code><span class="howto-index-card__flag">recommendationsEnabled</span></div>
+</a>
+<a class="howto-index-card" href="ai/risk-agent.html" data-module="AI Intelligence" data-feature="Risk" data-keywords="risk agent suggested risks and concentrations — you still write the row on projects → risks (or issues/rca). /ai/risk-agent riskenabled risk ai intelligence ai risk-agent.html /ai/risk-agent">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">AI Intelligence</span><span class="howto-index-card__feature">Risk</span></div>
+  <strong class="howto-index-card__title">Risk Agent</strong>
+  <span class="howto-index-card__lead">Suggested risks and concentrations — you still write the row on Projects → Risks (or issues/RCA).</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/ai/risk-agent</code><span class="howto-index-card__flag">riskEnabled</span></div>
+</a>
+<a class="howto-index-card" href="ai/staffing-agent.html" data-module="AI Intelligence" data-feature="Resources" data-keywords="staffing agent staffing suggestions from skills and load — you still commit on team capacity or a staffing request. /ai/staffing-agent staffingenabled resources ai intelligence ai staffing-agent.html /ai/staffing-agent">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">AI Intelligence</span><span class="howto-index-card__feature">Resources</span></div>
+  <strong class="howto-index-card__title">Staffing Agent</strong>
+  <span class="howto-index-card__lead">Staffing suggestions from skills and load — you still commit on Team capacity or a staffing request.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/ai/staffing-agent</code><span class="howto-index-card__flag">staffingEnabled</span></div>
+</a>
+<a class="howto-index-card" href="ai/timesheet-agent.html" data-module="AI Intelligence" data-feature="Time" data-keywords="timesheet agent hints on hours and exceptions — you still enter and approve on the protected timesheet flow. /ai/timesheet-agent timesheetenabled time ai intelligence ai timesheet-agent.html /ai/timesheet-agent">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">AI Intelligence</span><span class="howto-index-card__feature">Time</span></div>
+  <strong class="howto-index-card__title">Timesheet Agent</strong>
+  <span class="howto-index-card__lead">Hints on hours and exceptions — you still enter and approve on the protected timesheet flow.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/ai/timesheet-agent</code><span class="howto-index-card__flag">timesheetEnabled</span></div>
+</a>
+<a class="howto-index-card" href="ai/wbs-assistant.html" data-module="AI Intelligence" data-feature="Delivery" data-keywords="wbs assistant draft work breakdowns you still save as task and taskactivity on a project — not a parallel wbs database. /ai/wbs-assistant wbsenabled delivery ai intelligence ai wbs-assistant.html /ai/wbs-assistant">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">AI Intelligence</span><span class="howto-index-card__feature">Delivery</span></div>
+  <strong class="howto-index-card__title">WBS Assistant</strong>
+  <span class="howto-index-card__lead">Draft work breakdowns you still save as Task and TaskActivity on a Project — not a parallel WBS database.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/ai/wbs-assistant</code><span class="howto-index-card__flag">wbsEnabled</span></div>
+</a>
+<a class="howto-index-card" href="analytics/ai-insights.html" data-module="Analytics" data-feature="AI" data-keywords="ai insights insight cards composed from canonical entities — each card cites a source id, never a standalone ai ledger. /analytics/ai-insights aiinsightsenabled ai analytics analytics ai-insights.html /analytics/ai-insights">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Analytics</span><span class="howto-index-card__feature">AI</span></div>
+  <strong class="howto-index-card__title">AI Insights</strong>
+  <span class="howto-index-card__lead">Insight cards composed from canonical entities — each card cites a source id, never a standalone AI ledger.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/analytics/ai-insights</code><span class="howto-index-card__flag">aiInsightsEnabled</span></div>
+</a>
+<a class="howto-index-card" href="analytics/hub.html" data-module="Analytics" data-feature="Hub" data-keywords="analytics hub launch pad onto domain analytics — workforce, delivery, finance, payroll — still composed from canonical registers. /analytics/hub analyticsplatformenabled hub analytics analytics hub.html /analytics/hub">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Analytics</span><span class="howto-index-card__feature">Hub</span></div>
+  <strong class="howto-index-card__title">Analytics Hub</strong>
+  <span class="howto-index-card__lead">Launch pad onto domain analytics — workforce, delivery, finance, payroll — still composed from canonical registers.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/analytics/hub</code><span class="howto-index-card__flag">analyticsPlatformEnabled</span></div>
+</a>
+<a class="howto-index-card" href="analytics/approvals.html" data-module="Analytics" data-feature="Approvals" data-keywords="approvals analytics sla and volume on the universal approval engine — charts on live requests, not a second inbox. /analytics/approvals approvalsenabled approvals analytics analytics approvals.html /analytics/approvals">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Analytics</span><span class="howto-index-card__feature">Approvals</span></div>
+  <strong class="howto-index-card__title">Approvals Analytics</strong>
+  <span class="howto-index-card__lead">SLA and volume on the universal approval engine — charts on live requests, not a second inbox.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/analytics/approvals</code><span class="howto-index-card__flag">approvalsEnabled</span></div>
+</a>
+<a class="howto-index-card" href="analytics/delivery.html" data-module="Analytics" data-feature="Delivery" data-keywords="delivery analytics throughput and slip on project, task, and taskactivity — not the board and not a second wbs. /analytics/delivery deliveryenabled delivery analytics analytics delivery.html /analytics/delivery">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Analytics</span><span class="howto-index-card__feature">Delivery</span></div>
+  <strong class="howto-index-card__title">Delivery Analytics</strong>
+  <span class="howto-index-card__lead">Throughput and slip on Project, Task, and TaskActivity — not the board and not a second WBS.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/analytics/delivery</code><span class="howto-index-card__flag">deliveryEnabled</span></div>
+</a>
+<a class="howto-index-card" href="analytics/executive.html" data-module="Analytics" data-feature="Executive" data-keywords="executive analytics deeper exec charts than the control tower — still a view on the same projects, people, and commercial entities. /analytics/executive executiveenabled executive analytics analytics executive.html /analytics/executive">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Analytics</span><span class="howto-index-card__feature">Executive</span></div>
+  <strong class="howto-index-card__title">Executive Analytics</strong>
+  <span class="howto-index-card__lead">Deeper exec charts than the control tower — still a view on the same projects, people, and commercial entities.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/analytics/executive</code><span class="howto-index-card__flag">executiveEnabled</span></div>
+</a>
+<a class="howto-index-card" href="analytics/executive-control-tower.html" data-module="Analytics" data-feature="Tower" data-keywords="executive control tower steering view over projects, people, and commercial health — kpis composed from live entities, not a second ledger you type into. /analytics/executive-control-tower controltowerenabled tower analytics analytics executive-control-tower.html /analytics/executive-control-tower">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Analytics</span><span class="howto-index-card__feature">Tower</span></div>
+  <strong class="howto-index-card__title">Executive Control Tower</strong>
+  <span class="howto-index-card__lead">Steering view over projects, people, and commercial health — KPIs composed from live entities, not a second ledger you type into.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/analytics/executive-control-tower</code><span class="howto-index-card__flag">controlTowerEnabled</span></div>
+</a>
+<a class="howto-index-card" href="analytics/finance.html" data-module="Analytics" data-feature="Finance" data-keywords="financial analytics commercial grain on purchase contracts, invoices, and project financials — not the invoice editor and not payroll. /analytics/finance financeenabled finance analytics analytics finance.html /analytics/finance">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Analytics</span><span class="howto-index-card__feature">Finance</span></div>
+  <strong class="howto-index-card__title">Financial Analytics</strong>
+  <span class="howto-index-card__lead">Commercial grain on purchase contracts, invoices, and project financials — not the invoice editor and not payroll.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/analytics/finance</code><span class="howto-index-card__flag">financeEnabled</span></div>
+</a>
+<a class="howto-index-card" href="analytics/payroll.html" data-module="Analytics" data-feature="Payroll" data-keywords="payroll analytics pay-cycle themes on published runs and structures — masked, never a place to calculate a run or store bank details. /analytics/payroll payrollenabled payroll analytics analytics payroll.html /analytics/payroll">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Analytics</span><span class="howto-index-card__feature">Payroll</span></div>
+  <strong class="howto-index-card__title">Payroll Analytics</strong>
+  <span class="howto-index-card__lead">Pay-cycle themes on published runs and structures — masked, never a place to calculate a run or store bank details.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/analytics/payroll</code><span class="howto-index-card__flag">payrollEnabled</span></div>
+</a>
+<a class="howto-index-card" href="analytics/report-builder.html" data-module="Analytics" data-feature="Builder" data-keywords="report builder ad-hoc definitions over canonical domains — saved views, not a warehouse you load by hand and not project → reports catalogs. /analytics/report-builder reportbuilderenabled builder analytics analytics report-builder.html /analytics/report-builder">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Analytics</span><span class="howto-index-card__feature">Builder</span></div>
+  <strong class="howto-index-card__title">Report Builder</strong>
+  <span class="howto-index-card__lead">Ad-hoc definitions over canonical domains — saved views, not a warehouse you load by hand and not Project → Reports catalogs.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/analytics/report-builder</code><span class="howto-index-card__flag">reportBuilderEnabled</span></div>
+</a>
+<a class="howto-index-card" href="analytics/resource.html" data-module="Analytics" data-feature="Resources" data-keywords="resource intelligence load, bench, and skill coverage composed from assignments and employee — not the live capacity planner. /analytics/resource resourcesenabled resources analytics analytics resource.html /analytics/resource">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Analytics</span><span class="howto-index-card__feature">Resources</span></div>
+  <strong class="howto-index-card__title">Resource Intelligence</strong>
+  <span class="howto-index-card__lead">Load, bench, and skill coverage composed from assignments and Employee — not the live capacity planner.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/analytics/resource</code><span class="howto-index-card__flag">resourcesEnabled</span></div>
+</a>
+<a class="howto-index-card" href="analytics/risk.html" data-module="Analytics" data-feature="Risk" data-keywords="risk intelligence cross-portfolio risk themes on project risk/issue registers and commercial signals — not the risk log itself. /analytics/risk riskenabled risk analytics analytics risk.html /analytics/risk">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Analytics</span><span class="howto-index-card__feature">Risk</span></div>
+  <strong class="howto-index-card__title">Risk Intelligence</strong>
+  <span class="howto-index-card__lead">Cross-portfolio risk themes on project risk/issue registers and commercial signals — not the risk log itself.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/analytics/risk</code><span class="howto-index-card__flag">riskEnabled</span></div>
+</a>
+<a class="howto-index-card" href="analytics/scheduled-reports.html" data-module="Analytics" data-feature="Schedule" data-keywords="scheduled reports cadence and recipients for saved report definitions — delivery config, not a new metric store. /analytics/scheduled-reports scheduledreportsenabled schedule analytics analytics scheduled-reports.html /analytics/scheduled-reports">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Analytics</span><span class="howto-index-card__feature">Schedule</span></div>
+  <strong class="howto-index-card__title">Scheduled Reports</strong>
+  <span class="howto-index-card__lead">Cadence and recipients for saved report definitions — delivery config, not a new metric store.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/analytics/scheduled-reports</code><span class="howto-index-card__flag">scheduledReportsEnabled</span></div>
+</a>
+<a class="howto-index-card" href="analytics/work-graph.html" data-module="Analytics" data-feature="Graph" data-keywords="work graph analytics analytics on work graph nodes and edges — masked summaries and source references, not a second copy of salary, bank, or reviews. /analytics/work-graph workgraphenabled graph analytics analytics work-graph.html /analytics/work-graph">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Analytics</span><span class="howto-index-card__feature">Graph</span></div>
+  <strong class="howto-index-card__title">Work Graph Analytics</strong>
+  <span class="howto-index-card__lead">Analytics on Work Graph nodes and edges — masked summaries and source references, not a second copy of salary, bank, or reviews.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/analytics/work-graph</code><span class="howto-index-card__flag">workGraphEnabled</span></div>
+</a>
+<a class="howto-index-card" href="analytics/workforce.html" data-module="Analytics" data-feature="People" data-keywords="workforce analytics headcount, joiners, attrition, and attendance themes on employee — charts, not the employee file and not payroll. /analytics/workforce workforceenabled people analytics analytics workforce.html /analytics/workforce">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Analytics</span><span class="howto-index-card__feature">People</span></div>
+  <strong class="howto-index-card__title">Workforce Analytics</strong>
+  <span class="howto-index-card__lead">Headcount, joiners, attrition, and attendance themes on Employee — charts, not the employee file and not payroll.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/analytics/workforce</code><span class="howto-index-card__flag">workforceEnabled</span></div>
+</a>
+<a class="howto-index-card" href="benefits/carrier-files.html" data-module="Benefits" data-feature="Benefits" data-keywords="benefits carrier files exchange files with carriers — generated from enrollments, not a manual census spreadsheet as source. /benefits/carrier-files benefitsenabled benefits benefits benefits carrier-files.html /benefits/carrier-files">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Benefits</span><span class="howto-index-card__feature">Benefits</span></div>
+  <strong class="howto-index-card__title">Benefits Carrier Files</strong>
+  <span class="howto-index-card__lead">Exchange files with carriers — generated from enrollments, not a manual census spreadsheet as source.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/benefits/carrier-files</code><span class="howto-index-card__flag">benefitsEnabled</span></div>
+</a>
+<a class="howto-index-card" href="benefits/enrollment.html" data-module="Benefits" data-feature="Benefits" data-keywords="benefits enrollment elections on employee against published plans — self-service and hr assist, not a second people table. /benefits/enrollment benefitsenabled benefits benefits benefits enrollment.html /benefits/enrollment">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Benefits</span><span class="howto-index-card__feature">Benefits</span></div>
+  <strong class="howto-index-card__title">Benefits Enrollment</strong>
+  <span class="howto-index-card__lead">Elections on Employee against published plans — self-service and HR assist, not a second people table.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/benefits/enrollment</code><span class="howto-index-card__flag">benefitsEnabled</span></div>
+</a>
+<a class="howto-index-card" href="benefits/plans.html" data-module="Benefits" data-feature="Benefits" data-keywords="benefits plans plan catalog — what can be elected — not the payroll run and not medical files in work graph. /benefits/plans benefitsenabled benefits benefits benefits plans.html /benefits/plans">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Benefits</span><span class="howto-index-card__feature">Benefits</span></div>
+  <strong class="howto-index-card__title">Benefits Plans</strong>
+  <span class="howto-index-card__lead">Plan catalog — what can be elected — not the payroll run and not medical files in Work Graph.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/benefits/plans</code><span class="howto-index-card__flag">benefitsEnabled</span></div>
+</a>
+<a class="howto-index-card" href="benefits/reports.html" data-module="Benefits" data-feature="Benefits" data-keywords="benefits reports permission-scoped benefits exports — snapshots of plans and elections, not a warehouse. /benefits/reports benefitsenabled benefits benefits benefits reports.html /benefits/reports">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Benefits</span><span class="howto-index-card__feature">Benefits</span></div>
+  <strong class="howto-index-card__title">Benefits Reports</strong>
+  <span class="howto-index-card__lead">Permission-scoped benefits exports — snapshots of plans and elections, not a warehouse.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/benefits/reports</code><span class="howto-index-card__flag">benefitsEnabled</span></div>
+</a>
+<a class="howto-index-card" href="dossiers/index.html" data-module="Dossiers" data-feature="Dossiers" data-keywords="dossiers evidence packs composed from live entities — projects, tickets, invoices — with governance sign-off, not a shadow document mart. /dossiers dossiersenabled dossiers dossiers dossiers index.html /dossiers">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Dossiers</span><span class="howto-index-card__feature">Dossiers</span></div>
+  <strong class="howto-index-card__title">Dossiers</strong>
+  <span class="howto-index-card__lead">Evidence packs composed from live entities — projects, tickets, invoices — with governance sign-off, not a shadow document mart.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/dossiers</code><span class="howto-index-card__flag">dossiersEnabled</span></div>
+</a>
+<a class="howto-index-card" href="finance/billing-plans.html" data-module="Finance" data-feature="Billing" data-keywords="billing plans how a contract will be billed over time — plans on purchaseorder / project, not the invoice register itself. /finance/billing-plans billingplansenabled billing finance finance billing-plans.html /finance/billing-plans">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Finance</span><span class="howto-index-card__feature">Billing</span></div>
+  <strong class="howto-index-card__title">Billing Plans</strong>
+  <span class="howto-index-card__lead">How a contract will be billed over time — plans on PurchaseOrder / project, not the invoice register itself.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/finance/billing-plans</code><span class="howto-index-card__flag">billingPlansEnabled</span></div>
+</a>
+<a class="howto-index-card" href="finance/credit-notes.html" data-module="Finance" data-feature="Adjustments" data-keywords="credit notes credits against platform invoices — adjustments to bills, not a rewrite of the purchase order as source. /finance/credit-notes creditnotesenabled adjustments finance finance credit-notes.html /finance/credit-notes">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Finance</span><span class="howto-index-card__feature">Adjustments</span></div>
+  <strong class="howto-index-card__title">Credit Notes</strong>
+  <span class="howto-index-card__lead">Credits against platform invoices — adjustments to bills, not a rewrite of the purchase order as source.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/finance/credit-notes</code><span class="howto-index-card__flag">creditNotesEnabled</span></div>
+</a>
+<a class="howto-index-card" href="finance/expenses.html" data-module="Finance" data-feature="Expenses" data-keywords="expenses (finance view) finance operations view of employee expense claims — the same expense records employees submit, not a second petty-cash book. /finance/expenses expensesenabled expenses finance finance expenses.html /finance/expenses">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Finance</span><span class="howto-index-card__feature">Expenses</span></div>
+  <strong class="howto-index-card__title">Expenses (Finance View)</strong>
+  <span class="howto-index-card__lead">Finance operations view of employee expense claims — the same expense records employees submit, not a second petty-cash book.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/finance/expenses</code><span class="howto-index-card__flag">expensesEnabled</span></div>
+</a>
+<a class="howto-index-card" href="finance/dashboard.html" data-module="Finance" data-feature="Finance" data-keywords="finance dashboard finance control tower over pos, invoices, and project financials — charts on live commercial entities, not a warehouse you type into. /finance/dashboard dashboardenabled finance finance finance dashboard.html /finance/dashboard">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Finance</span><span class="howto-index-card__feature">Finance</span></div>
+  <strong class="howto-index-card__title">Finance Dashboard</strong>
+  <span class="howto-index-card__lead">Finance control tower over POs, invoices, and project financials — charts on live commercial entities, not a warehouse you type into.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/finance/dashboard</code><span class="howto-index-card__flag">dashboardEnabled</span></div>
+</a>
+<a class="howto-index-card" href="finance/project-financials.html" data-module="Finance" data-feature="Delivery $" data-keywords="project financials cost, billed, and margin on live projects and their pos — not a second project list. /finance/project-financials projectfinancialsenabled delivery $ finance finance project-financials.html /finance/project-financials">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Finance</span><span class="howto-index-card__feature">Delivery $</span></div>
+  <strong class="howto-index-card__title">Project Financials</strong>
+  <span class="howto-index-card__lead">Cost, billed, and margin on live projects and their POs — not a second project list.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/finance/project-financials</code><span class="howto-index-card__flag">projectFinancialsEnabled</span></div>
+</a>
+<a class="howto-index-card" href="finance/revenue-forecast.html" data-module="Finance" data-feature="Forecast" data-keywords="revenue forecast forward look composed from pos, plans, and pipeline — a forecast view, not a second set of contracts. /finance/revenue-forecast revenueforecastenabled forecast finance finance revenue-forecast.html /finance/revenue-forecast">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Finance</span><span class="howto-index-card__feature">Forecast</span></div>
+  <strong class="howto-index-card__title">Revenue Forecast</strong>
+  <span class="howto-index-card__lead">Forward look composed from POs, plans, and pipeline — a forecast view, not a second set of contracts.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/finance/revenue-forecast</code><span class="howto-index-card__flag">revenueForecastEnabled</span></div>
+</a>
+<a class="howto-index-card" href="finance/revenue-leakage.html" data-module="Finance" data-feature="Leakage" data-keywords="revenue leakage unbilled, under-billed, or leaked value vs delivery and contract — a detective view, not a write-off register. /finance/revenue-leakage revenueleakageenabled leakage finance finance revenue-leakage.html /finance/revenue-leakage">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Finance</span><span class="howto-index-card__feature">Leakage</span></div>
+  <strong class="howto-index-card__title">Revenue Leakage</strong>
+  <span class="howto-index-card__lead">Unbilled, under-billed, or leaked value vs delivery and contract — a detective view, not a write-off register.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/finance/revenue-leakage</code><span class="howto-index-card__flag">revenueLeakageEnabled</span></div>
+</a>
+<a class="howto-index-card" href="finance/revenue-recognition.html" data-module="Finance" data-feature="Recognition" data-keywords="revenue recognition policies, schedules, entries, and period close for recognized vs billed — composed from contracts and invoices, not a shadow gl. /finance/revenue-recognition revenuerecognitionenabled recognition finance finance revenue-recognition.html /finance/revenue-recognition">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Finance</span><span class="howto-index-card__feature">Recognition</span></div>
+  <strong class="howto-index-card__title">Revenue Recognition</strong>
+  <span class="howto-index-card__lead">Policies, schedules, entries, and period close for recognized vs billed — composed from contracts and invoices, not a shadow GL.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/finance/revenue-recognition</code><span class="howto-index-card__flag">revenueRecognitionEnabled</span></div>
+</a>
+<a class="howto-index-card" href="finance/vendor-costs.html" data-module="Finance" data-feature="Vendors" data-keywords="vendor costs cost against vendors and pos — spend lens, not a second vendor master and not employee expenses. /finance/vendor-costs vendorcostsenabled vendors finance finance vendor-costs.html /finance/vendor-costs">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Finance</span><span class="howto-index-card__feature">Vendors</span></div>
+  <strong class="howto-index-card__title">Vendor Costs</strong>
+  <span class="howto-index-card__lead">Cost against vendors and POs — spend lens, not a second vendor master and not employee expenses.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/finance/vendor-costs</code><span class="howto-index-card__flag">vendorCostsEnabled</span></div>
+</a>
+<a class="howto-index-card" href="finance/vendor-invoices.html" data-module="Finance" data-feature="AP" data-keywords="vendor invoices supplier bills — ap documents against vendors and pos, not platform customer invoices. /vendors/invoices vendorinvoicesenabled ap finance finance vendor-invoices.html /vendors/invoices">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Finance</span><span class="howto-index-card__feature">AP</span></div>
+  <strong class="howto-index-card__title">Vendor Invoices</strong>
+  <span class="howto-index-card__lead">Supplier bills — AP documents against vendors and POs, not platform customer invoices.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/vendors/invoices</code><span class="howto-index-card__flag">vendorInvoicesEnabled</span></div>
+</a>
+<a class="howto-index-card" href="finance/write-offs.html" data-module="Finance" data-feature="Adjustments" data-keywords="write-offs uncollectible amounts — explicit write-off documents, not a silent edit of invoices or leakage charts. /finance/write-offs writeoffsenabled adjustments finance finance write-offs.html /finance/write-offs">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Finance</span><span class="howto-index-card__feature">Adjustments</span></div>
+  <strong class="howto-index-card__title">Write-offs</strong>
+  <span class="howto-index-card__lead">Uncollectible amounts — explicit write-off documents, not a silent edit of invoices or leakage charts.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/finance/write-offs</code><span class="howto-index-card__flag">writeOffsEnabled</span></div>
+</a>
+<a class="howto-index-card" href="hrms/leave-absence-cases.html" data-module="HRMS / People" data-feature="Leave" data-keywords="absence cases &amp; return to work register view for extended absences, case status, and return-to-work clearance — create/update via forms when available, or api. /admin/leave/absence-cases leave hrms / people hrms leave-absence-cases.html /admin/leave/absence-cases /admin/leave/return-to-work /people/leave/absence-cases">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">HRMS / People</span><span class="howto-index-card__feature">Leave</span></div>
+  <strong class="howto-index-card__title">Absence Cases &amp; Return to Work</strong>
+  <span class="howto-index-card__lead">Register view for extended absences, case status, and return-to-work clearance — create/update via forms when available, or API.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/admin/leave/absence-cases</code></div>
+</a>
+<a class="howto-index-card" href="hrms/application-config.html" data-module="HRMS / People" data-feature="HRMS / People" data-keywords="application configuration application configuration — tracopus user guide for enterprise work intelligence. /admin/appconfig hrms / people hrms / people hrms application-config.html /admin/appconfig /hrms/appconfig">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">HRMS / People</span><span class="howto-index-card__feature">HRMS / People</span></div>
+  <strong class="howto-index-card__title">Application Configuration</strong>
+  <span class="howto-index-card__lead">Application Configuration — Tracopus user guide for enterprise work intelligence.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/admin/appconfig</code></div>
+</a>
+<a class="howto-index-card" href="hrms/attendance.html" data-module="HRMS / People" data-feature="Attendance" data-keywords="attendance month matrix for present / absent / leave, manager approvals, regularization requests, leave-to-attendance sync, and soft payroll lock (no matrix export). /hrms/attendance attendance hrms / people hrms attendance.html /people/attendance /hrms/attendance /attendance">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">HRMS / People</span><span class="howto-index-card__feature">Attendance</span></div>
+  <strong class="howto-index-card__title">Attendance</strong>
+  <span class="howto-index-card__lead">Month matrix for present / absent / leave, manager approvals, regularization requests, leave-to-attendance sync, and soft payroll lock (no matrix export).</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/hrms/attendance</code></div>
+</a>
+<a class="howto-index-card" href="hrms/dashboard.html" data-module="HRMS / People" data-feature="Dashboard" data-keywords="employee dashboard two-tab dashboard: my dashboard for individuals and team dashboard for managers with org-wide workforce analytics. /hrms/dashboard dashboard hrms / people hrms dashboard.html /people/dashboard /hrms/dashboard">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">HRMS / People</span><span class="howto-index-card__feature">Dashboard</span></div>
+  <strong class="howto-index-card__title">Employee Dashboard</strong>
+  <span class="howto-index-card__lead">Two-tab dashboard: My dashboard for individuals and Team dashboard for managers with org-wide workforce analytics.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/hrms/dashboard</code></div>
+</a>
+<a class="howto-index-card" href="hrms/profile.html" data-module="HRMS / People" data-feature="Profile" data-keywords="employee profile multi-section profile: general info, security settings, notifications, account activity with charts. /hrms/profile/:employeeid profile hrms / people hrms profile.html /people/profile /hrms/profile">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">HRMS / People</span><span class="howto-index-card__feature">Profile</span></div>
+  <strong class="howto-index-card__title">Employee Profile</strong>
+  <span class="howto-index-card__lead">Multi-section profile: general info, security settings, notifications, account activity with charts.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/hrms/profile/:employeeId</code></div>
+</a>
+<a class="howto-index-card" href="hrms/employees.html" data-module="HRMS / People" data-feature="Employees" data-keywords="employees directory browse, filter, and create employees with nine summary chart panels covering demographics, tenure, skills, and org structure. /hrms/employees employees hrms / people hrms employees.html /people/employees /hrms/employees">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">HRMS / People</span><span class="howto-index-card__feature">Employees</span></div>
+  <strong class="howto-index-card__title">Employees Directory</strong>
+  <span class="howto-index-card__lead">Browse, filter, and create employees with nine summary chart panels covering demographics, tenure, skills, and org structure.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/hrms/employees</code></div>
+</a>
+<a class="howto-index-card" href="hrms/holidays.html" data-module="HRMS / People" data-feature="Holidays" data-keywords="holidays maintain public and company holidays by location so leave day counts and calendars stay accurate. /people/holidays holidaysenabled holidays hrms / people hrms holidays.html /people/holidays /admin/holidays /hrms/holidays">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">HRMS / People</span><span class="howto-index-card__feature">Holidays</span></div>
+  <strong class="howto-index-card__title">Holidays</strong>
+  <span class="howto-index-card__lead">Maintain public and company holidays by location so leave day counts and calendars stay accurate.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/people/holidays</code><span class="howto-index-card__flag">holidaysEnabled</span></div>
+</a>
+<a class="howto-index-card" href="hrms/index.html" data-module="HRMS / People" data-feature="HRMS module" data-keywords="hrms overview personal and team people analytics, workforce directory charts, weekly timesheets, leave management, approval workflows, unified audit trail, attendance matrix, and invoice financial views. /hrms/* hrms module hrms / people hrms index.html">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">HRMS / People</span><span class="howto-index-card__feature">HRMS module</span></div>
+  <strong class="howto-index-card__title">HRMS Overview</strong>
+  <span class="howto-index-card__lead">Personal and team people analytics, workforce directory charts, weekly timesheets, leave management, approval workflows, unified audit trail, attendance matrix,</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/hrms/*</code></div>
+</a>
+<a class="howto-index-card" href="hrms/invoice-details.html" data-module="HRMS / People" data-feature="Invoice Details" data-keywords="invoice details deep view of one invoice — line items, totals, linked employees, status transitions, pdf via document layout. /hrms/invoice/details/:invoiceid invoice details hrms / people hrms invoice-details.html /finance/invoice/details /hrms/invoice/details">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">HRMS / People</span><span class="howto-index-card__feature">Invoice Details</span></div>
+  <strong class="howto-index-card__title">Invoice Details</strong>
+  <span class="howto-index-card__lead">Deep view of one invoice — line items, totals, linked employees, status transitions, PDF via document layout.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/hrms/invoice/details/:invoiceId</code></div>
+</a>
+<a class="howto-index-card" href="hrms/invoices.html" data-module="HRMS / People" data-feature="Invoices" data-keywords="invoices invoice list with status chips, fy scope, segment bar, monthly billing bar, and outstanding panel. /hrms/invoice invoices hrms / people hrms invoices.html /finance/invoice /hrms/invoice">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">HRMS / People</span><span class="howto-index-card__feature">Invoices</span></div>
+  <strong class="howto-index-card__title">Invoices</strong>
+  <span class="howto-index-card__lead">Invoice list with status chips, FY scope, segment bar, monthly billing bar, and outstanding panel.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/hrms/invoice</code></div>
+</a>
+<a class="howto-index-card" href="hrms/leave-agreements.html" data-module="HRMS / People" data-feature="Leave" data-keywords="leave agreements &amp; contract overrides register view for leave agreements and contract overrides — create/update via forms when available, or api. /admin/leave/agreements leave hrms / people hrms leave-agreements.html /admin/leave/agreements /admin/leave/contract-overrides">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">HRMS / People</span><span class="howto-index-card__feature">Leave</span></div>
+  <strong class="howto-index-card__title">Leave Agreements &amp; Contract Overrides</strong>
+  <span class="howto-index-card__lead">Register view for leave agreements and contract overrides — create/update via forms when available, or API.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/admin/leave/agreements</code></div>
+</a>
+<a class="howto-index-card" href="hrms/leave-anomaly.html" data-module="HRMS / People" data-feature="Leave" data-keywords="leave anomaly &amp; fairness register view for anomaly rules, flagged reviews, and fairness snapshots — no self-serve write ui; seed via api. flags never auto-reject leave. /admin/leave/anomaly-rules leave hrms / people hrms leave-anomaly.html /admin/leave/anomaly-rules /admin/leave/anomaly-review /admin/leave/fairness-analytics">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">HRMS / People</span><span class="howto-index-card__feature">Leave</span></div>
+  <strong class="howto-index-card__title">Leave Anomaly &amp; Fairness</strong>
+  <span class="howto-index-card__lead">Register view for anomaly rules, flagged reviews, and fairness snapshots — no self-serve write UI; seed via API. Flags never auto-reject leave.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/admin/leave/anomaly-rules</code></div>
+</a>
+<a class="howto-index-card" href="hrms/leave-configuration.html" data-module="HRMS / People" data-feature="Leave Configuration" data-keywords="leave configuration administrator guide: enable leave, publish policies, map holidays and working weeks, assign employee balances and jurisdictions, then prove apply → approve end to end. /admin/leave/global-policy-center leave configuration hrms / people hrms leave-configuration.html /admin/leave/global-policy-center /admin/leave-policies /admin/employee-leave-config /admin/leave/employee-leave-config">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">HRMS / People</span><span class="howto-index-card__feature">Leave Configuration</span></div>
+  <strong class="howto-index-card__title">Leave Configuration</strong>
+  <span class="howto-index-card__lead">Administrator guide: enable leave, publish policies, map holidays and working weeks, assign employee balances and jurisdictions, then prove apply → approve end </span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/admin/leave/global-policy-center</code></div>
+</a>
+<a class="howto-index-card" href="hrms/leave-documents.html" data-module="HRMS / People" data-feature="Leave" data-keywords="leave documents register view for document rules, review queues, and retention — create/update via forms when available, or api. /admin/leave/document-rules leave hrms / people hrms leave-documents.html /admin/leave/document-rules /admin/leave/document-review /admin/leave/document-retention">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">HRMS / People</span><span class="howto-index-card__feature">Leave</span></div>
+  <strong class="howto-index-card__title">Leave Documents</strong>
+  <span class="howto-index-card__lead">Register view for document rules, review queues, and retention — create/update via forms when available, or API.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/admin/leave/document-rules</code></div>
+</a>
+<a class="howto-index-card" href="hrms/leave-integrations.html" data-module="HRMS / People" data-feature="Leave" data-keywords="leave integrations register view of leave connectors, run history, and error queues — no self-serve write ui; seed and triage via api. /admin/leave/integrations leave hrms / people hrms leave-integrations.html /admin/leave/integrations /admin/leave/integration-runs /admin/leave/integration-errors">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">HRMS / People</span><span class="howto-index-card__feature">Leave</span></div>
+  <strong class="howto-index-card__title">Leave Integrations</strong>
+  <span class="howto-index-card__lead">Register view of leave connectors, run history, and error queues — no self-serve write UI; seed and triage via API.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/admin/leave/integrations</code></div>
+</a>
+<a class="howto-index-card" href="hrms/leave-localization.html" data-module="HRMS / People" data-feature="Leave" data-keywords="leave localization register view for locale packs and policy translations — no self-serve write ui; seed via api. /admin/leave/localization leave hrms / people hrms leave-localization.html /admin/leave/localization">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">HRMS / People</span><span class="howto-index-card__feature">Leave</span></div>
+  <strong class="howto-index-card__title">Leave Localization</strong>
+  <span class="howto-index-card__lead">Register view for locale packs and policy translations — no self-serve write UI; seed via API.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/admin/leave/localization</code></div>
+</a>
+<a class="howto-index-card" href="hrms/leaves.html" data-module="HRMS / People" data-feature="Leave Management" data-keywords="leave management apply for leave, track balances, submit for approval, and see manager decisions — with working-week and holiday aware day counts. /hrms/leaves leavemanagementenabled leave management hrms / people hrms leaves.html /people/leaves /hrms/leaves /leaves">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">HRMS / People</span><span class="howto-index-card__feature">Leave Management</span></div>
+  <strong class="howto-index-card__title">Leave Management</strong>
+  <span class="howto-index-card__lead">Apply for leave, track balances, submit for approval, and see manager decisions — with working-week and holiday aware day counts.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/hrms/leaves</code><span class="howto-index-card__flag">leaveManagementEnabled</span></div>
+</a>
+<a class="howto-index-card" href="hrms/leave-management-one-stop.html" data-module="HRMS / People" data-feature="One-stop leave guide" data-keywords="leave management — one-stop guide everything needed to configure, assign, schedule, apply, and approve leave — plus a technical data-flow tab for debugging. built from the live tracopus leave engine (global policy center, balance ledger, accrual jobs, approvalauthority). one-stop leave guide hrms / people hrms leave-management-one-stop.html">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">HRMS / People</span><span class="howto-index-card__feature">One-stop leave guide</span></div>
+  <strong class="howto-index-card__title">Leave Management — One-Stop Guide</strong>
+  <span class="howto-index-card__lead">Everything needed to configure, assign, schedule, apply, and approve leave — plus a technical data-flow tab for debugging. Built from the live Tracopus leave en</span>
+  <div class="howto-index-card__foot"></div>
+</a>
+<a class="howto-index-card" href="hrms/leave-policies-guide.html" data-module="HRMS / People" data-feature="Leave Policies" data-keywords="leave policies user guide one place for supported leave policies, how to configure them in global policy center, go-live scenarios, and how new cfa requirements map to shipped tracopus features. /admin/leave/global-policy-center leave policies hrms / people hrms leave-policies-guide.html">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">HRMS / People</span><span class="howto-index-card__feature">Leave Policies</span></div>
+  <strong class="howto-index-card__title">Leave Policies User Guide</strong>
+  <span class="howto-index-card__lead">One place for supported leave policies, how to configure them in Global Policy Center, go-live scenarios, and how new CFA requirements map to shipped Tracopus f</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/admin/leave/global-policy-center</code></div>
+</a>
+<a class="howto-index-card" href="hrms/leave-policy-test-lab.html" data-module="HRMS / People" data-feature="Leave" data-keywords="leave policy test lab register view for policy scenarios, batch runs, and regression compares — create/run via forms when available, or api. /admin/leave/policy-test-lab leave hrms / people hrms leave-policy-test-lab.html /admin/leave/policy-test-lab">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">HRMS / People</span><span class="howto-index-card__feature">Leave</span></div>
+  <strong class="howto-index-card__title">Leave Policy Test Lab</strong>
+  <span class="howto-index-card__lead">Register view for policy scenarios, batch runs, and regression compares — create/run via forms when available, or API.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/admin/leave/policy-test-lab</code></div>
+</a>
+<a class="howto-index-card" href="hrms/leave-workforce-planning.html" data-module="HRMS / People" data-feature="Leave" data-keywords="leave workforce planning register view for leave bidding, roster coverage rules, and optimizer preview — no self-serve write ui; seed via api. /admin/leave/bidding leave hrms / people hrms leave-workforce-planning.html /admin/leave/bidding /admin/leave/roster-planning /admin/leave/coverage-optimizer">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">HRMS / People</span><span class="howto-index-card__feature">Leave</span></div>
+  <strong class="howto-index-card__title">Leave Workforce Planning</strong>
+  <span class="howto-index-card__lead">Register view for leave bidding, roster coverage rules, and optimizer preview — no self-serve write UI; seed via API.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/admin/leave/bidding</code></div>
+</a>
+<a class="howto-index-card" href="hrms/leave-legal-calendars.html" data-module="HRMS / People" data-feature="Leave" data-keywords="legal calendars &amp; working days legal calendars, working-day rules, and impact preview. holiday import is operator-assisted; use /admin/leave/legal-calendars leave hrms / people hrms leave-legal-calendars.html /admin/leave/legal-calendars /admin/leave/holiday-imports /admin/leave/working-day-rules /admin/leave/calendar-impact-preview">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">HRMS / People</span><span class="howto-index-card__feature">Leave</span></div>
+  <strong class="howto-index-card__title">Legal Calendars &amp; Working Days</strong>
+  <span class="howto-index-card__lead">Legal calendars, working-day rules, and impact preview. Holiday import is operator-assisted; use</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/admin/leave/legal-calendars</code></div>
+</a>
+<a class="howto-index-card" href="hrms/persona-navigation.html" data-module="HRMS / People" data-feature="Access &amp; approvals" data-keywords="persona navigation turn things off for everyone, or pick a page and choose which personas can open it. saves to org application config. /admin/persona-navigation personanavigationenabled access &amp; approvals hrms / people hrms persona-navigation.html /admin/persona-navigation /persona-navigation">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">HRMS / People</span><span class="howto-index-card__feature">Access &amp; approvals</span></div>
+  <strong class="howto-index-card__title">Persona Navigation</strong>
+  <span class="howto-index-card__lead">Turn things off for everyone, or pick a page and choose which personas can open it. Saves to org Application Config.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/admin/persona-navigation</code><span class="howto-index-card__flag">personaNavigationEnabled</span></div>
+</a>
+<a class="howto-index-card" href="hrms/roles-permissions.html" data-module="HRMS / People" data-feature="Access &amp; approvals" data-keywords="roles &amp; permissions persona-first rbac: choose which personas a role may use, set the default and switcher, preview page access, and open advanced for the full module crud matrix. /admin/roles access &amp; approvals hrms / people hrms roles-permissions.html /admin/roles">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">HRMS / People</span><span class="howto-index-card__feature">Access &amp; approvals</span></div>
+  <strong class="howto-index-card__title">Roles &amp; permissions</strong>
+  <span class="howto-index-card__lead">Persona-first RBAC: choose which personas a role may use, set the default and switcher, preview page access, and open Advanced for the full module CRUD matrix.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/admin/roles</code></div>
+</a>
+<a class="howto-index-card" href="hrms/settings.html" data-module="HRMS / People" data-feature="Settings" data-keywords="settings lux settings hub for admins: device registration, cron schedulers, service health, company info, localization, notifications. /hrms/settings settings hrms / people hrms settings.html /people/settings /hrms/settings">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">HRMS / People</span><span class="howto-index-card__feature">Settings</span></div>
+  <strong class="howto-index-card__title">Settings</strong>
+  <span class="howto-index-card__lead">Lux settings hub for admins: device registration, cron schedulers, service health, company info, localization, notifications.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/hrms/settings</code></div>
+</a>
+<a class="howto-index-card" href="hrms/shift-policies.html" data-module="HRMS / People" data-feature="Shift" data-keywords="shift policies define working-week calendars (workdays, start time, timezone) that leave day-counting and attendance can inherit. /admin/shift-policies shiftpoliciesenabled shift hrms / people hrms shift-policies.html /admin/shift-policies /shift-policies">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">HRMS / People</span><span class="howto-index-card__feature">Shift</span></div>
+  <strong class="howto-index-card__title">Shift Policies</strong>
+  <span class="howto-index-card__lead">Define working-week calendars (workdays, start time, timezone) that leave day-counting and attendance can inherit.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/admin/shift-policies</code><span class="howto-index-card__flag">shiftPoliciesEnabled</span></div>
+</a>
+<a class="howto-index-card" href="hrms/timesheet.html" data-module="HRMS / People" data-feature="Timesheet" data-keywords="timesheet monday–sunday grid for billable, non-billable, and leave hours — with week navigation, validation, and optional approval. /hrms/timesheet timesheet hrms / people hrms timesheet.html /people/timesheet /hrms/timesheet /timesheet">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">HRMS / People</span><span class="howto-index-card__feature">Timesheet</span></div>
+  <strong class="howto-index-card__title">Timesheet</strong>
+  <span class="howto-index-card__lead">Monday–Sunday grid for billable, non-billable, and leave hours — with week navigation, validation, and optional approval.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/hrms/timesheet</code></div>
+</a>
+<a class="howto-index-card" href="hrms/timesheet-approval.html" data-module="HRMS / People" data-feature="Approval" data-keywords="timesheet approval submit weeks (or day batches) for manager approval, resolve conflicts, and lock payroll periods. /people/timesheet approval hrms / people hrms timesheet-approval.html /people/timesheet-approval /hrms/timesheet-approval">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">HRMS / People</span><span class="howto-index-card__feature">Approval</span></div>
+  <strong class="howto-index-card__title">Timesheet Approval</strong>
+  <span class="howto-index-card__lead">Submit weeks (or day batches) for manager approval, resolve conflicts, and lock payroll periods.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/people/timesheet</code></div>
+</a>
+<a class="howto-index-card" href="hrms/audit-trail.html" data-module="HRMS / People" data-feature="Unified Audit" data-keywords="unified audit trail a single luxury timeline for meaningful actions — who did what, when, and on which record — across projects, hr, and profile activity. unified audit hrms / people hrms audit-trail.html">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">HRMS / People</span><span class="howto-index-card__feature">Unified Audit</span></div>
+  <strong class="howto-index-card__title">Unified Audit Trail</strong>
+  <span class="howto-index-card__lead">A single luxury timeline for meaningful actions — who did what, when, and on which record — across projects, HR, and profile activity.</span>
+  <div class="howto-index-card__foot"></div>
+</a>
+<a class="howto-index-card" href="hrms/work-time-governance.html" data-module="HRMS / People" data-feature="Governance" data-keywords="work-time governance a code-owned catalog of timesheet, approval, planning, attendance, and integration features. catalog defaults are governance hrms / people hrms work-time-governance.html">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">HRMS / People</span><span class="howto-index-card__feature">Governance</span></div>
+  <strong class="howto-index-card__title">Work-Time Governance</strong>
+  <span class="howto-index-card__lead">A code-owned catalog of timesheet, approval, planning, attendance, and integration features. Catalog defaults are</span>
+  <div class="howto-index-card__foot"></div>
+</a>
+<a class="howto-index-card" href="integrations/api-access.html" data-module="Integrations" data-feature="API" data-keywords="api access tokens and scopes for external callers of tracopus apis — not admin api keys for in-product apps, and not a connector password. /integrations/api-access apiaccessenabled api integrations integrations api-access.html /integrations/api-access">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Integrations</span><span class="howto-index-card__feature">API</span></div>
+  <strong class="howto-index-card__title">API Access</strong>
+  <span class="howto-index-card__lead">Tokens and scopes for external callers of Tracopus APIs — not Admin API keys for in-product apps, and not a connector password.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/integrations/api-access</code><span class="howto-index-card__flag">apiAccessEnabled</span></div>
+</a>
+<a class="howto-index-card" href="integrations/connections.html" data-module="Integrations" data-feature="Connections" data-keywords="connections installed connector instances and credentials — environment config, not the field map and not platform api keys. /integrations/connections connectionsenabled connections integrations integrations connections.html /integrations/connections">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Integrations</span><span class="howto-index-card__feature">Connections</span></div>
+  <strong class="howto-index-card__title">Connections</strong>
+  <span class="howto-index-card__lead">Installed connector instances and credentials — environment config, not the field map and not platform API keys.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/integrations/connections</code><span class="howto-index-card__flag">connectionsEnabled</span></div>
+</a>
+<a class="howto-index-card" href="integrations/adapters.html" data-module="Integrations" data-feature="Adapters" data-keywords="connector adapters runtime adapters that translate vendor payloads into canonical entities — including generic work-time import/export. /integrations/adapters adaptersenabled adapters integrations integrations adapters.html /integrations/adapters">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Integrations</span><span class="howto-index-card__feature">Adapters</span></div>
+  <strong class="howto-index-card__title">Connector Adapters</strong>
+  <span class="howto-index-card__lead">Runtime adapters that translate vendor payloads into canonical entities — including generic work-time import/export.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/integrations/adapters</code><span class="howto-index-card__flag">adaptersEnabled</span></div>
+</a>
+<a class="howto-index-card" href="integrations/marketplace.html" data-module="Integrations" data-feature="Marketplace" data-keywords="connector marketplace catalog of connector types you can install — installing still creates a connection, not a new source table. /integrations/marketplace marketplaceenabled marketplace integrations integrations marketplace.html /integrations/marketplace">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Integrations</span><span class="howto-index-card__feature">Marketplace</span></div>
+  <strong class="howto-index-card__title">Connector Marketplace</strong>
+  <span class="howto-index-card__lead">Catalog of connector types you can install — installing still creates a Connection, not a new source table.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/integrations/marketplace</code><span class="howto-index-card__flag">marketplaceEnabled</span></div>
+</a>
+<a class="howto-index-card" href="integrations/mapping.html" data-module="Integrations" data-feature="Mapping" data-keywords="data mapping field contracts from vendor payloads onto employee, project, purchaseorder, task, and time — the map is not the data. /integrations/mapping mappingenabled mapping integrations integrations mapping.html /integrations/mapping">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Integrations</span><span class="howto-index-card__feature">Mapping</span></div>
+  <strong class="howto-index-card__title">Data Mapping</strong>
+  <span class="howto-index-card__lead">Field contracts from vendor payloads onto Employee, Project, PurchaseOrder, Task, and time — the map is not the data.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/integrations/mapping</code><span class="howto-index-card__flag">mappingEnabled</span></div>
+</a>
+<a class="howto-index-card" href="integrations/jobs.html" data-module="Integrations" data-feature="Jobs" data-keywords="import/export jobs connector batches — not admin scheduled jobs, and not the payroll or timesheet ui itself. /integrations/jobs jobsenabled jobs integrations integrations jobs.html /integrations/jobs">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Integrations</span><span class="howto-index-card__feature">Jobs</span></div>
+  <strong class="howto-index-card__title">Import/Export Jobs</strong>
+  <span class="howto-index-card__lead">Connector batches — not Admin scheduled jobs, and not the payroll or timesheet UI itself.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/integrations/jobs</code><span class="howto-index-card__flag">jobsEnabled</span></div>
+</a>
+<a class="howto-index-card" href="integrations/hub.html" data-module="Integrations" data-feature="Hub" data-keywords="integration hub launch pad for connectors that write employee, project, purchaseorder, task, or time — not a parallel business database. /integrations/hub hubenabled hub integrations integrations hub.html /integrations/hub">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Integrations</span><span class="howto-index-card__feature">Hub</span></div>
+  <strong class="howto-index-card__title">Integration Hub</strong>
+  <span class="howto-index-card__lead">Launch pad for connectors that write Employee, Project, PurchaseOrder, Task, or time — not a parallel business database.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/integrations/hub</code><span class="howto-index-card__flag">hubEnabled</span></div>
+</a>
+<a class="howto-index-card" href="integrations/logs.html" data-module="Integrations" data-feature="Logs" data-keywords="integration logs payload and error detail for connector runs — operational logs, masked, not admin audit and not a business register. /integrations/logs logsenabled logs integrations integrations logs.html /integrations/logs">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Integrations</span><span class="howto-index-card__feature">Logs</span></div>
+  <strong class="howto-index-card__title">Integration Logs</strong>
+  <span class="howto-index-card__lead">Payload and error detail for connector runs — operational logs, masked, not Admin audit and not a business register.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/integrations/logs</code><span class="howto-index-card__flag">logsEnabled</span></div>
+</a>
+<a class="howto-index-card" href="integrations/sync-health.html" data-module="Integrations" data-feature="Health" data-keywords="sync monitor last run, lag, and errors per connector — a monitor, not the place you map fields or edit employee. /integrations/sync-health synchealthenabled health integrations integrations sync-health.html /integrations/sync-health">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Integrations</span><span class="howto-index-card__feature">Health</span></div>
+  <strong class="howto-index-card__title">Sync Monitor</strong>
+  <span class="howto-index-card__lead">Last run, lag, and errors per connector — a monitor, not the place you map fields or edit Employee.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/integrations/sync-health</code><span class="howto-index-card__flag">syncHealthEnabled</span></div>
+</a>
+<a class="howto-index-card" href="learning/assignments.html" data-module="Learning" data-feature="Learning" data-keywords="learning assignments who must take which course — assignments onto employee, not a mailing list beside the lms. /learning/assignments learningenabled learning learning learning assignments.html /learning/assignments">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Learning</span><span class="howto-index-card__feature">Learning</span></div>
+  <strong class="howto-index-card__title">Learning Assignments</strong>
+  <span class="howto-index-card__lead">Who must take which course — assignments onto Employee, not a mailing list beside the LMS.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/learning/assignments</code><span class="howto-index-card__flag">learningEnabled</span></div>
+</a>
+<a class="howto-index-card" href="learning/compliance.html" data-module="Learning" data-feature="Learning" data-keywords="learning compliance overdue and complete training against assignments — a view on employee completions, not a second hr file. /learning/compliance learningenabled learning learning learning compliance.html /learning/compliance">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Learning</span><span class="howto-index-card__feature">Learning</span></div>
+  <strong class="howto-index-card__title">Learning Compliance</strong>
+  <span class="howto-index-card__lead">Overdue and complete training against assignments — a view on Employee completions, not a second HR file.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/learning/compliance</code><span class="howto-index-card__flag">learningEnabled</span></div>
+</a>
+<a class="howto-index-card" href="learning/courses.html" data-module="Learning" data-feature="Learning" data-keywords="learning courses course catalog hr publishes — not the policy handbook and not a second document vault. /learning/courses learningenabled learning learning learning courses.html /learning/courses">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Learning</span><span class="howto-index-card__feature">Learning</span></div>
+  <strong class="howto-index-card__title">Learning Courses</strong>
+  <span class="howto-index-card__lead">Course catalog HR publishes — not the policy handbook and not a second document vault.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/learning/courses</code><span class="howto-index-card__flag">learningEnabled</span></div>
+</a>
+<a class="howto-index-card" href="learning/reports.html" data-module="Learning" data-feature="Learning" data-keywords="learning reports permission-scoped learning exports — snapshots of assignments and completions, not a warehouse you type into. /learning/reports learningenabled learning learning learning reports.html /learning/reports">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Learning</span><span class="howto-index-card__feature">Learning</span></div>
+  <strong class="howto-index-card__title">Learning Reports</strong>
+  <span class="howto-index-card__lead">Permission-scoped learning exports — snapshots of assignments and completions, not a warehouse you type into.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/learning/reports</code><span class="howto-index-card__flag">learningEnabled</span></div>
+</a>
+<a class="howto-index-card" href="learning/my-learning.html" data-module="Learning" data-feature="Learning" data-keywords="my learning assigned courses for the signed-in employee — complete them here; hr tracks compliance on the admin view. /learning/my-learning learningenabled learning learning learning my-learning.html /learning/my-learning">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Learning</span><span class="howto-index-card__feature">Learning</span></div>
+  <strong class="howto-index-card__title">My Learning</strong>
+  <span class="howto-index-card__lead">Assigned courses for the signed-in employee — complete them here; HR tracks compliance on the admin view.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/learning/my-learning</code><span class="howto-index-card__flag">learningEnabled</span></div>
+</a>
+<a class="howto-index-card" href="mobile/insights.html" data-module="Mobile" data-feature="Analytics" data-keywords="insights dashboard four analytics sections: time &amp; utilization, selected day, week trends, and portfolio. /mobile/dashboard analytics mobile mobile insights.html">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Mobile</span><span class="howto-index-card__feature">Analytics</span></div>
+  <strong class="howto-index-card__title">Insights Dashboard</strong>
+  <span class="howto-index-card__lead">Four analytics sections: Time &amp; utilization, Selected day, Week trends, and Portfolio.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/mobile/dashboard</code></div>
+</a>
+<a class="howto-index-card" href="mobile/login.html" data-module="Mobile" data-feature="Authentication" data-keywords="login &amp; registration three login modes plus first-time registration flow with mandatory pin setup and optional biometrics. /mobile/login authentication mobile mobile login.html">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Mobile</span><span class="howto-index-card__feature">Authentication</span></div>
+  <strong class="howto-index-card__title">Login &amp; Registration</strong>
+  <span class="howto-index-card__lead">Three login modes plus first-time registration flow with mandatory PIN setup and optional biometrics.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/mobile/login</code></div>
+</a>
+<a class="howto-index-card" href="mobile/index.html" data-module="Mobile" data-feature="Mobile module" data-keywords="mobile overview end-to-end guide for install, login, navigation, task execution, insights, and time recording on mobile. /mobile/* mobile module mobile mobile index.html">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Mobile</span><span class="howto-index-card__feature">Mobile module</span></div>
+  <strong class="howto-index-card__title">Mobile Overview</strong>
+  <span class="howto-index-card__lead">End-to-end guide for install, login, navigation, task execution, insights, and time recording on mobile.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/mobile/*</code></div>
+</a>
+<a class="howto-index-card" href="mobile/projects.html" data-module="Mobile" data-feature="Portfolio" data-keywords="projects hub access project data in the field with quick filters and compact project detail sheets. /mobile/projects portfolio mobile mobile projects.html">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Mobile</span><span class="howto-index-card__feature">Portfolio</span></div>
+  <strong class="howto-index-card__title">Projects Hub</strong>
+  <span class="howto-index-card__lead">Access project data in the field with quick filters and compact project detail sheets.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/mobile/projects</code></div>
+</a>
+<a class="howto-index-card" href="mobile/tasks.html" data-module="Mobile" data-feature="Execution" data-keywords="tasks hub task cards, day strip filtering, status chips, and bottom-sheet details for mobile execution. /mobile/tasks execution mobile mobile tasks.html">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Mobile</span><span class="howto-index-card__feature">Execution</span></div>
+  <strong class="howto-index-card__title">Tasks Hub</strong>
+  <span class="howto-index-card__lead">Task cards, day strip filtering, status chips, and bottom-sheet details for mobile execution.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/mobile/tasks</code></div>
+</a>
+<a class="howto-index-card" href="mobile/timesheet.html" data-module="Mobile" data-feature="Time Entry" data-keywords="timesheet &amp; record record time with week navigation, day entry forms, and access-controlled date validation. /mobile/home time entry mobile mobile timesheet.html">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Mobile</span><span class="howto-index-card__feature">Time Entry</span></div>
+  <strong class="howto-index-card__title">Timesheet &amp; Record</strong>
+  <span class="howto-index-card__lead">Record time with week navigation, day entry forms, and access-controlled date validation.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/mobile/home</code></div>
+</a>
+<a class="howto-index-card" href="npd/dashboard.html" data-module="NPD" data-feature="NPD" data-keywords="npd new product development tower — ideas, gates, launch — on npd records that still respect project when delivery starts. /npd/dashboard npdenabled npd npd npd dashboard.html /npd/dashboard">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">NPD</span><span class="howto-index-card__feature">NPD</span></div>
+  <strong class="howto-index-card__title">NPD</strong>
+  <span class="howto-index-card__lead">New product development tower — ideas, gates, launch — on NPD records that still respect Project when delivery starts.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/npd/dashboard</code><span class="howto-index-card__flag">npdEnabled</span></div>
+</a>
+<a class="howto-index-card" href="npd/gates.html" data-module="NPD" data-feature="NPD" data-keywords="npd gates stage-gate decisions on npd items — process decisions, not leave approval and not project governance rag. /npd/gates npdenabled npd npd npd gates.html /npd/gates">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">NPD</span><span class="howto-index-card__feature">NPD</span></div>
+  <strong class="howto-index-card__title">NPD Gates</strong>
+  <span class="howto-index-card__lead">Stage-gate decisions on NPD items — process decisions, not leave approval and not project governance RAG.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/npd/gates</code><span class="howto-index-card__flag">npdEnabled</span></div>
+</a>
+<a class="howto-index-card" href="npd/ideas.html" data-module="NPD" data-feature="NPD" data-keywords="npd ideas idea intake for new products — not a task backlog and not a bid request. /npd/ideas npdenabled npd npd npd ideas.html /npd/ideas">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">NPD</span><span class="howto-index-card__feature">NPD</span></div>
+  <strong class="howto-index-card__title">NPD Ideas</strong>
+  <span class="howto-index-card__lead">Idea intake for new products — not a task backlog and not a bid request.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/npd/ideas</code><span class="howto-index-card__flag">npdEnabled</span></div>
+</a>
+<a class="howto-index-card" href="npd/launch.html" data-module="NPD" data-feature="NPD" data-keywords="npd launch go-to-market / launch readiness for passed npd items — not payroll publish and not production deploy tickets unless you link them. /npd/launch npdenabled npd npd npd launch.html /npd/launch">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">NPD</span><span class="howto-index-card__feature">NPD</span></div>
+  <strong class="howto-index-card__title">NPD Launch</strong>
+  <span class="howto-index-card__lead">Go-to-market / launch readiness for passed NPD items — not payroll publish and not production deploy tickets unless you link them.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/npd/launch</code><span class="howto-index-card__flag">npdEnabled</span></div>
+</a>
+<a class="howto-index-card" href="payroll/benefits-payroll.html" data-module="Payroll" data-feature="Benefits" data-keywords="benefits (payroll) benefits as they hit pay — payroll seat on plans/enrollments, not the only benefits admin ui. /payroll/benefits benefitsenabled benefits payroll payroll benefits-payroll.html /payroll/benefits">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Payroll</span><span class="howto-index-card__feature">Benefits</span></div>
+  <strong class="howto-index-card__title">Benefits (Payroll)</strong>
+  <span class="howto-index-card__lead">Benefits as they hit pay — payroll seat on plans/enrollments, not the only benefits admin UI.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/payroll/benefits</code><span class="howto-index-card__flag">benefitsEnabled</span></div>
+</a>
+<a class="howto-index-card" href="payroll/compensation.html" data-module="Payroll" data-feature="Compensation" data-keywords="compensation compensation programs on employee — cycles and awards with masking — not the salary-structure editor and not performance ratings as pay. /payroll/compensation compensationenabled compensation payroll payroll compensation.html /payroll/compensation">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Payroll</span><span class="howto-index-card__feature">Compensation</span></div>
+  <strong class="howto-index-card__title">Compensation</strong>
+  <span class="howto-index-card__lead">Compensation programs on Employee — cycles and awards with masking — not the salary-structure editor and not performance ratings as pay.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/payroll/compensation</code><span class="howto-index-card__flag">compensationEnabled</span></div>
+</a>
+<a class="howto-index-card" href="payroll/deductions.html" data-module="Payroll" data-feature="Deductions" data-keywords="deductions withholding schedules on employee — statutory and voluntary — inputs to the run, not the paycheck editor. /payroll/deductions deductionsenabled deductions payroll payroll deductions.html /payroll/deductions">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Payroll</span><span class="howto-index-card__feature">Deductions</span></div>
+  <strong class="howto-index-card__title">Deductions</strong>
+  <span class="howto-index-card__lead">Withholding schedules on Employee — statutory and voluntary — inputs to the run, not the paycheck editor.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/payroll/deductions</code><span class="howto-index-card__flag">deductionsEnabled</span></div>
+</a>
+<a class="howto-index-card" href="payroll/employee-finance.html" data-module="Payroll" data-feature="Employee finance" data-keywords="employee finance workspace for benefits, compensation, and employee money on a person — a hub over those registers, not a third ledger. /payroll/employee-finance employeefinanceenabled employee finance payroll payroll employee-finance.html /payroll/employee-finance">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Payroll</span><span class="howto-index-card__feature">Employee finance</span></div>
+  <strong class="howto-index-card__title">Employee Finance</strong>
+  <span class="howto-index-card__lead">Workspace for benefits, compensation, and employee money on a person — a hub over those registers, not a third ledger.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/payroll/employee-finance</code><span class="howto-index-card__flag">employeeFinanceEnabled</span></div>
+</a>
+<a class="howto-index-card" href="payroll/expenses.html" data-module="Payroll" data-feature="Expenses" data-keywords="expenses (employee) submit and track your expense claims — the same records finance reviews, not vendor bills. /payroll/expenses expensesenabled expenses payroll payroll expenses.html /payroll/expenses">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Payroll</span><span class="howto-index-card__feature">Expenses</span></div>
+  <strong class="howto-index-card__title">Expenses (Employee)</strong>
+  <span class="howto-index-card__lead">Submit and track your expense claims — the same records finance reviews, not vendor bills.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/payroll/expenses</code><span class="howto-index-card__flag">expensesEnabled</span></div>
+</a>
+<a class="howto-index-card" href="payroll/paychecks.html" data-module="Payroll" data-feature="Paychecks" data-keywords="paychecks org-wide published slips from finalized runs — operators’ view of what employees see on my paychecks. /payroll/paychecks paychecksenabled paychecks payroll payroll paychecks.html /payroll/paychecks">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Payroll</span><span class="howto-index-card__feature">Paychecks</span></div>
+  <strong class="howto-index-card__title">Paychecks</strong>
+  <span class="howto-index-card__lead">Org-wide published slips from finalized runs — operators’ view of what employees see on My paychecks.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/payroll/paychecks</code><span class="howto-index-card__flag">paychecksEnabled</span></div>
+</a>
+<a class="howto-index-card" href="payroll/dashboard.html" data-module="Payroll" data-feature="Dashboard" data-keywords="payroll dashboard run readiness, open cycles, and payroll health — a tower on groups, runs, and gates, not the run editor itself. /payroll/dashboard dashboardenabled dashboard payroll payroll dashboard.html /payroll/dashboard">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Payroll</span><span class="howto-index-card__feature">Dashboard</span></div>
+  <strong class="howto-index-card__title">Payroll Dashboard</strong>
+  <span class="howto-index-card__lead">Run readiness, open cycles, and payroll health — a tower on groups, runs, and gates, not the run editor itself.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/payroll/dashboard</code><span class="howto-index-card__flag">dashboardEnabled</span></div>
+</a>
+<a class="howto-index-card" href="payroll/groups.html" data-module="Payroll" data-feature="Groups" data-keywords="payroll groups populations a run can cover — groups of employees, not a second directory. /payroll/groups groupsenabled groups payroll payroll groups.html /payroll/groups">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Payroll</span><span class="howto-index-card__feature">Groups</span></div>
+  <strong class="howto-index-card__title">Payroll Groups</strong>
+  <span class="howto-index-card__lead">Populations a run can cover — groups of Employees, not a second directory.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/payroll/groups</code><span class="howto-index-card__flag">groupsEnabled</span></div>
+</a>
+<a class="howto-index-card" href="payroll/reports.html" data-module="Payroll" data-feature="Reports" data-keywords="payroll reports permission-scoped payroll exports — snapshots of runs and slips, not a ledger you type into. /payroll/reports reportsenabled reports payroll payroll reports.html /payroll/reports">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Payroll</span><span class="howto-index-card__feature">Reports</span></div>
+  <strong class="howto-index-card__title">Payroll Reports</strong>
+  <span class="howto-index-card__lead">Permission-scoped payroll exports — snapshots of runs and slips, not a ledger you type into.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/payroll/reports</code><span class="howto-index-card__flag">reportsEnabled</span></div>
+</a>
+<a class="howto-index-card" href="payroll/runs.html" data-module="Payroll" data-feature="Runs" data-keywords="payroll runs draft, calculate, and finalize cycles for a payroll group — the run is the cycle, paychecks are the outputs. /payroll/runs runsenabled runs payroll payroll runs.html /payroll/runs">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Payroll</span><span class="howto-index-card__feature">Runs</span></div>
+  <strong class="howto-index-card__title">Payroll Runs</strong>
+  <span class="howto-index-card__lead">Draft, calculate, and finalize cycles for a payroll group — the run is the cycle, paychecks are the outputs.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/payroll/runs</code><span class="howto-index-card__flag">runsEnabled</span></div>
+</a>
+<a class="howto-index-card" href="payroll/reimbursements.html" data-module="Payroll" data-feature="Reimbursements" data-keywords="reimbursements paying approved employee expenses — payout register on claims, not vendor ap. /payroll/reimbursements reimbursementsenabled reimbursements payroll payroll reimbursements.html /payroll/reimbursements">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Payroll</span><span class="howto-index-card__feature">Reimbursements</span></div>
+  <strong class="howto-index-card__title">Reimbursements</strong>
+  <span class="howto-index-card__lead">Paying approved employee expenses — payout register on claims, not vendor AP.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/payroll/reimbursements</code><span class="howto-index-card__flag">reimbursementsEnabled</span></div>
+</a>
+<a class="howto-index-card" href="payroll/salary-structures.html" data-module="Payroll" data-feature="Structures" data-keywords="salary structures earnings and deduction components that compose employee pay — assigned to employees, not offer letters as the live structure. /payroll/salary-structures salarystructuresenabled structures payroll payroll salary-structures.html /payroll/salary-structures">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Payroll</span><span class="howto-index-card__feature">Structures</span></div>
+  <strong class="howto-index-card__title">Salary Structures</strong>
+  <span class="howto-index-card__lead">Earnings and deduction components that compose employee pay — assigned to Employees, not offer letters as the live structure.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/payroll/salary-structures</code><span class="howto-index-card__flag">salaryStructuresEnabled</span></div>
+</a>
+<a class="howto-index-card" href="people/assets.html" data-module="People Ops" data-feature="Assets" data-keywords="assets asset register assigned to employees — laptops, badges, kits — fulfilled with access requests, not a parallel cmdb chat log. /people/assets assetsenabled assets people ops people assets.html /people/assets">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">People Ops</span><span class="howto-index-card__feature">Assets</span></div>
+  <strong class="howto-index-card__title">Assets</strong>
+  <span class="howto-index-card__lead">Asset register assigned to employees — laptops, badges, kits — fulfilled with access requests, not a parallel CMDB chat log.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/people/assets</code><span class="howto-index-card__flag">assetsEnabled</span></div>
+</a>
+<a class="howto-index-card" href="people/documents.html" data-module="People Ops" data-feature="Records" data-keywords="documents employee document vault — contracts, ids, and files on the person — with masking and retention, not a public drive. /people/documents documentsenabled records people ops people documents.html /people/documents">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">People Ops</span><span class="howto-index-card__feature">Records</span></div>
+  <strong class="howto-index-card__title">Documents</strong>
+  <span class="howto-index-card__lead">Employee document vault — contracts, IDs, and files on the person — with masking and retention, not a public drive.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/people/documents</code><span class="howto-index-card__flag">documentsEnabled</span></div>
+</a>
+<a class="howto-index-card" href="people/offboarding.html" data-module="People Ops" data-feature="Lifecycle" data-keywords="offboarding exit cases, asset return, and access wind-down on the same employee row — not a deleted-people warehouse. /people/offboarding offboardingenabled lifecycle people ops people offboarding.html /people/offboarding">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">People Ops</span><span class="howto-index-card__feature">Lifecycle</span></div>
+  <strong class="howto-index-card__title">Offboarding</strong>
+  <span class="howto-index-card__lead">Exit cases, asset return, and access wind-down on the same Employee row — not a deleted-people warehouse.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/people/offboarding</code><span class="howto-index-card__flag">offboardingEnabled</span></div>
+</a>
+<a class="howto-index-card" href="people/onboarding.html" data-module="People Ops" data-feature="Lifecycle" data-keywords="onboarding hr operator register for joiner cases and templates — cases hang off employee, not a second people table. /people/onboarding onboardingenabled lifecycle people ops people onboarding.html /people/onboarding">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">People Ops</span><span class="howto-index-card__feature">Lifecycle</span></div>
+  <strong class="howto-index-card__title">Onboarding</strong>
+  <span class="howto-index-card__lead">HR operator register for joiner cases and templates — cases hang off Employee, not a second people table.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/people/onboarding</code><span class="howto-index-card__flag">onboardingEnabled</span></div>
+</a>
+<a class="howto-index-card" href="people/org-chart.html" data-module="People Ops" data-feature="Org" data-keywords="organization chart read-only view of reporting lines sourced from employee manager fields — the editable tree lives on admin org structure. /people/org-chart orgchartenabled org people ops people org-chart.html /people/org-chart">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">People Ops</span><span class="howto-index-card__feature">Org</span></div>
+  <strong class="howto-index-card__title">Organization Chart</strong>
+  <span class="howto-index-card__lead">Read-only view of reporting lines sourced from Employee manager fields — the editable tree lives on Admin org structure.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/people/org-chart</code><span class="howto-index-card__flag">orgChartEnabled</span></div>
+</a>
+<a class="howto-index-card" href="people/policies.html" data-module="People Ops" data-feature="Policies" data-keywords="policies published company policies and acknowledgements — versioned documents people sign, not application config lists and not leave policy math. /people/policies policiesenabled policies people ops people policies.html /people/policies">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">People Ops</span><span class="howto-index-card__feature">Policies</span></div>
+  <strong class="howto-index-card__title">Policies</strong>
+  <span class="howto-index-card__lead">Published company policies and acknowledgements — versioned documents people sign, not Application Config lists and not leave policy math.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/people/policies</code><span class="howto-index-card__flag">policiesEnabled</span></div>
+</a>
+<a class="howto-index-card" href="performance/1on1.html" data-module="Performance" data-feature="1:1" data-keywords="1:1 notes manager–employee conversation notes — private talent records, not project chat and not the review form. /performance/1on1 oneononesenabled 1:1 performance performance 1on1.html /performance/1on1">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Performance</span><span class="howto-index-card__feature">1:1</span></div>
+  <strong class="howto-index-card__title">1:1 Notes</strong>
+  <span class="howto-index-card__lead">Manager–employee conversation notes — private talent records, not project chat and not the review form.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/performance/1on1</code><span class="howto-index-card__flag">oneOnOnesEnabled</span></div>
+</a>
+<a class="howto-index-card" href="performance/calibration.html" data-module="Performance" data-feature="Calibration" data-keywords="calibration fairness meeting on review drafts — adjusts distribution, does not replace the review record as the write-up. /performance/calibration calibrationenabled calibration performance performance calibration.html /performance/calibration">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Performance</span><span class="howto-index-card__feature">Calibration</span></div>
+  <strong class="howto-index-card__title">Calibration</strong>
+  <span class="howto-index-card__lead">Fairness meeting on review drafts — adjusts distribution, does not replace the review record as the write-up.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/performance/calibration</code><span class="howto-index-card__flag">calibrationEnabled</span></div>
+</a>
+<a class="howto-index-card" href="performance/feedback.html" data-module="Performance" data-feature="Feedback" data-keywords="continuous feedback ongoing peer/manager notes on employee — not project stakeholder campaigns and not the annual review form. /performance/feedback continuousfeedbackenabled feedback performance performance feedback.html /performance/feedback">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Performance</span><span class="howto-index-card__feature">Feedback</span></div>
+  <strong class="howto-index-card__title">Continuous Feedback</strong>
+  <span class="howto-index-card__lead">Ongoing peer/manager notes on Employee — not project stakeholder campaigns and not the annual review form.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/performance/feedback</code><span class="howto-index-card__flag">continuousFeedbackEnabled</span></div>
+</a>
+<a class="howto-index-card" href="performance/goals.html" data-module="Performance" data-feature="Goals" data-keywords="goals / okrs objectives on employee — aligned to work, not a second task tracker and not the review form itself. /performance/goals goalsenabled goals performance performance goals.html /performance/goals">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Performance</span><span class="howto-index-card__feature">Goals</span></div>
+  <strong class="howto-index-card__title">Goals / OKRs</strong>
+  <span class="howto-index-card__lead">Objectives on Employee — aligned to work, not a second task tracker and not the review form itself.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/performance/goals</code><span class="howto-index-card__flag">goalsEnabled</span></div>
+</a>
+<a class="howto-index-card" href="performance/growth-plans.html" data-module="Performance" data-feature="Growth" data-keywords="growth plans development plans on employee — learning and career actions, not the lms catalog and not a pip unless you model it that way. /performance/growth-plans growthplansenabled growth performance performance growth-plans.html /performance/growth-plans">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Performance</span><span class="howto-index-card__feature">Growth</span></div>
+  <strong class="howto-index-card__title">Growth Plans</strong>
+  <span class="howto-index-card__lead">Development plans on Employee — learning and career actions, not the LMS catalog and not a PIP unless you model it that way.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/performance/growth-plans</code><span class="howto-index-card__flag">growthPlansEnabled</span></div>
+</a>
+<a class="howto-index-card" href="performance/dashboard.html" data-module="Performance" data-feature="Talent" data-keywords="performance dashboard goals, reviews, and growth at a glance — a tower on those registers, not a second rating store. /performance/dashboard dashboardenabled talent performance performance dashboard.html /performance/dashboard">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Performance</span><span class="howto-index-card__feature">Talent</span></div>
+  <strong class="howto-index-card__title">Performance Dashboard</strong>
+  <span class="howto-index-card__lead">Goals, reviews, and growth at a glance — a tower on those registers, not a second rating store.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/performance/dashboard</code><span class="howto-index-card__flag">dashboardEnabled</span></div>
+</a>
+<a class="howto-index-card" href="performance/reviews.html" data-module="Performance" data-feature="Reviews" data-keywords="performance reviews write-ups on employee for a cycle — ratings and narrative, masked, not the compensation award itself. /performance/reviews reviewsenabled reviews performance performance reviews.html /performance/reviews">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Performance</span><span class="howto-index-card__feature">Reviews</span></div>
+  <strong class="howto-index-card__title">Performance Reviews</strong>
+  <span class="howto-index-card__lead">Write-ups on Employee for a cycle — ratings and narrative, masked, not the compensation award itself.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/performance/reviews</code><span class="howto-index-card__flag">reviewsEnabled</span></div>
+</a>
+<a class="howto-index-card" href="performance/review-cycles.html" data-module="Performance" data-feature="Cycles" data-keywords="review cycles windows that open performance reviews — cycle admin, not the review write-up itself. /performance/review-cycles reviewcyclesenabled cycles performance performance review-cycles.html /performance/review-cycles">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Performance</span><span class="howto-index-card__feature">Cycles</span></div>
+  <strong class="howto-index-card__title">Review Cycles</strong>
+  <span class="howto-index-card__lead">Windows that open performance reviews — cycle admin, not the review write-up itself.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/performance/review-cycles</code><span class="howto-index-card__flag">reviewCyclesEnabled</span></div>
+</a>
+<a class="howto-index-card" href="project/accounts.html" data-module="Projects" data-feature="Directory" data-keywords="accounts manage account/team/client hierarchy and monitor completeness through quality-centric charts. /finance/accounts directory projects project accounts.html /finance/accounts /project/accounts">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Projects</span><span class="howto-index-card__feature">Directory</span></div>
+  <strong class="howto-index-card__title">Accounts</strong>
+  <span class="howto-index-card__lead">Manage account/team/client hierarchy and monitor completeness through quality-centric charts.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/finance/accounts</code></div>
+</a>
+<a class="howto-index-card" href="project/calendar.html" data-module="Projects" data-feature="Scheduling" data-keywords="calendar coordinate events and work schedules through week-focused calendar interfaces. /project/calendar scheduling projects project calendar.html /project/calendar">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Projects</span><span class="howto-index-card__feature">Scheduling</span></div>
+  <strong class="howto-index-card__title">Calendar</strong>
+  <span class="howto-index-card__lead">Coordinate events and work schedules through week-focused calendar interfaces.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/project/calendar</code></div>
+</a>
+<a class="howto-index-card" href="project/chat.html" data-module="Projects" data-feature="Communication" data-keywords="chat coordinate with teammates through threaded messaging and conversation panels. /project/chat communication projects project chat.html /project/chat">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Projects</span><span class="howto-index-card__feature">Communication</span></div>
+  <strong class="howto-index-card__title">Chat</strong>
+  <span class="howto-index-card__lead">Coordinate with teammates through threaded messaging and conversation panels.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/project/chat</code></div>
+</a>
+<a class="howto-index-card" href="project/deliverable-details.html" data-module="Projects" data-feature="Delivery Unit" data-keywords="deliverable details single deliverable page for execution management and collaboration around one output. /project/deliverable/:taskid delivery unit projects project deliverable-details.html /project/deliverable">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Projects</span><span class="howto-index-card__feature">Delivery Unit</span></div>
+  <strong class="howto-index-card__title">Deliverable Details</strong>
+  <span class="howto-index-card__lead">Single deliverable page for execution management and collaboration around one output.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/project/deliverable/:taskId</code></div>
+</a>
+<a class="howto-index-card" href="project/deliverables.html" data-module="Projects" data-feature="Delivery Units" data-keywords="deliverables manage project deliverables (tasks) before drilling into granular work items. /project/deliverables/:projectid delivery units projects project deliverables.html /project/deliverables">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Projects</span><span class="howto-index-card__feature">Delivery Units</span></div>
+  <strong class="howto-index-card__title">Deliverables</strong>
+  <span class="howto-index-card__lead">Manage project deliverables (tasks) before drilling into granular work items.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/project/deliverables/:projectId</code></div>
+</a>
+<a class="howto-index-card" href="project/delivery.html" data-module="Projects" data-feature="Sprints" data-keywords="delivery sprints sprint slices on existing tasks and work items — timeboxes, not a second backlog product. /project/delivery activitesenabled sprints projects project delivery.html /project/delivery">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Projects</span><span class="howto-index-card__feature">Sprints</span></div>
+  <strong class="howto-index-card__title">Delivery Sprints</strong>
+  <span class="howto-index-card__lead">Sprint slices on existing tasks and work items — timeboxes, not a second backlog product.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/project/delivery</code><span class="howto-index-card__flag">activitesEnabled</span></div>
+</a>
+<a class="howto-index-card" href="project/feedback.html" data-module="Projects" data-feature="Stakeholder Input" data-keywords="feedback manage feedback templates and campaigns with response visibility across projects. /project/feedback stakeholder input projects project feedback.html /project/feedback">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Projects</span><span class="howto-index-card__feature">Stakeholder Input</span></div>
+  <strong class="howto-index-card__title">Feedback</strong>
+  <span class="howto-index-card__lead">Manage feedback templates and campaigns with response visibility across projects.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/project/feedback</code></div>
+</a>
+<a class="howto-index-card" href="project/file-manager.html" data-module="Projects" data-feature="Documents" data-keywords="file manager manage project-related files with list/grid views, type filters, and pagination. /project/filemanager documents projects project file-manager.html /project/filemanager">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Projects</span><span class="howto-index-card__feature">Documents</span></div>
+  <strong class="howto-index-card__title">File Manager</strong>
+  <span class="howto-index-card__lead">Manage project-related files with list/grid views, type filters, and pagination.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/project/filemanager</code></div>
+</a>
+<a class="howto-index-card" href="project/search.html" data-module="Projects" data-feature="Discovery" data-keywords="global search find entities quickly when exact location is unknown, instead of browsing multiple lists. /project/search discovery projects project search.html /project/search">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Projects</span><span class="howto-index-card__feature">Discovery</span></div>
+  <strong class="howto-index-card__title">Global Search</strong>
+  <span class="howto-index-card__lead">Find entities quickly when exact location is unknown, instead of browsing multiple lists.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/project/search</code></div>
+</a>
+<a class="howto-index-card" href="project/governance.html" data-module="Projects" data-feature="Governance" data-keywords="governance steering pack: rag across milestones, risks, issues — composed from those registers, not a slide deck as source. /project/governance governanceenabled governance projects project governance.html /project/governance">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Projects</span><span class="howto-index-card__feature">Governance</span></div>
+  <strong class="howto-index-card__title">Governance</strong>
+  <span class="howto-index-card__lead">Steering pack: RAG across milestones, risks, issues — composed from those registers, not a slide deck as source.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/project/governance</code><span class="howto-index-card__flag">governanceEnabled</span></div>
+</a>
+<a class="howto-index-card" href="project/issues.html" data-module="Projects" data-feature="Governance" data-keywords="issues &amp; actions realized project problems and actions — not tickets unless you promote them, not risks that have not happened. /project/issues issuesenabled governance projects project issues.html /project/issues">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Projects</span><span class="howto-index-card__feature">Governance</span></div>
+  <strong class="howto-index-card__title">Issues &amp; Actions</strong>
+  <span class="howto-index-card__lead">Realized project problems and actions — not tickets unless you promote them, not risks that have not happened.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/project/issues</code><span class="howto-index-card__flag">issuesEnabled</span></div>
+</a>
+<a class="howto-index-card" href="project/lessons-learned.html" data-module="Projects" data-feature="Knowledge" data-keywords="lessons learned institutional memory from delivery — stored as lessons on projects, with masked summaries if they touch people-sensitive topics. /project/lessons-learned lessonslearnedenabled knowledge projects project lessons-learned.html /project/lessons-learned">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Projects</span><span class="howto-index-card__feature">Knowledge</span></div>
+  <strong class="howto-index-card__title">Lessons Learned</strong>
+  <span class="howto-index-card__lead">Institutional memory from delivery — stored as lessons on projects, with masked summaries if they touch people-sensitive topics.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/project/lessons-learned</code><span class="howto-index-card__flag">lessonsLearnedEnabled</span></div>
+</a>
+<a class="howto-index-card" href="project/milestones.html" data-module="Projects" data-feature="Governance" data-keywords="milestones named delivery dates on a project — governance markers, not a replacement for task deliverables. /project/milestones milestonesenabled governance projects project milestones.html /project/milestones">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Projects</span><span class="howto-index-card__feature">Governance</span></div>
+  <strong class="howto-index-card__title">Milestones</strong>
+  <span class="howto-index-card__lead">Named delivery dates on a project — governance markers, not a replacement for Task deliverables.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/project/milestones</code><span class="howto-index-card__flag">milestonesEnabled</span></div>
+</a>
+<a class="howto-index-card" href="project/notes.html" data-module="Projects" data-feature="Personal Productivity" data-keywords="notes capture lightweight tasks and reminders without leaving project workflows. /project/todolist personal productivity projects project notes.html /project/todolist">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Projects</span><span class="howto-index-card__feature">Personal Productivity</span></div>
+  <strong class="howto-index-card__title">Notes</strong>
+  <span class="howto-index-card__lead">Capture lightweight tasks and reminders without leaving project workflows.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/project/todolist</code></div>
+</a>
+<a class="howto-index-card" href="project/portfolio.html" data-module="Projects" data-feature="Portfolio" data-keywords="portfolio portfolio control tower over live projects — health, risk, and scenarios — not a second project register. /project/portfolio portfolioenabled portfolio projects project portfolio.html /project/portfolio">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Projects</span><span class="howto-index-card__feature">Portfolio</span></div>
+  <strong class="howto-index-card__title">Portfolio</strong>
+  <span class="howto-index-card__lead">Portfolio control tower over live projects — health, risk, and scenarios — not a second project register.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/project/portfolio</code><span class="howto-index-card__flag">portfolioEnabled</span></div>
+</a>
+<a class="howto-index-card" href="project/dashboard.html" data-module="Projects" data-feature="Dashboard" data-keywords="project dashboard two perspectives: my projects for personal execution and manager overview for portfolio-level decision making. /project/dashboard dashboard projects project dashboard.html /project/dashboard">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Projects</span><span class="howto-index-card__feature">Dashboard</span></div>
+  <strong class="howto-index-card__title">Project Dashboard</strong>
+  <span class="howto-index-card__lead">Two perspectives: My projects for personal execution and Manager overview for portfolio-level decision making.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/project/dashboard</code></div>
+</a>
+<a class="howto-index-card" href="project/project-details.html" data-module="Projects" data-feature="Details" data-keywords="project details deep-dive page for one project including metadata, team, activity, attachments, and delivery-linked tabs. /project/details/:projectid details projects project project-details.html /project/details">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Projects</span><span class="howto-index-card__feature">Details</span></div>
+  <strong class="howto-index-card__title">Project Details</strong>
+  <span class="howto-index-card__lead">Deep-dive page for one project including metadata, team, activity, attachments, and delivery-linked tabs.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/project/details/:projectId</code></div>
+</a>
+<a class="howto-index-card" href="project/project-list.html" data-module="Projects" data-feature="Portfolio" data-keywords="project list primary project register with chips, sort controls, and chart-backed summary strip for portfolio health. /project/list portfolio projects project project-list.html /project/list">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Projects</span><span class="howto-index-card__feature">Portfolio</span></div>
+  <strong class="howto-index-card__title">Project List</strong>
+  <span class="howto-index-card__lead">Primary project register with chips, sort controls, and chart-backed summary strip for portfolio health.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/project/list</code></div>
+</a>
+<a class="howto-index-card" href="project/index.html" data-module="Projects" data-feature="Project module" data-keywords="project overview navigate from portfolio dashboards to delivery operations including taskboard, capacity planning, and collaboration tools. /project/* project module projects project index.html">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Projects</span><span class="howto-index-card__feature">Project module</span></div>
+  <strong class="howto-index-card__title">Project Overview</strong>
+  <span class="howto-index-card__lead">Navigate from portfolio dashboards to delivery operations including taskboard, capacity planning, and collaboration tools.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/project/*</code></div>
+</a>
+<a class="howto-index-card" href="project/reports.html" data-module="Projects" data-feature="Reporting" data-keywords="reports run permission-scoped reports with date/team filters and export result tables. /project/reports reporting projects project reports.html /project/reports">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Projects</span><span class="howto-index-card__feature">Reporting</span></div>
+  <strong class="howto-index-card__title">Reports</strong>
+  <span class="howto-index-card__lead">Run permission-scoped reports with date/team filters and export result tables.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/project/reports</code></div>
+</a>
+<a class="howto-index-card" href="project/risks.html" data-module="Projects" data-feature="Governance" data-keywords="risks project risks on live projects — register and rag, not a side raid spreadsheet as source. /project/risks risksenabled governance projects project risks.html /project/risks">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Projects</span><span class="howto-index-card__feature">Governance</span></div>
+  <strong class="howto-index-card__title">Risks</strong>
+  <span class="howto-index-card__lead">Project risks on live projects — register and RAG, not a side RAID spreadsheet as source.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/project/risks</code><span class="howto-index-card__flag">risksEnabled</span></div>
+</a>
+<a class="howto-index-card" href="project/rca.html" data-module="Projects" data-feature="Knowledge" data-keywords="root cause analysis structured cause analysis on delivery failures — hangs off project/incident context, with masked people-sensitive notes. /project/rca rcaenabled knowledge projects project rca.html /project/rca">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Projects</span><span class="howto-index-card__feature">Knowledge</span></div>
+  <strong class="howto-index-card__title">Root Cause Analysis</strong>
+  <span class="howto-index-card__lead">Structured cause analysis on delivery failures — hangs off project/incident context, with masked people-sensitive notes.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/project/rca</code><span class="howto-index-card__flag">rcaEnabled</span></div>
+</a>
+<a class="howto-index-card" href="project/task-activity.html" data-module="Projects" data-feature="Activity Calendar" data-keywords="task activity month view and activity registers that combine scheduling context with execution analytics. /project/activites activity calendar projects project task-activity.html /project/activites">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Projects</span><span class="howto-index-card__feature">Activity Calendar</span></div>
+  <strong class="howto-index-card__title">Task Activity</strong>
+  <span class="howto-index-card__lead">Month view and activity registers that combine scheduling context with execution analytics.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/project/activites</code></div>
+</a>
+<a class="howto-index-card" href="project/taskboard.html" data-module="Projects" data-feature="Execution Board" data-keywords="task board drag-and-drop workflow board with summary visuals and card-level detail actions. /project/taskboard execution board projects project taskboard.html /project/taskboard">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Projects</span><span class="howto-index-card__feature">Execution Board</span></div>
+  <strong class="howto-index-card__title">Task Board</strong>
+  <span class="howto-index-card__lead">Drag-and-drop workflow board with summary visuals and card-level detail actions.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/project/taskboard</code></div>
+</a>
+<a class="howto-index-card" href="project/team-capacity.html" data-module="Projects" data-feature="Resource Planning" data-keywords="team capacity plan and rebalance team load using utilization charts, heatmaps, timeline views, and assignment controls. /project/capacity resource planning projects project team-capacity.html /project/capacity /resources/capacity">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Projects</span><span class="howto-index-card__feature">Resource Planning</span></div>
+  <strong class="howto-index-card__title">Team Capacity</strong>
+  <span class="howto-index-card__lead">Plan and rebalance team load using utilization charts, heatmaps, timeline views, and assignment controls.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/project/capacity</code></div>
+</a>
+<a class="howto-index-card" href="project/tickets.html" data-module="Projects" data-feature="Service" data-keywords="tickets &amp; service sla-backed service desk — the team register my tickets slices — not project issues unless you keep them separate on purpose. /project/tickets ticketsenabled service projects project tickets.html /project/tickets">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Projects</span><span class="howto-index-card__feature">Service</span></div>
+  <strong class="howto-index-card__title">Tickets &amp; Service</strong>
+  <span class="howto-index-card__lead">SLA-backed service desk — the team register My tickets slices — not project issues unless you keep them separate on purpose.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/project/tickets</code><span class="howto-index-card__flag">ticketsEnabled</span></div>
+</a>
+<a class="howto-index-card" href="project/timeline.html" data-module="Projects" data-feature="Timeline" data-keywords="timeline / gantt gantt of project, milestone, and task dates — a calendar lens on the delivery chain, not a separate schedule file. /project/timeline ganttenabled timeline projects project timeline.html /project/timeline">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Projects</span><span class="howto-index-card__feature">Timeline</span></div>
+  <strong class="howto-index-card__title">Timeline / Gantt</strong>
+  <span class="howto-index-card__lead">Gantt of project, milestone, and task dates — a calendar lens on the delivery chain, not a separate schedule file.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/project/timeline</code><span class="howto-index-card__flag">ganttEnabled</span></div>
+</a>
+<a class="howto-index-card" href="project/work-items.html" data-module="Projects" data-feature="Execution" data-keywords="work items track fine-grained activities including assignees, statuses, estimates, and logged effort. /project/workitems/:taskid execution projects project work-items.html /project/workitems">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Projects</span><span class="howto-index-card__feature">Execution</span></div>
+  <strong class="howto-index-card__title">Work Items</strong>
+  <span class="howto-index-card__lead">Track fine-grained activities including assignees, statuses, estimates, and logged effort.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/project/workitems/:taskId</code></div>
+</a>
+<a class="howto-index-card" href="recruiting/candidates.html" data-module="Recruiting" data-feature="ATS" data-keywords="candidates people in the hiring pipeline — applicants on requisitions, not employees until hired. /recruiting/candidates recruitingenabled ats recruiting recruiting candidates.html /recruiting/candidates">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Recruiting</span><span class="howto-index-card__feature">ATS</span></div>
+  <strong class="howto-index-card__title">Candidates</strong>
+  <span class="howto-index-card__lead">People in the hiring pipeline — applicants on requisitions, not Employees until hired.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/recruiting/candidates</code><span class="howto-index-card__flag">recruitingEnabled</span></div>
+</a>
+<a class="howto-index-card" href="recruiting/interviews.html" data-module="Recruiting" data-feature="ATS" data-keywords="interviews scheduled interviews on candidate × requisition — calendar coordination, not the project calendar of delivery work. /recruiting/interviews recruitingenabled ats recruiting recruiting interviews.html /recruiting/interviews">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Recruiting</span><span class="howto-index-card__feature">ATS</span></div>
+  <strong class="howto-index-card__title">Interviews</strong>
+  <span class="howto-index-card__lead">Scheduled interviews on candidate × requisition — calendar coordination, not the project calendar of delivery work.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/recruiting/interviews</code><span class="howto-index-card__flag">recruitingEnabled</span></div>
+</a>
+<a class="howto-index-card" href="recruiting/offers.html" data-module="Recruiting" data-feature="ATS" data-keywords="offers offer letters on candidates — compensation drafts with masking — not purchase orders and not salary structures until they are employee. /recruiting/offers recruitingenabled ats recruiting recruiting offers.html /recruiting/offers">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Recruiting</span><span class="howto-index-card__feature">ATS</span></div>
+  <strong class="howto-index-card__title">Offers</strong>
+  <span class="howto-index-card__lead">Offer letters on candidates — compensation drafts with masking — not Purchase Orders and not salary structures until they are Employee.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/recruiting/offers</code><span class="howto-index-card__flag">recruitingEnabled</span></div>
+</a>
+<a class="howto-index-card" href="recruiting/dashboard.html" data-module="Recruiting" data-feature="ATS" data-keywords="recruiting ats control tower for requisitions, candidates, interviews, and offers — live recruiting records, not a second hris. /recruiting/dashboard recruitingenabled ats recruiting recruiting dashboard.html /recruiting/dashboard">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Recruiting</span><span class="howto-index-card__feature">ATS</span></div>
+  <strong class="howto-index-card__title">Recruiting</strong>
+  <span class="howto-index-card__lead">ATS control tower for requisitions, candidates, interviews, and offers — live recruiting records, not a second HRIS.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/recruiting/dashboard</code><span class="howto-index-card__flag">recruitingEnabled</span></div>
+</a>
+<a class="howto-index-card" href="recruiting/requisitions.html" data-module="Recruiting" data-feature="ATS" data-keywords="requisitions open roles the ats is hiring for — demand that staffing and offers hang off, not a capacity assignment. /recruiting/requisitions recruitingenabled ats recruiting recruiting requisitions.html /recruiting/requisitions">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Recruiting</span><span class="howto-index-card__feature">ATS</span></div>
+  <strong class="howto-index-card__title">Requisitions</strong>
+  <span class="howto-index-card__lead">Open roles the ATS is hiring for — demand that staffing and offers hang off, not a capacity assignment.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/recruiting/requisitions</code><span class="howto-index-card__flag">recruitingEnabled</span></div>
+</a>
+<a class="howto-index-card" href="resources/bench.html" data-module="Resources" data-feature="Bench" data-keywords="bench &amp; roll-off availability and roll-offs on employee — the ready pool for staffing, not a punishment list and not candidates. /resources/bench benchenabled bench resources resources bench.html /resources/bench">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Resources</span><span class="howto-index-card__feature">Bench</span></div>
+  <strong class="howto-index-card__title">Bench &amp; Roll-off</strong>
+  <span class="howto-index-card__lead">Availability and roll-offs on Employee — the ready pool for staffing, not a punishment list and not candidates.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/resources/bench</code><span class="howto-index-card__flag">benchEnabled</span></div>
+</a>
+<a class="howto-index-card" href="resources/planner.html" data-module="Resources" data-feature="Simulation" data-keywords="capacity simulation what-if staffing and bench moves before you commit the roster — team capacity remains the live planner. /resources/planner plannerenabled simulation resources resources planner.html /resources/planner">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Resources</span><span class="howto-index-card__feature">Simulation</span></div>
+  <strong class="howto-index-card__title">Capacity Simulation</strong>
+  <span class="howto-index-card__lead">What-if staffing and bench moves before you commit the roster — Team capacity remains the live planner.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/resources/planner</code><span class="howto-index-card__flag">plannerEnabled</span></div>
+</a>
+<a class="howto-index-card" href="resources/skills.html" data-module="Resources" data-feature="Skills" data-keywords="skills matrix proficiency, certifications, and gaps on employee — then staff from capacity and bench, not a shadow talent table. /resources/skills skillsenabled skills resources resources skills.html /resources/skills">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Resources</span><span class="howto-index-card__feature">Skills</span></div>
+  <strong class="howto-index-card__title">Skills Matrix</strong>
+  <span class="howto-index-card__lead">Proficiency, certifications, and gaps on Employee — then staff from capacity and bench, not a shadow talent table.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/resources/skills</code><span class="howto-index-card__flag">skillsEnabled</span></div>
+</a>
+<a class="howto-index-card" href="resources/staffing-requests.html" data-module="Resources" data-feature="Staffing" data-keywords="staffing requests demand tickets to place people from skills and bench onto projects — fulfilled as assignments, not as a second project team table. /resources/staffing-requests staffingrequestsenabled staffing resources resources staffing-requests.html /resources/staffing-requests">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Resources</span><span class="howto-index-card__feature">Staffing</span></div>
+  <strong class="howto-index-card__title">Staffing Requests</strong>
+  <span class="howto-index-card__lead">Demand tickets to place people from skills and bench onto projects — fulfilled as assignments, not as a second project team table.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/resources/staffing-requests</code><span class="howto-index-card__flag">staffingRequestsEnabled</span></div>
+</a>
+<a class="howto-index-card" href="resources/utilization.html" data-module="Resources" data-feature="Utilization" data-keywords="utilization &amp; demand utilization, demand, bench, and skill signals in one planning view — charts on employee assignments and staffing demand. /resources/utilization utilizationenabled utilization resources resources utilization.html /resources/utilization">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Resources</span><span class="howto-index-card__feature">Utilization</span></div>
+  <strong class="howto-index-card__title">Utilization &amp; Demand</strong>
+  <span class="howto-index-card__lead">Utilization, demand, bench, and skill signals in one planning view — charts on Employee assignments and staffing demand.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/resources/utilization</code><span class="howto-index-card__flag">utilizationEnabled</span></div>
+</a>
+<a class="howto-index-card" href="sales/bid-details.html" data-module="Sales" data-feature="Bid Details" data-keywords="bid details full bid fields, study metadata, status workflow, linked pos — opened from list or view bid details sidebar. /sales/bidrequest/:bidrequestid bid details sales sales bid-details.html /finance/bidrequest /sales/bidrequest">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Sales</span><span class="howto-index-card__feature">Bid Details</span></div>
+  <strong class="howto-index-card__title">Bid Details</strong>
+  <span class="howto-index-card__lead">Full bid fields, study metadata, status workflow, linked POs — opened from list or View Bid Details sidebar.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/sales/bidrequest/:bidRequestId</code></div>
+</a>
+<a class="howto-index-card" href="sales/bid-requests.html" data-module="Sales" data-feature="Bid Requests" data-keywords="bid requests full bid register with quick filters, show/sort, pipeline funnel diagram, and comprehensive summary analytics. /sales/bidrequests bid requests sales sales bid-requests.html /finance/bidrequests /sales/bidrequests">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Sales</span><span class="howto-index-card__feature">Bid Requests</span></div>
+  <strong class="howto-index-card__title">Bid Requests</strong>
+  <span class="howto-index-card__lead">Full bid register with quick filters, SHOW/SORT, pipeline funnel diagram, and comprehensive summary analytics.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/sales/bidrequests</code></div>
+</a>
+<a class="howto-index-card" href="sales/purchase-order-details.html" data-module="Sales" data-feature="PO Details" data-keywords="purchase order details contract terms, delivery statistics charts, general info, linked projects — po detail statistics include kpi donuts and bars. /sales/purchaseorder/:purchaseorderid po details sales sales purchase-order-details.html /finance/purchaseorder /sales/purchaseorder">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Sales</span><span class="howto-index-card__feature">PO Details</span></div>
+  <strong class="howto-index-card__title">Purchase Order Details</strong>
+  <span class="howto-index-card__lead">Contract terms, delivery statistics charts, general info, linked projects — PO detail statistics include KPI donuts and bars.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/sales/purchaseorder/:purchaseOrderId</code></div>
+</a>
+<a class="howto-index-card" href="sales/purchase-orders.html" data-module="Sales" data-feature="Purchase Orders" data-keywords="purchase orders purchase order list representing contracts that may link to bids and spawn delivery projects. /finance/purchaseorders purchase orders sales sales purchase-orders.html /finance/purchaseorders /sales/purchaseorders">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Sales</span><span class="howto-index-card__feature">Purchase Orders</span></div>
+  <strong class="howto-index-card__title">Purchase Orders</strong>
+  <span class="howto-index-card__lead">Purchase order list representing contracts that may link to bids and spawn delivery projects.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/finance/purchaseorders</code></div>
+</a>
+<a class="howto-index-card" href="sales/index.html" data-module="Sales" data-feature="Sales module" data-keywords="sales overview track bids from first intake to won/lost, manage purchase orders, and analyze pipeline health with 20+ chart panels. /sales/* sales module sales sales index.html">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Sales</span><span class="howto-index-card__feature">Sales module</span></div>
+  <strong class="howto-index-card__title">Sales Overview</strong>
+  <span class="howto-index-card__lead">Track bids from first intake to won/lost, manage purchase orders, and analyze pipeline health with 20+ chart panels.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/sales/*</code></div>
+</a>
+<a class="howto-index-card" href="workspace/approvals.html" data-module="Workspace" data-feature="Approvals" data-keywords="my approvals universal approval inbox — filter by status, domain, and priority, then approve or reject without leaving the page. /workspace/approvals approvalsenabled approvals workspace workspace approvals.html /workspace/approvals /people/approvals">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Workspace</span><span class="howto-index-card__feature">Approvals</span></div>
+  <strong class="howto-index-card__title">My Approvals</strong>
+  <span class="howto-index-card__lead">Universal approval inbox — filter by status, domain, and priority, then approve or reject without leaving the page.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/workspace/approvals</code><span class="howto-index-card__flag">approvalsEnabled</span></div>
+</a>
+<a class="howto-index-card" href="workspace/my-onboarding.html" data-module="Workspace" data-feature="Onboarding" data-keywords="my onboarding tasks on your live onboarding case — documents, acknowledgements, and hr checkpoints — not a second hr file. /people/onboarding/my-tasks onboardingselfserviceenabled onboarding workspace workspace my-onboarding.html /people/onboarding/my-tasks">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Workspace</span><span class="howto-index-card__feature">Onboarding</span></div>
+  <strong class="howto-index-card__title">My Onboarding</strong>
+  <span class="howto-index-card__lead">Tasks on your live onboarding case — documents, acknowledgements, and HR checkpoints — not a second HR file.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/people/onboarding/my-tasks</code><span class="howto-index-card__flag">onboardingSelfServiceEnabled</span></div>
+</a>
+<a class="howto-index-card" href="workspace/my-paychecks.html" data-module="Workspace" data-feature="Pay" data-keywords="my paychecks published payslips and paycheck history for your employment — only what payroll has already finalized. /workspace/my-paychecks mypaychecksenabled pay workspace workspace my-paychecks.html /workspace/my-paychecks">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Workspace</span><span class="howto-index-card__feature">Pay</span></div>
+  <strong class="howto-index-card__title">My Paychecks</strong>
+  <span class="howto-index-card__lead">Published payslips and paycheck history for your employment — only what payroll has already finalized.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/workspace/my-paychecks</code><span class="howto-index-card__flag">myPaychecksEnabled</span></div>
+</a>
+<a class="howto-index-card" href="workspace/my-tickets.html" data-module="Workspace" data-feature="Service" data-keywords="my tickets service tickets you opened or are assigned — the same ticket records the project service desk uses. /workspace/my-tickets myticketsenabled service workspace workspace my-tickets.html /workspace/my-tickets">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Workspace</span><span class="howto-index-card__feature">Service</span></div>
+  <strong class="howto-index-card__title">My Tickets</strong>
+  <span class="howto-index-card__lead">Service tickets you opened or are assigned — the same ticket records the project service desk uses.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/workspace/my-tickets</code><span class="howto-index-card__flag">myTicketsEnabled</span></div>
+</a>
+<a class="howto-index-card" href="workspace/my-work.html" data-module="Workspace" data-feature="My Work" data-keywords="my work tasks, activities, and focus items assigned to you across projects — the same task and taskactivity rows delivery already uses. /workspace/my-work myworkenabled my work workspace workspace my-work.html /workspace/my-work">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Workspace</span><span class="howto-index-card__feature">My Work</span></div>
+  <strong class="howto-index-card__title">My Work</strong>
+  <span class="howto-index-card__lead">Tasks, activities, and focus items assigned to you across projects — the same Task and TaskActivity rows delivery already uses.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/workspace/my-work</code><span class="howto-index-card__flag">myWorkEnabled</span></div>
+</a>
+<a class="howto-index-card" href="workspace/notifications.html" data-module="Workspace" data-feature="Notifications" data-keywords="notifications alerts, mentions, and system updates that deep-link to the record that changed — not a second inbox of work. /workspace/notifications notificationsenabled notifications workspace workspace notifications.html /workspace/notifications">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Workspace</span><span class="howto-index-card__feature">Notifications</span></div>
+  <strong class="howto-index-card__title">Notifications</strong>
+  <span class="howto-index-card__lead">Alerts, mentions, and system updates that deep-link to the record that changed — not a second inbox of work.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/workspace/notifications</code><span class="howto-index-card__flag">notificationsEnabled</span></div>
+</a>
+<a class="howto-index-card" href="workspace/work-graph.html" data-module="Workspace" data-feature="Graph" data-keywords="work graph connected operational truth across modules — nodes and edges that point at employee, project, task, and similar sources, with masked snippets. /workspace/work-graph workgraphenabled graph workspace workspace work-graph.html /workspace/work-graph">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Workspace</span><span class="howto-index-card__feature">Graph</span></div>
+  <strong class="howto-index-card__title">Work Graph</strong>
+  <span class="howto-index-card__lead">Connected operational truth across modules — nodes and edges that point at Employee, Project, Task, and similar sources, with masked snippets.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/workspace/work-graph</code><span class="howto-index-card__flag">workGraphEnabled</span></div>
+</a>
+<a class="howto-index-card" href="workspace/home.html" data-module="Workspace" data-feature="Workspace" data-keywords="workspace home persona-aware home with shortcuts to approvals, work, and notifications — a launch pad, not a second work tracker. /workspace/home homeenabled workspace workspace workspace home.html /workspace/home">
+  <div class="howto-index-card__meta"><span class="howto-index-card__module">Workspace</span><span class="howto-index-card__feature">Workspace</span></div>
+  <strong class="howto-index-card__title">Workspace Home</strong>
+  <span class="howto-index-card__lead">Persona-aware home with shortcuts to approvals, work, and notifications — a launch pad, not a second work tracker.</span>
+  <div class="howto-index-card__foot"><code class="howto-index-card__route">/workspace/home</code><span class="howto-index-card__flag">homeEnabled</span></div>
+</a>
+        </div>
+        <p class="howto-index-empty" id="howto-empty" hidden>No how-tos match. Clear filters or try another keyword.</p>
+      </section>
+
+      <section class="doc-block doc-block--related" id="related-pages">
+        <h2 class="doc-block__title">Related</h2>
+        <div class="related-links">
+          <a class="related-link" href="admin/index.html"><span class="related-link__label">Admin consoles</span><span class="related-link__desc">Governance how-to hub</span></a>
+          <a class="related-link" href="user-guide/scenarios.html"><span class="related-link__label">All scenarios</span><span class="related-link__desc">Step-by-step workflows</span></a>
+          <a class="related-link" href="user-flows/index.html"><span class="related-link__label">User flows</span><span class="related-link__desc">Scenario ↔ screen bridges</span></a>
+          <a class="related-link" href="index.html"><span class="related-link__label">Documentation home</span><span class="related-link__desc">Module indexes</span></a>
+        </div>
+      </section>
+    </div>
+  </div>
+</main>
+<footer>
+  <div class="container">
+    <p>&copy; 2026 <span data-brand>Tracopus</span>. All rights reserved.</p>
+  </div>
+</footer>
+<script src="js/palette.js?v=20260619e"></script>
+<script src="js/brand.js?v=20260619e"></script>
+<script src="js/docs-utility-config.js?v=20260720b"></script>
+<script src="js/nav-config.js?v=20260912e"></script>
+<script src="js/navigation.js?v=20260912e"></script>
+<script src="js/site-enhancements.js?v=20260912g"></script>
+<script src="js/search.js?v=20260619e"></script>
+<script src="js/howto-index.js?v=20260912f"></script>
+</body>
+</html>

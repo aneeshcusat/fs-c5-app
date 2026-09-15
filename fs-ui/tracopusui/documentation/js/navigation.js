@@ -154,7 +154,19 @@
     var guideRootPages = ['index.html', 'scenarios.html'];
     var rootPages = isGuide
       ? guideRootPages
-      : ['index.html', 'getting-started.html', 'interface.html', 'charts.html', 'admin.html', 'tracopus-use-case-catalog.html', 'tracopus-test-plan.html', 'api-docs.html'];
+      : [
+          'index.html',
+          'getting-started.html',
+          'interface.html',
+          'charts.html',
+          'admin.html',
+          'how-to-index.html',
+          'tracopus-use-case-catalog.html',
+          'tracopus-test-plan.html',
+          'api-docs.html',
+          'integration-api-console.html',
+          'external-project-create.html',
+        ];
 
     if (rootPages.indexOf(href) >= 0) return prefix + href;
     if (href.indexOf('faq/') === 0 || href.indexOf('user-guide/') === 0) return prefix + href;
@@ -503,6 +515,22 @@
     }
   }
 
+  function clearMegaOpenState() {
+    document.querySelectorAll('.lux-nav__item--mega.is-open').forEach(function (li) {
+      li.classList.remove('is-open');
+    });
+  }
+
+  function closeMobileMenubar(menubar, menuToggle) {
+    if (!menubar) return;
+    menubar.classList.remove('is-open');
+    clearMegaOpenState();
+    if (menuToggle) {
+      menuToggle.classList.remove('active');
+      menuToggle.setAttribute('aria-expanded', 'false');
+    }
+  }
+
   function initMobileMenu() {
     var header = document.querySelector('.docs-shell-header');
     var menubar = document.querySelector('.docs-menubar');
@@ -515,23 +543,22 @@
       var isOpen = menubar.classList.toggle('is-open');
       menuToggle.classList.toggle('active', isOpen);
       menuToggle.setAttribute('aria-expanded', isOpen);
+      // Never leave a module page list expanded across open/close
+      clearMegaOpenState();
     });
 
     document.addEventListener('click', function (event) {
       if (!header.contains(event.target) && menubar.classList.contains('is-open')) {
-        menubar.classList.remove('is-open');
-        menuToggle.classList.remove('active');
-        menuToggle.setAttribute('aria-expanded', 'false');
+        closeMobileMenubar(menubar, menuToggle);
       }
     });
 
+    // Close drawer only for real navigation — mega triggers expand in-place on mobile
     menubar.querySelectorAll('.lux-nav__list a').forEach(function (link) {
       link.addEventListener('click', function () {
-        if (window.innerWidth <= 960) {
-          menubar.classList.remove('is-open');
-          menuToggle.classList.remove('active');
-          menuToggle.setAttribute('aria-expanded', 'false');
-        }
+        if (window.innerWidth > 960) return;
+        if (link.classList.contains('lux-nav__trigger')) return;
+        closeMobileMenubar(menubar, menuToggle);
       });
     });
   }
@@ -550,16 +577,9 @@
       lastCompact = compact;
       header.classList.toggle('is-header-compact', compact);
       if (compact) {
-        document.querySelectorAll('.lux-nav__item--mega.is-open').forEach(function (li) {
-          li.classList.remove('is-open');
-        });
         var menubar = document.querySelector('.docs-menubar');
         var menuToggle = header.querySelector('.menu-toggle');
-        if (menubar) menubar.classList.remove('is-open');
-        if (menuToggle) {
-          menuToggle.classList.remove('active');
-          menuToggle.setAttribute('aria-expanded', 'false');
-        }
+        closeMobileMenubar(menubar, menuToggle);
       }
       setNavigationPosition();
     }

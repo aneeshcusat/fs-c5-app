@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-lux-theme="luxury" data-lux-palette="emerald">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -19,21 +19,18 @@
   <script src="js/docs-analytics.js?v=20260719a" defer></script>
   <link rel="stylesheet" href="css/styles.css" />
   <style>
-    :root {
-      --lux-ink: #1a1f2e;
-      --lux-muted: #5c6578;
-      --lux-line: rgba(26, 31, 46, 0.12);
-      --lux-accent: #0d6e6e;
-      --lux-sand: #f7f5f1;
-      --lux-panel: #ffffff;
+    body.lux-recipes {
+      --lux-ink: var(--text-dark);
+      --lux-muted: var(--text-light);
+      --lux-line: var(--border-color);
+      --lux-sand: var(--bg-light);
+      --lux-panel: var(--bg-white);
     }
     body.lux-recipes {
       margin: 0;
-      font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+      font-family: var(--font-brand, var(--font-sans));
       color: var(--lux-ink);
-      background:
-        radial-gradient(ellipse 80% 50% at 10% -10%, rgba(13, 110, 110, 0.12), transparent),
-        linear-gradient(180deg, #faf8f5 0%, var(--lux-sand) 100%);
+      background: var(--lux-sand);
       line-height: 1.5;
     }
     .lux-recipes__wrap {
@@ -162,7 +159,8 @@
   </style>
   <script src="js/brand-config.js"></script>
 </head>
-<body class="lux-recipes">
+<body class="lux-recipes" data-docs-depth="0">
+  <header aria-label="Site header"></header>
   <main class="lux-recipes__wrap">
     <p class="lux-demo__eyebrow">Design system</p>
     <h1 class="lux-recipes__brand">Tracopus</h1>
@@ -233,5 +231,12 @@
       </ul>
     </section>
   </main>
+  <script src="js/palette.js?v=20260711a"></script>
+  <script src="js/brand.js?v=20260711a"></script>
+  <script src="js/docs-utility-config.js?v=20260720b"></script>
+  <script src="js/nav-config.js?v=20260720c"></script>
+  <script src="js/navigation.js?v=20260720b"></script>
+  <script src="js/site-enhancements.js?v=20260906a"></script>
+  <script src="js/search.js?v=20260711a"></script>
 </body>
 </html>

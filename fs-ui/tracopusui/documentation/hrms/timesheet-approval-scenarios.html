@@ -1,40 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-lux-theme="luxury" data-lux-palette="emerald">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Timesheet Approval Scenarios — Coverage Map</title>
   <meta name="description" content="Standalone coverage map of Tracopus timesheet approval scenarios: submit, approve, reopen, resubmit, reject, and work-item promotion." />
+  <link rel="stylesheet" href="../css/styles.css?v=20260912g">
+  <script src="../js/brand-config.js?v=20260619e"></script>
   <style>
-    :root {
-      --bg: #f6f4ef;
-      --surface: #fffcf7;
-      --ink: #1c1917;
-      --muted: #57534e;
-      --line: #e7e5e0;
-      --accent: #0f766e;
-      --accent-soft: #ccfbf1;
-      --pass: #166534;
-      --pass-bg: #dcfce7;
-      --watch: #a16207;
-      --watch-bg: #fef3c7;
-      --info: #1e3a5f;
-      --info-bg: #e0f2fe;
-      --card-shadow: 0 1px 0 rgba(28, 25, 23, 0.06);
-      --radius: 12px;
-      --font: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
-      --sans: "Avenir Next", "Segoe UI", system-ui, -apple-system, sans-serif;
+    body.scenario-coverage {
+      --bg: var(--bg-light);
+      --surface: var(--bg-white);
+      --ink: var(--text-dark);
+      --muted: var(--text-light);
+      --line: var(--border-color);
+      --accent: var(--lux-primary);
+      --accent-soft: var(--lux-primary-soft);
+      --pass: var(--success-color);
+      --pass-bg: rgba(16, 185, 129, 0.12);
+      --watch: var(--warning-color);
+      --watch-bg: rgba(245, 158, 11, 0.14);
+      --info: var(--lux-primary-dark);
+      --info-bg: var(--lux-primary-soft);
+      --card-shadow: var(--shadow);
+      --radius: var(--radius-lg);
+      --font: var(--font-brand);
+      --sans: var(--font-sans);
     }
 
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
-    body {
+    body.scenario-coverage {
       margin: 0;
       color: var(--ink);
-      background:
-        radial-gradient(ellipse 80% 50% at 10% -10%, #d8f3ef 0%, transparent 55%),
-        radial-gradient(ellipse 60% 40% at 100% 0%, #f5e6d3 0%, transparent 50%),
-        var(--bg);
+      background: var(--bg);
       font-family: var(--sans);
       font-size: 15px;
       line-height: 1.55;
@@ -278,7 +277,8 @@
     }
   </style>
 </head>
-<body>
+<body class="scenario-coverage" data-docs-depth="1">
+  <header aria-label="Site header"></header>
   <div class="wrap">
     <p class="eyebrow">Tracopus · HRMS · Timesheet</p>
     <h1 class="brand">Timesheet approval scenarios</h1>
@@ -624,13 +624,13 @@
         <tr><th>Document</th></tr>
       </thead>
       <tbody>
-        <tr><td><code>docs/enhancement-evidence/TIME-014-orphan-activity-cleanup.md</code></td></tr>
-        <tr><td><code>docs/enhancement-evidence/TIME-014-demote-on-reject-reopen.md</code></td></tr>
-        <tr><td><code>docs/enhancement-evidence/TIME-014-resubmit-line-and-save-payload.md</code></td></tr>
-        <tr><td><code>docs/enhancement-evidence/TIME-ux-reopen-add-entry-day-cascade.md</code></td></tr>
-        <tr><td><code>docs/enhancement-evidence/TIME-ux-solo-auto-approve-self-reopen.md</code></td></tr>
-        <tr><td><code>docs/enhancement-evidence/TIME-reopen-visibility.md</code></td></tr>
-        <tr><td><code>docs/enhancement-evidence/TIME-PARTIAL-WEEK-SUBMISSION.md</code></td></tr>
+        <tr><td><code>fui/docs/enhancement-evidence/TIME-014-orphan-activity-cleanup.md</code></td></tr>
+        <tr><td><code>fui/docs/enhancement-evidence/TIME-014-demote-on-reject-reopen.md</code></td></tr>
+        <tr><td><code>fui/docs/enhancement-evidence/TIME-014-resubmit-line-and-save-payload.md</code></td></tr>
+        <tr><td><code>fui/docs/enhancement-evidence/TIME-ux-reopen-add-entry-day-cascade.md</code></td></tr>
+        <tr><td><code>fui/docs/enhancement-evidence/TIME-ux-solo-auto-approve-self-reopen.md</code></td></tr>
+        <tr><td><code>fui/docs/enhancement-evidence/TIME-reopen-visibility.md</code></td></tr>
+        <tr><td><code>fui/docs/enhancement-evidence/TIME-PARTIAL-WEEK-SUBMISSION.md</code></td></tr>
       </tbody>
     </table>
 
@@ -642,5 +642,12 @@
       </p>
     </footer>
   </div>
+  <script src="../js/palette.js?v=20260711a"></script>
+  <script src="../js/brand.js?v=20260711a"></script>
+  <script src="../js/docs-utility-config.js?v=20260720b"></script>
+  <script src="../js/nav-config.js?v=20260720c"></script>
+  <script src="../js/navigation.js?v=20260720b"></script>
+  <script src="../js/site-enhancements.js?v=20260906a"></script>
+  <script src="../js/search.js?v=20260711a"></script>
 </body>
 </html>

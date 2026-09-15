@@ -17,7 +17,7 @@
   <meta name="twitter:title" content="Admin Dashboard — Tracopus User Guide">
   <meta name="twitter:description" content="Control-tower view of audit activity, access health, compliance readiness, and flag adoption for administrators.">
   <script src="../js/docs-analytics.js?v=20260719a" defer></script>
-  <link rel="stylesheet" href="../css/styles.css?v=20260718g">
+  <link rel="stylesheet" href="../css/styles.css?v=20260912g">
   <script src="../js/brand-config.js?v=20260619e"></script>
 </head>
 <body data-docs-depth="1">
@@ -40,6 +40,60 @@
       <p class="doc-mast__lead">Control-tower view of audit activity, access health, compliance readiness, and flag adoption for administrators.</p>
       <p class="doc-mast__purpose">Scroll to <a href="#flowcharts">Flowcharts</a>. Scenario: <a href="../user-guide/admin/admin-dashboard.html">Review admin operations dashboard</a>.</p>
     </header>
+
+    <section class="doc-briefing" id="at-a-glance" aria-labelledby="briefing-title">
+      <div class="doc-briefing__intro">
+        <p class="doc-briefing__kicker"><i class="fe fe-activity" aria-hidden="true"></i> Control tower</p>
+        <h2 class="doc-briefing__title" id="briefing-title">Health of the org, not a second analytics product</h2>
+        <p class="doc-briefing__lead">The admin dashboard is a control-tower slice of audit activity, access health, compliance readiness, and flag adoption. Charts here are composed from the same events and flags the other consoles already own.</p>
+        <div class="doc-briefing__signals" aria-label="Access and placement">
+          <span class="doc-briefing__signal">Admin → Admin dashboard</span>
+          <span class="doc-briefing__signal">Route <code>/admin/dashboard</code></span>
+          <span class="doc-briefing__signal">Org flag <code>dashboardEnabled</code></span>
+          <span class="doc-briefing__signal">HR Admin · Org Admin</span>
+        </div>
+      </div>
+      <div class="doc-briefing__grid">
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-zap"></i></span>
+          <div>
+            <h3>The job of this console</h3>
+            <p>See whether governance is drifting — failed jobs, pending access, stale flags, thin audit coverage — then jump into the owning console. This page does not approve leave, edit roles, or toggle flags; it points.</p>
+          </div>
+        </article>
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-users"></i></span>
+          <div>
+            <h3>Seat at the table</h3>
+            <p>Administrators whose persona can open Admin. Managers use People and Workspace dashboards instead. Finance and project personas stay on their own towers.</p>
+          </div>
+        </article>
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-play-circle"></i></span>
+          <div>
+            <h3>The working rhythm</h3>
+            <p>Open the tower, read the insight strip, drill a card into audit, flags, or jobs, act there, then return to confirm the signal cleared. Refresh when you have just published a flag or retention hold.</p>
+          </div>
+        </article>
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-clock"></i></span>
+          <div>
+            <h3>Moments that bring you here</h3>
+            <p>Monday ops scan. After enabling a high-risk flag. When compliance asks if the org is ready for an evidence pack. After a job failure email. Not for workforce headcount — that lives on the People dashboard.</p>
+          </div>
+        </article>
+      </div>
+      <div class="doc-briefing__note">
+        <div class="callout callout--note callout--interactive">
+          <div class="callout__icon">ⓘ</div>
+          <div class="callout__body">
+            <strong class="callout__title">Read model of live consoles</strong>
+            <div class="callout__text">Cards are assembled from audit, access, flags, and jobs. Do not treat a dashboard number as a ledger you can edit.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
 
     <div class="doc-flow">
       <section class="doc-block" id="flowcharts">
@@ -121,9 +175,9 @@ flowchart TD
 <script src="../js/palette.js?v=20260619e"></script>
 <script src="../js/brand.js?v=20260619e"></script>
 <script src="../js/docs-utility-config.js?v=20260720b"></script>
-<script src="../js/nav-config.js?v=20260619e"></script>
-<script src="../js/navigation.js?v=20260619e"></script>
-<script src="../js/site-enhancements.js?v=20260718d"></script>
+<script src="../js/nav-config.js?v=20260906a"></script>
+<script src="../js/navigation.js?v=20260912f"></script>
+<script src="../js/site-enhancements.js?v=20260906a"></script>
 <script src="../js/search.js?v=20260619e"></script>
 <script type="module">
   import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";

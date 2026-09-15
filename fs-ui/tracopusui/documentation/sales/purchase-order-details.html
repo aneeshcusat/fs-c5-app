@@ -22,7 +22,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/styles.css?v=20260718g">
+  <link rel="stylesheet" href="../css/styles.css?v=20260912g">
   <script src="../js/brand-config.js?v=20260619e"></script>
 </head>
 <body data-docs-depth="1">
@@ -47,6 +47,59 @@
     <p class="doc-mast__lead">Contract terms, delivery statistics charts, general info, linked projects — PO detail statistics include KPI donuts and bars.</p>
     <p class="doc-mast__purpose">Contract detail with terms, delivery statistics, linked projects, and general info.</p>
   </header>
+
+    <section class="doc-briefing" id="at-a-glance" aria-labelledby="briefing-title">
+      <div class="doc-briefing__intro">
+        <p class="doc-briefing__kicker"><i class="fe fe-file-text" aria-hidden="true"></i> One contract</p>
+        <h2 class="doc-briefing__title" id="briefing-title">Terms, delivery statistics, linked projects</h2>
+        <p class="doc-briefing__lead">Purchase order details is contract terms, delivery statistics, general info, and linked projects — including KPI donuts and bars on that PO’s delivery.</p>
+        <div class="doc-briefing__signals" aria-label="Access and placement">
+          <span class="doc-briefing__signal">Finance → Purchase orders → details</span>
+          <span class="doc-briefing__signal">Route <code>/sales/purchaseorder/:purchaseOrderId</code></span>
+          <span class="doc-briefing__signal">Finance Manager · Admin · PM (read delivery)</span>
+        </div>
+      </div>
+      <div class="doc-briefing__grid">
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-zap"></i></span>
+          <div>
+            <h3>The job of this console</h3>
+            <p>Read and maintain terms the engine allows, see delivery against this contract, open linked projects. Charts are of this PO’s children, not the whole portfolio.</p>
+          </div>
+        </article>
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-users"></i></span>
+          <div>
+            <h3>Seat at the table</h3>
+            <p>Finance owns terms. PMs use linked projects for execution.</p>
+          </div>
+        </article>
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-play-circle"></i></span>
+          <div>
+            <h3>The working rhythm</h3>
+            <p>Open from the list, review terms, follow a project, return for commercial status.</p>
+          </div>
+        </article>
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-clock"></i></span>
+          <div>
+            <h3>Moments that bring you here</h3>
+            <p>Kickoff alignment. A scope change that needs the contract. Delivery looking ahead of billed. After linking a second project.</p>
+          </div>
+        </article>
+      </div>
+      <div class="doc-briefing__note">
+        <div class="callout callout--note callout--interactive">
+          <div class="callout__icon">ⓘ</div>
+          <div class="callout__body">
+            <strong class="callout__title">Detail of PurchaseOrder</strong>
+            <div class="callout__text">Linked projects are Project rows. Statistics are views, not a second financial ledger.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
 
   <div class="doc-flow">
     <section class="doc-block" id="overview"><h2 class="doc-block__title">Overview</h2><p><code>/sales/purchaseorder/:purchaseOrderId</code> — single contract view with delivery progress and project linkage.</p></section>
@@ -95,9 +148,9 @@
 <script src="../js/palette.js?v=20260619e"></script>
 <script src="../js/brand.js?v=20260619e"></script>
 <script src="../js/docs-utility-config.js?v=20260720b"></script>
-<script src="../js/nav-config.js?v=20260619e"></script>
-<script src="../js/navigation.js?v=20260619e"></script>
-<script src="../js/site-enhancements.js?v=20260718d"></script>
+<script src="../js/nav-config.js?v=20260906a"></script>
+<script src="../js/navigation.js?v=20260912f"></script>
+<script src="../js/site-enhancements.js?v=20260906a"></script>
 <script src="../js/search.js?v=20260619e"></script>
 </body>
 </html>

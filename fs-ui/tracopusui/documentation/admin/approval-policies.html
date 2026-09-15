@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en" data-lux-theme="luxury" data-lux-palette="emerald">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Approval Policies — Tracopus User Guide</title>
+  <meta name="description" content="Routing rules, SLA hours, escalation, and simulation for leave, timesheet, attendance, and related domains.">
+  <meta name="keywords" content="tracopus, documentation, user guide, admin, approval policies">
+  <link rel="canonical" href="https://tracopus.com/documentation/admin/approval-policies.html">
+  <meta name="robots" content="index, follow">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Tracopus">
+  <meta property="og:title" content="Approval Policies — Tracopus User Guide">
+  <meta property="og:description" content="Routing rules, SLA hours, escalation, and simulation for leave, timesheet, attendance, and related domains.">
+  <meta property="og:url" content="https://tracopus.com/documentation/admin/approval-policies.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Approval Policies — Tracopus User Guide">
+  <meta name="twitter:description" content="Routing rules, SLA hours, escalation, and simulation for leave, timesheet, attendance, and related domains.">
+  <script src="../js/docs-analytics.js?v=20260719a" defer></script>
+  <link rel="stylesheet" href="../css/styles.css?v=20260912g">
+  <script src="../js/brand-config.js?v=20260619e"></script>
+</head>
+<body data-docs-depth="1">
+
+<header aria-label="Site header"></header>
+
+<main>
+  <div class="breadcrumb"><a href="../index.html">Home</a> → Admin → Approval Policies</div>
+
+  <div class="doc-canvas">
+    <header class="doc-mast">
+      <div class="doc-mast__top">
+        <span class="doc-mast__eyebrow">Admin · Access &amp; approvals</span>
+        <div class="page-meta page-meta--inline">
+          <span class="page-meta__item"><strong>Route</strong> <code>/admin/approval-policies</code></span>
+          <span class="page-meta__item"><strong>Flag</strong> <code>approvalPoliciesEnabled</code></span>
+        </div>
+      </div>
+      <h1 class="doc-mast__title">Approval Policies</h1>
+      <p class="doc-mast__lead">Routing rules, SLA hours, escalation, and simulation for leave, timesheet, attendance, and related domains.</p>
+      <p class="doc-mast__purpose">Scroll to <a href="#flowcharts">Flowcharts</a>. Scenario: <a href="../user-guide/admin/admin-approval-policies.html">Configure approval routing policies</a>.</p>
+    </header>
+
+    <section class="doc-briefing" id="at-a-glance" aria-labelledby="briefing-title">
+      <div class="doc-briefing__intro">
+        <p class="doc-briefing__kicker"><i class="fe fe-git-merge" aria-hidden="true"></i> Routing and SLA</p>
+        <h2 class="doc-briefing__title" id="briefing-title">Who must say yes, and how long they have</h2>
+        <p class="doc-briefing__lead">Approval policies are the routing rules, SLA hours, escalation, and simulation for leave, timesheet, attendance, and related domains. The universal inbox only shows work these policies created.</p>
+        <div class="doc-briefing__signals" aria-label="Access and placement">
+          <span class="doc-briefing__signal">Admin → Approval policies</span>
+          <span class="doc-briefing__signal">Route <code>/admin/approval-policies</code></span>
+          <span class="doc-briefing__signal">Org flag <code>approvalPoliciesEnabled</code></span>
+          <span class="doc-briefing__signal">HR Admin · Org Admin</span>
+        </div>
+      </div>
+      <div class="doc-briefing__grid">
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-zap"></i></span>
+          <div>
+            <h3>The job of this console</h3>
+            <p>Publish a domain policy so requests find the right manager chain, expire with an SLA, and escalate when silent. Simulate a sample request before publish. Pause or revise a policy without rewriting the approval engine.</p>
+          </div>
+        </article>
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-users"></i></span>
+          <div>
+            <h3>Seat at the table</h3>
+            <p>HR and org administrators. Managers act on My Approvals; they do not author policies here. Employees never see this console.</p>
+          </div>
+        </article>
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-play-circle"></i></span>
+          <div>
+            <h3>The working rhythm</h3>
+            <p>Filter by domain, create or edit levels, set SLA and escalation, simulate, then publish. Revisit after an org restructure so manager chains still resolve. Use delegation when a person is out — do not clone a whole policy for one absence.</p>
+          </div>
+        </article>
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-clock"></i></span>
+          <div>
+            <h3>Moments that bring you here</h3>
+            <p>A new leave type needs a two-step chain. Timesheet SLA is too loose before payroll lock. Escalation never fired because the manager field was empty. After org-structure changes, to re-simulate.</p>
+          </div>
+        </article>
+      </div>
+      <div class="doc-briefing__note">
+        <div class="callout callout--note callout--interactive">
+          <div class="callout__icon">ⓘ</div>
+          <div class="callout__body">
+            <strong class="callout__title">Policies route; they do not store the request</strong>
+            <div class="callout__text">Leave, timesheet, and attendance records stay on their source tables. This console only decides the path. Authority still comes from ApprovalAuthorityService.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <div class="doc-flow">
+      <section class="doc-block" id="flowcharts">
+        <h2 class="doc-block__title">Flowcharts</h2>
+
+        <article class="diagram-card" data-diagram-autoplay="true">
+          <header class="diagram-card__head">
+            <div class="diagram-card__titles">
+              <h3>1 — Publish a domain policy</h3>
+              <p class="diagram-card__desc">Draft a policy, simulate a sample request, then publish.</p>
+            </div>
+            <div class="diagram-card__controls">
+              <button type="button" data-diagram-prev aria-label="Previous step"><i class="fe fe-chevron-left" aria-hidden="true"></i></button>
+              <button type="button" data-diagram-play aria-pressed="false"><i class="fe fe-play" aria-hidden="true"></i><span>Play</span></button>
+              <button type="button" data-diagram-next aria-label="Next step"><i class="fe fe-chevron-right" aria-hidden="true"></i></button>
+            </div>
+          </header>
+          <div class="diagram-card__chart">
+            <pre class="mermaid">
+flowchart TD
+  A[Open Approval policies] --> B[Filter by domain]
+  B --> C[Create or edit policy]
+  C --> D[Set levels / SLA / escalation]
+  D --> E[Simulate]
+  E --> F{Looks right?}
+  F -->|No| C
+  F -->|Yes| G[Save / publish]
+  G --> H[Live approvals use policy]
+            </pre>
+          </div>
+          <ol class="diagram-steps">
+            <li class="diagram-step is-active"><span class="diagram-step__index">1</span><div class="diagram-step__body"><strong>Open the console</strong><span>Admin → Approval policies.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">2</span><div class="diagram-step__body"><strong>Pick a domain</strong><span>Leave, timesheet, attendance, or other routed types.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">3</span><div class="diagram-step__body"><strong>Configure routing</strong><span>Approver levels, SLA hours, reminders, auto-escalate.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">4</span><div class="diagram-step__body"><strong>Simulate</strong><span>Run a sample payload before publishing.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">5</span><div class="diagram-step__body"><strong>Publish</strong><span>Workspace approvals pick up the saved policy.</span></div></li>
+          </ol>
+          <p class="diagram-card__progress" data-diagram-progress></p>
+        </article>
+      </section>
+
+      <section class="doc-block" id="overview">
+        <h2 class="doc-block__title">Overview</h2>
+        <p>Policies are workflow configuration — they do not replace domain records. Timesheet chain behavior may also require Work-Time Governance admin.policyManagement.</p>
+      </section>
+
+      <section class="doc-block" id="how-to">
+        <h2 class="doc-block__title">How to use</h2>
+        <div class="steps">
+          <div class="step"><strong>1. Simulate before publish</strong><div class="step-detail">Use the simulation panel with a realistic requester and amount.</div></div>
+          <div class="step"><strong>2. Keep SLA and escalation paired</strong><div class="step-detail">Escalation hours should exceed SLA hours.</div></div>
+          <div class="step"><strong>3. Draft vs published</strong><div class="step-detail">Draft policies do not route live work.</div></div>
+          <div class="step"><strong>4. Link delegation</strong><div class="step-detail">Acting managers are configured on Delegation rules, not inside the policy JSON.</div></div>
+        </div>
+      </section>
+
+      <section class="doc-block doc-block--related" id="related-pages">
+        <h2 class="doc-block__title">Related pages</h2>
+        <div class="related-links">
+          <a class="related-link" href="delegation.html"><span class="related-link__label">Delegation rules</span><span class="related-link__desc">Acting managers for the same domains.</span></a>
+          <a class="related-link" href="../workspace/approvals.html"><span class="related-link__label">My Approvals</span><span class="related-link__desc">Inbox that consumes these policies.</span></a>
+          <a class="related-link" href="feature-flags.html"><span class="related-link__label">Feature flags</span><span class="related-link__desc">Work-Time Governance policy-management gate.</span></a>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <nav class="page-nav">
+    <a class="page-nav__prev" href="delegation.html">← Delegation rules</a>
+    <a class="page-nav__next" href="delegation.html">Delegation rules →</a>
+  </nav>
+</main>
+
+<footer>
+  <div class="container">
+    <p>&copy; 2026 <span data-brand>Tracopus</span>. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="../js/palette.js?v=20260619e"></script>
+<script src="../js/brand.js?v=20260619e"></script>
+<script src="../js/docs-utility-config.js?v=20260720b"></script>
+<script src="../js/nav-config.js?v=20260906a"></script>
+<script src="../js/navigation.js?v=20260912f"></script>
+<script src="../js/site-enhancements.js?v=20260906a"></script>
+<script src="../js/search.js?v=20260619e"></script>
+<script type="module">
+  import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+  mermaid.initialize({
+    startOnLoad: true,
+    theme: "base",
+    securityLevel: "loose",
+    flowchart: { curve: "basis", htmlLabels: true },
+    themeVariables: {
+      primaryColor: "#d8f3dc",
+      primaryTextColor: "#1b4332",
+      primaryBorderColor: "#40916c",
+      lineColor: "#52796f",
+      secondaryColor: "#f1faee",
+      tertiaryColor: "#ffffff",
+      fontFamily: "Inter, system-ui, sans-serif",
+    },
+  });
+  setTimeout(() => {
+    if (window.TracopusDocsDiagrams) window.TracopusDocsDiagrams.boot();
+  }, 600);
+</script>
+<script src="../js/docs-diagrams.js?v=20260718e"></script>
+</body>
+</html>

@@ -1037,6 +1037,107 @@
     ],
     "screenDoc": "hrms/timesheet.html"
   },
+  "hrms-timesheet-governance": {
+    "context": "When Work-Time Governance catalog features are effective, the timesheet grid still uses the protected submit/approve workflow. With timesheet.reminders or timesheet.late-workflow on, the page loads a server deadline preview for the selected week. WARN allows submit with hints; BLOCK disables submit. When late-workflow requires a reason, Submit shows a late-reason field. Reminder emails also need timesheetSubmissionReminderEnabled. Period lock needs lockAfterDays > 0 and job TIMESHEET_PERIOD_LOCK.",
+    "summary": "Submit weekly hours with Work-Time Governance validation, deadline preview, and optional late reason.",
+    "permissions": [
+      {
+        "name": "Time entry",
+        "path": "timeSheet.enableTimeSheetEntry",
+        "level": "Complete",
+        "notes": "Same protected timesheet permission as standard submit."
+      },
+      {
+        "name": "Approval workflow",
+        "path": "timeSheet.enableTimeSheetApproval",
+        "level": "Submit",
+        "notes": "Requires timesheetApprovalEnabled org flag."
+      },
+      {
+        "name": "Timesheet module",
+        "path": "hrmsModules.timesheetEnabled",
+        "level": "Active",
+        "notes": "Module and entry flags both required."
+      }
+    ],
+    "featureFlags": [
+      {
+        "flag": "timesheet.validation",
+        "group": "workTimeTimesheetGovernance",
+        "whenEnabled": "WARN or BLOCK validation runs before submit; banner visible.",
+        "whenDisabled": "Existing timesheet hints only; no governance validation pipeline."
+      },
+      {
+        "flag": "timesheet.reminders",
+        "group": "workTimeTimesheetGovernance",
+        "whenEnabled": "Deadline preview uses work-time cut-off and reminder offsets (default Friday 18:00 UTC, 3/1/0).",
+        "whenDisabled": "Preview stays disabled unless late-workflow is on; emails may still use the older timesheet cut-off if the master reminder flag is on."
+      },
+      {
+        "flag": "timesheet.late-workflow",
+        "group": "workTimeTimesheetGovernance",
+        "whenEnabled": "After cut-off, late reason is shown and required; ≤7 days vs later bands choose the approval path.",
+        "whenDisabled": "Late-reason field is not shown."
+      },
+      {
+        "flag": "timesheet.period-lock",
+        "group": "workTimeTimesheetGovernance",
+        "whenEnabled": "Auto-lock after lockAfterDays (often 7) when TIMESHEET_PERIOD_LOCK runs; reopen can require a reason.",
+        "whenDisabled": "Work-time period lock does not run; disableLastMonthAfterXDays still applies."
+      },
+      {
+        "flag": "approvalChainFallbackLegacy",
+        "group": "workTimeApprovalGovernance",
+        "whenEnabled": "Manager approval path remains until a TIMESHEET chain policy is published.",
+        "whenDisabled": "Chain engine requires a published policy or submit has no chain fallback."
+      }
+    ],
+    "behaviorChanges": [
+      {
+        "role": "Individual contributor",
+        "effect": "Sees deadline preview, governance banner, and late-reason when late-workflow requires it.",
+        "notes": "Submit still uses the same button as the standard timesheet."
+      },
+      {
+        "role": "Manager",
+        "effect": "Approves via existing pending panel or inbox; late bands may route to business-unit / finance chains when published.",
+        "notes": "Legacy fallback keeps manager approval working."
+      },
+      {
+        "role": "Platform admin",
+        "effect": "Turns features on from Feature Flags; blocked state means role or dependency failed.",
+        "notes": "Pilot on a child org unit first."
+      }
+    ],
+    "warnings": [
+      {
+        "type": "note",
+        "title": "Master reminder flag",
+        "text": "Catalog timesheet.reminders alone does not send emails. timesheetSubmissionReminderEnabled must also be on."
+      },
+      {
+        "type": "note",
+        "title": "Fail closed",
+        "text": "If reminders and late-workflow are both off, deadline preview is DISABLED and not late — the UI does not invent lateness."
+      }
+    ],
+    "considerations": [
+      "Catalog defaults are off until Application Config enables them.",
+      "Enable approval.chain before reminders / late-workflow.",
+      "Do not treat attendance resolve as a matrix write.",
+      "Coordinate WARN vs BLOCK with payroll cutoff communication."
+    ],
+    "verify": [
+      "Deadline preview refreshes when the selected week or team changes.",
+      "WARN issues still allow Submit.",
+      "BLOCK issues disable Submit.",
+      "Late week with late-workflow on shows late-reason; Other requires detail.",
+      "On-time week after a late submit does not keep the prior late reason.",
+      "Manager still receives the existing approval item when legacy fallback is on.",
+      "Rejected weeks remain editable on the same timesheet screen."
+    ],
+    "screenDoc": "hrms/work-time-governance.html"
+  },
   "hrms-approve-timesheet": {
     "context": "Managers and delegates approve or reject submitted timesheets from Timesheet pending panel or Workspace → Approvals. With partialWeekSubmissionEnabled off, act on the whole week. With the flag on, act on each submission batch (approve/reject by submissionId); leftover draft days are not in that decision. Review hours, check conflicts, and optionally trigger payroll lock when the week is fully approved.",
     "summary": "Approve or reject submitted timesheet weeks or day batches with optional payroll lock.",
@@ -4993,6 +5094,178 @@
       "Error rate stable after enable window."
     ],
     "screenDoc": "admin.html"
+  },
+  "admin-work-time-governance": {
+    "context": "Platform admins enable Work-Time Governance from Admin → Feature flags. The catalog is code-owned and default-off. Application Config stores tenant choices. Resolver order is catalog → App Config → optional project override → role AND → dependency AND. Feature Flags requires adminGovernanceEnabled and featureFlagsAdminEnabled.",
+    "summary": "Turn Work-Time Governance catalog features on from Feature Flags without a deploy.",
+    "permissions": [
+      {
+        "name": "Feature flags admin",
+        "path": "adminModules.featureFlagsEnabled",
+        "level": "Admin",
+        "notes": "Requires featureFlagsAdminEnabled under adminGovernanceEnabled."
+      },
+      {
+        "name": "Admin governance",
+        "path": "adminGovernanceEnabled",
+        "level": "Master",
+        "notes": "Master admin governance switch."
+      },
+      {
+        "name": "App config",
+        "path": "hrmsModules.appconfigEnabled",
+        "level": "Alternate",
+        "notes": "Catalog choices persist on the HRMS Application Config module."
+      }
+    ],
+    "featureFlags": [
+      {
+        "flag": "featureFlagsAdminEnabled",
+        "group": "tracopusAdminAdditional",
+        "whenEnabled": "Admin → Feature flags route and Work-Time Governance panel are reachable.",
+        "whenDisabled": "Panel hidden; catalog stays at last saved Application Config values."
+      },
+      {
+        "flag": "adminGovernanceEnabled",
+        "group": "tracopusAdminAdditional",
+        "whenEnabled": "Admin rail visible for platform admins.",
+        "whenDisabled": "Feature flag UI hidden entirely."
+      },
+      {
+        "flag": "approval.chain",
+        "group": "workTimeApprovalGovernance",
+        "whenEnabled": "Chain engine available; still needs a published policy or legacy fallback.",
+        "whenDisabled": "Existing manager timesheet approval only."
+      }
+    ],
+    "behaviorChanges": [
+      {
+        "role": "Platform admin",
+        "effect": "Sees Enabled / Blocked / Off per feature; can set project overrides.",
+        "notes": "Blocked means the toggle is on but role or dependency failed."
+      },
+      {
+        "role": "Integration admin",
+        "effect": "Import/export appear only with integration features and role gates.",
+        "notes": "No bundled vendor adapter."
+      },
+      {
+        "role": "Individual contributor",
+        "effect": "No catalog editor; timesheet banner appears when timesheet features are effective.",
+        "notes": "Re-login or config refresh may be required."
+      }
+    ],
+    "warnings": [
+      {
+        "type": "danger",
+        "title": "Do not rewrite protected flows",
+        "text": "Leave, attendance matrix writes, timesheet approval, and Application Config merge stay as-is. Governance only adds catalog switches."
+      },
+      {
+        "type": "warning",
+        "title": "Dependencies AND role gates",
+        "text": "Escalation needs chain; FTE needs estimates; bulk actions need chain plus role. A selected feature can stay Blocked."
+      }
+    ],
+    "considerations": [
+      "Pilot on a child org unit before root enable.",
+      "Keep approvalChainFallbackLegacy true until a TIMESHEET chain policy exists.",
+      "Enable approval.chain before timesheet.reminders / late-workflow.",
+      "Set lockAfterDays > 0 and TIMESHEET_PERIOD_LOCK before expecting timesheet auto-lock.",
+      "attendance.period-lock has no lock service — do not enable it expecting attendance days to lock.",
+      "Attendance resolve is a composed read, not AttendanceModel write.",
+      "Document rollback by turning the catalog feature off."
+    ],
+    "verify": [
+      "Work-Time Governance panel lists families and features.",
+      "Saving a feature updates Application Config.",
+      "Dependent feature stays Blocked until parent is Enabled.",
+      "Project override applies only to the entered project id.",
+      "Deleting the override restores team inheritance.",
+      "Test contributor sees deadline preview / late-reason when reminders and late-workflow are on."
+    ],
+    "screenDoc": "hrms/work-time-governance.html"
+  },
+  "integrations-worktime-sync": {
+    "context": "Vendor-neutral project import and timesheet export adapters sit behind Work-Time Governance catalog features. They require explicit enablement, connector mapping, and least-privilege scopes. They do not replace Purchase Order → Project as the delivery source, and they do not include a named vendor project-tracking adapter or dead-letter queue until a connector provides one.",
+    "summary": "Import projects or export timesheets through generic adapters after catalog and role gates are on.",
+    "permissions": [
+      {
+        "name": "Project import",
+        "path": "workTimeIntegrationRoles.projectImportAllowed",
+        "level": "Admin",
+        "notes": "Role gate ANDed with integration.project-import."
+      },
+      {
+        "name": "Timesheet export",
+        "path": "workTimeIntegrationRoles.timesheetExportAllowed",
+        "level": "Admin",
+        "notes": "Role gate ANDed with integration.timesheet-export."
+      },
+      {
+        "name": "Feature flags admin",
+        "path": "adminModules.featureFlagsEnabled",
+        "level": "Admin",
+        "notes": "Confirm catalog effective state before running adapters."
+      }
+    ],
+    "featureFlags": [
+      {
+        "flag": "integration.project-import",
+        "group": "workTimeIntegration",
+        "whenEnabled": "Mapped project payloads can create or update projects idempotently.",
+        "whenDisabled": "Import API/UI stays off."
+      },
+      {
+        "flag": "integration.timesheet-export",
+        "group": "workTimeIntegration",
+        "whenEnabled": "Scoped timesheet export is allowed for permitted roles.",
+        "whenDisabled": "Use existing HRMS report export only."
+      }
+    ],
+    "behaviorChanges": [
+      {
+        "role": "Integration admin",
+        "effect": "Can run import/export when both catalog and role gates pass.",
+        "notes": "Least-privilege org/project scope still applies."
+      },
+      {
+        "role": "Project manager",
+        "effect": "Sees imported projects in the existing project list — no parallel register.",
+        "notes": "Source remains Purchase Order → Project when a PO exists."
+      },
+      {
+        "role": "Finance",
+        "effect": "Exported hours are the same Task Activity / timesheet rows used for billing.",
+        "notes": "Export is not a second hours store."
+      }
+    ],
+    "warnings": [
+      {
+        "type": "warning",
+        "title": "No bundled vendor adapter",
+        "text": "Generic APIs exist; a named vendor connector, delivery receipt, and DLQ are not included until configured."
+      },
+      {
+        "type": "danger",
+        "title": "Do not invent source tables",
+        "text": "Imported projects must land on Project; exported hours must come from timesheet activity."
+      }
+    ],
+    "considerations": [
+      "Map external ids before the first live import.",
+      "Test idempotent re-import on a pilot project.",
+      "Export scope must match timesheet RBAC.",
+      "Keep credentials in the integration hub, not in documentation."
+    ],
+    "verify": [
+      "Catalog features show Enabled for the admin role.",
+      "Import with the same external id does not duplicate the project.",
+      "Exported rows match the timesheet week for the scoped people.",
+      "Denied role cannot call import or export.",
+      "Failed mapping returns an adapter error rather than a silent skip."
+    ],
+    "screenDoc": "hrms/work-time-governance.html"
   },
   "mobile-login": {
     "context": "Field staff and mobile users install Tracopus Android app (com.infleca.device.tracopus) and sign in via Microsoft SSO or org credentials with same RBAC as web. Device registration may be required per HRMS Settings; QR link available from web device registration popup.",

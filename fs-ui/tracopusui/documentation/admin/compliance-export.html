@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en" data-lux-theme="luxury" data-lux-palette="emerald">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Compliance Export — Tracopus User Guide</title>
+  <meta name="description" content="Pack readiness and exportable evidence for audits — composed from live source entities.">
+  <meta name="keywords" content="tracopus, documentation, user guide, admin, compliance export">
+  <link rel="canonical" href="https://tracopus.com/documentation/admin/compliance-export.html">
+  <meta name="robots" content="index, follow">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Tracopus">
+  <meta property="og:title" content="Compliance Export — Tracopus User Guide">
+  <meta property="og:description" content="Pack readiness and exportable evidence for audits — composed from live source entities.">
+  <meta property="og:url" content="https://tracopus.com/documentation/admin/compliance-export.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Compliance Export — Tracopus User Guide">
+  <meta name="twitter:description" content="Pack readiness and exportable evidence for audits — composed from live source entities.">
+  <script src="../js/docs-analytics.js?v=20260719a" defer></script>
+  <link rel="stylesheet" href="../css/styles.css?v=20260912g">
+  <script src="../js/brand-config.js?v=20260619e"></script>
+</head>
+<body data-docs-depth="1">
+
+<header aria-label="Site header"></header>
+
+<main>
+  <div class="breadcrumb"><a href="../index.html">Home</a> → Admin → Compliance Export</div>
+
+  <div class="doc-canvas">
+    <header class="doc-mast">
+      <div class="doc-mast__top">
+        <span class="doc-mast__eyebrow">Admin · Compliance</span>
+        <div class="page-meta page-meta--inline">
+          <span class="page-meta__item"><strong>Route</strong> <code>/admin/compliance-export</code></span>
+          <span class="page-meta__item"><strong>Flag</strong> <code>complianceExportEnabled</code></span>
+        </div>
+      </div>
+      <h1 class="doc-mast__title">Compliance Export</h1>
+      <p class="doc-mast__lead">Pack readiness and exportable evidence for audits — composed from live source entities.</p>
+      <p class="doc-mast__purpose">Scroll to <a href="#flowcharts">Flowcharts</a>. Scenario: <a href="../user-guide/admin/admin-compliance-export.html">Export a compliance pack</a>.</p>
+    </header>
+
+    <section class="doc-briefing" id="at-a-glance" aria-labelledby="briefing-title">
+      <div class="doc-briefing__intro">
+        <p class="doc-briefing__kicker"><i class="fe fe-download" aria-hidden="true"></i> Evidence pack</p>
+        <h2 class="doc-briefing__title" id="briefing-title">Readiness composed from live entities</h2>
+        <p class="doc-briefing__lead">Compliance export packs readiness and exportable evidence for audits — composed from live source entities, not a warehouse you curate by hand.</p>
+        <div class="doc-briefing__signals" aria-label="Access and placement">
+          <span class="doc-briefing__signal">Admin → Compliance export</span>
+          <span class="doc-briefing__signal">Route <code>/admin/compliance-export</code></span>
+          <span class="doc-briefing__signal">Org flag <code>complianceExportEnabled</code></span>
+          <span class="doc-briefing__signal">HR Admin · Org Admin</span>
+        </div>
+      </div>
+      <div class="doc-briefing__grid">
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-zap"></i></span>
+          <div>
+            <h3>The job of this console</h3>
+            <p>See which evidence families are ready, run an export, and hand the pack to audit. Fix gaps in the owning consoles (retention, audit, policies), then re-export. Do not edit the pack as if it were a source.</p>
+          </div>
+        </article>
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-users"></i></span>
+          <div>
+            <h3>Seat at the table</h3>
+            <p>Administrators preparing an audit. External auditors receive the file; they do not open this console.</p>
+          </div>
+        </article>
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-play-circle"></i></span>
+          <div>
+            <h3>The working rhythm</h3>
+            <p>Read readiness, close gaps on source consoles, export, store the file in the audit binder. Repeat when the window changes.</p>
+          </div>
+        </article>
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-clock"></i></span>
+          <div>
+            <h3>Moments that bring you here</h3>
+            <p>SOC or customer security questionnaire. Year-end. After a retention hold. When a previous pack is stale because flags or policies changed.</p>
+          </div>
+        </article>
+      </div>
+      <div class="doc-briefing__note">
+        <div class="callout callout--note callout--interactive">
+          <div class="callout__icon">ⓘ</div>
+          <div class="callout__body">
+            <strong class="callout__title">Export is a snapshot</strong>
+            <div class="callout__text">The pack is not a second system of record. If a number looks wrong, fix Employee, policy, or audit at source and export again.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <div class="doc-flow">
+      <section class="doc-block" id="flowcharts">
+        <h2 class="doc-block__title">Flowcharts</h2>
+
+        <article class="diagram-card" data-diagram-autoplay="true">
+          <header class="diagram-card__head">
+            <div class="diagram-card__titles">
+              <h3>1 — Export an evidence pack</h3>
+              <p class="diagram-card__desc">Check pack readiness, generate the export, then store it with the auditor.</p>
+            </div>
+            <div class="diagram-card__controls">
+              <button type="button" data-diagram-prev aria-label="Previous step"><i class="fe fe-chevron-left" aria-hidden="true"></i></button>
+              <button type="button" data-diagram-play aria-pressed="false"><i class="fe fe-play" aria-hidden="true"></i><span>Play</span></button>
+              <button type="button" data-diagram-next aria-label="Next step"><i class="fe fe-chevron-right" aria-hidden="true"></i></button>
+            </div>
+          </header>
+          <div class="diagram-card__chart">
+            <pre class="mermaid">
+flowchart TD
+  A[Open Compliance export] --> B[Review pack readiness]
+  B --> C[Select a pack]
+  C --> D[Generate export]
+  D --> E[Download]
+  E --> F[Retain with auditor]
+            </pre>
+          </div>
+          <ol class="diagram-steps">
+            <li class="diagram-step is-active"><span class="diagram-step__index">1</span><div class="diagram-step__body"><strong>Open Compliance export</strong><span>Admin → Compliance export.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">2</span><div class="diagram-step__body"><strong>Readiness</strong><span>Missing source data shows as incomplete packs.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">3</span><div class="diagram-step__body"><strong>Generate</strong><span>Export uses live Employee, audit, and related sources.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">4</span><div class="diagram-step__body"><strong>Store externally</strong><span>The pack is evidence, not a new system of record.</span></div></li>
+          </ol>
+          <p class="diagram-card__progress" data-diagram-progress></p>
+        </article>
+      </section>
+
+      <section class="doc-block" id="overview">
+        <h2 class="doc-block__title">Overview</h2>
+        <p>Packs compose from canonical services. Persona masking still applies — do not unmask salary or bank data in the file.</p>
+      </section>
+
+      <section class="doc-block" id="how-to">
+        <h2 class="doc-block__title">How to use</h2>
+        <div class="steps">
+          <div class="step"><strong>1. Fix readiness first</strong><div class="step-detail">Incomplete packs usually mean flags or retention gaps.</div></div>
+          <div class="step"><strong>2. Masking still applies</strong><div class="step-detail">Exports honor Security masking policy.</div></div>
+          <div class="step"><strong>3. Audit the download</strong><div class="step-detail">Treat the file as sensitive.</div></div>
+        </div>
+      </section>
+
+      <section class="doc-block doc-block--related" id="related-pages">
+        <h2 class="doc-block__title">Related pages</h2>
+        <div class="related-links">
+          <a class="related-link" href="audit.html"><span class="related-link__label">Audit &amp; compliance</span><span class="related-link__desc">Event evidence.</span></a>
+          <a class="related-link" href="data-retention.html"><span class="related-link__label">Data retention</span><span class="related-link__desc">What still exists to export.</span></a>
+          <a class="related-link" href="security.html"><span class="related-link__label">Masking policy</span><span class="related-link__desc">What the pack may reveal.</span></a>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <nav class="page-nav">
+    <a class="page-nav__prev" href="data-retention.html">← Data retention</a>
+    <a class="page-nav__next" href="audit.html">Audit →</a>
+  </nav>
+</main>
+
+<footer>
+  <div class="container">
+    <p>&copy; 2026 <span data-brand>Tracopus</span>. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="../js/palette.js?v=20260619e"></script>
+<script src="../js/brand.js?v=20260619e"></script>
+<script src="../js/docs-utility-config.js?v=20260720b"></script>
+<script src="../js/nav-config.js?v=20260906a"></script>
+<script src="../js/navigation.js?v=20260912f"></script>
+<script src="../js/site-enhancements.js?v=20260906a"></script>
+<script src="../js/search.js?v=20260619e"></script>
+<script type="module">
+  import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+  mermaid.initialize({
+    startOnLoad: true,
+    theme: "base",
+    securityLevel: "loose",
+    flowchart: { curve: "basis", htmlLabels: true },
+    themeVariables: {
+      primaryColor: "#d8f3dc",
+      primaryTextColor: "#1b4332",
+      primaryBorderColor: "#40916c",
+      lineColor: "#52796f",
+      secondaryColor: "#f1faee",
+      tertiaryColor: "#ffffff",
+      fontFamily: "Inter, system-ui, sans-serif",
+    },
+  });
+  setTimeout(() => {
+    if (window.TracopusDocsDiagrams) window.TracopusDocsDiagrams.boot();
+  }, 600);
+</script>
+<script src="../js/docs-diagrams.js?v=20260718e"></script>
+</body>
+</html>

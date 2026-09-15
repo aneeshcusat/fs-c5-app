@@ -22,7 +22,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/styles.css?v=20260718g">
+  <link rel="stylesheet" href="../css/styles.css?v=20260912g">
   <script src="../js/brand-config.js?v=20260619e"></script>
 </head>
 <body data-docs-depth="1">
@@ -47,6 +47,59 @@
     <p class="doc-mast__lead">Manage project deliverables (tasks) before drilling into granular work items.</p>
     <p class="doc-mast__purpose">Deliverable register for a project with status tracking, assignment, and estimate comparisons.</p>
   </header>
+
+    <section class="doc-briefing" id="at-a-glance" aria-labelledby="briefing-title">
+      <div class="doc-briefing__intro">
+        <p class="doc-briefing__kicker"><i class="fe fe-check-square" aria-hidden="true"></i> Delivery units</p>
+        <h2 class="doc-briefing__title" id="briefing-title">Tasks on a project — before the finer work items</h2>
+        <p class="doc-briefing__lead">Deliverables are project tasks: the delivery units you manage before drilling into granular work items. In Tracopus, deliverable means Task unless a separate Deliverable model exists — it does not.</p>
+        <div class="doc-briefing__signals" aria-label="Access and placement">
+          <span class="doc-briefing__signal">Projects → project → deliverables</span>
+          <span class="doc-briefing__signal">Route <code>/project/deliverables/:projectId</code></span>
+          <span class="doc-briefing__signal">Project Manager · Contributor</span>
+        </div>
+      </div>
+      <div class="doc-briefing__grid">
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-zap"></i></span>
+          <div>
+            <h3>The job of this console</h3>
+            <p>Create and sequence tasks, assign, then drill into work items for hours and micro-status. Do not invent a parallel ‘deliverable’ spreadsheet.</p>
+          </div>
+        </article>
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-users"></i></span>
+          <div>
+            <h3>Seat at the table</h3>
+            <p>The project team. Resource managers care about assignment load on capacity, not this list alone.</p>
+          </div>
+        </article>
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-play-circle"></i></span>
+          <div>
+            <h3>The working rhythm</h3>
+            <p>Open a project’s deliverables, add or edit a task, then open work items or the board. Timesheet rows should point at this work.</p>
+          </div>
+        </article>
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-clock"></i></span>
+          <div>
+            <h3>Moments that bring you here</h3>
+            <p>Scope breakdown. A missed task blocking a milestone. After a PO change. When someone says WBS — start here.</p>
+          </div>
+        </article>
+      </div>
+      <div class="doc-briefing__note">
+        <div class="callout callout--note callout--interactive">
+          <div class="callout__icon">ⓘ</div>
+          <div class="callout__body">
+            <strong class="callout__title">Deliverable = Task</strong>
+            <div class="callout__text">Naming in UI may say deliverable; the source is Task. Work items are TaskActivity.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
 
   <div class="doc-flow">
     <section class="doc-block" id="overview"><h2 class="doc-block__title">Overview</h2><p>Deliverables sit between projects and work items in the hierarchy. They define accountable outputs and timeline checkpoints.</p></section>
@@ -95,9 +148,9 @@
 <script src="../js/palette.js?v=20260619e"></script>
 <script src="../js/brand.js?v=20260619e"></script>
 <script src="../js/docs-utility-config.js?v=20260720b"></script>
-<script src="../js/nav-config.js?v=20260619e"></script>
-<script src="../js/navigation.js?v=20260619e"></script>
-<script src="../js/site-enhancements.js?v=20260718d"></script>
+<script src="../js/nav-config.js?v=20260906a"></script>
+<script src="../js/navigation.js?v=20260912f"></script>
+<script src="../js/site-enhancements.js?v=20260906a"></script>
 <script src="../js/search.js?v=20260619e"></script>
 </body>
 </html>

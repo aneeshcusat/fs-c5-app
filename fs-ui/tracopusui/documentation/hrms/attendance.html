@@ -17,7 +17,7 @@
   <meta name="twitter:title" content="Attendance — Tracopus User Guide">
   <meta name="twitter:description" content="Month matrix for present / absent / leave, manager approvals, regularization requests, leave-to-attendance sync, and soft payroll lock (no matrix export).">
   <script src="../js/docs-analytics.js?v=20260719a" defer></script>
-  <link rel="stylesheet" href="../css/styles.css?v=20260718g">
+  <link rel="stylesheet" href="../css/styles.css?v=20260912g">
   <link rel="stylesheet" href="../css/data-flow-bridge.css?v=20260724d">
   <script src="../js/brand-config.js?v=20260619e"></script>
 </head>
@@ -41,6 +41,59 @@
       <p class="doc-mast__lead">Month matrix for present / absent / leave, manager approvals, regularization requests, leave-to-attendance sync, and soft payroll lock (no matrix export).</p>
       <p class="doc-mast__purpose">Scroll to <a href="#flowcharts">Flowcharts</a> for animated step-by-step diagrams. Related: <a href="leaves.html">Leave Management</a>.</p>
     </header>
+
+    <section class="doc-briefing" id="at-a-glance" aria-labelledby="briefing-title">
+      <div class="doc-briefing__intro">
+        <p class="doc-briefing__kicker"><i class="fe fe-check-circle" aria-hidden="true"></i> Month matrix</p>
+        <h2 class="doc-briefing__title" id="briefing-title">Present, absent, leave — the month payroll can lock</h2>
+        <p class="doc-briefing__lead">Attendance is the month matrix for present / absent / leave, manager approvals, regularization, leave-to-attendance sync, and a soft payroll lock. It is not a badge-swipe raw dump.</p>
+        <div class="doc-briefing__signals" aria-label="Access and placement">
+          <span class="doc-briefing__signal">People → Attendance</span>
+          <span class="doc-briefing__signal">Route <code>/hrms/attendance</code></span>
+          <span class="doc-briefing__signal">Employee · Manager · HR Admin</span>
+        </div>
+      </div>
+      <div class="doc-briefing__grid">
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-zap"></i></span>
+          <div>
+            <h3>The job of this console</h3>
+            <p>Mark or regularize a day, approve a team matrix, and understand when a period is soft-locked for payroll. Leave already approved should sync; do not double-enter it as absence.</p>
+          </div>
+        </article>
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-users"></i></span>
+          <div>
+            <h3>Seat at the table</h3>
+            <p>Employees see self. Managers approve their team. HR sees wider scope. Payroll reads this after lock — they do not edit cells here as a ledger.</p>
+          </div>
+        </article>
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-play-circle"></i></span>
+          <div>
+            <h3>The working rhythm</h3>
+            <p>Open the month, filter the team, regularize or approve, confirm leave sync, then treat lock as the freeze before pay. Use shift policies for working-week context.</p>
+          </div>
+        </article>
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-clock"></i></span>
+          <div>
+            <h3>Moments that bring you here</h3>
+            <p>Missed punch. A leave day that did not flow into the matrix. Month-end before payroll. After a holiday calendar change.</p>
+          </div>
+        </article>
+      </div>
+      <div class="doc-briefing__note">
+        <div class="callout callout--note callout--interactive">
+          <div class="callout__icon">ⓘ</div>
+          <div class="callout__body">
+            <strong class="callout__title">Protected production flow</strong>
+            <div class="callout__text">Approvals and lock behave as the live attendance engine. This how-to explains the screen; it does not replace the matrix as source.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
 
     <div class="doc-flow">
       <section class="doc-block doc-block--data-flow-bridge" id="interactive-data-flow">
@@ -225,6 +278,7 @@ flowchart TD
       <section class="doc-block" id="overview">
         <h2 class="doc-block__title">Overview</h2>
         <p><strong>HRMS → Attendance</strong> is the month-at-a-glance control surface for who was present, absent, on leave, or needs correction. Managers mark cells, approve pending items, and (when enabled) process regularization. Approved leave can auto-write attendance when <code>leaveAutoSyncToAttendance</code> is on.</p>
+        <p><a href="work-time-governance.html">Work-Time Governance</a> can ingest swipe evidence and compose a read-only source (leave → swipe → timesheet WFH → regularization). That compose API does <strong>not</strong> write this matrix and does not invent entry/exit times from hours-only timesheets. <code>attendance.period-lock</code> is catalogued but has <strong>no lock service</strong> yet — do not accept it as active. A complete ACS / device feed still needs the client vendor API; overnight pairing is limited, not full shift windows.</p>
       </section>
 
       <section class="doc-block" id="layout">
@@ -245,6 +299,8 @@ flowchart TD
           <li>Role: <code>hrmsModules.attendanceEnabled</code> + attendance CRUD as needed.</li>
           <li>Org: <code>attendanceAdditional.attendanceRegularizationEnabled</code> for regularization flows.</li>
           <li>Org: <code>leaveAdditional.leaveAutoSyncToAttendance</code> for leave → attendance writes.</li>
+          <li>Work-Time catalog (Feature Flags): <code>attendance.swipe-ingest</code>, <code>attendance.source-resolution</code>, <code>attendance.timesheet-wfh</code>, <code>attendance.cross-midnight</code> — all default off until enabled.</li>
+          <li>Do not rely on <code>attendance.period-lock</code> — no lock service is shipped for that flag.</li>
           <li>Optional: shift policies (<code>/admin/shift-policies</code>), holidays (<a href="leave-configuration.html#holidays">Leave Configuration → Holidays</a>), delegation for approvers away.</li>
         </ul>
       </section>
@@ -300,6 +356,7 @@ flowchart TD
           <a class="related-link" href="leaves.html"><span class="related-link__label">Leave Management</span><span class="related-link__desc">Apply/approve leave; can sync into attendance.</span></a>
           <a class="related-link" href="leave-configuration.html"><span class="related-link__label">Leave Configuration</span><span class="related-link__desc">Holidays and leaveAutoSyncToAttendance flag.</span></a>
           <a class="related-link" href="timesheet.html"><span class="related-link__label">Timesheet</span><span class="related-link__desc">Leave hours should align with matrix leave markers.</span></a>
+          <a class="related-link" href="work-time-governance.html"><span class="related-link__label">Work-Time Governance</span><span class="related-link__desc">Swipe ingest and composed attendance read.</span></a>
           <a class="related-link" href="../user-guide/hrms/hrms-mark-attendance.html"><span class="related-link__label">Scenario: Mark attendance</span><span class="related-link__desc">Step-by-step mark flow.</span></a>
           <a class="related-link" href="../user-guide/hrms/hrms-approve-attendance.html"><span class="related-link__label">Scenario: Approve attendance</span><span class="related-link__desc">Manager approval path.</span></a>
         </div>
@@ -322,9 +379,9 @@ flowchart TD
 <script src="../js/palette.js?v=20260619e"></script>
 <script src="../js/brand.js?v=20260619e"></script>
 <script src="../js/docs-utility-config.js?v=20260720b"></script>
-<script src="../js/nav-config.js?v=20260619e"></script>
-<script src="../js/navigation.js?v=20260619e"></script>
-<script src="../js/site-enhancements.js?v=20260718d"></script>
+<script src="../js/nav-config.js?v=20260906a"></script>
+<script src="../js/navigation.js?v=20260912f"></script>
+<script src="../js/site-enhancements.js?v=20260906a"></script>
 <script src="../js/search.js?v=20260619e"></script>
 <script type="module">
   import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";

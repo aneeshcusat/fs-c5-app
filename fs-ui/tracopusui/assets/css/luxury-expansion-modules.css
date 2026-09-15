@@ -5299,6 +5299,22 @@
   margin-top: 0.35rem;
 }
 
+.lux-admin-summary__analytics.lux-po-summary__analytics--primary {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.55rem;
+}
+
+.lux-admin-summary__analytics.lux-po-summary__analytics--primary > :only-child {
+  grid-column: 1 / -1;
+}
+
+@media (max-width: 900px) {
+  .lux-admin-summary__analytics.lux-po-summary__analytics--primary {
+    grid-template-columns: 1fr;
+  }
+}
+
 .lux-admin-summary__series {
   margin: 0;
   padding: 0;
@@ -5350,6 +5366,11 @@
   color: #1d4ed8;
 }
 
+.lux-admin-summary__series-icon.is-sky {
+  background: rgba(14, 165, 233, 0.14);
+  color: #0369a1;
+}
+
 .lux-admin-summary__series-icon.is-green,
 .lux-admin-summary__series-icon.is-mint {
   background: rgba(16, 185, 129, 0.12);
@@ -5389,7 +5410,8 @@
   background: linear-gradient(90deg, #fbbf24, #d97706);
 }
 
-.lux-admin-summary__series-fill.is-blue {
+.lux-admin-summary__series-fill.is-blue,
+.lux-admin-summary__series-fill.is-sky {
   background: linear-gradient(90deg, #38bdf8, #0284c7);
 }
 
@@ -9355,6 +9377,55 @@
 
 .lux-admin-atelier--ntpl.lux-admin-atelier--compact .lux-admin-atelier__count strong {
   color: #0369a1;
+}
+
+.lux-admin-summary--ntpl .lux-admin-summary__analytics {
+  margin-top: 0.55rem;
+}
+
+.lux-admin-summary--ntpl .lux-admin-summary__series-panel {
+  min-height: 100%;
+  border: 1px solid var(--lux-border);
+  border-radius: 14px;
+  padding: 0.6rem 0.7rem 0.65rem;
+  background:
+    radial-gradient(120% 80% at 0% 0%, rgba(var(--lux-primary-rgb, 5, 150, 105), 0.08), transparent 52%),
+    linear-gradient(180deg, var(--lux-surface), rgba(248, 250, 252, 0.94));
+  box-shadow: var(--lux-shadow-sm);
+}
+
+.lux-admin-summary--ntpl .lux-bid-summary__panel-title {
+  color: var(--lux-text);
+  letter-spacing: 0.03em;
+}
+
+.lux-admin-summary--ntpl .lux-bid-summary__panel-sub {
+  color: var(--lux-muted);
+  font-size: var(--lux-text-sm);
+}
+
+.lux-admin-summary--ntpl .lux-admin-summary__series {
+  gap: 0.48rem;
+}
+
+.lux-admin-summary--ntpl .lux-admin-summary__series-label {
+  color: var(--lux-text);
+  font-size: var(--lux-text-md);
+}
+
+.lux-admin-summary--ntpl .lux-admin-summary__series-label em {
+  color: var(--lux-muted);
+}
+
+.lux-admin-summary--ntpl .lux-admin-summary__series-track {
+  height: 0.46rem;
+  background: rgba(148, 163, 184, 0.18);
+}
+
+body.lux-shell-dark .lux-admin-summary--ntpl .lux-admin-summary__series-panel {
+  background:
+    radial-gradient(120% 80% at 0% 0%, rgba(var(--lux-primary-rgb, 5, 150, 105), 0.18), transparent 52%),
+    var(--lux-surface);
 }
 
 .lux-ntpl-eyebrow {
@@ -15696,6 +15767,156 @@ button.auth-screen__footer-link:focus {
   }
 }
 
+.lux-whats-new-modal__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.lux-whats-new-modal__history {
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  color: var(--lux-primary-dark, #3730a3);
+  text-decoration: none;
+}
+
+.lux-whats-new-modal__history:hover {
+  text-decoration: none;
+  color: var(--lux-primary, #5b5ff4);
+}
+
+.lux-release-history {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.lux-release-history__item {
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  border-radius: 14px;
+  background: rgba(248, 250, 252, 0.88);
+  padding: 0.75rem 0.85rem 0.7rem;
+}
+
+.lux-release-history__item.is-current {
+  border-color: rgba(var(--lux-primary-rgb, 91, 95, 244), 0.28);
+  background:
+    radial-gradient(120% 80% at 0% 0%, rgba(var(--lux-primary-rgb, 91, 95, 244), 0.1), transparent 50%),
+    rgba(255, 255, 255, 0.96);
+}
+
+.lux-release-history__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.6rem;
+  margin-bottom: 0.45rem;
+}
+
+.lux-release-history__version {
+  margin: 0;
+  font-size: 0.92rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: #0f172a;
+}
+
+.lux-release-history__date {
+  margin: 0.1rem 0 0;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #64748b;
+}
+
+.lux-release-history__badge {
+  flex-shrink: 0;
+  border-radius: 999px;
+  padding: 0.12rem 0.45rem;
+  background: linear-gradient(135deg, var(--lux-primary, #5b5ff4), var(--lux-primary-dark, #3730a3));
+  color: #fff;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.lux-release-history__highlights {
+  margin: 0;
+  padding-left: 1.05rem;
+  color: #334155;
+  font-size: 0.82rem;
+  line-height: 1.45;
+}
+
+.lux-release-history__highlights li + li {
+  margin-top: 0.28rem;
+}
+
+.lux-release-history__empty,
+.lux-release-history__empty-notes {
+  margin: 0;
+  font-size: 0.82rem;
+  color: #64748b;
+}
+
+.lux-release-history.is-compact .lux-release-history__item {
+  padding: 0.65rem 0.75rem;
+}
+
+.lux-version-history-page__panel {
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.82);
+  padding: 0.9rem 1rem 1rem;
+}
+
+.lux-version-history-page__panel-head {
+  margin-bottom: 0.85rem;
+}
+
+.lux-version-history-page__panel-title {
+  margin: 0;
+  font-size: 0.98rem;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.lux-version-history-page__panel-sub {
+  margin: 0.2rem 0 0;
+  font-size: 0.78rem;
+  color: #64748b;
+}
+
+body.lux-shell-dark .lux-release-history__item,
+body.lux-shell-dark .lux-version-history-page__panel {
+  border-color: rgba(51, 65, 85, 0.9);
+  background: rgba(15, 23, 42, 0.72);
+}
+
+body.lux-shell-dark .lux-release-history__item.is-current {
+  border-color: rgba(129, 140, 248, 0.4);
+  background: rgba(30, 41, 59, 0.88);
+}
+
+body.lux-shell-dark .lux-release-history__version,
+body.lux-shell-dark .lux-version-history-page__panel-title {
+  color: #e2e8f0;
+}
+
+body.lux-shell-dark .lux-release-history__highlights {
+  color: #cbd5e1;
+}
+
+body.lux-shell-dark .lux-whats-new-modal__history {
+  color: #c7d2fe;
+}
+
 /* —— Assign work popup (Team capacity) — luxury compact shell —— */
 .lux-planner-assign-lux.lux-create-panel {
   border-left: 1px solid rgba(99, 102, 241, 0.14);
@@ -16277,4 +16498,34 @@ body.lux-shell-dark .lux-page-header__refresh-btn-icon {
 
 #left-sidebar.lux-sidebar .lux-module-rail__btn.is-active .lux-module-rail__icon i {
   filter: saturate(1.15);
+}
+
+/* Nested Application Config JSON (timesheet lateBands, validation maps) */
+.lux-ac-config-block__field-row--nested {
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.lux-ac-config-block__field-row--nested .lux-ac-config-block__field-label {
+  flex: 0 0 auto;
+}
+
+.lux-ac-config-block__field-value--nested {
+  width: 100%;
+  flex: 1 1 100%;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.35rem;
+}
+
+.lux-ac-config-block__nested-json {
+  width: 100%;
+  min-height: 7.5rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 0.72rem;
+  line-height: 1.4;
+  white-space: pre;
+  background: var(--lux-surface-muted, rgba(248, 250, 252, 0.95));
+  color: var(--lux-text, #0f172a);
 }

@@ -22,7 +22,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/styles.css?v=20260718g">
+  <link rel="stylesheet" href="../css/styles.css?v=20260912g">
   <script src="../js/brand-config.js?v=20260619e"></script>
 </head>
 <body data-docs-depth="1">
@@ -47,6 +47,59 @@
     <p class="doc-mast__lead">Two-tab dashboard: My dashboard for individuals and Team dashboard for managers with org-wide workforce analytics.</p>
     <p class="doc-mast__purpose">Personal and team analytics — attendance, utilization, task mix, and workforce demographics for managers.</p>
   </header>
+
+    <section class="doc-briefing" id="at-a-glance" aria-labelledby="briefing-title">
+      <div class="doc-briefing__intro">
+        <p class="doc-briefing__kicker"><i class="fe fe-home" aria-hidden="true"></i> Two-tab people tower</p>
+        <h2 class="doc-briefing__title" id="briefing-title">My numbers, then the team’s — still the same employees</h2>
+        <p class="doc-briefing__lead">The employee dashboard has two tabs: My dashboard for individuals and Team dashboard for managers with workforce analytics. Both read live Employee, leave, attendance, and timesheet — they do not keep a second headcount.</p>
+        <div class="doc-briefing__signals" aria-label="Access and placement">
+          <span class="doc-briefing__signal">People → HR dashboard</span>
+          <span class="doc-briefing__signal">Route <code>/hrms/dashboard</code></span>
+          <span class="doc-briefing__signal">Employee (self) · Manager / HR (team)</span>
+        </div>
+      </div>
+      <div class="doc-briefing__grid">
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-zap"></i></span>
+          <div>
+            <h3>The job of this console</h3>
+            <p>See personal time and leave posture, or switch to team analytics when you manage people. Drill into leave, timesheet, or the directory rather than treating a chart as editable.</p>
+          </div>
+        </article>
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-users"></i></span>
+          <div>
+            <h3>Seat at the table</h3>
+            <p>Every employee gets My dashboard. Team dashboard is for managers, HR, and executives whose persona can open it. Admin towers stay under Admin.</p>
+          </div>
+        </article>
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-play-circle"></i></span>
+          <div>
+            <h3>The working rhythm</h3>
+            <p>Open People dashboard, read the active tab, follow a card into the owning register, act there, return. Managers switch tab instead of opening a different product.</p>
+          </div>
+        </article>
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-clock"></i></span>
+          <div>
+            <h3>Moments that bring you here</h3>
+            <p>Monday personal scan. A manager preparing 1:1s. HR looking at team leave load. Not for payroll totals — that is Payroll and Finance.</p>
+          </div>
+        </article>
+      </div>
+      <div class="doc-briefing__note">
+        <div class="callout callout--note callout--interactive">
+          <div class="callout__icon">ⓘ</div>
+          <div class="callout__body">
+            <strong class="callout__title">Charts are views of HRMS sources</strong>
+            <div class="callout__text">Headcount, leave, and hours come from Employee, leave, attendance, and timesheet. Correct the source screen if a number looks wrong.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
 
   <div class="doc-flow">
     
@@ -312,9 +365,9 @@ flowchart TD
 <script src="../js/palette.js?v=20260619e"></script>
 <script src="../js/brand.js?v=20260619e"></script>
 <script src="../js/docs-utility-config.js?v=20260720b"></script>
-<script src="../js/nav-config.js?v=20260619e"></script>
-<script src="../js/navigation.js?v=20260619e"></script>
-<script src="../js/site-enhancements.js?v=20260718d"></script>
+<script src="../js/nav-config.js?v=20260906a"></script>
+<script src="../js/navigation.js?v=20260912f"></script>
+<script src="../js/site-enhancements.js?v=20260906a"></script>
 <script src="../js/search.js?v=20260619e"></script>
 <script type="module">
   import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";

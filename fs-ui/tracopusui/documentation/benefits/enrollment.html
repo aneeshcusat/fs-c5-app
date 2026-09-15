@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en" data-lux-theme="luxury" data-lux-palette="emerald">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Benefits Enrollment — Tracopus User Guide</title>
+  <meta name="description" content="Elections on Employee against published plans — self-service and HR assist, not a second people table.">
+  <meta name="keywords" content="tracopus, documentation, user guide, benefits, benefits enrollment">
+  <link rel="canonical" href="https://tracopus.com/documentation/benefits/enrollment.html">
+  <meta name="robots" content="index, follow">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Tracopus">
+  <meta property="og:title" content="Benefits Enrollment — Tracopus User Guide">
+  <meta property="og:description" content="Elections on Employee against published plans — self-service and HR assist, not a second people table.">
+  <meta property="og:url" content="https://tracopus.com/documentation/benefits/enrollment.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Benefits Enrollment — Tracopus User Guide">
+  <meta name="twitter:description" content="Elections on Employee against published plans — self-service and HR assist, not a second people table.">
+  <script src="../js/docs-analytics.js?v=20260719a" defer></script>
+  <link rel="stylesheet" href="../css/styles.css?v=20260912g">
+  <script src="../js/brand-config.js?v=20260619e"></script>
+</head>
+<body data-docs-depth="1">
+
+<header aria-label="Site header"></header>
+
+<main>
+  <div class="breadcrumb"><a href="../index.html">Home</a> → Payroll → Benefits enrollment</div>
+
+  <div class="doc-canvas">
+    <header class="doc-mast">
+      <div class="doc-mast__top">
+        <span class="doc-mast__eyebrow">People · Benefits</span>
+        <div class="page-meta page-meta--inline">
+          <span class="page-meta__item"><strong>Route</strong> <code>/benefits/enrollment</code></span>
+          <span class="page-meta__item"><strong>Flag</strong> <code>benefitsEnabled</code></span>
+        </div>
+      </div>
+      <h1 class="doc-mast__title">Benefits Enrollment</h1>
+      <p class="doc-mast__lead">Elections on Employee against published plans — self-service and HR assist, not a second people table.</p>
+      <p class="doc-mast__purpose">Scroll to <a href="#flowcharts">Flowcharts</a>. Scenario: <a href="../user-guide/payroll/benefits-enrollment.html">Elect a benefits plan</a>.</p>
+    </header>
+
+    <section class="doc-briefing" id="at-a-glance" aria-labelledby="briefing-title">
+      <div class="doc-briefing__intro">
+        <p class="doc-briefing__kicker"><i class="fe fe-edit-3" aria-hidden="true"></i> Elections</p>
+        <h2 class="doc-briefing__title" id="briefing-title">Who chose which plan, on Employee</h2>
+        <p class="doc-briefing__lead">Benefits enrollment records elections against published plans. It is not the catalog and not the paycheck editor.</p>
+        <div class="doc-briefing__signals" aria-label="Access and placement">
+          <span class="doc-briefing__signal">Payroll → Benefits enrollment</span>
+          <span class="doc-briefing__signal">Route <code>/benefits/enrollment</code></span>
+          <span class="doc-briefing__signal">Org flag <code>benefitsEnabled</code></span>
+          <span class="doc-briefing__signal">Payroll Manager · HR Admin · Admin · Employee</span>
+        </div>
+      </div>
+      <div class="doc-briefing__grid">
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-zap"></i></span>
+          <div>
+            <h3>The job of this console</h3>
+            <p>Elect or assist elect, save, confirm the next run and carrier file will see it.</p>
+          </div>
+        </article>
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-users"></i></span>
+          <div>
+            <h3>Seat at the table</h3>
+            <p>Employees for self when enabled; HR/payroll for assist. Carriers do not enroll here.</p>
+          </div>
+        </article>
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-play-circle"></i></span>
+          <div>
+            <h3>The working rhythm</h3>
+            <p>Open window, elect, save, spot-check payroll benefits.</p>
+          </div>
+        </article>
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-clock"></i></span>
+          <div>
+            <h3>Moments that bring you here</h3>
+            <p>Open enrollment. New hire. Marriage/life event. A missed election before payday.</p>
+          </div>
+        </article>
+      </div>
+      <div class="doc-briefing__note">
+        <div class="callout callout--note callout--interactive">
+          <div class="callout__icon">ⓘ</div>
+          <div class="callout__body">
+            <strong class="callout__title">On Employee</strong>
+            <div class="callout__text">Dependents and medical data stay masked in AI/graph. Plans remain the catalog.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="doc-flow">
+      <section class="doc-block" id="flowcharts">
+        <h2 class="doc-block__title">Flowcharts</h2>
+
+        <article class="diagram-card" data-diagram-autoplay="true">
+          <header class="diagram-card__head">
+            <div class="diagram-card__titles">
+              <h3>1 — Elect on the person</h3>
+              <p class="diagram-card__desc">Choose plans for Employee, confirm pay impact.</p>
+            </div>
+            <div class="diagram-card__controls">
+              <button type="button" data-diagram-prev aria-label="Previous step"><i class="fe fe-chevron-left" aria-hidden="true"></i></button>
+              <button type="button" data-diagram-play aria-pressed="false"><i class="fe fe-play" aria-hidden="true"></i><span>Play</span></button>
+              <button type="button" data-diagram-next aria-label="Next step"><i class="fe fe-chevron-right" aria-hidden="true"></i></button>
+            </div>
+          </header>
+          <div class="diagram-card__chart">
+            <pre class="mermaid">
+flowchart TD
+  A[Open Enrollment] --> B[Select Employee]
+  B --> C[Elect plans]
+  C --> D[Save]
+  D --> E[Payroll + carrier]
+            </pre>
+          </div>
+          <ol class="diagram-steps">
+            <li class="diagram-step is-active"><span class="diagram-step__index">1</span><div class="diagram-step__body"><strong>Open</strong><span>Payroll → Benefits enrollment.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">2</span><div class="diagram-step__body"><strong>Person</strong><span>Employee self or HR.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">3</span><div class="diagram-step__body"><strong>Elect</strong><span>Published plans.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">4</span><div class="diagram-step__body"><strong>Downstream</strong><span>Pay and carrier.</span></div></li>
+          </ol>
+          <p class="diagram-card__progress" data-diagram-progress></p>
+        </article>
+      </section>
+
+      <section class="doc-block" id="overview">
+        <h2 class="doc-block__title">Overview</h2>
+        <p>Enrollment writes elections on Employee. Plans are catalog. Carrier files transmit. Payroll calculates.</p>
+      </section>
+
+      <section class="doc-block" id="how-to">
+        <h2 class="doc-block__title">How to use</h2>
+        <div class="steps">
+          <div class="step"><strong>1. Self vs HR</strong><div class="step-detail">Know who may edit whose election.</div></div>
+          <div class="step"><strong>2. Windows</strong><div class="step-detail">Out-of-window needs a life event path.</div></div>
+          <div class="step"><strong>3. Mask dependents</strong><div class="step-detail">Sensitive.</div></div>
+        </div>
+      </section>
+
+      <section class="doc-block doc-block--related" id="related-pages">
+        <h2 class="doc-block__title">Related pages</h2>
+        <div class="related-links">
+          <a class="related-link" href="plans.html"><span class="related-link__label">Benefits plans</span><span class="related-link__desc">Catalog.</span></a>
+          <a class="related-link" href="../payroll/benefits-payroll.html"><span class="related-link__label">Benefits (payroll)</span><span class="related-link__desc">Impact.</span></a>
+          <a class="related-link" href="carrier-files.html"><span class="related-link__label">Carrier files</span><span class="related-link__desc">Send.</span></a>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <nav class="page-nav">
+    <a class="page-nav__prev" href="plans.html">← Benefits plans</a>
+    <a class="page-nav__next" href="carrier-files.html">Benefits carrier files →</a>
+  </nav>
+</main>
+
+<footer>
+  <div class="container">
+    <p>&copy; 2026 <span data-brand>Tracopus</span>. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="../js/palette.js?v=20260619e"></script>
+<script src="../js/brand.js?v=20260619e"></script>
+<script src="../js/docs-utility-config.js?v=20260720b"></script>
+<script src="../js/nav-config.js?v=20260912c"></script>
+<script src="../js/navigation.js?v=20260912f"></script>
+<script src="../js/site-enhancements.js?v=20260906a"></script>
+<script src="../js/search.js?v=20260619e"></script>
+<script type="module">
+  import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+  mermaid.initialize({
+    startOnLoad: true,
+    theme: "base",
+    securityLevel: "loose",
+    flowchart: { curve: "basis", htmlLabels: true },
+    themeVariables: {
+      primaryColor: "#d8f3dc",
+      primaryTextColor: "#1b4332",
+      primaryBorderColor: "#40916c",
+      lineColor: "#52796f",
+      secondaryColor: "#f1faee",
+      tertiaryColor: "#ffffff",
+      fontFamily: "Inter, system-ui, sans-serif",
+    },
+  });
+  setTimeout(() => {
+    if (window.TracopusDocsDiagrams) window.TracopusDocsDiagrams.boot();
+  }, 600);
+</script>
+<script src="../js/docs-diagrams.js?v=20260718e"></script>
+</body>
+</html>

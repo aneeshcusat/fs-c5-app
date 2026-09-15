@@ -14,7 +14,7 @@
   <meta property="og:description" content="Configure, assign, schedule, apply, and approve leave — one document for HR and technical debugging.">
   <meta property="og:url" content="https://tracopus.com/documentation/hrms/leave-management-one-stop.html">
   <script src="../js/docs-analytics.js?v=20260719a" defer></script>
-  <link rel="stylesheet" href="../css/styles.css?v=20260718g">
+  <link rel="stylesheet" href="../css/styles.css?v=20260912g">
   <link rel="stylesheet" href="../css/data-flow-bridge.css?v=20260724d">
   <script src="../js/brand-config.js?v=20260619e"></script>
   <style>
@@ -134,6 +134,59 @@
         <a href="../data-flow/leave-policy-flags-data-flow.html">Interactive policy simulator</a>
       </p>
     </header>
+
+    <section class="doc-briefing" id="at-a-glance" aria-labelledby="briefing-title">
+      <div class="doc-briefing__intro">
+        <p class="doc-briefing__kicker"><i class="fe fe-compass" aria-hidden="true"></i> Configure through approve</p>
+        <h2 class="doc-briefing__title" id="briefing-title">One spine from flags to a decision, plus a debug tab</h2>
+        <p class="doc-briefing__lead">The one-stop leave guide walks configure, assign, schedule, apply, and approve — with a technical data-flow tab for debugging — built from the live leave engine, not a parallel product story.</p>
+        <div class="doc-briefing__signals" aria-label="Access and placement">
+          <span class="doc-briefing__signal">Docs · One-stop leave (linked from leave how-tos)</span>
+          <span class="doc-briefing__signal">Route <code>/people/leaves</code></span>
+          <span class="doc-briefing__signal">HR Admin · Manager · support engineer</span>
+        </div>
+      </div>
+      <div class="doc-briefing__grid">
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-zap"></i></span>
+          <div>
+            <h3>The job of this console</h3>
+            <p>Follow the user-guide tab to stand up leave the first time, then use the data-flow tab when a balance or flag does not match what you published.</p>
+          </div>
+        </article>
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-users"></i></span>
+          <div>
+            <h3>Seat at the table</h3>
+            <p>HR and support. Employees should use Leave management how-to for apply/approve only.</p>
+          </div>
+        </article>
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-play-circle"></i></span>
+          <div>
+            <h3>The working rhythm</h3>
+            <p>Walk sections in order on the guide tab. Switch to data-flow when an accrual job, flag, or approval path misbehaves. Deep-dive pages still own legal calendars, documents, and test lab.</p>
+          </div>
+        </article>
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-clock"></i></span>
+          <div>
+            <h3>Moments that bring you here</h3>
+            <p>Greenfield leave. A production incident on balances. Training. After enabling Global Policy Center over classic types.</p>
+          </div>
+        </article>
+      </div>
+      <div class="doc-briefing__note">
+        <div class="callout callout--note callout--interactive">
+          <div class="callout__icon">ⓘ</div>
+          <div class="callout__body">
+            <strong class="callout__title">Live engine, two tabs</strong>
+            <div class="callout__text">The debug tab does not write data. Accrual jobs, ApprovalAuthority, and Policy Center remain the writers.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
 
     <div class="doc-flow">
       <div class="ost-primary-tabs" role="tablist" aria-label="Leave one-stop primary sections">
@@ -837,8 +890,8 @@ flowchart TD
 <script src="../js/brand.js?v=20260619e"></script>
 <script src="../js/docs-utility-config.js?v=20260720b"></script>
 <script src="../js/nav-config.js?v=20260724b"></script>
-<script src="../js/navigation.js?v=20260619e"></script>
-<script src="../js/site-enhancements.js?v=20260718d"></script>
+<script src="../js/navigation.js?v=20260912f"></script>
+<script src="../js/site-enhancements.js?v=20260906a"></script>
 <script src="../js/search.js?v=20260724b"></script>
 <script type="module">
   import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";

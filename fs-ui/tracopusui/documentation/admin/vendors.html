@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en" data-lux-theme="luxury" data-lux-palette="emerald">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vendor Register — Tracopus User Guide</title>
+  <meta name="description" content="Master vendors plus BidRequest and PurchaseOrder aggregates — not a shadow vendor ledger.">
+  <meta name="keywords" content="tracopus, documentation, user guide, admin, vendor register">
+  <link rel="canonical" href="https://tracopus.com/documentation/admin/vendors.html">
+  <meta name="robots" content="index, follow">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Tracopus">
+  <meta property="og:title" content="Vendor Register — Tracopus User Guide">
+  <meta property="og:description" content="Master vendors plus BidRequest and PurchaseOrder aggregates — not a shadow vendor ledger.">
+  <meta property="og:url" content="https://tracopus.com/documentation/admin/vendors.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Vendor Register — Tracopus User Guide">
+  <meta name="twitter:description" content="Master vendors plus BidRequest and PurchaseOrder aggregates — not a shadow vendor ledger.">
+  <script src="../js/docs-analytics.js?v=20260719a" defer></script>
+  <link rel="stylesheet" href="../css/styles.css?v=20260912g">
+  <script src="../js/brand-config.js?v=20260619e"></script>
+</head>
+<body data-docs-depth="1">
+
+<header aria-label="Site header"></header>
+
+<main>
+  <div class="breadcrumb"><a href="../index.html">Home</a> → Admin → Vendors</div>
+
+  <div class="doc-canvas">
+    <header class="doc-mast">
+      <div class="doc-mast__top">
+        <span class="doc-mast__eyebrow">Admin · Procurement</span>
+        <div class="page-meta page-meta--inline">
+          <span class="page-meta__item"><strong>Route</strong> <code>/admin/vendors</code></span>
+          <span class="page-meta__item"><strong>Flag</strong> <code>—</code></span>
+        </div>
+      </div>
+      <h1 class="doc-mast__title">Vendor Register</h1>
+      <p class="doc-mast__lead">Master vendors plus BidRequest and PurchaseOrder aggregates — not a shadow vendor ledger.</p>
+      <p class="doc-mast__purpose">Scroll to <a href="#flowcharts">Flowcharts</a>. Scenario: <a href="../user-guide/admin/admin-vendors.html">Review vendor PO coverage</a>.</p>
+    </header>
+
+    <section class="doc-briefing" id="at-a-glance" aria-labelledby="briefing-title">
+      <div class="doc-briefing__intro">
+        <p class="doc-briefing__kicker"><i class="fe fe-briefcase" aria-hidden="true"></i> Procurement master</p>
+        <h2 class="doc-briefing__title" id="briefing-title">Vendors plus the bids and POs already on them</h2>
+        <p class="doc-briefing__lead">The vendor register is master vendors with BidRequest and PurchaseOrder aggregates — not a shadow vendor ledger beside finance.</p>
+        <div class="doc-briefing__signals" aria-label="Access and placement">
+          <span class="doc-briefing__signal">Admin → Vendors (deep link)</span>
+          <span class="doc-briefing__signal">Route <code>/admin/vendors</code></span>
+          <span class="doc-briefing__signal">HR Admin · Org Admin · Finance operators with access</span>
+        </div>
+      </div>
+      <div class="doc-briefing__grid">
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-zap"></i></span>
+          <div>
+            <h3>The job of this console</h3>
+            <p>Keep the vendor master accurate, then use aggregates to see bids and purchase orders already linked. Create commercial documents on Sales / Finance, not as rows invented here.</p>
+          </div>
+        </article>
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-users"></i></span>
+          <div>
+            <h3>Seat at the table</h3>
+            <p>Administrators maintaining the master. Buyers work bids and POs on their finance screens. Employees do not maintain vendors.</p>
+          </div>
+        </article>
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-play-circle"></i></span>
+          <div>
+            <h3>The working rhythm</h3>
+            <p>Search a vendor, confirm legal name and status, follow aggregates into bid or PO lists, correct the master if the name is wrong.</p>
+          </div>
+        </article>
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-clock"></i></span>
+          <div>
+            <h3>Moments that bring you here</h3>
+            <p>A new supplier before the first PO. Duplicate vendor names breaking reports. After a Salesforce import of POs. When a vendor should be inactive but still appears on new bids.</p>
+          </div>
+        </article>
+      </div>
+      <div class="doc-briefing__note">
+        <div class="callout callout--note callout--interactive">
+          <div class="callout__icon">ⓘ</div>
+          <div class="callout__body">
+            <strong class="callout__title">PO and bid stay canonical</strong>
+            <div class="callout__text">This register does not replace PurchaseOrder or BidRequest. Aggregates are counts and links, not a second contract store.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <div class="doc-flow">
+      <section class="doc-block" id="flowcharts">
+        <h2 class="doc-block__title">Flowcharts</h2>
+
+        <article class="diagram-card" data-diagram-autoplay="true">
+          <header class="diagram-card__head">
+            <div class="diagram-card__titles">
+              <h3>1 — Inspect a vendor</h3>
+              <p class="diagram-card__desc">Open the register, select a vendor, then follow linked bids and POs.</p>
+            </div>
+            <div class="diagram-card__controls">
+              <button type="button" data-diagram-prev aria-label="Previous step"><i class="fe fe-chevron-left" aria-hidden="true"></i></button>
+              <button type="button" data-diagram-play aria-pressed="false"><i class="fe fe-play" aria-hidden="true"></i><span>Play</span></button>
+              <button type="button" data-diagram-next aria-label="Next step"><i class="fe fe-chevron-right" aria-hidden="true"></i></button>
+            </div>
+          </header>
+          <div class="diagram-card__chart">
+            <pre class="mermaid">
+flowchart TD
+  A[Open Vendors] --> B[Scan register]
+  B --> C[Open a vendor]
+  C --> D[Review bids / POs]
+  D --> E[Jump to Sales / Finance]
+            </pre>
+          </div>
+          <ol class="diagram-steps">
+            <li class="diagram-step is-active"><span class="diagram-step__index">1</span><div class="diagram-step__body"><strong>Open Vendors</strong><span>Admin → Vendors (deep link).</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">2</span><div class="diagram-step__body"><strong>Select a row</strong><span>Master record plus aggregates.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">3</span><div class="diagram-step__body"><strong>Follow contracts</strong><span>Purchase orders remain the financial source of truth.</span></div></li>
+          </ol>
+          <p class="diagram-card__progress" data-diagram-progress></p>
+        </article>
+      </section>
+
+      <section class="doc-block" id="overview">
+        <h2 class="doc-block__title">Overview</h2>
+        <p>Vendor master is a register over existing BidRequest and PurchaseOrder data. Do not invent a second vendor truth table.</p>
+      </section>
+
+      <section class="doc-block" id="how-to">
+        <h2 class="doc-block__title">How to use</h2>
+        <div class="steps">
+          <div class="step"><strong>1. Edit master carefully</strong><div class="step-detail">Name and identifiers feed PO matching.</div></div>
+          <div class="step"><strong>2. POs stay in Sales/Finance</strong><div class="step-detail">This page aggregates; it does not replace Purchase Orders.</div></div>
+        </div>
+      </section>
+
+      <section class="doc-block doc-block--related" id="related-pages">
+        <h2 class="doc-block__title">Related pages</h2>
+        <div class="related-links">
+          <a class="related-link" href="../sales/purchase-orders.html"><span class="related-link__label">Purchase orders</span><span class="related-link__desc">Contract source.</span></a>
+          <a class="related-link" href="dashboard.html"><span class="related-link__label">Admin dashboard</span><span class="related-link__desc">Ops overview.</span></a>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <nav class="page-nav">
+    <a class="page-nav__prev" href="jobs.html">← Scheduled jobs</a>
+    <a class="page-nav__next" href="payroll-config.html">Payroll readiness →</a>
+  </nav>
+</main>
+
+<footer>
+  <div class="container">
+    <p>&copy; 2026 <span data-brand>Tracopus</span>. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="../js/palette.js?v=20260619e"></script>
+<script src="../js/brand.js?v=20260619e"></script>
+<script src="../js/docs-utility-config.js?v=20260720b"></script>
+<script src="../js/nav-config.js?v=20260906a"></script>
+<script src="../js/navigation.js?v=20260912f"></script>
+<script src="../js/site-enhancements.js?v=20260906a"></script>
+<script src="../js/search.js?v=20260619e"></script>
+<script type="module">
+  import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+  mermaid.initialize({
+    startOnLoad: true,
+    theme: "base",
+    securityLevel: "loose",
+    flowchart: { curve: "basis", htmlLabels: true },
+    themeVariables: {
+      primaryColor: "#d8f3dc",
+      primaryTextColor: "#1b4332",
+      primaryBorderColor: "#40916c",
+      lineColor: "#52796f",
+      secondaryColor: "#f1faee",
+      tertiaryColor: "#ffffff",
+      fontFamily: "Inter, system-ui, sans-serif",
+    },
+  });
+  setTimeout(() => {
+    if (window.TracopusDocsDiagrams) window.TracopusDocsDiagrams.boot();
+  }, 600);
+</script>
+<script src="../js/docs-diagrams.js?v=20260718e"></script>
+</body>
+</html>

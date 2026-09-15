@@ -22,7 +22,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/styles.css?v=20260718g">
+  <link rel="stylesheet" href="../css/styles.css?v=20260912g">
   <link rel="stylesheet" href="../css/data-flow-bridge.css?v=20260724d">
   <script src="../js/brand-config.js?v=20260713c"></script>
 </head>
@@ -65,6 +65,59 @@
       </div>
     </div>
   </header>
+
+    <section class="doc-briefing" id="at-a-glance" aria-labelledby="briefing-title">
+      <div class="doc-briefing__intro">
+        <p class="doc-briefing__kicker"><i class="fe fe-database" aria-hidden="true"></i> Org master and access</p>
+        <h2 class="doc-briefing__title" id="briefing-title">Lists, keys, and role flags — the store other screens read</h2>
+        <p class="doc-briefing__lead">Application Configuration is the definitive guide to organization master data, feature toggles, and role permissions — every key with behaviour and downstream impact. The live editor is Application Config in the product; this page is the map of what those keys mean.</p>
+        <div class="doc-briefing__signals" aria-label="Access and placement">
+          <span class="doc-briefing__signal">Admin / HRMS → Application Config</span>
+          <span class="doc-briefing__signal">Route <code>/admin/appconfig</code></span>
+          <span class="doc-briefing__signal">HR Admin · Org Admin</span>
+        </div>
+      </div>
+      <div class="doc-briefing__grid">
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-zap"></i></span>
+          <div>
+            <h3>The job of this console</h3>
+            <p>Look up a key before you change it, understand which screens will move, then edit in the live Config UI. Use search on this page to find a flag or list without wandering the left nav blind.</p>
+          </div>
+        </article>
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-users"></i></span>
+          <div>
+            <h3>Seat at the table</h3>
+            <p>Administrators. The in-app Guide lives on the Config left nav, not the hero — on purpose. Employees never edit org.json.</p>
+          </div>
+        </article>
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-play-circle"></i></span>
+          <div>
+            <h3>The working rhythm</h3>
+            <p>Search the key, read the impact, open live Application Config, change the value, verify the downstream screen. Do not duplicate lists into a new table.</p>
+          </div>
+        </article>
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-clock"></i></span>
+          <div>
+            <h3>Moments that bring you here</h3>
+            <p>A missing leave type in a dropdown. A module that will not appear. Role permission hunting. After an industry template apply.</p>
+          </div>
+        </article>
+      </div>
+      <div class="doc-briefing__note">
+        <div class="callout callout--note callout--interactive">
+          <div class="callout__icon">ⓘ</div>
+          <div class="callout__body">
+            <strong class="callout__title">Protected source of truth</strong>
+            <div class="callout__text">Application Config is the org source of truth. Dashboards, AI, and Work Graph must not grow shadow lists. Persona masking still applies to sensitive values.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
 
   <div class="appcfg-toolbar" id="appcfg-toolbar">
     <div class="appcfg-toolbar__row">
@@ -130,6 +183,7 @@
         <article class="concept-card appcfg-concept"><h3 class="concept-card__title">Lock &amp; hide</h3><p class="concept-card__desc">Lock blocks child overrides — ideal for enterprise-wide categoryMap. Hide removes from non-admin UI when combined with lock.</p></article>
       </div>
       <div class="callout callout--info"><div class="callout__icon">ℹ️</div><div class="callout__body"><strong class="callout__title">Who should use this page</strong><div class="callout__text">Workspace administrators, IT ops, and implementation leads configuring Tracopus after deployment. Requires <code>hrmsModules.appconfigEnabled</code> on your role. Changes affect all users in the selected org scope on next config refresh.</div></div></div>
+      <div class="callout callout--tip"><div class="callout__icon">💡</div><div class="callout__body"><strong class="callout__title">Work-Time Governance</strong><div class="callout__text">Timesheet validation, deadline preview / late reason, approval-chain, import/export, estimates, and attendance-source features are a default-off catalog. Enable them from <strong>Admin → Feature flags</strong>; choices persist here on the HRMS module. Screen guide: <a href="work-time-governance.html">Work-Time Governance</a>.</div></div></div>
     </section>
 
     <section class="doc-block appcfg-section" id="ui-layout">
@@ -2913,7 +2967,7 @@
 <script src="../js/docs-utility-config.js?v=20260713a"></script>
 <script src="../js/nav-config.js?v=20260713a"></script>
 <script src="../js/navigation.js?v=20260713a"></script>
-<script src="../js/site-enhancements.js?v=20260718d"></script>
+<script src="../js/site-enhancements.js?v=20260906a"></script>
 <script src="../js/search.js?v=20260713a"></script>
 </body>
 </html>

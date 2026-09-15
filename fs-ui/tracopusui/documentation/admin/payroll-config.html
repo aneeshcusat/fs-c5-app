@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en" data-lux-theme="luxury" data-lux-palette="emerald">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payroll Readiness — Tracopus User Guide</title>
+  <meta name="description" content="Validate mandatory gates, then jump into groups, structures, and publishing config.">
+  <meta name="keywords" content="tracopus, documentation, user guide, admin, payroll readiness">
+  <link rel="canonical" href="https://tracopus.com/documentation/admin/payroll-config.html">
+  <meta name="robots" content="index, follow">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Tracopus">
+  <meta property="og:title" content="Payroll Readiness — Tracopus User Guide">
+  <meta property="og:description" content="Validate mandatory gates, then jump into groups, structures, and publishing config.">
+  <meta property="og:url" content="https://tracopus.com/documentation/admin/payroll-config.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Payroll Readiness — Tracopus User Guide">
+  <meta name="twitter:description" content="Validate mandatory gates, then jump into groups, structures, and publishing config.">
+  <script src="../js/docs-analytics.js?v=20260719a" defer></script>
+  <link rel="stylesheet" href="../css/styles.css?v=20260912g">
+  <script src="../js/brand-config.js?v=20260619e"></script>
+</head>
+<body data-docs-depth="1">
+
+<header aria-label="Site header"></header>
+
+<main>
+  <div class="breadcrumb"><a href="../index.html">Home</a> → Admin → Payroll Readiness</div>
+
+  <div class="doc-canvas">
+    <header class="doc-mast">
+      <div class="doc-mast__top">
+        <span class="doc-mast__eyebrow">Payroll · readiness</span>
+        <div class="page-meta page-meta--inline">
+          <span class="page-meta__item"><strong>Route</strong> <code>/admin/payroll-config</code></span>
+          <span class="page-meta__item"><strong>Flag</strong> <code>payrollConfigEnabled</code></span>
+        </div>
+      </div>
+      <h1 class="doc-mast__title">Payroll Readiness</h1>
+      <p class="doc-mast__lead">Validate mandatory gates, then jump into groups, structures, and publishing config.</p>
+      <p class="doc-mast__purpose">Scroll to <a href="#flowcharts">Flowcharts</a>. Scenario: <a href="../user-guide/admin/admin-payroll-config.html">Configure org payroll settings</a>.</p>
+    </header>
+
+    <section class="doc-briefing" id="at-a-glance" aria-labelledby="briefing-title">
+      <div class="doc-briefing__intro">
+        <p class="doc-briefing__kicker"><i class="fe fe-dollar-sign" aria-hidden="true"></i> Payroll gates</p>
+        <h2 class="doc-briefing__title" id="briefing-title">Prove the org is allowed to run payroll</h2>
+        <p class="doc-briefing__lead">Payroll readiness validates mandatory gates, then jumps into groups, structures, and publishing config. It is the door to payroll, not the run itself.</p>
+        <div class="doc-briefing__signals" aria-label="Access and placement">
+          <span class="doc-briefing__signal">Payroll → Payroll readiness</span>
+          <span class="doc-briefing__signal">Route <code>/admin/payroll-config</code></span>
+          <span class="doc-briefing__signal">Org flag <code>payrollConfigEnabled</code></span>
+          <span class="doc-briefing__signal">Payroll Manager · Finance Manager · HR Admin</span>
+        </div>
+      </div>
+      <div class="doc-briefing__grid">
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-zap"></i></span>
+          <div>
+            <h3>The job of this console</h3>
+            <p>See which gates are red, open the owning console, fix people, attendance, or structure data, then return until readiness is green. Do not start a payroll run from this page.</p>
+          </div>
+        </article>
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-users"></i></span>
+          <div>
+            <h3>Seat at the table</h3>
+            <p>Payroll and HR administrators. Employees view paychecks elsewhere. Project managers have no role here.</p>
+          </div>
+        </article>
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-play-circle"></i></span>
+          <div>
+            <h3>The working rhythm</h3>
+            <p>Read the gate list, follow each fail into groups, salary structures, or people data, correct, refresh readiness, then continue to payroll runs when green.</p>
+          </div>
+        </article>
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-clock"></i></span>
+          <div>
+            <h3>Moments that bring you here</h3>
+            <p>First payroll in a tenant. A new legal entity. After a bad attendance month that should block pay. Before publishing structures.</p>
+          </div>
+        </article>
+      </div>
+      <div class="doc-briefing__note">
+        <div class="callout callout--note callout--interactive">
+          <div class="callout__icon">ⓘ</div>
+          <div class="callout__body">
+            <strong class="callout__title">Readiness is a checklist on live HR data</strong>
+            <div class="callout__text">Gates read Employee, attendance, and structure — they do not store a parallel payroll employee list.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <div class="doc-flow">
+      <section class="doc-block" id="flowcharts">
+        <h2 class="doc-block__title">Flowcharts</h2>
+
+        <article class="diagram-card" data-diagram-autoplay="true">
+          <header class="diagram-card__head">
+            <div class="diagram-card__titles">
+              <h3>1 — Clear readiness gates</h3>
+              <p class="diagram-card__desc">Fix missing config, then open payroll groups / structures.</p>
+            </div>
+            <div class="diagram-card__controls">
+              <button type="button" data-diagram-prev aria-label="Previous step"><i class="fe fe-chevron-left" aria-hidden="true"></i></button>
+              <button type="button" data-diagram-play aria-pressed="false"><i class="fe fe-play" aria-hidden="true"></i><span>Play</span></button>
+              <button type="button" data-diagram-next aria-label="Next step"><i class="fe fe-chevron-right" aria-hidden="true"></i></button>
+            </div>
+          </header>
+          <div class="diagram-card__chart">
+            <pre class="mermaid">
+flowchart TD
+  A[Open Payroll readiness] --> B[Read checklist]
+  B --> C[Fix missing gates]
+  C --> D[Save]
+  D --> E[Open groups / structures]
+  E --> F[Preview a run]
+            </pre>
+          </div>
+          <ol class="diagram-steps">
+            <li class="diagram-step is-active"><span class="diagram-step__index">1</span><div class="diagram-step__body"><strong>Open readiness</strong><span>Admin → Payroll readiness (also under Payroll).</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">2</span><div class="diagram-step__body"><strong>Resolve gates</strong><span>Mandatory org fields and lists.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">3</span><div class="diagram-step__body"><strong>Continue in Payroll</strong><span>Groups, structures, and runs stay on payroll routes.</span></div></li>
+          </ol>
+          <p class="diagram-card__progress" data-diagram-progress></p>
+        </article>
+      </section>
+
+      <section class="doc-block" id="overview">
+        <h2 class="doc-block__title">Overview</h2>
+        <p>Readiness is a gate over Application Config payroll nodes and valid employee bridge rows. It is not a payroll run engine.</p>
+      </section>
+
+      <section class="doc-block" id="how-to">
+        <h2 class="doc-block__title">How to use</h2>
+        <div class="steps">
+          <div class="step"><strong>1. Do not skip statutory IDs</strong><div class="step-detail">Runs will block later.</div></div>
+          <div class="step"><strong>2. Source of truth</strong><div class="step-detail">Application Config + employee records — not this page’s KPIs.</div></div>
+          <div class="step"><strong>3. Masking</strong><div class="step-detail">Salary fields remain persona-masked.</div></div>
+        </div>
+      </section>
+
+      <section class="doc-block doc-block--related" id="related-pages">
+        <h2 class="doc-block__title">Related pages</h2>
+        <div class="related-links">
+          <a class="related-link" href="../hrms/application-config.html"><span class="related-link__label">Application Config</span><span class="related-link__desc">Payroll nodes.</span></a>
+          <a class="related-link" href="security.html"><span class="related-link__label">Masking policy</span><span class="related-link__desc">Salary visibility.</span></a>
+          <a class="related-link" href="setup-checklist.html"><span class="related-link__label">Setup checklist</span><span class="related-link__desc">Day-one payroll items.</span></a>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <nav class="page-nav">
+    <a class="page-nav__prev" href="dashboard.html">← Admin dashboard</a>
+    <a class="page-nav__next" href="../hrms/application-config.html">Application Config →</a>
+  </nav>
+</main>
+
+<footer>
+  <div class="container">
+    <p>&copy; 2026 <span data-brand>Tracopus</span>. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="../js/palette.js?v=20260619e"></script>
+<script src="../js/brand.js?v=20260619e"></script>
+<script src="../js/docs-utility-config.js?v=20260720b"></script>
+<script src="../js/nav-config.js?v=20260906a"></script>
+<script src="../js/navigation.js?v=20260912f"></script>
+<script src="../js/site-enhancements.js?v=20260906a"></script>
+<script src="../js/search.js?v=20260619e"></script>
+<script type="module">
+  import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+  mermaid.initialize({
+    startOnLoad: true,
+    theme: "base",
+    securityLevel: "loose",
+    flowchart: { curve: "basis", htmlLabels: true },
+    themeVariables: {
+      primaryColor: "#d8f3dc",
+      primaryTextColor: "#1b4332",
+      primaryBorderColor: "#40916c",
+      lineColor: "#52796f",
+      secondaryColor: "#f1faee",
+      tertiaryColor: "#ffffff",
+      fontFamily: "Inter, system-ui, sans-serif",
+    },
+  });
+  setTimeout(() => {
+    if (window.TracopusDocsDiagrams) window.TracopusDocsDiagrams.boot();
+  }, 600);
+</script>
+<script src="../js/docs-diagrams.js?v=20260718e"></script>
+</body>
+</html>

@@ -821,6 +821,13 @@ body.lux-shell-dark .lux-connection-error__eyebrow {
     display: block;
 }
 
+/* Wordmark lockup — phone header only (narrow desktop rail stays icon-mark) */
+#header_top.lux-rail .lux-rail-brand-lockup,
+#header_top.lux-rail .lux-rail-brand-wordmark,
+#header_top.lux-rail .lux-rail-brand-name {
+    display: none;
+}
+
 /* Rail nav + tools — luxury icon buttons (logo section unchanged above) */
 #header_top.lux-rail .lux-rail__nav,
 #header_top.lux-rail .lux-rail__tools {
@@ -1339,7 +1346,8 @@ body.lux-shell-dark #header_top.lux-rail .lux-rail__menu-toggle {
 
 .app-brand-tagline--auth,
 .app-brand-tagline--card,
-.app-brand-tagline--sidebar {
+.app-brand-tagline--sidebar,
+.app-brand-tagline--rail {
     font-size: 7px;
 }
 
@@ -2426,6 +2434,14 @@ body.lux-shell-dark #page_top.lux-header-bar .lux-header__icon-badge {
     background: linear-gradient(90deg, var(--lux-primary, #5b5ff4), var(--lux-accent, #818cf8));
 }
 
+#page_top.lux-header-bar .lux-header-dropdown--tone-health::before {
+    background: linear-gradient(90deg, #10b981, #34d399);
+}
+
+#page_top.lux-header-bar .lux-header-dropdown--tone-health-down::before {
+    background: linear-gradient(90deg, #e11d48, #fb7185);
+}
+
 #page_top.lux-header-bar .dropdown-menu.lux-header-dropdown::after {
     display: none !important;
 }
@@ -2770,11 +2786,36 @@ body.lux-shell-dark #page_top.lux-header-bar .lux-header-dropdown__empty-icon {
     background: transparent;
     box-shadow: none;
     overflow: hidden;
+    visibility: hidden;
+    pointer-events: none;
 }
 
-.theme_div.lux-theme-panel.open,
 .theme_div.lux-theme-panel.lux-shell-panel--open {
     right: 0 !important;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.theme_div.lux-theme-panel:not(.lux-shell-panel--open) {
+    right: -362px !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+}
+
+@media screen and (max-width: 767px) {
+    .theme_div.lux-theme-panel {
+        width: 100vw !important;
+        max-width: 100vw !important;
+        right: -100vw !important;
+    }
+
+    .theme_div.lux-theme-panel:not(.lux-shell-panel--open) {
+        right: -100vw !important;
+    }
+
+    .theme_div.lux-theme-panel.lux-shell-panel--open {
+        right: 0 !important;
+    }
 }
 
 .theme_div.lux-theme-panel .lux-theme-panel__shell {
@@ -3166,6 +3207,8 @@ body.lux-shell-dark .lux-theme-panel__footer {
     background: transparent;
     box-shadow: none;
     overflow: hidden;
+    visibility: hidden;
+    pointer-events: none;
 }
 
 .lux-shell-panel__backdrop {
@@ -3181,9 +3224,33 @@ body.lux-shell-dark .lux-theme-panel__footer {
     animation: luxUserBackdropIn 0.2s ease;
 }
 
-.right_sidebar.lux-settings-panel.open,
+/* React `lux-shell-panel--open` is the only open signal (ignore legacy jQuery `.open`) */
 .right_sidebar.lux-settings-panel.lux-shell-panel--open {
     right: 0 !important;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.right_sidebar.lux-settings-panel:not(.lux-shell-panel--open) {
+    right: -362px !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+}
+
+@media screen and (max-width: 767px) {
+    .right_sidebar.lux-settings-panel {
+        width: 100vw !important;
+        max-width: 100vw !important;
+        right: -100vw !important;
+    }
+
+    .right_sidebar.lux-settings-panel:not(.lux-shell-panel--open) {
+        right: -100vw !important;
+    }
+
+    .right_sidebar.lux-settings-panel.lux-shell-panel--open {
+        right: 0 !important;
+    }
 }
 
 .right_sidebar.lux-settings-panel .lux-settings-panel__shell {
@@ -3731,6 +3798,7 @@ body.lux-elevated-surfaces .progress {
     #header_top.lux-rail {
         width: 100%;
         height: auto;
+        min-height: var(--lux-phone-rail-height, 58px);
         flex-direction: row;
         padding: 0 var(--lux-rail-padding-x);
     }
@@ -3738,12 +3806,85 @@ body.lux-elevated-surfaces .progress {
     #header_top.lux-rail > .container {
         flex-direction: row;
         align-items: center;
+        justify-content: flex-start;
+        min-height: var(--lux-phone-rail-height, 58px);
+        padding-top: 0.3rem;
+        padding-bottom: 0.3rem;
     }
 
     #header_top.lux-rail .hleft,
     #header_top.lux-rail .hright {
         flex-direction: row;
         width: auto;
+    }
+
+    #header_top.lux-rail .header-brand {
+        flex-direction: row;
+        align-items: center;
+        gap: 0.65rem;
+        margin: 0;
+        padding: 0;
+    }
+
+    #header_top.lux-rail .header-brand .lux-rail-brand-mark {
+        width: 34px;
+        flex-shrink: 0;
+    }
+
+    /* Same BrandNameLogo wordmark + tagline as sidebar */
+    #header_top.lux-rail .lux-rail-brand-lockup,
+    #header_top.lux-rail .lux-rail-brand-wordmark {
+        display: block;
+        min-width: 0;
+        line-height: 0;
+    }
+
+    #header_top.lux-rail .lux-rail-brand-wordmark .app-brand-block,
+    #header_top.lux-rail .lux-rail-brand-wordmark .app-brand-wordmark__mark,
+    #header_top.lux-rail .lux-rail-brand-wordmark .app-brand-wordmark__logo-col {
+        align-items: flex-start;
+        gap: 0;
+    }
+
+    #header_top.lux-rail .lux-rail-brand-wordmark .app-brand-logo--rail {
+        max-height: 1.55rem;
+        max-width: min(10rem, 48vw);
+        width: auto;
+    }
+
+    #header_top.lux-rail .lux-rail-brand-wordmark .brand-logo-wrapper--logo-only {
+        margin: 0;
+        padding: 0;
+        line-height: 0;
+    }
+
+    #header_top.lux-rail .lux-rail-brand-wordmark .app-brand-wordmark__footer {
+        margin-top: 0.12rem;
+    }
+
+    #header_top.lux-rail .lux-rail-brand-wordmark .app-brand-wordmark__rule {
+        margin-bottom: 0.1rem;
+    }
+
+    #header_top.lux-rail .lux-rail-brand-wordmark .app-brand-tagline-shell {
+        min-height: 0;
+        line-height: 1;
+    }
+
+    #header_top.lux-rail .lux-rail-brand-wordmark .app-brand-tagline--rail {
+        letter-spacing: 0.09em;
+        line-height: 1.15;
+    }
+
+    #header_top.lux-rail .lux-rail-brand-name {
+        display: inline-block;
+        font-family: var(--lux-brand-font);
+        font-size: 0.9375rem;
+        font-weight: 800;
+        letter-spacing: -0.02em;
+        color: var(--lux-text);
+        line-height: 1.1;
+        white-space: nowrap;
     }
 
     #header_top.lux-rail .lux-rail__nav,
@@ -4476,6 +4617,34 @@ body.lux-shell-dark .lux-project-grid-shell {
 .lux-page-footer__meta.is-env {
     background: rgba(5, 150, 105, 0.1);
     color: #047857;
+}
+
+button.lux-page-footer__meta--version {
+    appearance: none;
+    -webkit-appearance: none;
+    margin: 0;
+    border: 0;
+    font-family: inherit;
+    cursor: pointer;
+    text-align: inherit;
+}
+
+button.lux-page-footer__meta--version:hover,
+button.lux-page-footer__meta--version:focus {
+    color: var(--lux-primary-dark, #3730a3);
+    background: rgba(var(--lux-primary-rgb, 91, 95, 244), 0.1);
+    outline: none;
+}
+
+body.lux-shell-dark button.lux-page-footer__meta--version {
+    background: rgba(148, 163, 184, 0.12);
+    color: #cbd5e1;
+}
+
+body.lux-shell-dark button.lux-page-footer__meta--version:hover,
+body.lux-shell-dark button.lux-page-footer__meta--version:focus {
+    color: #f8fafc;
+    background: rgba(148, 163, 184, 0.2);
 }
 
 body.lux-shell-dark .lux-page-footer {
@@ -14658,7 +14827,8 @@ body.lux-shell-dark .lux-search-pagination__size select {
         padding: 0;
     }
 
-    .lux-appconfig-hero__top {
+    /* Keep module heroes in a single row (How to on the right); full App Config may stack */
+    .lux-appconfig-hero:not(.lux-module-hero) .lux-appconfig-hero__top {
         flex-direction: column;
     }
 
@@ -18845,6 +19015,20 @@ body:has(#lux-workitem-create-panel.open) .lux-date-picker-popper {
     border-color: rgba(var(--lux-primary-rgb, 91, 95, 244), 0.28);
     background: rgba(var(--lux-primary-rgb, 91, 95, 244), 0.08);
 }
+.lux-hrms-settings__nav-badge {
+    min-width: 1.1rem;
+    height: 1.1rem;
+    padding: 0 0.35rem;
+    border-radius: 999px;
+    background: #e11d48;
+    color: #fff;
+    font-size: 0.5625rem;
+    font-weight: 800;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: 0.02em;
+}
 .lux-hrms-settings__content { display: flex; flex-direction: column; gap: 0.75rem; }
 .lux-hrms-settings__panel {
     border-radius: 16px; border: 0px solid rgba(15, 23, 42, 0.08); background: #fff; padding: 0.75rem;
@@ -19400,6 +19584,45 @@ body:has(#lux-workitem-create-panel.open) .lux-date-picker-popper {
 
 .lux-health-row__pill.is-green { background: rgba(16, 185, 129, 0.14); color: #047857; }
 .lux-health-row__pill.is-rose { background: rgba(244, 63, 94, 0.12); color: #be123c; }
+
+.lux-health-row__remove {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.28rem;
+    min-height: 1.85rem;
+    padding: 0.2rem 0.55rem;
+    border-radius: 10px;
+    border: 0px solid rgba(15, 23, 42, 0.1);
+    background: #fff;
+    color: #64748b;
+    cursor: pointer;
+    font-size: 0.625rem;
+    font-weight: 800;
+    letter-spacing: 0.02em;
+    line-height: 1;
+}
+
+.lux-health-row__remove i {
+    font-size: 0.8125rem;
+    line-height: 1;
+}
+
+.lux-health-row__remove:hover,
+.lux-health-row__remove.is-confirm {
+    color: #be123c;
+    border-color: rgba(244, 63, 94, 0.25);
+    background: rgba(244, 63, 94, 0.08);
+}
+
+.lux-health-row__remove:disabled {
+    opacity: 0.55;
+    cursor: wait;
+}
+
+.lux-health-row__remove.is-confirm span {
+    text-transform: none;
+}
 
 .lux-health-panel__empty {
     margin: 0;
@@ -84745,6 +84968,14 @@ body.lux-shell-dark .lux-scope-badge__value {
         0 0 0 5px rgba(34, 197, 94, 0.22);
 }
 
+.lux-data-source-dot.is-down {
+    background: #e11d48;
+    box-shadow:
+        0 0 0 3px rgba(255, 255, 255, 0.9),
+        0 0 0 5px rgba(225, 29, 72, 0.28);
+    animation: lux-live-dot-attention 1.7s ease-out infinite;
+}
+
 .lux-data-source-dot.is-demo {
     background: #f59e0b;
     box-shadow:
@@ -84755,6 +84986,84 @@ body.lux-shell-dark .lux-scope-badge__value {
 .lux-header__live-dot {
     align-self: center;
     margin-right: 0.15rem;
+}
+
+#page_top.lux-header-bar .lux-header__live-pulse {
+    display: inline-flex;
+    align-items: center;
+    align-self: center;
+}
+
+#page_top.lux-header-bar .lux-header__live-pulse-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.85rem;
+    height: 1.85rem;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    border-radius: 999px;
+    background: transparent;
+    cursor: pointer;
+}
+
+#page_top.lux-header-bar .lux-header__live-pulse-btn:focus-visible {
+    outline: 2px solid var(--lux-primary, #5b5ff4);
+    outline-offset: 2px;
+}
+
+#page_top.lux-header-bar .lux-header__live-pulse.is-down .lux-header__live-pulse-btn:focus-visible {
+    outline-color: #e11d48;
+}
+
+#page_top.lux-header-bar .lux-header__live-pulse-btn:hover,
+#page_top.lux-header-bar .lux-header__live-pulse.show .lux-header__live-pulse-btn {
+    background: rgba(15, 23, 42, 0.05);
+}
+
+#page_top.lux-header-bar .lux-header__live-pulse.is-down .lux-header__live-pulse-btn:hover,
+#page_top.lux-header-bar .lux-header__live-pulse.is-down.show .lux-header__live-pulse-btn {
+    background: rgba(225, 29, 72, 0.1);
+}
+
+#page_top.lux-header-bar .lux-header-health__more {
+    margin: 0.15rem 0.85rem 0.35rem;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    color: #94a3b8;
+}
+
+@keyframes lux-live-dot-attention {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.12); opacity: 0.85; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .lux-data-source-dot.is-down {
+        animation: none;
+    }
+}
+
+body.lux-shell-dark .lux-data-source-dot {
+    box-shadow: 0 0 0 3px rgba(15, 23, 42, 0.85);
+}
+
+body.lux-shell-dark .lux-data-source-dot.is-live {
+    box-shadow:
+        0 0 0 3px rgba(15, 23, 42, 0.9),
+        0 0 0 5px rgba(34, 197, 94, 0.32);
+}
+
+body.lux-shell-dark .lux-data-source-dot.is-down {
+    box-shadow:
+        0 0 0 3px rgba(15, 23, 42, 0.9),
+        0 0 0 5px rgba(225, 29, 72, 0.4);
+}
+
+body.lux-shell-dark #page_top.lux-header-bar .lux-header__live-pulse-btn:hover,
+body.lux-shell-dark #page_top.lux-header-bar .lux-header__live-pulse.show .lux-header__live-pulse-btn {
+    background: rgba(248, 250, 252, 0.08);
 }
 
 .lux-appr-kpi-strip {
@@ -92618,6 +92927,7 @@ a.lux-payroll-register__primary:hover .lux-payroll-register__primary-title {
   display: flex;
   align-items: flex-start;
   gap: 0.65rem;
+  padding-left: calc(var(--org-unit-depth, 0) * 0.7rem);
 }
 
 .lux-org-unit-register__icon {
@@ -95538,7 +95848,8 @@ a.lux-workspace-widgets__card:hover {
 }
 
 .lux-fflag-panel {
-  overflow: hidden;
+  overflow: visible;
+  height: auto;
 }
 
 .lux-fflag-panel__toolbar {
@@ -95563,13 +95874,19 @@ a.lux-workspace-widgets__card:hover {
 
 .lux-fflag-panel__grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.55fr) minmax(300px, 0.85fr);
+  grid-template-columns: minmax(0, 1.55fr) minmax(260px, 0.75fr);
   gap: 1rem;
   align-items: start;
 }
 
+.lux-fflag-panel__register {
+  min-width: 0;
+  overflow: visible;
+}
+
 .lux-fflag-register-wrap {
-  overflow-x: auto;
+  overflow: visible;
+  max-height: none;
   border-radius: 16px;
   border: 1px solid rgba(148, 163, 184, 0.22);
   background:
@@ -95581,15 +95898,25 @@ a.lux-workspace-widgets__card:hover {
 
 .lux-fflag-register {
   width: 100%;
+  table-layout: fixed;
   border-collapse: collapse;
   font-size: 0.8125rem;
 }
 
+.lux-fflag-register__col--flag { width: 34%; }
+.lux-fflag-register__col--module { width: 12%; }
+.lux-fflag-register__col--adoption { width: 14%; }
+.lux-fflag-register__col--risk { width: 10%; }
+.lux-fflag-register__col--status { width: 14%; }
+.lux-fflag-register__col--updated { width: 16%; }
+
 .lux-fflag-register th,
 .lux-fflag-register td {
-  padding: 0.85rem 1rem;
+  padding: 0.85rem 0.75rem;
   border-bottom: 1px solid rgba(148, 163, 184, 0.14);
   vertical-align: middle;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .lux-fflag-register th {
@@ -95756,7 +96083,7 @@ a.lux-workspace-widgets__card:hover {
 .lux-fflag-register__date {
   font-size: 0.75rem;
   color: #64748b;
-  white-space: nowrap;
+  white-space: normal;
 }
 
 .lux-fflag-detail {
@@ -112352,12 +112679,17 @@ body.lux-shell-dark .lux-dev-drawer__banner strong {
 .lux-module-hero.is-slate .lux-appconfig-hero__kicker i { color: #475569; }
 
 @media (max-width: 900px) {
-  .lux-module-hero__aside {
+  /* Toolbars can wrap full-width; simple How to / refresh stay right-aligned */
+  .lux-module-hero__aside--toolbar {
     align-items: stretch;
     width: 100%;
   }
-  .lux-module-hero__actions {
-    justify-content: flex-start;
+  .lux-module-hero:not(.has-toolbar) .lux-module-hero__aside {
+    width: auto;
+    align-items: flex-end;
+  }
+  .lux-module-hero:not(.has-toolbar) .lux-module-hero__actions {
+    justify-content: flex-end;
   }
 }
 
@@ -115339,4 +115671,138 @@ body.lux-shell-dark .lux-dev-drawer__banner strong {
   background: rgba(8, 15, 30, 0.58);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
+}
+
+/* —— System Errors console —— */
+.lux-syserr-toolbar {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  margin: 0 0 0.85rem;
+}
+.lux-syserr-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+.lux-syserr-search {
+  display: flex;
+  gap: 0.4rem;
+  align-items: center;
+  max-width: 28rem;
+}
+.lux-syserr-search input {
+  flex: 1 1 auto;
+  min-width: 0;
+  min-height: 2rem;
+  border: 1px solid rgba(148, 163, 184, 0.45);
+  border-radius: 8px;
+  padding: 0.35rem 0.65rem;
+  font-size: 0.8125rem;
+  background: #fff;
+}
+.lux-syserr-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.45rem;
+}
+.lux-syserr-row {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 4.5rem minmax(0, 1fr) auto;
+  gap: 0.65rem;
+  align-items: start;
+  text-align: left;
+  padding: 0.7rem 0.85rem;
+  border: 1px solid rgba(226, 232, 240, 0.95);
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(248, 250, 252, 0.94));
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.04);
+  cursor: pointer;
+}
+.lux-syserr-row:hover {
+  border-color: rgba(244, 63, 94, 0.28);
+}
+.lux-syserr-row__severity {
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #be123c;
+}
+.lux-syserr-row.is-warning .lux-syserr-row__severity { color: #b45309; }
+.lux-syserr-row.is-critical .lux-syserr-row__severity { color: #9f1239; }
+.lux-syserr-row__main {
+  display: grid;
+  gap: 0.15rem;
+  min-width: 0;
+}
+.lux-syserr-row__main strong {
+  font-size: 0.875rem;
+  color: #0f172a;
+}
+.lux-syserr-row__main span {
+  font-size: 0.75rem;
+  color: #64748b;
+  line-height: 1.35;
+}
+.lux-syserr-row__meta {
+  display: grid;
+  gap: 0.15rem;
+  justify-items: end;
+  font-size: 0.6875rem;
+  color: #94a3b8;
+  white-space: nowrap;
+}
+.lux-syserr-detail-block {
+  margin: 0 0 1rem;
+}
+.lux-syserr-detail-block h3 {
+  margin: 0 0 0.35rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #64748b;
+}
+.lux-syserr-detail-block p {
+  margin: 0 0 0.4rem;
+  font-size: 0.875rem;
+  color: #1e293b;
+  line-height: 1.45;
+}
+.lux-syserr-detail-meta {
+  font-size: 0.75rem !important;
+  color: #64748b !important;
+}
+.lux-syserr-detail-grid {
+  display: grid;
+  gap: 0.45rem;
+  margin: 0;
+}
+.lux-syserr-detail-grid dt {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #94a3b8;
+}
+.lux-syserr-detail-grid dd {
+  margin: 0.1rem 0 0;
+  font-size: 0.8125rem;
+  color: #334155;
+  word-break: break-word;
+}
+.lux-dev-drawer--rose .lux-dev-drawer__eyebrow {
+  color: #e11d48;
+}
+@media (max-width: 767px) {
+  .lux-syserr-row {
+    grid-template-columns: 1fr;
+  }
+  .lux-syserr-row__meta {
+    justify-items: start;
+    flex-direction: row;
+  }
 }

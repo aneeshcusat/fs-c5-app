@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en" data-lux-theme="luxury" data-lux-palette="emerald">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Access Requests — Tracopus User Guide</title>
+  <meta name="description" content="Review and fulfill elevated access and asset requests from the universal approval inbox.">
+  <meta name="keywords" content="tracopus, documentation, user guide, admin, access requests">
+  <link rel="canonical" href="https://tracopus.com/documentation/admin/access-requests.html">
+  <meta name="robots" content="index, follow">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Tracopus">
+  <meta property="og:title" content="Access Requests — Tracopus User Guide">
+  <meta property="og:description" content="Review and fulfill elevated access and asset requests from the universal approval inbox.">
+  <meta property="og:url" content="https://tracopus.com/documentation/admin/access-requests.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Access Requests — Tracopus User Guide">
+  <meta name="twitter:description" content="Review and fulfill elevated access and asset requests from the universal approval inbox.">
+  <script src="../js/docs-analytics.js?v=20260719a" defer></script>
+  <link rel="stylesheet" href="../css/styles.css?v=20260912g">
+  <script src="../js/brand-config.js?v=20260619e"></script>
+</head>
+<body data-docs-depth="1">
+
+<header aria-label="Site header"></header>
+
+<main>
+  <div class="breadcrumb"><a href="../index.html">Home</a> → Admin → Access Requests</div>
+
+  <div class="doc-canvas">
+    <header class="doc-mast">
+      <div class="doc-mast__top">
+        <span class="doc-mast__eyebrow">Admin · Access</span>
+        <div class="page-meta page-meta--inline">
+          <span class="page-meta__item"><strong>Route</strong> <code>/admin/access-requests</code></span>
+          <span class="page-meta__item"><strong>Flag</strong> <code>accessRequestsEnabled</code></span>
+        </div>
+      </div>
+      <h1 class="doc-mast__title">Access Requests</h1>
+      <p class="doc-mast__lead">Review and fulfill elevated access and asset requests from the universal approval inbox.</p>
+      <p class="doc-mast__purpose">Scroll to <a href="#flowcharts">Flowcharts</a>. Scenario: <a href="../user-guide/admin/admin-access-requests.html">Fulfill an access or asset request</a>.</p>
+    </header>
+
+    <section class="doc-briefing" id="at-a-glance" aria-labelledby="briefing-title">
+      <div class="doc-briefing__intro">
+        <p class="doc-briefing__kicker"><i class="fe fe-key" aria-hidden="true"></i> Elevated access inbox</p>
+        <h2 class="doc-briefing__title" id="briefing-title">Granting doors, not inventing a second HR file</h2>
+        <p class="doc-briefing__lead">Access and asset requests land here so an administrator can fulfill a laptop, badge, or elevated permission from the same universal approval family as leave and timesheet.</p>
+        <div class="doc-briefing__signals" aria-label="Access and placement">
+          <span class="doc-briefing__signal">Admin → Access requests</span>
+          <span class="doc-briefing__signal">Route <code>/admin/access-requests</code></span>
+          <span class="doc-briefing__signal">Org flag <code>accessRequestsEnabled</code></span>
+          <span class="doc-briefing__signal">Requester (employee) · HR Admin / Org Admin fulfill</span>
+        </div>
+      </div>
+      <div class="doc-briefing__grid">
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-zap"></i></span>
+          <div>
+            <h3>The job of this console</h3>
+            <p>Review pending requests, fulfill or reject against Employee and asset masters, and close the row so the trail stays on the approval domain. Export only when audit wants a snapshot.</p>
+          </div>
+        </article>
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-users"></i></span>
+          <div>
+            <h3>Seat at the table</h3>
+            <p>Anyone may raise a request when the flag is on. Fulfillment is for HR Admin and Org Admin. Managers see team items in My Approvals, not this admin register.</p>
+          </div>
+        </article>
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-play-circle"></i></span>
+          <div>
+            <h3>The working rhythm</h3>
+            <p>Filter by status, open a row, fulfill against source records, confirm it closes. Do not create a side spreadsheet of laptops — assets stay on the People assets register.</p>
+          </div>
+        </article>
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-clock"></i></span>
+          <div>
+            <h3>Moments that bring you here</h3>
+            <p>New joiner hardware. Production-admin for an incident. Contractor access that should expire. After offboarding, leftover grants still open.</p>
+          </div>
+        </article>
+      </div>
+      <div class="doc-briefing__note">
+        <div class="callout callout--note callout--interactive">
+          <div class="callout__icon">ⓘ</div>
+          <div class="callout__body">
+            <strong class="callout__title">Fulfillment writes to source records</strong>
+            <div class="callout__text">Closing a request does not create a parallel asset ledger. Employee and asset masters remain the source; this console only routes the decision.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <div class="doc-flow">
+      <section class="doc-block" id="flowcharts">
+        <h2 class="doc-block__title">Flowcharts</h2>
+
+        <article class="diagram-card" data-diagram-autoplay="true">
+          <header class="diagram-card__head">
+            <div class="diagram-card__titles">
+              <h3>1 — Approve an access request</h3>
+              <p class="diagram-card__desc">Filter pending items, review justification, then fulfill or deny.</p>
+            </div>
+            <div class="diagram-card__controls">
+              <button type="button" data-diagram-prev aria-label="Previous step"><i class="fe fe-chevron-left" aria-hidden="true"></i></button>
+              <button type="button" data-diagram-play aria-pressed="false"><i class="fe fe-play" aria-hidden="true"></i><span>Play</span></button>
+              <button type="button" data-diagram-next aria-label="Next step"><i class="fe fe-chevron-right" aria-hidden="true"></i></button>
+            </div>
+          </header>
+          <div class="diagram-card__chart">
+            <pre class="mermaid">
+flowchart TD
+  A[Open Access requests] --> B[Filter pending]
+  B --> C[Open a request]
+  C --> D{Justified?}
+  D -->|Yes| E[Approve / fulfill]
+  D -->|No| F[Deny with reason]
+  E --> G[Grant recorded]
+  F --> G
+            </pre>
+          </div>
+          <ol class="diagram-steps">
+            <li class="diagram-step is-active"><span class="diagram-step__index">1</span><div class="diagram-step__body"><strong>Open the register</strong><span>Admin → Access requests.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">2</span><div class="diagram-step__body"><strong>Filter pending</strong><span>Status chips show what still needs a decision.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">3</span><div class="diagram-step__body"><strong>Review</strong><span>Check persona, asset, and justification.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">4</span><div class="diagram-step__body"><strong>Decide</strong><span>Approve to fulfill or deny with a reason.</span></div></li>
+          </ol>
+          <p class="diagram-card__progress" data-diagram-progress></p>
+        </article>
+      </section>
+
+      <section class="doc-block" id="overview">
+        <h2 class="doc-block__title">Overview</h2>
+        <p>Access requests are a domain of the universal approval engine. Fulfillment writes to existing people/asset records — this page is not an independent permission store.</p>
+      </section>
+
+      <section class="doc-block" id="how-to">
+        <h2 class="doc-block__title">How to use</h2>
+        <div class="steps">
+          <div class="step"><strong>1. Search before paging</strong><div class="step-detail">Actor, asset, and headline search is faster than scrolling.</div></div>
+          <div class="step"><strong>2. Deny with a reason</strong><div class="step-detail">Empty denials create follow-up noise.</div></div>
+          <div class="step"><strong>3. Check related policies</strong><div class="step-detail">Some grants still need Roles &amp; permissions after fulfillment.</div></div>
+        </div>
+      </section>
+
+      <section class="doc-block doc-block--related" id="related-pages">
+        <h2 class="doc-block__title">Related pages</h2>
+        <div class="related-links">
+          <a class="related-link" href="../hrms/roles-permissions.html"><span class="related-link__label">Roles &amp; permissions</span><span class="related-link__desc">What the grant actually unlocks.</span></a>
+          <a class="related-link" href="approval-policies.html"><span class="related-link__label">Approval policies</span><span class="related-link__desc">SLA for ASSET_ACCESS.</span></a>
+          <a class="related-link" href="audit.html"><span class="related-link__label">Audit</span><span class="related-link__desc">Fulfillment events.</span></a>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <nav class="page-nav">
+    <a class="page-nav__prev" href="delegation.html">← Delegation rules</a>
+    <a class="page-nav__next" href="org-structure.html">Org structure →</a>
+  </nav>
+</main>
+
+<footer>
+  <div class="container">
+    <p>&copy; 2026 <span data-brand>Tracopus</span>. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="../js/palette.js?v=20260619e"></script>
+<script src="../js/brand.js?v=20260619e"></script>
+<script src="../js/docs-utility-config.js?v=20260720b"></script>
+<script src="../js/nav-config.js?v=20260906a"></script>
+<script src="../js/navigation.js?v=20260912f"></script>
+<script src="../js/site-enhancements.js?v=20260906a"></script>
+<script src="../js/search.js?v=20260619e"></script>
+<script type="module">
+  import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+  mermaid.initialize({
+    startOnLoad: true,
+    theme: "base",
+    securityLevel: "loose",
+    flowchart: { curve: "basis", htmlLabels: true },
+    themeVariables: {
+      primaryColor: "#d8f3dc",
+      primaryTextColor: "#1b4332",
+      primaryBorderColor: "#40916c",
+      lineColor: "#52796f",
+      secondaryColor: "#f1faee",
+      tertiaryColor: "#ffffff",
+      fontFamily: "Inter, system-ui, sans-serif",
+    },
+  });
+  setTimeout(() => {
+    if (window.TracopusDocsDiagrams) window.TracopusDocsDiagrams.boot();
+  }, 600);
+</script>
+<script src="../js/docs-diagrams.js?v=20260718e"></script>
+</body>
+</html>

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en" data-lux-theme="luxury" data-lux-palette="emerald">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Integration Logs — Tracopus User Guide</title>
+  <meta name="description" content="Payload and error detail for connector runs — operational logs, masked, not Admin audit and not a business register.">
+  <meta name="keywords" content="tracopus, documentation, user guide, integrations, integration logs">
+  <link rel="canonical" href="https://tracopus.com/documentation/integrations/logs.html">
+  <meta name="robots" content="index, follow">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Tracopus">
+  <meta property="og:title" content="Integration Logs — Tracopus User Guide">
+  <meta property="og:description" content="Payload and error detail for connector runs — operational logs, masked, not Admin audit and not a business register.">
+  <meta property="og:url" content="https://tracopus.com/documentation/integrations/logs.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Integration Logs — Tracopus User Guide">
+  <meta name="twitter:description" content="Payload and error detail for connector runs — operational logs, masked, not Admin audit and not a business register.">
+  <script src="../js/docs-analytics.js?v=20260719a" defer></script>
+  <link rel="stylesheet" href="../css/styles.css?v=20260912g">
+  <script src="../js/brand-config.js?v=20260619e"></script>
+</head>
+<body data-docs-depth="1">
+
+<header aria-label="Site header"></header>
+
+<main>
+  <div class="breadcrumb"><a href="../index.html">Home</a> → Integrations → Integration logs</div>
+
+  <div class="doc-canvas">
+    <header class="doc-mast">
+      <div class="doc-mast__top">
+        <span class="doc-mast__eyebrow">Integrations · Logs</span>
+        <div class="page-meta page-meta--inline">
+          <span class="page-meta__item"><strong>Route</strong> <code>/integrations/logs</code></span>
+          <span class="page-meta__item"><strong>Flag</strong> <code>logsEnabled</code></span>
+        </div>
+      </div>
+      <h1 class="doc-mast__title">Integration Logs</h1>
+      <p class="doc-mast__lead">Payload and error detail for connector runs — operational logs, masked, not Admin audit and not a business register.</p>
+      <p class="doc-mast__purpose">Scroll to <a href="#flowcharts">Flowcharts</a>. Scenario: <a href="../user-guide/integrations/integrations-logs.html">Inspect a connector log then fix mapping or data</a>.</p>
+    </header>
+
+    <section class="doc-briefing" id="at-a-glance" aria-labelledby="briefing-title">
+      <div class="doc-briefing__intro">
+        <p class="doc-briefing__kicker"><i class="fe fe-file-text" aria-hidden="true"></i> Operational detail</p>
+        <h2 class="doc-briefing__title" id="briefing-title">Why a batch failed — not the employee file</h2>
+        <p class="doc-briefing__lead">Integration logs show connector errors and payloads. They are not Admin audit, not AI audit, and not a place to edit people or projects.</p>
+        <div class="doc-briefing__signals" aria-label="Access and placement">
+          <span class="doc-briefing__signal">Integrations → Integration logs</span>
+          <span class="doc-briefing__signal">Route <code>/integrations/logs</code></span>
+          <span class="doc-briefing__signal">Org flag <code>logsEnabled</code></span>
+          <span class="doc-briefing__signal">Integration admin · Ops</span>
+        </div>
+      </div>
+      <div class="doc-briefing__grid">
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-zap"></i></span>
+          <div>
+            <h3>The job of this console</h3>
+            <p>Find the failure, read the masked detail, fix mapping or the source, retry the job. Never paste raw payloads into chat or Work Graph.</p>
+          </div>
+        </article>
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-users"></i></span>
+          <div>
+            <h3>Seat at the table</h3>
+            <p>Integration admins and ops with logsEnabled.</p>
+          </div>
+        </article>
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-play-circle"></i></span>
+          <div>
+            <h3>The working rhythm</h3>
+            <p>From a red health card, open the log, fix, retry, confirm in product.</p>
+          </div>
+        </article>
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-clock"></i></span>
+          <div>
+            <h3>Moments that bring you here</h3>
+            <p>A poison payload. Vendor schema change. Duplicate external ids. A compliance question about what was sent.</p>
+          </div>
+        </article>
+      </div>
+      <div class="doc-briefing__note">
+        <div class="callout callout--note callout--interactive">
+          <div class="callout__icon">ⓘ</div>
+          <div class="callout__body">
+            <strong class="callout__title">Three audits</strong>
+            <div class="callout__text">This page: connector ops. Admin audit: org events. AI audit: masked agent runs. Keep sensitive fields masked in all three.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="doc-flow">
+      <section class="doc-block" id="flowcharts">
+        <h2 class="doc-block__title">Flowcharts</h2>
+
+        <article class="diagram-card" data-diagram-autoplay="true">
+          <header class="diagram-card__head">
+            <div class="diagram-card__titles">
+              <h3>1 — Log then fix</h3>
+              <p class="diagram-card__desc">Read the error, change the map or source, retry.</p>
+            </div>
+            <div class="diagram-card__controls">
+              <button type="button" data-diagram-prev aria-label="Previous step"><i class="fe fe-chevron-left" aria-hidden="true"></i></button>
+              <button type="button" data-diagram-play aria-pressed="false"><i class="fe fe-play" aria-hidden="true"></i><span>Play</span></button>
+              <button type="button" data-diagram-next aria-label="Next step"><i class="fe fe-chevron-right" aria-hidden="true"></i></button>
+            </div>
+          </header>
+          <div class="diagram-card__chart">
+            <pre class="mermaid">
+flowchart TD
+  A[Open Integration logs] --> B[Filter]
+  B --> C[Open failure]
+  C --> D[Mapping or source]
+  D --> E[Retry job]
+            </pre>
+          </div>
+          <ol class="diagram-steps">
+            <li class="diagram-step is-active"><span class="diagram-step__index">1</span><div class="diagram-step__body"><strong>Open</strong><span>Integrations → Integration logs.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">2</span><div class="diagram-step__body"><strong>Filter</strong><span>Connector and time.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">3</span><div class="diagram-step__body"><strong>Read</strong><span>Masked payload / error.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">4</span><div class="diagram-step__body"><strong>Fix</strong><span>Then retry the job.</span></div></li>
+          </ol>
+          <p class="diagram-card__progress" data-diagram-progress></p>
+        </article>
+      </section>
+
+      <section class="doc-block" id="overview">
+        <h2 class="doc-block__title">Overview</h2>
+        <p>Integration logs are operational. Admin audit is the org event register. AI audit is masked AI runs. Logs must not become an unmasked warehouse of bank, tax, or medical payloads.</p>
+      </section>
+
+      <section class="doc-block" id="how-to">
+        <h2 class="doc-block__title">How to use</h2>
+        <div class="steps">
+          <div class="step"><strong>1. Retention</strong><div class="step-detail">Follow data-retention policy.</div></div>
+          <div class="step"><strong>2. PII in payloads</strong><div class="step-detail">Treat as a mapping defect if raw sensitive fields appear.</div></div>
+          <div class="step"><strong>3. Not a queue editor</strong><div class="step-detail">You do not approve leave from a log line.</div></div>
+        </div>
+      </section>
+
+      <section class="doc-block doc-block--related" id="related-pages">
+        <h2 class="doc-block__title">Related pages</h2>
+        <div class="related-links">
+          <a class="related-link" href="sync-health.html"><span class="related-link__label">Sync monitor</span><span class="related-link__desc">Health cards.</span></a>
+          <a class="related-link" href="jobs.html"><span class="related-link__label">Import/export jobs</span><span class="related-link__desc">Retry.</span></a>
+          <a class="related-link" href="../admin/audit.html"><span class="related-link__label">Admin audit</span><span class="related-link__desc">Org events.</span></a>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <nav class="page-nav">
+    <a class="page-nav__prev" href="jobs.html">← Import/export jobs</a>
+    <a class="page-nav__next" href="../index.html">Documentation home →</a>
+  </nav>
+</main>
+
+<footer>
+  <div class="container">
+    <p>&copy; 2026 <span data-brand>Tracopus</span>. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="../js/palette.js?v=20260619e"></script>
+<script src="../js/brand.js?v=20260619e"></script>
+<script src="../js/docs-utility-config.js?v=20260720b"></script>
+<script src="../js/nav-config.js?v=20260912c"></script>
+<script src="../js/navigation.js?v=20260912f"></script>
+<script src="../js/site-enhancements.js?v=20260906a"></script>
+<script src="../js/search.js?v=20260619e"></script>
+<script type="module">
+  import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+  mermaid.initialize({
+    startOnLoad: true,
+    theme: "base",
+    securityLevel: "loose",
+    flowchart: { curve: "basis", htmlLabels: true },
+    themeVariables: {
+      primaryColor: "#d8f3dc",
+      primaryTextColor: "#1b4332",
+      primaryBorderColor: "#40916c",
+      lineColor: "#52796f",
+      secondaryColor: "#f1faee",
+      tertiaryColor: "#ffffff",
+      fontFamily: "Inter, system-ui, sans-serif",
+    },
+  });
+  setTimeout(() => {
+    if (window.TracopusDocsDiagrams) window.TracopusDocsDiagrams.boot();
+  }, 600);
+</script>
+<script src="../js/docs-diagrams.js?v=20260718e"></script>
+</body>
+</html>

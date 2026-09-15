@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en" data-lux-theme="luxury" data-lux-palette="emerald">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Work-Time Governance — Tracopus User Guide</title>
+  <meta name="description" content="Default-off catalog for timesheet validation, approval chains, reminders, import/export, estimates, and attendance evidence — configured from Feature Flags.">
+  <meta name="keywords" content="tracopus, documentation, user guide, hrms, work-time governance, timesheet validation, approval chain, feature flags">
+  <link rel="canonical" href="https://tracopus.com/documentation/hrms/work-time-governance.html">
+  <meta name="robots" content="index, follow">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Tracopus">
+  <meta property="og:title" content="Work-Time Governance — Tracopus User Guide">
+  <meta property="og:description" content="Default-off catalog for timesheet validation, approval chains, reminders, import/export, estimates, and attendance evidence — configured from Feature Flags.">
+  <meta property="og:url" content="https://tracopus.com/documentation/hrms/work-time-governance.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Work-Time Governance — Tracopus User Guide">
+  <meta name="twitter:description" content="Default-off catalog for timesheet validation, approval chains, reminders, import/export, estimates, and attendance evidence — configured from Feature Flags.">
+  <script src="../js/docs-analytics.js?v=20260719a" defer></script>
+  <link rel="stylesheet" href="../css/styles.css?v=20260912g">
+  <link rel="stylesheet" href="../css/data-flow-bridge.css?v=20260724d">
+  <script src="../js/brand-config.js?v=20260619e"></script>
+</head>
+<body data-docs-depth="1">
+
+<header aria-label="Site header"></header>
+
+<main>
+  <div class="breadcrumb"><a href="../index.html">Home</a> → HRMS → Work-Time Governance</div>
+
+  <div class="doc-canvas">
+    <header class="doc-mast">
+      <div class="doc-mast__top">
+        <span class="doc-mast__eyebrow">HRMS · Governance</span>
+        <div class="page-meta page-meta--inline">
+          <span class="page-meta__item"><strong>Configure</strong> <code>/admin/feature-flags</code></span>
+          <span class="page-meta__item"><strong>API</strong> <code>/api/v2/app/config/work-time-governance</code></span>
+        </div>
+      </div>
+      <h1 class="doc-mast__title">Work-Time Governance</h1>
+      <p class="doc-mast__lead">A code-owned catalog of timesheet, approval, planning, attendance, and integration features. Catalog defaults are <strong>off</strong>. Application Config stores tenant choices; existing timesheet, leave, and attendance approval engines stay the source of truth.</p>
+      <p class="doc-mast__purpose">Admins enable features on <strong>Admin → Feature flags</strong>. Contributors see a governance banner on <a href="timesheet.html">Timesheet</a> when validation or late-band rules apply.</p>
+    </header>
+
+    <section class="doc-briefing" id="at-a-glance" aria-labelledby="briefing-title">
+      <div class="doc-briefing__intro">
+        <p class="doc-briefing__kicker"><i class="fe fe-sliders" aria-hidden="true"></i> Code-owned catalog</p>
+        <h2 class="doc-briefing__title" id="briefing-title">Families that stay off until you switch them on</h2>
+        <p class="doc-briefing__lead">Work-Time Governance is a code-owned catalog of timesheet, approval, planning, attendance, and integration features. Catalog defaults are off. Application Config and the Feature flags console are how families go live.</p>
+        <div class="doc-briefing__signals" aria-label="Access and placement">
+          <span class="doc-briefing__signal">Admin → Feature flags (Work-Time Governance panel)</span>
+          <span class="doc-briefing__signal">HR Admin · Org Admin</span>
+        </div>
+      </div>
+      <div class="doc-briefing__grid">
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-zap"></i></span>
+          <div>
+            <h3>The job of this console</h3>
+            <p>Understand which family you are about to enable, the dependents, and the screens that will appear. Enable from Feature flags / Application Config — this page is the map, not a second toggle UI.</p>
+          </div>
+        </article>
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-users"></i></span>
+          <div>
+            <h3>Seat at the table</h3>
+            <p>Administrators designing time rules. Employees never enable catalog families.</p>
+          </div>
+        </article>
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-play-circle"></i></span>
+          <div>
+            <h3>The working rhythm</h3>
+            <p>Read the family, check dependents, enable on Feature flags, then prove timesheet, attendance, or approval still behave. Roll back the flag if a family is not ready.</p>
+          </div>
+        </article>
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-clock"></i></span>
+          <div>
+            <h3>Moments that bring you here</h3>
+            <p>Before turning on approval chain. A planning feature that surprised managers. After an upgrade that added catalog entries. When two families overlap.</p>
+          </div>
+        </article>
+      </div>
+      <div class="doc-briefing__note">
+        <div class="callout callout--note callout--interactive">
+          <div class="callout__icon">ⓘ</div>
+          <div class="callout__body">
+            <strong class="callout__title">Defaults are off</strong>
+            <div class="callout__text">Shipping code is not the same as enabling a family. Application Config still holds related keys; this catalog does not store hours.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <div class="doc-flow">
+      <section class="doc-block doc-block--data-flow-bridge" id="interactive-data-flow">
+        <h2 class="doc-block__title">Interactive data flow</h2>
+        <p class="df-bridge-lead">Work-Time Governance sits on top of the existing timesheet approval flags. Use the timesheet simulator for submit/approve/lock, then return here for catalog families and resolver rules.</p>
+        <div class="df-bridge-actions">
+          <a class="df-bridge-cta df-bridge-cta--primary" href="../data-flow/timesheet-flags-data-flow.html"><span>Primary simulator</span><strong>Timesheet flags &amp; approval →</strong></a>
+          <a class="df-bridge-cta" href="application-config.html"><span>Config</span><strong>Application Config →</strong></a>
+          <a class="df-bridge-link" href="../user-guide/admin/admin-work-time-governance.html">Admin scenario</a>
+        </div>
+      </section>
+
+      <section class="doc-block" id="flowcharts">
+        <h2 class="doc-block__title">Flowcharts</h2>
+        <p>Each diagram auto-plays steps when it scrolls into view. Use <strong>Play / Pause</strong>, or click a step to jump.</p>
+
+        <article class="diagram-card" data-diagram-autoplay="true">
+          <header class="diagram-card__head">
+            <div class="diagram-card__titles">
+              <h3>1 — Effective-value resolver</h3>
+              <p class="diagram-card__desc">Catalog default, then Application Config, then optional project override, then role AND, then dependency AND.</p>
+            </div>
+            <div class="diagram-card__controls">
+              <button type="button" data-diagram-prev aria-label="Previous step"><i class="fe fe-chevron-left" aria-hidden="true"></i></button>
+              <button type="button" data-diagram-play aria-pressed="false"><i class="fe fe-play" aria-hidden="true"></i><span>Play</span></button>
+              <button type="button" data-diagram-next aria-label="Next step"><i class="fe fe-chevron-right" aria-hidden="true"></i></button>
+            </div>
+          </header>
+          <div class="diagram-card__chart">
+            <pre class="mermaid">
+flowchart TD
+  Cat[Catalog default off] --> App[Application Config]
+  App --> Proj{Project override?}
+  Proj -->|No| Role
+  Proj -->|Yes| Role[Role gate AND]
+  Role --> Dep[Dependencies AND]
+  Dep --> Eff[Effective enabled]
+            </pre>
+          </div>
+          <ol class="diagram-steps">
+            <li class="diagram-step is-active"><span class="diagram-step__index">1</span><div class="diagram-step__body"><strong>Catalog default</strong><span>Code owns identity, family, and default-off.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">2</span><div class="diagram-step__body"><strong>Application Config</strong><span>Tenant / org unit choice stored on the HRMS module.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">3</span><div class="diagram-step__body"><strong>Project override?</strong><span>Optional per-project on/off when the feature allows project scope.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">4</span><div class="diagram-step__body"><strong>Role gate AND</strong><span>Bulk actions, import/export, and admin policy require matching role flags.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">5</span><div class="diagram-step__body"><strong>Dependencies AND</strong><span>Escalation needs chain; FTE needs estimates; WFH needs source resolution.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">6</span><div class="diagram-step__body"><strong>Effective enabled</strong><span>Feature Flags panel shows Enabled, Blocked, or Off.</span></div></li>
+          </ol>
+          <p class="diagram-card__progress" data-diagram-progress></p>
+        </article>
+
+        <article class="diagram-card" data-diagram-autoplay="true">
+          <header class="diagram-card__head">
+            <div class="diagram-card__titles">
+              <h3>2 — Attendance source composition</h3>
+              <p class="diagram-card__desc">Leave first, then swipe, timesheet WFH hours, and regularization. Resolve is a composed read — it does not write the attendance matrix.</p>
+            </div>
+            <div class="diagram-card__controls">
+              <button type="button" data-diagram-prev aria-label="Previous step"><i class="fe fe-chevron-left" aria-hidden="true"></i></button>
+              <button type="button" data-diagram-play aria-pressed="false"><i class="fe fe-play" aria-hidden="true"></i><span>Play</span></button>
+              <button type="button" data-diagram-next aria-label="Next step"><i class="fe fe-chevron-right" aria-hidden="true"></i></button>
+            </div>
+          </header>
+          <div class="diagram-card__chart">
+            <pre class="mermaid">
+flowchart TD
+  Day[Work day] --> Leave{Approved leave?}
+  Leave -->|Yes| Out[Leave evidence]
+  Leave -->|No| Swipe{Swipe ingest on?}
+  Swipe -->|Hit| Out2[Swipe evidence]
+  Swipe -->|Miss| Wfh{Timesheet WFH on?}
+  Wfh -->|Hours| Out3[WFH from timesheet]
+  Wfh -->|No| Reg{Regularization?}
+  Reg -->|Yes| Out4[Override]
+  Reg -->|No| Empty[No composed source]
+            </pre>
+          </div>
+          <ol class="diagram-steps">
+            <li class="diagram-step is-active"><span class="diagram-step__index">1</span><div class="diagram-step__body"><strong>Work day</strong><span>Resolve one employee-day at a time.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">2</span><div class="diagram-step__body"><strong>Approved leave?</strong><span>Leave remains first and is not replaced by hours.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">3</span><div class="diagram-step__body"><strong>Swipe ingest</strong><span>Raw swipe rows persist only when <code>attendance.swipe-ingest</code> is on.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">4</span><div class="diagram-step__body"><strong>Timesheet WFH</strong><span>Approved timesheet hours can mark WFH when that feature is on.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">5</span><div class="diagram-step__body"><strong>Regularization</strong><span>Existing attendance regularization can override the composed view.</span></div></li>
+            <li class="diagram-step"><span class="diagram-step__index">6</span><div class="diagram-step__body"><strong>Composed source</strong><span>Read API only — the Attendance matrix stays the write store.</span></div></li>
+          </ol>
+          <p class="diagram-card__progress" data-diagram-progress></p>
+        </article>
+      </section>
+
+      <section class="doc-block" id="overview">
+        <h2 class="doc-block__title">Overview</h2>
+        <p><strong>Work-Time Governance</strong> is not a second timesheet product. It is a switchboard: about twenty catalog features grouped into approval, timesheet, planning, attendance, integration, and admin families. Turning a feature on does not invent a new source table. Hours still live on timesheet activity, projects still live on Purchase Order → Project → Task → Task Activity, and attendance marks still live on the attendance matrix.</p>
+        <p>The Feature Flags panel shows each feature’s inherited value, optional project override, role gate, and whether a missing dependency is blocking it. Effective state is <strong>Enabled</strong>, <strong>Blocked</strong> (selected on but role or dependency failed), or <strong>Off</strong>.</p>
+      </section>
+
+      <section class="doc-block" id="how-to">
+        <h2 class="doc-block__title">How to configure</h2>
+        <div class="steps">
+          <div class="step"><strong>1. Open Feature Flags</strong><div class="step-detail">Requires <code>adminGovernanceEnabled</code> and <code>featureFlagsAdminEnabled</code>. Scroll to the Work-Time Governance panel.</div></div>
+          <div class="step"><strong>2. Enable a family, then dependents</strong><div class="step-detail">Example: enable <code>approval.chain</code> before escalation or bulk actions. Enable <code>planning.estimates</code> before FTE or variance.</div></div>
+          <div class="step"><strong>3. Save Application Config</strong><div class="step-detail">Tenant choices persist on the HRMS module. Pilot on a child org unit before root lock.</div></div>
+          <div class="step"><strong>4. Optional project override</strong><div class="step-detail">Enter a project id on the panel to overlay on/off for features that allow project scope. Delete the override to inherit the team value again.</div></div>
+          <div class="step"><strong>5. Confirm on Timesheet</strong><div class="step-detail">When <code>timesheet.reminders</code> or <code>timesheet.late-workflow</code> is on, the page loads a server deadline preview for the selected week. Late weeks can show a late-reason field on Submit. Submit still uses the protected timesheet workflow.</div></div>
+        </div>
+      </section>
+
+      <section class="doc-block" id="catalog">
+        <h2 class="doc-block__title">Catalog families</h2>
+        <p>Catalog keys are stable ids. Defaults in code are off; organisation seeds may turn selected features on for a tenant.</p>
+        <div class="table-wrap">
+          <table class="table">
+            <thead><tr><th>Family</th><th>Feature ids</th><th>What it does</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><strong>Approval</strong></td>
+                <td><code>approval.chain</code>, <code>approval.escalation</code>, <code>approval.bulk-actions</code></td>
+                <td>Versioned policy/steps, escalation, and role-gated bulk actions. Timesheet can keep legacy manager approval when <code>approvalChainFallbackLegacy</code> is true.</td>
+              </tr>
+              <tr>
+                <td><strong>Timesheet</strong></td>
+                <td><code>timesheet.validation</code>, <code>approval-units</code>, <code>reminders</code>, <code>late-workflow</code>, <code>period-lock</code>, <code>variance</code>, <code>allocation</code></td>
+                <td>WARN/BLOCK validation, weekly approval units, deadline preview and reminder offsets, late bands with required reason, period lock after <code>lockAfterDays</code>, and planning bridges. Does not replace the existing timesheet grid.</td>
+              </tr>
+              <tr>
+                <td><strong>Planning</strong></td>
+                <td><code>planning.estimates</code>, <code>planning.fte</code>, <code>planning.variance</code></td>
+                <td>Grade / skill / resource estimate dimensions and optional FTE gate. Variance is a report over Task Activity hours.</td>
+              </tr>
+              <tr>
+                <td><strong>Attendance</strong></td>
+                <td><code>attendance.swipe-ingest</code>, <code>source-resolution</code>, <code>timesheet-wfh</code>, <code>cross-midnight</code>, <code>period-lock</code></td>
+                <td>Connector-gated swipe rows and a composed read of leave → swipe → WFH hours → regularization. <code>attendance.period-lock</code> has no lock service yet — do not treat it as active.</td>
+              </tr>
+              <tr>
+                <td><strong>Integration</strong></td>
+                <td><code>integration.project-import</code>, <code>integration.timesheet-export</code></td>
+                <td>Vendor-neutral adapters with mapping, least-privilege scopes, and idempotency. A vendor-specific adapter is not bundled.</td>
+              </tr>
+              <tr>
+                <td><strong>Admin</strong></td>
+                <td><code>admin.policy-management</code>, <code>admin.observability</code></td>
+                <td>Role-gated policy editors and observability inventory for operators.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="doc-block" id="timesheet-bridge">
+        <h2 class="doc-block__title">Deadline preview, late reason, reminders, and lock</h2>
+        <ul>
+          <li><strong>Deadline preview</strong> — when <code>timesheet.reminders</code> or <code>timesheet.late-workflow</code> is on (and <code>approval.chain</code> is effective), the timesheet page calls <code>GET …/timesheets/deadline-preview</code> for the selected week. The UI follows that preview; it does not guess Friday 18:00 locally. If both features are off, preview is <code>DISABLED</code> and not late.</li>
+          <li><strong>Late reason</strong> — when <code>timesheet.late-workflow</code> is on and the preview reports <code>reasonRequired</code>, Submit shows a late-reason field (Other needs detail). Exactly seven elapsed days follows the moderately late band (<code>TIMESHEET-LATE-LTE7</code>); later follows <code>TIMESHEET-LATE-GT7</code>. Changing week or team clears leftover submit governance so an on-time week does not keep a prior late reason.</li>
+          <li><strong>Validation</strong> — <code>timesheet.validation</code> can WARN (submit allowed with hints) or BLOCK.</li>
+          <li><strong>Reminders</strong> — catalog <code>timesheet.reminders</code> supplies cut-off day and offsets (default Friday 18:00 UTC, 3 / 1 / 0). Emails still need the master flag <code>timesheetAdditional.timesheetSubmissionReminderEnabled</code> and the reminder job. Master off blocks emails even if the catalog reminder is on.</li>
+          <li><strong>Period lock</strong> — with <code>timesheet.period-lock</code> on, <code>lockAfterDays</code> greater than <code>0</code> (tenant seed often <code>7</code>), and job <code>TIMESHEET_PERIOD_LOCK</code>, approved weeks lock. Reopen can require a reason. The older month lock <code>disableLastMonthAfterXDays</code> still applies separately.</li>
+          <li><strong>Approval units</strong> — weekly units can feed the chain engine. If no TIMESHEET chain policy is published, <code>approvalChainFallbackLegacy=true</code> keeps the existing manager approval path.</li>
+        </ul>
+      </section>
+
+      <section class="doc-block" id="approvals-bridge">
+        <h2 class="doc-block__title">Approval chain and inbox</h2>
+        <p>When <code>approval.chain</code> is effective and a domain policy is published, instances appear with step metadata. <a href="../workspace/approvals.html">My Approvals</a> remains the action inbox; it does not store a second copy of the timesheet. Escalation and bulk actions require the chain feature plus their own flags (bulk is role-gated).</p>
+        <p>Delegation still uses the existing approval-authority and delegation services. Governance does not replace leave or attendance approval.</p>
+      </section>
+
+      <section class="doc-block" id="import-export">
+        <h2 class="doc-block__title">Project import and timesheet export</h2>
+        <p>Enable <code>integration.project-import</code> and <code>integration.timesheet-export</code> separately. Both are role-gated. Import creates or updates projects from a mapped payload; export emits timesheet rows for a scoped period. Least-privilege scopes apply. There is no bundled vendor project-tracking adapter, delivery receipt, or dead-letter queue until those are configured as connectors.</p>
+      </section>
+
+      <section class="doc-block" id="planning">
+        <h2 class="doc-block__title">Estimates and FTE</h2>
+        <p>Grade, skill, and resource dimensions resolve from Application Config lists. Resource-level estimates stay optional unless <code>planning.fte</code> is effective. Variance reporting reads Task Activity hours — it is not a separate hours store.</p>
+      </section>
+
+      <section class="doc-block" id="limits">
+        <h2 class="doc-block__title">Current limits</h2>
+        <div class="callout-stack">
+          <div class="callout callout--warning"><div class="callout__icon">⚠️</div><div class="callout__body"><strong class="callout__title">Protected cores stay protected</strong><div class="callout__text">Leave, attendance matrix writes, timesheet approval, and Application Config merge are unchanged. Governance only adds catalog switches and bridges.</div></div></div>
+          <div class="callout callout--note"><div class="callout__icon">📝</div><div class="callout__body"><strong class="callout__title">Not in this release</strong><div class="callout__text">No Microsoft Teams or WhatsApp timesheet channels. Attendance resolve does not write the attendance matrix and does not fabricate in/out punches from hours-only timesheets. <code>attendance.period-lock</code> has no lock service. A complete ACS / device feed still needs the client vendor API. Overnight pairing is a limited look-ahead, not full shift windows. Observability is an inventory, not a replacement for application logs.</div></div></div>
+        </div>
+      </section>
+
+      <section class="doc-block" id="permissions">
+        <h2 class="doc-block__title">Permissions</h2>
+        <div class="table-wrap">
+          <table class="table table--permissions">
+            <thead><tr><th>Role</th><th>Access</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Platform admin</strong></td><td>Feature Flags panel; enable catalog features; optional project override; policy/observability when those features and role gates are on.</td></tr>
+              <tr><td><strong>Integration admin</strong></td><td>Project import / timesheet export only when those features and <code>workTimeIntegrationRoles</code> allow it.</td></tr>
+              <tr><td><strong>Manager / approver</strong></td><td>Existing timesheet and inbox actions. Chain steps apply only when a policy is published and the chain feature is effective.</td></tr>
+              <tr><td><strong>Individual contributor</strong></td><td>Timesheet banner and validation hints when those features are effective. No catalog editor.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="doc-block doc-block--related" id="related-pages">
+        <h2 class="doc-block__title">Related pages</h2>
+        <div class="related-links">
+          <a class="related-link" href="timesheet.html"><span class="related-link__label">Timesheet</span><span class="related-link__desc">Weekly grid and governance banner.</span></a>
+          <a class="related-link" href="timesheet-approval.html"><span class="related-link__label">Timesheet Approval</span><span class="related-link__desc">Manager review and lock.</span></a>
+          <a class="related-link" href="application-config.html"><span class="related-link__label">Application Configuration</span><span class="related-link__desc">Where tenant catalog choices persist.</span></a>
+          <a class="related-link" href="../workspace/approvals.html"><span class="related-link__label">My Approvals</span><span class="related-link__desc">Inbox for chain and legacy items.</span></a>
+          <a class="related-link" href="attendance.html"><span class="related-link__label">Attendance</span><span class="related-link__desc">Matrix writes stay here; resolve is read-only.</span></a>
+          <a class="related-link" href="../admin.html"><span class="related-link__label">Admin &amp; Access</span><span class="related-link__desc">Feature Flags and RBAC.</span></a>
+          <a class="related-link" href="../user-guide/admin/admin-work-time-governance.html"><span class="related-link__label">Scenario: Configure catalog</span><span class="related-link__desc">Step-by-step Feature Flags panel.</span></a>
+          <a class="related-link" href="../user-guide/hrms/hrms-timesheet-governance.html"><span class="related-link__label">Scenario: Submit with governance</span><span class="related-link__desc">Validation banner and WARN vs BLOCK.</span></a>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <nav class="page-nav">
+    <a class="page-nav__prev" href="timesheet-approval.html">← Timesheet Approval</a>
+    <a class="page-nav__next" href="application-config.html">Application Configuration →</a>
+  </nav>
+</main>
+
+<footer>
+  <div class="container">
+    <p>&copy; 2026 <span data-brand>Tracopus</span>. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="../js/palette.js?v=20260619e"></script>
+<script src="../js/brand.js?v=20260619e"></script>
+<script src="../js/docs-utility-config.js?v=20260720b"></script>
+<script src="../js/nav-config.js?v=20260906a"></script>
+<script src="../js/navigation.js?v=20260912f"></script>
+<script src="../js/site-enhancements.js?v=20260906a"></script>
+<script src="../js/search.js?v=20260619e"></script>
+<script type="module">
+  import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+  mermaid.initialize({
+    startOnLoad: true,
+    theme: "base",
+    securityLevel: "loose",
+    flowchart: { curve: "basis", htmlLabels: true },
+    themeVariables: {
+      primaryColor: "#d8f3dc",
+      primaryTextColor: "#1b4332",
+      primaryBorderColor: "#40916c",
+      lineColor: "#52796f",
+      secondaryColor: "#f1faee",
+      tertiaryColor: "#ffffff",
+      fontFamily: "Inter, system-ui, sans-serif",
+    },
+  });
+  setTimeout(() => {
+    if (window.TracopusDocsDiagrams) window.TracopusDocsDiagrams.boot();
+  }, 600);
+</script>
+<script src="../js/docs-diagrams.js?v=20260718e"></script>
+</body>
+</html>

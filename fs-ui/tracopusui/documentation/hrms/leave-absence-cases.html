@@ -17,7 +17,7 @@
   <meta name="twitter:title" content="Absence Cases &amp; Return to Work — Tracopus User Guide">
   <meta name="twitter:description" content="Register view for extended absences, case status, and return-to-work clearance — create/update via forms when available, or API.">
   <script src="../js/docs-analytics.js?v=20260719a" defer></script>
-  <link rel="stylesheet" href="../css/styles.css?v=20260718g">
+  <link rel="stylesheet" href="../css/styles.css?v=20260912g">
   <script src="../js/brand-config.js?v=20260619e"></script>
 </head>
 <body data-docs-depth="1">
@@ -40,6 +40,59 @@
       <p class="doc-mast__lead">Register view for extended absences, case status, and return-to-work clearance — create/update via forms when available, or API.</p>
       <p class="doc-mast__purpose">Register view — create/update via forms when available, or API. Related: <a href="leave-documents.html">Leave documents</a>.</p>
     </header>
+
+    <section class="doc-briefing" id="at-a-glance" aria-labelledby="briefing-title">
+      <div class="doc-briefing__intro">
+        <p class="doc-briefing__kicker"><i class="fe fe-briefcase" aria-hidden="true"></i> Extended absence</p>
+        <h2 class="doc-briefing__title" id="briefing-title">Cases and return-to-work, not a second leave type list</h2>
+        <p class="doc-briefing__lead">Absence cases is the register for extended absences, case status, and return-to-work clearance. Forms write when available; otherwise operators use the API. Ordinary annual leave still goes through Leave management.</p>
+        <div class="doc-briefing__signals" aria-label="Access and placement">
+          <span class="doc-briefing__signal">Admin → Absence cases</span>
+          <span class="doc-briefing__signal">Route <code>/admin/leave/absence-cases</code></span>
+          <span class="doc-briefing__signal">HR Admin · Org Admin</span>
+        </div>
+      </div>
+      <div class="doc-briefing__grid">
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-zap"></i></span>
+          <div>
+            <h3>The job of this console</h3>
+            <p>Open or update a case, track status, and record return-to-work clearance so the person is allowed back on the working calendar. Do not use this for a two-day casual leave.</p>
+          </div>
+        </article>
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-users"></i></span>
+          <div>
+            <h3>Seat at the table</h3>
+            <p>HR administrators. The employee still applies leave where the policy says; this is the case file around long absence.</p>
+          </div>
+        </article>
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-play-circle"></i></span>
+          <div>
+            <h3>The working rhythm</h3>
+            <p>Find the person, open or create the case, update status, complete return-to-work, confirm attendance/leave no longer treat them as out.</p>
+          </div>
+        </article>
+        <article class="doc-briefing__card">
+          <span class="doc-briefing__icon" aria-hidden="true"><i class="fe fe-clock"></i></span>
+          <div>
+            <h3>Moments that bring you here</h3>
+            <p>Long sickness. Parental leave wrapping a case. A clearance form. After someone returned but the matrix still shows out.</p>
+          </div>
+        </article>
+      </div>
+      <div class="doc-briefing__note">
+        <div class="callout callout--note callout--interactive">
+          <div class="callout__icon">ⓘ</div>
+          <div class="callout__body">
+            <strong class="callout__title">Case file on top of leave</strong>
+            <div class="callout__text">This is not a shadow leave ledger. Balances and requests stay on the leave engine.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
 
     <div class="doc-flow">
       <section class="doc-block" id="flowcharts">
@@ -151,9 +204,9 @@ flowchart TD
 <script src="../js/palette.js?v=20260619e"></script>
 <script src="../js/brand.js?v=20260619e"></script>
 <script src="../js/docs-utility-config.js?v=20260720b"></script>
-<script src="../js/nav-config.js?v=20260619e"></script>
-<script src="../js/navigation.js?v=20260619e"></script>
-<script src="../js/site-enhancements.js?v=20260718d"></script>
+<script src="../js/nav-config.js?v=20260906a"></script>
+<script src="../js/navigation.js?v=20260912f"></script>
+<script src="../js/site-enhancements.js?v=20260906a"></script>
 <script src="../js/search.js?v=20260619e"></script>
 <script type="module">
   import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";

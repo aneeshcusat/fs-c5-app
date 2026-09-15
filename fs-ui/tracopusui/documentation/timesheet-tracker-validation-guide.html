@@ -1,0 +1,2314 @@
+<!DOCTYPE html>
+<html lang="en" data-lux-theme="luxury" data-lux-palette="emerald">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Timesheet Tracker V1 — Client Acceptance Report</title>
+  <meta name="description" content="Client-ready requirement status, setup guidance, validation steps, expected results, and outstanding capabilities for Timesheet tracker_V1.xlsx.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23116149'/%3E%3Ctext x='32' y='40' text-anchor='middle' font-family='Arial' font-size='24' font-weight='700' fill='white'%3ETR%3C/text%3E%3C/svg%3E">
+  <style>
+    :root {
+      color-scheme: light;
+      --lux-ink: #10231d;
+      --lux-ink-soft: #2f4840;
+      --lux-muted: #66766f;
+      --lux-canvas: #f3f6f3;
+      --lux-surface: #ffffff;
+      --lux-surface-soft: #f8faf8;
+      --lux-border: #dbe4df;
+      --lux-border-strong: #bdcec5;
+      --lux-emerald: #116149;
+      --lux-emerald-deep: #0a4534;
+      --lux-emerald-soft: #e6f3ed;
+      --lux-gold: #9a6a16;
+      --lux-gold-soft: #fbf2dc;
+      --lux-amber: #a64b13;
+      --lux-amber-soft: #fff0e4;
+      --lux-red: #a42b2b;
+      --lux-red-soft: #fceaea;
+      --lux-blue: #245e91;
+      --lux-blue-soft: #eaf3fb;
+      --lux-shadow: 0 18px 45px rgba(21, 56, 43, 0.10);
+      --lux-shadow-soft: 0 8px 22px rgba(21, 56, 43, 0.07);
+      --lux-radius-lg: 20px;
+      --lux-radius-md: 13px;
+      --lux-radius-sm: 9px;
+      --lux-text-xs: 0.76rem;
+      --lux-text-sm: 0.88rem;
+      --lux-text-md: 1rem;
+      --lux-text-lg: 1.22rem;
+      --lux-text-xl: clamp(2rem, 4vw, 3.35rem);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--lux-ink);
+      background:
+        radial-gradient(circle at 8% 0%, rgba(17, 97, 73, 0.10), transparent 26rem),
+        linear-gradient(180deg, #fbfcfb 0, var(--lux-canvas) 42rem);
+      font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 15px;
+      line-height: 1.55;
+    }
+
+    a { color: var(--lux-emerald); text-underline-offset: 3px; }
+    code {
+      padding: 0.12rem 0.34rem;
+      border: 1px solid var(--lux-border);
+      border-radius: 6px;
+      color: var(--lux-emerald-deep);
+      background: var(--lux-surface-soft);
+      font: 600 0.82em/1.45 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      overflow-wrap: anywhere;
+    }
+
+    .site-head {
+      position: sticky;
+      z-index: 20;
+      top: 0;
+      border-bottom: 1px solid rgba(189, 206, 197, 0.85);
+      background: rgba(250, 252, 250, 0.92);
+      backdrop-filter: blur(18px);
+    }
+
+    .site-head__inner,
+    main,
+    footer {
+      width: min(1220px, calc(100% - 2rem));
+      margin-inline: auto;
+    }
+
+    .site-head__inner {
+      min-height: 62px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: var(--lux-ink);
+      text-decoration: none;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .brand__mark {
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      border-radius: 11px;
+      color: #fff;
+      background: linear-gradient(145deg, var(--lux-emerald), var(--lux-emerald-deep));
+      box-shadow: var(--lux-shadow-soft);
+      font-size: 0.78rem;
+      letter-spacing: 0.04em;
+    }
+
+    .site-nav {
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .site-nav a {
+      padding: 0.45rem 0.66rem;
+      border-radius: 8px;
+      color: var(--lux-ink-soft);
+      text-decoration: none;
+      white-space: nowrap;
+      font-size: var(--lux-text-sm);
+      font-weight: 700;
+    }
+
+    .site-nav a:hover,
+    .site-nav a:focus-visible {
+      color: var(--lux-emerald-deep);
+      background: var(--lux-emerald-soft);
+      outline: none;
+    }
+
+    main { padding: 2rem 0 4rem; }
+    section { scroll-margin-top: 82px; }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(1.5rem, 4vw, 3rem);
+      border: 1px solid rgba(189, 206, 197, 0.9);
+      border-radius: var(--lux-radius-lg);
+      background:
+        linear-gradient(120deg, rgba(255, 255, 255, 0.97), rgba(239, 248, 243, 0.92)),
+        var(--lux-surface);
+      box-shadow: var(--lux-shadow);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      right: -6rem;
+      bottom: -8rem;
+      width: 22rem;
+      height: 22rem;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(154, 106, 22, 0.15), transparent 67%);
+      pointer-events: none;
+    }
+
+    .eyebrow {
+      margin: 0 0 0.65rem;
+      color: var(--lux-emerald);
+      font-size: var(--lux-text-xs);
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    h1, h2, h3, h4 { line-height: 1.18; }
+    h1 {
+      max-width: 860px;
+      margin: 0;
+      font-size: var(--lux-text-xl);
+      letter-spacing: -0.045em;
+    }
+
+    .hero__lead {
+      max-width: 900px;
+      margin: 1rem 0 0;
+      color: var(--lux-ink-soft);
+      font-size: 1.08rem;
+    }
+
+    .hero__meta {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+      margin-top: 1.2rem;
+    }
+
+    .meta-chip,
+    .flag-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      border: 1px solid var(--lux-border);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.82);
+      font-size: var(--lux-text-xs);
+      font-weight: 750;
+    }
+
+    .meta-chip { padding: 0.4rem 0.66rem; }
+    .flag-chip {
+      padding: 0.28rem 0.54rem;
+      color: var(--lux-ink-soft);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    }
+
+    .status-summary {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 0.8rem;
+      margin-top: 1rem;
+    }
+
+    .stat {
+      padding: 1rem 1.05rem;
+      border: 1px solid var(--lux-border);
+      border-radius: var(--lux-radius-md);
+      background: var(--lux-surface);
+      box-shadow: var(--lux-shadow-soft);
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.62rem;
+      line-height: 1;
+      letter-spacing: -0.04em;
+    }
+
+    .stat span {
+      display: block;
+      margin-top: 0.38rem;
+      color: var(--lux-muted);
+      font-size: var(--lux-text-xs);
+      font-weight: 700;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 1rem;
+      margin: 2.5rem 0 0.9rem;
+    }
+
+    .section-head h2 {
+      margin: 0;
+      font-size: clamp(1.45rem, 2.7vw, 2rem);
+      letter-spacing: -0.035em;
+    }
+
+    .section-head p {
+      max-width: 660px;
+      margin: 0.35rem 0 0;
+      color: var(--lux-muted);
+    }
+
+    .callout {
+      margin-top: 1rem;
+      padding: 0.95rem 1rem;
+      border: 1px solid var(--lux-border-strong);
+      border-left: 4px solid var(--lux-gold);
+      border-radius: var(--lux-radius-md);
+      background: var(--lux-gold-soft);
+      color: var(--lux-ink-soft);
+    }
+
+    .callout strong { color: var(--lux-ink); }
+    .callout--danger {
+      border-left-color: var(--lux-red);
+      background: var(--lux-red-soft);
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--lux-border);
+      border-radius: var(--lux-radius-md);
+      background: var(--lux-surface);
+      box-shadow: var(--lux-shadow-soft);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: var(--lux-text-sm);
+    }
+
+    caption {
+      padding: 0.85rem 1rem;
+      color: var(--lux-muted);
+      text-align: left;
+      font-size: var(--lux-text-xs);
+    }
+
+    th {
+      padding: 0.7rem 0.8rem;
+      border-bottom: 1px solid var(--lux-border-strong);
+      color: var(--lux-ink-soft);
+      background: var(--lux-surface-soft);
+      text-align: left;
+      font-size: var(--lux-text-xs);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    td {
+      padding: 0.72rem 0.8rem;
+      border-bottom: 1px solid var(--lux-border);
+      vertical-align: top;
+    }
+
+    tbody tr:last-child td { border-bottom: 0; }
+    tbody tr:hover { background: #fbfdfb; }
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.28rem 0.52rem;
+      border: 1px solid transparent;
+      border-radius: 999px;
+      font-size: 0.7rem;
+      font-weight: 850;
+      letter-spacing: 0.035em;
+      line-height: 1.25;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .status--delivered {
+      color: var(--lux-blue);
+      border-color: #bad3e9;
+      background: var(--lux-blue-soft);
+    }
+
+    .status--partial {
+      color: var(--lux-amber);
+      border-color: #efc6a5;
+      background: var(--lux-amber-soft);
+    }
+
+    .status--gap {
+      color: var(--lux-red);
+      border-color: #efbcbc;
+      background: var(--lux-red-soft);
+    }
+
+    .status--info {
+      color: var(--lux-emerald);
+      border-color: #b8d8ca;
+      background: var(--lux-emerald-soft);
+    }
+
+    .sheet-grid,
+    .preflight-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.85rem;
+    }
+
+    .sheet-card,
+    .preflight-card {
+      padding: 1rem;
+      border: 1px solid var(--lux-border);
+      border-radius: var(--lux-radius-md);
+      background: var(--lux-surface);
+      box-shadow: var(--lux-shadow-soft);
+    }
+
+    .sheet-card h3,
+    .preflight-card h3 {
+      margin: 0 0 0.55rem;
+      font-size: 1rem;
+    }
+
+    .sheet-card ul,
+    .preflight-card ol {
+      margin: 0;
+      padding-left: 1.15rem;
+      color: var(--lux-ink-soft);
+      font-size: var(--lux-text-sm);
+    }
+
+    .sheet-card li + li,
+    .preflight-card li + li { margin-top: 0.3rem; }
+
+    .toolbar {
+      position: sticky;
+      z-index: 10;
+      top: 72px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.55rem;
+      margin: 1rem 0;
+      padding: 0.7rem;
+      border: 1px solid var(--lux-border);
+      border-radius: var(--lux-radius-md);
+      background: rgba(255, 255, 255, 0.93);
+      box-shadow: var(--lux-shadow-soft);
+      backdrop-filter: blur(16px);
+    }
+
+    .search {
+      min-width: min(100%, 290px);
+      flex: 1 1 300px;
+      padding: 0.58rem 0.72rem;
+      border: 1px solid var(--lux-border-strong);
+      border-radius: var(--lux-radius-sm);
+      color: var(--lux-ink);
+      background: var(--lux-surface);
+      font: inherit;
+    }
+
+    .search:focus {
+      border-color: var(--lux-emerald);
+      outline: 3px solid rgba(17, 97, 73, 0.12);
+    }
+
+    button {
+      padding: 0.52rem 0.7rem;
+      border: 1px solid var(--lux-border-strong);
+      border-radius: var(--lux-radius-sm);
+      color: var(--lux-ink-soft);
+      background: var(--lux-surface);
+      font: 750 var(--lux-text-xs)/1.2 inherit;
+      cursor: pointer;
+    }
+
+    button:hover,
+    button:focus-visible,
+    button.is-active {
+      border-color: var(--lux-emerald);
+      color: var(--lux-emerald-deep);
+      background: var(--lux-emerald-soft);
+      outline: none;
+    }
+
+    .toolbar__count {
+      margin-left: auto;
+      color: var(--lux-muted);
+      font-size: var(--lux-text-xs);
+      font-weight: 750;
+    }
+
+    .case-list { display: grid; gap: 0.82rem; }
+
+    .case-card {
+      overflow: hidden;
+      border: 1px solid var(--lux-border);
+      border-radius: var(--lux-radius-md);
+      background: var(--lux-surface);
+      box-shadow: var(--lux-shadow-soft);
+    }
+
+    .case-card[hidden] { display: none; }
+    .case-card summary {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.9rem 1rem;
+      list-style: none;
+      cursor: pointer;
+    }
+
+    .case-card summary::-webkit-details-marker { display: none; }
+    .case-card summary::after {
+      content: "+";
+      width: 28px;
+      height: 28px;
+      display: grid;
+      place-items: center;
+      border-radius: 8px;
+      color: var(--lux-emerald);
+      background: var(--lux-emerald-soft);
+      font-size: 1.2rem;
+      font-weight: 800;
+    }
+
+    .case-card[open] summary::after { content: "−"; }
+    .case-card[open] summary { border-bottom: 1px solid var(--lux-border); }
+
+    .case-card__id {
+      min-width: 52px;
+      color: var(--lux-emerald);
+      font: 850 0.76rem/1 ui-monospace, SFMono-Regular, Menlo, monospace;
+    }
+
+    .case-card__title {
+      display: block;
+      margin-bottom: 0.25rem;
+      font-size: 1.02rem;
+      letter-spacing: -0.015em;
+    }
+
+    .case-card__subtitle {
+      display: block;
+      color: var(--lux-muted);
+      font-size: var(--lux-text-xs);
+    }
+
+    .case-content { padding: 1rem; }
+    .implementation-note {
+      margin: 0 0 0.85rem;
+      color: var(--lux-ink-soft);
+    }
+
+    .case-meta {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 0.65rem;
+      margin-bottom: 0.9rem;
+    }
+
+    .case-meta__item {
+      min-width: 0;
+      padding: 0.66rem 0.72rem;
+      border: 1px solid var(--lux-border);
+      border-radius: var(--lux-radius-sm);
+      background: var(--lux-surface-soft);
+    }
+
+    .case-meta__item--flags { grid-column: 1 / -1; }
+
+    .case-meta__item strong {
+      display: block;
+      margin-bottom: 0.28rem;
+      color: var(--lux-muted);
+      font-size: 0.68rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .flag-row { display: flex; flex-wrap: wrap; gap: 0.32rem; }
+    .flag-register-note {
+      margin: 0 0 0.85rem;
+      color: var(--lux-ink-soft);
+    }
+    .flag-path {
+      display: block;
+      margin-top: 0.18rem;
+      color: var(--lux-muted);
+      font: 600 0.74em/1.4 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    }
+    .flag-effects {
+      width: 100%;
+      margin: 0.12rem 0 0;
+      border-collapse: collapse;
+    }
+    .flag-effects th,
+    .flag-effects td {
+      padding: 0.42rem 0.48rem 0.42rem 0;
+      border-bottom: 1px solid var(--lux-border);
+      vertical-align: top;
+      text-align: left;
+    }
+    .flag-effects th {
+      color: var(--lux-muted);
+      font-size: 0.64rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .flag-effects td { font-size: 0.82rem; line-height: 1.4; color: var(--lux-ink-soft); }
+    .flag-effects td:first-child { width: 22%; }
+    .flag-effects .on,
+    .flag-effects .off {
+      display: block;
+    }
+    .flag-state {
+      display: inline-block;
+      margin-bottom: 0.12rem;
+      font-size: 0.62rem;
+      font-weight: 800;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+    }
+    .flag-state--on { color: var(--lux-emerald); }
+    .flag-state--off { color: var(--lux-gold); }
+    #flag-register table td:nth-child(3),
+    #flag-register table td:nth-child(4) { font-size: 0.84rem; line-height: 1.4; }
+    .test-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(270px, 0.75fr);
+      gap: 1rem;
+    }
+
+    .test-layout h4 {
+      margin: 0 0 0.55rem;
+      color: var(--lux-ink-soft);
+      font-size: 0.8rem;
+      letter-spacing: 0.055em;
+      text-transform: uppercase;
+    }
+
+    .test-steps {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      counter-reset: validation-step;
+    }
+
+    .test-steps li {
+      position: relative;
+      display: grid;
+      grid-template-columns: 26px minmax(0, 1fr);
+      gap: 0.55rem;
+      padding: 0.38rem 0;
+      counter-increment: validation-step;
+      color: var(--lux-ink-soft);
+    }
+
+    .test-steps li::before {
+      content: counter(validation-step);
+      width: 24px;
+      height: 24px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--lux-border-strong);
+      border-radius: 7px;
+      color: var(--lux-emerald);
+      background: var(--lux-surface-soft);
+      font-size: 0.7rem;
+      font-weight: 850;
+    }
+
+    .step-check {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.48rem;
+      cursor: pointer;
+    }
+
+    .step-check input {
+      width: 16px;
+      height: 16px;
+      margin: 0.2rem 0 0;
+      accent-color: var(--lux-emerald);
+    }
+
+    .test-align {
+      width: 100%;
+      margin: 0;
+      border-collapse: collapse;
+    }
+    .test-align caption {
+      caption-side: top;
+      text-align: left;
+      padding: 0 0 0.55rem;
+      color: var(--lux-ink-soft);
+      font-size: 0.8rem;
+      font-weight: 750;
+      letter-spacing: 0.055em;
+      text-transform: uppercase;
+    }
+    .test-align th {
+      padding: 0.4rem 0.55rem 0.45rem 0;
+      border-bottom: 1px solid var(--lux-border-strong);
+      color: var(--lux-muted);
+      font-size: 0.64rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-align: left;
+    }
+    .test-align tbody { counter-reset: aligned-step; }
+    .test-align tbody tr { counter-increment: aligned-step; }
+    .test-align td {
+      padding: 0.58rem 0.7rem 0.58rem 0;
+      border-bottom: 1px solid var(--lux-border);
+      vertical-align: top;
+      color: var(--lux-ink-soft);
+      font-size: 0.86rem;
+      line-height: 1.45;
+    }
+    .test-align td:first-child {
+      width: 2.4rem;
+      padding-right: 0.45rem;
+    }
+    .test-align td:nth-child(2) { width: 48%; }
+    .test-align .step-index {
+      width: 24px;
+      height: 24px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--lux-border-strong);
+      border-radius: 7px;
+      color: var(--lux-emerald);
+      background: var(--lux-surface-soft);
+      font-size: 0.7rem;
+      font-weight: 850;
+    }
+    .test-align .step-index::before { content: counter(aligned-step); }
+    .test-align .expect-on { color: var(--lux-emerald-deep); }
+    .test-align .expect-off { color: var(--lux-gold); }
+    .test-align-wrap { overflow-x: auto; }
+    .test-align .step-check { display: block; }
+
+    .expectations { display: grid; gap: 0.48rem; }
+    .expectation {
+      padding: 0.62rem 0.7rem;
+      border: 1px solid var(--lux-border);
+      border-left: 3px solid var(--lux-emerald);
+      border-radius: var(--lux-radius-sm);
+      background: var(--lux-surface-soft);
+      color: var(--lux-ink-soft);
+      font-size: var(--lux-text-sm);
+    }
+
+    .expectation--negative { border-left-color: var(--lux-amber); }
+    .expectation--gap { border-left-color: var(--lux-red); }
+    .expectation strong {
+      display: block;
+      margin-bottom: 0.18rem;
+      color: var(--lux-ink);
+      font-size: var(--lux-text-xs);
+      text-transform: uppercase;
+    }
+
+    .evidence {
+      width: 100%;
+      min-height: 66px;
+      margin-top: 0.7rem;
+      padding: 0.58rem 0.66rem;
+      resize: vertical;
+      border: 1px dashed var(--lux-border-strong);
+      border-radius: var(--lux-radius-sm);
+      color: var(--lux-ink);
+      background: #fff;
+      font: inherit;
+    }
+
+    .evidence:focus {
+      border-style: solid;
+      border-color: var(--lux-emerald);
+      outline: 3px solid rgba(17, 97, 73, 0.1);
+    }
+
+    .gap-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.7rem;
+    }
+
+    .gap-item {
+      padding: 0.8rem;
+      border: 1px solid #efc9c9;
+      border-radius: var(--lux-radius-md);
+      background: var(--lux-red-soft);
+    }
+
+    .gap-item strong { display: block; margin-bottom: 0.25rem; }
+    .gap-item p { margin: 0; color: var(--lux-ink-soft); font-size: var(--lux-text-sm); }
+
+    .signoff {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 0.7rem;
+      margin-top: 0.9rem;
+    }
+
+    .signoff label {
+      display: block;
+      color: var(--lux-muted);
+      font-size: var(--lux-text-xs);
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .signoff input {
+      width: 100%;
+      margin-top: 0.35rem;
+      padding: 0.55rem;
+      border: 0;
+      border-bottom: 1px solid var(--lux-border-strong);
+      color: var(--lux-ink);
+      background: transparent;
+      font: inherit;
+    }
+
+    footer {
+      padding: 1.4rem 0 2.6rem;
+      border-top: 1px solid var(--lux-border);
+      color: var(--lux-muted);
+      font-size: var(--lux-text-xs);
+    }
+
+    @media (max-width: 900px) {
+      .status-summary,
+      .signoff { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .sheet-grid,
+      .preflight-grid { grid-template-columns: 1fr; }
+      .case-meta { grid-template-columns: 1fr; }
+      .test-layout { grid-template-columns: 1fr; }
+      .test-align td:nth-child(2),
+      .test-align td:nth-child(3) { width: auto; }
+      .gap-list { grid-template-columns: 1fr; }
+      .site-head__inner { align-items: flex-start; padding: 0.7rem 0; }
+      .site-nav { max-width: 64vw; }
+    }
+
+    @media (max-width: 580px) {
+      .site-head { position: static; }
+      .site-head__inner { display: block; }
+      .site-nav { max-width: 100%; margin-top: 0.55rem; }
+      .status-summary,
+      .signoff { grid-template-columns: 1fr; }
+      .case-card summary { grid-template-columns: auto minmax(0, 1fr); }
+      .case-card summary::after { display: none; }
+      .toolbar { top: 0; }
+    }
+
+    @media print {
+      @page { size: A4; margin: 12mm; }
+      body { background: #fff; font-size: 10pt; }
+      .site-head,
+      .toolbar,
+      .no-print { display: none !important; }
+      main, footer { width: 100%; }
+      main { padding: 0; }
+      .hero, .stat, .table-wrap, .sheet-card, .preflight-card, .case-card {
+        box-shadow: none;
+      }
+      .hero { padding: 1rem; }
+      .flag-effects,
+      .test-align { font-size: 8.5pt; }
+      .case-card { break-inside: avoid; }
+      .case-card:not([open]) > *:not(summary) { display: block !important; }
+      .case-card summary::after { display: none; }
+      .case-content { display: block !important; }
+      .evidence { min-height: 45px; }
+      a { color: inherit; text-decoration: none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-head" aria-label="Client report navigation">
+    <div class="site-head__inner">
+      <a class="brand" href="#overview"><span class="brand__mark">TR</span><span>Tracopus client review</span></a>
+      <nav class="site-nav" aria-label="Page sections">
+        <a href="#requirement-matrix">Status</a>
+        <a href="#sheet-coverage">Coverage</a>
+        <a href="#setup">Setup</a>
+        <a href="#flag-register">Flags</a>
+        <a href="#validation-cases">Validation</a>
+        <a href="#known-gaps">Open items</a>
+        <a href="#signoff">Sign-off</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="overview">
+      <p class="eyebrow">Client acceptance report · reviewed 13 September 2026</p>
+      <h1>Timesheet Tracker V1 — client acceptance report</h1>
+      <p class="hero__lead">
+        This report presents the current status of all documented requirements in
+        <a href="./Timesheet%20tracker_V1.xlsx">Timesheet tracker_V1.xlsx</a>. It explains what is available,
+        what remains incomplete, which Application Config / catalog flags must be enabled, how to validate each capability, and the expected result.
+      </p>
+      <div class="hero__meta">
+        <span class="meta-chip">17 documented requirements</span>
+        <span class="meta-chip">Flags and test steps included</span>
+        <span class="meta-chip">R03 deadline preview reviewed</span>
+        <span class="meta-chip">Final acceptance pending</span>
+      </div>
+      <div class="callout">
+        <strong>How to read this report.</strong> “Available for validation” means the capability is ready for client testing.
+        “Partially available” means part of the requested outcome is available and the missing portion is stated explicitly.
+        “Not available” means the requested capability cannot currently be accepted.
+        Catalog flags default <em>off</em> until Application Config is applied; turn them on in <strong>Admin → Feature flags</strong>.
+      </div>
+    </section>
+
+    <div class="status-summary" aria-label="Requirement status summary">
+      <div class="stat"><strong>6</strong><span>Available for client validation</span></div>
+      <div class="stat"><strong>7</strong><span>Partially available</span></div>
+      <div class="stat"><strong>4</strong><span>Not currently available</span></div>
+      <div class="stat"><strong>Pending</strong><span>Final client sign-off</span></div>
+    </div>
+
+    <section id="requirement-matrix">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Executive view</p>
+          <h2>Requirement status</h2>
+          <p>Each partial or unavailable item identifies the exact client outcome that is still missing.</p>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <caption>Current readiness of the 17 documented requirements.</caption>
+          <thead>
+            <tr>
+              <th>Req.</th>
+              <th>Priority</th>
+              <th>Requirement</th>
+              <th>Status</th>
+              <th>Available today</th>
+              <th>What is not yet available</th>
+              <th>Case</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>1</td><td>High</td><td>Microsoft single sign-on</td><td><span class="status status--partial">Partially available</span></td><td>Microsoft sign-in is available on the web for an approved organization.</td><td>Mobile Microsoft sign-in is not available, and combined acceptance across all three requested entities has not been completed.</td><td><a href="#case-r01">R01</a></td></tr>
+            <tr><td>2</td><td>High</td><td>Timesheet validation and approval workflow</td><td><span class="status status--delivered">Available for validation</span></td><td>Validation, approval routing, delegation, escalation, bulk action, and audit are available.</td><td>No product gap identified; client setup and acceptance testing remain.</td><td><a href="#case-r02">R02</a></td></tr>
+            <tr><td>3</td><td>High</td><td>Cut-offs, reminders, notifications, and locks</td><td><span class="status status--delivered">Available for validation</span></td><td>Policy-aware deadline preview, late reasons, reminders, period lock, and reopen-with-reason are available on web.</td><td>Client-specific schedules, live notification delivery, and signed UAT remain. WhatsApp/Teams actions are out of this requirement.</td><td><a href="#case-r03">R03</a></td></tr>
+            <tr><td>4</td><td>High</td><td>Project Tracking import and timesheet export</td><td><span class="status status--partial">Partially available</span></td><td>Controlled project import and approved-timesheet export are available for testing.</td><td>A direct connection to the selected Project Tracking platform, automated field mapping, transfer confirmation, and failed-transfer recovery are not available.</td><td><a href="#case-r04">R04</a></td></tr>
+            <tr><td>5</td><td>High</td><td>Monthly estimates by grade, skill, and named resource</td><td><span class="status status--delivered">Available for validation</span></td><td>Monthly estimates by grade, skill, and named resource, with estimate-versus-actual comparison, are available.</td><td>No product gap identified for the requested estimate dimensions; client data validation remains.</td><td><a href="#case-r05">R05</a></td></tr>
+            <tr><td>6</td><td>High</td><td>Attendance and leave integration</td><td><span class="status status--partial">Partially available</span></td><td>Leave, office attendance, work-from-home hours, and approved corrections can be evaluated together.</td><td>Automatic update of final attendance records, attendance locking, a complete attendance-device feed, and full overnight-shift handling are not available.</td><td><a href="#case-r06">R06</a></td></tr>
+            <tr><td>7</td><td>Medium</td><td>WhatsApp and Microsoft Teams timesheet actions</td><td><span class="status status--gap">Not available</span></td><td>Email, in-product, and supported mobile notifications can be used.</td><td>Submitting, approving, rejecting, or updating timesheets through WhatsApp or Microsoft Teams is not available.</td><td><a href="#case-r07">R07</a></td></tr>
+            <tr><td>8</td><td>Medium</td><td>Mobile application</td><td><span class="status status--partial">Partially available</span></td><td>Basic employee timesheet screens and workflows exist in the current mobile application.</td><td>A production-ready mobile release, Microsoft sign-in on mobile, and confirmed live notifications are not available.</td><td><a href="#case-r08">R08</a></td></tr>
+            <tr><td>9</td><td>Low</td><td>Dashboards, utilization, cost, progress, and reporting</td><td><span class="status status--partial">Partially available</span></td><td>Project, utilization, progress, cost, and resource reports are available with refresh.</td><td>Automatic live updates and dedicated reports for approval delays, late submissions, attendance exceptions, and integration health are not available.</td><td><a href="#case-r09">R09</a></td></tr>
+            <tr><td>10</td><td>Low</td><td>Timesheet audit trail</td><td><span class="status status--delivered">Available for validation</span></td><td>Changes and approval actions can be reviewed and exported by authorized users.</td><td>No product gap identified; retention and export procedures require client confirmation.</td><td><a href="#case-r10">R10</a></td></tr>
+            <tr><td>11</td><td>Low</td><td>Multi-project and multi-task allocation</td><td><span class="status status--partial">Partially available</span></td><td>A weekly timesheet can contain separate lines for multiple projects and tasks.</td><td>Splitting one timesheet row across multiple project and task combinations is not available.</td><td><a href="#case-r11">R11</a></td></tr>
+            <tr><td>12</td><td>Low</td><td>Read and write integrations</td><td><span class="status status--delivered">Available for validation</span></td><td>Approved systems can read and update supported work-time information.</td><td>No product gap identified; client access, security, and integration acceptance remain.</td><td><a href="#case-r12">R12</a></td></tr>
+            <tr><td>13</td><td>Low</td><td>Client-team self-service customization</td><td><span class="status status--delivered">Available for validation</span></td><td>Authorized administrators can change approved business settings, access, policies, and project exceptions.</td><td>New product features, new external connections, and bespoke screen changes are outside self-service.</td><td><a href="#case-r13">R13</a></td></tr>
+            <tr><td>14</td><td>Low</td><td>Resource availability by grade and skill</td><td><span class="status status--partial">Partially available</span></td><td>Skill, capacity, bench, allocation, and utilization views are available.</td><td>A dedicated grade-first availability filter is not available.</td><td><a href="#case-r14">R14</a></td></tr>
+            <tr><td>15</td><td>Low</td><td>Milestone-triggered customer satisfaction email</td><td><span class="status status--gap">Not available</span></td><td>Project feedback can be collected manually.</td><td>Milestone-triggered customer-satisfaction email, recipient selection, delivery tracking, reminders, and response collection are not available.</td><td><a href="#case-r15">R15</a></td></tr>
+            <tr><td>16</td><td>Low</td><td>Task and deliverable maker-checker control</td><td><span class="status status--gap">Not available</span></td><td>General approval workflows are available in other areas.</td><td>Independent maker-checker approval for creating or changing tasks and deliverables is not available.</td><td><a href="#case-r16">R16</a></td></tr>
+            <tr><td>17</td><td>Low</td><td>Workplace rostering, meal, and seating management</td><td><span class="status status--gap">Not available</span></td><td>Project staffing and capacity planning are available.</td><td>Workplace rosters, seat booking, and meal management are not available.</td><td><a href="#case-r17">R17</a></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="sheet-coverage">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Workbook coverage</p>
+          <h2>Detailed workflow coverage</h2>
+          <p>The supporting workbook sheets are summarized below in client-ready language.</p>
+        </div>
+      </div>
+      <div class="sheet-grid">
+        <article class="sheet-card">
+          <h3>Timesheet validation workflow</h3>
+          <ul>
+            <li><strong>Available:</strong> validation, approval routing, detailed review, rejection, delegation, escalation, bulk action, and audit.</li>
+            <li><strong>Client setup:</strong> confirm named project, account, business-unit, finance, and backup approvers.</li>
+            <li><strong>Not yet available:</strong> Microsoft Teams approval actions and a dedicated approval-delay dashboard.</li>
+          </ul>
+        </article>
+        <article class="sheet-card">
+          <h3>Missed submission and approval</h3>
+          <ul>
+            <li><strong>Available:</strong> late classification from the server deadline preview, mandatory reasons, separate approval paths by lateness, reopening reasons, reminders, and audit.</li>
+            <li><strong>Client setup:</strong> enable <code>timesheet.reminders</code>, <code>timesheet.late-workflow</code>, <code>timesheet.period-lock</code>, and <code>timesheetSubmissionReminderEnabled</code>; confirm the cut-off time, reminder days, approvers, locking schedule, and supported notification channels.</li>
+            <li><strong>Not yet available:</strong> repeat-defaulter reporting and Microsoft Teams or WhatsApp actions.</li>
+          </ul>
+        </article>
+        <article class="sheet-card">
+          <h3>Attendance and leave</h3>
+          <ul>
+            <li><strong>Available:</strong> leave priority, office entry and exit, work-from-home hours, approved corrections, and limited overnight matching.</li>
+            <li><strong>Expected protection:</strong> hours-only timesheets do not invent entry or exit times, and an unrecognized access card does not automatically mark absence.</li>
+            <li><strong>Not yet available:</strong> automatic final attendance updates, attendance locking, a complete device feed, and dedicated exception reporting.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="setup">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Before client testing</p>
+          <h2>Setup required before validation</h2>
+          <p>These are business setup requirements. Exact system settings are managed by the Tracopus delivery team.</p>
+        </div>
+      </div>
+      <div class="callout">
+        <strong>Client responsibility.</strong> Confirm the requested business rules, users, roles, sample data, and acceptance dates.
+        The delivery team will confirm that each approved capability is active before the validation session.
+      </div>
+      <div class="table-wrap" style="margin-top:0.85rem;">
+        <table>
+          <caption>Minimum business setup for the validation cases below.</caption>
+          <thead><tr><th>Area</th><th>Setup needed</th><th>Primary owner</th><th>Ready when</th></tr></thead>
+          <tbody>
+            <tr><td>Client test environment</td><td>Current client users, projects, tasks, assignments, and sample time periods</td><td>Client project team</td><td>Sample records and expected results are agreed.</td></tr>
+            <tr><td>Microsoft sign-in</td><td>Approved organizations and assigned test users</td><td>Client identity administrator</td><td>An assigned user and an unassigned user are ready for testing.</td></tr>
+            <tr><td>Timesheet workflow</td><td>Entry, editing, submission, approval, reopening, and validation rules</td><td>Business process owner</td><td>Rules and expected approval paths are signed off for testing.</td></tr>
+            <tr><td>Feature flags</td><td>Admin → Feature flags: <code>adminGovernanceEnabled</code> and <code>featureFlagsAdminEnabled</code>, then the per-requirement catalog keys below</td><td>Tracopus delivery + client administrator</td><td>Effective flags for the test organisation match the case cards.</td></tr>
+            <tr><td>Approver hierarchy</td><td>Named project, account, business-unit, finance, manager, and backup approvers</td><td>Client operations team</td><td>Every test scenario has an active approver.</td></tr>
+            <tr><td>Cut-offs and reminders</td><td>Cut-off time, reminder days, late paths, locking date, and supported notification channels. Enable the flags in the <a href="#flag-register">flag register</a>.</td><td>Business process owner + administrator</td><td>Dates, recipients, expected messages, and flags are agreed.</td></tr>
+            <tr><td>Attendance and leave</td><td>Leave calendar, office attendance, work-from-home rules, and attendance corrections</td><td>HR and workplace teams</td><td>Each attendance source has a prepared test case.</td></tr>
+            <tr><td>Audit and retention</td><td>Authorized reviewers, retention period, and export procedure</td><td>HR and security owners</td><td>Access and retention expectations are documented.</td></tr>
+            <tr><td>Resource planning and reports</td><td>Grades, skills, capacity, allocations, cost data, and reporting access</td><td>Resource and project managers</td><td>Expected totals can be reconciled to agreed records.</td></tr>
+            <tr><td>External integrations</td><td>Approved connection, data mapping, transfer schedule, and support owner</td><td>Client integration owner</td><td>Both parties agree the test data and expected transfer result.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="preflight">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Validation readiness</p>
+          <h2>Client validation preflight</h2>
+          <p>Complete these checks before starting the requirement-by-requirement session.</p>
+        </div>
+      </div>
+      <div class="preflight-grid">
+        <article class="preflight-card">
+          <h3>1 · Business data</h3>
+          <ol>
+            <li>Prepare active employees, projects, tasks, assignments, grades, skills, and leave records.</li>
+            <li>Choose representative normal, late, rejected, approved, and locked timesheet periods.</li>
+            <li>Agree expected hours, approvers, reminders, reports, and attendance outcomes.</li>
+          </ol>
+        </article>
+        <article class="preflight-card">
+          <h3>2 · Rules and responsibilities</h3>
+          <ol>
+            <li>Confirm the standard, moderately late, and significantly late approval paths.</li>
+            <li>Confirm the cut-off, reminder, approval-deadline, locking, and reopening rules.</li>
+            <li>Confirm every approver and backup approver is active and available for the test.</li>
+          </ol>
+        </article>
+        <article class="preflight-card">
+          <h3>3 · Users and evidence</h3>
+          <ol>
+            <li>Prepare employee, project lead, account lead, business-unit lead, finance, HR, and administrator test users.</li>
+            <li>Confirm supported email, in-product, and mobile notification channels.</li>
+            <li>Record screenshots, dates, sample names, expected results, actual results, and the final decision.</li>
+          </ol>
+        </article>
+      </div>
+    </section>
+
+    <section id="flag-register">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Application Config</p>
+          <h2>What each flag does when on or off</h2>
+          <p>Catalog keys default off in code. On activates the behaviour in the On column. Off keeps the Off column. Dependent flags cannot turn on until their parent is on.</p>
+        </div>
+      </div>
+      <p class="flag-register-note">
+        Open <strong>Admin → Feature flags</strong> only after
+        <code>HRMS.tracopusAdminAdditional.adminGovernanceEnabled</code> and
+        <code>HRMS.tracopusAdminAdditional.featureFlagsAdminEnabled</code> are on.
+        If those two are off, the Feature flags screen is hidden and catalog keys cannot be changed from the UI.
+      </p>
+      <div class="table-wrap">
+        <table>
+          <caption>On versus off for every catalog key, Application Config path, and environment flag used by the validation cases.</caption>
+          <thead>
+            <tr>
+              <th>Req.</th>
+              <th>Flag</th>
+              <th>When on</th>
+              <th>When off</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td rowspan="3"><a href="#case-r01">R01</a></td>
+              <td><span class="flag-chip">REACT_APP_MS_CLIENT_ID</span><span class="flag-path">Web build environment</span></td>
+              <td>The Entra app id is present so “Sign in with Microsoft” can start.</td>
+              <td>Microsoft sign-in cannot start. Local or other sign-in is unchanged.</td>
+            </tr>
+            <tr>
+              <td><span class="flag-chip">REACT_APP_MS_TENANT_ID</span><span class="flag-path">Web build environment</span></td>
+              <td>Sign-in is scoped to the approved Entra tenant.</td>
+              <td>Microsoft sign-in cannot complete tenant resolution.</td>
+            </tr>
+            <tr>
+              <td><span class="flag-chip">REACT_APP_MS_REDIRECT_URL</span><span class="flag-path">Web build environment</span></td>
+              <td>After Microsoft consent the user returns to Tracopus web.</td>
+              <td>The Microsoft callback has nowhere valid to land.</td>
+            </tr>
+            <tr>
+              <td rowspan="7"><a href="#case-r02">R02</a></td>
+              <td><span class="flag-chip">timesheetApprovalEnabled</span><span class="flag-path">HRMS.timesheetAdditional.timesheetApprovalEnabled</span></td>
+              <td>Employees can submit a week. Approvers see pending items and can approve or reject.</td>
+              <td>Draft save still works. Submit, pending inbox, and approval chrome stay off.</td>
+            </tr>
+            <tr>
+              <td><span class="flag-chip">approval.chain</span><span class="flag-path">HRMS.workTimeApprovalGovernance.approvalChainEnabled</span></td>
+              <td>Work-time approval chains can run. Dependent flags (escalation, bulk, reminders, late-workflow, approval-units) may then be turned on.</td>
+              <td>Those dependent flags stay blocked even if someone toggles them. Approvals stay on the existing manager path.</td>
+            </tr>
+            <tr>
+              <td><span class="flag-chip">approval.escalation</span><span class="flag-path">HRMS.workTimeApprovalGovernance.approvalEscalationEnabled</span></td>
+              <td>When an approval SLA passes, the item moves to the next agreed approver. Needs job <code>APPROVAL_CHAIN_ESCALATION</code>.</td>
+              <td>Overdue items stay with the current approver.</td>
+            </tr>
+            <tr>
+              <td><span class="flag-chip">approval.bulk-actions</span><span class="flag-path">HRMS.workTimeApprovalGovernance.bulkApprovalEnabled · role workTimeApprovalRoles.bulkActionsAllowed</span></td>
+              <td>An allowed role can approve or reject several eligible items together.</td>
+              <td>Each item must be actioned one at a time. The role gate also blocks bulk even if the catalog is on.</td>
+            </tr>
+            <tr>
+              <td><span class="flag-chip">timesheet.validation</span><span class="flag-path">HRMS.workTimeTimesheetGovernance.validationEnabled</span></td>
+              <td>Hours, assignment, future-entry, and over-limit rules warn or block on save/submit.</td>
+              <td>Those work-time validation rules do not run. Core save still works. Period-lock cannot turn on (it depends on this flag).</td>
+            </tr>
+            <tr>
+              <td><span class="flag-chip">timesheet.approval-units</span><span class="flag-path">HRMS.workTimeTimesheetGovernance.approvalUnitsEnabled</span></td>
+              <td>Approval can split by project or line using the configured unit mode.</td>
+              <td>Approval stays at the whole week.</td>
+            </tr>
+            <tr>
+              <td><span class="flag-chip">approvalDelegationEnabled</span><span class="flag-path">HRMS.approvalDelegation.approvalDelegationEnabled</span></td>
+              <td>A backup approver can act. History shows who acted for whom.</td>
+              <td>Only the named approver can act. Delegation UI stays off.</td>
+            </tr>
+            <tr>
+              <td rowspan="5"><a href="#case-r03">R03</a></td>
+              <td><span class="flag-chip">timesheet.reminders</span><span class="flag-path">HRMS.workTimeTimesheetGovernance.remindersEnabled · depends on approval.chain</span></td>
+              <td>Deadline preview uses the work-time cut-off (default Friday 18:00 UTC) and reminder offsets 3 / 1 / 0.</td>
+              <td>Preview stays disabled unless <code>timesheet.late-workflow</code> is on. If the master reminder flag is still on, emails use the older timesheet cut-off instead of the work-time policy.</td>
+            </tr>
+            <tr>
+              <td><span class="flag-chip">timesheet.late-workflow</span><span class="flag-path">HRMS.workTimeTimesheetGovernance.lateWorkflowEnabled · depends on approval.chain</span></td>
+              <td>After the cut-off, preview is LATE, a late reason is shown and required, and the 7-day versus later bands choose the approval path.</td>
+              <td>The late-reason field is not shown. If reminders are also off, preview is <code>DISABLED</code> and not late.</td>
+            </tr>
+            <tr>
+              <td><span class="flag-chip">timesheet.period-lock</span><span class="flag-path">HRMS.workTimeTimesheetGovernance.periodLockEnabled · depends on timesheet.validation</span></td>
+              <td>Job <code>TIMESHEET_PERIOD_LOCK</code> locks approved weeks after <code>lockAfterDays</code> (default 7). Reopen needs a reason.</td>
+              <td>Work-time period lock does not run. The older month lock <code>disableLastMonthAfterXDays</code> still applies on its own.</td>
+            </tr>
+            <tr>
+              <td><span class="flag-chip">timesheetSubmissionReminderEnabled</span><span class="flag-path">HRMS.timesheetAdditional.timesheetSubmissionReminderEnabled</span></td>
+              <td>Reminder emails and in-product reminders may send for eligible draft/absent/rejected weeks.</td>
+              <td>No reminder emails, even if <code>timesheet.reminders</code> is on.</td>
+            </tr>
+            <tr>
+              <td><span class="flag-chip">approval.chain</span><span class="flag-path">Required parent for reminders and late-workflow</span></td>
+              <td>R03 catalog flags can become effective.</td>
+              <td>Reminders and late-workflow stay blocked. Preview stays disabled.</td>
+            </tr>
+            <tr>
+              <td rowspan="2"><a href="#case-r04">R04</a></td>
+              <td><span class="flag-chip">integration.project-import</span><span class="flag-path">HRMS.workTimeIntegration.projectImportEnabled · role projectImportAllowed</span></td>
+              <td>An allowed role can run controlled project import.</td>
+              <td>Import is hidden or denied. The role gate also blocks import if the catalog is on.</td>
+            </tr>
+            <tr>
+              <td><span class="flag-chip">integration.timesheet-export</span><span class="flag-path">HRMS.workTimeIntegration.timesheetExportEnabled · role timesheetExportAllowed</span></td>
+              <td>An allowed role can export approved timesheets for the permitted organisation.</td>
+              <td>Export is hidden or denied. This is not a live Project Tracking connection.</td>
+            </tr>
+            <tr>
+              <td rowspan="3"><a href="#case-r05">R05</a></td>
+              <td><span class="flag-chip">planning.estimates</span><span class="flag-path">HRMS.workTimePlanning.estimatesEnabled</span></td>
+              <td>Project teams can enter monthly estimates by grade, skill, and named resource.</td>
+              <td>Estimate entry is off. FTE and variance flags stay blocked (they depend on this flag).</td>
+            </tr>
+            <tr>
+              <td><span class="flag-chip">planning.fte</span><span class="flag-path">HRMS.workTimePlanning.ftePlanningEnabled</span></td>
+              <td>Named-resource FTE planning can be required for covered projects.</td>
+              <td>A named resource is not required by the work-time FTE rule.</td>
+            </tr>
+            <tr>
+              <td><span class="flag-chip">planning.variance</span><span class="flag-path">HRMS.workTimePlanning.varianceEnabled</span></td>
+              <td>Approved actual hours can be compared with the estimate.</td>
+              <td>Estimate-versus-actual comparison stays off.</td>
+            </tr>
+            <tr>
+              <td rowspan="5"><a href="#case-r06">R06</a></td>
+              <td><span class="flag-chip">attendance.swipe-ingest</span><span class="flag-path">HRMS.workTimeAttendance.swipeIngestEnabled</span></td>
+              <td>Office entry and exit events can be ingested.</td>
+              <td>No swipe ingest. Overnight matching that depends on it stays off.</td>
+            </tr>
+            <tr>
+              <td><span class="flag-chip">attendance.source-resolution</span><span class="flag-path">HRMS.workTimeAttendance.sourceResolutionEnabled</span></td>
+              <td>Leave, swipe, work-from-home, and corrections are ranked into one attendance result.</td>
+              <td>Work-from-home timesheet and attendance-lock dependents stay off.</td>
+            </tr>
+            <tr>
+              <td><span class="flag-chip">attendance.timesheet-wfh</span><span class="flag-path">HRMS.workTimeAttendance.timesheetWfhEnabled</span></td>
+              <td>Approved work-from-home hours count as presence without inventing entry or exit times.</td>
+              <td>Work-from-home hours are not used as an attendance source.</td>
+            </tr>
+            <tr>
+              <td><span class="flag-chip">attendance.cross-midnight</span><span class="flag-path">HRMS.workTimeAttendance.crossMidnightEnabled</span></td>
+              <td>Overnight entry and exit in the supported window can be paired.</td>
+              <td>Overnight pairing is not applied.</td>
+            </tr>
+            <tr>
+              <td><span class="flag-chip">attendanceRegularizationEnabled</span><span class="flag-path">HRMS.attendanceAdditional.attendanceRegularizationEnabled</span></td>
+              <td>Employees can submit attendance corrections for manager approval.</td>
+              <td>The correction workflow stays off. <code>attendance.period-lock</code> has no lock service yet — do not accept it either on or off.</td>
+            </tr>
+            <tr>
+              <td><a href="#case-r07">R07</a></td>
+              <td>None shipped</td>
+              <td>No flag turns on WhatsApp or Teams timesheet actions.</td>
+              <td>Email and in-product notifications continue; they do not satisfy this requirement.</td>
+            </tr>
+            <tr>
+              <td><a href="#case-r08">R08</a></td>
+              <td><span class="flag-chip">timesheetApprovalEnabled</span><span class="flag-path">Same org flag as web</span></td>
+              <td>Mobile uses the same submit and approve APIs as web.</td>
+              <td>Mobile cannot submit a week for approval. Microsoft sign-in on mobile is not available either on or off.</td>
+            </tr>
+            <tr>
+              <td rowspan="2"><a href="#case-r09">R09</a></td>
+              <td><span class="flag-chip">analyticsPlatformEnabled</span><span class="flag-path">HRMS.tracopusAnalyticsAdditional.analyticsPlatformEnabled</span></td>
+              <td>Analytics hub and permitted reports are visible to allowed roles.</td>
+              <td>Analytics platform screens stay hidden.</td>
+            </tr>
+            <tr>
+              <td><span class="flag-chip">REACT_APP_USE_ANALYTICS_PLATFORM_API</span><span class="flag-path">Web build environment</span></td>
+              <td>The web app calls the analytics platform API on refresh.</td>
+              <td>The web app does not call that API. Refresh remains pull-based, not live streaming, even when on.</td>
+            </tr>
+            <tr>
+              <td rowspan="4"><a href="#case-r10">R10</a></td>
+              <td><span class="flag-chip">auditEnabled</span><span class="flag-path">HRMS.auditAdditional.auditEnabled</span></td>
+              <td>Timesheet value and workflow changes are written to the audit trail.</td>
+              <td>Those audit events are not captured.</td>
+            </tr>
+            <tr>
+              <td><span class="flag-chip">auditUiEnabled</span><span class="flag-path">HRMS.auditAdditional.auditUiEnabled</span></td>
+              <td>Authorized users can open the history on the timesheet.</td>
+              <td>History UI stays hidden even if events were captured.</td>
+            </tr>
+            <tr>
+              <td><span class="flag-chip">auditAdminEnabled</span><span class="flag-path">HRMS.auditAdditional.auditAdminEnabled</span></td>
+              <td>An authorized administrator can export the history.</td>
+              <td>Export stays denied.</td>
+            </tr>
+            <tr>
+              <td><span class="flag-chip">REACT_APP_USE_AUDIT_WRITE_API</span><span class="flag-path">Web build environment</span></td>
+              <td>The web app sends audit writes through the audit API.</td>
+              <td>The web app does not use that write path.</td>
+            </tr>
+            <tr>
+              <td rowspan="2"><a href="#case-r11">R11</a></td>
+              <td><span class="flag-chip">timesheetApprovalEnabled</span><span class="flag-path">HRMS.timesheetAdditional.timesheetApprovalEnabled</span></td>
+              <td>The multi-project week can be submitted for approval.</td>
+              <td>Lines can still be saved as draft; the week cannot be submitted.</td>
+            </tr>
+            <tr>
+              <td><span class="flag-chip">timesheet.validation</span><span class="flag-path">HRMS.workTimeTimesheetGovernance.validationEnabled</span></td>
+              <td>Duplicate, inactive, future, and over-limit lines are warned or blocked.</td>
+              <td>Those work-time rules do not run. Splitting one row across projects is not available either on or off.</td>
+            </tr>
+            <tr>
+              <td rowspan="2"><a href="#case-r12">R12</a></td>
+              <td><span class="flag-chip">developerPortalEnabled</span><span class="flag-path">HRMS.tracopusAdminAdditional.developerPortalEnabled</span></td>
+              <td>Approved API-key / developer-portal access is available for the client organisation.</td>
+              <td>The developer portal stays hidden.</td>
+            </tr>
+            <tr>
+              <td><span class="flag-chip">REACT_APP_USE_DEVELOPER_PORTAL_API</span><span class="flag-path">Web build environment</span></td>
+              <td>The web app calls the developer portal API.</td>
+              <td>The web app does not call that API.</td>
+            </tr>
+            <tr>
+              <td rowspan="4"><a href="#case-r13">R13</a></td>
+              <td><span class="flag-chip">adminGovernanceEnabled</span><span class="flag-path">HRMS.tracopusAdminAdditional.adminGovernanceEnabled</span></td>
+              <td>Admin governance screens can be shown. Feature-flags admin and RBAC admin may then be turned on.</td>
+              <td>Those admin screens stay hidden. Catalog flags cannot be changed from the UI.</td>
+            </tr>
+            <tr>
+              <td><span class="flag-chip">featureFlagsAdminEnabled</span><span class="flag-path">HRMS.tracopusAdminAdditional.featureFlagsAdminEnabled</span></td>
+              <td>Admin → Feature flags is visible so catalog keys can be toggled.</td>
+              <td>The Feature flags screen stays hidden even if admin governance is on.</td>
+            </tr>
+            <tr>
+              <td><span class="flag-chip">admin.policy-management</span><span class="flag-path">HRMS.workTimeAdministration.policyManagementEnabled · role policyManagementAllowed</span></td>
+              <td>An allowed administrator can publish permitted work-time policy changes without a product release.</td>
+              <td>Policy self-service stays denied. The role gate also blocks it if the catalog is on.</td>
+            </tr>
+            <tr>
+              <td><span class="flag-chip">rbacAdminEnabled</span><span class="flag-path">HRMS.tracopusAdminAdditional.rbacAdminEnabled</span></td>
+              <td>Authorized administrators can change permitted role assignments in the admin UI.</td>
+              <td>RBAC admin stays hidden.</td>
+            </tr>
+            <tr>
+              <td rowspan="2"><a href="#case-r14">R14</a></td>
+              <td><span class="flag-chip">REACT_APP_USE_RESOURCE_PLANNING_API</span><span class="flag-path">Web build environment</span></td>
+              <td>Skill, capacity, and utilization views call the resource-planning API.</td>
+              <td>Those views do not use that API. A grade-first availability filter is not available either on or off.</td>
+            </tr>
+            <tr>
+              <td><span class="flag-chip">planning.estimates</span><span class="flag-path">HRMS.workTimePlanning.estimatesEnabled</span></td>
+              <td>Estimate data that feeds capacity views can be entered.</td>
+              <td>Estimate entry stays off, so estimate-backed capacity is incomplete.</td>
+            </tr>
+            <tr>
+              <td><a href="#case-r15">R15</a> · <a href="#case-r16">R16</a> · <a href="#case-r17">R17</a></td>
+              <td>None shipped</td>
+              <td>No flag turns on milestone CSAT email, task maker-checker, or workplace meal/seat management.</td>
+              <td>Adjacent features stay as they are. Mark these requirements Blocked.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="validation-cases">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Client test pack</p>
+          <h2>Requirement validation cases</h2>
+          <p>Complete the relevant steps, record the observed result, and agree Pass, Fail, or Blocked.</p>
+        </div>
+      </div>
+
+      <div class="toolbar no-print" aria-label="Validation case controls">
+        <input class="search" id="case-search" type="search" placeholder="Search requirement, feature, or expected result…" aria-label="Search validation cases">
+        <button type="button" class="is-active" data-filter="all">All</button>
+        <button type="button" data-filter="available">Available</button>
+        <button type="button" data-filter="partial">Partially available</button>
+        <button type="button" data-filter="gap">Not available</button>
+        <button type="button" id="print-guide">Print</button>
+        <button type="button" id="reset-guide">Reset checks</button>
+        <span class="toolbar__count" id="visible-count">17 cases</span>
+      </div>
+
+      <div class="case-list">
+        <details class="case-card" id="case-r01" data-requirement="R01" data-status="partial" open>
+          <summary>
+            <span class="case-card__id">R01</span>
+            <span>
+              <strong class="case-card__title">Microsoft single sign-on</strong>
+              <span class="case-card__subtitle">Requirement 1 · High · Partially available</span>
+            </span>
+            <span class="status status--partial">Partial</span>
+          </summary>
+          <div class="case-content">
+            <p class="implementation-note">Microsoft sign-in is available for web users assigned to the approved client organization.</p>
+            <div class="case-meta">
+              <div class="case-meta__item"><strong>Users</strong>All assigned web users</div>
+              <div class="case-meta__item"><strong>Setup required</strong>Microsoft sign-in enabled; approved organizations and test users assigned</div>
+              <div class="case-meta__item case-meta__item--flags"><strong>Flags — on vs off</strong>
+                <table class="flag-effects">
+                  <thead><tr><th>Flag</th><th>On</th><th>Off</th></tr></thead>
+                  <tbody>
+                    <tr><td><span class="flag-chip">REACT_APP_MS_CLIENT_ID</span></td><td><span class="flag-state flag-state--on">On</span> “Sign in with Microsoft” can start.</td><td><span class="flag-state flag-state--off">Off</span> Microsoft sign-in cannot start.</td></tr>
+                    <tr><td><span class="flag-chip">REACT_APP_MS_TENANT_ID</span></td><td><span class="flag-state flag-state--on">On</span> Sign-in is scoped to the approved Entra tenant.</td><td><span class="flag-state flag-state--off">Off</span> Tenant resolution fails.</td></tr>
+                    <tr><td><span class="flag-chip">REACT_APP_MS_REDIRECT_URL</span></td><td><span class="flag-state flag-state--on">On</span> After consent the user returns to Tracopus web.</td><td><span class="flag-state flag-state--off">Off</span> The Microsoft callback has nowhere valid to land.</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="test-layout">
+              <div>
+                <h4>Validation steps</h4>
+                <ol class="test-steps">
+                <li><label class="step-check"><input type="checkbox">Open the Tracopus sign-in page in a private browser.</label></li>
+                <li><label class="step-check"><input type="checkbox">Select “Sign in with Microsoft” and use an assigned client account.</label></li>
+                <li><label class="step-check"><input type="checkbox">Confirm the user reaches the correct organization and sees the correct navigation for their role.</label></li>
+                <li><label class="step-check"><input type="checkbox">Repeat with a cancelled sign-in, an unassigned user, and a user from an unapproved organization.</label></li>
+                </ol>
+              </div>
+              <div>
+                <h4>Expected results</h4>
+                <div class="expectations">
+                <div class="expectation"><strong>Assigned user</strong>Sign-in succeeds and the user reaches the correct organization and role-based workspace.</div>
+                <div class="expectation expectation--negative"><strong>Unassigned user</strong>Access is declined with a clear, recoverable message.</div>
+                <div class="expectation expectation--gap"><strong>What is not yet available</strong>Mobile Microsoft sign-in is not available, and combined acceptance across all three requested entities has not been completed.</div>
+                </div>
+              </div>
+            </div>
+            <textarea class="evidence" aria-label="R01 validation notes" placeholder="Client validation notes: sample used, expected result, actual result, decision, and screenshot reference…"></textarea>
+          </div>
+        </details>
+
+        <details class="case-card" id="case-r02" data-requirement="R02" data-status="available" open>
+          <summary>
+            <span class="case-card__id">R02</span>
+            <span>
+              <strong class="case-card__title">Timesheet validation and approval workflow</strong>
+              <span class="case-card__subtitle">Requirement 2 · High · Available for validation</span>
+            </span>
+            <span class="status status--delivered">Available</span>
+          </summary>
+          <div class="case-content">
+            <p class="implementation-note">Timesheets can be validated, routed through the agreed approver hierarchy, delegated, escalated, reviewed in bulk, and audited.</p>
+            <div class="case-meta">
+              <div class="case-meta__item"><strong>Users</strong>Employee, project lead, account lead, business-unit lead, finance approver, administrator</div>
+              <div class="case-meta__item"><strong>Setup required</strong>Approval workflow, validation rules, named approvers, deadlines, notifications, and audit enabled</div>
+              <div class="case-meta__item case-meta__item--flags"><strong>Flags — on vs off</strong>
+                <table class="flag-effects">
+                  <thead><tr><th>Flag</th><th>On</th><th>Off</th></tr></thead>
+                  <tbody>
+                    <tr><td><span class="flag-chip">timesheetApprovalEnabled</span></td><td><span class="flag-state flag-state--on">On</span> Employees can submit a week; approvers see pending items.</td><td><span class="flag-state flag-state--off">Off</span> Draft save still works; Submit and approval chrome stay off.</td></tr>
+                    <tr><td><span class="flag-chip">approval.chain</span></td><td><span class="flag-state flag-state--on">On</span> Work-time approval chains can run; dependent flags may then be turned on.</td><td><span class="flag-state flag-state--off">Off</span> Escalation, bulk, reminders, late-workflow, and approval-units stay blocked.</td></tr>
+                    <tr><td><span class="flag-chip">approval.escalation</span></td><td><span class="flag-state flag-state--on">On</span> Overdue items move to the next agreed approver.</td><td><span class="flag-state flag-state--off">Off</span> Overdue items stay with the current approver.</td></tr>
+                    <tr><td><span class="flag-chip">approval.bulk-actions</span></td><td><span class="flag-state flag-state--on">On</span> An allowed role can approve or reject several eligible items together.</td><td><span class="flag-state flag-state--off">Off</span> Each item must be actioned one at a time.</td></tr>
+                    <tr><td><span class="flag-chip">timesheet.validation</span></td><td><span class="flag-state flag-state--on">On</span> Hours, assignment, future-entry, and over-limit rules warn or block.</td><td><span class="flag-state flag-state--off">Off</span> Those work-time rules do not run.</td></tr>
+                    <tr><td><span class="flag-chip">timesheet.approval-units</span></td><td><span class="flag-state flag-state--on">On</span> Approval can split by project or line.</td><td><span class="flag-state flag-state--off">Off</span> Approval stays at the whole week.</td></tr>
+                    <tr><td><span class="flag-chip">approvalDelegationEnabled</span></td><td><span class="flag-state flag-state--on">On</span> A backup approver can act; history shows who acted for whom.</td><td><span class="flag-state flag-state--off">Off</span> Only the named approver can act.</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="test-layout">
+              <div>
+                <h4>Validation steps</h4>
+                <ol class="test-steps">
+                <li><label class="step-check"><input type="checkbox">As an employee, enter valid hours for an assigned project and task, then submit the week.</label></li>
+                <li><label class="step-check"><input type="checkbox">As the first approver, review details, approve one submission, and reject another with a reason.</label></li>
+                <li><label class="step-check"><input type="checkbox">Allow a controlled approval deadline to pass and confirm the next agreed approver receives the item.</label></li>
+                <li><label class="step-check"><input type="checkbox">Assign a backup approver and confirm the delegated action is clearly identified.</label></li>
+                <li><label class="step-check"><input type="checkbox">Approve and reject multiple eligible items together, including one item that cannot be completed.</label></li>
+                <li><label class="step-check"><input type="checkbox">Confirm final status, employee notification, rejection and resubmission, and the complete action history.</label></li>
+                </ol>
+              </div>
+              <div>
+                <h4>Expected results</h4>
+                <div class="expectations">
+                <div class="expectation"><strong>Standard path</strong>The submission reaches the agreed approvers in order and completes only after all required approvals.</div>
+                <div class="expectation expectation--negative"><strong>Access control</strong>An unassigned user cannot approve or reject; delegated actions clearly show who acted for whom.</div>
+                <div class="expectation"><strong>Acceptance condition</strong>Validation rules, escalation, bulk action, notifications, and action history match the client-approved workflow.</div>
+                </div>
+              </div>
+            </div>
+            <textarea class="evidence" aria-label="R02 validation notes" placeholder="Client validation notes: sample used, expected result, actual result, decision, and screenshot reference…"></textarea>
+          </div>
+        </details>
+
+        <details class="case-card" id="case-r03" data-requirement="R03" data-status="available" open>
+          <summary>
+            <span class="case-card__id">R03</span>
+            <span>
+              <strong class="case-card__title">Cut-offs, reminders, notifications, and locks</strong>
+              <span class="case-card__subtitle">Requirement 3 · High · Available for validation</span>
+            </span>
+            <span class="status status--delivered">Available</span>
+          </summary>
+          <div class="case-content">
+            <p class="implementation-note">Reviewed 13 September 2026. The timesheet page loads a server deadline preview for the selected week instead of guessing Friday 18:00. Late-band routing is inclusive: exactly seven elapsed days follows the moderately late path. Reminder emails still require the master timesheet reminder flag even when the catalog reminder flag is on. A missing or disabled preview fails closed — the server remains the submit authority.</p>
+            <div class="case-meta">
+              <div class="case-meta__item"><strong>Users</strong>Employee, business-unit approver, finance approver, administrator</div>
+              <div class="case-meta__item"><strong>Setup required</strong>Approved cut-off, reminder days, late paths, locking date, notification channels, and the flags below</div>
+              <div class="case-meta__item case-meta__item--flags"><strong>Flags — on vs off</strong>
+                <table class="flag-effects">
+                  <thead><tr><th>Flag</th><th>On</th><th>Off</th></tr></thead>
+                  <tbody>
+                    <tr><td><span class="flag-chip">approval.chain</span></td><td><span class="flag-state flag-state--on">On</span> Reminders and late-workflow can become effective.</td><td><span class="flag-state flag-state--off">Off</span> Those two stay blocked. Deadline preview stays disabled.</td></tr>
+                    <tr><td><span class="flag-chip">timesheet.reminders</span></td><td><span class="flag-state flag-state--on">On</span> Deadline preview uses the work-time cut-off (default Friday 18:00 UTC) and reminder offsets 3 / 1 / 0.</td><td><span class="flag-state flag-state--off">Off</span> Preview stays disabled unless late-workflow is on. If the master reminder flag is still on, emails use the older timesheet cut-off.</td></tr>
+                    <tr><td><span class="flag-chip">timesheet.late-workflow</span></td><td><span class="flag-state flag-state--on">On</span> After the cut-off, preview is LATE, a late reason is shown and required, and the 7-day versus later bands choose the approval path.</td><td><span class="flag-state flag-state--off">Off</span> The late-reason field is not shown. If reminders are also off, preview is DISABLED and not late.</td></tr>
+                    <tr><td><span class="flag-chip">timesheet.period-lock</span></td><td><span class="flag-state flag-state--on">On</span> Approved weeks lock after <code>lockAfterDays</code> (default 7). Reopen needs a reason.</td><td><span class="flag-state flag-state--off">Off</span> Work-time period lock does not run. The older month lock still applies on its own.</td></tr>
+                    <tr><td><span class="flag-chip">timesheetSubmissionReminderEnabled</span></td><td><span class="flag-state flag-state--on">On</span> Reminder emails and in-product reminders may send for eligible weeks.</td><td><span class="flag-state flag-state--off">Off</span> No reminder emails, even if <code>timesheet.reminders</code> is on.</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="test-align-wrap">
+            <table class="test-align">
+              <caption>Validation steps — each step is paired with the result it must produce</caption>
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>Do this</th>
+                  <th>Expect this</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><span class="step-index" aria-hidden="true"></span></td>
+                  <td><label class="step-check"><input type="checkbox">Turn <code>approval.chain</code>, <code>timesheet.reminders</code>, <code>timesheet.late-workflow</code>, <code>timesheet.period-lock</code>, and <code>timesheetSubmissionReminderEnabled</code> <strong>on</strong>. Confirm Friday 18:00 UTC cut-off, reminder days 3 / 1 / 0, lock after 7 days, and jobs <code>TIMESHEET_PERIOD_LOCK</code> and <code>APPROVAL_SLA_REMINDER</code>.</label></td>
+                  <td><span class="expect-on">On.</span> The timesheet page uses the server deadline for the selected week. It does not guess Friday 18:00 locally.</td>
+                </tr>
+                <tr>
+                  <td><span class="step-index" aria-hidden="true"></span></td>
+                  <td><label class="step-check"><input type="checkbox">Before Friday 18:00, save hours so Submit is available, then submit a complete week.</label></td>
+                  <td>The week is on time. The late-reason field is not shown.</td>
+                </tr>
+                <tr>
+                  <td><span class="step-index" aria-hidden="true"></span></td>
+                  <td><label class="step-check"><input type="checkbox">After the cut-off, at most seven elapsed days, submit. Choose a late reason. Choose Other and leave the detail blank, then fill it.</label></td>
+                  <td>The late-reason field is shown and required. Other needs detail. Approvers are the moderately late chain (<code>TIMESHEET-LATE-LTE7</code>, business-unit). Exactly seven elapsed days stays on this path.</td>
+                </tr>
+                <tr>
+                  <td><span class="step-index" aria-hidden="true"></span></td>
+                  <td><label class="step-check"><input type="checkbox">More than seven elapsed days after the cut-off, submit another week with a late reason.</label></td>
+                  <td>The late-reason field is still shown and required. Approvers are the significantly late chain (<code>TIMESHEET-LATE-GT7</code>, business-unit then finance).</td>
+                </tr>
+                <tr>
+                  <td><span class="step-index" aria-hidden="true"></span></td>
+                  <td><label class="step-check"><input type="checkbox">From that late week, go to an on-time week without changing flags.</label></td>
+                  <td>The late banner and late-reason field follow the new week. They do not stay from the previous submit.</td>
+                </tr>
+                <tr>
+                  <td><span class="step-index" aria-hidden="true"></span></td>
+                  <td><label class="step-check"><input type="checkbox">Turn <code>timesheet.late-workflow</code> <strong>off</strong>. Leave <code>timesheet.reminders</code> on. Reload a week that is past the cut-off.</label></td>
+                  <td><span class="expect-off">Late-workflow off.</span> The late-reason field is not shown. Submit does not require a reason.</td>
+                </tr>
+                <tr>
+                  <td><span class="step-index" aria-hidden="true"></span></td>
+                  <td><label class="step-check"><input type="checkbox">Turn <code>timesheet.reminders</code> and <code>timesheet.late-workflow</code> <strong>off</strong>. Reload the same late week. Restore both afterwards.</label></td>
+                  <td><span class="expect-off">Both off.</span> Deadline preview is disabled and not late. The late-reason field is not shown. The server still owns submit.</td>
+                </tr>
+                <tr>
+                  <td><span class="step-index" aria-hidden="true"></span></td>
+                  <td><label class="step-check"><input type="checkbox">With reminders and the master reminder flag <strong>on</strong>, leave one employee draft, absent, or rejected. Check T-3, T-1, and day-of. Repeat a submitted, approved, locked, or payroll-processed week. Run the job twice.</label></td>
+                  <td><span class="expect-on">Reminders on.</span> One reminder per offset for the eligible week. Eligible-complete weeks are not reminded. The second run does not send another copy.</td>
+                </tr>
+                <tr>
+                  <td><span class="step-index" aria-hidden="true"></span></td>
+                  <td><label class="step-check"><input type="checkbox">Turn <code>timesheetSubmissionReminderEnabled</code> <strong>off</strong>. Run the reminder job. Restore it afterwards.</label></td>
+                  <td><span class="expect-off">Master reminder off.</span> No reminder emails, even though <code>timesheet.reminders</code> is on.</td>
+                </tr>
+                <tr>
+                  <td><span class="step-index" aria-hidden="true"></span></td>
+                  <td><label class="step-check"><input type="checkbox">With <code>timesheet.period-lock</code> <strong>on</strong>, wait until seven days after an approved week, then reopen with a reason. Turn period-lock <strong>off</strong> and confirm the older month lock still applies.</label></td>
+                  <td><span class="expect-on">Period-lock on:</span> the approved week locks; reopen needs a reason.<br><span class="expect-off">Period-lock off:</span> work-time lock does not run. <code>disableLastMonthAfterXDays</code> still applies on its own.</td>
+                </tr>
+                <tr>
+                  <td><span class="step-index" aria-hidden="true"></span></td>
+                  <td><label class="step-check"><input type="checkbox">Confirm agreed email and in-product channels for reminders and late/lock notices. Do not treat WhatsApp, Teams, or mobile live delivery as part of this case.</label></td>
+                  <td>Supported email and in-product notices can be accepted. WhatsApp/Teams actions and unsigned live mobile delivery remain outside this requirement. Signed UAT is still required before acceptance.</td>
+                </tr>
+              </tbody>
+            </table>
+            </div>
+            <textarea class="evidence" aria-label="R03 validation notes" placeholder="Client validation notes: sample used, expected result, actual result, decision, and screenshot reference…"></textarea>
+          </div>
+        </details>
+
+        <details class="case-card" id="case-r04" data-requirement="R04" data-status="partial">
+          <summary>
+            <span class="case-card__id">R04</span>
+            <span>
+              <strong class="case-card__title">Project Tracking import and timesheet export</strong>
+              <span class="case-card__subtitle">Requirement 4 · High · Partially available</span>
+            </span>
+            <span class="status status--partial">Partial</span>
+          </summary>
+          <div class="case-content">
+            <p class="implementation-note">Controlled project import and approved-timesheet export can be validated, but the complete connection to the client-selected Project Tracking platform is not ready.</p>
+            <div class="case-meta">
+              <div class="case-meta__item"><strong>Users</strong>Client integration owner and administrator</div>
+              <div class="case-meta__item"><strong>Setup required</strong>Approved sample projects, expected field mapping, approved time periods, and named support owner</div>
+              <div class="case-meta__item case-meta__item--flags"><strong>Flags — on vs off</strong>
+                <table class="flag-effects">
+                  <thead><tr><th>Flag</th><th>On</th><th>Off</th></tr></thead>
+                  <tbody>
+                    <tr><td><span class="flag-chip">integration.project-import</span></td><td><span class="flag-state flag-state--on">On</span> An allowed role can run controlled project import.</td><td><span class="flag-state flag-state--off">Off</span> Import is hidden or denied.</td></tr>
+                    <tr><td><span class="flag-chip">projectImportAllowed</span></td><td><span class="flag-state flag-state--on">On</span> The role may use import when the catalog is also on.</td><td><span class="flag-state flag-state--off">Off</span> Import is denied even if the catalog is on.</td></tr>
+                    <tr><td><span class="flag-chip">integration.timesheet-export</span></td><td><span class="flag-state flag-state--on">On</span> An allowed role can export approved timesheets for this organisation.</td><td><span class="flag-state flag-state--off">Off</span> Export is hidden or denied. This is not a live Project Tracking connection.</td></tr>
+                    <tr><td><span class="flag-chip">timesheetExportAllowed</span></td><td><span class="flag-state flag-state--on">On</span> The role may use export when the catalog is also on.</td><td><span class="flag-state flag-state--off">Off</span> Export is denied even if the catalog is on.</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="test-layout">
+              <div>
+                <h4>Validation steps</h4>
+                <ol class="test-steps">
+                <li><label class="step-check"><input type="checkbox">Agree two valid sample projects, one invalid sample, and the expected field values.</label></li>
+                <li><label class="step-check"><input type="checkbox">Import the samples and confirm valid projects are created or updated while the invalid sample is clearly reported.</label></li>
+                <li><label class="step-check"><input type="checkbox">Repeat the same import and confirm duplicate projects are not created.</label></li>
+                <li><label class="step-check"><input type="checkbox">Prepare draft, submitted, approved, and locked timesheets, then export the agreed date range.</label></li>
+                <li><label class="step-check"><input type="checkbox">Confirm only accepted timesheet states are included and only the approved client organization is visible.</label></li>
+                </ol>
+              </div>
+              <div>
+                <h4>Expected results</h4>
+                <div class="expectations">
+                <div class="expectation"><strong>Controlled transfer</strong>Valid projects are updated without duplicates and only approved timesheets are exported.</div>
+                <div class="expectation expectation--negative"><strong>Invalid input</strong>The invalid sample is reported without affecting valid records or another client organization.</div>
+                <div class="expectation expectation--gap"><strong>What is not yet available</strong>A direct connection to the selected Project Tracking platform, automated field mapping, transfer confirmation, and failed-transfer recovery are not available.</div>
+                </div>
+              </div>
+            </div>
+            <textarea class="evidence" aria-label="R04 validation notes" placeholder="Client validation notes: sample used, expected result, actual result, decision, and screenshot reference…"></textarea>
+          </div>
+        </details>
+
+        <details class="case-card" id="case-r05" data-requirement="R05" data-status="available" open>
+          <summary>
+            <span class="case-card__id">R05</span>
+            <span>
+              <strong class="case-card__title">Monthly estimates by grade, skill, and named resource</strong>
+              <span class="case-card__subtitle">Requirement 5 · High · Available for validation</span>
+            </span>
+            <span class="status status--delivered">Available</span>
+          </summary>
+          <div class="case-content">
+            <p class="implementation-note">Project teams can enter monthly estimates by grade, skill, and named resource, then compare approved actual hours with the estimate.</p>
+            <div class="case-meta">
+              <div class="case-meta__item"><strong>Users</strong>Project manager, resource manager, administrator</div>
+              <div class="case-meta__item"><strong>Setup required</strong>Approved grades, skills, named resources, FTE rules, project assignments, and estimate access</div>
+              <div class="case-meta__item case-meta__item--flags"><strong>Flags — on vs off</strong>
+                <table class="flag-effects">
+                  <thead><tr><th>Flag</th><th>On</th><th>Off</th></tr></thead>
+                  <tbody>
+                    <tr><td><span class="flag-chip">planning.estimates</span></td><td><span class="flag-state flag-state--on">On</span> Monthly estimates by grade, skill, and named resource can be entered.</td><td><span class="flag-state flag-state--off">Off</span> Estimate entry is off; FTE and variance stay blocked.</td></tr>
+                    <tr><td><span class="flag-chip">planning.fte</span></td><td><span class="flag-state flag-state--on">On</span> Named-resource FTE planning can be required for covered projects.</td><td><span class="flag-state flag-state--off">Off</span> A named resource is not required by the work-time FTE rule.</td></tr>
+                    <tr><td><span class="flag-chip">planning.variance</span></td><td><span class="flag-state flag-state--on">On</span> Approved actual hours can be compared with the estimate.</td><td><span class="flag-state flag-state--off">Off</span> Estimate-versus-actual comparison stays off.</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="test-layout">
+              <div>
+                <h4>Validation steps</h4>
+                <ol class="test-steps">
+                <li><label class="step-check"><input type="checkbox">Open an agreed project and enter monthly estimates for one grade, one skill, and one named resource.</label></li>
+                <li><label class="step-check"><input type="checkbox">Save and reopen the project, then confirm all estimates remain unchanged.</label></li>
+                <li><label class="step-check"><input type="checkbox">For a project that requires named-resource planning, attempt to save without a resource and then repeat with an eligible resource.</label></li>
+                <li><label class="step-check"><input type="checkbox">Approve matching employee hours and compare the estimate with actual hours for the same month.</label></li>
+                <li><label class="step-check"><input type="checkbox">Repeat as an unauthorized user and confirm estimates cannot be changed.</label></li>
+                </ol>
+              </div>
+              <div>
+                <h4>Expected results</h4>
+                <div class="expectations">
+                <div class="expectation"><strong>Estimates</strong>All three estimate types are saved and displayed accurately for the selected month.</div>
+                <div class="expectation expectation--negative"><strong>Required resource</strong>A named resource is required only for projects covered by the agreed FTE planning rule.</div>
+                <div class="expectation"><strong>Acceptance condition</strong>Estimate-versus-actual values reconcile to the approved sample data and access is limited to authorized users.</div>
+                </div>
+              </div>
+            </div>
+            <textarea class="evidence" aria-label="R05 validation notes" placeholder="Client validation notes: sample used, expected result, actual result, decision, and screenshot reference…"></textarea>
+          </div>
+        </details>
+
+        <details class="case-card" id="case-r06" data-requirement="R06" data-status="partial" open>
+          <summary>
+            <span class="case-card__id">R06</span>
+            <span>
+              <strong class="case-card__title">Attendance and leave integration</strong>
+              <span class="case-card__subtitle">Requirement 6 · High · Partially available</span>
+            </span>
+            <span class="status status--partial">Partial</span>
+          </summary>
+          <div class="case-content">
+            <p class="implementation-note">Attendance can be evaluated using approved leave first, then office entry and exit, approved work-from-home hours, and approved attendance corrections.</p>
+            <div class="case-meta">
+              <div class="case-meta__item"><strong>Users</strong>Employee, manager, HR administrator, workplace administrator</div>
+              <div class="case-meta__item"><strong>Setup required</strong>Leave, office attendance, work-from-home, attendance corrections, and overnight rules enabled</div>
+              <div class="case-meta__item case-meta__item--flags"><strong>Flags — on vs off</strong>
+                <table class="flag-effects">
+                  <thead><tr><th>Flag</th><th>On</th><th>Off</th></tr></thead>
+                  <tbody>
+                    <tr><td><span class="flag-chip">attendance.swipe-ingest</span></td><td><span class="flag-state flag-state--on">On</span> Office entry and exit events can be ingested.</td><td><span class="flag-state flag-state--off">Off</span> No swipe ingest; overnight matching that depends on it stays off.</td></tr>
+                    <tr><td><span class="flag-chip">attendance.source-resolution</span></td><td><span class="flag-state flag-state--on">On</span> Leave, swipe, work-from-home, and corrections are ranked into one result.</td><td><span class="flag-state flag-state--off">Off</span> Work-from-home timesheet and attendance-lock dependents stay off.</td></tr>
+                    <tr><td><span class="flag-chip">attendance.timesheet-wfh</span></td><td><span class="flag-state flag-state--on">On</span> Approved work-from-home hours count as presence without inventing swipe times.</td><td><span class="flag-state flag-state--off">Off</span> Work-from-home hours are not used as an attendance source.</td></tr>
+                    <tr><td><span class="flag-chip">attendance.cross-midnight</span></td><td><span class="flag-state flag-state--on">On</span> Overnight entry and exit in the supported window can be paired.</td><td><span class="flag-state flag-state--off">Off</span> Overnight pairing is not applied.</td></tr>
+                    <tr><td><span class="flag-chip">attendanceRegularizationEnabled</span></td><td><span class="flag-state flag-state--on">On</span> Employees can submit attendance corrections for manager approval.</td><td><span class="flag-state flag-state--off">Off</span> The correction workflow stays off.</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="test-layout">
+              <div>
+                <h4>Validation steps</h4>
+                <ol class="test-steps">
+                <li><label class="step-check"><input type="checkbox">For an approved leave day, add conflicting office or timesheet information and confirm leave remains the result.</label></li>
+                <li><label class="step-check"><input type="checkbox">For an office day, confirm the first valid entry, last valid exit, and total hours.</label></li>
+                <li><label class="step-check"><input type="checkbox">Test an overnight entry and exit within the agreed supported window.</label></li>
+                <li><label class="step-check"><input type="checkbox">For a work-from-home day, approve hours and confirm presence without invented entry or exit times.</label></li>
+                <li><label class="step-check"><input type="checkbox">Approve an attendance correction and confirm the corrected outcome is shown.</label></li>
+                <li><label class="step-check"><input type="checkbox">Test an unrecognized access card and confirm it does not automatically create an absence.</label></li>
+                </ol>
+              </div>
+              <div>
+                <h4>Expected results</h4>
+                <div class="expectations">
+                <div class="expectation"><strong>Source priority</strong>One clear result is shown using the agreed priority: leave, office attendance, work-from-home hours, approved correction, then absence.</div>
+                <div class="expectation expectation--negative"><strong>Incomplete information</strong>Missing or unrecognized attendance information is shown as an exception and does not create a false attendance result.</div>
+                <div class="expectation expectation--gap"><strong>What is not yet available</strong>Automatic update of final attendance records, attendance locking, a complete attendance-device feed, and full overnight-shift handling are not available.</div>
+                </div>
+              </div>
+            </div>
+            <textarea class="evidence" aria-label="R06 validation notes" placeholder="Client validation notes: sample used, expected result, actual result, decision, and screenshot reference…"></textarea>
+          </div>
+        </details>
+
+        <details class="case-card" id="case-r07" data-requirement="R07" data-status="gap">
+          <summary>
+            <span class="case-card__id">R07</span>
+            <span>
+              <strong class="case-card__title">WhatsApp and Microsoft Teams timesheet actions</strong>
+              <span class="case-card__subtitle">Requirement 7 · Medium · Not available</span>
+            </span>
+            <span class="status status--gap">Not available</span>
+          </summary>
+          <div class="case-content">
+            <p class="implementation-note">Email, in-product, and supported mobile notifications are available, but timesheet actions through WhatsApp and Microsoft Teams are not.</p>
+            <div class="case-meta">
+              <div class="case-meta__item"><strong>Users</strong>Employee and approver</div>
+              <div class="case-meta__item"><strong>Setup required</strong>None for this unavailable capability</div>
+              <div class="case-meta__item case-meta__item--flags"><strong>Flags — on vs off</strong>
+                <table class="flag-effects">
+                  <thead><tr><th>Flag</th><th>On</th><th>Off</th></tr></thead>
+                  <tbody>
+                    <tr><td>None shipped</td><td>No flag turns on WhatsApp or Teams timesheet actions.</td><td>Email and in-product notifications continue; they do not satisfy this requirement.</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="test-layout">
+              <div>
+                <h4>Client review steps</h4>
+                <ol class="test-steps">
+                <li><label class="step-check"><input type="checkbox">Confirm that no WhatsApp timesheet action is offered.</label></li>
+                <li><label class="step-check"><input type="checkbox">Confirm that no Microsoft Teams timesheet action is offered.</label></li>
+                <li><label class="step-check"><input type="checkbox">Validate supported email, in-product, and mobile notifications separately.</label></li>
+                <li><label class="step-check"><input type="checkbox">Record this requirement as Blocked until the requested channel actions are delivered.</label></li>
+                </ol>
+              </div>
+              <div>
+                <h4>Expected results</h4>
+                <div class="expectations">
+                <div class="expectation expectation--negative"><strong>No substitute</strong>A generic message or manual link does not satisfy this requirement.</div>
+                <div class="expectation expectation--gap"><strong>What is not yet available</strong>Submitting, approving, rejecting, or updating timesheets through WhatsApp or Microsoft Teams is not available.</div>
+                </div>
+              </div>
+            </div>
+            <textarea class="evidence" aria-label="R07 validation notes" placeholder="Client validation notes: sample used, expected result, actual result, decision, and screenshot reference…"></textarea>
+          </div>
+        </details>
+
+        <details class="case-card" id="case-r08" data-requirement="R08" data-status="partial">
+          <summary>
+            <span class="case-card__id">R08</span>
+            <span>
+              <strong class="case-card__title">Mobile application</strong>
+              <span class="case-card__subtitle">Requirement 8 · Medium · Partially available</span>
+            </span>
+            <span class="status status--partial">Partial</span>
+          </summary>
+          <div class="case-content">
+            <p class="implementation-note">Basic employee timesheet screens and workflows exist in the current mobile application, but it is not ready for production acceptance.</p>
+            <div class="case-meta">
+              <div class="case-meta__item"><strong>Users</strong>Employee and manager</div>
+              <div class="case-meta__item"><strong>Setup required</strong>A supported device, client test users, sample assignments, and a release candidate supplied by Tracopus</div>
+              <div class="case-meta__item case-meta__item--flags"><strong>Flags — on vs off</strong>
+                <table class="flag-effects">
+                  <thead><tr><th>Flag</th><th>On</th><th>Off</th></tr></thead>
+                  <tbody>
+                    <tr><td><span class="flag-chip">timesheetApprovalEnabled</span></td><td><span class="flag-state flag-state--on">On</span> Mobile uses the same submit and approve APIs as web.</td><td><span class="flag-state flag-state--off">Off</span> Mobile cannot submit a week for approval. Microsoft sign-in on mobile is not available either on or off.</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="test-layout">
+              <div>
+                <h4>Validation steps</h4>
+                <ol class="test-steps">
+                <li><label class="step-check"><input type="checkbox">Install the supplied release candidate on an agreed supported device.</label></li>
+                <li><label class="step-check"><input type="checkbox">Sign in, find assigned projects and tasks, enter hours, submit a timesheet, review status, and sign out.</label></li>
+                <li><label class="step-check"><input type="checkbox">Confirm reminders and approval notifications open the correct mobile screen.</label></li>
+                <li><label class="step-check"><input type="checkbox">Test loss of connectivity, reconnection, expired session, denied notification permission, and application update.</label></li>
+                </ol>
+              </div>
+              <div>
+                <h4>Expected results</h4>
+                <div class="expectations">
+                <div class="expectation"><strong>Available scope</strong>Basic employee timesheet workflows can be demonstrated on the supplied mobile release candidate.</div>
+                <div class="expectation expectation--gap"><strong>What is not yet available</strong>A production-ready mobile release, Microsoft sign-in on mobile, and confirmed live notifications are not available.</div>
+                </div>
+              </div>
+            </div>
+            <textarea class="evidence" aria-label="R08 validation notes" placeholder="Client validation notes: sample used, expected result, actual result, decision, and screenshot reference…"></textarea>
+          </div>
+        </details>
+
+        <details class="case-card" id="case-r09" data-requirement="R09" data-status="partial">
+          <summary>
+            <span class="case-card__id">R09</span>
+            <span>
+              <strong class="case-card__title">Dashboards, utilization, cost, progress, and reporting</strong>
+              <span class="case-card__subtitle">Requirement 9 · Low · Partially available</span>
+            </span>
+            <span class="status status--partial">Partial</span>
+          </summary>
+          <div class="case-content">
+            <p class="implementation-note">Project, utilization, progress, cost, and resource reports are available, with values updated when the user refreshes the view.</p>
+            <div class="case-meta">
+              <div class="case-meta__item"><strong>Users</strong>Project manager, resource manager, executive, administrator</div>
+              <div class="case-meta__item"><strong>Setup required</strong>Reporting access, approved hours, estimates, allocations, cost data, and agreed date ranges</div>
+              <div class="case-meta__item case-meta__item--flags"><strong>Flags — on vs off</strong>
+                <table class="flag-effects">
+                  <thead><tr><th>Flag</th><th>On</th><th>Off</th></tr></thead>
+                  <tbody>
+                    <tr><td><span class="flag-chip">analyticsPlatformEnabled</span></td><td><span class="flag-state flag-state--on">On</span> Analytics hub and permitted reports are visible to allowed roles.</td><td><span class="flag-state flag-state--off">Off</span> Analytics platform screens stay hidden.</td></tr>
+                    <tr><td><span class="flag-chip">REACT_APP_USE_ANALYTICS_PLATFORM_API</span></td><td><span class="flag-state flag-state--on">On</span> The web app calls the analytics API when the user refreshes.</td><td><span class="flag-state flag-state--off">Off</span> The web app does not call that API. Refresh is not live streaming either on or off.</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="test-layout">
+              <div>
+                <h4>Validation steps</h4>
+                <ol class="test-steps">
+                <li><label class="step-check"><input type="checkbox">Open each agreed dashboard using approved hours, estimates, allocations, and cost data.</label></li>
+                <li><label class="step-check"><input type="checkbox">Filter by date, organization, project, and user role, then reconcile totals to the agreed sample records.</label></li>
+                <li><label class="step-check"><input type="checkbox">Export an available report and confirm it matches the filters and visible totals.</label></li>
+                <li><label class="step-check"><input type="checkbox">Compare an authorized manager with an unrelated employee and confirm confidential information remains restricted.</label></li>
+                </ol>
+              </div>
+              <div>
+                <h4>Expected results</h4>
+                <div class="expectations">
+                <div class="expectation"><strong>Available reports</strong>After refresh, visible values and exported rows reconcile to approved client sample data.</div>
+                <div class="expectation expectation--negative"><strong>Access</strong>Users see only the organizations and confidential information permitted for their role.</div>
+                <div class="expectation expectation--gap"><strong>What is not yet available</strong>Automatic live updates and dedicated reports for approval delays, late submissions, attendance exceptions, and integration health are not available.</div>
+                </div>
+              </div>
+            </div>
+            <textarea class="evidence" aria-label="R09 validation notes" placeholder="Client validation notes: sample used, expected result, actual result, decision, and screenshot reference…"></textarea>
+          </div>
+        </details>
+
+        <details class="case-card" id="case-r10" data-requirement="R10" data-status="available" open>
+          <summary>
+            <span class="case-card__id">R10</span>
+            <span>
+              <strong class="case-card__title">Timesheet audit trail</strong>
+              <span class="case-card__subtitle">Requirement 10 · Low · Available for validation</span>
+            </span>
+            <span class="status status--delivered">Available</span>
+          </summary>
+          <div class="case-content">
+            <p class="implementation-note">Authorized users can review changes to timesheet values and the history of submission, rejection, approval, locking, and reopening.</p>
+            <div class="case-meta">
+              <div class="case-meta__item"><strong>Users</strong>Employee for own records, manager, HR administrator, authorized administrator</div>
+              <div class="case-meta__item"><strong>Setup required</strong>Audit viewing and export enabled; client retention and access rules agreed</div>
+              <div class="case-meta__item case-meta__item--flags"><strong>Flags — on vs off</strong>
+                <table class="flag-effects">
+                  <thead><tr><th>Flag</th><th>On</th><th>Off</th></tr></thead>
+                  <tbody>
+                    <tr><td><span class="flag-chip">auditEnabled</span></td><td><span class="flag-state flag-state--on">On</span> Timesheet value and workflow changes are written to the audit trail.</td><td><span class="flag-state flag-state--off">Off</span> Those audit events are not captured.</td></tr>
+                    <tr><td><span class="flag-chip">auditUiEnabled</span></td><td><span class="flag-state flag-state--on">On</span> Authorized users can open the history on the timesheet.</td><td><span class="flag-state flag-state--off">Off</span> History UI stays hidden even if events were captured.</td></tr>
+                    <tr><td><span class="flag-chip">auditAdminEnabled</span></td><td><span class="flag-state flag-state--on">On</span> An authorized administrator can export the history.</td><td><span class="flag-state flag-state--off">Off</span> Export stays denied.</td></tr>
+                    <tr><td><span class="flag-chip">REACT_APP_USE_AUDIT_WRITE_API</span></td><td><span class="flag-state flag-state--on">On</span> The web app sends audit writes through the audit API.</td><td><span class="flag-state flag-state--off">Off</span> The web app does not use that write path.</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="test-layout">
+              <div>
+                <h4>Validation steps</h4>
+                <ol class="test-steps">
+                <li><label class="step-check"><input type="checkbox">Create a timesheet line, change several values, clear one value, and delete a line.</label></li>
+                <li><label class="step-check"><input type="checkbox">Submit, reject with reason, correct, resubmit, approve, lock, and reopen the same week.</label></li>
+                <li><label class="step-check"><input type="checkbox">Review the history and confirm the user, date, action, and before-and-after values appear in order.</label></li>
+                <li><label class="step-check"><input type="checkbox">Export the history as an authorized administrator.</label></li>
+                <li><label class="step-check"><input type="checkbox">Attempt to view and export the same history as an unrelated or unauthorized user.</label></li>
+                </ol>
+              </div>
+              <div>
+                <h4>Expected results</h4>
+                <div class="expectations">
+                <div class="expectation"><strong>Traceability</strong>Every actual value or workflow change has one clear and attributable history entry.</div>
+                <div class="expectation expectation--negative"><strong>Confidentiality</strong>Unauthorized viewing or export is declined and sensitive values remain protected.</div>
+                <div class="expectation"><strong>Acceptance condition</strong>The client confirms the retention period, authorized users, and export procedure.</div>
+                </div>
+              </div>
+            </div>
+            <textarea class="evidence" aria-label="R10 validation notes" placeholder="Client validation notes: sample used, expected result, actual result, decision, and screenshot reference…"></textarea>
+          </div>
+        </details>
+
+        <details class="case-card" id="case-r11" data-requirement="R11" data-status="partial">
+          <summary>
+            <span class="case-card__id">R11</span>
+            <span>
+              <strong class="case-card__title">Multi-project and multi-task allocation</strong>
+              <span class="case-card__subtitle">Requirement 11 · Low · Partially available</span>
+            </span>
+            <span class="status status--partial">Partial</span>
+          </summary>
+          <div class="case-content">
+            <p class="implementation-note">An employee can enter separate lines for multiple projects and tasks in the same weekly timesheet.</p>
+            <div class="case-meta">
+              <div class="case-meta__item"><strong>Users</strong>Employee, project lead, manager</div>
+              <div class="case-meta__item"><strong>Setup required</strong>Two active project assignments, valid tasks, dates, and approval rules</div>
+              <div class="case-meta__item case-meta__item--flags"><strong>Flags — on vs off</strong>
+                <table class="flag-effects">
+                  <thead><tr><th>Flag</th><th>On</th><th>Off</th></tr></thead>
+                  <tbody>
+                    <tr><td><span class="flag-chip">timesheetApprovalEnabled</span></td><td><span class="flag-state flag-state--on">On</span> The multi-project week can be submitted for approval.</td><td><span class="flag-state flag-state--off">Off</span> Lines can still be saved as draft; the week cannot be submitted.</td></tr>
+                    <tr><td><span class="flag-chip">timesheet.validation</span></td><td><span class="flag-state flag-state--on">On</span> Duplicate, inactive, future, and over-limit lines are warned or blocked.</td><td><span class="flag-state flag-state--off">Off</span> Those work-time rules do not run. Splitting one row across projects is not available either on or off.</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="test-layout">
+              <div>
+                <h4>Validation steps</h4>
+                <ol class="test-steps">
+                <li><label class="step-check"><input type="checkbox">Assign one employee to two active projects with at least one valid task in each.</label></li>
+                <li><label class="step-check"><input type="checkbox">Add separate lines for both project and task combinations in the same week.</label></li>
+                <li><label class="step-check"><input type="checkbox">Enter hours on the same day and on different days, then submit the week.</label></li>
+                <li><label class="step-check"><input type="checkbox">Confirm totals and each line’s project, task, hours, and approver remain correct.</label></li>
+                <li><label class="step-check"><input type="checkbox">Attempt a duplicate line, inactive project or task, out-of-assignment date, future entry, and over-limit day or week.</label></li>
+                </ol>
+              </div>
+              <div>
+                <h4>Expected results</h4>
+                <div class="expectations">
+                <div class="expectation"><strong>Supported use</strong>All separate lines coexist in one weekly submission and totals reconcile.</div>
+                <div class="expectation expectation--negative"><strong>Validation</strong>Invalid, duplicate, inactive, future, or over-limit entries are clearly warned or blocked according to the agreed rule.</div>
+                <div class="expectation expectation--gap"><strong>What is not yet available</strong>Splitting one timesheet row across multiple project and task combinations is not available.</div>
+                </div>
+              </div>
+            </div>
+            <textarea class="evidence" aria-label="R11 validation notes" placeholder="Client validation notes: sample used, expected result, actual result, decision, and screenshot reference…"></textarea>
+          </div>
+        </details>
+
+        <details class="case-card" id="case-r12" data-requirement="R12" data-status="available" open>
+          <summary>
+            <span class="case-card__id">R12</span>
+            <span>
+              <strong class="case-card__title">Read and write integrations</strong>
+              <span class="case-card__subtitle">Requirement 12 · Low · Available for validation</span>
+            </span>
+            <span class="status status--delivered">Available</span>
+          </summary>
+          <div class="case-content">
+            <p class="implementation-note">Approved client systems can read and update supported work-time information within the permitted client organization.</p>
+            <div class="case-meta">
+              <div class="case-meta__item"><strong>Users</strong>Client integration owner, security owner, administrator</div>
+              <div class="case-meta__item"><strong>Setup required</strong>Approved integration access, agreed information, client organization, test records, and support contacts</div>
+              <div class="case-meta__item case-meta__item--flags"><strong>Flags — on vs off</strong>
+                <table class="flag-effects">
+                  <thead><tr><th>Flag</th><th>On</th><th>Off</th></tr></thead>
+                  <tbody>
+                    <tr><td><span class="flag-chip">developerPortalEnabled</span></td><td><span class="flag-state flag-state--on">On</span> Approved API-key / developer-portal access is available.</td><td><span class="flag-state flag-state--off">Off</span> The developer portal stays hidden.</td></tr>
+                    <tr><td><span class="flag-chip">REACT_APP_USE_DEVELOPER_PORTAL_API</span></td><td><span class="flag-state flag-state--on">On</span> The web app calls the developer portal API.</td><td><span class="flag-state flag-state--off">Off</span> The web app does not call that API.</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="test-layout">
+              <div>
+                <h4>Validation steps</h4>
+                <ol class="test-steps">
+                <li><label class="step-check"><input type="checkbox">Agree one supported read scenario and one supported update scenario using client test records.</label></li>
+                <li><label class="step-check"><input type="checkbox">Run both scenarios with approved access and confirm the expected information and business result.</label></li>
+                <li><label class="step-check"><input type="checkbox">Repeat the same update and confirm it does not create a duplicate business record.</label></li>
+                <li><label class="step-check"><input type="checkbox">Test expired access, missing permission, another client organization, invalid information, and an unavailable connection.</label></li>
+                <li><label class="step-check"><input type="checkbox">Obtain acceptance from the client integration and security owners before production use.</label></li>
+                </ol>
+              </div>
+              <div>
+                <h4>Expected results</h4>
+                <div class="expectations">
+                <div class="expectation"><strong>Approved access</strong>Supported information can be read or updated accurately for the permitted client organization.</div>
+                <div class="expectation expectation--negative"><strong>Restricted access</strong>Expired, unauthorized, invalid, or cross-client requests are declined without changing business information.</div>
+                <div class="expectation"><strong>Acceptance condition</strong>The client integration and security owners approve access, support, recovery, and production-readiness procedures.</div>
+                </div>
+              </div>
+            </div>
+            <textarea class="evidence" aria-label="R12 validation notes" placeholder="Client validation notes: sample used, expected result, actual result, decision, and screenshot reference…"></textarea>
+          </div>
+        </details>
+
+        <details class="case-card" id="case-r13" data-requirement="R13" data-status="available" open>
+          <summary>
+            <span class="case-card__id">R13</span>
+            <span>
+              <strong class="case-card__title">Client-team self-service customization</strong>
+              <span class="case-card__subtitle">Requirement 13 · Low · Available for validation</span>
+            </span>
+            <span class="status status--delivered">Available</span>
+          </summary>
+          <div class="case-content">
+            <p class="implementation-note">Authorized administrators can change approved business settings, access, approval policies, and permitted project exceptions without a product release.</p>
+            <div class="case-meta">
+              <div class="case-meta__item"><strong>Users</strong>Authorized client administrator with an independent approver</div>
+              <div class="case-meta__item"><strong>Setup required</strong>Administration access, approved change process, permitted settings, and rollback owner</div>
+              <div class="case-meta__item case-meta__item--flags"><strong>Flags — on vs off</strong>
+                <table class="flag-effects">
+                  <thead><tr><th>Flag</th><th>On</th><th>Off</th></tr></thead>
+                  <tbody>
+                    <tr><td><span class="flag-chip">adminGovernanceEnabled</span></td><td><span class="flag-state flag-state--on">On</span> Admin governance screens can be shown; Feature flags and RBAC admin may then be turned on.</td><td><span class="flag-state flag-state--off">Off</span> Those admin screens stay hidden. Catalog flags cannot be changed from the UI.</td></tr>
+                    <tr><td><span class="flag-chip">featureFlagsAdminEnabled</span></td><td><span class="flag-state flag-state--on">On</span> Admin → Feature flags is visible so catalog keys can be toggled.</td><td><span class="flag-state flag-state--off">Off</span> The Feature flags screen stays hidden even if admin governance is on.</td></tr>
+                    <tr><td><span class="flag-chip">admin.policy-management</span></td><td><span class="flag-state flag-state--on">On</span> An allowed administrator can publish permitted work-time policy changes without a product release.</td><td><span class="flag-state flag-state--off">Off</span> Policy self-service stays denied.</td></tr>
+                    <tr><td><span class="flag-chip">rbacAdminEnabled</span></td><td><span class="flag-state flag-state--on">On</span> Authorized administrators can change permitted role assignments in the admin UI.</td><td><span class="flag-state flag-state--off">Off</span> RBAC admin stays hidden.</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="test-layout">
+              <div>
+                <h4>Validation steps</h4>
+                <ol class="test-steps">
+                <li><label class="step-check"><input type="checkbox">Record the requester, approver, affected organization, current value, proposed value, reason, risk, and rollback.</label></li>
+                <li><label class="step-check"><input type="checkbox">Change one safe business setting and confirm only the intended organization is affected.</label></li>
+                <li><label class="step-check"><input type="checkbox">Apply an approved temporary project exception, confirm the project-only result, then remove it.</label></li>
+                <li><label class="step-check"><input type="checkbox">Publish a revised approval policy and confirm an unauthorized user cannot make the same change.</label></li>
+                <li><label class="step-check"><input type="checkbox">Restore the previous setting and confirm the prior behavior returns.</label></li>
+                </ol>
+              </div>
+              <div>
+                <h4>Expected results</h4>
+                <div class="expectations">
+                <div class="expectation"><strong>Self-service</strong>Permitted business changes take effect only for the intended organization, role, or project and have a clear change record.</div>
+                <div class="expectation expectation--negative"><strong>Protection</strong>Unauthorized or out-of-scope changes are declined.</div>
+                <div class="expectation"><strong>Boundary</strong>New product features, new external connections, and bespoke screen changes require a separately agreed product release.</div>
+                </div>
+              </div>
+            </div>
+            <textarea class="evidence" aria-label="R13 validation notes" placeholder="Client validation notes: sample used, expected result, actual result, decision, and screenshot reference…"></textarea>
+          </div>
+        </details>
+
+        <details class="case-card" id="case-r14" data-requirement="R14" data-status="partial">
+          <summary>
+            <span class="case-card__id">R14</span>
+            <span>
+              <strong class="case-card__title">Resource availability by grade and skill</strong>
+              <span class="case-card__subtitle">Requirement 14 · Low · Partially available</span>
+            </span>
+            <span class="status status--partial">Partial</span>
+          </summary>
+          <div class="case-content">
+            <p class="implementation-note">Skill, capacity, bench, allocation, and utilization views are available, but the requested grade-first availability search is not.</p>
+            <div class="case-meta">
+              <div class="case-meta__item"><strong>Users</strong>Resource manager, project manager, administrator</div>
+              <div class="case-meta__item"><strong>Setup required</strong>Grades, skills, working capacity, locations, project assignments, and reporting access</div>
+              <div class="case-meta__item case-meta__item--flags"><strong>Flags — on vs off</strong>
+                <table class="flag-effects">
+                  <thead><tr><th>Flag</th><th>On</th><th>Off</th></tr></thead>
+                  <tbody>
+                    <tr><td><span class="flag-chip">REACT_APP_USE_RESOURCE_PLANNING_API</span></td><td><span class="flag-state flag-state--on">On</span> Skill, capacity, and utilization views call the resource-planning API.</td><td><span class="flag-state flag-state--off">Off</span> Those views do not use that API. A grade-first availability filter is not available either on or off.</td></tr>
+                    <tr><td><span class="flag-chip">planning.estimates</span></td><td><span class="flag-state flag-state--on">On</span> Estimate data that feeds capacity views can be entered.</td><td><span class="flag-state flag-state--off">Off</span> Estimate entry stays off, so estimate-backed capacity is incomplete.</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="test-layout">
+              <div>
+                <h4>Validation steps</h4>
+                <ol class="test-steps">
+                <li><label class="step-check"><input type="checkbox">Prepare active employees with grade, skills, working capacity, location, and dated project assignments.</label></li>
+                <li><label class="step-check"><input type="checkbox">Use the available skill, date, organization, capacity, and utilization views and reconcile totals to the agreed employees and assignments.</label></li>
+                <li><label class="step-check"><input type="checkbox">Confirm a dedicated grade-first availability filter is not present.</label></li>
+                <li><label class="step-check"><input type="checkbox">Create or update an allocation or staffing request, then confirm the capacity and utilization impact.</label></li>
+                <li><label class="step-check"><input type="checkbox">Compare authorized and unrelated users, and test an employee with missing grade or skill information.</label></li>
+                </ol>
+              </div>
+              <div>
+                <h4>Expected results</h4>
+                <div class="expectations">
+                <div class="expectation"><strong>Available capability</strong>Skill-oriented capacity and utilization reconcile by date to agreed employees and assignments.</div>
+                <div class="expectation expectation--negative"><strong>Data and access</strong>Missing information is clearly visible and unrelated users cannot view restricted employee details.</div>
+                <div class="expectation expectation--gap"><strong>What is not yet available</strong>A dedicated grade-first availability filter is not available.</div>
+                </div>
+              </div>
+            </div>
+            <textarea class="evidence" aria-label="R14 validation notes" placeholder="Client validation notes: sample used, expected result, actual result, decision, and screenshot reference…"></textarea>
+          </div>
+        </details>
+
+        <details class="case-card" id="case-r15" data-requirement="R15" data-status="gap">
+          <summary>
+            <span class="case-card__id">R15</span>
+            <span>
+              <strong class="case-card__title">Milestone-triggered customer satisfaction email</strong>
+              <span class="case-card__subtitle">Requirement 15 · Low · Not available</span>
+            </span>
+            <span class="status status--gap">Not available</span>
+          </summary>
+          <div class="case-content">
+            <p class="implementation-note">Project feedback can be collected manually, but it is not automatically requested when a project milestone is completed.</p>
+            <div class="case-meta">
+              <div class="case-meta__item"><strong>Users</strong>Project manager and client contact</div>
+              <div class="case-meta__item"><strong>Setup required</strong>None for this unavailable capability</div>
+              <div class="case-meta__item case-meta__item--flags"><strong>Flags — on vs off</strong>
+                <table class="flag-effects">
+                  <thead><tr><th>Flag</th><th>On</th><th>Off</th></tr></thead>
+                  <tbody>
+                    <tr><td>None shipped</td><td>No flag turns on milestone-triggered customer-satisfaction email.</td><td>Manual project feedback continues; it does not satisfy this requirement.</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="test-layout">
+              <div>
+                <h4>Client review steps</h4>
+                <ol class="test-steps">
+                <li><label class="step-check"><input type="checkbox">Complete a sample project milestone.</label></li>
+                <li><label class="step-check"><input type="checkbox">Confirm no automatic customer-satisfaction email is sent.</label></li>
+                <li><label class="step-check"><input type="checkbox">Confirm manual project feedback does not satisfy the automation requirement.</label></li>
+                <li><label class="step-check"><input type="checkbox">Record this requirement as Blocked until the complete automated customer journey is delivered.</label></li>
+                </ol>
+              </div>
+              <div>
+                <h4>Expected results</h4>
+                <div class="expectations">
+                <div class="expectation expectation--negative"><strong>No substitute</strong>Manual feedback collection is an adjacent capability and does not satisfy this requirement.</div>
+                <div class="expectation expectation--gap"><strong>What is not yet available</strong>Milestone-triggered customer-satisfaction email, recipient selection, delivery tracking, reminders, and response collection are not available.</div>
+                </div>
+              </div>
+            </div>
+            <textarea class="evidence" aria-label="R15 validation notes" placeholder="Client validation notes: sample used, expected result, actual result, decision, and screenshot reference…"></textarea>
+          </div>
+        </details>
+
+        <details class="case-card" id="case-r16" data-requirement="R16" data-status="gap">
+          <summary>
+            <span class="case-card__id">R16</span>
+            <span>
+              <strong class="case-card__title">Task and deliverable maker-checker control</strong>
+              <span class="case-card__subtitle">Requirement 16 · Low · Not available</span>
+            </span>
+            <span class="status status--gap">Not available</span>
+          </summary>
+          <div class="case-content">
+            <p class="implementation-note">General approval workflows exist in other areas, but task and deliverable changes are not held for independent maker-checker approval.</p>
+            <div class="case-meta">
+              <div class="case-meta__item"><strong>Users</strong>Maker, checker, project manager</div>
+              <div class="case-meta__item"><strong>Setup required</strong>None for this unavailable capability</div>
+              <div class="case-meta__item case-meta__item--flags"><strong>Flags — on vs off</strong>
+                <table class="flag-effects">
+                  <thead><tr><th>Flag</th><th>On</th><th>Off</th></tr></thead>
+                  <tbody>
+                    <tr><td>None shipped</td><td>No flag turns on task or deliverable maker-checker.</td><td>Other approval workflows continue; they do not satisfy this requirement.</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="test-layout">
+              <div>
+                <h4>Client review steps</h4>
+                <ol class="test-steps">
+                <li><label class="step-check"><input type="checkbox">Create or materially change a sample task or deliverable.</label></li>
+                <li><label class="step-check"><input type="checkbox">Confirm the change is not held for a separate checker.</label></li>
+                <li><label class="step-check"><input type="checkbox">Confirm no independent checker work item is created.</label></li>
+                <li><label class="step-check"><input type="checkbox">Record this requirement as Blocked until maker-checker control is delivered for tasks and deliverables.</label></li>
+                </ol>
+              </div>
+              <div>
+                <h4>Expected results</h4>
+                <div class="expectations">
+                <div class="expectation expectation--negative"><strong>No substitute</strong>A general approval elsewhere in the product does not satisfy task-level maker-checker acceptance.</div>
+                <div class="expectation expectation--gap"><strong>What is not yet available</strong>Independent maker-checker approval for creating or changing tasks and deliverables is not available.</div>
+                </div>
+              </div>
+            </div>
+            <textarea class="evidence" aria-label="R16 validation notes" placeholder="Client validation notes: sample used, expected result, actual result, decision, and screenshot reference…"></textarea>
+          </div>
+        </details>
+
+        <details class="case-card" id="case-r17" data-requirement="R17" data-status="gap">
+          <summary>
+            <span class="case-card__id">R17</span>
+            <span>
+              <strong class="case-card__title">Workplace rostering, meal, and seating management</strong>
+              <span class="case-card__subtitle">Requirement 17 · Low · Not available</span>
+            </span>
+            <span class="status status--gap">Not available</span>
+          </summary>
+          <div class="case-content">
+            <p class="implementation-note">Project staffing and capacity planning are available, but they do not provide workplace seat booking, meal management, or facilities rosters.</p>
+            <div class="case-meta">
+              <div class="case-meta__item"><strong>Users</strong>Workplace and facilities administrator</div>
+              <div class="case-meta__item"><strong>Setup required</strong>None for this unavailable capability</div>
+              <div class="case-meta__item case-meta__item--flags"><strong>Flags — on vs off</strong>
+                <table class="flag-effects">
+                  <thead><tr><th>Flag</th><th>On</th><th>Off</th></tr></thead>
+                  <tbody>
+                    <tr><td>None shipped</td><td>No flag turns on workplace seat booking, meal management, or facilities rosters.</td><td>Project staffing and attendance views continue; they do not satisfy this requirement.</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="test-layout">
+              <div>
+                <h4>Client review steps</h4>
+                <ol class="test-steps">
+                <li><label class="step-check"><input type="checkbox">Confirm no workplace roster or seat-booking option is available.</label></li>
+                <li><label class="step-check"><input type="checkbox">Confirm no meal selection, eligibility, cut-off, or booking option is available.</label></li>
+                <li><label class="step-check"><input type="checkbox">Confirm project staffing and attendance views do not satisfy the workplace-management requirement.</label></li>
+                <li><label class="step-check"><input type="checkbox">Record this requirement as Blocked pending future product scope.</label></li>
+                </ol>
+              </div>
+              <div>
+                <h4>Expected results</h4>
+                <div class="expectations">
+                <div class="expectation expectation--negative"><strong>No substitute</strong>Project staffing, attendance, or work-location status does not satisfy this requirement.</div>
+                <div class="expectation expectation--gap"><strong>What is not yet available</strong>Workplace rosters, seat booking, and meal management are not available.</div>
+                </div>
+              </div>
+            </div>
+            <textarea class="evidence" aria-label="R17 validation notes" placeholder="Client validation notes: sample used, expected result, actual result, decision, and screenshot reference…"></textarea>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <section id="known-gaps">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Acceptance boundaries</p>
+          <h2>Open items before full acceptance</h2>
+          <p>These items remain incomplete and must not be accepted through a similar but different capability.</p>
+        </div>
+      </div>
+      <div class="gap-list">
+        <article class="gap-item"><strong>Identity and mobile</strong><p>Mobile Microsoft sign-in and a production-ready mobile release with confirmed live notifications are not available.</p></article>
+        <article class="gap-item"><strong>Project Tracking connection</strong><p>The direct connection to the selected platform, automated field mapping, transfer confirmation, and failed-transfer recovery are not available.</p></article>
+        <article class="gap-item"><strong>Attendance completion</strong><p>Automatic final attendance updates, attendance locking, a complete attendance-device feed, and full overnight-shift handling are not available.</p></article>
+        <article class="gap-item"><strong>Live and operational reporting</strong><p>Automatic live updates and dedicated reports for approval delays, late submissions, attendance exceptions, and integration health are not available.</p></article>
+        <article class="gap-item"><strong>Communication channels</strong><p>Timesheet actions through Microsoft Teams and WhatsApp are not available.</p></article>
+        <article class="gap-item"><strong>Resource availability</strong><p>A dedicated grade-first availability filter is not available.</p></article>
+        <article class="gap-item"><strong>Unavailable business capabilities</strong><p>Milestone-triggered customer-satisfaction email, task and deliverable maker-checker, and workplace roster, seating, and meal management are not available.</p></article>
+      </div>
+      <div class="callout callout--danger">
+        <strong>Acceptance rule.</strong> Mark a requirement Pass only when the client completes the stated positive, negative, access, and boundary scenarios.
+        Use Blocked when the required capability is unavailable; do not use an adjacent feature as a substitute.
+      </div>
+    </section>
+
+    <section id="signoff">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Client decision</p>
+          <h2>Validation sign-off</h2>
+          <p>Source requirement document: <a href="./Timesheet%20tracker_V1.xlsx">Timesheet tracker_V1.xlsx</a>.</p>
+        </div>
+      </div>
+      <div class="signoff" aria-label="Acceptance sign-off">
+        <label>Client environment<input type="text" placeholder="e.g. Client UAT"></label>
+        <label>Validated by<input type="text" placeholder="Name and organization"></label>
+        <label>Validation date<input type="date"></label>
+        <label>Overall result<input type="text" placeholder="Pass / Partial / Blocked"></label>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p><strong>Tracopus Timesheet Tracker V1 client acceptance report.</strong> Reviewed 13 September 2026 after R03 deadline-preview completion. Catalog flags default off until Application Config is applied. Final status is subject to completed client validation and signed acceptance.</p>
+  </footer>
+
+  <script>
+    (() => {
+      const cards = Array.from(document.querySelectorAll("[data-requirement]"));
+      const search = document.getElementById("case-search");
+      const count = document.getElementById("visible-count");
+      const filterButtons = Array.from(document.querySelectorAll("[data-filter]"));
+      const checkboxes = Array.from(document.querySelectorAll(".step-check input"));
+      const storageKey = "tracopus-timesheet-tracker-v1-validation";
+      let activeFilter = "all";
+
+      const applyFilters = () => {
+        const query = search.value.trim().toLowerCase();
+        let visible = 0;
+        cards.forEach((card) => {
+          const statusMatch = activeFilter === "all" || card.dataset.status === activeFilter;
+          const textMatch = !query || card.textContent.toLowerCase().includes(query);
+          const show = statusMatch && textMatch;
+          card.hidden = !show;
+          if (show) {
+            visible += 1;
+            if (query) card.open = true;
+          }
+        });
+        count.textContent = `${visible} ${visible === 1 ? "case" : "cases"}`;
+      };
+
+      const saveChecks = () => {
+        const checked = checkboxes.reduce((result, checkbox, index) => {
+          if (checkbox.checked) result.push(index);
+          return result;
+        }, []);
+        try {
+          localStorage.setItem(storageKey, JSON.stringify(checked));
+        } catch (error) {
+          /* File/private browser storage can be unavailable; the printable form still works. */
+        }
+      };
+
+      try {
+        const saved = JSON.parse(localStorage.getItem(storageKey) || "[]");
+        if (Array.isArray(saved)) {
+          saved.forEach((index) => {
+            if (checkboxes[index]) checkboxes[index].checked = true;
+          });
+        }
+      } catch (error) {
+        /* Ignore malformed or unavailable local storage. */
+      }
+
+      filterButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          activeFilter = button.dataset.filter;
+          filterButtons.forEach((candidate) => candidate.classList.toggle("is-active", candidate === button));
+          applyFilters();
+        });
+      });
+
+      search.addEventListener("input", applyFilters);
+      checkboxes.forEach((checkbox) => checkbox.addEventListener("change", saveChecks));
+      document.getElementById("print-guide").addEventListener("click", () => window.print());
+      document.getElementById("reset-guide").addEventListener("click", () => {
+        if (!window.confirm("Clear all saved validation checkmarks?")) return;
+        checkboxes.forEach((checkbox) => { checkbox.checked = false; });
+        try { localStorage.removeItem(storageKey); } catch (error) { /* no-op */ }
+      });
+
+      applyFilters();
+    })();
+  </script>
+</body>
+</html>
