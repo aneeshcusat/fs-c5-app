@@ -1,0 +1,243 @@
+/**
+ * Auth login layout — same composition on every display size.
+ * Brand left / login rail right on desktop; stacked on small screens.
+ * The page never scrolls and never clips: when height is tight, the brand
+ * column and the login card content scale down through --auth-brand-fit /
+ * --auth-card-fit (set by authFitScale.js) instead of overflowing.
+ * Auth fills remaining viewport under any app-update banner (does not use raw 100vh).
+ */
+
+html:has(.auth),
+body:has(.auth) {
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  height: 100vh !important;
+  height: 100dvh !important;
+  overflow: hidden !important;
+}
+
+body:has(.auth) #root {
+  display: flex !important;
+  flex-direction: column !important;
+  width: 100% !important;
+  max-width: none !important;
+  height: 100vh !important;
+  height: 100dvh !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+}
+
+/* Banner takes its natural height; login fills the rest */
+body:has(.auth) #root > .lux-app-update-banner {
+  flex: 0 0 auto !important;
+}
+
+.auth {
+  display: flex !important;
+  flex-direction: column !important;
+  flex: 1 1 auto !important;
+  min-width: 100% !important;
+  width: 100% !important;
+  max-width: none !important;
+  min-height: 0 !important;
+  height: auto !important;
+  max-height: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+}
+
+.auth > [data-testid="page-login"],
+.auth > * {
+  display: flex !important;
+  flex-direction: column !important;
+  flex: 1 1 auto !important;
+  min-height: 0 !important;
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+}
+
+.auth .auth-screen {
+  display: flex !important;
+  flex: 1 1 auto !important;
+  min-width: 100% !important;
+  width: 100% !important;
+  min-height: 0 !important;
+  height: auto !important;
+  max-height: none !important;
+  overflow: hidden !important;
+}
+
+.auth-screen__layout {
+  display: grid !important;
+  flex: 1 1 auto !important;
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 0 !important;
+  max-width: none !important;
+  margin: 0 !important;
+  overflow: hidden !important;
+}
+
+.auth-screen__form {
+  display: flex !important;
+  flex-direction: column !important;
+  min-height: 0 !important;
+  height: 100% !important;
+  overflow: hidden !important;
+  padding: 1rem 1.25rem 0 !important;
+  box-sizing: border-box !important;
+}
+
+.auth-screen__form-inner {
+  display: flex !important;
+  flex-direction: column !important;
+  flex: 1 1 auto !important;
+  width: 100% !important;
+  max-width: none !important;
+  min-height: 0 !important;
+  height: 100% !important;
+  margin: 0 !important;
+  overflow: hidden !important;
+  gap: 0 !important;
+}
+
+/* Login card fills remaining space above footer; content scales when short */
+.auth .auth-screen .auth-login__card {
+  flex: 1 1 auto !important;
+  min-height: 0 !important;
+  overflow: hidden !important;
+}
+
+.auth-login__card-inner {
+  flex: 1 1 auto !important;
+  min-height: 0 !important;
+  overflow: hidden !important;
+  justify-content: center !important;
+}
+
+/* Scaled group: head + form + card footer, shrunk only as much as needed */
+.auth-login__fit {
+  display: flex !important;
+  flex-direction: column !important;
+  flex: 0 0 auto !important;
+  width: 100% !important;
+  transform: scale(var(--auth-card-fit, 1)) !important;
+  transform-origin: center center !important;
+}
+
+/* Brand column never scrolls; it scales to the height it is given.
+   Logo and copy stay anchored to the top-left on every screen size, so the
+   fit scale shrinks the block toward that corner instead of drifting inward. */
+.auth-screen__brand {
+  display: flex !important;
+  align-items: flex-start !important;
+  justify-content: flex-start !important;
+  overflow: hidden !important;
+}
+
+.auth-screen__brand-content {
+  transform: scale(var(--auth-brand-fit, 1)) !important;
+  transform-origin: left top !important;
+}
+
+/* Version / legal footer — never clipped */
+.auth-screen__footer {
+  flex: 0 0 auto !important;
+  flex-shrink: 0 !important;
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0.5rem 0 0 !important;
+  padding: 0 0.25rem max(0.65rem, env(safe-area-inset-bottom, 0px)) !important;
+  text-align: center !important;
+  position: relative !important;
+  z-index: 2 !important;
+}
+
+/* Desktop / laptop / ultrawide — same split */
+@media (min-width: 992px) {
+  .auth-screen__layout {
+    grid-template-columns: minmax(0, 1fr) 26.5rem !important;
+    grid-template-rows: minmax(0, 1fr) !important;
+  }
+
+  .auth-screen__brand {
+    display: flex !important;
+    justify-content: flex-start !important;
+    align-items: flex-start !important;
+    min-height: 0 !important;
+    overflow: hidden !important;
+    padding: clamp(1rem, 2.5vh, 2rem) clamp(1.5rem, 3vw, 3rem) !important;
+  }
+
+  .auth-screen__brand-content {
+    width: 100% !important;
+    max-width: 36rem !important;
+    margin: 0 !important;
+    transform: scale(var(--auth-brand-fit, 1)) !important;
+    transform-origin: left top !important;
+  }
+
+  .auth-screen__form {
+    padding: 1rem 1.35rem 0 !important;
+  }
+}
+
+/* Short viewports — tighten the gaps only; nothing is hidden or shrunk away */
+@media (max-height: 860px) {
+  .auth-screen__form {
+    padding-top: 0.65rem !important;
+  }
+
+  .auth-screen__footer {
+    margin-top: 0.35rem !important;
+    padding-bottom: max(0.45rem, env(safe-area-inset-bottom, 0px)) !important;
+  }
+
+  .auth-screen__footer-divider {
+    margin-bottom: 0.35rem !important;
+  }
+
+  .auth-screen__footer-brand {
+    margin-bottom: 0.2rem !important;
+    gap: 0.25rem 0.5rem !important;
+  }
+
+  .auth-screen__footer-legal {
+    margin-bottom: 0.25rem !important;
+  }
+}
+
+/* Phone / tablet — stacked */
+@media (max-width: 991px) {
+  .auth-screen__layout {
+    grid-template-columns: 1fr !important;
+    grid-template-rows: minmax(0, auto) minmax(0, 1fr) !important;
+  }
+
+  /* Cap the brand band so the login rail always keeps usable height */
+  .auth-screen__brand {
+    flex-shrink: 0 !important;
+    max-height: 32vh !important;
+    overflow: hidden !important;
+  }
+
+  .auth-screen__brand-content {
+    max-width: 100% !important;
+  }
+
+  .auth-screen__form {
+    min-height: 0 !important;
+    padding: 0 1rem 0 !important;
+  }
+
+  .auth-screen__form-inner {
+    max-width: 100% !important;
+  }
+}

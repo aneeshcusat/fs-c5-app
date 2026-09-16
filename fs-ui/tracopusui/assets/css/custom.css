@@ -1675,9 +1675,13 @@ body:has(.auth) {
 }
 
 body:has(.auth) #root {
+    display: flex;
+    flex-direction: column;
     width: 100%;
     max-width: 100%;
-    min-height: 100vh;
+    height: 100vh;
+    height: 100dvh;
+    min-height: 0;
     margin: 0;
     padding: 0;
     overflow: hidden;
@@ -1687,9 +1691,10 @@ body:has(.auth) #root {
     display: flex;
     flex-direction: column;
     position: relative;
-    min-height: 100vh;
-    height: 100vh;
-    max-height: 100vh;
+    flex: 1 1 auto;
+    min-height: 0;
+    height: auto;
+    max-height: none;
     width: 100%;
     max-width: 100%;
     margin: 0;

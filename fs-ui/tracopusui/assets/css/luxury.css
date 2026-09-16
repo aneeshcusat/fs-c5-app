@@ -4647,50 +4647,6 @@ body.lux-shell-dark button.lux-page-footer__meta--version:focus {
     background: rgba(165, 180, 252, 0.12);
 }
 
-/* Deploy freshness — new version banner */
-.lux-app-update-banner {
-    position: sticky;
-    top: 0;
-    z-index: 11000;
-    background: linear-gradient(90deg, #0f766e 0%, #0e7490 55%, #0369a1 100%);
-    color: #f8fafc;
-    box-shadow: 0 2px 10px rgba(15, 23, 42, 0.18);
-}
-
-.lux-app-update-banner__inner {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.75rem;
-    flex-wrap: wrap;
-    padding: 0.45rem 0.85rem;
-    font-size: 0.8125rem;
-    font-weight: 600;
-    letter-spacing: 0.01em;
-}
-
-.lux-app-update-banner__action {
-    appearance: none;
-    border: 1px solid rgba(248, 250, 252, 0.55);
-    background: rgba(15, 23, 42, 0.22);
-    color: #fff;
-    border-radius: 999px;
-    padding: 0.22rem 0.7rem;
-    font: inherit;
-    font-size: 0.75rem;
-    font-weight: 700;
-    cursor: pointer;
-}
-
-.lux-app-update-banner__action:hover,
-.lux-app-update-banner__action:focus {
-    background: rgba(15, 23, 42, 0.38);
-    outline: none;
-}
-    color: #f8fafc;
-    background: rgba(148, 163, 184, 0.2);
-}
-
 body.lux-shell-dark .lux-page-footer {
     border-top-color: rgba(51, 65, 85, 0.95);
     background: linear-gradient(180deg, rgba(15, 23, 42, 0.98), rgba(2, 6, 23, 0.99));
@@ -15284,17 +15240,31 @@ body.lux-shell-dark .lux-appconfig-empty {
 
 /* ========== Auth pages — luxury split layout ========== */
 
-/* Lock auth pages to the viewport so the login card does not scroll. */
+/* Lock auth pages to the viewport so the login card does not scroll.
+   Override legacy main.css `.auth { display:flex; align-items:center }` which
+   can leave the shell looking letterboxed / centered on wide monitors. */
 .auth {
-    height: 100vh;
-    height: 100dvh;
-    max-height: 100vh;
-    max-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    width: 100%;
+    max-width: none;
+    min-width: 100%;
+    min-height: 0;
+    height: auto;
+    max-height: none;
+    margin: 0;
+    padding: 0;
     overflow: hidden;
+    align-items: stretch;
 }
 
 body:has(.auth),
 #root:has(.auth) {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: none;
     height: 100vh;
     height: 100dvh;
     overflow: hidden;
@@ -15305,7 +15275,8 @@ body:has(.auth),
     min-height: 0;
     height: 100%;
     width: 100%;
-    max-width: 100%;
+    min-width: 100%;
+    max-width: none;
     display: flex;
     overflow: hidden;
     background: var(--lux-bg-canvas, var(--lux-bg, #0c1222));
@@ -15344,9 +15315,10 @@ body:has(.auth),
     position: relative;
     z-index: 1;
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    /* Same split on every desktop width: flexible brand + fixed login rail */
+    grid-template-columns: minmax(0, 1fr) 26.5rem;
     width: 100%;
-    max-width: 100%;
+    max-width: none;
     height: 100%;
     max-height: 100%;
     margin: 0;
@@ -15359,10 +15331,10 @@ body:has(.auth),
     position: relative;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     height: 100%;
     max-height: 100vh;
-    padding: clamp(0.75rem, 2vh, 1.5rem) clamp(1.25rem, 3vw, 2rem);
+    padding: clamp(1.25rem, 3vh, 2rem) clamp(1.75rem, 3.5vw, 3rem);
     overflow: hidden;
 }
 
@@ -15379,15 +15351,11 @@ body:has(.auth),
     position: relative;
     z-index: 1;
     width: 100%;
-    max-width: 640px;
+    max-width: 36rem;
+    margin: 0;
     color: #f8fafc;
-}
-
-@media (min-width: 992px) {
-    .auth-screen__brand-content {
-        transform: scale(min(1, calc((100vh - 2.5rem) / 940)));
-        transform-origin: center center;
-    }
+    /* No viewport-height scale — keeps the same look on every screen */
+    transform: none;
 }
 
 .auth-screen__brand-logo {
@@ -15721,7 +15689,7 @@ body:has(.auth),
     color: #94a3b8;
 }
 
-/* —— Form column —— */
+/* —— Form column (fixed rail — same width on every desktop) —— */
 .auth-screen__form {
     display: flex;
     align-items: stretch;
@@ -15730,16 +15698,16 @@ body:has(.auth),
     min-height: 0;
     max-height: 100%;
     overflow: hidden;
-    padding: clamp(0.75rem, 2vh, 1.75rem) clamp(1rem, 3vw, 2.5rem) 0;
+    padding: 1.25rem 1.5rem 0;
 }
 
 .auth-screen__form-inner {
     width: 100%;
-    max-width: 400px;
+    max-width: none;
     height: 100%;
     max-height: 100%;
     min-height: 0;
-    margin: 0 auto;
+    margin: 0;
     display: flex;
     flex-direction: column;
     align-items: stretch;
@@ -15751,20 +15719,19 @@ body:has(.auth),
     .auth-screen__form {
         align-items: stretch;
         justify-content: stretch;
-        padding: clamp(1rem, 2.5vh, 2rem) clamp(1.25rem, 3.5vw, 3rem) 0;
+        padding: 1.25rem 1.5rem 0;
     }
 
     .auth-screen__form-inner {
-        max-width: 392px;
-        margin-left: auto;
-        margin-right: auto;
+        max-width: none;
+        width: 100%;
+        margin: 0;
         transform: none;
     }
 
     .auth-screen__footer {
-        max-width: 392px;
-        margin-left: auto;
-        margin-right: auto;
+        max-width: none;
+        margin: 0;
         text-align: center;
     }
 
@@ -15834,7 +15801,7 @@ body:has(.auth),
     min-height: 0;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     border-radius: 24px;
     background:
         linear-gradient(168deg, rgba(255, 255, 255, 0.99) 0%, rgba(248, 250, 252, 0.97) 48%, rgba(255, 255, 255, 0.94) 100%);
@@ -16293,11 +16260,12 @@ body:has(.auth),
 
 /* —— Page footer (below glass card, on backdrop) —— */
 .auth-screen__footer {
+    flex: 0 0 auto;
     flex-shrink: 0;
     width: 100%;
-    max-width: 400px;
-    margin: 0.75rem auto 0;
-    padding: 0 0.25rem 0.85rem;
+    max-width: none;
+    margin: 0.5rem 0 0;
+    padding: 0 0.25rem max(0.65rem, env(safe-area-inset-bottom, 0px));
     text-align: center;
 }
 
@@ -16495,38 +16463,8 @@ body:has(.auth),
     }
 }
 
-/* Short viewports: keep form readable without hiding brand */
-@media (max-height: 820px) {
-    .auth-login__eyebrow {
-        margin-bottom: 0.2rem;
-        font-size: 0.6875rem;
-    }
-
-    .auth .auth-screen .auth-login__title.card-title {
-        font-size: 1.25rem;
-        margin-bottom: 0.25rem;
-    }
-
-    .auth-login__subtitle {
-        font-size: 0.75rem;
-        line-height: 1.35;
-    }
-
-    .auth-screen__footer-tagline {
-        font-size: 0.6875rem;
-    }
-}
-
-@media (max-height: 700px) {
-    .auth-login__subtitle {
-        display: none;
-    }
-
-    .auth-screen__footer-tagline,
-    .auth-screen__footer-version {
-        display: none;
-    }
-}
+/* Short viewports need no font swaps or hidden text: auth-layout.css scales
+   the brand column and card content to fit (--auth-brand-fit/--auth-card-fit). */
 
 @media (max-width: 767px) {
     .auth-login__head {
